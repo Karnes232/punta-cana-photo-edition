@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary-color: #ffb24c;
+  --secondary-color: #002447;
+  --primary-bg-color: rgba(245, 245, 245, 1);
+}
+
+html {
+  overflow-y: scroll !important;
+  padding-right: 0 !important;
+}
