@@ -2,11 +2,12 @@ import React from "react";
 import Copyright from "./Copyright";
 import SocialMedia from "./SocialMedia";
 import { FaInstagram } from "react-icons/fa";
+import SideBarInside from "../Navbar/SideBarInside";
 const Footer = ({ generalInfo }) => {
   console.log(generalInfo);
   const instatag = generalInfo.instagram.split("/")[3];
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen justify-between py-10">
       <div className="flex justify-center items-center">
         {generalInfo.instagram && (
           <a
@@ -21,8 +22,8 @@ const Footer = ({ generalInfo }) => {
           </a>
         )}
       </div>
-      <div className="flex flex-col xl:flex-row justify-between">
-        <div></div>
+      <div className="flex flex-col xl:flex-row justify-between space-y-10">
+        <SideBarInside footer={true} />
         <SocialMedia generalInfo={generalInfo} />
       </div>
       <Copyright companyName={generalInfo.companyName} />

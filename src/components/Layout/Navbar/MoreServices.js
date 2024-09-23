@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
-const MoreServices = () => {
+const MoreServices = ({ footer }) => {
   return (
-    <SubMenu label="More photo-video services" className="hamburger">
+    <SubMenu
+      label="More photo-video services"
+      className={footer ? "hamburgerSmall" : "hamburger"}
+    >
       <MenuItem
         component={
           <Link

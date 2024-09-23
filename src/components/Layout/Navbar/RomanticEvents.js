@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
-const RomanticEvents = () => {
+const RomanticEvents = ({ footer }) => {
   return (
-    <SubMenu label="Romantic Events" className="hamburger">
+    <SubMenu
+      label="Romantic Events"
+      className={footer ? "hamburgerSmall" : "hamburger"}
+    >
       <MenuItem
         component={
           <Link to="/proposal" className="no-underline uppercase text-sm" />

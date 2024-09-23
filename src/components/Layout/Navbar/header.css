@@ -2,6 +2,10 @@
   @apply no-underline font-crimson uppercase text-xl space-x-3;
 }
 
+.hamburgerSmall {
+  @apply no-underline font-crimson uppercase text-sm space-x-3;
+}
+
 .css-z5rm24 {
   background-color: transparent !important;
 }
