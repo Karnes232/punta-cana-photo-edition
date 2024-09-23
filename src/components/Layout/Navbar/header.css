@@ -1,0 +1,19 @@
+.hamburger {
+  @apply no-underline font-crimson uppercase text-xl space-x-3;
+}
+
+.css-z5rm24 {
+  background-color: transparent !important;
+}
+
+.css-8dyhm6 > .ps-menu-button:hover {
+  background-color: transparent !important;
+}
+
+.css-18unl23 {
+  background-color: transparent !important;
+}
+
+.css-1cuxlhl {
+  display: flex;
+}

@@ -24,10 +24,30 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Punta-Cana-Tour-Store",
-        short_name: `PC-Tour-Store`,
+        name: "Punta-Cana-Photo-Edition",
+        short_name: `PC-Photo-Edition`,
         start_url: `/`,
         icon: "src/images/logo.png",
+      },
+    },
+    {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        enableListener: true,
+        preconnect: [
+          `https://fonts.googleapis.com`,
+          `https://fonts.gstatic.com`,
+        ],
+        web: [
+          {
+            name: `Crimson`,
+            file: `https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap`,
+          },
+          {
+            name: `Montserrat`,
+            file: `https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap`,
+          },
+        ],
       },
     },
     {

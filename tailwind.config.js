@@ -3,6 +3,7 @@ module.exports = {
   content: [
     `./src/pages/**/*.{js,jsx,ts,tsx}`,
     `./src/components/**/*.{js,jsx,ts,tsx}`,
+    `./node_modules/react-tailwindcss-datepicker/dist/index.esm.js`,
   ],
   theme: {
     extend: {
@@ -10,6 +11,12 @@ module.exports = {
         "primary-color": "var(--primary-color)",
         "secondary-color": "var(--secondary-color)",
         "primary-bg-color": "var(--primary-bg-color)",
+      },
+      fontFamily: {
+        crimson: ["Crimson"],
+        montserrat: ["Montserrat"],
+        lato: ["Lato"],
+        garamond: ["Garamond"],
       },
     },
   },
