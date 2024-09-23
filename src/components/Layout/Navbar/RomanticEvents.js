@@ -1,18 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
-import {
-  MenuItem,
-  SubMenu,
-} from "react-pro-sidebar";
+import { MenuItem, SubMenu } from "react-pro-sidebar";
 const RomanticEvents = () => {
   return (
     <SubMenu label="Romantic Events" className="hamburger">
       <MenuItem
         component={
-          <Link
-            to="/proposal"
-            className="no-underline uppercase text-sm"
-          />
+          <Link to="/proposal" className="no-underline uppercase text-sm" />
         }
       >
         <p>Marriage Proposals</p>
@@ -29,10 +23,7 @@ const RomanticEvents = () => {
       </MenuItem>
       <MenuItem
         component={
-          <Link
-            to="/wedding"
-            className="no-underline uppercase text-sm"
-          />
+          <Link to="/wedding" className="no-underline uppercase text-sm" />
         }
       >
         <p>Punta cana wedding photographer</p>

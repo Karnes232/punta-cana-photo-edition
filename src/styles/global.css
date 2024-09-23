@@ -5,7 +5,7 @@
 :root {
   --primary-color: #ffb24c;
   --secondary-color: #002447;
-  --primary-bg-color: rgba(245, 245, 245, 1);
+  --primary-bg-color: rgba(255, 255, 255, 1);
 }
 
 html {

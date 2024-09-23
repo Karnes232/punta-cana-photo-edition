@@ -14,7 +14,6 @@ const Logo = () => {
       }
     }
   `);
-  console.log(data.allContentfulAsset.nodes[0]);
   const image = getImage(data.allContentfulAsset.nodes[0]);
   return (
     <>

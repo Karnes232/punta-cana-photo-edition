@@ -1,13 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import { IoClose } from "react-icons/io5";
-import {
-  Sidebar,
-  // menuClasses,
-  Menu,
-  MenuItem,
-  SubMenu,
-} from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import RomanticEvents from "./RomanticEvents";
 import MoreServices from "./MoreServices";
 const SideBarMenu = ({ toggled, setToggled }) => {
@@ -38,10 +32,14 @@ const SideBarMenu = ({ toggled, setToggled }) => {
               <p className="hamburger">Home</p>
             </MenuItem>
             <RomanticEvents />
-            <MenuItem component={<Link to="/photoshoots" className="hamburger" />}>
+            <MenuItem
+              component={<Link to="/photoshoots" className="hamburger" />}
+            >
               <p className="hamburger">Photoshoots</p>
             </MenuItem>
-            <MenuItem component={<Link to="/event-planner" className="hamburger" />}>
+            <MenuItem
+              component={<Link to="/event-planner" className="hamburger" />}
+            >
               <p className="hamburger">Corporate events</p>
             </MenuItem>
             <MoreServices />

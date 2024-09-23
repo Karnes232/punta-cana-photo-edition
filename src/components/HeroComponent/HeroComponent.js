@@ -1,7 +1,6 @@
 import React from "react";
 
 const HeroComponent = ({ heroInfo }) => {
-  console.log(heroInfo);
   let image =
     heroInfo?.heroImage?.gatsbyImage?.images?.fallback?.srcSet.split(",");
   const imageSrc = [];
@@ -44,14 +43,14 @@ const HeroComponent = ({ heroInfo }) => {
           <div className="relative max-w-xs lg:max-w-4xl inline-block z-10 top-[85%] md:top-[87%] lg:top-[82%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
             <h1
               translate="no"
-              className="text-white font-serif tracking-wider text-5xl lg:text-6xl 2xl:text-7xl text-center "
+              className="text-white font-crimson tracking-wider text-5xl lg:text-6xl 2xl:text-7xl text-center "
             >
               {heroInfo.heroHeading}
             </h1>
 
             <h2
               translate="no"
-              className="text-white font-serif tracking-wider text-xl 2xl:text-2xl lg:mt-5"
+              className="text-white font-crimson tracking-wider text-xl 2xl:text-2xl lg:mt-5"
             >
               {heroInfo.heroHeading2}
             </h2>

@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
-import {
-  MenuItem,
-  SubMenu,
-} from "react-pro-sidebar";
+import { MenuItem, SubMenu } from "react-pro-sidebar";
 const MoreServices = () => {
   return (
     <SubMenu label="More photo-video services" className="hamburger">
-        <MenuItem
+      <MenuItem
         component={
           <Link
             to="/real-estate-photography"
@@ -28,7 +25,7 @@ const MoreServices = () => {
         <p>Videos and comercial photos</p>
       </MenuItem>
     </SubMenu>
-  )
-}
+  );
+};
 
-export default MoreServices
+export default MoreServices;
