@@ -1,0 +1,7 @@
+.navLinks {
+  @apply font-crimson;
+}
+
+.popoverLinks {
+  @apply uppercase text-sm tracking-wider;
+}

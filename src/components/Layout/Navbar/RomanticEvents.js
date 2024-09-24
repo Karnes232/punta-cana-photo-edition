@@ -29,7 +29,7 @@ const RomanticEvents = ({ footer }) => {
           <Link to="/wedding" className="no-underline uppercase text-sm" />
         }
       >
-        <p>Punta cana wedding photographer</p>
+        <p>Punta Cana wedding photographer</p>
       </MenuItem>
       <MenuItem
         component={

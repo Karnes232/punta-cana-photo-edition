@@ -17,6 +17,7 @@
     "kill": "npx kill-port 8000"
   },
   "dependencies": {
+    "@headlessui/react": "^2.1.8",
     "@loadable/component": "^5.16.4",
     "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.5",

@@ -7,7 +7,7 @@ const Copyright = ({ companyName }) => {
     setDate(new Date().getFullYear());
   }, []);
   return (
-    <div className="mx-8 flex flex-col justify-between py-4 md:flex-row md:items-center md:mx-auto">
+    <div className=" flex flex-col justify-between py-4">
       <Link to="/">
         <p className="tracking-wider cursor-pointer text-slate-400">
           All content Copyright &copy; {date} {companyName}

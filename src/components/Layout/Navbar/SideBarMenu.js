@@ -1,9 +1,6 @@
-import { Link } from "gatsby";
 import React from "react";
 import { IoClose } from "react-icons/io5";
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import RomanticEvents from "./RomanticEvents";
-import MoreServices from "./MoreServices";
+import { Sidebar } from "react-pro-sidebar";
 import SideBarInside from "./SideBarInside";
 const SideBarMenu = ({ toggled, setToggled }) => {
   return (

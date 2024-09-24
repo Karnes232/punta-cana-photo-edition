@@ -5,7 +5,8 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `Punta Cana Photo Edition`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://www.puntacanaphotoedition.com/`,
+    image: `https://images-pw.pixieset.com/social/page/2953651/fb77b81bd7921d4ecf10004d4a1f4c58c818237fef6778a5f14bf4815b481c8e.jpg`,
   },
   plugins: [
     {
