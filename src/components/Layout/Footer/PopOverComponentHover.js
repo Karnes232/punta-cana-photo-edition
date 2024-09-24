@@ -37,7 +37,7 @@ const PopOverComponentHover = ({ title, links }) => {
       {({ open }) => (
         <>
           <PopoverButton
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 navLinks"
             ref={buttonRef}
             onMouseEnter={() => useHover && onMouseEnter(!open)}
             onMouseLeave={() => useHover && onMouseLeave(open)}

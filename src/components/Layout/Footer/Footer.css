@@ -1,5 +1,5 @@
 .navLinks {
-  @apply font-crimson;
+  @apply font-crimson xl:text-lg;
 }
 
 .popoverLinks {

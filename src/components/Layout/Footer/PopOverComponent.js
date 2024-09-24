@@ -10,7 +10,7 @@ import { Link } from "gatsby";
 const PopOverComponent = ({ title, links }) => {
   return (
     <Popover className="group">
-      <PopoverButton className="flex items-center gap-2">{title}</PopoverButton>
+      <PopoverButton className="flex items-center gap-2 navLinks">{title}</PopoverButton>
       <PopoverBackdrop
         transition
         className="fixed inset-0 bg-black/15 transition duration-100 ease-out data-[closed]:opacity-0"
