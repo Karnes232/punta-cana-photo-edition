@@ -3,11 +3,17 @@ import * as React from "react";
 import HeroComponent from "../components/HeroComponent/HeroComponent";
 import Layout from "../components/Layout/Layout";
 import Seo from "../components/Layout/seo";
+import OurServices from "../components/ServicesComponents/OurServices";
 
 const IndexPage = ({ data }) => {
+  console.log(data.allContentfulServices.nodes);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroComponent heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <OurServices
+        title={data.allContentfulPageContent.nodes[0].sectionTitle}
+        services={data.allContentfulServices.nodes}
+      />
     </Layout>
   );
 };
@@ -63,6 +69,7 @@ export const query = graphql`
         }
         heroHeading
         heroHeading2
+        sectionTitle
       }
     }
     allContentfulServices {
@@ -71,6 +78,7 @@ export const query = graphql`
         cardDescription
         cardImage {
           gatsbyImage(width: 1000, formats: WEBP, placeholder: BLURRED)
+          title
         }
       }
     }

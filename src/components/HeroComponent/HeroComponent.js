@@ -57,7 +57,7 @@ const HeroComponent = ({ heroInfo }) => {
           </div>
         </div>
       </div>
-      <div className="h-screen"></div>
+      <div className="h-[90vh]"></div>
     </>
   );
 };
