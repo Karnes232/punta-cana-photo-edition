@@ -1,12 +1,12 @@
 import { graphql } from "gatsby";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
-import HeroComponent from "../../components/HeroComponent/HeroComponent";
+import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 
 const Index = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroComponent heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
     </Layout>
   );
 };
@@ -41,9 +41,11 @@ export const query = graphql`
     allContentfulPageContent(filter: { page: { eq: "Real Estate" } }) {
       nodes {
         page
-        heroImage {
-          gatsbyImage(width: 1280, placeholder: BLURRED, formats: WEBP)
+        heroImageList {
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          title
         }
+        fullSize
         heroHeading
         heroHeading2
         sectionTitle

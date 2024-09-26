@@ -1,6 +1,6 @@
+import { graphql } from "gatsby";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
-import { graphql } from "gatsby";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 
 const Index = ({ data }) => {
@@ -29,7 +29,7 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Proposal" } }) {
+    allContentfulSeo(filter: { page: { eq: "Contact" } }) {
       nodes {
         title
         keywords
@@ -38,7 +38,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPageContent(filter: { page: { eq: "Proposal" } }) {
+    allContentfulPageContent(
+      filter: { page: { eq: "Contact" } }
+    ) {
       nodes {
         page
         heroImageList {

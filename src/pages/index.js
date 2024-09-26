@@ -1,14 +1,14 @@
 import { graphql } from "gatsby";
 import * as React from "react";
-import HeroComponent from "../components/HeroComponent/HeroComponent";
 import Layout from "../components/Layout/Layout";
 import Seo from "../components/Layout/seo";
 import OurServices from "../components/ServicesComponents/OurServices";
+import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
 
 const IndexPage = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroComponent heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <OurServices
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
         services={data.allContentfulServices.nodes}
@@ -63,9 +63,11 @@ export const query = graphql`
     allContentfulPageContent(filter: { page: { eq: "Index" } }) {
       nodes {
         page
-        heroImage {
-          gatsbyImage(width: 1280, placeholder: BLURRED, formats: WEBP)
+        heroImageList {
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          title
         }
+        fullSize
         heroHeading
         heroHeading2
         sectionTitle
