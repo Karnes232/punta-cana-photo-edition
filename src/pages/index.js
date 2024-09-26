@@ -6,7 +6,6 @@ import Seo from "../components/Layout/seo";
 import OurServices from "../components/ServicesComponents/OurServices";
 
 const IndexPage = ({ data }) => {
-  console.log(data.allContentfulServices.nodes);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroComponent heroInfo={data.allContentfulPageContent.nodes[0]} />
@@ -79,6 +78,9 @@ export const query = graphql`
         cardImage {
           gatsbyImage(width: 1000, formats: WEBP, placeholder: BLURRED)
           title
+        }
+        page {
+          url
         }
       }
     }
