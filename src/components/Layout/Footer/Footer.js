@@ -4,6 +4,7 @@ import SocialMedia from "./SocialMedia";
 import { FaInstagram } from "react-icons/fa";
 import SideBarInside from "../Navbar/SideBarInside";
 import Sitemap from "./Sitemap";
+import Signature from "./Signature";
 const Footer = ({ generalInfo }) => {
   const instatag = generalInfo.instagram.split("/")[3];
   return (
@@ -32,6 +33,7 @@ const Footer = ({ generalInfo }) => {
         <SocialMedia generalInfo={generalInfo} />
       </div>
       <Copyright companyName={generalInfo.companyName} />
+      <Signature />
     </div>
   );
 };

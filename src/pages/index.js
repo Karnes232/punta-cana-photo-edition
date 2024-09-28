@@ -20,14 +20,18 @@ const IndexPage = ({ data }) => {
 export default IndexPage;
 
 export const Head = ({ data }) => {
-  const { title, description, keywords } = data.allContentfulSeo.nodes[0];
+  const { title, description, images, keywords } =
+    data.allContentfulSeo.nodes[0];
   const siteUrl = data.site.siteMetadata.siteUrl;
+
   return (
     <>
       <Seo
         title={title}
         description={description.description}
         keywords={keywords.join(", ")}
+        image={`https:${images.file.url}`}
+        url={siteUrl}
         // schemaMarkup={schema}
       />
       <link rel="canonical" href={siteUrl} />
@@ -55,6 +59,11 @@ export const query = graphql`
       nodes {
         title
         keywords
+        images {
+          file {
+            url
+          }
+        }
         description {
           description
         }

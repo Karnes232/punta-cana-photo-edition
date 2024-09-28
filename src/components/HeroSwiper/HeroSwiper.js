@@ -8,7 +8,6 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 const HeroSwiper = ({ heroInfo, className }) => {
   let photoListEdited = [];
-  console.log(heroInfo.fullSize);
   heroInfo?.heroImageList?.forEach((e) => {
     let image = {
       title: e.title,
