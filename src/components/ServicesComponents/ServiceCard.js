@@ -8,10 +8,10 @@ const ServiceCard = ({ service }) => {
   return (
     <Link
       to={service?.page?.url || "/test"}
-      className="no-underline"
+      className="no-underline w-11/12 md:w-[20rem]"
       aria-label="Home"
     >
-      <div className="flex flex-col w-11/12 md:w-[20rem] justify-center items-center overflow-hidden shadow-lg group">
+      <div className="flex flex-col justify-center items-center overflow-hidden shadow-lg group">
         <div className="w-full h-[30rem] md:h-[22rem]">
           <GatsbyImage
             image={image}
