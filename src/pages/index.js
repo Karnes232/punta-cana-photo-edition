@@ -4,6 +4,7 @@ import Layout from "../components/Layout/Layout";
 import Seo from "../components/Layout/seo";
 import OurServices from "../components/ServicesComponents/OurServices";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
+import QuoteComponent from "../components/QuoteComponent/QuoteComponent";
 
 const IndexPage = ({ data }) => {
   return (
@@ -13,6 +14,7 @@ const IndexPage = ({ data }) => {
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
         services={data.allContentfulServices.nodes}
       />
+      <QuoteComponent quote={data.allContentfulQuotes.nodes[0]} />
     </Layout>
   );
 };
@@ -93,6 +95,13 @@ export const query = graphql`
         page {
           url
         }
+      }
+    }
+    allContentfulQuotes(filter: { page: { eq: "Index" } }) {
+      nodes {
+        page
+        author
+        quote
       }
     }
   }

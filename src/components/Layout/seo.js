@@ -28,7 +28,7 @@ function Seo({
     }
   `);
   const defaultTitle = site.siteMetadata?.title;
-  console.log(url);
+
   return (
     <>
       <title>{title}</title>
