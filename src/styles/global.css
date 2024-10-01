@@ -6,6 +6,8 @@
   --primary-color: #ffffff;
   --secondary-color: rgb(237, 236, 233);
   --primary-bg-color: rgba(255, 255, 255, 1);
+  --secondary-bg-color: rgb(237, 236, 233);
+  font-family: "Crimson";
 }
 
 html {

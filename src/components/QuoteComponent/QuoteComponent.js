@@ -1,10 +1,8 @@
 import React from "react";
-import TextComponent from "../TextComponent/TextComponent";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
 import { GoDash } from "react-icons/go";
 import { motion } from "framer-motion";
 const QuoteComponent = ({ quote }) => {
-  console.log(quote.author);
   return (
     <div className="my-10">
       <motion.div

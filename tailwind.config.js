@@ -11,9 +11,10 @@ module.exports = {
         "primary-color": "var(--primary-color)",
         "secondary-color": "var(--secondary-color)",
         "primary-bg-color": "var(--primary-bg-color)",
+        "secondary-bg-color": "var(--secondary-bg-color)",
       },
       fontFamily: {
-        crimson: ["Crimson"],
+        crimson: ["Crimson Pro"],
         montserrat: ["Montserrat"],
         lato: ["Lato"],
         garamond: ["Garamond"],

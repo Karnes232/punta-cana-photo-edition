@@ -23,11 +23,11 @@ const ServiceCard = ({ service }) => {
         </div>
         <TextComponent
           title={service.typeOfService}
-          className="mt-5 2xl:mb-2 2xl:mt-10 text-2xl xl:text-3xl xl:h-8"
+          className="mt-5 2xl:mb-2 2xl:mt-10 text-3xl xl:text-3xl xl:h-8"
         />
         <TextComponent
           title={service.cardDescription}
-          className="my-5 mx-10 h-20 2xl:mb-2 2xl:mt-10 text-lg font-crimson font-extralight xl:text-2xl uppercase"
+          className="mt-5 mb-10 mx-10 text-base tracking-wide font-crimson font-light uppercase"
         />
         <HiOutlineArrowNarrowRight className="mb-10 text-4xl text-gray-400 xl:opacity-0 group-hover:opacity-100 xl:transition-opacity duration-300" />
       </div>

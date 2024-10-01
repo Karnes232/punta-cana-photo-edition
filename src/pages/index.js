@@ -5,6 +5,7 @@ import Seo from "../components/Layout/seo";
 import OurServices from "../components/ServicesComponents/OurServices";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
 import QuoteComponent from "../components/QuoteComponent/QuoteComponent";
+import ContentBlock from "../components/ContentBlockComponent/ContentBlock";
 
 const IndexPage = ({ data }) => {
   return (
@@ -14,6 +15,7 @@ const IndexPage = ({ data }) => {
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
         services={data.allContentfulServices.nodes}
       />
+      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <QuoteComponent quote={data.allContentfulQuotes.nodes[0]} />
     </Layout>
   );
@@ -102,6 +104,19 @@ export const query = graphql`
         page
         author
         quote
+      }
+    }
+    allContentfulCardWithImage(filter: { page: { eq: "Index" } }) {
+      nodes {
+        page
+        title
+        secondaryTitle
+        paragraph
+        buttonText
+        image {
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
       }
     }
   }
