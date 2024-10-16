@@ -113,6 +113,7 @@ export const query = graphql`
         secondaryTitle
         paragraph
         buttonText
+        linkUrl
         image {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           title

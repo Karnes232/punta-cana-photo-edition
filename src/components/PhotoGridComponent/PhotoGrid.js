@@ -10,13 +10,7 @@ function renderGatsbyImage(
 ) {
   const image = getImage(photo.gatsbyImage);
   return (
-    <div
-      style={{
-        width: "100%",
-        position: "relative",
-        aspectRatio: `400 / 400`,
-      }}
-    >
+    <div className="relative w-full h-[20rem]" style={{}}>
       <GatsbyImage
         image={image}
         alt={photo.alt}
@@ -26,7 +20,7 @@ function renderGatsbyImage(
   );
 }
 
-const PhotoGrid = ({ photos }) => {
+const PhotoGrid = ({ photos, page }) => {
   let photoList = [];
   photos.forEach((image, key) => {
     const photoObject = {
@@ -43,12 +37,19 @@ const PhotoGrid = ({ photos }) => {
   const windowWidth = useWindowWidth();
 
   let targetHeight = 500;
-  if (windowWidth > 450) {
-    targetHeight = 150;
+  if (page === "Photo Shoots") {
+    if (windowWidth > 450) {
+      targetHeight = 150;
+    }
+  }
+  if (page === "Proposal") {
+    if (windowWidth > 450) {
+      targetHeight = 400;
+    }
   }
 
   return (
-    <div className="w-full mx-auto px-2 lg:max-w-4xl">
+    <div className="w-full mx-auto px-2 lg:max-w-6xl">
       <RowsPhotoAlbum
         photos={photoList}
         targetRowHeight={targetHeight}

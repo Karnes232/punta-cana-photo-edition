@@ -3,11 +3,18 @@ import Layout from "../../components/Layout/Layout";
 import { graphql } from "gatsby";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
+import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 
 const Index = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <PhotoGrid
+        photos={data.allContentfulPhotoGallery.nodes[0].images}
+        page="Proposal"
+      />
+      <VideoPlayer />
     </Layout>
   );
 };
@@ -73,6 +80,15 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+      }
+    }
+    allContentfulPhotoGallery(filter: { page: { eq: "Proposal" } }) {
+      nodes {
+        title
+        images {
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
       }
     }
   }

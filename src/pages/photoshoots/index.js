@@ -8,6 +8,7 @@ import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import QuoteComponent from "../../components/QuoteComponent/QuoteComponent";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import ContentBlockPhotoShoots from "../../components/ContentBlockComponent/ContentBlockPhotoShoots";
+import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 
 const Index = ({ data }) => {
   // console.log(data.allContentfulCardWithImage.nodes[0])
@@ -18,7 +19,10 @@ const Index = ({ data }) => {
         title={data.allContentfulPhotoGallery.nodes[0].title}
         className="mb-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
-      <PhotoGrid photos={data.allContentfulPhotoGallery.nodes[0].images} />
+      <PhotoGrid
+        photos={data.allContentfulPhotoGallery.nodes[0].images}
+        page="Photo Shoots"
+      />
       <TextComponent
         title={data.allContentfulPageContent.nodes[0].heroHeading2}
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-5xl lg:text-6xl"
@@ -32,9 +36,10 @@ const Index = ({ data }) => {
         title="Classic Packages"
         photoPackages={data.allContentfulPackages.nodes}
       />
-      <ContentBlockPhotoShoots
+      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      {/* <ContentBlockPhotoShoots
         content={data.allContentfulCardWithImage.nodes[0]}
-      />
+      /> */}
     </Layout>
   );
 };
@@ -135,6 +140,8 @@ export const query = graphql`
       nodes {
         title
         secondaryTitle
+        buttonText
+        linkUrl
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
