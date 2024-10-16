@@ -14,3 +14,9 @@ html {
   overflow-y: scroll !important;
   padding-right: 0 !important;
 }
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}

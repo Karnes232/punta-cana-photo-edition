@@ -11,7 +11,7 @@ const TextComponent = ({ title, paragraph, className, pClassName }) => {
           duration: 3,
           delay: 0.3,
         }}
-        className="flex flex-col items-center justify-center text-center max-w-5xl mx-5 lg:p-2 xl:mx-auto"
+        className="flex flex-col items-center justify-center text-center max-w-5xl  lg:p-2 mx-auto"
       >
         {title && <h1 className={`font-crimson ${className}`}>{title}</h1>}
 

@@ -57,7 +57,7 @@ const HeroSwiper = ({ heroInfo, className }) => {
                     {heroInfo.heroHeading && (
                       <h1
                         translate="no"
-                        className="text-white font-crimson tracking-wider text-4xl lg:text-5xl text-center "
+                        className="text-white font-crimson tracking-wider text-4xl lg:text-6xl text-center "
                       >
                         {heroInfo.heroHeading}
                       </h1>

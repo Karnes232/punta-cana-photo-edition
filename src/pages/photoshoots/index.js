@@ -3,11 +3,38 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import TextComponent from "../../components/TextComponent/TextComponent";
+import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
+import QuoteComponent from "../../components/QuoteComponent/QuoteComponent";
+import OurPackages from "../../components/PackageComponents/OurPackages";
+import ContentBlockPhotoShoots from "../../components/ContentBlockComponent/ContentBlockPhotoShoots";
 
 const Index = ({ data }) => {
+  // console.log(data.allContentfulCardWithImage.nodes[0])
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <TextComponent
+        title={data.allContentfulPhotoGallery.nodes[0].title}
+        className="mb-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+      />
+      <PhotoGrid photos={data.allContentfulPhotoGallery.nodes[0].images} />
+      <TextComponent
+        title={data.allContentfulPageContent.nodes[0].heroHeading2}
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-5xl lg:text-6xl"
+      />
+      <QuoteComponent quote={data.allContentfulQuotes.nodes[0]} />
+      <TextComponent
+        title={data.allContentfulPageContent.nodes[0].sectionTitle}
+        className="mb-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+      />
+      <OurPackages
+        title="Classic Packages"
+        photoPackages={data.allContentfulPackages.nodes}
+      />
+      <ContentBlockPhotoShoots
+        content={data.allContentfulCardWithImage.nodes[0]}
+      />
     </Layout>
   );
 };
@@ -74,6 +101,44 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+      }
+    }
+    allContentfulQuotes(filter: { page: { eq: "Photo Shoots" } }) {
+      nodes {
+        page
+        author
+        quote
+      }
+    }
+    allContentfulPhotoGallery(filter: { page: { eq: "Photo Shoots" } }) {
+      nodes {
+        title
+        images {
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+      }
+    }
+    allContentfulPackages(filter: { page: { eq: "Photo Shoots" } }) {
+      nodes {
+        title
+        link
+        included
+        price
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulCardWithImage(filter: { page: { eq: "Photo Shoots" } }) {
+      nodes {
+        title
+        secondaryTitle
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
       }
     }
   }
