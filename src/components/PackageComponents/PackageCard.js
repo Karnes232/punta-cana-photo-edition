@@ -13,6 +13,9 @@ const PackageCard = ({ photoPackage }) => {
   if (photoPackage.page === "Photo Shoots") {
     cardHeight = "h-[23rem]";
   }
+  if (photoPackage.page === "Gender Reveal") {
+    cardHeight = "h-[29rem]";
+  }
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -42,13 +45,13 @@ const PackageCard = ({ photoPackage }) => {
         >
           <TextComponent
             title={photoPackage.title}
-            className="my-5 2xl:mb-2 2xl:mt-10 text-2xl xl:text-3xl xl:h-8"
+            className="my-5 2xl:mb-2 2xl:mt-10 text-2xl xl:text-3xl xl:h-8 capitalize"
           />
           <div className="my-5">
             <ul className="flex flex-col justify-center items-center gap-2">
               {photoPackage.included.map((item, index) => {
                 return (
-                  <li key={index} className="list-disc text-sm">
+                  <li key={index} className="list-disc text-sm capitalize">
                     {item}
                   </li>
                 );
