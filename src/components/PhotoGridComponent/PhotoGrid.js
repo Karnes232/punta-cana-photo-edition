@@ -48,6 +48,18 @@ const PhotoGrid = ({ photos, page }) => {
     }
   }
 
+  if (page === "Elopement") {
+    if (windowWidth > 450) {
+      targetHeight = 400;
+    }
+  }
+
+  if (page === "Birthday Celebrations") {
+    if (windowWidth > 450) {
+      targetHeight = 350;
+    }
+  }
+
   return (
     <div className="w-full mx-auto px-2 lg:max-w-6xl">
       <RowsPhotoAlbum

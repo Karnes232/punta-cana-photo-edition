@@ -21,7 +21,7 @@ const Index = ({ data }) => {
       />
       <PhotoGrid
         photos={data.allContentfulPhotoGallery.nodes[0].images}
-        page="Photo Shoots"
+        page={data.allContentfulPhotoGallery.nodes[0].page}
       />
       <TextComponent
         title={data.allContentfulPageContent.nodes[0].heroHeading2}
@@ -117,6 +117,7 @@ export const query = graphql`
     }
     allContentfulPhotoGallery(filter: { page: { eq: "Photo Shoots" } }) {
       nodes {
+        page
         title
         images {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)

@@ -3,12 +3,22 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
+import TextComponent from "../../components/TextComponent/TextComponent";
 
 const Index = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {" "}
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <PhotoGrid
+        photos={data.allContentfulPhotoGallery.nodes[0].images}
+        page={data.allContentfulPhotoGallery.nodes[0].page}
+      />
+      <TextComponent
+        title={data.allContentfulPhotoGallery.nodes[0].title}
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-4xl lg:text-5xl"
+      />
     </Layout>
   );
 };
@@ -75,6 +85,16 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+      }
+    }
+    allContentfulPhotoGallery(filter: { page: { eq: "Elopement" } }) {
+      nodes {
+        page
+        title
+        images {
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
       }
     }
   }

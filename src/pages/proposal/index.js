@@ -12,9 +12,9 @@ const Index = ({ data }) => {
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <PhotoGrid
         photos={data.allContentfulPhotoGallery.nodes[0].images}
-        page="Proposal"
+        page={data.allContentfulPhotoGallery.nodes[0].page}
       />
-      <VideoPlayer />
+      <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
     </Layout>
   );
 };
@@ -72,6 +72,7 @@ export const query = graphql`
     allContentfulPageContent(filter: { page: { eq: "Proposal" } }) {
       nodes {
         page
+        videoUrl
         heroImageList {
           gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
           title
@@ -84,6 +85,7 @@ export const query = graphql`
     }
     allContentfulPhotoGallery(filter: { page: { eq: "Proposal" } }) {
       nodes {
+        page
         title
         images {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)

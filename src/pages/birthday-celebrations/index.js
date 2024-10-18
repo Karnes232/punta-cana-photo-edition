@@ -3,12 +3,44 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
+import RichText from "../../components/RichTextComponents/RichText";
+import TextComponent from "../../components/TextComponent/TextComponent";
 
 const Index = ({ data }) => {
+  let section1 = {};
+  let section2 = {};
+  let section3 = {};
+  data.allContentfulPhotoGallery.nodes.map((photoList) => {
+    console.log(photoList);
+    if (photoList.section === "1") {
+      section1 = photoList;
+    }
+    if (photoList.section === "2") {
+      section2 = photoList;
+    }
+    if (photoList.section === "3") {
+      section3 = photoList;
+    }
+  });
+  console.log(section1);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {" "}
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <PhotoGrid photos={section1.images} page={section1.page} />
+      <TextComponent
+        title={data.allContentfulPageContent.nodes[0].heroHeading2}
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+      />
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <PhotoGrid photos={section2.images} page={section2.page} />
+      <TextComponent
+        title={data.allContentfulPageContent.nodes[0].sectionTitle}
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+      />
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
+      <PhotoGrid photos={section3.images} page={section3.page} />
     </Layout>
   );
 };
@@ -77,6 +109,25 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        paragraph1 {
+          raw
+        }
+        paragraph2 {
+          raw
+        }
+      }
+    }
+    allContentfulPhotoGallery(
+      filter: { page: { eq: "Birthday Celebrations" } }
+    ) {
+      nodes {
+        page
+        title
+        section
+        images {
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
       }
     }
   }
