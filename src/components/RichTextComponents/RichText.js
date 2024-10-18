@@ -91,7 +91,7 @@ const RichText = ({ context }) => {
       ),
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         let image = null;
-        context.references.map((imageData) => {
+        context.references.forEach((imageData) => {
           if (imageData.contentful_id === node.data.target.sys.id) {
             image = imageData;
           }

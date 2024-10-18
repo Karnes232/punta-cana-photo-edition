@@ -5,6 +5,22 @@ import TextComponent from "../TextComponent/TextComponent";
 
 const PackageCard = ({ photoPackage }) => {
   const image = getImage(photoPackage.image.gatsbyImage);
+
+  let cardHeight = "";
+  if (photoPackage.page === "Birthday Celebrations") {
+    cardHeight = "h-[27rem]";
+  }
+  if (photoPackage.page === "Photo Shoots") {
+    cardHeight = "h-[23rem]";
+  }
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+
   return (
     <Link
       to={photoPackage.link || "/test"}
@@ -21,7 +37,9 @@ const PackageCard = ({ photoPackage }) => {
             objectPosition=""
           />
         </div>
-        <div className="flex flex-col justify-center items-center h-[23rem]">
+        <div
+          className={`flex flex-col justify-between items-center ${cardHeight}`}
+        >
           <TextComponent
             title={photoPackage.title}
             className="my-5 2xl:mb-2 2xl:mt-10 text-2xl xl:text-3xl xl:h-8"
@@ -37,7 +55,9 @@ const PackageCard = ({ photoPackage }) => {
               })}
             </ul>
           </div>
-          <div className="my-5">$ {photoPackage.price}</div>
+          <div className="my-5 uppercase font-thin tracking-widest">
+            Starting at {formatter.format(photoPackage.price)}
+          </div>
         </div>
       </div>
     </Link>

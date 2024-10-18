@@ -6,13 +6,14 @@ import Seo from "../../components/Layout/seo";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import RichText from "../../components/RichTextComponents/RichText";
 import TextComponent from "../../components/TextComponent/TextComponent";
+import OurPackages from "../../components/PackageComponents/OurPackages";
+import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 
 const Index = ({ data }) => {
   let section1 = {};
   let section2 = {};
   let section3 = {};
-  data.allContentfulPhotoGallery.nodes.map((photoList) => {
-    console.log(photoList);
+  data.allContentfulPhotoGallery.nodes.forEach((photoList) => {
     if (photoList.section === "1") {
       section1 = photoList;
     }
@@ -23,7 +24,6 @@ const Index = ({ data }) => {
       section3 = photoList;
     }
   });
-  console.log(section1);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {" "}
@@ -34,12 +34,17 @@ const Index = ({ data }) => {
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <OurPackages
+        title="Pricing & Packages"
+        photoPackages={data.allContentfulPackages.nodes}
+      />
       <PhotoGrid photos={section2.images} page={section2.page} />
       <TextComponent
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
+      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <PhotoGrid photos={section3.images} page={section3.page} />
     </Layout>
   );
@@ -127,6 +132,33 @@ export const query = graphql`
         images {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           title
+        }
+      }
+    }
+    allContentfulPackages(filter: { page: { eq: "Birthday Celebrations" } }) {
+      nodes {
+        page
+        title
+        link
+        included
+        price
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulCardWithImage(
+      filter: { page: { eq: "Birthday Celebrations" } }
+    ) {
+      nodes {
+        title
+        paragraph
+        buttonText
+        linkUrl
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
         }
       }
     }

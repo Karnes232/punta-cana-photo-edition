@@ -127,6 +127,7 @@ export const query = graphql`
     }
     allContentfulPackages(filter: { page: { eq: "Photo Shoots" } }) {
       nodes {
+        page
         title
         link
         included
