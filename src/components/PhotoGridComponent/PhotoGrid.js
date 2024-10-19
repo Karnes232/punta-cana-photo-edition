@@ -65,6 +65,12 @@ const PhotoGrid = ({ photos, page }) => {
     }
   }
 
+  if (page === "Bachelor Party") {
+    if (windowWidth > 450) {
+      targetHeight = 200;
+    }
+  }
+
   return (
     <div className="w-full mx-auto px-2 lg:max-w-6xl">
       <RowsPhotoAlbum
