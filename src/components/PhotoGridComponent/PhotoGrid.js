@@ -70,6 +70,11 @@ const PhotoGrid = ({ photos, page }) => {
       targetHeight = 200;
     }
   }
+  if (page === "Wedding-Planner") {
+    if (windowWidth > 450) {
+      targetHeight = 300;
+    }
+  }
 
   return (
     <div className="w-full mx-auto px-2 lg:max-w-6xl">

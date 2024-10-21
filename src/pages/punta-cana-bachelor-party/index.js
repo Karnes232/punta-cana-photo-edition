@@ -6,6 +6,7 @@ import Seo from "../../components/Layout/seo";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import TextComponent from "../../components/TextComponent/TextComponent";
+import RichText from "../../components/RichTextComponents/RichText";
 
 const Index = ({ data }) => {
   return (
@@ -24,6 +25,11 @@ const Index = ({ data }) => {
         title="Pricing & Packages"
         photoPackages={data.allContentfulPackages.nodes}
       />
+      <TextComponent
+        title={data.allContentfulPageContent.nodes[0].heroHeading2}
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+      />
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
     </Layout>
   );
 };
@@ -90,6 +96,9 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        paragraph1 {
+          raw
+        }
       }
     }
     allContentfulPhotoGallery(filter: { page: { eq: "Bachelor Party" } }) {
