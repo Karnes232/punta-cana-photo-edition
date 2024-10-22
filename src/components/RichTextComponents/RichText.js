@@ -74,7 +74,10 @@ const RichText = ({ context }) => {
       [BLOCKS.OL_LIST]: (node, children) => (
         <ol className="list-decimal ml-5">{children}</ol>
       ),
-      [BLOCKS.LIST_ITEM]: (node, children) => <li>{children}</li>,
+      [BLOCKS.LIST_ITEM]: (node, children) => {
+        console.log(children);
+        return <li className="text-sm ">{children}</li>;
+      },
       [BLOCKS.QUOTE]: (node, children) => (
         <div className="my-4 border-l-4 border-gray-300 bg-gray-50 p-4 dark:border-gray-500 dark:bg-gray-800">
           <svg

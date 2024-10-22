@@ -108,7 +108,10 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPackages(filter: { page: { eq: "Gender Reveal" } }) {
+    allContentfulPackages(
+      filter: { page: { eq: "Gender Reveal" } }
+      sort: { price: ASC }
+    ) {
       nodes {
         page
         title

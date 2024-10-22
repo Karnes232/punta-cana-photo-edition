@@ -112,7 +112,10 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPackages(filter: { page: { eq: "Bachelor Party" } }) {
+    allContentfulPackages(
+      filter: { page: { eq: "Bachelor Party" } }
+      sort: { price: ASC }
+    ) {
       nodes {
         page
         title

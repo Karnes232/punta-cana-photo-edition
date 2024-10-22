@@ -5,6 +5,7 @@ import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
+import OurPackages from "../../components/PackageComponents/OurPackages";
 
 const Index = ({ data }) => {
   return (
@@ -15,6 +16,11 @@ const Index = ({ data }) => {
         page={data.allContentfulPhotoGallery.nodes[0].page}
       />
       <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
+
+      <OurPackages
+        title="Essential Packages"
+        photoPackages={data.allContentfulPackages.nodes}
+      />
     </Layout>
   );
 };
@@ -90,6 +96,22 @@ export const query = graphql`
         images {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           title
+        }
+      }
+    }
+    allContentfulPackages(
+      filter: { page: { eq: "Proposal" } }
+      sort: { price: ASC }
+    ) {
+      nodes {
+        page
+        title
+        link
+        included
+        price
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
         }
       }
     }

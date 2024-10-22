@@ -19,6 +19,9 @@ const PackageCard = ({ photoPackage }) => {
   if (photoPackage.page === "Bachelor Party") {
     cardHeight = "h-[20rem]";
   }
+  if (photoPackage.page === "Proposal") {
+    cardHeight = "h-[28rem]";
+  }
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",

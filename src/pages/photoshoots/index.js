@@ -125,7 +125,10 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPackages(filter: { page: { eq: "Photo Shoots" } }) {
+    allContentfulPackages(
+      filter: { page: { eq: "Photo Shoots" } }
+      sort: { price: ASC }
+    ) {
       nodes {
         page
         title

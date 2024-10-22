@@ -135,7 +135,10 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPackages(filter: { page: { eq: "Birthday Celebrations" } }) {
+    allContentfulPackages(
+      filter: { page: { eq: "Birthday Celebrations" } }
+      sort: { price: ASC }
+    ) {
       nodes {
         page
         title
