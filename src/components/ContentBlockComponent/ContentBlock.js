@@ -24,7 +24,7 @@ const ContentBlock = ({ content }) => {
                 {content.secondaryTitle}
               </h3>
               <p className="mt-7 md:mt-10 text-base text-gray-800 leading-loose">
-                {content.paragraph}
+                {content.paragraph} {content.paragraph2}
               </p>
               <div className="mt-10">
                 {content.buttonText === "&#8594;" ? (

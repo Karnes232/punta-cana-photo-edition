@@ -34,35 +34,35 @@ const RichText = ({ context }) => {
         <TextComponent
           title={children}
           heading="h2"
-          className="my-5 2xl:mb-2 2xl:mt-10 text-2xl md:text-3xl"
+          className="my-5 2xl:mb-2 2xl:mt-10 text-2xl md:text-3xl text-center"
         />
       ),
       [BLOCKS.HEADING_3]: (node, children) => (
         <TextComponent
           title={children}
           heading="h3"
-          className="my-5 2xl:mb-2 2xl:mt-10 text-2xl md:text-3xl"
+          className="my-5 2xl:mb-2 2xl:mt-10 text-2xl md:text-3xl text-center"
         />
       ),
       [BLOCKS.HEADING_4]: (node, children) => (
         <TextComponent
           title={children}
           heading="h4"
-          className="my-5 2xl:mb-2 2xl:mt-10 text-xl md:text-2xl"
+          className="my-5 2xl:mb-2 2xl:mt-10 text-xl md:text-2xl text-center"
         />
       ),
       [BLOCKS.HEADING_5]: (node, children) => (
         <TextComponent
           title={children}
           heading="h5"
-          className="my-5 2xl:mb-2 2xl:mt-10 text-xl md:text-2xl"
+          className="my-5 2xl:mb-2 2xl:mt-10 text-xl md:text-2xl text-center"
         />
       ),
       [BLOCKS.HEADING_6]: (node, children) => (
         <TextComponent
           title={children}
           heading="h6"
-          className="my-5 2xl:mb-2 2xl:mt-10 text-lg md:text-xl"
+          className="my-5 2xl:mb-2 2xl:mt-10 text-lg md:text-xl text-center"
         />
       ),
       [BLOCKS.PARAGRAPH]: (node, children) => (

@@ -7,6 +7,8 @@ import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import TextComponent from "../../components/TextComponent/TextComponent";
 import RichText from "../../components/RichTextComponents/RichText";
 import OurPackages from "../../components/PackageComponents/OurPackages";
+import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
+import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 
 const Index = ({ data }) => {
   return (
@@ -25,6 +27,20 @@ const Index = ({ data }) => {
         title="Pricing & Packages"
         photoPackages={data.allContentfulPackages.nodes}
       />
+      <div className="flex flex-col md:flex-row max-w-5xl mx-auto">
+        <div className="lg:flex lg:justify-center lg:items-center">
+          <RichText
+            context={data?.allContentfulPageContent?.nodes[0].paragraph2}
+          />
+        </div>
+        <VideoPlayer
+          url={data.allContentfulPageContent.nodes[0].videoUrl}
+          vertical
+        />{" "}
+      </div>
+
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph3} />
+      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
     </Layout>
   );
 };
@@ -92,7 +108,14 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        videoUrl
         paragraph1 {
+          raw
+        }
+        paragraph2 {
+          raw
+        }
+        paragraph3 {
           raw
         }
       }
@@ -118,6 +141,20 @@ export const query = graphql`
         link
         included
         price
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulCardWithImage(filter: { page: { eq: "Gender Reveal" } }) {
+      nodes {
+        title
+        secondaryTitle
+        buttonText
+        paragraph
+        paragraph2
+        linkUrl
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)

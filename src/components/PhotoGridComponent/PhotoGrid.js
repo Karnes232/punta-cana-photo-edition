@@ -44,7 +44,7 @@ const PhotoGrid = ({ photos, page }) => {
   }
   if (page === "Gender Reveal") {
     if (windowWidth > 450) {
-      targetHeight = 150;
+      targetHeight = 350;
     }
   }
   if (page === "Proposal") {

@@ -7,8 +7,8 @@ import TextComponent from "../../components/TextComponent/TextComponent";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import QuoteComponent from "../../components/QuoteComponent/QuoteComponent";
 import OurPackages from "../../components/PackageComponents/OurPackages";
-import ContentBlockPhotoShoots from "../../components/ContentBlockComponent/ContentBlockPhotoShoots";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
+import RichText from "../../components/RichTextComponents/RichText";
 
 const Index = ({ data }) => {
   return (
@@ -36,9 +36,7 @@ const Index = ({ data }) => {
         photoPackages={data.allContentfulPackages.nodes}
       />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
-      {/* <ContentBlockPhotoShoots
-        content={data.allContentfulCardWithImage.nodes[0]}
-      /> */}
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
     </Layout>
   );
 };
@@ -105,6 +103,9 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        paragraph1 {
+          raw
+        }
       }
     }
     allContentfulQuotes(filter: { page: { eq: "Photo Shoots" } }) {

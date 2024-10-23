@@ -6,6 +6,9 @@ import Seo from "../../components/Layout/seo";
 import RichText from "../../components/RichTextComponents/RichText";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import TextComponent from "../../components/TextComponent/TextComponent";
+import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
+import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
+import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 
 const Index = ({ data }) => {
   return (
@@ -20,6 +23,16 @@ const Index = ({ data }) => {
         photos={data.allContentfulPhotoGallery.nodes[0].images}
         page={data.allContentfulPhotoGallery.nodes[0].page}
       />
+
+      <SwiperCarousel
+        images={data.allContentfulSwiperCarousel.nodes[0].images}
+      />
+      <TextComponent
+        title={data.allContentfulPageContent.nodes[0].sectionTitle}
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+      />
+      <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
+      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
     </Layout>
   );
 };
@@ -86,6 +99,7 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        videoUrl
         paragraph1 {
           raw
         }
@@ -98,6 +112,29 @@ export const query = graphql`
         images {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           title
+        }
+      }
+    }
+    allContentfulSwiperCarousel(filter: { page: { eq: "Event-Planner" } }) {
+      nodes {
+        page
+        images {
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+      }
+    }
+    allContentfulCardWithImage(filter: { page: { eq: "Event-Planner" } }) {
+      nodes {
+        title
+        secondaryTitle
+        buttonText
+        paragraph
+        paragraph2
+        linkUrl
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
         }
       }
     }
