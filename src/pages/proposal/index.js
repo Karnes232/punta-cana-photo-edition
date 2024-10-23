@@ -6,6 +6,8 @@ import Seo from "../../components/Layout/seo";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import OurPackages from "../../components/PackageComponents/OurPackages";
+import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
+import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 
 const Index = ({ data }) => {
   return (
@@ -21,6 +23,10 @@ const Index = ({ data }) => {
         title="Essential Packages"
         photoPackages={data.allContentfulPackages.nodes}
       />
+      <SwiperCarousel
+        images={data.allContentfulSwiperCarousel.nodes[0].images}
+      />
+      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
     </Layout>
   );
 };
@@ -109,6 +115,27 @@ export const query = graphql`
         link
         included
         price
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulSwiperCarousel(filter: { page: { eq: "Proposal" } }) {
+      nodes {
+        page
+        images {
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+      }
+    }
+    allContentfulCardWithImage(filter: { page: { eq: "Proposal" } }) {
+      nodes {
+        title
+        secondaryTitle
+        buttonText
+        linkUrl
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)

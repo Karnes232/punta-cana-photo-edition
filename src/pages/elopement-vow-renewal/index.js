@@ -5,6 +5,8 @@ import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import TextComponent from "../../components/TextComponent/TextComponent";
+import OurPackages from "../../components/PackageComponents/OurPackages";
+import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 
 const Index = ({ data }) => {
   return (
@@ -19,6 +21,11 @@ const Index = ({ data }) => {
         title={data.allContentfulPhotoGallery.nodes[0].title}
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-4xl lg:text-5xl"
       />
+      <OurPackages
+        title="Pricing & Packages"
+        photoPackages={data.allContentfulPackages.nodes}
+      />
+      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
     </Layout>
   );
 };
@@ -92,6 +99,36 @@ export const query = graphql`
         page
         title
         images {
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+      }
+    }
+    allContentfulPackages(
+      filter: { page: { eq: "Elopement" } }
+      sort: { price: ASC }
+    ) {
+      nodes {
+        page
+        title
+        link
+        included
+        price
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulCardWithImage(filter: { page: { eq: "Elopement" } }) {
+      nodes {
+        page
+        title
+        secondaryTitle
+        paragraph
+        buttonText
+        linkUrl
+        image {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           title
         }

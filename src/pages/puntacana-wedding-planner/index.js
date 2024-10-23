@@ -19,7 +19,6 @@ const Index = ({ data }) => {
       section2 = photoList;
     }
   });
-  console.log(section1);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />

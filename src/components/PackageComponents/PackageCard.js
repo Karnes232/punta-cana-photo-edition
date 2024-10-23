@@ -25,6 +25,9 @@ const PackageCard = ({ photoPackage }) => {
   if (photoPackage.page === "Real Estate") {
     cardHeight = "h-[24rem]";
   }
+  if (photoPackage.page === "Elopement") {
+    cardHeight = "h-[24rem]";
+  }
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -32,7 +35,7 @@ const PackageCard = ({ photoPackage }) => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-  console.log(photoPackage);
+
   return (
     <Link
       to={photoPackage.link || "/test"}

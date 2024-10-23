@@ -75,7 +75,6 @@ const RichText = ({ context }) => {
         <ol className="list-decimal ml-5">{children}</ol>
       ),
       [BLOCKS.LIST_ITEM]: (node, children) => {
-        console.log(children);
         return <li className="text-sm ">{children}</li>;
       },
       [BLOCKS.QUOTE]: (node, children) => (
