@@ -3,12 +3,23 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import RichText from "../../components/RichTextComponents/RichText";
+import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
+import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 
 const Index = ({ data }) => {
   console.log(data.allContentfulPageContent.nodes);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
+
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
+      <PhotoGrid
+        photos={data.allContentfulPhotoGallery.nodes[0].images}
+        page={data.allContentfulPhotoGallery.nodes[0].page}
+      />
     </Layout>
   );
 };
@@ -77,6 +88,26 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        videoUrl
+        paragraph1 {
+          raw
+        }
+        paragraph2 {
+          raw
+        }
+      }
+    }
+    allContentfulPhotoGallery(
+      filter: { page: { eq: "Videos and Comercial Photos" } }
+    ) {
+      nodes {
+        page
+        title
+        section
+        images {
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
       }
     }
   }

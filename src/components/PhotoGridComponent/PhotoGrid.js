@@ -58,6 +58,11 @@ const PhotoGrid = ({ photos, page }) => {
       targetHeight = 400;
     }
   }
+  if (page === "Videos and Comercial Photos") {
+    if (windowWidth > 450) {
+      targetHeight = 250;
+    }
+  }
 
   if (page === "Birthday Celebrations") {
     if (windowWidth > 450) {
@@ -73,6 +78,11 @@ const PhotoGrid = ({ photos, page }) => {
   if (page === "Wedding-Planner") {
     if (windowWidth > 450) {
       targetHeight = 300;
+    }
+  }
+  if (page === "Real Estate") {
+    if (windowWidth > 450) {
+      targetHeight = 200;
     }
   }
 

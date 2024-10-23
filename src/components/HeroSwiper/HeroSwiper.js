@@ -21,12 +21,15 @@ const HeroSwiper = ({ heroInfo, className }) => {
   };
   let height = "";
   let blankDivHeight = "";
+  let translatePosition = "";
   if (heroInfo.fullSize) {
     height = "h-screen";
     blankDivHeight = "h-[90vh]";
+    translatePosition = "-translate-y-1/2";
   } else {
     height = "h-[65vh]";
     blankDivHeight = "h-[60vh]";
+    translatePosition = "-translate-y-2/3";
   }
   return (
     <>
@@ -53,7 +56,9 @@ const HeroSwiper = ({ heroInfo, className }) => {
                   className={`w-full object-cover object-center ${height}`}
                 />
                 <div className="absolute inset-0" style={HeroStyles}>
-                  <div className="relative max-w-xs lg:max-w-4xl inline-block z-10 top-[85%] md:top-[87%] lg:top-[82%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                  <div
+                    className={`relative max-w-xs lg:max-w-4xl inline-block z-10 top-[85%] md:top-[87%] lg:top-[82%] left-1/2 transform -translate-x-1/2  text-center ${translatePosition}`}
+                  >
                     {heroInfo.heroHeading && (
                       <h1
                         translate="no"

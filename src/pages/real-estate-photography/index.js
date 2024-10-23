@@ -3,11 +3,24 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import RichText from "../../components/RichTextComponents/RichText";
+import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
+import OurPackages from "../../components/PackageComponents/OurPackages";
 
 const Index = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <PhotoGrid
+        photos={data.allContentfulPhotoGallery.nodes[0].images}
+        page={data.allContentfulPhotoGallery.nodes[0].page}
+      />
+      <OurPackages
+        title="Pricing & Packages"
+        photoPackages={data.allContentfulPackages.nodes}
+      />
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
     </Layout>
   );
 };
@@ -74,6 +87,40 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        paragraph1 {
+          raw
+        }
+        paragraph2 {
+          raw
+        }
+      }
+    }
+    allContentfulPhotoGallery(filter: { page: { eq: "Real Estate" } }) {
+      nodes {
+        page
+        title
+        section
+        images {
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+      }
+    }
+    allContentfulPackages(
+      filter: { page: { eq: "Real Estate" } }
+      sort: { price: ASC }
+    ) {
+      nodes {
+        page
+        title
+        link
+        included
+        price
+        paragraph
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
       }
     }
   }
