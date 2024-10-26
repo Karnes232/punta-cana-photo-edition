@@ -10,6 +10,7 @@ const GoogleMap = () => {
         scrolling="no"
         marginheight="0"
         marginwidth="0"
+        title="google-map"
         src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Punta%20Cana+()&amp;t=h&amp;z=11&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
       ></iframe>
     </div>

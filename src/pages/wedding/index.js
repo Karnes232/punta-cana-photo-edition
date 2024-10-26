@@ -3,11 +3,57 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import TextComponent from "../../components/TextComponent/TextComponent";
+import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
+import RichText from "../../components/RichTextComponents/RichText";
+import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
+import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
+import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
+import Faqs from "../../components/FaqsComponent/Faqs";
+import QuoteComponent from "../../components/QuoteComponent/QuoteComponent";
 
 const Index = ({ data }) => {
+  let section1 = {};
+  let section1Title = "";
+  let section2 = {};
+  let section2Title = "";
+  data.allContentfulPhotoGallery.nodes.forEach((photoList) => {
+    if (photoList.section === "1") {
+      section1 = photoList;
+      section1Title = photoList.title;
+    }
+    if (photoList.section === "2") {
+      section2 = photoList;
+      section2Title = photoList.title;
+    }
+  });
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <TextComponent
+        title={section1Title}
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+      />
+      <PhotoGrid photos={section1.images} page={section1.page} />
+      <TextComponent
+        title={data.allContentfulPageContent.nodes[0].sectionTitle}
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl italic"
+      />
+
+      <SwiperCarousel
+        images={data.allContentfulSwiperCarousel.nodes[0].images}
+      />
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <PhotoGrid photos={section2.images} page={section2.page} />
+      <TextComponent
+        title={section2Title}
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl italic"
+      />
+      <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
+
+      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
+      <QuoteComponent quote={data.allContentfulQuotes.nodes[0]} />
     </Layout>
   );
 };
@@ -74,6 +120,57 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        videoUrl
+        paragraph1 {
+          raw
+        }
+      }
+    }
+    allContentfulPhotoGallery(filter: { page: { eq: "Wedding" } }) {
+      nodes {
+        page
+        title
+        section
+        images {
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+      }
+    }
+    allContentfulSwiperCarousel(filter: { page: { eq: "Wedding" } }) {
+      nodes {
+        page
+        images {
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+      }
+    }
+    allContentfulCardWithImage(filter: { page: { eq: "Wedding" } }) {
+      nodes {
+        title
+        secondaryTitle
+        buttonText
+        linkUrl
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulFaqsComponent(filter: { page: { eq: "Wedding" } }) {
+      nodes {
+        title
+        content {
+          content
+        }
+      }
+    }
+    allContentfulQuotes(filter: { page: { eq: "Wedding" } }) {
+      nodes {
+        page
+        author
+        quote
       }
     }
   }
