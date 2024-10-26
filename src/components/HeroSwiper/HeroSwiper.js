@@ -28,7 +28,7 @@ const HeroSwiper = ({ heroInfo, className }) => {
     translatePosition = "-translate-y-1/2";
   } else {
     height = "h-[65vh]";
-    blankDivHeight = "h-[60vh]";
+    blankDivHeight = "h-[55vh]";
     translatePosition = "-translate-y-2/3";
   }
   return (

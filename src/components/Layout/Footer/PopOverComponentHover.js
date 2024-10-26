@@ -52,7 +52,7 @@ const PopOverComponentHover = ({ title, links }) => {
             ref={dropdownRef}
             anchor={{ to: "top start", gap: "10px" }}
             transition
-            className="flex flex-col bg-secondary-color justify-evenly items-center rounded-xl shadow-2xl px-10 origin-bottom transition duration-500 ease-out data-[closed]:scale-50 data-[closed]:opacity-0"
+            className="flex flex-col bg-secondary-color justify-evenly items-center rounded-xl shadow-2xl px-10 origin-bottom transition duration-500 ease-out data-[closed]:scale-50 data-[closed]:opacity-0 z-50"
           >
             {links.map((link, index) => {
               return (

@@ -9,6 +9,7 @@ import RichText from "../../components/RichTextComponents/RichText";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
+import Faqs from "../../components/FaqsComponent/Faqs";
 
 const Index = ({ data }) => {
   return (
@@ -41,6 +42,7 @@ const Index = ({ data }) => {
 
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph3} />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
     </Layout>
   );
 };
@@ -158,6 +160,14 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulFaqsComponent(filter: { page: { eq: "Gender Reveal" } }) {
+      nodes {
+        title
+        content {
+          content
         }
       }
     }

@@ -30,7 +30,7 @@ const SwiperCarousel = ({ images, className }) => {
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
-          lazy={true}
+          lazy={"true"}
           centeredSlides={true}
           breakpoints={{
             768: {

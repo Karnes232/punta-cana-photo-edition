@@ -9,6 +9,7 @@ import QuoteComponent from "../../components/QuoteComponent/QuoteComponent";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import RichText from "../../components/RichTextComponents/RichText";
+import Faqs from "../../components/FaqsComponent/Faqs";
 
 const Index = ({ data }) => {
   return (
@@ -37,6 +38,7 @@ const Index = ({ data }) => {
       />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
     </Layout>
   );
 };
@@ -150,6 +152,14 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulFaqsComponent(filter: { page: { eq: "Photo Shoots" } }) {
+      nodes {
+        title
+        content {
+          content
         }
       }
     }

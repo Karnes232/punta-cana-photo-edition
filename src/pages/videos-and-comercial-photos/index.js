@@ -6,6 +6,7 @@ import Seo from "../../components/Layout/seo";
 import RichText from "../../components/RichTextComponents/RichText";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
+import Faqs from "../../components/FaqsComponent/Faqs";
 
 const Index = ({ data }) => {
   return (
@@ -19,6 +20,7 @@ const Index = ({ data }) => {
         photos={data.allContentfulPhotoGallery.nodes[0].images}
         page={data.allContentfulPhotoGallery.nodes[0].page}
       />
+      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
     </Layout>
   );
 };
@@ -106,6 +108,16 @@ export const query = graphql`
         images {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           title
+        }
+      }
+    }
+    allContentfulFaqsComponent(
+      filter: { page: { eq: "Videos and Comercial Photos" } }
+    ) {
+      nodes {
+        title
+        content {
+          content
         }
       }
     }

@@ -5,7 +5,6 @@ import TextComponent from "../TextComponent/TextComponent";
 
 const PackageCard = ({ photoPackage }) => {
   const image = getImage(photoPackage.image.gatsbyImage);
-
   let cardHeight = "";
   if (photoPackage.page === "Birthday Celebrations") {
     cardHeight = "h-[27rem]";
@@ -26,7 +25,10 @@ const PackageCard = ({ photoPackage }) => {
     cardHeight = "h-[24rem]";
   }
   if (photoPackage.page === "Elopement") {
-    cardHeight = "h-[24rem]";
+    cardHeight = "h-[26rem]";
+  }
+  if (photoPackage.page === "Event-Planner") {
+    cardHeight = "h-[22rem]";
   }
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -57,7 +59,7 @@ const PackageCard = ({ photoPackage }) => {
         >
           <TextComponent
             title={photoPackage.title}
-            className="my-5 2xl:mb-2 2xl:mt-10 text-2xl xl:text-3xl xl:h-8 capitalize"
+            className="my-5 2xl:mb-2 text-2xl xl:text-3xl xl:h-8 capitalize"
           />
 
           {photoPackage.included !== null ? (
@@ -82,14 +84,19 @@ const PackageCard = ({ photoPackage }) => {
             <>
               <TextComponent
                 paragraph={photoPackage.paragraph}
-                pClassName="text-base lg:text-base capitalize lg:mt-0"
+                pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5"
               />
             </>
           )}
-
-          <div className="my-5 uppercase font-thin tracking-widest">
-            Starting at {formatter.format(photoPackage.price)}
-          </div>
+          {photoPackage.price ? (
+            <div className="my-5 uppercase font-thin tracking-widest">
+              Starting at {formatter.format(photoPackage.price)}
+            </div>
+          ) : (
+            <div className="my-5 uppercase font-thin tracking-widest">
+              Contact us
+            </div>
+          )}
         </div>
       </div>
     </Link>

@@ -9,6 +9,8 @@ import TextComponent from "../../components/TextComponent/TextComponent";
 import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
+import OurPackages from "../../components/PackageComponents/OurPackages";
+import WorkedWith from "../../components/WorkedWithComponent/WorkedWith";
 
 const Index = ({ data }) => {
   return (
@@ -23,7 +25,15 @@ const Index = ({ data }) => {
         photos={data.allContentfulPhotoGallery.nodes[0].images}
         page={data.allContentfulPhotoGallery.nodes[0].page}
       />
-
+      <WorkedWith
+        title1={data.allContentfulWorkedWithUs.nodes[0].title1}
+        title2={data.allContentfulWorkedWithUs.nodes[0].title2}
+        image={data.allContentfulWorkedWithUs.nodes[0].image}
+      />
+      <OurPackages
+        title="Our Services"
+        photoPackages={data.allContentfulPackages.nodes}
+      />
       <SwiperCarousel
         images={data.allContentfulSwiperCarousel.nodes[0].images}
       />
@@ -135,6 +145,30 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulPackages(filter: { page: { eq: "Event-Planner" } }) {
+      nodes {
+        page
+        title
+        link
+        included
+        price
+        paragraph
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulWorkedWithUs(filter: { page: { eq: "Event-Planner" } }) {
+      nodes {
+        title1
+        title2
+        image {
+          title
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
         }
       }
     }

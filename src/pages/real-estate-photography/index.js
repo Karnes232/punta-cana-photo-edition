@@ -6,6 +6,7 @@ import Seo from "../../components/Layout/seo";
 import RichText from "../../components/RichTextComponents/RichText";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import OurPackages from "../../components/PackageComponents/OurPackages";
+import Faqs from "../../components/FaqsComponent/Faqs";
 
 const Index = ({ data }) => {
   return (
@@ -21,6 +22,7 @@ const Index = ({ data }) => {
         photoPackages={data.allContentfulPackages.nodes}
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
+      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
     </Layout>
   );
 };
@@ -120,6 +122,14 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulFaqsComponent(filter: { page: { eq: "Real Estate" } }) {
+      nodes {
+        title
+        content {
+          content
         }
       }
     }

@@ -7,6 +7,7 @@ import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import TextComponent from "../../components/TextComponent/TextComponent";
 import RichText from "../../components/RichTextComponents/RichText";
+import Faqs from "../../components/FaqsComponent/Faqs";
 
 const Index = ({ data }) => {
   return (
@@ -26,6 +27,7 @@ const Index = ({ data }) => {
         photoPackages={data.allContentfulPackages.nodes}
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
     </Layout>
   );
 };
@@ -122,6 +124,14 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulFaqsComponent(filter: { page: { eq: "Bachelor Party" } }) {
+      nodes {
+        title
+        content {
+          content
         }
       }
     }

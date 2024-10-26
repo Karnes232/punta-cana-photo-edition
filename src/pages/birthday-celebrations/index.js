@@ -8,6 +8,7 @@ import RichText from "../../components/RichTextComponents/RichText";
 import TextComponent from "../../components/TextComponent/TextComponent";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
+import Faqs from "../../components/FaqsComponent/Faqs";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -46,6 +47,7 @@ const Index = ({ data }) => {
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <PhotoGrid photos={section3.images} page={section3.page} />
+      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
     </Layout>
   );
 };
@@ -162,6 +164,16 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulFaqsComponent(
+      filter: { page: { eq: "Birthday Celebrations" } }
+    ) {
+      nodes {
+        title
+        content {
+          content
         }
       }
     }
