@@ -29,6 +29,18 @@
   transform: translate(-50%, 0%) !important;
 }
 
+.testimonialSwiper .swiper-button-prev,
+.testimonialSwiper .swiper-button-next {
+  top: var(--swiper-navigation-top-offset, 98.75%) !important;
+}
+
+.testimonialSwiper .swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  top: var(--swiper-pagination-top, 97.5%) !important;
+}
+
 @media (min-width: 768px) {
   .swiper-button-next,
   .swiper-rtl .swiper-button-prev {
@@ -45,6 +57,16 @@
   .swiper-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-bullets.swiper-pagination-horizontal {
     top: var(--swiper-pagination-top, 91.5%) !important;
+  }
+  .testimonialSwiper .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    top: var(--swiper-pagination-top, 95.5%) !important;
+  }
+  .testimonialSwiper .swiper-button-prev,
+  .testimonialSwiper .swiper-button-next {
+    top: var(--swiper-navigation-top-offset, 98%) !important;
   }
 }
 

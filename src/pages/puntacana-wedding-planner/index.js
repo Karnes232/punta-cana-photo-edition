@@ -8,6 +8,7 @@ import RichText from "../../components/RichTextComponents/RichText";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
+import TestimonialsComponent from "../../components/TestimonialsComponent/TestimonialsComponent";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -41,6 +42,9 @@ const Index = ({ data }) => {
       <PhotoGrid photos={section2.images} page={section2.page} />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      <TestimonialsComponent
+        testimonials={data.allContentfulTestimonial.nodes}
+      />
     </Layout>
   );
 };
@@ -135,6 +139,18 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulTestimonial(filter: { page: { eq: "Wedding-Planner" } }) {
+      nodes {
+        names
+        testimonial {
+          testimonial
+        }
+        image {
+          title
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
         }
       }
     }
