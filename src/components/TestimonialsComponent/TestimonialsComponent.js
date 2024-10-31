@@ -9,7 +9,6 @@ import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 const TestimonialsComponent = ({ testimonials }) => {
-  let slideHeight = "h-[17.5rem] md:h-[32rem] lg:h-[45rem] xl:h-[48rem]";
   return (
     <div className="flex flex-col max-w-5xl mx-5 my-5 lg:p-2 xl:mx-auto">
       <div className={`w-full`}>

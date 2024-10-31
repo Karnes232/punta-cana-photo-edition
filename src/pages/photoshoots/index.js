@@ -10,6 +10,8 @@ import OurPackages from "../../components/PackageComponents/OurPackages";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import RichText from "../../components/RichTextComponents/RichText";
 import Faqs from "../../components/FaqsComponent/Faqs";
+import TestimonialsComponent from "../../components/TestimonialsComponent/TestimonialsComponent";
+import ContentBlockVideo from "../../components/ContentBlockComponent/ContentBlockVideo";
 
 const Index = ({ data }) => {
   return (
@@ -38,6 +40,11 @@ const Index = ({ data }) => {
       />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <TestimonialsComponent
+        testimonials={data.allContentfulTestimonial.nodes}
+      />
+      <QuoteComponent quote={data.allContentfulQuotes.nodes[1]} />
+      <ContentBlockVideo content={data.allContentfulCardWithVideo.nodes[0]} />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
     </Layout>
   );
@@ -110,7 +117,10 @@ export const query = graphql`
         }
       }
     }
-    allContentfulQuotes(filter: { page: { eq: "Photo Shoots" } }) {
+    allContentfulQuotes(
+      filter: { page: { eq: "Photo Shoots" } }
+      sort: { createdAt: ASC }
+    ) {
       nodes {
         page
         author
@@ -161,6 +171,26 @@ export const query = graphql`
         content {
           content
         }
+      }
+    }
+    allContentfulTestimonial(filter: { page: { eq: "Photo Shoots" } }) {
+      nodes {
+        names
+        testimonial {
+          testimonial
+        }
+        image {
+          title
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulCardWithVideo(filter: { page: { eq: "Photo Shoots" } }) {
+      nodes {
+        title
+        buttonText
+        linkUrl
+        videoUrl
       }
     }
   }

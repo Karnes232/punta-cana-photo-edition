@@ -11,6 +11,7 @@ import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import Faqs from "../../components/FaqsComponent/Faqs";
 import QuoteComponent from "../../components/QuoteComponent/QuoteComponent";
+import VideoCards from "../../components/VideoCardsComponent/VideoCards";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -47,10 +48,10 @@ const Index = ({ data }) => {
       <PhotoGrid photos={section2.images} page={section2.page} />
       <TextComponent
         title={section2Title}
-        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl italic"
+        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl italic mx-2"
       />
       <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
-
+      <VideoCards cards={data.allContentfulVideoCards.nodes} />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
       <QuoteComponent quote={data.allContentfulQuotes.nodes[0]} />
@@ -171,6 +172,13 @@ export const query = graphql`
         page
         author
         quote
+      }
+    }
+    allContentfulVideoCards(filter: { page: { eq: "Wedding" } }) {
+      nodes {
+        couplesName
+        venue
+        videoUrl
       }
     }
   }
