@@ -12,7 +12,7 @@ const VideoCard = ({ card, index }) => {
   }
   return (
     <div className={`flex flex-col ${flexRow} w-full`}>
-      <div className="w-full aspect-video">
+      <div className="w-full aspect-video lg:basis-1/2">
         <ReactPlayer
           url={card.videoUrl}
           muted
@@ -24,7 +24,7 @@ const VideoCard = ({ card, index }) => {
           pip
         />
       </div>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center lg:basis-1/2">
       <TextComponent
         title={card.couplesName}
         className="my-5 tracking-wide 2xl:mb-2 2xl:mt-10 text-2xl md:text-3xl"
