@@ -20,3 +20,64 @@ li {
   margin: 0;
   padding: 0;
 }
+
+.packagePageVideo {
+  height: 15rem;
+}
+
+@media (min-width: 768px) {
+  .packagePageVideo {
+    height: 27rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .packagePageVideo {
+    height: 20rem !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .packagePageVideo {
+    height: 26rem !important;
+  }
+}
+
+/* Used to protect images from being downloaded */
+img {
+  /* Basic protection */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  
+  /* Prevent selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  /* Mobile-specific */
+  pointer-events: none;
+  -webkit-tap-highlight-color: transparent;
+  
+  /* iOS force touch */
+  -webkit-touch-callout: none;
+  -webkit-force-press-callback: none;
+  
+  /* Additional mobile protection */
+  touch-action: none;
+}
+
+/* Prevent text selection around images */
+.image-container {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

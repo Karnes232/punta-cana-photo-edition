@@ -5,7 +5,7 @@ import TextComponent from "../TextComponent/TextComponent";
 const VideoCard = ({ card, index }) => {
   console.log(card);
   let flexRow = "";
-  if (index % 2 == 0) {
+  if (index % 2 === 0) {
     flexRow = "lg:flex-row";
   } else {
     flexRow = "lg:flex-row-reverse";
@@ -25,13 +25,12 @@ const VideoCard = ({ card, index }) => {
         />
       </div>
       <div className="flex flex-col justify-center items-center lg:basis-1/2">
-      <TextComponent
-        title={card.couplesName}
-        className="my-5 tracking-wide 2xl:mb-2 2xl:mt-10 text-2xl md:text-3xl"
-        paragraph={`Wedding Venue: ${card.venue}`}
-        pClassName='mb-10 capitalize'
-      />
-
+        <TextComponent
+          title={card.couplesName}
+          className="my-5 tracking-wide 2xl:mb-2 2xl:mt-10 text-2xl md:text-3xl"
+          paragraph={`Wedding Venue: ${card.venue}`}
+          pClassName="mb-10 capitalize"
+        />
       </div>
     </div>
   );
