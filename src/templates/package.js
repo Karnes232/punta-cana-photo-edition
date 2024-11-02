@@ -78,18 +78,19 @@ const PackagePage = ({ pageContext }) => {
     console.log({
       ...formData,
     });
-    const redirectHref = `${host}/contact/thankyou/?name=${formData.name}`;
-    const form = document.getElementById("packageForm");
-    const newFormData = new FormData(form);
-    const formDataObj = {};
-    newFormData.forEach((value, key) => (formDataObj[key] = value));
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(newFormData).toString(),
-    }).then(() => {
-      window.location.href = redirectHref;
-    });
+    document.getElementById('packageForm').submit()
+    // const redirectHref = `${host}/contact/thankyou/?name=${formData.name}`;
+    // const form = document.getElementById("packageForm");
+    // const newFormData = new FormData(form);
+    // const formDataObj = {};
+    // newFormData.forEach((value, key) => (formDataObj[key] = value));
+    // fetch("/", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    //   body: new URLSearchParams(newFormData).toString(),
+    // }).then(() => {
+    //   window.location.href = redirectHref;
+    // });
   };
 
   const handleAddOnToggle = (addOnId) => {
