@@ -28,7 +28,7 @@ const PackagePage = ({ pageContext }) => {
     addOn5: "",
     addOn6: "",
     price: pageContext.package.packages[0].price,
-    totalCost: 0,
+    totalPrice: 0,
   });
   const image = getImage(pageContext.package.images[0]);
   console.log(formData);
