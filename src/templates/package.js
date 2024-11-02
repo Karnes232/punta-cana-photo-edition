@@ -18,6 +18,12 @@ const PackagePage = ({ pageContext }) => {
     phone: "",
     date: "",
     message: "",
+    addOn1: "",
+    addOn2: "",
+    addOn3: "",
+    addOn4: "",
+    addOn5: "",
+    addOn6: "",
   });
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +49,14 @@ const PackagePage = ({ pageContext }) => {
     };
   }, []);
   const image = getImage(pageContext.package.images[0]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log({
+      ...formData,
+    });
+  };
+
   return (
     <Layout generalInfo={pageContext.layout}>
       <HeroSwiper heroInfo={pageContext.package} />
@@ -54,8 +68,9 @@ const PackagePage = ({ pageContext }) => {
           packageInformation={pageContext.package}
           formData={formData}
           setFormData={setFormData}
+          handleSubmit={handleSubmit}
         />
-        <Form formData={formData} setFormData={setFormData} />
+        <Form formData={formData} setFormData={setFormData} additions={pageContext.package.packages[0].additions}/>
       </div>
       <div className="mb-10">
         <RichText context={pageContext.package.packageInformation} />

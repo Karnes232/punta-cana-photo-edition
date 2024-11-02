@@ -9,6 +9,7 @@ const Button = ({
   packageInformation,
   formData,
   setFormData,
+  handleSubmit
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
@@ -25,10 +26,11 @@ const Button = ({
   });
 
   const handleAddOnToggle = (addOnId) => {
+    console.log(addOnId)
     setSelectedAddOns((prev) =>
-      prev.includes(addOnId)
-        ? prev.filter((id) => id !== addOnId)
-        : [...prev, addOnId],
+      prev.includes(addOnId.id)
+        ? prev.filter((id) => id !== addOnId.id)
+        : [...prev, addOnId.id],
     );
   };
 
@@ -48,17 +50,17 @@ const Button = ({
     return packageInformation.packages[0].price + addOnsTotal;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log({
-      ...formData,
-      totalPrice: calculateTotal(),
-      selectedAddOns: selectedAddOns.map((id) =>
-        additions.find((addition) => addition.id === id),
-      ),
-    });
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     // Handle form submission here
+//     console.log({
+//       ...formData,
+//       totalPrice: calculateTotal(),
+//       selectedAddOns: selectedAddOns.map((id) =>
+//         additions.find((addition) => addition.id === id),
+//       ),
+//     });
+//   };
 
   return (
     <>
@@ -117,7 +119,7 @@ const Button = ({
                           ? "border-blue-500 bg-blue-50"
                           : "hover:border-gray-300"
                       }`}
-                      onClick={() => handleAddOnToggle(addition.id)}
+                      onClick={() => handleAddOnToggle(addition)}
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
@@ -149,7 +151,7 @@ const Button = ({
                   Book Your Session
                 </h3>
                 <form
-                  //   onSubmit={handleSubmit}
+                  onSubmit={handleSubmit}
                   action={`/contact/thankyou/?name=${formData.name}`}
                   className="space-y-4"
                   data-netlify="true"
@@ -157,7 +159,6 @@ const Button = ({
                   name="packageForm"
                   id="packageForm"
                 >
-                  <input type="hidden" name="form-name" value="packageForm" />
                   <div>
                     <label
                       htmlFor="name"
