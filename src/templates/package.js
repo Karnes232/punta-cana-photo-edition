@@ -29,7 +29,7 @@ const PackagePage = ({ pageContext }) => {
     addOn6: "",
     totalCost: 0,
   });
-
+  const image = getImage(pageContext.package.images[0]);
   console.log(formData);
   useEffect(() => {
     setHost(window.location.origin);
@@ -78,7 +78,7 @@ const PackagePage = ({ pageContext }) => {
     }
   }, [formData, isSubmitting]);
 
-  const image = getImage(pageContext.package.images[0]);
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     let count = 1;

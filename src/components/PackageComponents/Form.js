@@ -13,6 +13,7 @@ const Form = ({ formData }) => {
         id="packageForm"
       >
         <div className="hidden">
+        <input type="hidden" name="form-name" value="packageForm" />
           <input type="text" name="name" defaultValue={formData.name} />
           <input type="email" name="email" defaultValue={formData.email} />
           <input type="tel" name="phone" defaultValue={formData.phone} />
