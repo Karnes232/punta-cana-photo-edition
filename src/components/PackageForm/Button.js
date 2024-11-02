@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { Check } from "lucide-react";
 import { Dialog } from "@headlessui/react";
-const Button = ({ text, customClass, sticky, packageInformation }) => {
+const Button = ({
+  text,
+  customClass,
+  sticky,
+  packageInformation,
+  formData,
+  setFormData,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    date: "",
-    message: "",
-  });
 
   let additions = packageInformation.packages[0].additions?.sort((a, b) =>
     a.price > b.price ? 1 : -1,
@@ -149,7 +149,7 @@ const Button = ({ text, customClass, sticky, packageInformation }) => {
                   Book Your Session
                 </h3>
                 <form
-                //   onSubmit={handleSubmit}
+                  //   onSubmit={handleSubmit}
                   action={`/contact/thankyou/?name=${formData.name}`}
                   className="space-y-4"
                   data-netlify="true"

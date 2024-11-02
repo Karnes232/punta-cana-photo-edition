@@ -8,10 +8,17 @@ import ReactPlayer from "react-player";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Faqs from "../components/FaqsComponent/Faqs";
 import Button from "../components/PackageForm/Button";
+import Form from "../components/PackageComponents/Form";
 
 const PackagePage = ({ pageContext }) => {
-  console.log(pageContext.package.packages[0]);
   const [isSticky, setIsSticky] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    message: "",
+  });
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY; // Get current scroll position
@@ -45,7 +52,10 @@ const PackagePage = ({ pageContext }) => {
           customClass=""
           sticky={isSticky}
           packageInformation={pageContext.package}
+          formData={formData}
+          setFormData={setFormData}
         />
+        <Form formData={formData} setFormData={setFormData} />
       </div>
       <div className="mb-10">
         <RichText context={pageContext.package.packageInformation} />
