@@ -14,6 +14,7 @@ const PackagePage = ({ pageContext }) => {
   const [host, setHost] = useState("");
   const [isSticky, setIsSticky] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -54,11 +55,35 @@ const PackagePage = ({ pageContext }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (isSubmitting) {
+      console.log(formData);
+      // Handle your form submission here
+
+      const redirectHref = `${host}/contact/thankyou/?name=${formData.name}`;
+      const form = document.getElementById("packageForm");
+      const newFormData = new FormData(form);
+      const formDataObj = {};
+      newFormData.forEach((value, key) => (formDataObj[key] = value));
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(newFormData).toString(),
+      }).then(() => {
+        window.location.href = redirectHref;
+      });
+
+      setIsSubmitting(false);
+    }
+  }, [formData, isSubmitting]);
+
   const image = getImage(pageContext.package.images[0]);
   const handleSubmit = (e) => {
     e.preventDefault();
     let count = 1;
     let totalPrice = pageContext.package.packages[0].price;
+
     selectedAddOns.forEach((addOnId) => {
       let result = pageContext.package.packages[0].additions.filter((addOn) =>
         addOn.id.includes(addOnId),
@@ -70,27 +95,13 @@ const PackagePage = ({ pageContext }) => {
       }));
       count++;
     });
+
     setFormData((prev) => ({
       ...prev,
       totalCost: totalPrice,
     }));
-    // Handle form submission here
-    console.log({
-      ...formData,
-    });
-    document.getElementById('packageForm').submit()
-    // const redirectHref = `${host}/contact/thankyou/?name=${formData.name}`;
-    // const form = document.getElementById("packageForm");
-    // const newFormData = new FormData(form);
-    // const formDataObj = {};
-    // newFormData.forEach((value, key) => (formDataObj[key] = value));
-    // fetch("/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    //   body: new URLSearchParams(newFormData).toString(),
-    // }).then(() => {
-    //   window.location.href = redirectHref;
-    // });
+
+    setIsSubmitting(true);
   };
 
   const handleAddOnToggle = (addOnId) => {
