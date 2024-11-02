@@ -13,13 +13,20 @@ exports.createPages = async ({ graphql, actions }) => {
           telephone
         }
       }
-      allContentfulPackagePage {
+      allContentfulPackagePageContent {
         nodes {
           id
           urlSlug
-          package
           heroHeading
-          included
+          packages {
+            price
+            included
+            additions {
+              addition
+              price
+              id
+            }
+          }
           videoUrl
           heroImageList {
             gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
@@ -32,6 +39,12 @@ exports.createPages = async ({ graphql, actions }) => {
             title
             gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
           }
+          faqs {
+            title
+            content {
+              content
+            }
+          }
         }
       }
     }
@@ -39,7 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const packageTemplate = path.resolve(`src/templates/package.js`);
 
-  queryResults.data.allContentfulPackagePage.nodes.forEach((node) => {
+  queryResults.data.allContentfulPackagePageContent.nodes.forEach((node) => {
     createPage({
       path: `/packages/${node.urlSlug?.trim()}`,
       component: packageTemplate,

@@ -4,7 +4,6 @@ import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
 
 const PackageCard = ({ photoPackage }) => {
-  console.log(photoPackage);
   const image = getImage(photoPackage.image.gatsbyImage);
   let cardHeight = "";
   if (photoPackage.page === "Birthday Celebrations") {

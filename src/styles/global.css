@@ -50,8 +50,8 @@ img {
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-  user-drag: none;
-  
+  /* user-drag: none; */
+
   /* Prevent selection */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -59,15 +59,15 @@ img {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  
+
   /* Mobile-specific */
   pointer-events: none;
   -webkit-tap-highlight-color: transparent;
-  
+
   /* iOS force touch */
   -webkit-touch-callout: none;
   -webkit-force-press-callback: none;
-  
+
   /* Additional mobile protection */
   touch-action: none;
 }
