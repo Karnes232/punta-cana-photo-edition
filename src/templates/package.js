@@ -11,6 +11,7 @@ import Button from "../components/PackageForm/Button";
 import Form from "../components/PackageComponents/Form";
 
 const PackagePage = ({ pageContext }) => {
+  const [host, setHost] = useState("");
   const [isSticky, setIsSticky] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [formData, setFormData] = useState({
@@ -25,11 +26,12 @@ const PackagePage = ({ pageContext }) => {
     addOn4: "",
     addOn5: "",
     addOn6: "",
-    totalCost: 0
+    totalCost: 0,
   });
 
   console.log(formData);
   useEffect(() => {
+    setHost(window.location.origin);
     const handleScroll = () => {
       const scrollY = window.scrollY; // Get current scroll position
 
@@ -56,12 +58,12 @@ const PackagePage = ({ pageContext }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let count = 1;
-    let totalPrice = pageContext.package.packages[0].price
+    let totalPrice = pageContext.package.packages[0].price;
     selectedAddOns.forEach((addOnId) => {
       let result = pageContext.package.packages[0].additions.filter((addOn) =>
         addOn.id.includes(addOnId),
       );
-      totalPrice = totalPrice + result[0].price
+      totalPrice = totalPrice + result[0].price;
       setFormData((prev) => ({
         ...prev,
         [`addOn${count}`]: `${result[0].addition} - $${result[0].price}`,
@@ -70,11 +72,23 @@ const PackagePage = ({ pageContext }) => {
     });
     setFormData((prev) => ({
       ...prev,
-      totalCost: totalPrice
-    }))
+      totalCost: totalPrice,
+    }));
     // Handle form submission here
     console.log({
       ...formData,
+    });
+    const redirectHref = `${host}/contact/thankyou/?name=${formData.name}`;
+    const form = document.getElementById("packageForm");
+    const newFormData = new FormData(form);
+    const formDataObj = {};
+    newFormData.forEach((value, key) => (formDataObj[key] = value));
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(newFormData).toString(),
+    }).then(() => {
+      window.location.href = redirectHref;
     });
   };
 
