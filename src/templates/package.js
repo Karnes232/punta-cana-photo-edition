@@ -79,27 +79,27 @@ const PackagePage = ({ pageContext }) => {
     }
   }, [formData, isSubmitting]);
 
- 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let count = 1;
     let totalPrice = pageContext.package.packages[0].price;
 
-    selectedAddOns.forEach((addOnId) => {
-      let result = pageContext.package.packages[0].additions.filter((addOn) =>
+    const updatedData = selectedAddOns.reduce((acc, addOnId, index) => {
+      const result = pageContext.package.packages[0].additions.filter((addOn) =>
         addOn.id.includes(addOnId),
       );
-      totalPrice = totalPrice + result[0].price;
-      setFormData((prev) => ({
-        ...prev,
-        [`addOn${count}`]: `${result[0].addition} - $${result[0].price}`,
-      }));
-      count++;
-    });
+
+      totalPrice += result[0].price;
+
+      return {
+        ...acc,
+        [`addOn${index + 1}`]: `${result[0].addition} - $${result[0].price}`,
+      };
+    }, {});
 
     setFormData((prev) => ({
       ...prev,
-      totalCost: totalPrice,
+      ...updatedData,
+      totalPrice,
     }));
 
     setIsSubmitting(true);
