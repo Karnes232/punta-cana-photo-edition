@@ -27,6 +27,7 @@ const PackagePage = ({ pageContext }) => {
     addOn4: "",
     addOn5: "",
     addOn6: "",
+    price: pageContext.package.packages[0].price,
     totalCost: 0,
   });
   const image = getImage(pageContext.package.images[0]);
@@ -71,7 +72,7 @@ const PackagePage = ({ pageContext }) => {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(newFormData).toString(),
       }).then(() => {
-        window.location.href = redirectHref;
+        // window.location.href = redirectHref;
       });
 
       setIsSubmitting(false);
@@ -79,30 +80,42 @@ const PackagePage = ({ pageContext }) => {
   }, [formData, isSubmitting]);
 
  
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let count = 1;
     let totalPrice = pageContext.package.packages[0].price;
 
-    selectedAddOns.forEach((addOnId) => {
+    // Wait for all addOn updates to complete
+    await Promise.all(selectedAddOns.map(async (addOnId) => {
       let result = pageContext.package.packages[0].additions.filter((addOn) =>
-        addOn.id.includes(addOnId),
+        addOn.id.includes(addOnId)
       );
       totalPrice = totalPrice + result[0].price;
-      setFormData((prev) => ({
-        ...prev,
-        [`addOn${count}`]: `${result[0].addition} - $${result[0].price}`,
-      }));
+      await new Promise(resolve => {
+        setFormData((prev) => {
+          resolve();
+          return {
+            ...prev,
+            [`addOn${count}`]: `${result[0].addition} - $${result[0].price}`,
+          };
+        });
+      });
       count++;
-    });
-
-    setFormData((prev) => ({
-      ...prev,
-      totalCost: totalPrice,
     }));
 
+    // Wait for totalCost update
+    await new Promise(resolve => {
+      setFormData((prev) => {
+        resolve();
+        return {
+          ...prev,
+          totalCost: totalPrice,
+        };
+      });
+    });
+
     setIsSubmitting(true);
-  };
+};
 
   const handleAddOnToggle = (addOnId) => {
     setSelectedAddOns((prev) =>

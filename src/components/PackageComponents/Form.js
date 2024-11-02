@@ -26,7 +26,12 @@ const Form = ({ formData }) => {
           <input type="text" name="AddOn5" defaultValue={formData.addOn5} />
           <input type="text" name="AddOn6" defaultValue={formData.addOn6} />
           <input
-            type="text"
+            type="number"
+            name="price"
+            defaultValue={formData.price}
+          />
+          <input
+            type="number"
             name="totalCost"
             defaultValue={formData.totalCost}
           />
