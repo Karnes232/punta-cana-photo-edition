@@ -99,7 +99,7 @@ const PackagePage = ({ pageContext }) => {
     setFormData((prev) => ({
       ...prev,
       ...updatedData,
-      totalPrice,
+      totalPrice: totalPrice,
     }));
 
     setIsSubmitting(true);
