@@ -72,7 +72,7 @@ const PackagePage = ({ pageContext }) => {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(newFormData).toString(),
       }).then(() => {
-        // window.location.href = redirectHref;
+        window.location.href = redirectHref;
       });
 
       setIsSubmitting(false);
@@ -80,42 +80,30 @@ const PackagePage = ({ pageContext }) => {
   }, [formData, isSubmitting]);
 
  
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     let count = 1;
     let totalPrice = pageContext.package.packages[0].price;
 
-    // Wait for all addOn updates to complete
-    await Promise.all(selectedAddOns.map(async (addOnId) => {
+    selectedAddOns.forEach((addOnId) => {
       let result = pageContext.package.packages[0].additions.filter((addOn) =>
-        addOn.id.includes(addOnId)
+        addOn.id.includes(addOnId),
       );
       totalPrice = totalPrice + result[0].price;
-      await new Promise(resolve => {
-        setFormData((prev) => {
-          resolve();
-          return {
-            ...prev,
-            [`addOn${count}`]: `${result[0].addition} - $${result[0].price}`,
-          };
-        });
-      });
+      setFormData((prev) => ({
+        ...prev,
+        [`addOn${count}`]: `${result[0].addition} - $${result[0].price}`,
+      }));
       count++;
-    }));
-
-    // Wait for totalCost update
-    await new Promise(resolve => {
-      setFormData((prev) => {
-        resolve();
-        return {
-          ...prev,
-          totalCost: totalPrice,
-        };
-      });
     });
 
+    setFormData((prev) => ({
+      ...prev,
+      totalCost: totalPrice,
+    }));
+
     setIsSubmitting(true);
-};
+  };
 
   const handleAddOnToggle = (addOnId) => {
     setSelectedAddOns((prev) =>
