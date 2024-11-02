@@ -9,10 +9,12 @@ const Button = ({
   packageInformation,
   formData,
   setFormData,
-  handleSubmit
+  handleSubmit,
+  selectedAddOns,
+  setSelectedAddOns,
+  handleAddOnToggle,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedAddOns, setSelectedAddOns] = useState([]);
 
   let additions = packageInformation.packages[0].additions?.sort((a, b) =>
     a.price > b.price ? 1 : -1,
@@ -24,15 +26,6 @@ const Button = ({
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-
-  const handleAddOnToggle = (addOnId) => {
-    console.log(addOnId)
-    setSelectedAddOns((prev) =>
-      prev.includes(addOnId.id)
-        ? prev.filter((id) => id !== addOnId.id)
-        : [...prev, addOnId.id],
-    );
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -50,17 +43,17 @@ const Button = ({
     return packageInformation.packages[0].price + addOnsTotal;
   };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // Handle form submission here
-//     console.log({
-//       ...formData,
-//       totalPrice: calculateTotal(),
-//       selectedAddOns: selectedAddOns.map((id) =>
-//         additions.find((addition) => addition.id === id),
-//       ),
-//     });
-//   };
+  //   const handleSubmit = (e) => {
+  //     e.preventDefault();
+  //     // Handle form submission here
+  //     console.log({
+  //       ...formData,
+  //       totalPrice: calculateTotal(),
+  //       selectedAddOns: selectedAddOns.map((id) =>
+  //         additions.find((addition) => addition.id === id),
+  //       ),
+  //     });
+  //   };
 
   return (
     <>

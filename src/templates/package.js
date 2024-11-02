@@ -12,6 +12,7 @@ import Form from "../components/PackageComponents/Form";
 
 const PackagePage = ({ pageContext }) => {
   const [isSticky, setIsSticky] = useState(false);
+  const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,7 +25,10 @@ const PackagePage = ({ pageContext }) => {
     addOn4: "",
     addOn5: "",
     addOn6: "",
+    totalCost: 0
   });
+
+  console.log(formData);
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY; // Get current scroll position
@@ -51,10 +55,35 @@ const PackagePage = ({ pageContext }) => {
   const image = getImage(pageContext.package.images[0]);
   const handleSubmit = (e) => {
     e.preventDefault();
+    let count = 1;
+    let totalPrice = pageContext.package.packages[0].price
+    selectedAddOns.forEach((addOnId) => {
+      let result = pageContext.package.packages[0].additions.filter((addOn) =>
+        addOn.id.includes(addOnId),
+      );
+      totalPrice = totalPrice + result[0].price
+      setFormData((prev) => ({
+        ...prev,
+        [`addOn${count}`]: `${result[0].addition} - $${result[0].price}`,
+      }));
+      count++;
+    });
+    setFormData((prev) => ({
+      ...prev,
+      totalCost: totalPrice
+    }))
     // Handle form submission here
     console.log({
       ...formData,
     });
+  };
+
+  const handleAddOnToggle = (addOnId) => {
+    setSelectedAddOns((prev) =>
+      prev.includes(addOnId.id)
+        ? prev.filter((id) => id !== addOnId.id)
+        : [...prev, addOnId.id],
+    );
   };
 
   return (
@@ -69,8 +98,11 @@ const PackagePage = ({ pageContext }) => {
           formData={formData}
           setFormData={setFormData}
           handleSubmit={handleSubmit}
+          selectedAddOns={selectedAddOns}
+          setSelectedAddOns={setSelectedAddOns}
+          handleAddOnToggle={handleAddOnToggle}
         />
-        <Form formData={formData} setFormData={setFormData} additions={pageContext.package.packages[0].additions}/>
+        <Form formData={formData} />
       </div>
       <div className="mb-10">
         <RichText context={pageContext.package.packageInformation} />

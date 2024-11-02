@@ -1,7 +1,6 @@
 import React from "react";
 
-const Form = ({ formData, setFormData, additions }) => {
-    console.log(additions)
+const Form = ({ formData }) => {
   return (
     <>
       <form
@@ -25,7 +24,7 @@ const Form = ({ formData, setFormData, additions }) => {
           <input type="text" name="AddOn4" defaultValue={formData.addOn4} />
           <input type="text" name="AddOn5" defaultValue={formData.addOn5} />
           <input type="text" name="AddOn6" defaultValue={formData.addOn6} />
-
+          <input type="text" name="totalCost" defaultValue={formData.totalCost} />
         </div>
       </form>
     </>
