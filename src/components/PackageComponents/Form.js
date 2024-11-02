@@ -28,8 +28,8 @@ const Form = ({ formData }) => {
           <input type="number" name="price" defaultValue={formData.price} />
           <input
             type="number"
-            name="totalCost"
-            defaultValue={formData.totalCost}
+            name="totalPrice"
+            defaultValue={formData.totalPrice}
           />
         </div>
       </form>
