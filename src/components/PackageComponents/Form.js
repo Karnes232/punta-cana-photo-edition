@@ -27,9 +27,9 @@ const Form = ({ formData }) => {
           <input type="text" name="AddOn6" defaultValue={formData.addOn6} />
           <input type="number" name="price" defaultValue={formData.price} />
           <input
-            type="number"
-            name="totalPrice"
-            defaultValue={formData.totalPrice}
+            type="text"
+            name="packageName"
+            defaultValue={formData.packageName}
           />
         </div>
       </form>

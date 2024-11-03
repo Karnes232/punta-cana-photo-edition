@@ -28,10 +28,9 @@ const PackagePage = ({ pageContext }) => {
     addOn5: "",
     addOn6: "",
     price: pageContext.package.packages[0].price,
-    totalPrice: 0,
+    packageName: pageContext.package.heroHeading,
   });
   const image = getImage(pageContext.package.images[0]);
-  console.log(formData);
   useEffect(() => {
     setHost(window.location.origin);
     const handleScroll = () => {
@@ -59,7 +58,6 @@ const PackagePage = ({ pageContext }) => {
 
   useEffect(() => {
     if (isSubmitting) {
-      console.log(formData);
       // Handle your form submission here
 
       const redirectHref = `${host}/contact/thankyou/?name=${formData.name}`;
@@ -81,25 +79,25 @@ const PackagePage = ({ pageContext }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let totalPrice;
+    let totalPrice = pageContext.package.packages[0].price;
 
     const updatedData = selectedAddOns.reduce((acc, addOnId, index) => {
       const result = pageContext.package.packages[0].additions.filter((addOn) =>
         addOn.id.includes(addOnId),
       );
 
-      totalPrice = formData.price + result[0].price;
+      totalPrice += result[0].price;
 
       return {
         ...acc,
         [`addOn${index + 1}`]: `${result[0].addition} - $${result[0].price}`,
-        totalPrice: totalPrice,
       };
     }, {});
 
     setFormData((prev) => ({
       ...prev,
       ...updatedData,
+      totalPrice: totalPrice,
     }));
 
     setIsSubmitting(true);

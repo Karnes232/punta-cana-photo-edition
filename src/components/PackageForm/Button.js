@@ -61,7 +61,7 @@ const Button = ({
         className={`mb-2 ${
           sticky
             ? "fixed bottom-20 right-6 xl:right-10 z-50 bg-white rounded"
-            : "w-fit"
+            : "w-fit ml-10 mt-5 md:mt-0"
         }`}
       >
         <button
@@ -86,7 +86,7 @@ const Button = ({
               <IoClose />
             </button>
           </div>
-          <div className="mx-auto px-4 py-12 w-full h-full bg-gray-50 flex justify-center items-center">
+          <div className="mx-auto px-4 py-12 w-full lg:h-full bg-gray-50 flex justify-center items-center">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
               <div className="space-y-8">
                 <div className="text-center p-6  rounded-lg">
