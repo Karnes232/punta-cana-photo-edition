@@ -54,7 +54,7 @@ const PackagePage = ({ pageContext }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [host]);
 
   useEffect(() => {
     if (isSubmitting) {
@@ -75,7 +75,7 @@ const PackagePage = ({ pageContext }) => {
 
       setIsSubmitting(false);
     }
-  }, [formData, isSubmitting]);
+  }, [formData, isSubmitting, host]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -182,11 +182,11 @@ const PackagePage = ({ pageContext }) => {
             </>
           ) : (
             <>
-              <div className="w-full lg:basis-1/2 packagePageVideo">
+              <div className="w-full lg:basis-1/2 packagePageVideo ">
                 <GatsbyImage
                   image={image}
                   alt={pageContext.package.images[0].title}
-                  className={`w-full object-cover object-center`}
+                  className={`w-full object-fill object-center packagePageVideo`}
                 />
               </div>
             </>
