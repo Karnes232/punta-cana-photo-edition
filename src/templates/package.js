@@ -81,25 +81,25 @@ const PackagePage = ({ pageContext }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let totalPrice = pageContext.package.packages[0].price;
+    let totalPrice;
 
     const updatedData = selectedAddOns.reduce((acc, addOnId, index) => {
       const result = pageContext.package.packages[0].additions.filter((addOn) =>
         addOn.id.includes(addOnId),
       );
 
-      totalPrice += result[0].price;
+      totalPrice = formData.price + result[0].price;
 
       return {
         ...acc,
         [`addOn${index + 1}`]: `${result[0].addition} - $${result[0].price}`,
+        totalPrice: totalPrice,
       };
     }, {});
 
     setFormData((prev) => ({
       ...prev,
       ...updatedData,
-      totalPrice: totalPrice,
     }));
 
     setIsSubmitting(true);
