@@ -111,7 +111,7 @@ export const query = graphql`
     allContentfulPackages(
       filter: { page: { eq: "Real Estate" } }
       sort: { price: ASC }
-    )  {
+    ) {
       nodes {
         page
         title

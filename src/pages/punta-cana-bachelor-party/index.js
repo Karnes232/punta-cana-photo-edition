@@ -120,10 +120,12 @@ export const query = graphql`
         link
         included
         price
-        paragraph
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+        packagePage {
+          urlSlug
         }
       }
     }
