@@ -136,7 +136,7 @@ export const query = graphql`
     allContentfulPackages(
       filter: { page: { eq: "Gender Reveal" } }
       sort: { price: ASC }
-    ) {
+    ){
       nodes {
         page
         title
@@ -147,8 +147,10 @@ export const query = graphql`
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
         }
+        packagePage {
+          urlSlug
+        }
       }
-    }
     allContentfulCardWithImage(filter: { page: { eq: "Gender Reveal" } }) {
       nodes {
         title
