@@ -119,6 +119,9 @@ export const query = graphql`
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
         }
+        packagePage {
+          urlSlug
+        }
       }
     }
     allContentfulSwiperCarousel(filter: { page: { eq: "Proposal" } }) {
