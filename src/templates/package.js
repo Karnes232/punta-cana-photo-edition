@@ -11,6 +11,7 @@ import Button from "../components/PackageForm/Button";
 import Form from "../components/PackageComponents/Form";
 
 const PackagePage = ({ pageContext }) => {
+  console.log(pageContext.package.packages[0].paragraph);
   const [host, setHost] = useState("");
   const [isSticky, setIsSticky] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
@@ -137,7 +138,7 @@ const PackagePage = ({ pageContext }) => {
       <div className="w-full max-w-7xl mx-auto px-4 lg:mt-5 xl:mt-10">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className=" lg:basis-1/2">
-            {pageContext.package.included !== null ? (
+            {pageContext.package.packages[0].included !== null ? (
               <>
                 {" "}
                 <div className="my-5 mx-auto">
@@ -146,7 +147,7 @@ const PackagePage = ({ pageContext }) => {
                     className="my-5 text-center tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
                   />
                   <ul className="flex flex-col justify-center items-center gap-2">
-                    {pageContext.package.packages[0].included.map(
+                    {pageContext.package.packages[0].included?.map(
                       (item, index) => {
                         return (
                           <li
@@ -162,7 +163,12 @@ const PackagePage = ({ pageContext }) => {
                 </div>
               </>
             ) : (
-              <></>
+              <div className="flex justify-center items-center h-full">
+                <TextComponent
+                  paragraph={pageContext.package.packages[0].paragraph}
+                  pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5 text-center"
+                />
+              </div>
             )}
           </div>
           {pageContext.package.videoUrl !== null ? (

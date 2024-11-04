@@ -21,6 +21,7 @@ exports.createPages = async ({ graphql, actions }) => {
           packages {
             price
             included
+            paragraph
             additions {
               addition
               price
