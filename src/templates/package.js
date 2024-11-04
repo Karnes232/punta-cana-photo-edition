@@ -11,7 +11,7 @@ import Button from "../components/PackageForm/Button";
 import Form from "../components/PackageComponents/Form";
 
 const PackagePage = ({ pageContext }) => {
-  console.log(pageContext.package.packages[0].paragraph);
+  console.log(pageContext.package.packages[0].paragraph)
   const [host, setHost] = useState("");
   const [isSticky, setIsSticky] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
@@ -164,11 +164,11 @@ const PackagePage = ({ pageContext }) => {
               </>
             ) : (
               <div className="flex justify-center items-center h-full">
-                <TextComponent
+              <TextComponent
                   paragraph={pageContext.package.packages[0].paragraph}
                   pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5 text-center"
                 />
-              </div>
+                </div>
             )}
           </div>
           {pageContext.package.videoUrl !== null ? (
