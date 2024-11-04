@@ -139,7 +139,7 @@ const Button = ({
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-sm border">
+              <div className="bg-white p-6 rounded-lg shadow-sm border pb-20 lg:pb-0">
                 <h3 className="text-xl font-semibold mb-6">
                   Book Your Session
                 </h3>
