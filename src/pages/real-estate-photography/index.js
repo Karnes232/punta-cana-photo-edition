@@ -111,17 +111,19 @@ export const query = graphql`
     allContentfulPackages(
       filter: { page: { eq: "Real Estate" } }
       sort: { price: ASC }
-    ) {
+    )  {
       nodes {
         page
         title
         link
         included
         price
-        paragraph
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+        packagePage {
+          urlSlug
         }
       }
     }
