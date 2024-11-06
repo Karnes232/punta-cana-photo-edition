@@ -88,9 +88,10 @@ const PackagePage = ({ pageContext, data }) => {
       data.allContentfulPackagePageContent.nodes[0].packages[0].price;
 
     const updatedData = selectedAddOns.reduce((acc, addOnId, index) => {
-      const result = pageContext.package.packages[0].additions.filter((addOn) =>
-        addOn.id.includes(addOnId),
-      );
+      const result =
+        data.allContentfulPackagePageContent.nodes[0].packages[0].additions.filter(
+          (addOn) => addOn.id.includes(addOnId),
+        );
 
       totalPrice += result[0].price;
 
@@ -122,7 +123,7 @@ const PackagePage = ({ pageContext, data }) => {
       <HeroSwiper heroInfo={data.allContentfulPackagePageContent.nodes[0]} />
       <div className="w-full max-w-5xl mx-auto relative">
         <Button
-          text="Reserve"
+          text="Contact Us"
           customClass=""
           sticky={isSticky}
           packageInformation={data.allContentfulPackagePageContent.nodes[0]}

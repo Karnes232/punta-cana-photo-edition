@@ -139,7 +139,7 @@ const Button = ({
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-sm border pb-20 lg:pb-0">
+              <div className="bg-white p-6 rounded-lg shadow-sm border pb-20 lg:pb-10">
                 <h3 className="text-xl font-semibold mb-6">
                   Book Your Session
                 </h3>
@@ -240,7 +240,7 @@ const Button = ({
                     type="submit"
                     className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
                   >
-                    Submit Booking Request
+                    Contact Us
                   </button>
                 </form>
               </div>
