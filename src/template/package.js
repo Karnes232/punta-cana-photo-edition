@@ -261,6 +261,7 @@ export const query = graphql`
         id
         urlSlug
         heroHeading
+        fullSize
         packages {
           price
           included
