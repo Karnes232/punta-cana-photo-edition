@@ -38,6 +38,7 @@ const PackagePage = ({ pageContext, data }) => {
   );
   useEffect(() => {
     setHost(window.location.origin);
+    window.scrollTo(0, 0);
     const handleScroll = () => {
       const scrollY = window.scrollY; // Get current scroll position
 
