@@ -17,41 +17,12 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           id
           urlSlug
-          heroHeading
-          packages {
-            price
-            included
-            paragraph
-            additions {
-              addition
-              price
-              id
-            }
-          }
-          videoUrl
-          heroImageList {
-            gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-            title
-          }
-          packageInformation {
-            raw
-          }
-          images {
-            title
-            gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-          }
-          faqs {
-            title
-            content {
-              content
-            }
-          }
         }
       }
     }
   `);
 
-  const packageTemplate = path.resolve(`src/templates/package.js`);
+  const packageTemplate = path.resolve(`src/template/package.js`);
 
   queryResults.data.allContentfulPackagePageContent.nodes.forEach((node) => {
     createPage({

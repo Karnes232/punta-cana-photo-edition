@@ -9,9 +9,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Faqs from "../components/FaqsComponent/Faqs";
 import Button from "../components/PackageForm/Button";
 import Form from "../components/PackageComponents/Form";
+import { graphql } from "gatsby";
+import Seo from "../components/Layout/seo";
 
-const PackagePage = ({ pageContext }) => {
-  console.log(pageContext.package.faqs);
+const PackagePage = ({ pageContext, data }) => {
   const [host, setHost] = useState("");
   const [isSticky, setIsSticky] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
@@ -28,10 +29,13 @@ const PackagePage = ({ pageContext }) => {
     addOn4: "",
     addOn5: "",
     addOn6: "",
-    price: pageContext.package.packages[0].price,
-    packageName: pageContext.package.heroHeading,
+    price: data.allContentfulPackagePageContent.nodes[0].packages[0].price,
+    packageName: data.allContentfulPackagePageContent.nodes[0].heroHeading,
   });
-  const image = getImage(pageContext.package.images[0]);
+
+  const image = getImage(
+    data.allContentfulPackagePageContent.nodes[0].images[0],
+  );
   useEffect(() => {
     setHost(window.location.origin);
     const handleScroll = () => {
@@ -80,7 +84,8 @@ const PackagePage = ({ pageContext }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let totalPrice = pageContext.package.packages[0].price;
+    let totalPrice =
+      data.allContentfulPackagePageContent.nodes[0].packages[0].price;
 
     const updatedData = selectedAddOns.reduce((acc, addOnId, index) => {
       const result = pageContext.package.packages[0].additions.filter((addOn) =>
@@ -114,13 +119,13 @@ const PackagePage = ({ pageContext }) => {
 
   return (
     <Layout generalInfo={pageContext.layout}>
-      <HeroSwiper heroInfo={pageContext.package} />
+      <HeroSwiper heroInfo={data.allContentfulPackagePageContent.nodes[0]} />
       <div className="w-full max-w-5xl mx-auto relative">
         <Button
           text="Reserve"
           customClass=""
           sticky={isSticky}
-          packageInformation={pageContext.package}
+          packageInformation={data.allContentfulPackagePageContent.nodes[0]}
           formData={formData}
           setFormData={setFormData}
           handleSubmit={handleSubmit}
@@ -131,14 +136,21 @@ const PackagePage = ({ pageContext }) => {
         <Form formData={formData} />
       </div>
       <div className="mb-10">
-        <RichText context={pageContext.package.packageInformation} />
+        <RichText
+          context={
+            data.allContentfulPackagePageContent.nodes[0].packageInformation
+          }
+        />
       </div>
-      <SwiperCarousel images={pageContext.package.images} />
+      <SwiperCarousel
+        images={data.allContentfulPackagePageContent.nodes[0].images}
+      />
 
       <div className="w-full max-w-7xl mx-auto px-4 lg:mt-5 xl:mt-10">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className=" lg:basis-1/2">
-            {pageContext.package.packages[0].included !== null ? (
+            {data.allContentfulPackagePageContent.nodes[0].packages[0]
+              .included !== null ? (
               <>
                 {" "}
                 <div className="my-5 mx-auto">
@@ -147,7 +159,7 @@ const PackagePage = ({ pageContext }) => {
                     className="my-5 text-center tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
                   />
                   <ul className="flex flex-col justify-center items-center gap-2">
-                    {pageContext.package.packages[0].included?.map(
+                    {data.allContentfulPackagePageContent.nodes[0].packages[0].included?.map(
                       (item, index) => {
                         return (
                           <li
@@ -165,17 +177,20 @@ const PackagePage = ({ pageContext }) => {
             ) : (
               <div className="flex justify-center items-center h-full">
                 <TextComponent
-                  paragraph={pageContext.package.packages[0].paragraph}
+                  paragraph={
+                    data.allContentfulPackagePageContent.nodes[0].packages[0]
+                      .paragraph
+                  }
                   pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5 text-center"
                 />
               </div>
             )}
           </div>
-          {pageContext.package.videoUrl !== null ? (
+          {data.allContentfulPackagePageContent.nodes[0].videoUrl !== null ? (
             <>
               <div className="w-full lg:basis-1/2 packagePageVideo">
                 <ReactPlayer
-                  url={pageContext.package.videoUrl}
+                  url={data.allContentfulPackagePageContent.nodes[0].videoUrl}
                   muted
                   controls
                   playing={true}
@@ -191,7 +206,10 @@ const PackagePage = ({ pageContext }) => {
               <div className="w-full lg:basis-1/2 packagePageVideo ">
                 <GatsbyImage
                   image={image}
-                  alt={pageContext.package.images[0].title}
+                  alt={
+                    data.allContentfulPackagePageContent.nodes[0].images[0]
+                      .title
+                  }
                   className={`w-full object-fill object-center packagePageVideo`}
                 />
               </div>
@@ -199,9 +217,9 @@ const PackagePage = ({ pageContext }) => {
           )}
         </div>
       </div>
-      {pageContext.package.faqs !== null ? (
+      {data.allContentfulPackagePageContent.nodes[0].faqs !== null ? (
         <>
-          <Faqs faqs={pageContext.package.faqs} />
+          <Faqs faqs={data.allContentfulPackagePageContent.nodes[0].faqs} />
         </>
       ) : (
         <></>
@@ -211,3 +229,77 @@ const PackagePage = ({ pageContext }) => {
 };
 
 export default PackagePage;
+
+export const Head = ({ pageContext, data }) => {
+  const siteUrl = `${data.site.siteMetadata.siteUrl}/packages/${data.allContentfulPackagePageContent.nodes[0].urlSlug}`;
+  const { seoTitle, seoDescription, seoImage, seoKeywords } =
+    data.allContentfulPackagePageContent.nodes[0];
+
+  return (
+    <>
+      <Seo
+        title={seoTitle}
+        description={seoDescription?.seoDescription}
+        keywords={seoKeywords?.join(", ")}
+        image={`https:${seoImage?.file?.url}`}
+        url={siteUrl}
+      />
+      <link rel="canonical" href={siteUrl} />
+    </>
+  );
+};
+
+export const query = graphql`
+  query MyQuery($id: String) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
+    allContentfulPackagePageContent(filter: { id: { eq: $id } }) {
+      nodes {
+        id
+        urlSlug
+        heroHeading
+        packages {
+          price
+          included
+          paragraph
+          additions {
+            addition
+            price
+            id
+          }
+        }
+        videoUrl
+        heroImageList {
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+        packageInformation {
+          raw
+        }
+        images {
+          title
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+        }
+        faqs {
+          title
+          content {
+            content
+          }
+        }
+        seoTitle
+        seoKeywords
+        seoDescription {
+          seoDescription
+        }
+        seoImage {
+          file {
+            url
+          }
+        }
+      }
+    }
+  }
+`;
