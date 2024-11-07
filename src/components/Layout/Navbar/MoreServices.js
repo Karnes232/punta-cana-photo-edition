@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
-const MoreServices = ({ footer }) => {
+const MoreServices = ({ footer, setToggled }) => {
   return (
     <SubMenu
       label="More photo-video services"
@@ -12,6 +12,7 @@ const MoreServices = ({ footer }) => {
           <Link
             to="/real-estate-photography"
             className="no-underline uppercase text-sm"
+            onClick={() => setToggled(false)}
           />
         }
       >
@@ -22,6 +23,7 @@ const MoreServices = ({ footer }) => {
           <Link
             to="/videos-and-comercial-photos"
             className="no-underline uppercase text-sm"
+            onClick={() => setToggled(false)}
           />
         }
       >

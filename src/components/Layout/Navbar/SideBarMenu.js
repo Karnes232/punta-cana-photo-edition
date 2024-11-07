@@ -25,7 +25,7 @@ const SideBarMenu = ({ toggled, setToggled }) => {
             </div>
           )}
 
-          <SideBarInside />
+          <SideBarInside setToggled={setToggled} />
         </div>
       </Sidebar>
     </>

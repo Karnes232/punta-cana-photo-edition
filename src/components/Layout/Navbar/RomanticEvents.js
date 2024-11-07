@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
-const RomanticEvents = ({ footer }) => {
+const RomanticEvents = ({ footer, setToggled }) => {
   return (
     <SubMenu
       label="Romantic Events"
@@ -9,7 +9,11 @@ const RomanticEvents = ({ footer }) => {
     >
       <MenuItem
         component={
-          <Link to="/proposal" className="no-underline uppercase text-sm" />
+          <Link
+            to="/proposal"
+            className="no-underline uppercase text-sm"
+            onClick={() => setToggled(false)}
+          />
         }
       >
         <p>Marriage Proposals</p>
@@ -19,6 +23,7 @@ const RomanticEvents = ({ footer }) => {
           <Link
             to="/elopement-vow-renewal"
             className="no-underline uppercase text-sm"
+            onClick={() => setToggled(false)}
           />
         }
       >
@@ -26,7 +31,11 @@ const RomanticEvents = ({ footer }) => {
       </MenuItem>
       <MenuItem
         component={
-          <Link to="/wedding" className="no-underline uppercase text-sm" />
+          <Link
+            to="/wedding"
+            className="no-underline uppercase text-sm"
+            onClick={() => setToggled(false)}
+          />
         }
       >
         <p>Punta Cana wedding photographer</p>
@@ -36,6 +45,7 @@ const RomanticEvents = ({ footer }) => {
           <Link
             to="/puntacana-wedding-planner"
             className="no-underline uppercase text-sm"
+            onClick={() => setToggled(false)}
           />
         }
       >
@@ -46,6 +56,7 @@ const RomanticEvents = ({ footer }) => {
           <Link
             to="/birthday-celebrations"
             className="no-underline uppercase text-sm"
+            onClick={() => setToggled(false)}
           />
         }
       >
@@ -56,6 +67,7 @@ const RomanticEvents = ({ footer }) => {
           <Link
             to="/gender-reveal-and-baby-showers"
             className="no-underline uppercase text-sm"
+            onClick={() => setToggled(false)}
           />
         }
       >
@@ -66,6 +78,7 @@ const RomanticEvents = ({ footer }) => {
           <Link
             to="/punta-cana-bachelor-party"
             className="no-underline uppercase text-sm"
+            onClick={() => setToggled(false)}
           />
         }
       >
