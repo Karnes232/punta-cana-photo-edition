@@ -11,6 +11,7 @@ import Button from "../components/PackageForm/Button";
 import Form from "../components/PackageComponents/Form";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
+import PackageForm from "../components/PackageForm/PackageForm";
 
 const PackagePage = ({ pageContext, data }) => {
   const [host, setHost] = useState("");
@@ -122,7 +123,7 @@ const PackagePage = ({ pageContext, data }) => {
     <Layout generalInfo={pageContext.layout}>
       <HeroSwiper heroInfo={data.allContentfulPackagePageContent.nodes[0]} />
       <div className="w-full max-w-5xl mx-auto relative">
-        <Button
+        {/* <Button
           text="Contact Us"
           customClass=""
           sticky={isSticky}
@@ -133,7 +134,7 @@ const PackagePage = ({ pageContext, data }) => {
           selectedAddOns={selectedAddOns}
           setSelectedAddOns={setSelectedAddOns}
           handleAddOnToggle={handleAddOnToggle}
-        />
+        /> */}
         <Form formData={formData} />
       </div>
       <div className="mb-10">
@@ -225,6 +226,15 @@ const PackagePage = ({ pageContext, data }) => {
       ) : (
         <></>
       )}
+      <PackageForm
+        packageInformation={data.allContentfulPackagePageContent.nodes[0]}
+        formData={formData}
+        setFormData={setFormData}
+        handleSubmit={handleSubmit}
+        selectedAddOns={selectedAddOns}
+        setSelectedAddOns={setSelectedAddOns}
+        handleAddOnToggle={handleAddOnToggle}
+      />
     </Layout>
   );
 };
