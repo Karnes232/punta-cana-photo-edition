@@ -9,6 +9,13 @@ import "yet-another-react-lightbox/styles.css";
 
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
+import {
+  isImageFitCover,
+  isImageSlide,
+  useLightboxProps,
+  useLightboxState,
+} from "yet-another-react-lightbox";
+
 function renderGatsbyImage(
   { alt = "", title, sizes },
   { photo, width, height },
@@ -24,8 +31,41 @@ function renderGatsbyImage(
 }
 
 function GastbyImageLightbox({ slide, offset, rect }) {
+  const {
+    on: { click },
+    carousel: { imageFit },
+  } = useLightboxProps();
+  const { currentIndex } = useLightboxState();
+  const cover = isImageSlide(slide) && isImageFitCover(slide, imageFit);
+  const width = !cover
+    ? Math.round(
+        Math.min(rect.width, (rect.height / slide.height) * slide.width),
+      )
+    : rect.width;
+
+  const height = !cover
+    ? Math.round(
+        Math.min(rect.height, (rect.width / slide.width) * slide.height),
+      )
+    : rect.height;
+
   const image = getImage(slide.gatsbyImage);
-  return <GatsbyImage image={image} alt={slide.alt} className="object-cover" />;
+  const windowWidth = useWindowWidth();
+  const isMobile = windowWidth < 770;
+  return (
+    <div
+      className={`relative flex justify-center items-center ${isMobile ? "w-full" : "h-full"}`}
+      style={{
+        aspectRatio: `${width} / ${height}`,
+      }}
+    >
+      <GatsbyImage
+        image={image}
+        alt={slide.alt}
+        className="object-cover w-full h-full"
+      />
+    </div>
+  );
 }
 
 const PhotoGallery = ({ photos }) => {
@@ -58,7 +98,6 @@ const PhotoGallery = ({ photos }) => {
         index={index}
         close={() => setIndex(-1)}
         // enable optional lightbox plugins
-        // plugins={[Fullscreen, Slideshow]}
         render={{ slide: GastbyImageLightbox }}
       />
     </>
