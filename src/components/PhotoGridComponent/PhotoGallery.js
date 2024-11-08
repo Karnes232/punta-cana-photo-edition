@@ -13,7 +13,7 @@ import {
   isImageFitCover,
   isImageSlide,
   useLightboxProps,
-  useLightboxState,
+  // useLightboxState,
 } from "yet-another-react-lightbox";
 
 function renderGatsbyImage(
@@ -32,10 +32,10 @@ function renderGatsbyImage(
 
 function GastbyImageLightbox({ slide, offset, rect }) {
   const {
-    on: { click },
+    // on: { click },
     carousel: { imageFit },
   } = useLightboxProps();
-  const { currentIndex } = useLightboxState();
+  // const { currentIndex } = useLightboxState();
   const cover = isImageSlide(slide) && isImageFitCover(slide, imageFit);
   const width = !cover
     ? Math.round(

@@ -7,7 +7,7 @@ import TextComponent from "../components/RichTextComponents/TextComponent";
 import ReactPlayer from "react-player";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Faqs from "../components/FaqsComponent/Faqs";
-import Button from "../components/PackageForm/Button";
+// import Button from "../components/PackageForm/Button";
 import Form from "../components/PackageComponents/Form";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
@@ -15,7 +15,7 @@ import PackageForm from "../components/PackageForm/PackageForm";
 
 const PackagePage = ({ pageContext, data }) => {
   const [host, setHost] = useState("");
-  const [isSticky, setIsSticky] = useState(false);
+  // const [isSticky, setIsSticky] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -39,27 +39,27 @@ const PackagePage = ({ pageContext, data }) => {
   );
   useEffect(() => {
     setHost(window.location.origin);
-    const handleScroll = () => {
-      const scrollY = window.scrollY; // Get current scroll position
+    // const handleScroll = () => {
+    //   const scrollY = window.scrollY; // Get current scroll position
 
-      // Define the scroll position at which the button should become sticky
-      const triggerPosition = 500; // Adjust this value based on your page layout
+    //   // Define the scroll position at which the button should become sticky
+    //   const triggerPosition = 500; // Adjust this value based on your page layout
 
-      // Set the sticky state based on scroll position
-      if (scrollY > triggerPosition) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
+    //   // Set the sticky state based on scroll position
+    //   if (scrollY > triggerPosition) {
+    //     setIsSticky(true);
+    //   } else {
+    //     setIsSticky(false);
+    //   }
+    // };
 
-    // Add the scroll event listener
-    window.addEventListener("scroll", handleScroll);
+    // // Add the scroll event listener
+    // window.addEventListener("scroll", handleScroll);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    // // Clean up the event listener when the component unmounts
+    // return () => {
+    //   window.removeEventListener("scroll", handleScroll);
+    // };
   }, [host]);
 
   useEffect(() => {

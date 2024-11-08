@@ -64,6 +64,9 @@ const PackageForm = ({
                       : "hover:border-gray-300"
                   }`}
                   onClick={() => handleAddOnToggle(addition)}
+                  onKeyDown={() => handleAddOnToggle(addition)}
+                  role="button"
+                  tabIndex={0}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3 ">
