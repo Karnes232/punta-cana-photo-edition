@@ -9,7 +9,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import TestimonialCard from "./TestimonialCard";
 import FirebaseTestimonialCard from "./FirebaseTestimonialCard";
 const FirebaseTestimonialsComponent = ({ packagePage }) => {
   const [testimonials, setTestimonials] = useState([]);

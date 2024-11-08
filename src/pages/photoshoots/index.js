@@ -10,7 +10,6 @@ import OurPackages from "../../components/PackageComponents/OurPackages";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import RichText from "../../components/RichTextComponents/RichText";
 import Faqs from "../../components/FaqsComponent/Faqs";
-import TestimonialsComponent from "../../components/TestimonialsComponent/TestimonialsComponent";
 import ContentBlockVideo from "../../components/ContentBlockComponent/ContentBlockVideo";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
@@ -41,9 +40,6 @@ const Index = ({ data }) => {
       />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
-      {/* <TestimonialsComponent
-        testimonials={data.allContentfulTestimonial.nodes}
-      /> */}
       <FirebaseTestimonialsComponent packagePage={"photoshoots"} />
       <QuoteComponent quote={data.allContentfulQuotes.nodes[1]} />
       <ContentBlockVideo content={data.allContentfulCardWithVideo.nodes[0]} />
