@@ -12,7 +12,7 @@ const SideBarInside = ({ footer, setToggled }) => {
             <Link
               to="/"
               className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={() => setToggled(false)}
+              onClick={footer ? undefined : () => setToggled(false)}
             />
           }
         >
@@ -24,7 +24,7 @@ const SideBarInside = ({ footer, setToggled }) => {
             <Link
               to="/photoshoots"
               className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={() => setToggled(false)}
+              onClick={footer ? undefined : () => setToggled(false)}
             />
           }
         >
@@ -35,7 +35,7 @@ const SideBarInside = ({ footer, setToggled }) => {
             <Link
               to="/event-planner"
               className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={() => setToggled(false)}
+              onClick={footer ? undefined : () => setToggled(false)}
             />
           }
         >
@@ -49,7 +49,7 @@ const SideBarInside = ({ footer, setToggled }) => {
             <Link
               to="/photo-gallery"
               className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={() => setToggled(false)}
+              onClick={footer ? undefined : () => setToggled(false)}
             />
           }
         >
@@ -62,7 +62,7 @@ const SideBarInside = ({ footer, setToggled }) => {
             <Link
               to="/contact"
               className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={() => setToggled(false)}
+              onClick={footer ? undefined : () => setToggled(false)}
             />
           }
         >

@@ -3,7 +3,6 @@ import ReactPlayer from "react-player";
 import TextComponent from "../TextComponent/TextComponent";
 
 const VideoCard = ({ card, index }) => {
-  console.log(card);
   let flexRow = "";
   if (index % 2 === 0) {
     flexRow = "lg:flex-row";

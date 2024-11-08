@@ -92,9 +92,17 @@ const FirebaseTestimonialCard = ({ testimonial }) => {
           <h3 className="text-2xl text-stone-800"> {testimonial.names}</h3>
           <p className="text-stone-600 leading-relaxed">
             <FaQuoteLeft className="text-xs inline-block align-top" />{" "}
-            {testimonial.testimonial}{" "}
+            {showMore
+              ? testimonial.testimonial
+              : `${testimonial.testimonial.substring(0, 140)}...`}{" "}
             <FaQuoteRight className="text-xs inline-block align-top" />
           </p>
+          <button
+            onClick={() => setShowMore(!showMore)}
+            className="text-sm text-stone-600"
+          >
+            {showMore ? "Show Less" : "Show More"}
+          </button>
         </div>
       </div>
     </>

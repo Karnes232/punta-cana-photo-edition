@@ -156,6 +156,7 @@ export const query = graphql`
         title
         link
         included
+        paragraph
         price
         image {
           title

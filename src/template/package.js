@@ -219,13 +219,7 @@ const PackagePage = ({ pageContext, data }) => {
           )}
         </div>
       </div>
-      {data.allContentfulPackagePageContent.nodes[0].faqs !== null ? (
-        <>
-          <Faqs faqs={data.allContentfulPackagePageContent.nodes[0].faqs} />
-        </>
-      ) : (
-        <></>
-      )}
+
       <PackageForm
         packageInformation={data.allContentfulPackagePageContent.nodes[0]}
         formData={formData}
@@ -235,6 +229,13 @@ const PackagePage = ({ pageContext, data }) => {
         setSelectedAddOns={setSelectedAddOns}
         handleAddOnToggle={handleAddOnToggle}
       />
+      {data.allContentfulPackagePageContent.nodes[0].faqs !== null ? (
+        <>
+          <Faqs faqs={data.allContentfulPackagePageContent.nodes[0].faqs} />
+        </>
+      ) : (
+        <></>
+      )}
     </Layout>
   );
 };

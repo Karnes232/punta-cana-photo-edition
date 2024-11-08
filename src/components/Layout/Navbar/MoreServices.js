@@ -12,7 +12,7 @@ const MoreServices = ({ footer, setToggled }) => {
           <Link
             to="/real-estate-photography"
             className="no-underline uppercase text-sm"
-            onClick={() => setToggled(false)}
+            onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >
@@ -23,7 +23,7 @@ const MoreServices = ({ footer, setToggled }) => {
           <Link
             to="/videos-and-comercial-photos"
             className="no-underline uppercase text-sm"
-            onClick={() => setToggled(false)}
+            onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >

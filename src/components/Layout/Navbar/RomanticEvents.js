@@ -12,7 +12,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
           <Link
             to="/proposal"
             className="no-underline uppercase text-sm"
-            onClick={() => setToggled(false)}
+            onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >
@@ -23,7 +23,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
           <Link
             to="/elopement-vow-renewal"
             className="no-underline uppercase text-sm"
-            onClick={() => setToggled(false)}
+            onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >
@@ -34,7 +34,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
           <Link
             to="/wedding"
             className="no-underline uppercase text-sm"
-            onClick={() => setToggled(false)}
+            onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >
@@ -45,7 +45,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
           <Link
             to="/puntacana-wedding-planner"
             className="no-underline uppercase text-sm"
-            onClick={() => setToggled(false)}
+            onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >
@@ -56,7 +56,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
           <Link
             to="/birthday-celebrations"
             className="no-underline uppercase text-sm"
-            onClick={() => setToggled(false)}
+            onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >
@@ -67,7 +67,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
           <Link
             to="/gender-reveal-and-baby-showers"
             className="no-underline uppercase text-sm"
-            onClick={() => setToggled(false)}
+            onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >
@@ -78,7 +78,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
           <Link
             to="/punta-cana-bachelor-party"
             className="no-underline uppercase text-sm"
-            onClick={() => setToggled(false)}
+            onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >

@@ -42,7 +42,10 @@ const Index = ({ data }) => {
       </div>
 
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph3} />
-      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      <ContentBlock
+        content={data.allContentfulCardWithImage.nodes[0]}
+        page={"gender-reveal-and-baby-showers"}
+      />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
       <FirebaseTestimonialsComponent
         packagePage={"gender-reveal-and-baby-showers"}

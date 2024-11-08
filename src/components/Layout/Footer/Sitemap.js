@@ -84,6 +84,11 @@ const Sitemap = () => {
           links={MoreServicesLinks}
         />
       </div>
+      <Link to="/photo-gallery" className="no-underline">
+        <button className={`navLinks`} translate="no">
+          Photo Gallery
+        </button>
+      </Link>
       <Link to="/contact" className="no-underline">
         <button className={`navLinks`} translate="no">
           Contact

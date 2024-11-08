@@ -43,18 +43,6 @@ const Button = ({
     return packageInformation.packages[0].price + addOnsTotal;
   };
 
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     // Handle form submission here
-  //     console.log({
-  //       ...formData,
-  //       totalPrice: calculateTotal(),
-  //       selectedAddOns: selectedAddOns.map((id) =>
-  //         additions.find((addition) => addition.id === id),
-  //       ),
-  //     });
-  //   };
-
   return (
     <>
       <div

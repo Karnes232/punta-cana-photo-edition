@@ -8,7 +8,7 @@ import Signature from "./Signature";
 const Footer = ({ generalInfo }) => {
   const instatag = generalInfo.instagram.split("/")[3];
   return (
-    <div className="flex flex-col h-screen lg:h-[50vh] xl:max-w-6xl xl:w-full xl:mx-auto justify-between py-10 mx-8 md:mx-10">
+    <div className="flex flex-col h-screen md:h-auto lg:h-[50vh] xl:max-w-6xl xl:w-full xl:mx-auto justify-between py-10 mx-8 md:mx-10">
       <div className="flex justify-center items-center">
         {generalInfo.instagram && (
           <a
