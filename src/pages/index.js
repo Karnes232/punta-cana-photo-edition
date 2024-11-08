@@ -6,6 +6,7 @@ import OurServices from "../components/ServicesComponents/OurServices";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
 import QuoteComponent from "../components/QuoteComponent/QuoteComponent";
 import ContentBlock from "../components/ContentBlockComponent/ContentBlock";
+import { schema } from "../data/schema";
 
 const IndexPage = ({ data }) => {
   return (
@@ -36,7 +37,7 @@ export const Head = ({ data }) => {
         keywords={keywords.join(", ")}
         image={`https:${images.file.url}`}
         url={siteUrl}
-        // schemaMarkup={schema}
+        schemaMarkup={schema}
       />
       <link rel="canonical" href={siteUrl} />
     </>
