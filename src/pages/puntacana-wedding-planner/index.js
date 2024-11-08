@@ -142,17 +142,5 @@ export const query = graphql`
         }
       }
     }
-    allContentfulTestimonial(filter: { page: { eq: "Wedding-Planner" } }) {
-      nodes {
-        names
-        testimonial {
-          testimonial
-        }
-        image {
-          title
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-        }
-      }
-    }
   }
 `;

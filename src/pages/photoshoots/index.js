@@ -174,18 +174,6 @@ export const query = graphql`
         }
       }
     }
-    allContentfulTestimonial(filter: { page: { eq: "Photo Shoots" } }) {
-      nodes {
-        names
-        testimonial {
-          testimonial
-        }
-        image {
-          title
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-        }
-      }
-    }
     allContentfulCardWithVideo(filter: { page: { eq: "Photo Shoots" } }) {
       nodes {
         title
