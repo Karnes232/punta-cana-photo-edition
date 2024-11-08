@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "../../config/firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 const TestimonialForm = () => {
+  const [host, setHost] = useState("");
+  const [error, setError] = useState(false);
   const [formData, setFormData] = useState({
     names: "",
     package: "",
     testimonial: "",
     photos: [],
   });
+
+  useEffect(() => {
+    setHost(window.location.origin); // };
+  }, [host]);
   const [fileError, setFileError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const MAX_FILES = 2;
@@ -88,7 +94,7 @@ const TestimonialForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
+    const redirectHref = `${host}/contact/thankyou/?name=${encodeURIComponent(formData.names)}`;
     try {
       // Upload photos
       const photoUrls = await Promise.all(
@@ -112,18 +118,16 @@ const TestimonialForm = () => {
       });
 
       // Reset form
-      setFormData({
+      await setFormData({
         names: "",
         package: "",
         testimonial: "",
         photos: [],
       });
-      alert("Thank you for sharing your experience!");
+      window.location.href = redirectHref;
     } catch (error) {
       console.error("Error submitting testimonial:", error);
-      alert(
-        "There was an error submitting your testimonial. Please try again.",
-      );
+      setError(true);
     }
     setIsSubmitting(false);
   };
@@ -232,6 +236,11 @@ const TestimonialForm = () => {
           >
             {isSubmitting ? "Submitting..." : "Submit Testimonial"}
           </button>
+          {error && (
+            <p className="text-red-500 text-sm mt-1">
+              There was an error submitting your testimonial. Please try again.
+            </p>
+          )}
         </form>
       </div>
     </>
