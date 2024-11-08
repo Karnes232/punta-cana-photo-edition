@@ -9,6 +9,7 @@ import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import TestimonialsComponent from "../../components/TestimonialsComponent/TestimonialsComponent";
+import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -42,8 +43,11 @@ const Index = ({ data }) => {
       <PhotoGrid photos={section2.images} page={section2.page} />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
-      <TestimonialsComponent
+      {/* <TestimonialsComponent
         testimonials={data.allContentfulTestimonial.nodes}
+      /> */}
+      <FirebaseTestimonialsComponent
+        packagePage={"puntacana-wedding-planner"}
       />
     </Layout>
   );
