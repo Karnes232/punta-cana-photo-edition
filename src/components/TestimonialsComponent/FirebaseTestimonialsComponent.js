@@ -80,7 +80,6 @@ const FirebaseTestimonialsComponent = ({ packagePage }) => {
           </Swiper>
         </div>
       </div>
-
     </>
   );
 };

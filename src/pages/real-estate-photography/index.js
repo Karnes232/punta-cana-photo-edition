@@ -7,6 +7,7 @@ import RichText from "../../components/RichTextComponents/RichText";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import Faqs from "../../components/FaqsComponent/Faqs";
+import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
 const Index = ({ data }) => {
   return (
@@ -23,6 +24,7 @@ const Index = ({ data }) => {
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
+      <FirebaseTestimonialsComponent packagePage={"real-estate-photography"} />
     </Layout>
   );
 };

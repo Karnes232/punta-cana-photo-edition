@@ -7,6 +7,7 @@ import RichText from "../../components/RichTextComponents/RichText";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import Faqs from "../../components/FaqsComponent/Faqs";
+import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
 const Index = ({ data }) => {
   return (
@@ -21,6 +22,9 @@ const Index = ({ data }) => {
         page={data.allContentfulPhotoGallery.nodes[0].page}
       />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
+      <FirebaseTestimonialsComponent
+        packagePage={"videos-and-comercial-photos"}
+      />
     </Layout>
   );
 };

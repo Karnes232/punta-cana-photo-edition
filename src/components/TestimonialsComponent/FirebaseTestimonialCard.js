@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 const FirebaseTestimonialCard = ({ testimonial }) => {
+  const [showMore, setShowMore] = useState(false);
   return (
     <>
       <div className="md:hidden flex flex-col space-y-4 pb-10">
@@ -19,7 +20,7 @@ const FirebaseTestimonialCard = ({ testimonial }) => {
             }}
             navigation={true}
             modules={[Autoplay, Navigation]}
-            className={`testimonialSwiper max-h-fit`}
+            className={`testimonialSwiper`}
           >
             {testimonial.photoUrls.map((photoUrl, index) => {
               return (
@@ -27,7 +28,7 @@ const FirebaseTestimonialCard = ({ testimonial }) => {
                   <img
                     src={photoUrl}
                     alt="testimonial"
-                    className="w-full h-full object-cover"
+                    className="w-full object-cover h-[16rem]"
                   />
                 </SwiperSlide>
               );
@@ -40,10 +41,18 @@ const FirebaseTestimonialCard = ({ testimonial }) => {
         <div className="flex flex-col items-center space-y-4">
           <h3 className="text-xl text-stone-800">{testimonial.names}</h3>
           <p className="text-center text-stone-600 leading-relaxed">
-            <FaQuoteLeft className="text-xs inline-block align-top" />{" "}
-            {testimonial.testimonial}{" "}
+            <FaQuoteLeft className="text-xs inline-block align-top " />{" "}
+            {showMore
+              ? testimonial.testimonial
+              : `${testimonial.testimonial.substring(0, 140)}...`}{" "}
             <FaQuoteRight className="text-xs inline-block align-top" />
           </p>
+          <button
+            onClick={() => setShowMore(!showMore)}
+            className="text-sm text-stone-600"
+          >
+            {showMore ? "Show Less" : "Show More"}
+          </button>
         </div>
       </div>
 

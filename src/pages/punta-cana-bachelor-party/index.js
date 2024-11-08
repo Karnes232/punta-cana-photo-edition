@@ -8,6 +8,7 @@ import OurPackages from "../../components/PackageComponents/OurPackages";
 import TextComponent from "../../components/TextComponent/TextComponent";
 import RichText from "../../components/RichTextComponents/RichText";
 import Faqs from "../../components/FaqsComponent/Faqs";
+import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
 const Index = ({ data }) => {
   return (
@@ -28,6 +29,9 @@ const Index = ({ data }) => {
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
+      <FirebaseTestimonialsComponent
+        packagePage={"punta-cana-bachelor-party"}
+      />
     </Layout>
   );
 };

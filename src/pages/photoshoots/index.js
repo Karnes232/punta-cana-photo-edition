@@ -44,9 +44,7 @@ const Index = ({ data }) => {
       {/* <TestimonialsComponent
         testimonials={data.allContentfulTestimonial.nodes}
       /> */}
-      <FirebaseTestimonialsComponent
-        packagePage={"photoshoots"}
-      />
+      <FirebaseTestimonialsComponent packagePage={"photoshoots"} />
       <QuoteComponent quote={data.allContentfulQuotes.nodes[1]} />
       <ContentBlockVideo content={data.allContentfulCardWithVideo.nodes[0]} />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />

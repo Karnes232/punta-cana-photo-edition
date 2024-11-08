@@ -17,16 +17,7 @@ const TestimonialsComponent = ({ testimonials }) => {
           spaceBetween={10}
           lazy={"true"}
           centeredSlides={true}
-          //   breakpoints={{
-          //     768: {
-          //       slidesPerView: 1.7,
-          //     },
-          //   }}
           loop={true}
-          //   autoplay={{
-          //     delay: 3000,
-          //     disableOnInteraction: false,
-          //   }}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           pagination={{

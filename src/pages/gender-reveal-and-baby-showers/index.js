@@ -10,6 +10,7 @@ import OurPackages from "../../components/PackageComponents/OurPackages";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import Faqs from "../../components/FaqsComponent/Faqs";
+import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
 const Index = ({ data }) => {
   return (
@@ -43,6 +44,9 @@ const Index = ({ data }) => {
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph3} />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
+      <FirebaseTestimonialsComponent
+        packagePage={"gender-reveal-and-baby-showers"}
+      />
     </Layout>
   );
 };

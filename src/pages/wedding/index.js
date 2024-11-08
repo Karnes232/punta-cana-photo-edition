@@ -12,6 +12,7 @@ import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import Faqs from "../../components/FaqsComponent/Faqs";
 import QuoteComponent from "../../components/QuoteComponent/QuoteComponent";
 import VideoCards from "../../components/VideoCardsComponent/VideoCards";
+import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -55,6 +56,7 @@ const Index = ({ data }) => {
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
       <QuoteComponent quote={data.allContentfulQuotes.nodes[0]} />
+      <FirebaseTestimonialsComponent packagePage={"wedding"} />
     </Layout>
   );
 };

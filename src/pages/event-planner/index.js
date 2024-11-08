@@ -11,6 +11,7 @@ import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import WorkedWith from "../../components/WorkedWithComponent/WorkedWith";
+import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
 const Index = ({ data }) => {
   return (
@@ -43,6 +44,7 @@ const Index = ({ data }) => {
       />
       <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      <FirebaseTestimonialsComponent packagePage={"event-planner"} />
     </Layout>
   );
 };

@@ -8,6 +8,7 @@ import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
+import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
 const Index = ({ data }) => {
   return (
@@ -27,6 +28,7 @@ const Index = ({ data }) => {
         images={data.allContentfulSwiperCarousel.nodes[0].images}
       />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      <FirebaseTestimonialsComponent packagePage={"proposal"} />
     </Layout>
   );
 };

@@ -9,6 +9,7 @@ import TextComponent from "../../components/TextComponent/TextComponent";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import Faqs from "../../components/FaqsComponent/Faqs";
+import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -48,6 +49,7 @@ const Index = ({ data }) => {
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <PhotoGrid photos={section3.images} page={section3.page} />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
+      <FirebaseTestimonialsComponent packagePage={"birthday-celebrations"} />
     </Layout>
   );
 };
