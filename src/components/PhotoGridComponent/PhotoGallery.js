@@ -3,7 +3,6 @@ import "react-photo-album/masonry.css";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import useWindowWidth from "../../hooks/useWindowWidth";
 import { MasonryPhotoAlbum } from "react-photo-album";
-
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
@@ -85,11 +84,19 @@ const PhotoGallery = ({ photos }) => {
   const windowWidth = useWindowWidth();
   return (
     <>
-      <div className="w-full mx-auto px-2 lg:max-w-6xl">
+      <div className="w-full my-5 mx-auto px-2 lg:max-w-6xl">
         <MasonryPhotoAlbum
           photos={photoList}
           render={{ image: renderGatsbyImage, window: windowWidth }}
           onClick={({ index }) => setIndex(index)}
+          columns={(containerWidth) => {
+            if (containerWidth < 320) return 1;
+            if (containerWidth < 780) return 2;
+            if (containerWidth < 1024) return 3;
+            return 4;
+          }}
+          spacing={8}
+          padding={0}
         />
       </div>
       <Lightbox

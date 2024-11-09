@@ -3,8 +3,9 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import TextComponent from "../../components/TextComponent/TextComponent";
-import PhotoGallery from "../../components/PhotoGridComponent/PhotoGallery";
+
 import Seo from "../../components/Layout/seo";
+import OurPreviousWork from "../../components/PhotoGalleryComponents/OurPreviousWork";
 
 const Index = ({ data }) => {
   return (
@@ -14,7 +15,9 @@ const Index = ({ data }) => {
         title={data.allContentfulPhotoGallery.nodes[0].title}
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-6xl"
       />
-      <PhotoGallery photos={data.allContentfulPhotoGallery.nodes[0].images} />
+      <OurPreviousWork
+        previousWork={data.allContentfulPreviousWorkPhotoGallery.nodes}
+      />
     </Layout>
   );
 };
@@ -76,6 +79,22 @@ export const query = graphql`
         }
         fullSize
         heroHeading
+      }
+    }
+    allContentfulPreviousWorkPhotoGallery {
+      nodes {
+        title
+        urlSlug
+        date(formatString: "DD MMMM, yyyy")
+        mainImage {
+          title
+          gatsbyImage(width: 4000, formats: WEBP, placeholder: BLURRED)
+        }
+        videoUrl
+        photoGallery {
+          title
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+        }
       }
     }
     allContentfulPhotoGallery(filter: { page: { eq: "Photo Gallery" } }) {

@@ -21,6 +21,10 @@ li {
   padding: 0;
 }
 
+.photogallery-video {
+  background-color: #99a0ac2f;
+}
+
 .packagePageVideo {
   height: 15rem;
 }

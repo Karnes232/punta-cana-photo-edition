@@ -13,6 +13,13 @@ exports.createPages = async ({ graphql, actions }) => {
           telephone
         }
       }
+      allContentfulPreviousWorkPhotoGallery {
+        nodes {
+          urlSlug
+          title
+          id
+        }
+      }
       allContentfulPackagePageContent {
         nodes {
           id
@@ -23,6 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   const packageTemplate = path.resolve(`src/template/package.js`);
+  const photoGalleryTemplate = path.resolve(`src/template/photogallery.js`);
 
   queryResults.data.allContentfulPackagePageContent.nodes.forEach((node) => {
     createPage({
@@ -35,4 +43,17 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+
+  queryResults.data.allContentfulPreviousWorkPhotoGallery.nodes.forEach(
+    (node) => {
+      createPage({
+        path: `/photo-gallery/${node.urlSlug?.trim()}`,
+        component: photoGalleryTemplate,
+        context: {
+          id: node.id,
+          layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
+        },
+      });
+    },
+  );
 };
