@@ -18,7 +18,7 @@ const TestimonialForm = () => {
   }, [host]);
   const [fileError, setFileError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const MAX_FILES = 2;
+  const MAX_FILES = 3;
 
   const packageOptions = [
     {
@@ -140,7 +140,7 @@ const TestimonialForm = () => {
         </h3>
         <form
           onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto p-6 space-y-4"
+          className="max-w-2xl mx-auto p-6 space-y-8"
         >
           <div>
             <label
