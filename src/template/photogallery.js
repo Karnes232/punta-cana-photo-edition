@@ -19,10 +19,10 @@ const photogallery = ({ pageContext, data }) => {
           ",",
         )}
       />
-      <div className="flex justify-between items-center mx-5 w-full lg:max-w-6xl lg:mx-auto">
+      <div className="flex justify-between items-center mx-5 lg:w-full lg:max-w-6xl lg:mx-auto mb-2">
         <TextComponent
           title={data.allContentfulPreviousWorkPhotoGallery.nodes[0].title}
-          className="tracking-wide text-lg mb-5 w-full text-left"
+          className="tracking-wide text-lg w-full text-left flex justify-center"
         />
         <CiPlay1 className="text-xl text-gray-400" />
       </div>
