@@ -10,7 +10,7 @@ import { FaPlay } from "react-icons/fa6";
 import ShareButton from "../components/PhotoGalleryComponents/ShareButton";
 const Photogallery = ({ pageContext, data }) => {
   const [index, setIndex] = useState(-1);
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/photogallery/${data.allContentfulPreviousWorkPhotoGallery.nodes[0].urlSlug}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}/photo-gallery/${data.allContentfulPreviousWorkPhotoGallery.nodes[0].urlSlug}`;
 
   return (
     <Layout generalInfo={pageContext.layout}>
@@ -85,10 +85,9 @@ export const Head = ({ pageContext, data }) => {
   if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
     newImageSrc = `http://localhost:8000${imageSrc[imageSrc.length - 1].imageSrc}`;
   } else {
-    newImageSrc = `${data.site.siteMetadata.siteUrl.substring(0, data.site.siteMetadata.siteUrl.length - 1)}${imageSrc[imageSrc.length - 1].imageSrc}`;
+    newImageSrc = `${data.site.siteMetadata.siteUrl}${imageSrc[imageSrc.length - 1].imageSrc}`;
   }
 
-  console.log(`${data.site.siteMetadata.siteUrl.substring(0, data.site.siteMetadata.siteUrl.length - 1)}${imageSrc[imageSrc.length - 1].imageSrc}`);
   return (
     <>
       <Seo
