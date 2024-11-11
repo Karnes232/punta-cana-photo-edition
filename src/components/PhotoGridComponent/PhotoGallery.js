@@ -67,8 +67,7 @@ function GastbyImageLightbox({ slide, offset, rect }) {
   );
 }
 
-const PhotoGallery = ({ photos }) => {
-  const [index, setIndex] = useState(-1);
+const PhotoGallery = ({ photos, index, setIndex }) => {
   let photoList = [];
   photos.forEach((image, key) => {
     const photoObject = {

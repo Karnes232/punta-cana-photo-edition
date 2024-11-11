@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../components/Layout/Layout";
 import HeroComponent from "../components/PhotoGalleryComponents/HeroComponent";
 import ReactPlayer from "react-player";
@@ -8,8 +8,9 @@ import { CiPlay1 } from "react-icons/ci";
 import PhotoGallery from "../components/PhotoGridComponent/PhotoGallery";
 import Seo from "../components/Layout/seo";
 
-const photogallery = ({ pageContext, data }) => {
+const Photogallery = ({ pageContext, data }) => {
   console.log(data.allContentfulPreviousWorkPhotoGallery.nodes[0]);
+  const [index, setIndex] = useState(-1);
   return (
     <Layout generalInfo={pageContext.layout}>
       <HeroComponent
@@ -19,12 +20,17 @@ const photogallery = ({ pageContext, data }) => {
           ",",
         )}
       />
-      <div className="flex justify-between items-center mx-5 lg:w-full lg:max-w-6xl lg:mx-auto mb-2">
-        <TextComponent
-          title={data.allContentfulPreviousWorkPhotoGallery.nodes[0].title}
-          className="tracking-wide text-lg w-full text-left flex justify-center"
-        />
-        <CiPlay1 className="text-xl text-gray-400" />
+      <div className="w-full sticky top-0 bg-white z-10 transition-all duration-300 shadow-sm ">
+        <div className="flex justify-between items-center mx-5 lg:w-full lg:max-w-6xl lg:mx-auto mb-2">
+          <TextComponent
+            title={data.allContentfulPreviousWorkPhotoGallery.nodes[0].title}
+            className="tracking-wide text-lg w-full text-left flex justify-center"
+          />
+          <CiPlay1
+            className="text-xl text-gray-400 cursor-pointer hover:text-gray-600 transition-colors duration-200"
+            onClick={() => setIndex(0)}
+          />
+        </div>
       </div>
       {data.allContentfulPreviousWorkPhotoGallery.nodes[0].videoUrl && (
         <div className="photogallery-video w-full">
@@ -45,6 +51,8 @@ const photogallery = ({ pageContext, data }) => {
         </div>
       )}
       <PhotoGallery
+        index={index}
+        setIndex={setIndex}
         photos={
           data.allContentfulPreviousWorkPhotoGallery.nodes[0].photoGallery
         }
@@ -53,7 +61,7 @@ const photogallery = ({ pageContext, data }) => {
   );
 };
 
-export default photogallery;
+export default Photogallery;
 
 export const Head = ({ pageContext, data }) => {
   const siteUrl = `${data.site.siteMetadata.siteUrl}/photogallery/${data.allContentfulPreviousWorkPhotoGallery.nodes[0].urlSlug}`;
