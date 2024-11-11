@@ -22,6 +22,7 @@ import {
 const ShareButton = ({ siteUrl }) => {
   const [isOpen, setIsOpen] = useState(false);
   const title = "Check out this photo gallery!";
+  console.log(siteUrl);
   return (
     <>
       <FaShare
