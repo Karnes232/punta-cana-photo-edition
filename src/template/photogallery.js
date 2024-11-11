@@ -85,10 +85,10 @@ export const Head = ({ pageContext, data }) => {
   if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
     newImageSrc = `http://localhost:8000${imageSrc[imageSrc.length - 1].imageSrc}`;
   } else {
-    newImageSrc = `${data.site.siteMetadata.siteUrl}${imageSrc[imageSrc.length - 1].imageSrc}`;
+    newImageSrc = `${data.site.siteMetadata.siteUrl.substring(0, data.site.siteMetadata.siteUrl.length - 1)}${imageSrc[imageSrc.length - 1].imageSrc}`;
   }
 
-  console.log(newImageSrc);
+  console.log(`${data.site.siteMetadata.siteUrl.substring(0, data.site.siteMetadata.siteUrl.length - 1)}${imageSrc[imageSrc.length - 1].imageSrc}`);
   return (
     <>
       <Seo
