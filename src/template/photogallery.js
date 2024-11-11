@@ -4,13 +4,14 @@ import Layout from "../components/Layout/Layout";
 import HeroComponent from "../components/PhotoGalleryComponents/HeroComponent";
 import ReactPlayer from "react-player";
 import TextComponent from "../components/TextComponent/TextComponent";
-import { CiPlay1 } from "react-icons/ci";
 import PhotoGallery from "../components/PhotoGridComponent/PhotoGallery";
 import Seo from "../components/Layout/seo";
-
+import { FaPlay } from "react-icons/fa6";
+import ShareButton from "../components/PhotoGalleryComponents/ShareButton";
 const Photogallery = ({ pageContext, data }) => {
-  console.log(data.allContentfulPreviousWorkPhotoGallery.nodes[0]);
   const [index, setIndex] = useState(-1);
+  const siteUrl = `${data.site.siteMetadata.siteUrl}/photogallery/${data.allContentfulPreviousWorkPhotoGallery.nodes[0].urlSlug}`;
+
   return (
     <Layout generalInfo={pageContext.layout}>
       <HeroComponent
@@ -21,15 +22,18 @@ const Photogallery = ({ pageContext, data }) => {
         )}
       />
       <div className="w-full sticky top-0 bg-white z-10 transition-all duration-300 shadow-sm ">
-        <div className="flex justify-between items-center mx-5 lg:w-full lg:max-w-6xl lg:mx-auto mb-2">
+        <div className="flex justify-between items-center mx-5 xl:w-full xl:max-w-6xl xl:mx-auto py-2">
           <TextComponent
             title={data.allContentfulPreviousWorkPhotoGallery.nodes[0].title}
-            className="tracking-wide text-lg w-full text-left flex justify-center"
+            className="tracking-wide text-xl xl:text-2xl w-full text-left flex justify-center"
           />
-          <CiPlay1
-            className="text-xl text-gray-400 cursor-pointer hover:text-gray-600 transition-colors duration-200"
-            onClick={() => setIndex(0)}
-          />
+          <div className="flex items-center gap-4">
+            <ShareButton siteUrl={siteUrl} />
+            <FaPlay
+              className="text-xl xl:text-2xl text-gray-400 cursor-pointer hover:text-gray-600 transition-colors duration-200"
+              onClick={() => setIndex(0)}
+            />
+          </div>
         </div>
       </div>
       {data.allContentfulPreviousWorkPhotoGallery.nodes[0].videoUrl && (
@@ -68,13 +72,30 @@ export const Head = ({ pageContext, data }) => {
   // const { seoTitle, seoDescription, seoImage, seoKeywords } =
   //   data.allContentfulPreviousWorkPhotoGallery.nodes[0];
   const { seoDescription, seoImage, seoKeywords } = "";
+
+  const imageSrc = [];
+
+  const image =
+    data?.allContentfulPreviousWorkPhotoGallery?.nodes[0].mainImage.gatsbyImage.images.fallback.srcSet?.split(
+      " ",
+    );
+  const imageObject = { imageSrc: image[0], imageWidth: image[1] };
+  imageSrc.push(imageObject);
+  let newImageSrc;
+  if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+    newImageSrc = `http://localhost:8000${imageSrc[imageSrc.length - 1].imageSrc}`;
+  } else {
+    newImageSrc = `${data.site.siteMetadata.siteUrl}${imageSrc[imageSrc.length - 1].imageSrc}`;
+  }
+
+  console.log(newImageSrc);
   return (
     <>
       <Seo
         title={data.allContentfulPreviousWorkPhotoGallery.nodes[0].title}
         description={seoDescription?.seoDescription}
         keywords={seoKeywords?.join(", ")}
-        image={`https:${seoImage?.file?.url}`}
+        image={newImageSrc}
         url={siteUrl}
       />
       <link rel="canonical" href={siteUrl} />

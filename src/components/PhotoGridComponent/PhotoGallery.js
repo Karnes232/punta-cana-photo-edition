@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "react-photo-album/masonry.css";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import useWindowWidth from "../../hooks/useWindowWidth";
@@ -83,7 +83,7 @@ const PhotoGallery = ({ photos, index, setIndex }) => {
   const windowWidth = useWindowWidth();
   return (
     <>
-      <div className="w-full my-5 mx-auto px-2 lg:max-w-6xl">
+      <div className="w-full my-5 mx-auto px-2 xl:px-0 lg:max-w-6xl">
         <MasonryPhotoAlbum
           photos={photoList}
           render={{ image: renderGatsbyImage, window: windowWidth }}

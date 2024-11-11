@@ -44,7 +44,7 @@ const HeroComponent = ({ title, date, image }) => {
           </div>
         </div>
       </div>
-      <div className="h-[90vh]"></div>
+      <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)]"></div>
     </>
   );
 };
