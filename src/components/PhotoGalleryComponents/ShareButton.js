@@ -19,7 +19,12 @@ import {
   WhatsappShareButton,
   XIcon,
 } from "react-share";
-import { EmailShare, FacebookShare, TwitterShare, WhatsappShare } from "react-share-lite";
+import {
+  EmailShare,
+  FacebookShare,
+  TwitterShare,
+  WhatsappShare,
+} from "react-share-lite";
 
 const ShareButton = ({ siteUrl }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,13 +79,27 @@ const ShareButton = ({ siteUrl }) => {
                   <div className="flex gap-4">
                     <FacebookShare
                       url={siteUrl}
-                      quote={title}
-                      hashtag={"#react-share-lite"}
+                      title={title} // Changed from quote to title
+                      description={title}
+                      hashtag="#photogallery"
                       borderRadius={50}
                     />
-                    <TwitterShare url={siteUrl} title={title}  borderRadius={50}/>
-                    <WhatsappShare url={siteUrl}  borderRadius={50}/>
-                    <EmailShare url={siteUrl} subject={title} body="body"  borderRadius={50}/>
+                    <TwitterShare
+                      url={siteUrl}
+                      title={title}
+                      borderRadius={50}
+                    />
+                    <WhatsappShare
+                      url={siteUrl}
+                      title={title}
+                      borderRadius={50}
+                    />
+                    <EmailShare
+                      url={siteUrl}
+                      subject={title}
+                      body={`${title}\n${siteUrl}`}
+                      borderRadius={50}
+                    />
                   </div>
                 </div>
               </div>
