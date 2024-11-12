@@ -80,7 +80,7 @@ const ShareButton = ({ siteUrl }) => {
                     <FacebookShare
                       url={siteUrl}
                       title={title} // Changed from quote to title
-                      description={title}
+                      description={"Explore our stunning collection of professional photographs capturing life's beautiful moments. Browse through carefully curated galleries featuring portraits, landscapes, events, and more. Each image tells a unique story and showcases artistic excellence in photography."}
                       hashtag="#photogallery"
                       borderRadius={50}
                     />

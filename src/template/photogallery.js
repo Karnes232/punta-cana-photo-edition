@@ -92,7 +92,7 @@ export const Head = ({ pageContext, data }) => {
     <>
       <Seo
         title={data.allContentfulPreviousWorkPhotoGallery.nodes[0].title}
-        description={seoDescription?.seoDescription}
+        description={"Explore our stunning collection of professional photographs capturing life's beautiful moments. Browse through carefully curated galleries featuring portraits, landscapes, events, and more. Each image tells a unique story and showcases artistic excellence in photography."}
         keywords={seoKeywords?.join(", ")}
         image={newImageSrc}
         url={siteUrl}
