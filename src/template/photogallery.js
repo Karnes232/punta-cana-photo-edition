@@ -87,7 +87,7 @@ export const Head = ({ pageContext, data }) => {
   } else {
     newImageSrc = `${data.site.siteMetadata.siteUrl}${imageSrc[imageSrc.length - 1].imageSrc}`;
   }
-
+  console.log(data.allContentfulPreviousWorkPhotoGallery.nodes[0].title);
   return (
     <>
       <Seo

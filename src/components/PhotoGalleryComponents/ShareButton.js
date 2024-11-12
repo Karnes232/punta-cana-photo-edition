@@ -19,6 +19,7 @@ import {
   WhatsappShareButton,
   XIcon,
 } from "react-share";
+<WhatsappShare url={url} />;
 const ShareButton = ({ siteUrl }) => {
   const [isOpen, setIsOpen] = useState(false);
   const title = "Check out this photo gallery!";
@@ -70,42 +71,14 @@ const ShareButton = ({ siteUrl }) => {
                     Share on social media
                   </h3>
                   <div className="flex gap-4">
-                    <FacebookShareButton
+                    <FacebookShare
                       url={siteUrl}
-                      className="Demo__some-network__share-button"
-                    >
-                      <FacebookIcon size={32} round />
-                    </FacebookShareButton>
-                    <TwitterShareButton
-                      url={siteUrl}
-                      title={title}
-                      className="Demo__some-network__share-button"
-                    >
-                      <XIcon size={32} round />
-                    </TwitterShareButton>
-                    <InstapaperShareButton
-                      url={siteUrl}
-                      title={title}
-                      className="Demo__some-network__share-button"
-                    >
-                      <InstapaperIcon size={32} round />
-                    </InstapaperShareButton>
-                    <WhatsappShareButton
-                      url={siteUrl}
-                      title={title}
-                      separator=":: "
-                      className="Demo__some-network__share-button"
-                    >
-                      <WhatsappIcon size={32} round />
-                    </WhatsappShareButton>
-                    <EmailShareButton
-                      url={siteUrl}
-                      subject={title}
-                      body="body"
-                      className="Demo__some-network__share-button"
-                    >
-                      <EmailIcon size={32} round />
-                    </EmailShareButton>
+                      quote={title}
+                      hashtag={"#react-share-lite"}
+                    />
+                    <TwitterShare url={siteUrl} title={title} />
+                    <WhatsappShare url={siteUrl} />
+                    <EmailShare url={siteUrl} subject={title} body="body" />
                   </div>
                 </div>
               </div>
