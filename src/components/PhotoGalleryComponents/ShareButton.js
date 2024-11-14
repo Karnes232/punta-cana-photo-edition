@@ -99,7 +99,7 @@ const ShareButton = ({ siteUrl }) => {
                     <EmailShare
                       url={siteUrl}
                       subject={title}
-                      body={`Explore our stunning collection of professional photographs capturing life's beautiful moments. Browse through carefully curated galleries featuring portraits, landscapes, events, and more. Each image tells a unique story and showcases artistic excellence in photography.`}
+                      body={`Explore our stunning collection of professional photographs capturing life's beautiful moments. Browse through carefully curated galleries featuring portraits, landscapes, events, and more. Each image tells a unique story and showcases artistic excellence in photography.\n\n`}
                       borderRadius={50}
                     />
                   </div>
