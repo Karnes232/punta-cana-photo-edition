@@ -8,18 +8,6 @@ import {
 } from "@headlessui/react";
 import { IoClose } from "react-icons/io5";
 import {
-  EmailIcon,
-  EmailShareButton,
-  FacebookIcon,
-  FacebookShareButton,
-  InstapaperIcon,
-  InstapaperShareButton,
-  TwitterShareButton,
-  WhatsappIcon,
-  WhatsappShareButton,
-  XIcon,
-} from "react-share";
-import {
   EmailShare,
   FacebookShare,
   TwitterShare,
@@ -29,7 +17,6 @@ import {
 const ShareButton = ({ siteUrl }) => {
   const [isOpen, setIsOpen] = useState(false);
   const title = "Check out this photo gallery!";
-  console.log(siteUrl);
   return (
     <>
       <FaShare
