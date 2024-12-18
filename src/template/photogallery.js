@@ -71,7 +71,7 @@ export const Head = ({ pageContext, data }) => {
   const siteUrl = `${data.site.siteMetadata.siteUrl}/photo-gallery/${data.allContentfulPreviousWorkPhotoGallery.nodes[0].urlSlug}`;
   // const { seoTitle, seoDescription, seoImage, seoKeywords } =
   //   data.allContentfulPreviousWorkPhotoGallery.nodes[0];
-  const { seoDescription, seoImage, seoKeywords } = "";
+  const { seoKeywords } = "";
 
   const imageSrc = [];
 

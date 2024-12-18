@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import RomanticEvents from "./RomanticEvents";
-import MoreServices from "./MoreServices";
+// import MoreServices from "./MoreServices";
 const SideBarInside = ({ footer, setToggled }) => {
   return (
     <>
@@ -19,7 +19,7 @@ const SideBarInside = ({ footer, setToggled }) => {
           <p className={footer ? "hamburgerSmall" : "hamburger"}>Home</p>
         </MenuItem>
         <RomanticEvents footer={footer} setToggled={setToggled} />
-        <MenuItem
+        {/* <MenuItem
           component={
             <Link
               to="/photoshoots"
@@ -29,7 +29,7 @@ const SideBarInside = ({ footer, setToggled }) => {
           }
         >
           <p className={footer ? "hamburgerSmall" : "hamburger"}>Photoshoots</p>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem
           component={
             <Link
@@ -43,7 +43,7 @@ const SideBarInside = ({ footer, setToggled }) => {
             Corporate events
           </p>
         </MenuItem>
-        <MoreServices footer={footer} setToggled={setToggled} />
+        {/* <MoreServices footer={footer} setToggled={setToggled} /> */}
         <MenuItem
           component={
             <Link

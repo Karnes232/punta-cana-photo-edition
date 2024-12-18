@@ -13,10 +13,10 @@ const Sitemap = () => {
       name: "Elopement & Vow renewal",
       urlLink: "/elopement-vow-renewal",
     },
-    {
-      name: "Punta cana wedding photographer",
-      urlLink: "/wedding",
-    },
+    // {
+    //   name: "Punta cana wedding photographer",
+    //   urlLink: "/wedding",
+    // },
     {
       name: "Wedding planning",
       urlLink: "/puntacana-wedding-planner",
@@ -35,16 +35,16 @@ const Sitemap = () => {
     },
   ];
 
-  const MoreServicesLinks = [
-    {
-      name: "Real Estate Photography",
-      urlLink: "/real-estate-photography",
-    },
-    {
-      name: "Videos and comercial photos",
-      urlLink: "/videos-and-comercial-photos",
-    },
-  ];
+  // const MoreServicesLinks = [
+  //   {
+  //     name: "Real Estate Photography",
+  //     urlLink: "/real-estate-photography",
+  //   },
+  //   {
+  //     name: "Videos and comercial photos",
+  //     urlLink: "/videos-and-comercial-photos",
+  //   },
+  // ];
 
   return (
     <div className="flex flex-row space-x-4">
@@ -62,17 +62,17 @@ const Sitemap = () => {
           links={RomanticEventLinks}
         />
       </div>
-      <Link to="/photoshoots" className="no-underline">
+      {/* <Link to="/photoshoots" className="no-underline">
         <button className={`navLinks`} translate="no">
           Photoshoots
         </button>
-      </Link>
+      </Link> */}
       <Link to="/event-planner" className="no-underline">
         <button className={`navLinks`} translate="no">
           Corporate events
         </button>
       </Link>
-      <div className="2xl:hidden">
+      {/* <div className="2xl:hidden">
         <PopOverComponent
           title="More photo-video services"
           links={MoreServicesLinks}
@@ -83,7 +83,7 @@ const Sitemap = () => {
           title="More photo-video services"
           links={MoreServicesLinks}
         />
-      </div>
+      </div> */}
       <Link to="/photo-gallery" className="no-underline">
         <button className={`navLinks`} translate="no">
           Photo Gallery

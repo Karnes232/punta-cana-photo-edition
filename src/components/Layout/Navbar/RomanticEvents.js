@@ -29,7 +29,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
       >
         <p>Elopement & Vow renewal</p>
       </MenuItem>
-      <MenuItem
+      {/* <MenuItem
         component={
           <Link
             to="/wedding"
@@ -39,7 +39,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
         }
       >
         <p>Punta Cana wedding photographer</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem
         component={
           <Link

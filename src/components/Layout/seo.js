@@ -6,7 +6,7 @@
  */
 
 import * as React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+// import { useStaticQuery, graphql } from "gatsby";
 
 function Seo({
   description,
@@ -17,17 +17,17 @@ function Seo({
   children,
   schemaMarkup,
 }) {
-  const { site } = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          siteUrl
-        }
-      }
-    }
-  `);
-  const defaultTitle = site.siteMetadata?.title;
+  // const { site } = useStaticQuery(graphql`
+  //   query {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //         siteUrl
+  //       }
+  //     }
+  //   }
+  // `);
+  // const defaultTitle = site.siteMetadata?.title;
 
   return (
     <>
