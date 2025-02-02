@@ -44,6 +44,7 @@ function Seo({
       <meta property="twitter:image" content={image} />
       <meta name="twitter:description" content={description} />
       <meta name="keywords" content={keywords} />
+      <meta name="google-site-verification" content="dWi4LT0-LdddllQAsV3pCZeOOvRmN0C_h2KN6aurqWk" />
       {children}
       {schemaMarkup && (
         <script type="application/ld+json">
