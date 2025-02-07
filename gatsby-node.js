@@ -73,7 +73,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `);
 
     const faviconUrl = data?.allContentfulGeneralLayout?.nodes[0]?.favIcon?.url;
-    console.log(faviconUrl);
     if (faviconUrl) {
       const response = await fetch(`${faviconUrl}`);
       const buffer = await response.buffer();

@@ -4,7 +4,6 @@ import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
 
 const SessionCard = ({ session }) => {
-  console.log(session);
   const image = getImage(session.mainImage.gatsbyImage);
   return (
     <>
