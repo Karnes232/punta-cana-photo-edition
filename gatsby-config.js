@@ -27,7 +27,7 @@ module.exports = {
         name: "Punta-Cana-Photo-Edition",
         short_name: `PC-Photo-Edition`,
         start_url: `/`,
-        icon: "src/images/logo.png",
+        icon: "src/images/favicon.png",
       },
     },
     {

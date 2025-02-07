@@ -1,6 +1,8 @@
 const path = require("path");
+const fetch = require("node-fetch");
+const fs = require("fs");
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const queryResults = await graphql(`
     query MyQuery {
@@ -56,4 +58,35 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     },
   );
+
+  try {
+    const { data } = await graphql(`
+      query {
+        allContentfulGeneralLayout {
+          nodes {
+            favIcon {
+              url
+            }
+          }
+        }
+      }
+    `);
+
+    const faviconUrl = data?.allContentfulGeneralLayout?.nodes[0]?.favIcon?.url;
+    console.log(faviconUrl);
+    if (faviconUrl) {
+      const response = await fetch(`${faviconUrl}`);
+      const buffer = await response.buffer();
+
+      const dir = "src/images";
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+
+      fs.writeFileSync(path.join(dir, "favicon.png"), buffer);
+      reporter.success("Successfully downloaded favicon from Contentful");
+    }
+  } catch (error) {
+    reporter.error("Error downloading favicon:", error);
+  }
 };
