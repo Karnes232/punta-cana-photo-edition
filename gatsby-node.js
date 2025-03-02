@@ -28,11 +28,38 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           urlSlug
         }
       }
+      allContentfulBlogPost {
+        nodes {
+          slug
+          id
+          title
+          description
+          category
+          backgroundImage {
+            gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+            url
+          }
+        }
+      }
     }
   `);
 
   const packageTemplate = path.resolve(`src/template/package.js`);
   const photoGalleryTemplate = path.resolve(`src/template/photogallery.js`);
+  const blogTemplate = path.resolve(`src/template/blog.js`);
+
+  queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
+    createPage({
+      path: `/blog/${node.slug?.trim()}`,
+      component: blogTemplate,
+      context: {
+        id: node.id,
+        blog: node,
+        layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
+        blogList: queryResults.data.allContentfulBlogPost.nodes,
+      },
+    });
+  });
 
   queryResults.data.allContentfulPackagePageContent.nodes.forEach((node) => {
     createPage({
