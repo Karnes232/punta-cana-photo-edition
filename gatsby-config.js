@@ -5,7 +5,7 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `Punta Cana Photo Edition`,
-    siteUrl: `https://punta-cana-photo.netlify.app/`,
+    siteUrl: `http://sertuinevents.com/`,
   },
   plugins: [
     {
