@@ -5,7 +5,6 @@ import { graphql } from "gatsby";
 import BlogBody from "../components/BlogComponents/BlogBody";
 
 const blog = ({ pageContext, data }) => {
-  console.log(data);
   return (
     <Layout generalInfo={pageContext.layout}>
       <HeroImage
