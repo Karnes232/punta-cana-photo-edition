@@ -6,7 +6,6 @@ const BlogCategory = ({ title, gImage, url }) => {
   const windowWidth = useWindowWidth();
   let image = gImage?.gatsbyImage?.images?.fallback?.srcSet.split(",");
   const imageSrc = [];
-  console.log(gImage);
   image?.forEach((element) => {
     const image = element.split(" ");
     const imageObject = { imageSrc: image[0], imageWidth: image[1] };

@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
 import { graphql } from "gatsby";
-import HeroComponent from "../components/BlogComponents/HeroComponent";
 import HeroBlogCategoryComponent from "../components/BlogComponents/HeroBlogCategoryComponent";
 import BlogBody from "../components/BlogComponents/BlogBody";
+import PostList from "../components/BlogComponents/PostList";
 
 const blogCategory = ({ pageContext, data }) => {
-  // console.log(data)
+  //   console.log(data.allContentfulBlogCategories.nodes[0].blog_post)
   // console.log(pageContext)
   return (
     <Layout generalInfo={pageContext.layout}>
@@ -18,6 +18,7 @@ const blogCategory = ({ pageContext, data }) => {
       <BlogBody
         context={data?.allContentfulBlogCategories?.nodes[0].paragraph}
       />
+      <PostList list={data.allContentfulBlogCategories.nodes[0].blog_post} />
     </Layout>
   );
 };
@@ -39,6 +40,15 @@ export const query = graphql`
         }
         paragraph {
           raw
+        }
+        blog_post {
+          id
+          title
+          slug
+          description
+          backgroundImage {
+            gatsbyImage(width: 400, placeholder: BLURRED, formats: WEBP)
+          }
         }
       }
     }

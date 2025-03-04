@@ -45,6 +45,9 @@ export const query = graphql`
             gatsbyImage(placeholder: BLURRED, formats: WEBP, width: 2000)
           }
         }
+        blogCategory {
+          blogCategory
+        }
       }
     }
   }

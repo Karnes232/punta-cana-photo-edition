@@ -1,9 +1,7 @@
 import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 const HeroBlogCategoryComponent = ({ image, title }) => {
-  console.log(image.title);
   const bgImage = getImage(image.gatsbyImage);
-  console.log(bgImage);
   return (
     <>
       {" "}
