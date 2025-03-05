@@ -14,7 +14,6 @@ const Index = ({ data }) => {
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
       <div className="flex flex-col xl:mt-5 md:flex-row md:flex-wrap md:justify-evenly  max-w-5xl xl:max-w-6xl mx-auto md:gap-5">
         {categories.map((category, index) => {
-          console.log(category);
           return (
             <BlogCategory
               key={index}

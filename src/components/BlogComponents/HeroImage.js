@@ -42,7 +42,6 @@ const HeroImage = ({ backgroundImages }) => {
     };
   }, []);
 
-  console.log(gridHeight);
   return (
     <>
       <div className="absolute top-0 w-full h-[55vh] xl:h-[65vh]">

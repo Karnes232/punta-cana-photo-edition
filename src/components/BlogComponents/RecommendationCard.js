@@ -3,8 +3,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
 const RecommendationCard = ({ blog }) => {
-  console.log(blog);
   const image = getImage(blog.backgroundImage[0].gatsbyImage);
+
   return (
     <>
       <Link to={`/blog/${blog.slug?.trim()}`}>
@@ -12,9 +12,9 @@ const RecommendationCard = ({ blog }) => {
           <GatsbyImage
             image={image}
             alt={blog.title}
-            className="w-full object-cover object-top h-40"
-            imgClassName="object-cover object-top"
-            objectPosition="top"
+            className="w-full object-cover h-40"
+            imgClassName="object-cover"
+            objectPosition="center"
           />
           <div className="px-6 py-4">
             <div className="font-bold h-8 text-base mb-2 flex justify-between">
