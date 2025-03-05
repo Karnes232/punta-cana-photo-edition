@@ -34,7 +34,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id
           title
           description
-          category
           backgroundImage {
             gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
             url

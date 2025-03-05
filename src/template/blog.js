@@ -27,7 +27,6 @@ export const query = graphql`
         tags
         publishedDate(formatString: "MMMM do, YYYY")
         description
-        category
         backgroundImage {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
