@@ -38,6 +38,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
             url
           }
+          blogCategory {
+            blogCategory
+          }
         }
       }
       allContentfulBlogCategories {
@@ -73,9 +76,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: blogTemplate,
       context: {
         id: node.id,
+        category: node.blogCategory.blogCategory,
         blog: node,
         layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
-        blogList: queryResults.data.allContentfulBlogPost.nodes,
+        // blogList: queryResults.data.allContentfulBlogPost.nodes,
       },
     });
   });

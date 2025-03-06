@@ -3,6 +3,7 @@ import Layout from "../components/Layout/Layout";
 import HeroImage from "../components/BlogComponents/HeroImage";
 import { graphql } from "gatsby";
 import BlogBody from "../components/BlogComponents/BlogBody";
+import Recommendations from "../components/BlogComponents/Recommendations";
 
 const blog = ({ pageContext, data }) => {
   return (
@@ -11,6 +12,10 @@ const blog = ({ pageContext, data }) => {
         backgroundImages={data?.allContentfulBlogPost?.nodes[0].backgroundImage}
       />
       <BlogBody context={data?.allContentfulBlogPost?.nodes[0].body} />
+      <Recommendations
+        list={data.relatedPosts.nodes}
+        title={"You Might Also Like"}
+      />
     </Layout>
   );
 };
@@ -18,7 +23,7 @@ const blog = ({ pageContext, data }) => {
 export default blog;
 
 export const query = graphql`
-  query MyQuery($id: String) {
+  query MyQuery($id: String, $category: String) {
     allContentfulBlogPost(filter: { id: { eq: $id } }) {
       nodes {
         slug
@@ -46,6 +51,25 @@ export const query = graphql`
         }
         blogCategory {
           blogCategory
+        }
+      }
+    }
+    relatedPosts: allContentfulBlogPost(
+      filter: {
+        blogCategory: { blogCategory: { eq: $category } }
+        id: { ne: $id }
+      }
+      sort: { publishedDate: DESC }
+    ) {
+      nodes {
+        slug
+        id
+        title
+        publishedDate(formatString: "MMMM do, YYYY")
+        description
+        backgroundImage {
+          title
+          gatsbyImage(width: 1000, placeholder: BLURRED, formats: WEBP)
         }
       }
     }
