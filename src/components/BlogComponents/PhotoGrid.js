@@ -13,10 +13,10 @@ const PhotoGrid = ({ tourPhotos }) => {
   });
   photoList = photoList.sort(() => Math.random() - 0.5);
   return (
-    <div className="min-w-[1080px] w-max">
+    <div className="min-w-[1080px] w-max ">
       <PhotoAlbum
         layout="rows"
-        photos={photoList.slice(0, 6)}
+        photos={photoList.slice(0, 4)}
         containerWidth={1152}
         columns={3}
         padding={0}

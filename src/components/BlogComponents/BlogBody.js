@@ -69,12 +69,14 @@ const BlogBody = ({ context }) => {
         <TextComponent paragraph={children} pClassName="mb-4" />
       ),
       [BLOCKS.UL_LIST]: (node, children) => (
-        <ul className="list-disc ml-5">{children}</ul>
+        <ul className="list-disc ml-5 blog">{children}</ul>
       ),
       [BLOCKS.OL_LIST]: (node, children) => (
-        <ol className="list-decimal ml-5">{children}</ol>
+        <ol className="ml-5 list-none blog">{children}</ol>
       ),
-      [BLOCKS.LIST_ITEM]: (node, children) => <li>{children}</li>,
+      [BLOCKS.LIST_ITEM]: (node, children) => (
+        <li className="flex items-center">{children}</li>
+      ),
       [BLOCKS.QUOTE]: (node, children) => (
         <div className="my-4 border-l-4 border-gray-300 bg-gray-50 p-4 dark:border-gray-500 dark:bg-gray-800">
           <svg

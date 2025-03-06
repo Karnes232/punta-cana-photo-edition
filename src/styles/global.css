@@ -85,3 +85,53 @@ img {
   -ms-user-select: none;
   user-select: none;
 }
+
+ul.blog {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
+ul.blog li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+ul.blog li p {
+  margin-bottom: 0rem !important;
+}
+
+ul.blog li::before {
+  content: "•"; /* Custom bullet */
+  display: inline-block;
+  vertical-align: middle;
+  min-width: 1.5em;
+  /* margin-right: 0.5em; */
+  text-align: right;
+}
+
+/* For ordered lists with class blog */
+ol.blog {
+  list-style: none; /* Remove default numbers */
+  counter-reset: item; /* Set up a counter */
+  padding-left: 0;
+}
+
+ol.blog li {
+  display: flex;
+  align-items: center;
+  counter-increment: item; /* Increment the counter for each list item */
+  margin-bottom: 0.5rem;
+}
+
+ol.blog li p {
+  margin-bottom: 0rem !important;
+}
+
+ol.blog li::before {
+  content: counter(item) "."; /* Add the number and a period */
+  display: inline-block;
+  /* margin-right: 0.5em; */
+  min-width: 1.5em; /* Makes sure all numbers take up the same width */
+  text-align: right; /* Right-aligns the numbers for better alignment */
+}
