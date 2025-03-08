@@ -4,6 +4,7 @@ import HeroImage from "../components/BlogComponents/HeroImage";
 import { graphql } from "gatsby";
 import BlogBody from "../components/BlogComponents/BlogBody";
 import Recommendations from "../components/BlogComponents/Recommendations";
+import FacebookEmbedComponent from "../components/BlogComponents/SocialMediaComponents/FacebookEmbedComponent";
 
 const blog = ({ pageContext, data }) => {
   return (
@@ -12,7 +13,7 @@ const blog = ({ pageContext, data }) => {
         backgroundImages={data?.allContentfulBlogPost?.nodes[0].backgroundImage}
       />
       <BlogBody context={data?.allContentfulBlogPost?.nodes[0].body} />
-
+<FacebookEmbedComponent postUrl={'/test'} caption={'caption'}/>
       <Recommendations
         list={data.relatedPosts.nodes}
         title={"You Might Also Like"}

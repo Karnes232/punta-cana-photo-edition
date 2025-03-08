@@ -23,7 +23,7 @@ function convertFacebookUrl(fbUrl) {
 }
 
 const FacebookEmbedComponent = ({ postUrl, caption }) => {
-  const convertedUrl = convertFacebookUrl(postUrl);
+  // const convertedUrl = convertFacebookUrl(postUrl);
 
   return (
     <>
