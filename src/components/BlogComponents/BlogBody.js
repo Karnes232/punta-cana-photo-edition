@@ -1,20 +1,21 @@
 import React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { monokai } from "react-syntax-highlighter/dist/esm/styles/hljs";
+// import SyntaxHighlighter from "react-syntax-highlighter";
+// import { monokai } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import TextComponent from "./TextComponent";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import SocialMediaEmbed from "./SocialMediaComponents/SocialMediaEmbed";
 const BlogBody = ({ context }) => {
   const options = {
     renderMark: {
-      [MARKS.CODE]: (text) => {
-        return (
-          <SyntaxHighlighter language="javascript" style={monokai}>
-            {text}
-          </SyntaxHighlighter>
-        );
-      },
+      // [MARKS.CODE]: (text) => {
+      //   return (
+      //     <SyntaxHighlighter language="javascript" style={monokai}>
+      //       {text}
+      //     </SyntaxHighlighter>
+      //   );
+      // },
       [MARKS.BOLD]: (text) => {
         return <span className="font-bold">{text}</span>;
       },
@@ -91,12 +92,44 @@ const BlogBody = ({ context }) => {
           {children}
         </div>
       ),
+      [BLOCKS.EMBEDDED_ENTRY]: (node) => {
+        if (!node?.data?.target) {
+          console.warn("No target data found in embedded entry");
+          return null;
+        }
+
+        // Handle Link type by finding the actual entry in references
+        if (node.data.target.sys.type === "Link") {
+          const linkedEntry = context.references.find(
+            (reference) => reference.contentful_id === node.data.target.sys.id,
+          );
+
+          if (!linkedEntry) {
+            console.warn("Linked entry not found in references");
+            return null;
+          }
+
+          return (
+            <SocialMediaEmbed
+              embed={{
+                platform: linkedEntry.platform,
+                embedId: linkedEntry.embedId,
+                caption: linkedEntry.caption,
+              }}
+            />
+          );
+        }
+
+        console.warn("Unhandled embedded entry type");
+        return null;
+      },
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         let image = null;
         context.references.map((imageData) => {
           if (imageData.contentful_id === node.data.target.sys.id) {
             image = imageData;
           }
+          return image;
         });
         const imageGatsby = getImage(image.gatsbyImage);
         return (
@@ -104,7 +137,7 @@ const BlogBody = ({ context }) => {
             <GatsbyImage
               image={imageGatsby}
               alt={image.title}
-              className="rounded-lg w-[20rem] mb-4 lg:w-[30rem]"
+              className="rounded-lg w-[20rem] mb-4 lg:w-[30rem] h-[25rem]"
             />
           </div>
         );

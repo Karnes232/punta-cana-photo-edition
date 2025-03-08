@@ -12,6 +12,7 @@ const blog = ({ pageContext, data }) => {
         backgroundImages={data?.allContentfulBlogPost?.nodes[0].backgroundImage}
       />
       <BlogBody context={data?.allContentfulBlogPost?.nodes[0].body} />
+
       <Recommendations
         list={data.relatedPosts.nodes}
         title={"You Might Also Like"}
@@ -40,13 +41,31 @@ export const query = graphql`
         body {
           raw
           references {
-            contentful_id
-            __typename
-            title
-            file {
-              url
+            ... on ContentfulAsset {
+              id
+              contentful_id
+              __typename
+              title
+              file {
+                url
+              }
+              gatsbyImage(placeholder: BLURRED, formats: WEBP, width: 2000)
             }
-            gatsbyImage(placeholder: BLURRED, formats: WEBP, width: 2000)
+            ... on ContentfulSocialMediaEmbed {
+              id
+              contentful_id
+              platform
+              title
+              embedId
+              caption
+              sys {
+                contentType {
+                  sys {
+                    id
+                  }
+                }
+              }
+            }
           }
         }
         blogCategory {

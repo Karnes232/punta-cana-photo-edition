@@ -76,6 +76,14 @@ img {
   touch-action: none;
 }
 
+.embed-caption {
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-style: italic;
+  color: #666;
+  text-align: center;
+}
+
 /* Prevent text selection around images */
 .image-container {
   -webkit-touch-callout: none;
