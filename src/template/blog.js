@@ -13,7 +13,7 @@ const blog = ({ pageContext, data }) => {
         backgroundImages={data?.allContentfulBlogPost?.nodes[0].backgroundImage}
       />
       <BlogBody context={data?.allContentfulBlogPost?.nodes[0].body} />
-<FacebookEmbedComponent postUrl={'/test'} caption={'caption'}/>
+
       <Recommendations
         list={data.relatedPosts.nodes}
         title={"You Might Also Like"}
