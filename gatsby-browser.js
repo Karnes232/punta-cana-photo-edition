@@ -22,3 +22,13 @@ export const shouldUpdateScroll = ({
 
   return false;
 };
+
+export const onInitialClientRender = () => {
+  if (!window.FB) {
+    const script = document.createElement("script");
+    script.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }
+};
