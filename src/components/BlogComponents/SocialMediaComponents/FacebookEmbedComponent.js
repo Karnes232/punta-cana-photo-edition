@@ -23,12 +23,12 @@ function convertFacebookUrl(fbUrl) {
 }
 
 const FacebookEmbedComponent = ({ postUrl, caption }) => {
-  // const convertedUrl = convertFacebookUrl(postUrl);
+  const convertedUrl = convertFacebookUrl(postUrl);
 
   return (
     <>
       <div className="flex flex-col max-w-md">
-        <FacebookEmbed url={'https://www.facebook.com/GrandBayWhales/posts/534346908803449'} width={"350px"} />
+        <FacebookEmbed url={convertedUrl} width={"350px"} />
         {caption && <p className="embed-caption">{caption}</p>}
       </div>
     </>
