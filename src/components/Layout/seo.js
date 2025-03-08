@@ -33,6 +33,7 @@ function Seo({
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta key="fb-app-id" property="fb:app_id" content="632127816093742" />,
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
