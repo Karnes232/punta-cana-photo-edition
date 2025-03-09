@@ -138,4 +138,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   } catch (error) {
     reporter.error("Error downloading favicon:", error);
   }
+
+  const localeMapping = {
+    "en-US": { path: "", urlCode: "en-US" },
+    es: { path: "es", urlCode: "es" },
+  };
+
+  Object.entries(localeMapping).forEach(
+    ([contentfulCode, { path: urlPath, urlCode }]) => {
+      // Create index page
+      createPage({
+        path: urlPath === "" ? "/" : `/${urlPath}`,
+        component: path.resolve("./src/pages/index.js"),
+        context: {
+          language: contentfulCode, // Pass the Contentful locale code to queries
+          urlLanguage: urlCode, // Pass the URL language code if needed
+        },
+      });
+
+      // You can add code here to create other pages (blog, about, etc.)
+      // following the same pattern
+    },
+  );
 };

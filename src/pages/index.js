@@ -7,7 +7,7 @@ import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
 import QuoteComponent from "../components/QuoteComponent/QuoteComponent";
 import ContentBlock from "../components/ContentBlockComponent/ContentBlock";
 import { schema } from "../data/schema";
-
+import { useI18next } from "gatsby-plugin-react-i18next";
 const IndexPage = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
@@ -25,9 +25,10 @@ const IndexPage = ({ data }) => {
 export default IndexPage;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = data.site.siteMetadata.siteUrl;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : ""}`;
 
   return (
     <>
@@ -38,6 +39,7 @@ export const Head = ({ data }) => {
         image={`https:${images.file.url}`}
         url={siteUrl}
         schemaMarkup={schema}
+        language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -45,7 +47,7 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query IndexPageQuery($language: String!) {
     site {
       siteMetadata {
         siteUrl
@@ -74,7 +76,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPageContent(filter: { page: { eq: "Index" } }) {
+    allContentfulPageContent(
+      filter: { page: { eq: "Index" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         heroImageList {
@@ -87,7 +91,7 @@ export const query = graphql`
         sectionTitle
       }
     }
-    allContentfulServices {
+    allContentfulServices(filter: { node_locale: { eq: $language } }) {
       nodes {
         typeOfService
         cardDescription
@@ -100,14 +104,18 @@ export const query = graphql`
         }
       }
     }
-    allContentfulQuotes(filter: { page: { eq: "Index" } }) {
+    allContentfulQuotes(
+      filter: { page: { eq: "Index" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         author
         quote
       }
     }
-    allContentfulCardWithImage(filter: { page: { eq: "Index" } }) {
+    allContentfulCardWithImage(
+      filter: { page: { eq: "Index" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         title

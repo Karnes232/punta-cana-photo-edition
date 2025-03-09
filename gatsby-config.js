@@ -14,6 +14,7 @@ module.exports = {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        localeFilter: (locale) => true,
       },
     },
     "gatsby-plugin-image",
@@ -114,6 +115,31 @@ module.exports = {
           // Avoids sending pageview hits from custom paths
           exclude: [],
         },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-i18next",
+      options: {
+        languages: ["en-US", "es"], // Add all languages you need
+        defaultLanguage: "en-US",
+        siteUrl: "https://sertuinevents.com/",
+        i18nextOptions: {
+          interpolation: {
+            escapeValue: false,
+          },
+          keySeparator: false,
+          nsSeparator: false,
+        },
+        pages: [
+          {
+            matchPath: "/:lang?/blog/:uid",
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: "/:lang?/",
+            getLanguageFromPath: true,
+          },
+        ],
       },
     },
   ],
