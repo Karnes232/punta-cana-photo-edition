@@ -62,7 +62,9 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Index" } }) {
+    allContentfulSeo(
+      filter: { page: { eq: "Index" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         keywords

@@ -120,7 +120,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-react-i18next",
       options: {
-        languages: ["en-US", "es"], // Add all languages you need
+        languages: ["en-US", "es"],
         defaultLanguage: "en-US",
         siteUrl: "https://sertuinevents.com/",
         i18nextOptions: {
@@ -133,6 +133,10 @@ module.exports = {
         pages: [
           {
             matchPath: "/:lang?/blog/:uid",
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: "/:lang?/proposal",
             getLanguageFromPath: true,
           },
           {

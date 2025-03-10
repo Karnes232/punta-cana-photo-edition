@@ -9,8 +9,9 @@ import OurPackages from "../../components/PackageComponents/OurPackages";
 import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
-
+import { useI18next } from "gatsby-plugin-react-i18next";
 const Index = ({ data }) => {
+  console.log(data.allContentfulPageContent.nodes[0].sectionTitle);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
@@ -21,7 +22,7 @@ const Index = ({ data }) => {
       <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
 
       <OurPackages
-        title="Essential Packages"
+        title={data.allContentfulPageContent.nodes[0].sectionTitle}
         photoPackages={data.allContentfulPackages.nodes}
       />
       <SwiperCarousel
@@ -36,10 +37,11 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/proposal`;
-
+  //const siteUrl = `${data.site.siteMetadata.siteUrl}/proposal`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : ""}`;
   return (
     <>
       <Seo
@@ -48,13 +50,14 @@ export const Head = ({ data }) => {
         keywords={keywords.join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
+        language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
     </>
   );
 };
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
     site {
       siteMetadata {
         siteUrl
@@ -69,7 +72,9 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Proposal" } }) {
+    allContentfulSeo(
+      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         keywords
@@ -83,7 +88,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPageContent(filter: { page: { eq: "Proposal" } }) {
+    allContentfulPageContent(
+      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         videoUrl
@@ -108,7 +115,7 @@ export const query = graphql`
       }
     }
     allContentfulPackages(
-      filter: { page: { eq: "Proposal" } }
+      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
       sort: { price: ASC }
     ) {
       nodes {
@@ -135,7 +142,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulCardWithImage(filter: { page: { eq: "Proposal" } }) {
+    allContentfulCardWithImage(
+      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         secondaryTitle

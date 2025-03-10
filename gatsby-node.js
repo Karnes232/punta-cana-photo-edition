@@ -146,13 +146,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   Object.entries(localeMapping).forEach(
     ([contentfulCode, { path: urlPath, urlCode }]) => {
+      // console.log('contentfulCode:', contentfulCode);
+      // console.log('urlPath:', urlPath);
+      // console.log('urlCode:', urlCode);
+
       // Create index page
+      const indexPath = urlPath === "" ? "/" : `/${urlPath}`;
+      // console.log('Created index path:', indexPath);
       createPage({
-        path: urlPath === "" ? "/" : `/${urlPath}`,
+        path: indexPath,
         component: path.resolve("./src/pages/index.js"),
         context: {
-          language: contentfulCode, // Pass the Contentful locale code to queries
-          urlLanguage: urlCode, // Pass the URL language code if needed
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
+      const proposalPath =
+        urlPath === "" ? "/proposal" : `/${urlPath}/proposal`;
+      // console.log('Created proposal path:', proposalPath);
+      createPage({
+        path: proposalPath,
+        component: path.resolve("./src/pages/proposal/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
         },
       });
 

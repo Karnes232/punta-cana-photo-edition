@@ -9,7 +9,8 @@ const LanguageSwitcher = ({ currentLanguage }) => {
     { code: "en-US", display: "English", flag: "🇺🇸", path: "/" },
     { code: "es", display: "Español", flag: "🇪🇸", path: "/es" },
   ];
-
+  const { languages, language, originalPath } = useI18next();
+  console.log(originalPath);
   // Find the current language for display in the button
   const currentLangOption =
     languageOptions.find((lang) => lang.code === currentLanguage) ||
@@ -63,7 +64,7 @@ const LanguageSwitcher = ({ currentLanguage }) => {
             {languageOptions.map((lang) => (
               <Link
                 key={lang.code}
-                to="/"
+                to={originalPath}
                 language={lang.code}
                 className={`flex items-center space-x-3 px-4 py-2 text-sm ${
                   currentLanguage === lang.code
