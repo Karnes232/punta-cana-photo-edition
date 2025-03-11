@@ -48,6 +48,15 @@ export const Head = ({ data }) => {
 
 export const query = graphql`
   query IndexPageQuery($language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
