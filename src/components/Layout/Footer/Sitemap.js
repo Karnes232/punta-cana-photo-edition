@@ -2,15 +2,16 @@ import { Link } from "gatsby";
 import React from "react";
 import PopOverComponent from "./PopOverComponent";
 import PopOverComponentHover from "./PopOverComponentHover";
-
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const Sitemap = () => {
+  const { t } = useTranslation();
   const RomanticEventLinks = [
     {
-      name: "Marriage Proposals",
+      name: t('Marriage Proposals'),
       urlLink: "/proposal",
     },
     {
-      name: "Elopement & Vow renewal",
+      name: t("Elopement & Vow renewal"),
       urlLink: "/elopement-vow-renewal",
     },
     // {
@@ -18,19 +19,19 @@ const Sitemap = () => {
     //   urlLink: "/wedding",
     // },
     {
-      name: "Wedding planning",
+      name: t("Wedding planning"),
       urlLink: "/puntacana-wedding-planner",
     },
     {
-      name: "Birthday Celebrations",
+      name: t("Birthday Celebrations"),
       urlLink: "/birthday-celebrations",
     },
     {
-      name: "Gender reveal and baby showers",
+      name: t("Gender reveal and baby showers"),
       urlLink: "/gender-reveal-and-baby-showers",
     },
     {
-      name: "Punta Cana Bachelor Party",
+      name: t("Punta Cana Bachelor Party"),
       urlLink: "/punta-cana-bachelor-party",
     },
   ];
@@ -54,11 +55,11 @@ const Sitemap = () => {
         </button>
       </Link>
       <div className="2xl:hidden">
-        <PopOverComponent title="Romantic Events" links={RomanticEventLinks} />
+        <PopOverComponent title={t('Romantic Events')}links={RomanticEventLinks} />
       </div>
       <div className="hidden 2xl:block">
         <PopOverComponentHover
-          title="Romantic Events"
+          title={t('Romantic Events')}
           links={RomanticEventLinks}
         />
       </div>
@@ -69,7 +70,7 @@ const Sitemap = () => {
       </Link> */}
       <Link to="/event-planner" className="no-underline">
         <button className={`navLinks`} translate="no">
-          Corporate events
+          <Trans>Corporate events</Trans>
         </button>
       </Link>
       {/* <div className="2xl:hidden">
@@ -86,12 +87,12 @@ const Sitemap = () => {
       </div> */}
       <Link to="/photo-gallery" className="no-underline">
         <button className={`navLinks`} translate="no">
-          Photo Gallery
+           <Trans>Photo Gallery</Trans>
         </button>
       </Link>
       <Link to="/contact" className="no-underline">
         <button className={`navLinks`} translate="no">
-          Contact
+          <Trans>Contact</Trans>
         </button>
       </Link>
     </div>

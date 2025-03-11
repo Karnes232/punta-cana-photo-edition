@@ -146,13 +146,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   Object.entries(localeMapping).forEach(
     ([contentfulCode, { path: urlPath, urlCode }]) => {
-      // console.log('contentfulCode:', contentfulCode);
-      // console.log('urlPath:', urlPath);
-      // console.log('urlCode:', urlCode);
 
       // Create index page
       const indexPath = urlPath === "" ? "/" : `/${urlPath}`;
-      // console.log('Created index path:', indexPath);
       createPage({
         path: indexPath,
         component: path.resolve("./src/pages/index.js"),
@@ -164,7 +160,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       const proposalPath =
         urlPath === "" ? "/proposal" : `/${urlPath}/proposal`;
-      // console.log('Created proposal path:', proposalPath);
       createPage({
         path: proposalPath,
         component: path.resolve("./src/pages/proposal/index.js"),
@@ -175,7 +170,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
 
       const weddingPath = urlPath === "" ? "/wedding" : `/${urlPath}/wedding`;
-      // console.log('Created proposal path:', proposalPath);
       createPage({
         path: weddingPath,
         component: path.resolve("./src/pages/wedding/index.js"),
@@ -189,7 +183,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         urlPath === ""
           ? "/birthday-celebrations"
           : `/${urlPath}/birthday-celebrations`;
-      // console.log('Created proposal path:', proposalPath);
       createPage({
         path: birthdayPath,
         component: path.resolve("./src/pages/birthday-celebrations/index.js"),
@@ -203,7 +196,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         urlPath === ""
           ? "/puntacana-wedding-planner"
           : `/${urlPath}/puntacana-wedding-planner`;
-      // console.log('Created proposal path:', proposalPath);
       createPage({
         path: weddingPlannerPath,
         component: path.resolve(
@@ -217,7 +209,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       const eventPlannerPath =
         urlPath === "" ? "/event-planner" : `/${urlPath}/event-planner`;
-      // console.log('Created proposal path:', proposalPath);
       createPage({
         path: eventPlannerPath,
         component: path.resolve("./src/pages/event-planner/index.js"),
