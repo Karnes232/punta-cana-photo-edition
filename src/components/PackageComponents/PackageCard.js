@@ -2,8 +2,9 @@ import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
-
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const PackageCard = ({ photoPackage }) => {
+  const { t } = useTranslation();
   const image = getImage(photoPackage.image.gatsbyImage);
   let cardHeight = "";
   if (photoPackage.page === "Birthday Celebrations") {
@@ -98,11 +99,12 @@ const PackageCard = ({ photoPackage }) => {
             )}
             {photoPackage.price ? (
               <div className="my-5 uppercase font-thin tracking-widest">
-                Starting at {formatter.format(photoPackage.price)}
+                <Trans>Starting at</Trans>{" "}
+                {formatter.format(photoPackage.price)}
               </div>
             ) : (
               <div className="my-5 uppercase font-thin tracking-widest">
-                Contact us
+                <Trans>Contact us</Trans>
               </div>
             )}
           </div>

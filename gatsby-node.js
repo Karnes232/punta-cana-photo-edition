@@ -215,6 +215,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const eventPlannerPath =
+        urlPath === "" ? "/event-planner" : `/${urlPath}/event-planner`;
+      // console.log('Created proposal path:', proposalPath);
+      createPage({
+        path: eventPlannerPath,
+        component: path.resolve("./src/pages/event-planner/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       // You can add code here to create other pages (blog, about, etc.)
       // following the same pattern
     },

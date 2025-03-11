@@ -60,6 +60,13 @@ module.exports = {
       __key: "images",
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/locales`,
+        name: `locale`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it
@@ -120,6 +127,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-react-i18next",
       options: {
+        localeJsonSourceName: `locale`,
         languages: ["en-US", "es"],
         defaultLanguage: "en-US",
         siteUrl: "https://sertuinevents.com/",
@@ -149,6 +157,10 @@ module.exports = {
           },
           {
             matchPath: "/:lang?/puntacana-wedding-planner",
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: "/:lang?/event-planner",
             getLanguageFromPath: true,
           },
           {

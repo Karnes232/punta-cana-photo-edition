@@ -12,6 +12,7 @@ import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import WorkedWith from "../../components/WorkedWithComponent/WorkedWith";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Index = ({ data }) => {
   return (
@@ -32,7 +33,7 @@ const Index = ({ data }) => {
         image={data.allContentfulWorkedWithUs.nodes[0].image}
       />
       <OurPackages
-        title="Our Services"
+        title={data.allContentfulPageContent.nodes[0].sectionTitle2}
         photoPackages={data.allContentfulPackages.nodes}
       />
       <SwiperCarousel
@@ -52,9 +53,10 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/event-planner`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/event-planner"}`;
 
   return (
     <>
@@ -64,6 +66,7 @@ export const Head = ({ data }) => {
         keywords={keywords.join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
+        language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -71,7 +74,16 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
@@ -86,7 +98,9 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Event-Planner" } }) {
+    allContentfulSeo(
+      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         keywords
@@ -100,7 +114,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPageContent(filter: { page: { eq: "Event-Planner" } }) {
+    allContentfulPageContent(
+      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         heroImageList {
@@ -111,13 +127,16 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        sectionTitle2
         videoUrl
         paragraph1 {
           raw
         }
       }
     }
-    allContentfulPhotoGallery(filter: { page: { eq: "Event-Planner" } }) {
+    allContentfulPhotoGallery(
+      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         title
@@ -136,7 +155,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulCardWithImage(filter: { page: { eq: "Event-Planner" } }) {
+    allContentfulCardWithImage(
+      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         secondaryTitle
@@ -150,7 +171,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPackages(filter: { page: { eq: "Event-Planner" } }) {
+    allContentfulPackages(
+      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         title
@@ -167,7 +190,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulWorkedWithUs(filter: { page: { eq: "Event-Planner" } }) {
+    allContentfulWorkedWithUs(
+      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title1
         title2
