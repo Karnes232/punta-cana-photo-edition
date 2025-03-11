@@ -199,6 +199,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const weddingPlannerPath =
+        urlPath === ""
+          ? "/puntacana-wedding-planner"
+          : `/${urlPath}/puntacana-wedding-planner`;
+      // console.log('Created proposal path:', proposalPath);
+      createPage({
+        path: weddingPlannerPath,
+        component: path.resolve(
+          "./src/pages/puntacana-wedding-planner/index.js",
+        ),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       // You can add code here to create other pages (blog, about, etc.)
       // following the same pattern
     },

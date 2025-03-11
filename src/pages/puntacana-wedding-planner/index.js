@@ -9,6 +9,7 @@ import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -52,9 +53,10 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/puntacana-wedding-planner`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/puntacana-wedding-planner"}`;
 
   return (
     <>
@@ -64,13 +66,15 @@ export const Head = ({ data }) => {
         keywords={keywords.join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
+        language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
     </>
   );
 };
+
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
     site {
       siteMetadata {
         siteUrl
@@ -85,7 +89,12 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Wedding-Planner" } }) {
+    allContentfulSeo(
+      filter: {
+        page: { eq: "Wedding-Planner" }
+        node_locale: { eq: $language }
+      }
+    ) {
       nodes {
         title
         keywords
@@ -99,7 +108,12 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPageContent(filter: { page: { eq: "Wedding-Planner" } }) {
+    allContentfulPageContent(
+      filter: {
+        page: { eq: "Wedding-Planner" }
+        node_locale: { eq: $language }
+      }
+    ) {
       nodes {
         page
         heroImageList {
@@ -119,7 +133,12 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPhotoGallery(filter: { page: { eq: "Wedding-Planner" } }) {
+    allContentfulPhotoGallery(
+      filter: {
+        page: { eq: "Wedding-Planner" }
+        node_locale: { eq: $language }
+      }
+    ) {
       nodes {
         page
         title
@@ -130,7 +149,12 @@ export const query = graphql`
         }
       }
     }
-    allContentfulCardWithImage(filter: { page: { eq: "Wedding-Planner" } }) {
+    allContentfulCardWithImage(
+      filter: {
+        page: { eq: "Wedding-Planner" }
+        node_locale: { eq: $language }
+      }
+    ) {
       nodes {
         title
         secondaryTitle

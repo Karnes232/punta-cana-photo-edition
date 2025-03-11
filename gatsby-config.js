@@ -148,6 +148,10 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/puntacana-wedding-planner",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/",
             getLanguageFromPath: true,
           },
