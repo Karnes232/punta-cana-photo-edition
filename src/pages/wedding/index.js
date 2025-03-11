@@ -13,6 +13,7 @@ import Faqs from "../../components/FaqsComponent/Faqs";
 import QuoteComponent from "../../components/QuoteComponent/QuoteComponent";
 import VideoCards from "../../components/VideoCardsComponent/VideoCards";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -64,9 +65,10 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/wedding`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/wedding"}`;
 
   return (
     <>
@@ -76,6 +78,7 @@ export const Head = ({ data }) => {
         keywords={keywords.join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
+        language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -83,7 +86,7 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
     site {
       siteMetadata {
         siteUrl
@@ -98,7 +101,9 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Wedding" } }) {
+    allContentfulSeo(
+      filter: { page: { eq: "Wedding" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         keywords
@@ -112,7 +117,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPageContent(filter: { page: { eq: "Wedding" } }) {
+    allContentfulPageContent(
+      filter: { page: { eq: "Wedding" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         heroImageList {
@@ -129,7 +136,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPhotoGallery(filter: { page: { eq: "Wedding" } }) {
+    allContentfulPhotoGallery(
+      filter: { page: { eq: "Wedding" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         title
@@ -149,7 +158,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulCardWithImage(filter: { page: { eq: "Wedding" } }) {
+    allContentfulCardWithImage(
+      filter: { page: { eq: "Wedding" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         secondaryTitle
@@ -161,7 +172,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulFaqsComponent(filter: { page: { eq: "Wedding" } }) {
+    allContentfulFaqsComponent(
+      filter: { page: { eq: "Wedding" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         content {
@@ -169,7 +182,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulQuotes(filter: { page: { eq: "Wedding" } }) {
+    allContentfulQuotes(
+      filter: { page: { eq: "Wedding" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         author

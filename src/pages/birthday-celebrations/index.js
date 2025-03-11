@@ -10,6 +10,7 @@ import OurPackages from "../../components/PackageComponents/OurPackages";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import Faqs from "../../components/FaqsComponent/Faqs";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -26,6 +27,23 @@ const Index = ({ data }) => {
       section3 = photoList;
     }
   });
+
+  const uniqueByTitle = (objects) => {
+    const seenTitles = new Set();
+
+    return objects.filter((obj) => {
+      // Check if we've seen this title before
+      if (seenTitles.has(obj.title)) {
+        // Already seen, so filter it out
+        return false;
+      } else {
+        // New title, add to set and keep it
+        seenTitles.add(obj.title);
+        return true;
+      }
+    });
+  };
+  const uniqueObjects = uniqueByTitle(data.allContentfulPackages.nodes);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {" "}
@@ -37,8 +55,8 @@ const Index = ({ data }) => {
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
       <OurPackages
-        title="Pricing & Packages"
-        photoPackages={data.allContentfulPackages.nodes}
+        title={data.allContentfulPageContent.nodes[0].sectionTitle2}
+        photoPackages={uniqueObjects}
       />
       <PhotoGrid photos={section2.images} page={section2.page} />
       <TextComponent
@@ -57,9 +75,10 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/birthday-celebrations`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/birthday-celebrations"}`;
 
   return (
     <>
@@ -69,6 +88,7 @@ export const Head = ({ data }) => {
         keywords={keywords.join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
+        language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -76,7 +96,7 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
     site {
       siteMetadata {
         siteUrl
@@ -91,7 +111,12 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Birthday Celebrations" } }) {
+    allContentfulSeo(
+      filter: {
+        page: { eq: "Birthday Celebrations" }
+        node_locale: { eq: $language }
+      }
+    ) {
       nodes {
         title
         keywords
@@ -106,7 +131,10 @@ export const query = graphql`
       }
     }
     allContentfulPageContent(
-      filter: { page: { eq: "Birthday Celebrations" } }
+      filter: {
+        page: { eq: "Birthday Celebrations" }
+        node_locale: { eq: $language }
+      }
     ) {
       nodes {
         page
@@ -118,6 +146,7 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        sectionTitle2
         paragraph1 {
           raw
         }
@@ -140,7 +169,10 @@ export const query = graphql`
       }
     }
     allContentfulPackages(
-      filter: { page: { eq: "Birthday Celebrations" } }
+      filter: {
+        page: { eq: "Birthday Celebrations" }
+        node_locale: { eq: $language }
+      }
       sort: { price: ASC }
     ) {
       nodes {
@@ -159,7 +191,10 @@ export const query = graphql`
       }
     }
     allContentfulCardWithImage(
-      filter: { page: { eq: "Birthday Celebrations" } }
+      filter: {
+        page: { eq: "Birthday Celebrations" }
+        node_locale: { eq: $language }
+      }
     ) {
       nodes {
         title
@@ -173,7 +208,10 @@ export const query = graphql`
       }
     }
     allContentfulFaqsComponent(
-      filter: { page: { eq: "Birthday Celebrations" } }
+      filter: {
+        page: { eq: "Birthday Celebrations" }
+        node_locale: { eq: $language }
+      }
     ) {
       nodes {
         title

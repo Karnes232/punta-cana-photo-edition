@@ -174,6 +174,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const weddingPath = urlPath === "" ? "/wedding" : `/${urlPath}/wedding`;
+      // console.log('Created proposal path:', proposalPath);
+      createPage({
+        path: weddingPath,
+        component: path.resolve("./src/pages/wedding/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
+      const birthdayPath =
+        urlPath === ""
+          ? "/birthday-celebrations"
+          : `/${urlPath}/birthday-celebrations`;
+      // console.log('Created proposal path:', proposalPath);
+      createPage({
+        path: birthdayPath,
+        component: path.resolve("./src/pages/birthday-celebrations/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       // You can add code here to create other pages (blog, about, etc.)
       // following the same pattern
     },

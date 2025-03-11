@@ -140,6 +140,14 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/wedding",
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: "/:lang?/birthday-celebrations",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/",
             getLanguageFromPath: true,
           },
