@@ -3,7 +3,9 @@ import React from "react";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import RomanticEvents from "./RomanticEvents";
 // import MoreServices from "./MoreServices";
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const SideBarInside = ({ footer, setToggled }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Menu className="ml-0 h-full flex flex-col justify-center items-center overflow-hidden">
@@ -40,7 +42,7 @@ const SideBarInside = ({ footer, setToggled }) => {
           }
         >
           <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            Corporate events
+            <Trans>Corporate events</Trans>
           </p>
         </MenuItem>
         {/* <MoreServices footer={footer} setToggled={setToggled} /> */}
@@ -54,7 +56,7 @@ const SideBarInside = ({ footer, setToggled }) => {
           }
         >
           <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            Photo Gallery
+            <Trans>Photo Gallery</Trans>
           </p>
         </MenuItem>
         <MenuItem
@@ -66,7 +68,9 @@ const SideBarInside = ({ footer, setToggled }) => {
             />
           }
         >
-          <p className={footer ? "hamburgerSmall" : "hamburger"}>Contact</p>
+          <p className={footer ? "hamburgerSmall" : "hamburger"}>
+            <Trans>Contact</Trans>
+          </p>
         </MenuItem>
       </Menu>
     </>

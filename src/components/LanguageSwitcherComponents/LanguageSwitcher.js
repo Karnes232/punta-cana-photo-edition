@@ -34,10 +34,10 @@ const LanguageSwitcher = ({ currentLanguage }) => {
       {/* Dropdown Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 bg-white dark:bg-gray-800 px-3 py-2 rounded-md shadow-sm border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+        className="flex items-center space-x-2 bg-white  px-3 py-2 rounded-md shadow-sm border border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
       >
         <span className="text-lg">{currentLangOption.flag}</span>
-        <span className="font-medium text-gray-700 dark:text-gray-200">
+        <span className="font-medium text-gray-700">
           {currentLangOption.display}
         </span>
         <svg
@@ -58,7 +58,7 @@ const LanguageSwitcher = ({ currentLanguage }) => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 z-50">
+        <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 z-50">
           <div className="py-1">
             {languageOptions.map((lang) => (
               <Link
@@ -67,8 +67,8 @@ const LanguageSwitcher = ({ currentLanguage }) => {
                 language={lang.code}
                 className={`flex items-center space-x-3 px-4 py-2 text-sm ${
                   currentLanguage === lang.code
-                    ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
-                    : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    ? "bg-blue-50  text-blue-600 "
+                    : "text-gray-700  hover:bg-gray-100 "
                 } transition-colors`}
                 onClick={() => setIsOpen(false)}
               >

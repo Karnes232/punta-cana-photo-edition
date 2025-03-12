@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const RomanticEvents = ({ footer, setToggled }) => {
+  const { t } = useTranslation();
   return (
     <SubMenu
-      label="Romantic Events"
+      label={t("Romantic Events")}
       className={footer ? "hamburgerSmall" : "hamburger"}
     >
       <MenuItem
@@ -16,7 +18,9 @@ const RomanticEvents = ({ footer, setToggled }) => {
           />
         }
       >
-        <p>Marriage Proposals</p>
+        <p>
+          <Trans>Marriage Proposals</Trans>
+        </p>
       </MenuItem>
       <MenuItem
         component={
@@ -27,7 +31,9 @@ const RomanticEvents = ({ footer, setToggled }) => {
           />
         }
       >
-        <p>Elopement & Vow renewal</p>
+        <p>
+          <Trans>Elopement & Vow renewal</Trans>
+        </p>
       </MenuItem>
       {/* <MenuItem
         component={
@@ -49,7 +55,9 @@ const RomanticEvents = ({ footer, setToggled }) => {
           />
         }
       >
-        <p>Wedding planning</p>
+        <p>
+          <Trans>Wedding planning</Trans>
+        </p>
       </MenuItem>
       <MenuItem
         component={
@@ -60,7 +68,9 @@ const RomanticEvents = ({ footer, setToggled }) => {
           />
         }
       >
-        <p>Birthday Celebrations</p>
+        <p>
+          <Trans>Birthday Celebrations</Trans>
+        </p>
       </MenuItem>
       <MenuItem
         component={
@@ -71,7 +81,9 @@ const RomanticEvents = ({ footer, setToggled }) => {
           />
         }
       >
-        <p>Gender reveal and baby showers</p>
+        <p>
+          <Trans>Gender reveal and baby showers</Trans>
+        </p>
       </MenuItem>
       <MenuItem
         component={
@@ -82,7 +94,9 @@ const RomanticEvents = ({ footer, setToggled }) => {
           />
         }
       >
-        <p>Punta Cana Bachelor Party</p>
+        <p>
+          <Trans>Punta Cana Bachelor Party</Trans>
+        </p>
       </MenuItem>
     </SubMenu>
   );

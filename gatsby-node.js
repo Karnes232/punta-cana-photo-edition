@@ -146,7 +146,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   Object.entries(localeMapping).forEach(
     ([contentfulCode, { path: urlPath, urlCode }]) => {
-
       // Create index page
       const indexPath = urlPath === "" ? "/" : `/${urlPath}`;
       createPage({

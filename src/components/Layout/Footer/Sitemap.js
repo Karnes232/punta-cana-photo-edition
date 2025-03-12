@@ -7,7 +7,7 @@ const Sitemap = () => {
   const { t } = useTranslation();
   const RomanticEventLinks = [
     {
-      name: t('Marriage Proposals'),
+      name: t("Marriage Proposals"),
       urlLink: "/proposal",
     },
     {
@@ -55,11 +55,14 @@ const Sitemap = () => {
         </button>
       </Link>
       <div className="2xl:hidden">
-        <PopOverComponent title={t('Romantic Events')}links={RomanticEventLinks} />
+        <PopOverComponent
+          title={t("Romantic Events")}
+          links={RomanticEventLinks}
+        />
       </div>
       <div className="hidden 2xl:block">
         <PopOverComponentHover
-          title={t('Romantic Events')}
+          title={t("Romantic Events")}
           links={RomanticEventLinks}
         />
       </div>
@@ -87,7 +90,7 @@ const Sitemap = () => {
       </div> */}
       <Link to="/photo-gallery" className="no-underline">
         <button className={`navLinks`} translate="no">
-           <Trans>Photo Gallery</Trans>
+          <Trans>Photo Gallery</Trans>
         </button>
       </Link>
       <Link to="/contact" className="no-underline">
