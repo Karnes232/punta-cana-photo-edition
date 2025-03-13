@@ -217,6 +217,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const bachelorPath =
+        urlPath === ""
+          ? "/punta-cana-bachelor-party"
+          : `/${urlPath}/punta-cana-bachelor-party`;
+      createPage({
+        path: bachelorPath,
+        component: path.resolve(
+          "./src/pages/punta-cana-bachelor-party/index.js",
+        ),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       // You can add code here to create other pages (blog, about, etc.)
       // following the same pattern
     },
