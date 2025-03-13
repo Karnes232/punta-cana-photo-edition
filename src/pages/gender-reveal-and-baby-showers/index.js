@@ -11,6 +11,7 @@ import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import Faqs from "../../components/FaqsComponent/Faqs";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Index = ({ data }) => {
   return (
@@ -26,7 +27,7 @@ const Index = ({ data }) => {
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
       <OurPackages
-        title="Pricing & Packages"
+        title={data?.allContentfulPageContent?.nodes[0].sectionTitle}
         photoPackages={data.allContentfulPackages.nodes}
       />
       <div className="flex flex-col md:flex-row max-w-5xl mx-auto">
@@ -57,9 +58,10 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/gender-reveal-and-baby-showers`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/gender-reveal-and-baby-showers"}`;
 
   return (
     <>
@@ -69,6 +71,7 @@ export const Head = ({ data }) => {
         keywords={keywords.join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
+        language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -76,7 +79,16 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
@@ -91,7 +103,9 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Gender Reveal" } }) {
+    allContentfulSeo(
+      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         keywords
@@ -105,7 +119,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPageContent(filter: { page: { eq: "Gender Reveal" } }) {
+    allContentfulPageContent(
+      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         heroImageList {
@@ -141,7 +157,7 @@ export const query = graphql`
       }
     }
     allContentfulPackages(
-      filter: { page: { eq: "Gender Reveal" } }
+      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
       sort: { price: ASC }
     ) {
       nodes {
@@ -159,7 +175,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulCardWithImage(filter: { page: { eq: "Gender Reveal" } }) {
+    allContentfulCardWithImage(
+      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         secondaryTitle
@@ -173,7 +191,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulFaqsComponent(filter: { page: { eq: "Gender Reveal" } }) {
+    allContentfulFaqsComponent(
+      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         content {

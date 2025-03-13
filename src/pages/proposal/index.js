@@ -11,7 +11,6 @@ import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 import { useI18next } from "gatsby-plugin-react-i18next";
 const Index = ({ data }) => {
-  console.log(data.allContentfulPageContent.nodes[0].sectionTitle);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />

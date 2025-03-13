@@ -1,8 +1,10 @@
 import React from "react";
 import Faq from "react-faq-component";
+import uniqueByTitle from "../../hooks/uniqueByTitle";
 const Faqs = ({ faqs }) => {
+  const uniqueObjects = uniqueByTitle(faqs);
   let faqsArray = [];
-  faqs.forEach((item) => {
+  uniqueObjects.forEach((item) => {
     let object = { title: item.title, content: item.content.content };
     faqsArray.push(object);
   });

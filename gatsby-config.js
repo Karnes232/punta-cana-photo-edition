@@ -168,6 +168,10 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/gender-reveal-and-baby-showers",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/",
             getLanguageFromPath: true,
           },

@@ -28,22 +28,22 @@ const Index = ({ data }) => {
     }
   });
 
-  const uniqueByTitle = (objects) => {
-    const seenTitles = new Set();
+  // const uniqueByTitle = (objects) => {
+  //   const seenTitles = new Set();
 
-    return objects.filter((obj) => {
-      // Check if we've seen this title before
-      if (seenTitles.has(obj.title)) {
-        // Already seen, so filter it out
-        return false;
-      } else {
-        // New title, add to set and keep it
-        seenTitles.add(obj.title);
-        return true;
-      }
-    });
-  };
-  const uniqueObjects = uniqueByTitle(data.allContentfulPackages.nodes);
+  //   return objects.filter((obj) => {
+  //     // Check if we've seen this title before
+  //     if (seenTitles.has(obj.title)) {
+  //       // Already seen, so filter it out
+  //       return false;
+  //     } else {
+  //       // New title, add to set and keep it
+  //       seenTitles.add(obj.title);
+  //       return true;
+  //     }
+  //   });
+  // };
+
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {" "}
@@ -56,7 +56,7 @@ const Index = ({ data }) => {
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
       <OurPackages
         title={data.allContentfulPageContent.nodes[0].sectionTitle2}
-        photoPackages={uniqueObjects}
+        photoPackages={data.allContentfulPackages.nodes}
       />
       <PhotoGrid photos={section2.images} page={section2.page} />
       <TextComponent

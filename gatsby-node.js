@@ -232,6 +232,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const genderRevealPath =
+        urlPath === ""
+          ? "/gender-reveal-and-baby-showers"
+          : `/${urlPath}/gender-reveal-and-baby-showers`;
+      createPage({
+        path: genderRevealPath,
+        component: path.resolve(
+          "./src/pages/gender-reveal-and-baby-showers/index.js",
+        ),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       // You can add code here to create other pages (blog, about, etc.)
       // following the same pattern
     },
