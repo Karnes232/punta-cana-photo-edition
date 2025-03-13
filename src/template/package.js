@@ -12,8 +12,9 @@ import Form from "../components/PackageComponents/Form";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
 import PackageForm from "../components/PackageForm/PackageForm";
-
+import { useTranslation } from "gatsby-plugin-react-i18next";
 const PackagePage = ({ pageContext, data }) => {
+  const { t } = useTranslation();
   const [host, setHost] = useState("");
   // const [isSticky, setIsSticky] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
@@ -157,7 +158,7 @@ const PackagePage = ({ pageContext, data }) => {
                 {" "}
                 <div className="my-5 mx-auto">
                   <TextComponent
-                    title="Included"
+                    title={t("Included")}
                     className="my-5 text-center tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
                   />
                   <ul className="flex flex-col justify-center items-center gap-2">
@@ -262,13 +263,24 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query MyQuery($id: String) {
+  query MyQuery($id: String, $language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
       }
     }
-    allContentfulPackagePageContent(filter: { id: { eq: $id } }) {
+    allContentfulPackagePageContent(
+      filter: { id: { eq: $id }, node_locale: { eq: $language } }
+    ) {
       nodes {
         id
         urlSlug

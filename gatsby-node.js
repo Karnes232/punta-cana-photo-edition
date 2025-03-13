@@ -26,6 +26,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           id
           urlSlug
+          node_locale
         }
       }
       allContentfulBlogPost {
@@ -51,6 +52,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
   `);
+  const localeMapping = {
+    "en-US": { path: "", urlCode: "en-US" },
+    es: { path: "es", urlCode: "es" },
+  };
+
+  const localeMap = {
+    "en-US": "en",
+    es: "es",
+    // Add more languages as needed
+  };
 
   const packageTemplate = path.resolve(`src/template/package.js`);
   const photoGalleryTemplate = path.resolve(`src/template/photogallery.js`);
@@ -85,11 +96,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 
   queryResults.data.allContentfulPackagePageContent.nodes.forEach((node) => {
+    // Get language code for URL from the Contentful locale
+    const lang = node.node_locale === "en-US" ? "" : node.node_locale;
+    const langPrefix = lang ? `/${lang}` : "";
     createPage({
-      path: `/packages/${node.urlSlug?.trim()}`,
+      path: `${langPrefix}/packages/${node.urlSlug?.trim()}`,
       component: packageTemplate,
       context: {
         id: node.id,
+        language: node.node_locale,
         layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
         package: node,
       },
@@ -138,11 +153,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   } catch (error) {
     reporter.error("Error downloading favicon:", error);
   }
-
-  const localeMapping = {
-    "en-US": { path: "", urlCode: "en-US" },
-    es: { path: "es", urlCode: "es" },
-  };
 
   Object.entries(localeMapping).forEach(
     ([contentfulCode, { path: urlPath, urlCode }]) => {

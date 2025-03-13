@@ -144,6 +144,10 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/packages/:uid",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/proposal",
             getLanguageFromPath: true,
           },

@@ -1,5 +1,6 @@
 import React from "react";
 import { Check } from "lucide-react";
+import { Trans } from "gatsby-plugin-react-i18next";
 const PackageForm = ({
   packageInformation,
   formData,
@@ -54,7 +55,9 @@ const PackageForm = ({
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold">Available Add-ons</h3>
+              <h3 className="text-xl font-semibold">
+                <Trans>Available Add-ons</Trans>
+              </h3>
               {additions.map((addition, index) => (
                 <div
                   key={index}
@@ -94,7 +97,9 @@ const PackageForm = ({
           </div>
 
           <div className="bg-gray-50 p-6 rounded-lg shadow-sm border pb-20 lg:pb-10">
-            <h3 className="text-xl font-semibold mb-6">Book Your Session</h3>
+            <h3 className="text-xl font-semibold mb-6">
+              <Trans>Book Your Session</Trans>
+            </h3>
             <form
               onSubmit={handleSubmit}
               action={`/contact/thankyou/?name=${formData.name}`}
@@ -109,7 +114,7 @@ const PackageForm = ({
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Name
+                  <Trans>Name</Trans>
                 </label>
                 <input
                   type="text"
@@ -126,7 +131,7 @@ const PackageForm = ({
                   htmlFor="email"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Email
+                  <Trans>Email</Trans>
                 </label>
                 <input
                   type="email"
@@ -143,7 +148,7 @@ const PackageForm = ({
                   htmlFor="phone"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Phone
+                  <Trans>Phone</Trans>
                 </label>
                 <input
                   type="tel"
@@ -160,7 +165,7 @@ const PackageForm = ({
                   htmlFor="date"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Preferred Date
+                  <Trans>Preferred Date</Trans>
                 </label>
                 <input
                   type="date"
@@ -177,7 +182,7 @@ const PackageForm = ({
                   htmlFor="message"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Message
+                  <Trans>Message</Trans>
                 </label>
                 <textarea
                   name="message"
@@ -192,7 +197,7 @@ const PackageForm = ({
                 type="submit"
                 className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
               >
-                Contact Us
+                <Trans>Contact Us</Trans>
               </button>
             </form>
           </div>
