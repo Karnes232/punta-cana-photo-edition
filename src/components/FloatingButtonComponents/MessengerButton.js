@@ -20,7 +20,7 @@ const MessengerButton = () => {
         rel="noreferrer"
         target="_blank"
       >
-        <button className="fixed z-50 flex px-2 justify-center items-center bottom-6 right-6 xl:right-10 rounded-full h-14 w-14 bg-transparent border text-[#007FFF] font-bold">
+        <button className="fixed z-[500] flex px-2 justify-center items-center bottom-6 right-6 xl:right-10 rounded-full h-14 w-14 bg-transparent text-[#007FFF]">
           <FaFacebookMessenger size={32} />
         </button>
       </a>
