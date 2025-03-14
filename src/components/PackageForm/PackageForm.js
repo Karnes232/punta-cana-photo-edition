@@ -70,6 +70,7 @@ const PackageForm = ({
                   onKeyDown={() => handleAddOnToggle(addition)}
                   role="button"
                   tabIndex={0}
+                  aria-label="Addon Button"
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3 ">

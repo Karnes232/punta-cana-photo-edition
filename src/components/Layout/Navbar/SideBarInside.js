@@ -3,9 +3,8 @@ import React from "react";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import RomanticEvents from "./RomanticEvents";
 // import MoreServices from "./MoreServices";
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { Trans } from "gatsby-plugin-react-i18next";
 const SideBarInside = ({ footer, setToggled }) => {
-  const { t } = useTranslation();
   return (
     <>
       <Menu className="ml-0 h-full flex flex-col justify-center items-center overflow-hidden">

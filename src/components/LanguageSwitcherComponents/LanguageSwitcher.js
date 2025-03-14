@@ -9,7 +9,7 @@ const LanguageSwitcher = ({ currentLanguage }) => {
     { code: "en-US", display: "English", flag: "🇺🇸", path: "/" },
     { code: "es", display: "Español", flag: "🇪🇸", path: "/es" },
   ];
-  const { languages, language, originalPath } = useI18next();
+  const { originalPath } = useI18next();
   // Find the current language for display in the button
   const currentLangOption =
     languageOptions.find((lang) => lang.code === currentLanguage) ||

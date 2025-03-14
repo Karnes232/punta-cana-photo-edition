@@ -2,9 +2,8 @@ import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { Trans } from "gatsby-plugin-react-i18next";
 const PackageCard = ({ photoPackage }) => {
-  const { t } = useTranslation();
   const image = getImage(photoPackage.image.gatsbyImage);
   let cardHeight = "";
   if (photoPackage.page === "Birthday Celebrations") {
