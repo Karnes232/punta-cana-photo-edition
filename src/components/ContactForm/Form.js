@@ -4,7 +4,9 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import MoreInfo from "./MoreInfo";
 import OptionSelect from "./OptionSelect";
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const Form = () => {
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const handlePhoneChange = (e) => {
@@ -29,7 +31,7 @@ const Form = () => {
             name="telphone"
             id="telphone"
             className={`contactFormInput peer `}
-            placeholder="Enter phone number"
+            placeholder={t("Enter phone number")}
             value={phone}
             onChange={handlePhoneChange}
             // onCountryChange={handleCountryChange}
@@ -38,7 +40,7 @@ const Form = () => {
         <OptionSelect />
         <MoreInfo />
         <button className="no-underline border py-2 xl:py-3 px-6 xl:px-8 xl:text-lg rounded-3xl mt-5 text-gray-400 border-gray-500 transition duration-500 hover:bg-black hover:text-white">
-          Send Message
+          <Trans>Send Message</Trans>
         </button>
       </form>
     </>

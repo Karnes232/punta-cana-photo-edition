@@ -167,6 +167,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const contactPath = urlPath === "" ? "/contact" : `/${urlPath}/contact`;
+      createPage({
+        path: contactPath,
+        component: path.resolve("./src/pages/contact/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       const proposalPath =
         urlPath === "" ? "/proposal" : `/${urlPath}/proposal`;
       createPage({

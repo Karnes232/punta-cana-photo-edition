@@ -1,3 +1,4 @@
+import { Trans } from "gatsby-plugin-react-i18next";
 import React from "react";
 
 const ContactInfo = ({ name, setName }) => {
@@ -15,7 +16,7 @@ const ContactInfo = ({ name, setName }) => {
           onChange={(e) => setName(e.target.value)}
         />
         <label htmlFor="name" className="contactFormLabel">
-          Full Name
+          <Trans>Full Name</Trans>
         </label>
       </div>
       <div className="relative z-0 mb-6 w-full group">
@@ -28,7 +29,7 @@ const ContactInfo = ({ name, setName }) => {
           required
         />
         <label htmlFor="email" className="contactFormLabel">
-          Email address
+          <Trans>Email</Trans>
         </label>
       </div>
       <div className="relative z-0 mb-6 w-full group">
@@ -41,7 +42,7 @@ const ContactInfo = ({ name, setName }) => {
           required
         />
         <label htmlFor="Accommodation" className="contactFormLabel">
-          Accommodation
+          <Trans>Accommodation</Trans>
         </label>
       </div>
     </>

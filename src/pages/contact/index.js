@@ -6,6 +6,7 @@ import Seo from "../../components/Layout/seo";
 import RichText from "../../components/RichTextComponents/RichText";
 import Form from "../../components/ContactForm/Form";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Index = ({ data }) => {
   return (
@@ -30,9 +31,10 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/contact`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/contact"}`;
 
   return (
     <>
@@ -42,6 +44,7 @@ export const Head = ({ data }) => {
         keywords={keywords.join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
+        language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -49,7 +52,16 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
@@ -64,7 +76,9 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Contact" } }) {
+    allContentfulSeo(
+      filter: { page: { eq: "Contact" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         keywords
@@ -78,7 +92,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPageContent(filter: { page: { eq: "Contact" } }) {
+    allContentfulPageContent(
+      filter: { page: { eq: "Contact" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         heroImageList {
