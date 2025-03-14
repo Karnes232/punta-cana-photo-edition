@@ -61,6 +61,17 @@ const SideBarInside = ({ footer, setToggled }) => {
         <MenuItem
           component={
             <Link
+              to="/blog/complete-guide-to-organizing-events-in-punta-cana"
+              className={footer ? "hamburgerSmall" : "hamburger"}
+              onClick={footer ? undefined : () => setToggled(false)}
+            />
+          }
+        >
+          <p className={footer ? "hamburgerSmall" : "hamburger"}>Blog</p>
+        </MenuItem>
+        <MenuItem
+          component={
+            <Link
               to="/contact"
               className={footer ? "hamburgerSmall" : "hamburger"}
               onClick={footer ? undefined : () => setToggled(false)}

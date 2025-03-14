@@ -4,8 +4,10 @@ import HeroImage from "../components/BlogComponents/HeroImage";
 import { graphql } from "gatsby";
 import BlogBody from "../components/BlogComponents/BlogBody";
 import Recommendations from "../components/BlogComponents/Recommendations";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
-const blog = ({ pageContext, data }) => {
+const Blog = ({ pageContext, data }) => {
+  const { t } = useTranslation();
   return (
     <Layout generalInfo={pageContext.layout}>
       <HeroImage
@@ -15,17 +17,28 @@ const blog = ({ pageContext, data }) => {
 
       <Recommendations
         list={data.relatedPosts.nodes}
-        title={"You Might Also Like"}
+        title={t("You Might Also Like")}
       />
     </Layout>
   );
 };
 
-export default blog;
+export default Blog;
 
 export const query = graphql`
-  query MyQuery($id: String, $category: String) {
-    allContentfulBlogPost(filter: { id: { eq: $id } }) {
+  query MyQuery($id: String, $category: String, $language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    allContentfulBlogPost(
+      filter: { id: { eq: $id }, node_locale: { eq: $language } }
+    ) {
       nodes {
         slug
         id

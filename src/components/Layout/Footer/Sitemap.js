@@ -93,6 +93,14 @@ const Sitemap = () => {
           <Trans>Photo Gallery</Trans>
         </button>
       </Link>
+      <Link
+        to="/blog/complete-guide-to-organizing-events-in-punta-cana"
+        className="no-underline"
+      >
+        <button className={`navLinks`} translate="no">
+          Blog
+        </button>
+      </Link>
       <Link to="/contact" className="no-underline">
         <button className={`navLinks`} translate="no">
           <Trans>Contact</Trans>

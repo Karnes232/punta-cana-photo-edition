@@ -6,7 +6,6 @@ import BlogBody from "../components/BlogComponents/BlogBody";
 import PostList from "../components/BlogComponents/PostList";
 
 const blogCategory = ({ pageContext, data }) => {
-
   return (
     <Layout generalInfo={pageContext.layout}>
       <HeroBlogCategoryComponent
