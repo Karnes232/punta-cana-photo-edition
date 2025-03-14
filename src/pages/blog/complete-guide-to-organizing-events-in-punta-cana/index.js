@@ -109,7 +109,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulBlogCategories {
+    allContentfulBlogCategories(filter: { node_locale: { eq: $language } }) {
       nodes {
         blogCategory
         url

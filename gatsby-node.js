@@ -48,6 +48,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           id
           url
+          node_locale
         }
       }
     }
@@ -68,15 +69,35 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const blogTemplate = path.resolve(`src/template/blog.js`);
   const blogCategoryTemplate = path.resolve(`src/template/blogCategory.js`);
 
+  // queryResults.data.allContentfulBlogCategories.nodes.forEach((node) => {
+  //   createPage({
+  //     path: `/blog/${node.url?.trim()}`,
+  //     component: blogCategoryTemplate,
+  //     context: {
+  //       id: node.id,
+  //       blog: node,
+  //       layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
+  //       blogList: queryResults.data.allContentfulBlogPost.nodes,
+  //     },
+  //   });
+  // });
+
   queryResults.data.allContentfulBlogCategories.nodes.forEach((node) => {
+    // Get proper language path prefix
+    const lang = node.node_locale === "en-US" ? "" : node.node_locale;
+    const langPrefix = lang ? `/${lang}` : "";
+
     createPage({
-      path: `/blog/${node.url?.trim()}`,
+      path: `${langPrefix}/blog/${node.url?.trim()}`,
       component: blogCategoryTemplate,
       context: {
         id: node.id,
+        language: node.node_locale,
         blog: node,
         layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
-        blogList: queryResults.data.allContentfulBlogPost.nodes,
+        blogList: queryResults.data.allContentfulBlogPost.nodes.filter(
+          (post) => post.node_locale === node.node_locale,
+        ), // Filter blog posts by language
       },
     });
   });

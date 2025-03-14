@@ -6,8 +6,7 @@ import BlogBody from "../components/BlogComponents/BlogBody";
 import PostList from "../components/BlogComponents/PostList";
 
 const blogCategory = ({ pageContext, data }) => {
-  //   console.log(data.allContentfulBlogCategories.nodes[0].blog_post)
-  // console.log(pageContext)
+
   return (
     <Layout generalInfo={pageContext.layout}>
       <HeroBlogCategoryComponent
@@ -26,8 +25,19 @@ const blogCategory = ({ pageContext, data }) => {
 export default blogCategory;
 
 export const query = graphql`
-  query MyQuery($id: String) {
-    allContentfulBlogCategories(filter: { id: { eq: $id } }) {
+  query MyQuery($id: String, $language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+    allContentfulBlogCategories(
+      filter: { id: { eq: $id }, node_locale: { eq: $language } }
+    ) {
       nodes {
         blogCategory
         blogImage {
