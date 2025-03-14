@@ -5,6 +5,7 @@ import Layout from "../../../components/Layout/Layout";
 import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
 import RichText from "../../../components/RichTextComponents/RichText";
 import BlogCategory from "../../../components/BlogComponents/BlogCategory";
+import { useI18next } from "gatsby-plugin-react-i18next";
 const Index = ({ data }) => {
   const categories = data.allContentfulBlogCategories.nodes;
   return (
@@ -31,18 +32,20 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/blog`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/blog/complete-guide-to-organizing-events-in-punta-cana"}`;
+
   return (
     <>
       <Seo
         title={title}
         description={description.description}
         keywords={keywords.join(", ")}
-        image={`https:${images.file.url}`}
+        image={`https:${images?.file?.url}`}
         url={siteUrl}
-        //   schemaMarkup={schema}
+        language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -50,7 +53,16 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
@@ -65,7 +77,9 @@ export const query = graphql`
         telephone
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Blog" } }) {
+    allContentfulSeo(
+      filter: { page: { eq: "Blog" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         keywords
@@ -79,7 +93,9 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPageContent(filter: { page: { eq: "Blog" } }) {
+    allContentfulPageContent(
+      filter: { page: { eq: "Blog" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         page
         heroImageList {

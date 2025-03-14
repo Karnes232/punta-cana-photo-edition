@@ -10,9 +10,9 @@ import OurPreviousWork from "../../components/PhotoGalleryComponents/OurPrevious
 const Index = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroSwiper heroInfo={data.allContentfulGeneralLayout.nodes[0]} />
+      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <TextComponent
-        title={data.allContentfulPhotoGallery.nodes[0].title}
+        title={data.allContentfulPageContent.nodes[0].heroHeading2}
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-6xl"
       />
       <OurPreviousWork
@@ -45,13 +45,24 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Photo Gallery" } }) {
+    allContentfulSeo(
+      filter: { page: { eq: "Photo Gallery" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         keywords
@@ -65,6 +76,27 @@ export const query = graphql`
         }
       }
     }
+    allContentfulPageContent(
+      filter: { page: { eq: "Photo Gallery" }, node_locale: { eq: $language } }
+    ) {
+      nodes {
+        page
+        heroImageList {
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+        fullSize
+        heroHeading
+        heroHeading2
+        sectionTitle
+        paragraph1 {
+          raw
+        }
+        paragraph2 {
+          raw
+        }
+      }
+    }
     allContentfulGeneralLayout {
       nodes {
         companyName
@@ -73,12 +105,12 @@ export const query = graphql`
         instagram
         x
         telephone
-        heroImageList {
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-          title
-        }
-        fullSize
-        heroHeading
+        # heroImageList {
+        #   gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+        #   title
+        # }
+        # fullSize
+        # heroHeading
       }
     }
     allContentfulPreviousWorkPhotoGallery {

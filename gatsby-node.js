@@ -177,6 +177,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const photogalleryPath =
+        urlPath === "" ? "/photo-gallery" : `/${urlPath}/photo-gallery`;
+      createPage({
+        path: photogalleryPath,
+        component: path.resolve("./src/pages/photo-gallery/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
+      const blogGuidPath =
+        urlPath === ""
+          ? "/blog/complete-guide-to-organizing-events-in-punta-cana"
+          : `/${urlPath}/blog/complete-guide-to-organizing-events-in-punta-cana`;
+      createPage({
+        path: blogGuidPath,
+        component: path.resolve(
+          "./src/pages/blog/complete-guide-to-organizing-events-in-punta-cana/index.js",
+        ),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       const proposalPath =
         urlPath === "" ? "/proposal" : `/${urlPath}/proposal`;
       createPage({
