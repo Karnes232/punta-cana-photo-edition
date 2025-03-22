@@ -10,6 +10,7 @@ import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import ReversedContentBlock from "../../components/ContentBlockComponent/ReversedContentBlock";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -22,6 +23,8 @@ const Index = ({ data }) => {
       section2 = photoList;
     }
   });
+
+  console.log(data.biography);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
@@ -43,6 +46,7 @@ const Index = ({ data }) => {
       <PhotoGrid photos={section2.images} page={section2.page} />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      <ReversedContentBlock content={data.biography.nodes[0]} />
       <FirebaseTestimonialsComponent
         packagePage={"puntacana-wedding-planner"}
       />
@@ -166,6 +170,22 @@ export const query = graphql`
     ) {
       nodes {
         title
+        secondaryTitle
+        buttonText
+        linkUrl
+        image {
+          title
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    biography: allContentfulCardWithImage(
+      filter: { page: { eq: "Biography" }, node_locale: { eq: $language } }
+    ) {
+      nodes {
+        title
+        paragraph
+        paragraph2
         secondaryTitle
         buttonText
         linkUrl
