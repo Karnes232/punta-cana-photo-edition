@@ -241,6 +241,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const eventRentalsPath =
+        urlPath === "" ? "/event-rentals" : `/${urlPath}/event-rentals`;
+      createPage({
+        path: eventRentalsPath,
+        component: path.resolve("./src/pages/event-rentals/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       const weddingPath = urlPath === "" ? "/wedding" : `/${urlPath}/wedding`;
       createPage({
         path: weddingPath,
