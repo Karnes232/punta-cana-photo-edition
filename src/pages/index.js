@@ -6,7 +6,6 @@ import OurServices from "../components/ServicesComponents/OurServices";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
 import QuoteComponent from "../components/QuoteComponent/QuoteComponent";
 import ContentBlock from "../components/ContentBlockComponent/ContentBlock";
-import { schema } from "../data/schema";
 import { useI18next } from "gatsby-plugin-react-i18next";
 const IndexPage = ({ data }) => {
   return (

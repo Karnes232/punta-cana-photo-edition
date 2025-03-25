@@ -12,7 +12,7 @@ import Form from "../components/PackageComponents/Form";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
 import PackageForm from "../components/PackageForm/PackageForm";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 const PackagePage = ({ pageContext, data }) => {
   const { t } = useTranslation();
   const [host, setHost] = useState("");
@@ -244,9 +244,18 @@ const PackagePage = ({ pageContext, data }) => {
 export default PackagePage;
 
 export const Head = ({ pageContext, data }) => {
+  const { language } = useI18next();
   const siteUrl = `${data.site.siteMetadata.siteUrl}/packages/${data.allContentfulPackagePageContent.nodes[0].urlSlug}`;
   const { seoTitle, seoDescription, seoImage, seoKeywords } =
     data.allContentfulPackagePageContent.nodes[0];
+
+  const schema =
+    data?.allContentfulPackagePageContent?.nodes[0]?.schema?.internal?.content;
+
+  let JsonSchema = {};
+  if (schema) {
+    JsonSchema = JSON.parse(schema);
+  }
 
   return (
     <>
@@ -256,6 +265,8 @@ export const Head = ({ pageContext, data }) => {
         keywords={seoKeywords?.join(", ")}
         image={`https:${seoImage?.file?.url}`}
         url={siteUrl}
+        schemaMarkup={JsonSchema}
+        language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -322,6 +333,11 @@ export const query = graphql`
         seoImage {
           file {
             url
+          }
+        }
+        schema {
+          internal {
+            content
           }
         }
       }
