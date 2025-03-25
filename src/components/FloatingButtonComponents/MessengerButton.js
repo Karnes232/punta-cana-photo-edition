@@ -11,7 +11,7 @@ const MessengerButton = () => {
       }
     }
   `);
-  console.log(data.allContentfulGeneralLayout.nodes[0].messengerLink);
+
   return (
     <>
       <a
