@@ -4,7 +4,8 @@ import HeroImage from "../components/BlogComponents/HeroImage";
 import { graphql } from "gatsby";
 import BlogBody from "../components/BlogComponents/BlogBody";
 import Recommendations from "../components/BlogComponents/Recommendations";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import Seo from "../components/Layout/seo";
 
 const Blog = ({ pageContext, data }) => {
   const { t } = useTranslation();
@@ -25,6 +26,33 @@ const Blog = ({ pageContext, data }) => {
 
 export default Blog;
 
+export const Head = ({ pageContext, data }) => {
+  const { language } = useI18next();
+  const siteUrl = `${data.site.siteMetadata.siteUrl}/blog/${data.allContentfulBlogPost.nodes[0].slug}`;
+
+  const schema =
+    data?.allContentfulBlogPost?.nodes[0]?.schema?.internal?.content;
+
+  let JsonSchema = {};
+  if (schema) {
+    JsonSchema = JSON.parse(schema);
+  }
+  return (
+    <>
+      <Seo
+        title={data.allContentfulBlogPost.nodes[0].title}
+        description={data.allContentfulBlogPost.nodes[0].description}
+        keywords={data.allContentfulBlogPost.nodes[0].tags?.join(", ")}
+        image={data.allContentfulBlogPost.nodes[0].backgroundImage[0].url}
+        url={siteUrl}
+        schemaMarkup={JsonSchema}
+        language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
+      />
+      <link rel="canonical" href={siteUrl} />
+    </>
+  );
+};
+
 export const query = graphql`
   query MyQuery($id: String, $category: String, $language: String!) {
     locales: allLocale {
@@ -34,6 +62,11 @@ export const query = graphql`
           data
           language
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
     allContentfulBlogPost(
@@ -50,6 +83,11 @@ export const query = graphql`
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           url
+        }
+        schema {
+          internal {
+            content
+          }
         }
         body {
           raw
