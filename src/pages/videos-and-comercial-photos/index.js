@@ -36,6 +36,13 @@ export const Head = ({ data }) => {
     data.allContentfulSeo.nodes[0];
   const siteUrl = `${data.site.siteMetadata.siteUrl}/videos-and-comercial-photos`;
 
+  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
+
+  let JsonSchema = {};
+  if (schema) {
+    JsonSchema = JSON.parse(schema);
+  }
+
   return (
     <>
       <Seo
@@ -43,6 +50,7 @@ export const Head = ({ data }) => {
         description={description.description}
         keywords={keywords.join(", ")}
         image={`https:${images?.file?.url}`}
+        schemaMarkup={JsonSchema}
         url={siteUrl}
       />
       <link rel="canonical" href={siteUrl} />
@@ -77,6 +85,11 @@ export const query = graphql`
         }
         description {
           description
+        }
+        schema {
+          internal {
+            content
+          }
         }
       }
     }

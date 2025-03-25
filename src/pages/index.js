@@ -30,14 +30,11 @@ export const Head = ({ data }) => {
     data.allContentfulSeo.nodes[0];
   const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : ""}`;
 
-  const schema =
-    data?.allContentfulPageContent?.nodes[0]?.schema?.internal?.content;
+  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
   let JsonSchema = {};
   if (schema) {
-    JsonSchema = JSON.parse(
-      data.allContentfulPageContent.nodes[0].schema.internal.content,
-    );
+    JsonSchema = JSON.parse(schema);
   }
 
   return (
@@ -95,6 +92,11 @@ export const query = graphql`
         description {
           description
         }
+        schema {
+          internal {
+            content
+          }
+        }
       }
     }
     allContentfulPageContent(
@@ -110,11 +112,6 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
-        schema {
-          internal {
-            content
-          }
-        }
       }
     }
     allContentfulServices(filter: { node_locale: { eq: $language } }) {
