@@ -1,15 +1,25 @@
 import PropTypes from "prop-types";
 import React, { createContext, useState, useEffect } from "react";
 
-export const CartContext = createContext();
+export const CartContext = createContext({
+  cartItems: [],
+  addToCart: () => {},
+  removeFromCart: () => {},
+  clearCart: () => {},
+  getCartTotal: () => 0,
+});
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  // if (typeof window !== 'undefined') {
-  //   setCartItems(localStorage.getItem("cartItems")
-  //   ? JSON.parse(localStorage.getItem("cartItems"))
-  //   : [],)
-  // }
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    const data = localStorage.getItem("cartItems");
+    if (data) {
+      setCartItems(JSON.parse(data));
+    }
+  }, []);
 
   const addToCart = (item) => {
     const isItemInCart = cartItems.find(
@@ -76,7 +86,7 @@ export const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
-        cartItems,
+        cartItems: isClient ? cartItems : [],
         addToCart,
         removeFromCart,
         clearCart,

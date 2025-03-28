@@ -8,7 +8,7 @@ const FloatingCartButton = () => {
   return (
     <>
       {cartItems.length !== 0 ? (
-        <Link to="/cart/" className="no-underline">
+        <Link to="/event-rentals/cart/" className="no-underline">
           <button className="fixed z-50 flex px-2 justify-between items-center bottom-6 right-24 xl:right-32 rounded-full h-14 w-14 bg-[#E4C05C] text-white  font-bold">
             <AiOutlineShoppingCart size={25} />
             {cartItems.length}
