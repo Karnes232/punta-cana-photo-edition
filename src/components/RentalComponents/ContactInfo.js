@@ -19,7 +19,7 @@ const ContactInfo = ({ name, setName, formData, setFormData }) => {
           className="contactFormInput peer"
           placeholder=" "
           required
-          value={name}
+          value={formData.name}
           onChange={handleChange}
         />
         <label htmlFor="name" className="contactFormLabel">
