@@ -58,11 +58,7 @@ const RentalForm = ({ rentalItems }) => {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="cart" />
-        <input
-          type="hidden"
-          name="Rental Items"
-          value={rentalItems || "None"}
-        />
+        
         <div className="w-80 flex flex-col xl:flex-row xl:mt-10 xl:gap-12">
           <div className="xl:w-[25rem] flex flex-col mt-5 xl:mt-24">
             <ContactInfo
@@ -74,6 +70,11 @@ const RentalForm = ({ rentalItems }) => {
           </div>
           <CartComponent />
         </div>
+        <input
+          type="hidden"
+          name="Rental Items"
+          value={rentalItems || "None"}
+        />
         <button
           type="submit"
           className="px-4 py-2 my-3 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
