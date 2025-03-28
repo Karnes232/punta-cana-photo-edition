@@ -22,9 +22,15 @@ const RentalForm = ({ rentalItems }) => {
   }
 
   const handleSubmit = (event) => {
-    console.log(event);
     event.preventDefault();
-    const dataFromForm = getFormData(formData);
+    const formattedData = {
+      ...formData,
+      "Rental Items": cartItems.map(item => 
+        `${item.rentalItem} - Quantity: ${item.quantity}`
+      ).join(', ')
+    };
+    const dataFromForm = getFormData(formattedData);
+    
     fetch("/", {
       method: "POST",
       headers: {
@@ -33,14 +39,14 @@ const RentalForm = ({ rentalItems }) => {
       body: new URLSearchParams(dataFromForm).toString(),
     }).then(() => {
       console.log("Form successfully submitted");
-      //   collectUserData(dataFromForm, clearCart, redirectHref);
+      clearCart(); // Clear the cart after successful submission
     });
   };
 
   useEffect(() => {
     setFormData({
       ...formData,
-      rentalItems: cartItems,
+      rentalItems: JSON.stringify(cartItems), // Convert array to string
     });
   }, [cartItems]);
 
@@ -73,7 +79,9 @@ const RentalForm = ({ rentalItems }) => {
         <input
           type="hidden"
           name="Rental Items"
-          value={rentalItems || "None"}
+          value={cartItems.map(item => 
+            `${item.rentalItem} - Quantity: ${item.quantity}`
+          ).join(', ') || "None"}
         />
         <button
           type="submit"
