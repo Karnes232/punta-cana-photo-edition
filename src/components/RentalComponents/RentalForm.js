@@ -79,13 +79,13 @@ const RentalForm = ({ rentalItems }) => {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         id="cart"
-        className="w-full md:w-full max-w- xl:max-w-4xl flex flex-col justify-center items-center mx-auto my-5"
+        className="w-full md:w-full max-w- xl:max-w-5xl flex flex-col justify-center items-center mx-auto my-5"
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="cart" />
         
-        <div className="w-80 flex flex-col xl:flex-row xl:mt-10 xl:gap-12">
-          <div className="xl:w-[25rem] flex flex-col mt-5 xl:mt-24">
+        <div className="w-80 lg:w-96 xl:w-full flex flex-col xl:flex-row xl:justify-center xl:mt-10 xl:gap-12">
+          <div className="xl:w-[35rem] flex flex-col mt-5 xl:mt-24">
             <ContactInfo
               name={name}
               setName={setName}
