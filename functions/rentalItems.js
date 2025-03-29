@@ -52,6 +52,7 @@ exports.handler = async function(event, context) {
         // Render the React email to HTML and await the result
         console.log('Rendering email template');
         const emailHtml = await render(eventRentalEmail({ name, items }));
+        const plainText = await render(eventRentalEmail({ name, items }), { plainText: true });
         console.log('Email template rendered');
         
         // Send the email with improved headers
@@ -67,7 +68,7 @@ exports.handler = async function(event, context) {
             },
             subject: 'Your Rental Order Confirmation - Sertuin Events',
             html: emailHtml,
-            text: render(eventRentalEmail({ name, items }), { plainText: true }), // Add plain text version
+            text: plainText, // Add plain text version
             headers: {
                 'Precedence': 'bulk',
                 'X-Auto-Response-Suppress': 'OOF, AutoReply',
