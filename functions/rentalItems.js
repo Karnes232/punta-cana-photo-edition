@@ -26,7 +26,7 @@ exports.handler = async function(event, context) {
 
         console.log('Parsed data:', { name, email, itemsCount: items.length });
 
-        // Set up email transporter
+        // Set up email transporter with better configuration
         const transporter = nodemailer.createTransport({
             service: "gmail",
             host: "smtp.gmail.com",
@@ -35,7 +35,11 @@ exports.handler = async function(event, context) {
             auth: {
                 user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASSWORD,
-            }
+            },
+            pool: true, // Use pooled connections
+            maxConnections: 3,
+            rateDelta: 1000, // Minimum time between messages
+            rateLimit: 3, // Max messages per rateDelta
         });
 
         // Log transport creation
@@ -50,8 +54,7 @@ exports.handler = async function(event, context) {
         const emailHtml = await render(eventRentalEmail({ name, items }));
         console.log('Email template rendered');
         
-        // Send the email
-        console.log('Sending email');
+        // Send the email with improved headers
         await transporter.sendMail({
             from: {
                 name: "Sertuin Events",
@@ -64,15 +67,15 @@ exports.handler = async function(event, context) {
             },
             subject: 'Your Rental Order Confirmation - Sertuin Events',
             html: emailHtml,
+            text: render(eventRentalEmail({ name, items }), { plainText: true }), // Add plain text version
             headers: {
-                'X-Priority': '1',
-                'X-MSMail-Priority': 'High',
-                'Importance': 'high',
-                'List-Unsubscribe': `<mailto:unsubscribe@sertuinevents.com?subject=unsubscribe>, <https://sertuinevents.com/unsubscribe>`,
-                'Feedback-ID': 'rental-confirmation:sertuinevents',
-                'X-Entity-Ref-ID': new Date().getTime().toString(),
+                'Precedence': 'bulk',
+                'X-Auto-Response-Suppress': 'OOF, AutoReply',
+                'Auto-Submitted': 'auto-generated',
+                'Content-Type': 'text/html; charset=utf-8',
+                'X-Mailer': 'Sertuin Events Mailer',
+                'Date': new Date().toUTCString(),
             },
-            messageId: `<${new Date().getTime()}@sertuinevents.com>`,
         });
         
         console.log('Email sent successfully');
