@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/cart";
 import ContactInfo from "./ContactInfo";
 import CartComponent from "./CartComponent";
-
+import axios from "axios";
 const RentalForm = ({ rentalItems }) => {
   const [name, setName] = useState("");
+  const [host, setHost] = useState("");
   const { clearCart, cartItems } = useContext(CartContext);
 
   const [formData, setFormData] = useState({
@@ -21,7 +22,9 @@ const RentalForm = ({ rentalItems }) => {
     return newFormData;
   }
 
-  const handleSubmit = (event) => {
+  let redirectHref = `${host}/contact/thankyou/?name=${formData.name}`;
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formattedData = {
       ...formData,
@@ -31,7 +34,7 @@ const RentalForm = ({ rentalItems }) => {
     };
     const dataFromForm = getFormData(formattedData);
     
-    fetch("/", {
+    await fetch("/", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -39,18 +42,34 @@ const RentalForm = ({ rentalItems }) => {
       body: new URLSearchParams(dataFromForm).toString(),
     }).then(() => {
       console.log("Form successfully submitted");
-      clearCart(); // Clear the cart after successful submission
+      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      axios.post('/.netlify/functions/rentalItems', {
+        name: formData.name,
+        email: formData.email,
+        Accommodation: formData.Accommodation,
+        additional: formData.additional,
+        items: cartItems
+      })
+      .then(response => {
+        console.log("Email sent successfully");
+        clearCart();
+        // window.location.href = redirectHref;
+      })
+      .catch(error => {
+        console.error("Error sending email:", error);
+      });
     });
   };
 
   useEffect(() => {
+    setHost(window.location.origin);
     setFormData({
       ...formData,
       rentalItems: JSON.stringify(cartItems), // Convert array to string
     });
   }, [cartItems]);
 
-  console.log(formData);
+
   return (
     <>
       <form
@@ -92,25 +111,6 @@ const RentalForm = ({ rentalItems }) => {
         </button>
       </form>
     </>
-    // <div className="container mx-auto px-4 py-8">
-    //   {cartItems.length > 0 ? (
-    //     <div>
-    //       {cartItems.map((item, index) => (
-    //         <div key={index} className="p-4 border-b">
-    //           {item.rentalItem} - Quantity: {item.quantity}
-    //         </div>
-    //       ))}
-    //       <button
-    //         onClick={clearCart}
-    //         className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
-    //       >
-    //         Clear Cart
-    //       </button>
-    //     </div>
-    //   ) : (
-    //     <div>Your cart is empty</div>
-    //   )}
-    // </div>
   );
 };
 
