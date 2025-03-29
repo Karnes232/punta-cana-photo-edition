@@ -3,6 +3,12 @@ const { render } = require('@react-email/render');
 const nodemailer = require('nodemailer');
 
 exports.handler = async function(event, context) {
+    // Log incoming request
+    console.log('Received request:', {
+        body: event.body,
+        headers: event.headers
+    });
+
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
@@ -11,7 +17,14 @@ exports.handler = async function(event, context) {
     }
 
     try {
+        // Parse and validate input
         const { name, email, items } = JSON.parse(event.body);
+        
+        if (!name || !email || !items) {
+            throw new Error('Missing required fields: name, email, or items');
+        }
+
+        console.log('Parsed data:', { name, email, itemsCount: items.length });
 
         // Set up email transporter
         const transporter = nodemailer.createTransport({
@@ -25,10 +38,20 @@ exports.handler = async function(event, context) {
             }
         });
 
+        // Log transport creation
+        console.log('Transporter created');
+
+        // Verify transporter
+        await transporter.verify();
+        console.log('Transporter verified');
+
         // Render the React email to HTML and await the result
+        console.log('Rendering email template');
         const emailHtml = await render(eventRentalEmail({ name, items }));
+        console.log('Email template rendered');
         
         // Send the email
+        console.log('Sending email');
         await transporter.sendMail({
             from: {
                 name: "Sertuin Events",
@@ -52,15 +75,33 @@ exports.handler = async function(event, context) {
             messageId: `<${new Date().getTime()}@sertuinevents.com>`,
         });
         
+        console.log('Email sent successfully');
+
         return {
             statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*', // Add CORS headers
+                'Access-Control-Allow-Headers': 'Content-Type',
+            },
             body: JSON.stringify({ message: 'Confirmation email sent successfully' })
         };
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Detailed error:', {
+            message: error.message,
+            stack: error.stack,
+            name: error.name
+        });
+
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: error.message })
+            headers: {
+                'Access-Control-Allow-Origin': '*', // Add CORS headers
+                'Access-Control-Allow-Headers': 'Content-Type',
+            },
+            body: JSON.stringify({ 
+                error: error.message,
+                details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+            })
         };
     }
 };
