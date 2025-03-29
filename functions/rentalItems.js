@@ -68,7 +68,7 @@ exports.handler = async function(event, context) {
             },
             subject: 'Your Rental Order Confirmation - Sertuin Events',
             html: emailHtml,
-            text: plainText, // Add plain text version
+            text: `${name} has ordered ${items.length} items.`, // Add plain text version
             headers: {
                 'Precedence': 'bulk',
                 'X-Auto-Response-Suppress': 'OOF, AutoReply',
