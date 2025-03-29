@@ -69,13 +69,15 @@ exports.handler = async function(event, context) {
             html: emailHtml,
           //  text: `${name} has rented the following items: ${items.join(', ')}`, // Add plain text version
             headers: {
-                'Precedence': 'bulk',
-                'X-Auto-Response-Suppress': 'OOF, AutoReply',
-                'Auto-Submitted': 'auto-generated',
+                'X-Priority': '1',
+                'X-MSMail-Priority': 'High',
+                'Importance': 'high',
                 'Content-Type': 'text/html; charset=utf-8',
+                'MIME-Version': '1.0',
                 'X-Mailer': 'Sertuin Events Mailer',
                 'Date': new Date().toUTCString(),
             },
+            priority: 'high'
         });
         
         console.log('Email sent successfully');
