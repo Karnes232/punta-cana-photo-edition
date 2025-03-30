@@ -1,52 +1,43 @@
 import { graphql, navigate } from "gatsby";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Seo from "../../../components/Layout/seo";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import AdminLayout from "../../../components/Layout/AdminLayout";
 import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
-import { auth } from "../../../config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { FcGoogle } from "react-icons/fc";
+import { auth } from "../../../config/firebase";
+import LogoutButton from "../../../components/auth/LogoutButton";
+import PackageQuoteForm from "../../../components/AdminComponents/PackageQuoteForm";
+
 const Index = ({ data }) => {
-  const provider = new GoogleAuthProvider();
+  const [adminUser, setAdminUser] = useState(false);
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       const currentUser = auth.currentUser;
       if (currentUser) {
-        navigate("/admin/");
+        if (currentUser.email === "karnes.james@gmail.com") {
+          setAdminUser(true);
+        }
+      } else {
+        navigate("/admin/signin");
       }
     });
   }, []);
-
-  const signIn = async () => {
-    try {
-      await signInWithPopup(auth, provider)
-        .then(async (result) => {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          // const credential = GoogleAuthProvider.credentialFromResult(result);
-          // const token = credential.accessToken;
-          // // The signed-in user info.
-          // const user = result.user;
-          // IdP data available using getAdditionalUserInfo(result)
-          // ...
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-      <button
-        className="flex justify-center items-center px-5 py-2 gap-4 border rounded-lg w-full max-w-4xl mx-auto"
-        onClick={signIn}
-      >
-        <FcGoogle className="text-2xl" /> Sign in with Google
-      </button>
+      <div className="flex flex-col items-center bg-gray-100 p-8 lg:pt-24 -mt-5 md:-mt-10 lg:-mt-20">
+        {adminUser ? (
+          
+            <PackageQuoteForm />
+        ) : (
+          <div className="text-center text-2xl font-bold min-h-[25vh]  flex flex-col justify-center items-center">
+            You are not authorized to access this page
+          </div>
+        )}
+
+        <LogoutButton />
+      </div>
     </AdminLayout>
   );
 };
@@ -57,7 +48,7 @@ export const Head = ({ data }) => {
   const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : "/admin/signin"}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : "/admin/package-quotes"}`;
 
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 

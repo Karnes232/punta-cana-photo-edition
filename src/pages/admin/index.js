@@ -5,8 +5,8 @@ import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 import Seo from "../../components/Layout/seo";
 import AdminLayout from "../../components/Layout/AdminLayout";
 import { auth } from "../../config/firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { CiLogout } from "react-icons/ci";
+import { onAuthStateChanged } from "firebase/auth";
+import LogoutButton from "../../components/auth/LogoutButton";
 const Index = ({ data }) => {
   const { t } = useTranslation();
   const [adminUser, setAdminUser] = useState(false);
@@ -23,13 +23,6 @@ const Index = ({ data }) => {
     });
   }, []);
 
-  const logout = async () => {
-    try {
-      await signOut(auth);
-    } catch (err) {
-      console.error(err);
-    }
-  };
   return (
     <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
@@ -42,7 +35,7 @@ const Index = ({ data }) => {
 
             <div className="flex flex-col space-y-4">
               <Link
-                to="/admin/product-a-quotes"
+                to="/admin/package-quotes"
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
                 {t("Package Quotes")}
@@ -75,12 +68,7 @@ const Index = ({ data }) => {
             You are not authorized to access this page
           </div>
         )}
-        <button
-          className="flex justify-center items-center px-5 py-2 gap-4 border rounded-lg w-full max-w-4xl bg-white mt-5"
-          onClick={logout}
-        >
-          <CiLogout /> Logout
-        </button>
+        <LogoutButton />
       </div>
     </AdminLayout>
   );
