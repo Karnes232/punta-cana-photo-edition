@@ -1,14 +1,52 @@
-import { graphql } from "gatsby";
-import React from "react";
+import { graphql, navigate } from "gatsby";
+import React, { useEffect } from "react";
 import Seo from "../../../components/Layout/seo";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import AdminLayout from "../../../components/Layout/AdminLayout";
 import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
-
+import { auth } from "../../../config/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { FcGoogle } from "react-icons/fc";
 const Index = ({ data }) => {
+  const provider = new GoogleAuthProvider();
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        navigate("/admin/");
+      }
+    });
+  }, []);
+
+  const signIn = async () => {
+    try {
+      await signInWithPopup(auth, provider)
+        .then(async (result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          // const credential = GoogleAuthProvider.credentialFromResult(result);
+          // const token = credential.accessToken;
+          // // The signed-in user info.
+          // const user = result.user;
+          // IdP data available using getAdditionalUserInfo(result)
+          // ...
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <button
+        className="flex justify-center items-center px-5 py-2 gap-4 border rounded-lg w-full"
+        onClick={signIn}
+      >
+        <FcGoogle className="text-2xl" /> Sign in with Google
+      </button>
     </AdminLayout>
   );
 };

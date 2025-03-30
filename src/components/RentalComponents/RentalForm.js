@@ -54,7 +54,7 @@ const RentalForm = ({ rentalItems }) => {
         .then((response) => {
           console.log("Email sent successfully");
           clearCart();
-          // window.location.href = redirectHref;
+          window.location.href = redirectHref;
         })
         .catch((error) => {
           console.error("Error sending email:", error);

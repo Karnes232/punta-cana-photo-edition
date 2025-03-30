@@ -4,10 +4,6 @@ const nodemailer = require("nodemailer");
 
 exports.handler = async function (event, context) {
   // Log incoming request
-  console.log("Received request:", {
-    body: event.body,
-    headers: event.headers,
-  });
 
   if (event.httpMethod !== "POST") {
     return {
@@ -23,8 +19,6 @@ exports.handler = async function (event, context) {
     if (!name || !email || !items) {
       throw new Error("Missing required fields: name, email, or items");
     }
-
-    console.log("Parsed data:", { name, email, itemsCount: items.length });
 
     // Set up email transporter with better configuration
     const transporter = nodemailer.createTransport({
@@ -43,16 +37,12 @@ exports.handler = async function (event, context) {
     });
 
     // Log transport creation
-    console.log("Transporter created");
 
     // Verify transporter
     await transporter.verify();
-    console.log("Transporter verified");
 
     // Render the React email to HTML and await the result
-    console.log("Rendering email template");
     const emailHtml = await render(eventRentalEmail({ name, items }));
-    console.log("Email template rendered");
 
     // Send the email with improved headers
     await transporter.sendMail({
@@ -79,8 +69,6 @@ exports.handler = async function (event, context) {
       },
       priority: "high",
     });
-
-    console.log("Email sent successfully");
 
     return {
       statusCode: 200,

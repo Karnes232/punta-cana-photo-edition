@@ -1,50 +1,86 @@
-import { graphql, Link } from "gatsby";
-import React from "react";
+import { graphql, Link, navigate } from "gatsby";
+import React, { useEffect, useState } from "react";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 import Seo from "../../components/Layout/seo";
 import AdminLayout from "../../components/Layout/AdminLayout";
+import { auth } from "../../config/firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { CiLogout } from "react-icons/ci";
 const Index = ({ data }) => {
   const { t } = useTranslation();
+  const [adminUser, setAdminUser] = useState(false);
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        if (currentUser.email === "karnes.james@gmail.com") {
+          setAdminUser(true);
+        }
+      } else {
+        navigate("/admin/signin");
+      }
+    });
+  }, []);
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-      <div className="flex flex-col items-center bg-gray-100 p-8">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
-          <h1 className="text-2xl font-bold text-center mb-8">
-            Admin Dashboard
-          </h1>
+      <div className="flex flex-col items-center bg-gray-100 p-8 -mt-5 md:-mt-10 lg:-mt-20">
+        {adminUser ? (
+          <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6 lg:mt-20">
+            <h1 className="text-2xl font-bold text-center mb-8">
+              Admin Dashboard
+            </h1>
 
-          <div className="flex flex-col space-y-4">
-            <Link
-              to="/admin/product-a-quotes"
-              className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
-            >
-              {t("Package Quotes")}
-            </Link>
+            <div className="flex flex-col space-y-4">
+              <Link
+                to="/admin/product-a-quotes"
+                className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
+              >
+                {t("Package Quotes")}
+              </Link>
 
-            <Link
-              to="/admin/product-b-quotes"
-              className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
-            >
-              {t("Package Contact")}
-            </Link>
+              <Link
+                to="/admin/product-b-quotes"
+                className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
+              >
+                {t("Package Contact")}
+              </Link>
 
-            <Link
-              to="/admin/product-c-quotes"
-              className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
-            >
-              {t("Rental Items Quotes")}
-            </Link>
+              <Link
+                to="/admin/product-c-quotes"
+                className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
+              >
+                {t("Rental Items Quotes")}
+              </Link>
 
-            <Link
-              to="/admin/product-d-quotes"
-              className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
-            >
-              {t("Rental Items Contact")}
-            </Link>
+              <Link
+                to="/admin/product-d-quotes"
+                className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
+              >
+                {t("Rental Items Contact")}
+              </Link>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="text-center text-2xl font-bold min-h-[25vh]  flex flex-col justify-center items-center">
+            You are not authorized to access this page
+          </div>
+        )}
+        <button
+          className="flex justify-center items-center px-5 py-2 gap-4 border rounded-lg w-full max-w-4xl bg-white mt-5"
+          onClick={logout}
+        >
+          <CiLogout /> Logout
+        </button>
       </div>
     </AdminLayout>
   );

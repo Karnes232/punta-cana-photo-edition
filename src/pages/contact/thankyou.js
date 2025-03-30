@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 
 const ThankYou = ({ data }) => {
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   useEffect(() => {
     const searchParams = new URLSearchParams(document.location.search);
@@ -18,20 +20,21 @@ const ThankYou = ({ data }) => {
           <div className="">
             <div className="flex flex-col justify-center items-center text-slate-600 ">
               <div className="text-2xl xl:text-4xl font-serif text-center mt-6">
-                Thank you {name}, our team will reach out to you shortly!
+                {t("Thank you")} {name},{" "}
+                {t("our team will reach out to you shortly!")}
               </div>
 
               <div className="text-center text-sm xl:text-base mt-2 xl:mt-6">
-                Please feel free to{" "}
+                {t("Please feel free to")}{" "}
                 <a
                   href={`mailto:${data.allContentfulGeneralLayout.nodes[0].email}`}
                   aria-label="Gmail"
                   rel="noreferrer"
                   className="underline"
                 >
-                  contact us
+                  {t("contact us")}
                 </a>{" "}
-                with any questions or concerns.
+                {t("with any questions or concerns.")}
               </div>
             </div>
           </div>
@@ -44,9 +47,10 @@ const ThankYou = ({ data }) => {
 export default ThankYou;
 
 export const Head = ({ data }) => {
+  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/thankyou`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/contact/thankyou"}`;
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
   let JsonSchema = {};
@@ -69,13 +73,24 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query MyQuery($language: String!) {
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
       }
     }
-    allContentfulSeo(filter: { page: { eq: "Contact" } }) {
+    allContentfulSeo(
+      filter: { page: { eq: "Contact" }, node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         keywords
@@ -94,7 +109,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulGeneralLayout {
+    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
       nodes {
         companyName
         facebook
