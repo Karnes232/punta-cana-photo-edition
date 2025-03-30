@@ -11,6 +11,7 @@ import PackageQuoteForm from "../../../components/AdminComponents/PackageQuoteFo
 
 const Index = ({ data }) => {
   const [adminUser, setAdminUser] = useState(false);
+
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       const currentUser = auth.currentUser;
@@ -28,8 +29,10 @@ const Index = ({ data }) => {
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <div className="flex flex-col items-center bg-gray-100 p-8 lg:pt-24 -mt-5 md:-mt-10 lg:-mt-20">
         {adminUser ? (
-          
-            <PackageQuoteForm />
+          <PackageQuoteForm
+            packages={data.allContentfulPackages.nodes}
+            additions={data.allContentfulPackageAdditions.nodes}
+          />
         ) : (
           <div className="text-center text-2xl font-bold min-h-[25vh]  flex flex-col justify-center items-center">
             You are not authorized to access this page
@@ -132,6 +135,18 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+      }
+    }
+    allContentfulPackages(filter: { node_locale: { eq: $language } }) {
+      nodes {
+        title
+        price
+      }
+    }
+    allContentfulPackageAdditions(filter: { node_locale: { eq: $language } }) {
+      nodes {
+        addition
+        price
       }
     }
   }
