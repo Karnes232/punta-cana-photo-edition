@@ -194,6 +194,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const adminPath = urlPath === "" ? "/admin" : `/${urlPath}/admin`;
+      createPage({
+        path: adminPath,
+        component: path.resolve("./src/pages/admin/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       const contactPath = urlPath === "" ? "/contact" : `/${urlPath}/contact`;
       createPage({
         path: contactPath,
@@ -341,10 +351,10 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       fallback: {
-        "fs": false,
-        "path": false,
-        "stream": false,
+        fs: false,
+        path: false,
+        stream: false,
       },
-    }
-  })
-}
+    },
+  });
+};

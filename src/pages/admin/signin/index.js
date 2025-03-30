@@ -1,23 +1,17 @@
-import React from "react";
-import Layout from "../../../components/Layout/Layout";
 import { graphql } from "gatsby";
+import React from "react";
 import Seo from "../../../components/Layout/seo";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import AdminLayout from "../../../components/Layout/AdminLayout";
 import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
-import RentalForm from "../../../components/RentalComponents/RentalForm";
 
 const Index = ({ data }) => {
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <div>
-        <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-        <RentalForm rentalItems={data.allContentfulRentalItems.nodes} />
-      </div>
-    </Layout>
+    <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+    </AdminLayout>
   );
 };
-
-// Move the context usage to a child component that renders after Layout
 
 export default Index;
 
@@ -25,23 +19,25 @@ export const Head = ({ data }) => {
   const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/event-rentals/cart"}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : "/admin/signin"}`;
+
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
   let JsonSchema = {};
   if (schema) {
     JsonSchema = JSON.parse(schema);
   }
+
   return (
     <>
       <Seo
         title={title}
         description={description.description}
         keywords={keywords.join(", ")}
-        image={`https:${images?.file?.url}`}
+        image={`https:${images.file.url}`}
         url={siteUrl}
         schemaMarkup={JsonSchema}
-        language={language === "en-US" ? "en" : language}
+        language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -49,7 +45,7 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery($language: String!) {
+  query IndexPageQuery($language: String!) {
     locales: allLocale {
       edges {
         node {
@@ -74,7 +70,7 @@ export const query = graphql`
       }
     }
     allContentfulSeo(
-      filter: { page: { eq: "Cart" }, node_locale: { eq: $language } }
+      filter: { page: { eq: "Admin" }, node_locale: { eq: $language } }
     ) {
       nodes {
         title
@@ -95,11 +91,10 @@ export const query = graphql`
       }
     }
     allContentfulPageContent(
-      filter: { page: { eq: "Cart" }, node_locale: { eq: $language } }
+      filter: { page: { eq: "Admin" }, node_locale: { eq: $language } }
     ) {
       nodes {
         page
-        videoUrl
         heroImageList {
           gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
           title
@@ -108,25 +103,6 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
-        paragraph1 {
-          raw
-        }
-      }
-    }
-    allContentfulRentalItems(
-      sort: { rentalItem: ASC }
-      filter: { node_locale: { eq: $language } }
-    ) {
-      nodes {
-        id
-        rentalItem
-        category
-        price
-        description
-        images {
-          gatsbyImage(width: 450, placeholder: BLURRED, formats: WEBP)
-          title
-        }
       }
     }
   }

@@ -189,6 +189,10 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/admin",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/photo-gallery",
             getLanguageFromPath: true,
           },
@@ -201,6 +205,6 @@ module.exports = {
     },
   ],
   flags: {
-    DEV_SSR: false
-  }
+    DEV_SSR: false,
+  },
 };

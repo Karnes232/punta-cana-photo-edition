@@ -28,12 +28,12 @@ const RentalForm = ({ rentalItems }) => {
     event.preventDefault();
     const formattedData = {
       ...formData,
-      "Rental Items": cartItems.map(item => 
-        `${item.rentalItem} - Quantity: ${item.quantity}`
-      ).join(', ')
+      "Rental Items": cartItems
+        .map((item) => `${item.rentalItem} - Quantity: ${item.quantity}`)
+        .join(", "),
     };
     const dataFromForm = getFormData(formattedData);
-    
+
     await fetch("/", {
       method: "POST",
       headers: {
@@ -42,22 +42,23 @@ const RentalForm = ({ rentalItems }) => {
       body: new URLSearchParams(dataFromForm).toString(),
     }).then(() => {
       console.log("Form successfully submitted");
-      const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-      axios.post('/.netlify/functions/rentalItems', {
-        name: formData.name,
-        email: formData.email,
-        Accommodation: formData.Accommodation,
-        additional: formData.additional,
-        items: cartItems
-      })
-      .then(response => {
-        console.log("Email sent successfully");
-        clearCart();
-        // window.location.href = redirectHref;
-      })
-      .catch(error => {
-        console.error("Error sending email:", error);
-      });
+      const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+      axios
+        .post("/.netlify/functions/rentalItems", {
+          name: formData.name,
+          email: formData.email,
+          Accommodation: formData.Accommodation,
+          additional: formData.additional,
+          items: cartItems,
+        })
+        .then((response) => {
+          console.log("Email sent successfully");
+          clearCart();
+          // window.location.href = redirectHref;
+        })
+        .catch((error) => {
+          console.error("Error sending email:", error);
+        });
     });
   };
 
@@ -68,7 +69,6 @@ const RentalForm = ({ rentalItems }) => {
       rentalItems: JSON.stringify(cartItems), // Convert array to string
     });
   }, [cartItems]);
-
 
   return (
     <>
@@ -83,7 +83,7 @@ const RentalForm = ({ rentalItems }) => {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="cart" />
-        
+
         <div className="w-80 lg:w-96 xl:w-full flex flex-col xl:flex-row xl:justify-center xl:mt-10 xl:gap-12">
           <div className="xl:w-[35rem] flex flex-col mt-5 xl:mt-24">
             <ContactInfo
@@ -98,9 +98,11 @@ const RentalForm = ({ rentalItems }) => {
         <input
           type="hidden"
           name="Rental Items"
-          value={cartItems.map(item => 
-            `${item.rentalItem} - Quantity: ${item.quantity}`
-          ).join(', ') || "None"}
+          value={
+            cartItems
+              .map((item) => `${item.rentalItem} - Quantity: ${item.quantity}`)
+              .join(", ") || "None"
+          }
         />
         <button
           type="submit"
