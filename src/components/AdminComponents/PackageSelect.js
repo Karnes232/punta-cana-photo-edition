@@ -25,9 +25,17 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
   const handlePackageChange = (e) => {
     console.log(e);
     if (e) {
-      setFormData({ ...formData, package: e.value });
-      const selectedPackage = packages.find((pkg) => pkg.title === e.value);
-      setFormData({ ...formData, packagePrice: selectedPackage.price });
+      // Check if it's a new option (created by user)
+      if (e.__isNew__) {
+        setFormData({ ...formData, package: e.value, packagePrice: 0 });
+      } else {
+        const selectedPackage = packages.find((pkg) => pkg.title === e.value);
+        setFormData({
+          ...formData,
+          package: e.value,
+          packagePrice: selectedPackage.price,
+        });
+      }
     } else {
       setFormData({ ...formData, package: "", packagePrice: 0 });
     }
@@ -49,17 +57,27 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
               placeholder={t("Package Options")}
             />
           </div>
-          <div className="w-24">
-            <input
-              type="number"
-              className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder={t("Package Price")}
-              value={formData.packagePrice}
-              onChange={(e) =>
-                setFormData({ ...formData, packagePrice: e.target.value })
-              }
-              min="1"
-            />
+          <div className="w-24 flex items-center ">
+            <div className="relative z-0 -mt-7 w-full group">
+              <label
+                htmlFor="PackagePrice"
+                className="block mb-2 text-sm font-medium text-gray-500"
+              >
+                <Trans>Price</Trans>
+              </label>
+              <input
+                type="number"
+                id="PackagePrice"
+                name="PackagePrice"
+                className="w-full px-3  rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
+                placeholder={t("Package Price")}
+                value={formData.packagePrice}
+                onChange={(e) =>
+                  setFormData({ ...formData, packagePrice: e.target.value })
+                }
+                min="1"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -76,6 +94,10 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
           rows="4"
           className="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-0 focus:border-black additionalInfo"
           placeholder={t("Package Description...")}
+          value={formData.packagesDescription}
+          onChange={(e) =>
+            setFormData({ ...formData, packagesDescription: e.target.value })
+          }
         ></textarea>
       </div>
       {/* <div className="relative mb-2 w-full group">

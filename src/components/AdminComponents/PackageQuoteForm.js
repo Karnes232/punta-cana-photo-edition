@@ -10,6 +10,7 @@ const PackageQuoteForm = ({ packages, additions }) => {
     package: "",
     packagePrice: 0,
     additions: [],
+    packagesDescription: "",
   });
 
   console.log(formData);
@@ -25,7 +26,7 @@ const PackageQuoteForm = ({ packages, additions }) => {
       // onSubmit={handleSubmit}
     >
       <input type="hidden" name="form-name" value="PackageQuoteForm" />
-      <h4 className="text-2xl font-bold">
+      <h4 className="text-2xl mb-5 font-bold">
         <Trans>Client Information</Trans>
       </h4>
       <ClientInfo formData={formData} setFormData={setFormData} />
