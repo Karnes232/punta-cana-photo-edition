@@ -4,10 +4,11 @@ import { Trans } from "gatsby-plugin-react-i18next";
 import PackageSelect from "./PackageSelect";
 import PDFQuoteGenerator from "./pdfComponents/PDFQuoteGenerator";
 
-const PackageQuoteForm = ({ packages, additions }) => {
+const PackageQuoteForm = ({ packages, additions, companyInfo }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    telephone: "",
     package: "",
     packagePrice: 0,
     additions: [],
@@ -70,6 +71,12 @@ const PackageQuoteForm = ({ packages, additions }) => {
             </p>
             <p>
               <strong>
+                <Trans>Telephone</Trans>:
+              </strong>{" "}
+              {formData.telephone}
+            </p>
+            <p>
+              <strong>
                 <Trans>Email</Trans>:
               </strong>{" "}
               {formData.email}
@@ -82,7 +89,7 @@ const PackageQuoteForm = ({ packages, additions }) => {
             </p>
             <p>
               <strong>
-                <Trans>Price</Trans>:
+                <Trans>Package Price</Trans>:
               </strong>{" "}
               ${parseFloat(formData.packagePrice).toFixed(2)}
             </p>
@@ -95,9 +102,40 @@ const PackageQuoteForm = ({ packages, additions }) => {
                 {formData.packagesDescription}
               </p>
             )}
+
+            {formData.additions && formData.additions.length > 0 && (
+              <div className="mt-4">
+                <strong>
+                  <Trans>Additions</Trans>:
+                </strong>
+                {formData.additions.map((addition, index) => (
+                  <div key={index} className="ml-4 mt-2">
+                    <p>
+                      <strong>{addition.addition}</strong> - $
+                      {parseFloat(addition.price).toFixed(2)}
+                    </p>
+                    {addition.description && (
+                      <p className="text-sm text-gray-600 ml-2">
+                        {addition.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+                <p className="mt-3 font-bold">
+                  <Trans>Total Price</Trans>: $
+                  {(
+                    parseFloat(formData.packagePrice) +
+                    formData.additions.reduce(
+                      (sum, addition) => sum + parseFloat(addition.price || 0),
+                      0,
+                    )
+                  ).toFixed(2)}
+                </p>
+              </div>
+            )}
           </div>
 
-          <PDFQuoteGenerator formData={formData} />
+          <PDFQuoteGenerator formData={formData} companyInfo={companyInfo} />
 
           <div className="flex justify-center mt-6">
             <button

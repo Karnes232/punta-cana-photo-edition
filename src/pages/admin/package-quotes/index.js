@@ -24,6 +24,7 @@ const Index = ({ data }) => {
       }
     });
   }, []);
+  console.log(data.allContentfulGeneralLayout.nodes);
   return (
     <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
@@ -32,6 +33,7 @@ const Index = ({ data }) => {
           <PackageQuoteForm
             packages={data.allContentfulPackages.nodes}
             additions={data.allContentfulPackageAdditions.nodes}
+            companyInfo={data.allContentfulGeneralLayout.nodes[0]}
           />
         ) : (
           <div className="text-center text-2xl font-bold min-h-[25vh]  flex flex-col justify-center items-center">
@@ -92,13 +94,16 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout {
+    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
       nodes {
         companyName
         facebook
         instagram
         x
         telephone
+        rnc
+        email
+        address
       }
     }
     allContentfulSeo(

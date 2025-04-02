@@ -87,26 +87,81 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#666",
   },
+  additions: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  additionTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  additionItem: {
+    marginLeft: 10,
+    marginBottom: 5,
+    fontSize: 12,
+  },
+  additionDescription: {
+    marginLeft: 20,
+    fontSize: 10,
+    color: "#666",
+    marginBottom: 5,
+  },
+  companyInfo: {
+    marginLeft: "auto",
+    fontSize: 10,
+    textAlign: "right",
+    maxWidth: "50%",
+  },
+  companyName: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 15,
+  },
+  companyDetail: {
+    marginBottom: 1,
+    lineHeight: 1,
+  },
+  paymentTerms: {
+    marginBottom: 15,
+    fontSize: 10,
+    color: "#333",
+    textAlign: "center",
+  },
 });
 
 // Create Document Component
-const QuotePDF = ({ formData }) => {
+const QuotePDF = ({ formData, companyInfo }) => {
   const logoUrl =
     "https://images.ctfassets.net/vpskymlp6aa0/pKzEbbiqIVQrzq8SeaxPy/8fe23dd9429e712b8c681cb2d287056b/logotipo_sertuin_events.png";
-  const date = new Date().toLocaleDateString();
+  const dateOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const date = new Date().toLocaleDateString(undefined, dateOptions);
   const quoteNumber = `Q${Date.now().toString().slice(-6)}`;
 
-  // Calculate total (could be expanded for additions)
-  const total = parseFloat(formData.packagePrice);
+  // Calculate total including additions
+  const additionsTotal = formData.additions.reduce(
+    (sum, addition) => sum + parseFloat(addition.price || 0),
+    0,
+  );
+  const total = parseFloat(formData.packagePrice) + additionsTotal;
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
           <Image src={logoUrl} style={styles.logo} />
-          <View>
-            <Text>Quote #: {quoteNumber}</Text>
-            <Text>Date: {date}</Text>
+          <View style={styles.companyInfo}>
+            <Text style={styles.companyName}>Sertuin Events</Text>
+            <Text style={styles.companyDetail}>Tel: {companyInfo.telephone}</Text>
+            <Text style={styles.companyDetail}>Email: {companyInfo.email}</Text>
+            <Text style={styles.companyDetail}>RNC: {companyInfo.rnc}</Text>
+            <Text style={styles.companyDetail}>{companyInfo.address}</Text>
+            <Text style={styles.companyDetail}>Quote #: {quoteNumber}</Text>
+            <Text style={styles.companyDetail}>Date: {date}</Text>
           </View>
         </View>
 
@@ -115,6 +170,7 @@ const QuotePDF = ({ formData }) => {
         <View style={styles.clientInfo}>
           <Text style={styles.clientInfoTitle}>Client Information:</Text>
           <Text style={styles.clientDetail}>Name: {formData.name}</Text>
+          <Text style={styles.clientDetail}>Telephone: {formData.telephone}</Text>
           <Text style={styles.clientDetail}>Email: {formData.email}</Text>
         </View>
 
@@ -130,9 +186,26 @@ const QuotePDF = ({ formData }) => {
               Description: {formData.packagesDescription}
             </Text>
           )}
-
-          {/* Additions could be mapped here if implemented */}
         </View>
+
+        {formData.additions && formData.additions.length > 0 && (
+          <View style={styles.additions}>
+            <Text style={styles.additionTitle}>Additional Services:</Text>
+            {formData.additions.map((addition, index) => (
+              <View key={index}>
+                <View style={styles.packageItem}>
+                  <Text>{addition.addition}</Text>
+                  <Text>${parseFloat(addition.price).toFixed(2)}</Text>
+                </View>
+                {addition.description && (
+                  <Text style={styles.additionDescription}>
+                    {addition.description}
+                  </Text>
+                )}
+              </View>
+            ))}
+          </View>
+        )}
 
         <View style={styles.total}>
           <Text>Total:</Text>
@@ -140,6 +213,10 @@ const QuotePDF = ({ formData }) => {
         </View>
 
         <View style={styles.footer}>
+          <Text style={styles.paymentTerms}>
+            To confirm this booking, a 60% deposit of the total amount is
+            required. The remaining 40% must be paid before the event starts.
+          </Text>
           <Text>Sertuin Events • Thank you for your business!</Text>
           <Text>This quote is valid for 30 days from the date of issue.</Text>
         </View>
@@ -148,12 +225,12 @@ const QuotePDF = ({ formData }) => {
   );
 };
 
-const PDFQuoteGenerator = ({ formData }) => {
+const PDFQuoteGenerator = ({ formData, companyInfo }) => {
   const { t } = useTranslation();
 
   const sendQuoteEmail = async () => {
     try {
-      const pdfDoc = <QuotePDF formData={formData} />;
+      const pdfDoc = <QuotePDF formData={formData} companyInfo={companyInfo} />;
 
       // Debug log to check PDF content
       console.log("PDF Content:", formData);
@@ -202,7 +279,7 @@ const PDFQuoteGenerator = ({ formData }) => {
   return (
     <div className="flex flex-col space-y-4 items-center mt-6">
       <PDFDownloadLink
-        document={<QuotePDF formData={formData} />}
+        document={<QuotePDF formData={formData} companyInfo={companyInfo} />}
         fileName={`Sertuin_Events_Quote_${formData.name.replace(/\s+/g, "_")}.pdf`}
         className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded"
       >

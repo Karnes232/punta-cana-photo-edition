@@ -23,7 +23,6 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
   }));
 
   const handlePackageChange = (e) => {
-    console.log(e);
     if (e) {
       // Check if it's a new option (created by user)
       if (e.__isNew__) {
@@ -40,6 +39,39 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
       setFormData({ ...formData, package: "", packagePrice: 0 });
     }
   };
+
+  const handleAdditionChange = (e) => {
+    if (e) {
+      const newAdditions = e.map((option) => {
+        // First check if this addition already exists in formData
+        const existingAddition = formData.additions?.find(
+          add => add.addition === option.value
+        );
+        
+        if (existingAddition) {
+          // If it exists, preserve its current data
+          return existingAddition;
+        } else if (option.__isNew__) {
+          // If it's a new option
+          return { addition: option.value, price: 0, description: "" };
+        } else {
+          // If it's an existing option from the additions array
+          const selectedAddition = additions.find(
+            (add) => add.addition === option.value
+          );
+          return {
+            addition: option.value,
+            price: selectedAddition.price,
+            description: selectedAddition.description || "",
+          };
+        }
+      });
+      setFormData({ ...formData, additions: newAdditions });
+    } else {
+      setFormData({ ...formData, additions: [] });
+    }
+  };
+  console.log(formData);
   return (
     <>
       <div className="relative mb-2 w-full group">
@@ -100,7 +132,7 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
           }
         ></textarea>
       </div>
-      {/* <div className="relative mb-2 w-full group">
+      <div className="relative mb-2 w-full group">
         <CreatableSelect
           isClearable
           isMulti
@@ -110,10 +142,58 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
           options={additionOptions}
           styles={style}
           required
-          onChange={(e) => setFormData({ ...formData, additions: e.value })}
+          onChange={handleAdditionChange}
           placeholder={t("Options")}
         />
-      </div> */}
+      </div>
+
+      {formData.additions && formData.additions.length > 0 && (
+        <div className="mb-6">
+          {formData.additions.map((addition, index) => (
+            <div key={index} className="mb-4">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="flex-grow">
+                  <input
+                    type="text"
+                    value={addition.addition}
+                    onChange={(e) => {
+                      const newAdditions = [...formData.additions];
+                      newAdditions[index].addition = e.target.value;
+                      setFormData({ ...formData, additions: newAdditions });
+                    }}
+                    className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
+                  />
+                </div>
+                <div className="w-24">
+                  <input
+                    type="number"
+                    value={addition.price}
+                    onChange={(e) => {
+                      const newAdditions = [...formData.additions];
+                      newAdditions[index].price = e.target.value;
+                      setFormData({ ...formData, additions: newAdditions });
+                    }}
+                    className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
+                    min="0"
+                    placeholder={t("Price")}
+                  />
+                </div>
+              </div>
+              <input
+                type="text"
+                value={addition.description || ""}
+                onChange={(e) => {
+                  const newAdditions = [...formData.additions];
+                  newAdditions[index].description = e.target.value;
+                  setFormData({ ...formData, additions: newAdditions });
+                }}
+                className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
+                placeholder={t("Addition Description")}
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
