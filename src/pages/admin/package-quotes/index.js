@@ -143,7 +143,10 @@ export const query = graphql`
         sectionTitle
       }
     }
-    allContentfulPackages(filter: { node_locale: { eq: $language } }) {
+    allContentfulPackages(
+      sort: { price: DESC }
+      filter: { node_locale: { eq: $language } }
+    ) {
       nodes {
         title
         price
