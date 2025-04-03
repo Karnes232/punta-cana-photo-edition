@@ -43,7 +43,7 @@ const Index = ({ data }) => {
               </Link>
 
               <Link
-                to="/admin/product-b-quotes"
+                to="/admin/package-contract"
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
                 {t("Package Contract")}
@@ -57,7 +57,7 @@ const Index = ({ data }) => {
               </Link>
 
               <Link
-                to="/admin/product-d-quotes"
+                to="/admin/rental-items-contract"
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
                 {t("Rental Items Contract")}

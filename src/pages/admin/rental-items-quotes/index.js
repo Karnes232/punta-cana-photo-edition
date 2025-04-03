@@ -7,6 +7,8 @@ import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../../components/Layout/seo";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import { allowedEmails } from "../../../data/allowedEmails";
+import LogoutButton from "../../../components/auth/LogoutButton";
+import RentalItemQuoteForm from "../../../components/AdminComponents/RentalItemQuoteForm";
 
 const Index = ({ data }) => {
   const [adminUser, setAdminUser] = useState(false);
@@ -26,6 +28,19 @@ const Index = ({ data }) => {
   return (
     <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <div className="flex flex-col items-center bg-gray-100 p-8 lg:pt-24 -mt-5 md:-mt-10 lg:-mt-20">
+        {adminUser ? (
+          <RentalItemQuoteForm
+            rentalItems={data.allContentfulRentalItems.nodes}
+            companyInfo={data.allContentfulGeneralLayout.nodes[0]}
+          />
+        ) : (
+          <div className="text-center text-2xl font-bold min-h-[25vh] flex flex-col justify-center items-center">
+            You are not authorized to access this page
+          </div>
+        )}
+        <LogoutButton />
+      </div>
     </AdminLayout>
   );
 };
@@ -123,6 +138,12 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+      }
+    }
+    allContentfulRentalItems(filter: { node_locale: { eq: $language } }) {
+      nodes {
+        rentalItem
+        price
       }
     }
     #   allContentfulPackages(filter: { node_locale: { eq: $language } }) {

@@ -11,6 +11,7 @@ import {
 import { Trans, useI18next } from "gatsby-plugin-react-i18next";
 import axios from "axios";
 import { pdf } from "@react-pdf/renderer";
+
 // Create styles
 const styles = StyleSheet.create({
   page: {
@@ -49,21 +50,21 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 5,
   },
-  packageTitle: {
+  itemsTitle: {
     fontSize: 16,
     fontWeight: "bold",
     marginBottom: 10,
   },
-  packageDetails: {
+  itemsDetails: {
     marginBottom: 20,
   },
-  packageItem: {
+  item: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 5,
     fontSize: 12,
   },
-  packageDescription: {
+  notes: {
     fontSize: 12,
     marginTop: 10,
     marginBottom: 20,
@@ -86,26 +87,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 10,
     color: "#666",
-  },
-  additions: {
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  additionTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  additionItem: {
-    marginLeft: 10,
-    marginBottom: 5,
-    fontSize: 12,
-  },
-  additionDescription: {
-    marginLeft: 20,
-    fontSize: 10,
-    color: "#666",
-    marginBottom: 5,
   },
   companyInfo: {
     marginLeft: "auto",
@@ -136,11 +117,7 @@ const styles = StyleSheet.create({
   },
 });
 
-// Create Document Component
-const QuotePDF = ({ formData, companyInfo, language }) => {
-  // Debug logging
-  console.log("PDF component language:", language);
-
+const RentalQuotePDF = ({ formData, companyInfo, language }) => {
   const logoUrl =
     "https://images.ctfassets.net/vpskymlp6aa0/pKzEbbiqIVQrzq8SeaxPy/8fe23dd9429e712b8c681cb2d287056b/logotipo_sertuin_events.png";
 
@@ -150,16 +127,13 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
     day: "numeric",
     locale: language,
   };
-  // const date = new Date().toLocaleDateString(undefined, dateOptions);
   const date = new Date().toLocaleDateString(language, dateOptions);
-  const quoteNumber = `${language === "es" ? "C" : "Q"}${Date.now().toString().slice(-6)}`;
+  const quoteNumber = `${language === "es" ? "CR" : "RQ"}${Date.now().toString().slice(-6)}`;
 
-  // Calculate total including additions
-  const additionsTotal = formData.additions.reduce(
-    (sum, addition) => sum + parseFloat(addition.price || 0),
+  const total = formData.selectedItems.reduce(
+    (sum, item) => sum + parseFloat(item.price || 0),
     0,
   );
-  const total = parseFloat(formData.packagePrice) + additionsTotal;
 
   return (
     <Document>
@@ -186,9 +160,7 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
         </View>
 
         <Text style={styles.quoteTitle}>
-          {language === "es"
-            ? "COTIZACIÓN DE PAQUETE DE EVENTOS"
-            : "EVENT PACKAGE QUOTE"}
+          {language === "es" ? "COTIZACIÓN DE ALQUILER" : "RENTAL QUOTE"}
         </Text>
 
         <View style={styles.clientInfo}>
@@ -208,48 +180,43 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
           </Text>
         </View>
 
-        <View style={styles.packageDetails}>
-          <Text style={styles.packageTitle}>
-            {language === "es" ? "Detalles del Paquete" : "Package Details"}:
+        <View style={styles.itemsDetails}>
+          <Text style={styles.itemsTitle}>
+            {language === "es" ? "Artículos Seleccionados" : "Selected Items"}:
           </Text>
-          <View style={styles.packageItem}>
-            <Text>
-              {language === "es" ? "Paquete" : "Package"}: {formData.package}
-            </Text>
-            <Text>${parseFloat(formData.packagePrice).toFixed(2)}</Text>
-          </View>
+          {formData.selectedItems.map((item, index) => (
+            <View key={index} style={styles.item}>
+              <Text>
+                {item.rentalItem} ({item.quantity}{" "}
+                {language === "es" ? "unidades" : "units"} x $
+                {parseFloat(item.price).toFixed(2)})
+              </Text>
+              <Text>
+                ${(parseFloat(item.price) * item.quantity).toFixed(2)}
+              </Text>
+            </View>
+          ))}
 
-          {formData.packagesDescription && (
-            <Text style={styles.packageDescription}>
-              {language === "es" ? "Descripción" : "Description"}:{" "}
-              {formData.packagesDescription}
+          {formData.itemsDescription && (
+            <Text style={styles.notes}>
+              {language === "es" ? "Notas Adicionales" : "Additional Notes"}:{" "}
+              {formData.itemsDescription}
             </Text>
           )}
         </View>
 
-        {formData.additions && formData.additions.length > 0 && (
-          <View style={styles.additions}>
-            <Text style={styles.additionTitle}>
-              {language === "es"
-                ? "Servicios Adicionales"
-                : "Additional Services"}
-              :
-            </Text>
-            {formData.additions.map((addition, index) => (
-              <View key={index}>
-                <View style={styles.packageItem}>
-                  <Text>{addition.addition}</Text>
-                  <Text>${parseFloat(addition.price).toFixed(2)}</Text>
-                </View>
-                {addition.description && (
-                  <Text style={styles.additionDescription}>
-                    {addition.description}
-                  </Text>
-                )}
-              </View>
-            ))}
-          </View>
-        )}
+        <View style={styles.total}>
+          <Text>{language === "es" ? "Total" : "Total"}:</Text>
+          <Text>
+            $
+            {formData.selectedItems
+              .reduce(
+                (sum, item) => sum + parseFloat(item.price) * item.quantity,
+                0,
+              )
+              .toFixed(2)}
+          </Text>
+        </View>
 
         <View style={styles.footer}>
           <View style={styles.paymentTermsContainer}>
@@ -275,16 +242,13 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
   );
 };
 
-const PDFQuoteGenerator = ({ formData, companyInfo }) => {
+const RentalPDFQuoteGenerator = ({ formData, companyInfo }) => {
   const { language } = useI18next();
-
-  // Debug logging
-  console.log("Parent component language:", language);
 
   const sendQuoteEmail = async () => {
     try {
       const pdfDoc = (
-        <QuotePDF
+        <RentalQuotePDF
           formData={formData}
           companyInfo={companyInfo}
           language={language}
@@ -298,7 +262,6 @@ const PDFQuoteGenerator = ({ formData, companyInfo }) => {
 
       const pdfBase64 = await blobToBase64(pdfBlob);
 
-      // Send the language preference along with the email data
       const response = await axios.post("/.netlify/functions/sendQuoteEmail", {
         name: formData.name,
         email: formData.email,
@@ -323,7 +286,6 @@ const PDFQuoteGenerator = ({ formData, companyInfo }) => {
     }
   };
 
-  // Helper function to convert Blob to Base64
   const blobToBase64 = (blob) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -338,9 +300,8 @@ const PDFQuoteGenerator = ({ formData, companyInfo }) => {
     });
   };
 
-  // Update the filename to include language
   const getFileName = () => {
-    const prefix = language === "es" ? "Cotizacion" : "Quote";
+    const prefix = language === "es" ? "Cotizacion_Alquiler" : "Rental_Quote";
     const date = new Date().toISOString().split("T")[0];
     return `Sertuin_Events_${prefix}_${formData.name.replace(/\s+/g, "_")}_${date}.pdf`;
   };
@@ -349,7 +310,7 @@ const PDFQuoteGenerator = ({ formData, companyInfo }) => {
     <div className="flex flex-col space-y-4 items-center mt-6">
       <PDFDownloadLink
         document={
-          <QuotePDF
+          <RentalQuotePDF
             formData={formData}
             companyInfo={companyInfo}
             language={language}
@@ -379,4 +340,4 @@ const PDFQuoteGenerator = ({ formData, companyInfo }) => {
   );
 };
 
-export default PDFQuoteGenerator;
+export default RentalPDFQuoteGenerator;

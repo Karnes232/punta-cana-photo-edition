@@ -4,8 +4,8 @@
 require("dotenv").config();
 module.exports = {
   siteMetadata: {
-    title: `Punta Cana Photo Edition`,
-    siteUrl: `http://sertuinevents.com/`,
+    title: `Sertuin Events`,
+    siteUrl: `https://sertuinevents.com/`,
   },
   plugins: [
     {
@@ -25,8 +25,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Punta-Cana-Photo-Edition",
-        short_name: `PC-Photo-Edition`,
+        name: "Sertuin Events",
+        short_name: `Sertuin Events`,
         start_url: `/`,
         icon: "src/images/favicon.png",
       },
