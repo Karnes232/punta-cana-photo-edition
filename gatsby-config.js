@@ -21,17 +21,28 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
-      {
+    {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        excludes: [
-          '/admin',
-          '/admin/*',
-          '/**/admin',
-          '/**/admin/*'
-        ],
-        createLinkInHead: true,
-        output: '/',
+        query: `
+        {
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+        }
+        `,
+        resolvePages: ({allSitePage: {nodes: allPages}}) => {
+          return allPages.filter(page => !page.path.includes('admin'))
+        },
+        serialize: (page) => {
+          return {
+            url: page.path,
+            changefreq: `daily`,
+            priority: page.path === '/' ? 1.0 : 0.7,
+          }
+        }
       }
     },
     {
@@ -45,7 +56,9 @@ module.exports = {
             allow: '/',
             disallow: [
               '/admin',
-              '/admin/*'
+              '/admin/*',
+              '/**/admin',
+              '/**/admin/*'
             ]
           }
         ]
