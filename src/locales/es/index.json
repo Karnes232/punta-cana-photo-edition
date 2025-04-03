@@ -78,5 +78,15 @@
   "Thank you for your business!": "¡Gracias por su negocio!",
   "This quote is valid for 30 days from the date of issue.": "Esta cotización es válida durante 30 días a partir de la fecha de emisión.",
   "To confirm this booking, a 60% deposit of the total amount is required. The remaining 40% must be paid before the event starts.": "Para confirmar esta reserva, se requiere un depósito del 60% del monto total. El 40% restante debe ser pagado antes de que comience el evento.",
-  "Event Package Quote": "Cotización de paquete de eventos"
+  "Event Package Quote": "Cotización de paquete de eventos",
+  "Representative Information": "Información del representante",
+  "Representative Name": "Nombre del representante",
+  "Client Name": "Nombre del cliente",
+  "Client Email": "Correo electrónico del cliente",
+  "Client Phone": "Teléfono del cliente",
+  "Event Information": "Información del evento",
+  "Event Type": "Tipo de evento",
+  "Event Location": "Ubicación del evento",
+  "Event Date": "Fecha del evento",
+  "Event Time": "Hora del evento"
 }

@@ -78,5 +78,15 @@
   "Thank you for your business!": "Thank you for your business!",
   "This quote is valid for 30 days from the date of issue.": "This quote is valid for 30 days from the date of issue.",
   "To confirm this booking, a 60% deposit of the total amount is required. The remaining 40% must be paid before the event starts.": "To confirm this booking, a 60% deposit of the total amount is required. The remaining 40% must be paid before the event starts.",
-  "Event Package Quote": "Event Package Quote"
+  "Event Package Quote": "Event Package Quote",
+  "Representative Information": "Representative Information",
+  "Representative Name": "Representative Name",
+  "Client Name": "Client Name",
+  "Client Email": "Client Email",
+  "Client Phone": "Client Phone",
+  "Event Information": "Event Information",
+  "Event Type": "Event Type",
+  "Event Location": "Event Location",
+  "Event Date": "Event Date",
+  "Event Time": "Event Time"
 }
