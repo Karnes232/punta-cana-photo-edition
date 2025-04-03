@@ -1,13 +1,11 @@
-import { graphql, navigate } from "gatsby";
+import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import Seo from "../../../components/Layout/seo";
-import { useI18next } from "gatsby-plugin-react-i18next";
+import { auth } from "../../../config/firebase";
+import { graphql, navigate } from "gatsby";
 import AdminLayout from "../../../components/Layout/AdminLayout";
 import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../../config/firebase";
-import LogoutButton from "../../../components/auth/LogoutButton";
-import PackageQuoteForm from "../../../components/AdminComponents/PackageQuoteForm";
+import Seo from "../../../components/Layout/seo";
+import { useI18next } from "gatsby-plugin-react-i18next";
 import { allowedEmails } from "../../../data/allowedEmails";
 
 const Index = ({ data }) => {
@@ -25,25 +23,9 @@ const Index = ({ data }) => {
       }
     });
   }, []);
-
   return (
     <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-      <div className="flex flex-col items-center bg-gray-100 p-8 lg:pt-24 -mt-5 md:-mt-10 lg:-mt-20">
-        {adminUser ? (
-          <PackageQuoteForm
-            packages={data.allContentfulPackages.nodes}
-            additions={data.allContentfulPackageAdditions.nodes}
-            companyInfo={data.allContentfulGeneralLayout.nodes[0]}
-          />
-        ) : (
-          <div className="text-center text-2xl font-bold min-h-[25vh]  flex flex-col justify-center items-center">
-            You are not authorized to access this page
-          </div>
-        )}
-
-        <LogoutButton />
-      </div>
     </AdminLayout>
   );
 };
@@ -54,7 +36,7 @@ export const Head = ({ data }) => {
   const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : "/admin/package-quotes"}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : "/admin/package-contract"}`;
 
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
@@ -143,17 +125,17 @@ export const query = graphql`
         sectionTitle
       }
     }
-    allContentfulPackages(filter: { node_locale: { eq: $language } }) {
-      nodes {
-        title
-        price
-      }
-    }
-    allContentfulPackageAdditions(filter: { node_locale: { eq: $language } }) {
-      nodes {
-        addition
-        price
-      }
-    }
+    #   allContentfulPackages(filter: { node_locale: { eq: $language } }) {
+    #     nodes {
+    #       title
+    #       price
+    #     }
+    #   }
+    #   allContentfulPackageAdditions(filter: { node_locale: { eq: $language } }) {
+    #     nodes {
+    #       addition
+    #       price
+    #     }
+    #   }
   }
 `;

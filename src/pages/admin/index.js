@@ -7,6 +7,7 @@ import AdminLayout from "../../components/Layout/AdminLayout";
 import { auth } from "../../config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import LogoutButton from "../../components/auth/LogoutButton";
+import { allowedEmails } from "../../data/allowedEmails";
 const Index = ({ data }) => {
   const { t } = useTranslation();
   const [adminUser, setAdminUser] = useState(false);
@@ -14,7 +15,7 @@ const Index = ({ data }) => {
     onAuthStateChanged(auth, async (user) => {
       const currentUser = auth.currentUser;
       if (currentUser) {
-        if (currentUser.email === "karnes.james@gmail.com") {
+        if (allowedEmails.includes(currentUser.email)) {
           setAdminUser(true);
         }
       } else {
@@ -49,7 +50,7 @@ const Index = ({ data }) => {
               </Link>
 
               <Link
-                to="/admin/product-c-quotes"
+                to="/admin/rental-items-quotes"
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
                 {t("Rental Items Quotes")}
