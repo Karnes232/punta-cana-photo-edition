@@ -5,7 +5,7 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `Sertuin Events`,
-    siteUrl: `https://sertuinevents.com/`,
+    siteUrl: `https://sertuinevents.com`,
   },
   plugins: [
     {
@@ -26,6 +26,11 @@ module.exports = {
       options: {
         query: `
         {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
           allSitePage {
             nodes {
               path
