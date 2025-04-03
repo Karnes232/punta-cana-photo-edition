@@ -21,7 +21,36 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
-    "gatsby-plugin-sitemap",
+      {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        excludes: [
+          '/admin',
+          '/admin/*',
+          '/**/admin',
+          '/**/admin/*'
+        ],
+        createLinkInHead: true,
+        output: '/',
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://sertuinevents.com',
+        sitemap: 'https://sertuinevents.com/sitemap-index.xml',
+        policy: [
+          {
+            userAgent: '*',
+            allow: '/',
+            disallow: [
+              '/admin',
+              '/admin/*'
+            ]
+          }
+        ]
+      },
+    },
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -203,6 +232,7 @@ module.exports = {
         ],
       },
     },
+  
   ],
   flags: {
     DEV_SSR: false,
