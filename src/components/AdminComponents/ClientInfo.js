@@ -19,7 +19,7 @@ const ClientInfo = ({ formData, setFormData }) => {
           <Trans>Full Name</Trans>
         </label>
       </div>
-    
+
       <div className="relative z-0 mb-6 w-full group">
         <input
           type="email"
@@ -44,7 +44,9 @@ const ClientInfo = ({ formData, setFormData }) => {
           placeholder=" "
           required
           value={formData.telephone}
-          onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, telephone: e.target.value })
+          }
         />
         <label htmlFor="telephone" className="contactFormLabel">
           <Trans>Telephone</Trans>

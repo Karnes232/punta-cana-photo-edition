@@ -45,9 +45,9 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
       const newAdditions = e.map((option) => {
         // First check if this addition already exists in formData
         const existingAddition = formData.additions?.find(
-          add => add.addition === option.value
+          (add) => add.addition === option.value,
         );
-        
+
         if (existingAddition) {
           // If it exists, preserve its current data
           return existingAddition;
@@ -57,7 +57,7 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
         } else {
           // If it's an existing option from the additions array
           const selectedAddition = additions.find(
-            (add) => add.addition === option.value
+            (add) => add.addition === option.value,
           );
           return {
             addition: option.value,

@@ -45,7 +45,7 @@ const Index = ({ data }) => {
                 to="/admin/product-b-quotes"
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
-                {t("Package Contact")}
+                {t("Package Contract")}
               </Link>
 
               <Link
@@ -59,7 +59,7 @@ const Index = ({ data }) => {
                 to="/admin/product-d-quotes"
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
-                {t("Rental Items Contact")}
+                {t("Rental Items Contract")}
               </Link>
             </div>
           </div>

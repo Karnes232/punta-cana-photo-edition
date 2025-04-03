@@ -8,7 +8,7 @@ import {
   PDFDownloadLink,
   Image,
 } from "@react-pdf/renderer";
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { Trans, useI18next } from "gatsby-plugin-react-i18next";
 import axios from "axios";
 import { pdf } from "@react-pdf/renderer";
 // Create styles
@@ -131,16 +131,22 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-const QuotePDF = ({ formData, companyInfo }) => {
+const QuotePDF = ({ formData, companyInfo, language }) => {
+  // Debug logging
+  console.log("PDF component language:", language);
+
   const logoUrl =
     "https://images.ctfassets.net/vpskymlp6aa0/pKzEbbiqIVQrzq8SeaxPy/8fe23dd9429e712b8c681cb2d287056b/logotipo_sertuin_events.png";
+
   const dateOptions = {
     year: "numeric",
     month: "long",
     day: "numeric",
+    locale: language,
   };
-  const date = new Date().toLocaleDateString(undefined, dateOptions);
-  const quoteNumber = `Q${Date.now().toString().slice(-6)}`;
+  // const date = new Date().toLocaleDateString(undefined, dateOptions);
+  const date = new Date().toLocaleDateString(language, dateOptions);
+  const quoteNumber = `${language === "es" ? "C" : "Q"}${Date.now().toString().slice(-6)}`;
 
   // Calculate total including additions
   const additionsTotal = formData.additions.reduce(
@@ -156,41 +162,73 @@ const QuotePDF = ({ formData, companyInfo }) => {
           <Image src={logoUrl} style={styles.logo} />
           <View style={styles.companyInfo}>
             <Text style={styles.companyName}>Sertuin Events</Text>
-            <Text style={styles.companyDetail}>Tel: {companyInfo.telephone}</Text>
-            <Text style={styles.companyDetail}>Email: {companyInfo.email}</Text>
+            <Text style={styles.companyDetail}>
+              {language === "es" ? "Tel" : "Tel"}: {companyInfo.telephone}
+            </Text>
+            <Text style={styles.companyDetail}>
+              {language === "es" ? "Correo" : "Email"}: {companyInfo.email}
+            </Text>
             <Text style={styles.companyDetail}>RNC: {companyInfo.rnc}</Text>
             <Text style={styles.companyDetail}>{companyInfo.address}</Text>
-            <Text style={styles.companyDetail}>Quote #: {quoteNumber}</Text>
-            <Text style={styles.companyDetail}>Date: {date}</Text>
+            <Text style={styles.companyDetail}>
+              {language === "es" ? "Cotización" : "Quote"} #: {quoteNumber}
+            </Text>
+            <Text style={styles.companyDetail}>
+              {language === "es" ? "Fecha" : "Date"}: {date}
+            </Text>
           </View>
         </View>
 
-        <Text style={styles.quoteTitle}>EVENT PACKAGE QUOTE</Text>
+        <Text style={styles.quoteTitle}>
+          {language === "es"
+            ? "COTIZACIÓN DE PAQUETE DE EVENTOS"
+            : "EVENT PACKAGE QUOTE"}
+        </Text>
 
         <View style={styles.clientInfo}>
-          <Text style={styles.clientInfoTitle}>Client Information:</Text>
-          <Text style={styles.clientDetail}>Name: {formData.name}</Text>
-          <Text style={styles.clientDetail}>Telephone: {formData.telephone}</Text>
-          <Text style={styles.clientDetail}>Email: {formData.email}</Text>
+          <Text style={styles.clientInfoTitle}>
+            {language === "es"
+              ? "Información del Cliente:"
+              : "Client Information:"}
+          </Text>
+          <Text style={styles.clientDetail}>
+            {language === "es" ? "Nombre" : "Name"}: {formData.name}
+          </Text>
+          <Text style={styles.clientDetail}>
+            {language === "es" ? "Teléfono" : "Telephone"}: {formData.telephone}
+          </Text>
+          <Text style={styles.clientDetail}>
+            {language === "es" ? "Email" : "Email"}: {formData.email}
+          </Text>
         </View>
 
         <View style={styles.packageDetails}>
-          <Text style={styles.packageTitle}>Package Details:</Text>
+          <Text style={styles.packageTitle}>
+            {language === "es" ? "Detalles del Paquete" : "Package Details"}:
+          </Text>
           <View style={styles.packageItem}>
-            <Text>Package: {formData.package}</Text>
+            <Text>
+              {language === "es" ? "Paquete" : "Package"}: {formData.package}
+            </Text>
             <Text>${parseFloat(formData.packagePrice).toFixed(2)}</Text>
           </View>
 
           {formData.packagesDescription && (
             <Text style={styles.packageDescription}>
-              Description: {formData.packagesDescription}
+              {language === "es" ? "Descripción" : "Description"}:{" "}
+              {formData.packagesDescription}
             </Text>
           )}
         </View>
 
         {formData.additions && formData.additions.length > 0 && (
           <View style={styles.additions}>
-            <Text style={styles.additionTitle}>Additional Services:</Text>
+            <Text style={styles.additionTitle}>
+              {language === "es"
+                ? "Servicios Adicionales"
+                : "Additional Services"}
+              :
+            </Text>
             {formData.additions.map((addition, index) => (
               <View key={index}>
                 <View style={styles.packageItem}>
@@ -208,17 +246,26 @@ const QuotePDF = ({ formData, companyInfo }) => {
         )}
 
         <View style={styles.total}>
-          <Text>Total:</Text>
+          <Text>{language === "es" ? "Total" : "Total"}:</Text>
           <Text>${total.toFixed(2)}</Text>
         </View>
 
         <View style={styles.footer}>
           <Text style={styles.paymentTerms}>
-            To confirm this booking, a 60% deposit of the total amount is
-            required. The remaining 40% must be paid before the event starts.
+            {language === "es"
+              ? "Para confirmar esta reserva, se requiere un depósito del 60% del monto total. El 40% restante debe pagarse antes de que comience el evento."
+              : "To confirm this booking, a 60% deposit of the total amount is required. The remaining 40% must be paid before the event starts."}
           </Text>
-          <Text>Sertuin Events • Thank you for your business!</Text>
-          <Text>This quote is valid for 30 days from the date of issue.</Text>
+          <Text>
+            {language === "es"
+              ? "Sertuin Events • ¡Gracias por su preferencia!"
+              : "Sertuin Events • Thank you for your business!"}
+          </Text>
+          <Text>
+            {language === "es"
+              ? "Esta cotización es válida por 30 días desde la fecha de emisión."
+              : "This quote is valid for 30 days from the date of issue."}
+          </Text>
         </View>
       </Page>
     </Document>
@@ -226,38 +273,50 @@ const QuotePDF = ({ formData, companyInfo }) => {
 };
 
 const PDFQuoteGenerator = ({ formData, companyInfo }) => {
-  const { t } = useTranslation();
+  const { language } = useI18next();
+
+  // Debug logging
+  console.log("Parent component language:", language);
 
   const sendQuoteEmail = async () => {
     try {
-      const pdfDoc = <QuotePDF formData={formData} companyInfo={companyInfo} />;
-
-      // Debug log to check PDF content
-      console.log("PDF Content:", formData);
-
+      const pdfDoc = (
+        <QuotePDF
+          formData={formData}
+          companyInfo={companyInfo}
+          language={language}
+        />
+      );
       const pdfBlob = await pdf(pdfDoc).toBlob();
 
-      // Check if the PDF has content
       if (pdfBlob.size === 0) {
         throw new Error("Generated PDF is empty");
       }
 
-      // Convert Blob to Base64 with proper encoding
       const pdfBase64 = await blobToBase64(pdfBlob);
 
-      // Send the email with the PDF
+      // Send the language preference along with the email data
       const response = await axios.post("/.netlify/functions/sendQuoteEmail", {
         name: formData.name,
         email: formData.email,
         pdf: pdfBase64,
+        language: language,
       });
 
       if (response.status === 200) {
-        alert(t("Quote sent successfully to the client!"));
+        alert(
+          language === "es"
+            ? "Cotización enviada exitosamente al cliente!"
+            : "Quote sent successfully to the client!",
+        );
       }
     } catch (error) {
       console.error("Error sending quote email:", error);
-      alert(t("Failed to send quote. Please try again."));
+      alert(
+        language === "es"
+          ? "Error al enviar la cotización. Por favor, inténtelo de nuevo."
+          : "Failed to send quote. Please try again.",
+      );
     }
   };
 
@@ -276,15 +335,34 @@ const PDFQuoteGenerator = ({ formData, companyInfo }) => {
     });
   };
 
+  // Update the filename to include language
+  const getFileName = () => {
+    const prefix = language === "es" ? "Cotizacion" : "Quote";
+    const date = new Date().toISOString().split("T")[0];
+    return `Sertuin_Events_${prefix}_${formData.name.replace(/\s+/g, "_")}_${date}.pdf`;
+  };
+
   return (
     <div className="flex flex-col space-y-4 items-center mt-6">
       <PDFDownloadLink
-        document={<QuotePDF formData={formData} companyInfo={companyInfo} />}
-        fileName={`Sertuin_Events_Quote_${formData.name.replace(/\s+/g, "_")}.pdf`}
+        document={
+          <QuotePDF
+            formData={formData}
+            companyInfo={companyInfo}
+            language={language}
+          />
+        }
+        fileName={getFileName()}
         className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded"
       >
-        {({ blob, url, loading, error }) =>
-          loading ? t("Generating Quote...") : t("Download Quote PDF")
+        {({ loading }) =>
+          loading
+            ? language === "es"
+              ? "Generando Cotización..."
+              : "Generating Quote..."
+            : language === "es"
+              ? "Descargar Cotización PDF"
+              : "Download Quote PDF"
         }
       </PDFDownloadLink>
 

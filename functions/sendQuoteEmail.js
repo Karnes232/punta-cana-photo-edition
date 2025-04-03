@@ -1,4 +1,4 @@
-const { render } = require("@react-email/render");
+const { render } = require("@react-pdf/renderer");
 const nodemailer = require("nodemailer");
 
 exports.handler = async function (event, context) {
@@ -11,7 +11,7 @@ exports.handler = async function (event, context) {
   }
 
   try {
-    const { name, email, pdf } = JSON.parse(event.body);
+    const { name, email, pdf, language } = JSON.parse(event.body);
 
     // Validate the PDF data
     if (!pdf) {
@@ -36,16 +36,29 @@ exports.handler = async function (event, context) {
     // Convert base64 to Buffer
     const pdfBuffer = Buffer.from(pdf, "base64");
 
+    // Email content based on language
+    const emailSubject =
+      language === "es"
+        ? `Cotización para ${name} - Sertuin Events`
+        : `Quote for ${name} - Sertuin Events`;
+
+    const emailBody =
+      language === "es"
+        ? `<p>Estimado/a ${name},</p>
+         <p>Gracias por su interés en Sertuin Events. Adjunto encontrará su cotización.</p>
+         <p>Saludos cordiales,<br>Equipo de Sertuin Events</p>`
+        : `<p>Dear ${name},</p>
+         <p>Thank you for your interest in Sertuin Events. Please find your quote attached.</p>
+         <p>Best regards,<br>Sertuin Events Team</p>`;
+
     await transporter.sendMail({
       from: `"Sertuin Events" <${process.env.SMTP_USER}>`,
       to: email,
-      subject: `Quote for ${name} - Sertuin Events`,
-      html: `<p>Dear ${name},</p>
-                   <p>Thank you for your interest in Sertuin Events. Please find your quote attached.</p>
-                   <p>Best regards,<br>Sertuin Events Team</p>`,
+      subject: emailSubject,
+      html: emailBody,
       attachments: [
         {
-          filename: "quote.pdf",
+          filename: language === "es" ? "cotizacion.pdf" : "quote.pdf",
           content: pdfBuffer,
           contentType: "application/pdf",
         },
