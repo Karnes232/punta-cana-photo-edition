@@ -75,28 +75,6 @@ const PackageQuoteForm = ({ packages, additions, companyInfo }) => {
         </div>
       )}
     </div>
-    // <form
-    //   name="PackageQuoteForm"
-    //   method="POST"
-    //   // action={`/contact/thankyou/?name=${name}`}
-    //   data-netlify="true"
-    //   data-netlify-honeypot="bot-field"
-    //   id="PackageQuoteForm"
-    //   className="w-full md:w-full max-w-md  flex flex-col justify-center items-center mx-auto my-5"
-    //   // onSubmit={handleSubmit}
-    // >
-    //   <input type="hidden" name="form-name" value="PackageQuoteForm" />
-    //   <h4 className="text-2xl mb-5 font-bold">
-    //     <Trans>Client Information</Trans>
-    //   </h4>
-    //   <ClientInfo formData={formData} setFormData={setFormData} />
-    //   <PackageSelect
-    //     packages={packages}
-    //     additions={additions}
-    //     formData={formData}
-    //     setFormData={setFormData}
-    //   />
-    // </form>
   );
 };
 

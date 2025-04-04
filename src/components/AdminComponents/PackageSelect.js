@@ -71,7 +71,7 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
       setFormData({ ...formData, additions: [] });
     }
   };
-  console.log(formData);
+
   return (
     <>
       <div className="relative mb-2 w-full group">

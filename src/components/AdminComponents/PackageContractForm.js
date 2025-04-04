@@ -4,6 +4,7 @@ import ContractClientInfo from "./ContractClientInfo";
 import PackageSelect from "./PackageSelect";
 import EventInformation from "./EventInformation";
 import ContractSummary from "./ContractSummary";
+import PDFContractGenerator from "./pdfComponents/PDFContractGenerator";
 // Import your PDF generator component if you have one
 // import PDFContractGenerator from './pdfComponents/PDFContractGenerator';
 
@@ -32,7 +33,7 @@ const PackageContractForm = ({ packages, additions, companyInfo }) => {
     // Form validation could be added here
     setFormSubmitted(true);
   };
-  console.log(formData);
+
   return (
     <div className="w-full md:w-full max-w-md flex flex-col justify-center items-center mx-auto my-5">
       {!formSubmitted ? (
@@ -98,14 +99,10 @@ const PackageContractForm = ({ packages, additions, companyInfo }) => {
             >
               <Trans>Back to Form</Trans>
             </button>
-            <button
-              onClick={() => {
-                /* Add download/print functionality */
-              }}
-              className="bg-black hover:bg-gray-800 text-white py-2 px-4 rounded"
-            >
-              <Trans>Download Contract</Trans>
-            </button>
+            <PDFContractGenerator
+              formData={formData}
+              companyInfo={companyInfo}
+            />
           </div>
         </>
       )}

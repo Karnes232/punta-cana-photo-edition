@@ -22,7 +22,7 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
     {
-      resolve: 'gatsby-plugin-sitemap',
+      resolve: "gatsby-plugin-sitemap",
       options: {
         query: `
         {
@@ -38,35 +38,30 @@ module.exports = {
           }
         }
         `,
-        resolvePages: ({allSitePage: {nodes: allPages}}) => {
-          return allPages.filter(page => !page.path.includes('admin'))
+        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+          return allPages.filter((page) => !page.path.includes("admin"));
         },
         serialize: (page) => {
           return {
             url: page.path,
             changefreq: `daily`,
-            priority: page.path === '/' ? 1.0 : 0.7,
-          }
-        }
-      }
+            priority: page.path === "/" ? 1.0 : 0.7,
+          };
+        },
+      },
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: 'https://sertuinevents.com',
-        sitemap: 'https://sertuinevents.com/sitemap-index.xml',
+        host: "https://sertuinevents.com",
+        sitemap: "https://sertuinevents.com/sitemap-index.xml",
         policy: [
           {
-            userAgent: '*',
-            allow: '/',
-            disallow: [
-              '/admin',
-              '/admin/*',
-              '/**/admin',
-              '/**/admin/*'
-            ]
-          }
-        ]
+            userAgent: "*",
+            allow: "/",
+            disallow: ["/admin", "/admin/*", "/**/admin", "/**/admin/*"],
+          },
+        ],
       },
     },
     {
@@ -250,7 +245,6 @@ module.exports = {
         ],
       },
     },
-  
   ],
   flags: {
     DEV_SSR: false,
