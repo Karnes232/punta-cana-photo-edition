@@ -88,19 +88,19 @@ const styles = StyleSheet.create({
     width: 150,
     height: 90,
   },
-   signatureLineClient: {
+  signatureLineClient: {
     borderTopWidth: 1,
     borderColor: "#000",
     marginTop: 110,
     marginBottom: 5,
   },
   stamp: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 40, // Adjust as needed
     right: 40, //
     width: 150,
     height: 150,
-  }
+  },
 });
 
 const ContractPDF = ({ formData, companyInfo, language }) => {

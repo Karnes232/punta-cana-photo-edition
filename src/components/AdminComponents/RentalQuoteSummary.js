@@ -34,8 +34,15 @@ const RentalQuoteSummary = ({ formData }) => {
           <div key={index} className="ml-4 mt-2">
             <p>
               <strong>{item.rentalItem}</strong> -{item.quantity}{" "}
-              <Trans>units</Trans> x ${parseFloat(item.price).toFixed(2)} = $
-              {(parseFloat(item.price) * item.quantity).toFixed(2)}
+              <Trans>units</Trans> x $
+              {parseFloat(item.price).toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+              })}{" "}
+              = $
+              {(parseFloat(item.price) * item.quantity).toLocaleString(
+                "en-US",
+                { minimumFractionDigits: 2 },
+              )}
             </p>
           </div>
         ))}
@@ -46,7 +53,7 @@ const RentalQuoteSummary = ({ formData }) => {
               (sum, item) => sum + parseFloat(item.price) * item.quantity,
               0,
             )
-            .toFixed(2)}
+            .toLocaleString("en-US", { minimumFractionDigits: 2 })}
         </p>
       </div>
 

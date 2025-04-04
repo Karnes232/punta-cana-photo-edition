@@ -94,7 +94,10 @@ const ContractSummary = ({ formData }) => {
             <strong>
               <Trans>Package Price</Trans>:
             </strong>{" "}
-            ${parseFloat(formData.packagePrice).toFixed(2)}
+            $
+            {parseFloat(formData.packagePrice).toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+            })}
           </p>
           {formData.packagesDescription && (
             <p className="ml-4">
@@ -116,7 +119,9 @@ const ContractSummary = ({ formData }) => {
               <div key={index} className="ml-4 mt-2">
                 <p>
                   <strong>{addition.addition}</strong> - $
-                  {parseFloat(addition.price).toFixed(2)}
+                  {parseFloat(addition.price).toLocaleString("en-US", {
+                    minimumFractionDigits: 2,
+                  })}
                 </p>
                 {addition.description && (
                   <p className="text-sm text-gray-600 ml-2">
@@ -133,7 +138,7 @@ const ContractSummary = ({ formData }) => {
                   (sum, addition) => sum + parseFloat(addition.price || 0),
                   0,
                 )
-              ).toFixed(2)}
+              ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
             </p>
           </div>
         )}
