@@ -7,6 +7,7 @@ import {
   StyleSheet,
   PDFDownloadLink,
   pdf,
+  Image,
 } from "@react-pdf/renderer";
 import { format } from "date-fns";
 import { Trans, useI18next } from "gatsby-plugin-react-i18next";
@@ -68,7 +69,7 @@ const styles = StyleSheet.create({
   signatureLine: {
     borderTopWidth: 1,
     borderColor: "#000",
-    marginTop: 40,
+    marginTop: 10,
     marginBottom: 5,
   },
   footer: {
@@ -82,6 +83,24 @@ const styles = StyleSheet.create({
   letter: {
     paddingLeft: 10,
   },
+  signature: {
+    marginTop: 10,
+    width: 150,
+    height: 90,
+  },
+   signatureLineClient: {
+    borderTopWidth: 1,
+    borderColor: "#000",
+    marginTop: 110,
+    marginBottom: 5,
+  },
+  stamp: {
+    position: 'absolute',
+    bottom: 40, // Adjust as needed
+    right: 40, //
+    width: 150,
+    height: 150,
+  }
 });
 
 const ContractPDF = ({ formData, companyInfo, language }) => {
@@ -102,6 +121,8 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
     : "[DATE]";
   const eventStartTime = formData.eventStartTime;
   const eventEndTime = formData.eventEndTime;
+  const companyStamp = companyInfo.companyStamp.url;
+  const signature = companyInfo.signature.url;
 
   return (
     <Document>
@@ -577,6 +598,7 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         <View style={styles.signatureSection}>
           <View style={styles.signatureBlock}>
             <Text>Sertuin Events</Text>
+            <Image src={signature} style={styles.signature} />
             <View style={styles.signatureLine} />
             <Text>{formData.representativeName}</Text>
             <Text>
@@ -586,10 +608,11 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
 
           <View style={styles.signatureBlock}>
             <Text>{language === "es" ? "CLIENTE" : "CLIENT"}</Text>
-            <View style={styles.signatureLine} />
+            <View style={styles.signatureLineClient} />
             <Text>{formData.clientName}</Text>
           </View>
         </View>
+        <Image src={companyStamp} style={styles.stamp} />
       </Page>
     </Document>
   );

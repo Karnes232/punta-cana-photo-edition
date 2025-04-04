@@ -104,6 +104,12 @@ export const query = graphql`
         rnc
         email
         address
+        companyStamp {
+          url
+        }
+        signature {
+          url
+        }
       }
     }
     allContentfulSeo(
