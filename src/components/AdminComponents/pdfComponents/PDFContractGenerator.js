@@ -15,21 +15,22 @@ import axios from "axios";
 const styles = StyleSheet.create({
   page: {
     padding: 40,
-    fontSize: 11,
+    fontSize: 12,
     fontFamily: "Times-Roman",
   },
   title: {
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 20,
   },
   paragraph: {
+    fontSize: 12,
     marginBottom: 10,
-    lineHeight: 1.2,
+    lineHeight: 1.4,
   },
   sectionTitle: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: "bold",
     marginTop: 15,
     marginBottom: 10,
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ContractPDF = ({ formData, companyInfo }) => {
+const ContractPDF = ({ formData, companyInfo, language }) => {
   const currentDate = format(new Date(), "MMMM d, yyyy");
   const totalPrice = (
     parseFloat(formData.packagePrice) +
@@ -106,45 +107,109 @@ const ContractPDF = ({ formData, companyInfo }) => {
     <Document>
       {/* First Page */}
       <Page size="A4" style={styles.page}>
-        <Text style={styles.title}>SERVICE AGREEMENT FOR EVENT PLANNING</Text>
-
-        <Text style={styles.paragraph}>
-          This Service Agreement (the "Agreement") is made and entered into on{" "}
-          {currentDate}
+        <Text style={styles.title}>
+          {language === "es"
+            ? "ACUERDO DE SERVICIOS PARA PLANIFICACIÓN DE EVENTOS"
+            : "SERVICE AGREEMENT FOR EVENT PLANNING"}
         </Text>
 
         <Text style={styles.paragraph}>
-          Between: Sertuin Events, a company duly incorporated under the laws of
-          the Dominican Republic, represented in this act by{" "}
-          {formData.representativeName}, holder of RNC No. {companyInfo.rnc},
-          hereinafter referred to as "THE COMPANY";
+          {language === "es" ? (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>
+                Este Acuerdo de Servicios
+              </Text>
+              {` (el "Acuerdo") se celebra el ${currentDate}`}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>This Service Agreement</Text>
+              {` (the "Agreement") is made and entered into on ${currentDate}`}
+            </React.Fragment>
+          )}
         </Text>
 
         <Text style={styles.paragraph}>
-          And: {formData.clientName}, holder of ID No. {formData.clientId}, with
-          email address {formData.clientEmail} and phone number{" "}
-          {formData.clientPhone}, hereinafter referred to as "THE CLIENT";
+          {language === "es" ? (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>Entre:</Text>
+              {` Sertuin Events, una empresa debidamente constituida bajo las leyes de la República Dominicana, representada en este acto por ${formData.representativeName}, titular del RNC No. ${companyInfo.rnc}, en lo adelante denominada "LA EMPRESA`}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>Between</Text>
+              {` Sertuin Events, a company duly incorporated under the laws of the Dominican Republic, represented in this act by ${formData.representativeName}, holder of RNC No. ${companyInfo.rnc}, hereinafter referred to as "THE COMPANY";`}
+            </React.Fragment>
+          )}
+        </Text>
+
+        <Text style={styles.paragraph}>
+          {language === "es" ? (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>Y:</Text>
+              {` ${formData.clientName}, titular de la cédula No. ${formData.clientId}, con correo electrónico ${formData.clientEmail} y teléfono ${formData.clientPhone}, en lo adelante denominado "EL CLIENTE";`}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>And:</Text>
+              {` ${formData.clientName}, holder of ID No. ${formData.clientId}, with email address ${formData.clientEmail} and phone number ${formData.clientPhone}, hereinafter referred to as "THE CLIENT";`}
+            </React.Fragment>
+          )}
         </Text>
 
         {/* WHEREAS Clauses */}
         <Text style={styles.paragraph}>
-          WHEREAS THE CLIENT wishes to engage THE COMPANY to provide certain
-          event planning services;
+          {language === "es" ? (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>CONSIDERANDO QUE</Text>
+              {` EL CLIENTE desea contratar a LA EMPRESA para proporcionar ciertos servicios de planificación de eventos;`}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>WHEREAS</Text>
+              {` THE CLIENT wishes to engage THE COMPANY to provide certain event planning services;`}
+            </React.Fragment>
+          )}
         </Text>
         <Text style={styles.paragraph}>
-          AND WHEREAS THE COMPANY agrees to provide such services in accordance
-          with the terms and conditions set forth in this Agreement;
+          {language === "es" ? (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>Y CONSIDERANDO QUE</Text>
+              {` LA EMPRESA acepta proporcionar dichos servicios de acuerdo con los términos y condiciones establecidos en este Acuerdo;`}
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>AND WHEREAS</Text>
+              {` THE COMPANY agrees to provide such services in accordance with the terms and conditions set forth in this Agreement;`}
+            </React.Fragment>
+          )}
         </Text>
         <Text style={styles.paragraph}>
-          NOW, THEREFORE, THE FOLLOWING HAS BEEN AGREED AND STIPULATED:
+          {language === "es" ? (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>
+                POR LO TANTO, SE HA ACORDADO Y ESTIPULADO LO SIGUIENTE:
+              </Text>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Text style={{ fontWeight: "bold" }}>
+                NOW, THEREFORE, THE FOLLOWING HAS BEEN AGREED AND STIPULATED:
+              </Text>
+            </React.Fragment>
+          )}
         </Text>
 
         {/* Section 1 */}
-        <Text style={styles.sectionTitle}>1. PURPOSE OF THE AGREEMENT</Text>
+        <Text style={styles.sectionTitle}>
+          {language === "es"
+            ? "1. OBJETO DEL ACUERDO"
+            : "1. PURPOSE OF THE AGREEMENT"}
+        </Text>
         <Text style={styles.paragraph}>
-          1.1 THE COMPANY agrees to provide THE CLIENT with the event planning
-          services for {formData.eventType} under the "{formData.package}"
-          package, which includes:
+          {language === "es"
+            ? `1.1 LA EMPRESA se compromete a proporcionar a EL CLIENTE los servicios de planificación de eventos para ${formData.eventType} bajo el paquete "${formData.package}", que incluye:`
+            : `1.1 THE COMPANY agrees to provide THE CLIENT with the event planning services for ${formData.eventType} under the "${formData.package}" package, which includes:`}
         </Text>
         <Text style={styles.paragraph}>{formData.packagesDescription}</Text>
       </Page>
@@ -152,7 +217,9 @@ const ContractPDF = ({ formData, companyInfo }) => {
       {/* Second Page */}
       <Page size="A4" style={styles.page}>
         <Text style={styles.paragraph}>
-          1.2 Additional Items Requested by the Client:
+          {language === "es"
+            ? "1.2 Elementos Adicionales Solicitados por el Cliente:"
+            : "1.2 Additional Items Requested by the Client:"}
         </Text>
 
         {/* Additional Items List */}
@@ -164,8 +231,12 @@ const ContractPDF = ({ formData, companyInfo }) => {
               { backgroundColor: "#f5f5f5", borderBottomWidth: 2 },
             ]}
           >
-            <Text style={[styles.tableCell, { flex: 3 }]}>Item</Text>
-            <Text style={[styles.tableCell, { flex: 1 }]}>Price (USD)</Text>
+            <Text style={[styles.tableCell, { flex: 3 }]}>
+              {language === "es" ? "Artículo" : "Item"}
+            </Text>
+            <Text style={[styles.tableCell, { flex: 1 }]}>
+              {language === "es" ? "Precio (USD)" : "Price (USD)"}
+            </Text>
           </View>
           {formData.additions.length > 0 ? (
             formData.additions.map((item, index) => (
@@ -205,52 +276,67 @@ const ContractPDF = ({ formData, companyInfo }) => {
           ) : (
             <View style={styles.tableRow}>
               <Text style={[styles.tableCell, { flex: 4 }]}>
-                No additional items selected
+                {language === "es"
+                  ? "No se seleccionaron elementos adicionales"
+                  : "No additional items selected"}
               </Text>
             </View>
           )}
         </View>
 
         <Text style={styles.paragraph}>
-          1.3 The service will be provided on the date and time agreed upon by
-          both parties, at the location specified in Section 3 of this
-          Agreement.
+          {language === "es"
+            ? "1.3 El servicio se proporcionará en la fecha y hora acordadas por ambas partes, en el lugar especificado en la Sección 3 de este Acuerdo."
+            : " 1.3 The service will be provided on the date and time agreed upon by both parties, at the location specified in Section 3 of this Agreement."}
         </Text>
 
         {/* Section 2 */}
-        <Text style={styles.sectionTitle}>2. PRICE AND PAYMENT TERMS</Text>
-        <Text style={styles.paragraph}>
-          2.1 The total price for the "{formData.package}" package including all
-          additional items is ${totalPrice}.
+        <Text style={styles.sectionTitle}>
+          {language === "es"
+            ? "2. PRECIO Y TÉRMINOS DE PAGO"
+            : "2. PRICE AND PAYMENT TERMS"}
         </Text>
         <Text style={styles.paragraph}>
-          2.2 THE CLIENT agrees to make an initial payment (down payment) of 60%
-          of the total price, equivalent to ${downPayment}, upon signing this
-          Agreement.
+          {language === "es"
+            ? `2.1 El precio total del paquete "${formData.package}" incluyendo todos los elementos adicionales es $${totalPrice}.`
+            : `2.1 The total price for the "${formData.package}" package including all additional items is $${totalPrice}.`}
         </Text>
         <Text style={styles.paragraph}>
-          2.3 The remaining balance of ${remainingBalance} must be paid in cash,
-          credit/debit card, or bank transfer no later than 7 days before the
-          event date.
+          {language === "es"
+            ? `2.2 EL CLIENTE acepta realizar un pago inicial (anticipo) del 60% del precio total, equivalente a $${downPayment}, al firmar este Acuerdo.`
+            : `2.2 THE CLIENT agrees to make an initial payment (down payment) of 60% of the total price, equivalent to $${downPayment}, upon signing this Agreement.`}
         </Text>
         <Text style={styles.paragraph}>
-          2.4 All payments are non-refundable except as otherwise provided in
-          this Agreement.
+          {language === "es"
+            ? `2.3 El saldo restante de $${remainingBalance} debe pagarse en efectivo, tarjeta de crédito/débito o transferencia bancaria a más tardar 7 días antes de la fecha del evento.`
+            : `2.3 The remaining balance of $${remainingBalance} must be paid in cash, credit/debit card, or bank transfer no later than 7 days before the event date.`}
+        </Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? "2.4 Todos los pagos no son reembolsables excepto según lo dispuesto en este Acuerdo."
+            : "2.4 All payments are non-refundable except as otherwise provided in this Agreement."}
         </Text>
 
         {/* Section 3 */}
-        <Text style={styles.sectionTitle}>3. LOCATION AND SERVICE DETAILS</Text>
-        <Text style={styles.paragraph}>
-          3.1 The event will take place at {eventLocation}, on {eventDate} from{" "}
-          {eventStartTime} to {eventEndTime}.
+        <Text style={styles.sectionTitle}>
+          {language === "es"
+            ? "3. UBICACIÓN Y DETALLES DEL SERVICIO"
+            : "3. LOCATION AND SERVICE DETAILS"}
         </Text>
         <Text style={styles.paragraph}>
-          3.2 THE CLIENT and their guests must comply with all venue policies
-          and regulations.
+          {language === "es"
+            ? `3.1 El evento tendrá lugar en ${eventLocation}, el ${eventDate} de ${eventStartTime} a ${eventEndTime}.`
+            : `3.1 The event will take place at ${eventLocation}, on ${eventDate} from ${eventStartTime} to ${eventEndTime}.`}
         </Text>
         <Text style={styles.paragraph}>
-          3.3 THE COMPANY will provide transportation for equipment and staff as
-          necessary for the event.
+          {language === "es"
+            ? "3.2 EL CLIENTE y sus invitados deben cumplir con todas las políticas y regulaciones del lugar."
+            : "3.2 THE CLIENT and their guests must comply with all venue policies and regulations."}
+        </Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? "3.3 LA EMPRESA proporcionará el transporte necesario para el equipo y el personal del evento."
+            : "3.3 THE COMPANY will provide transportation for equipment and staff as necessary for the event."}
         </Text>
       </Page>
 
@@ -258,84 +344,134 @@ const ContractPDF = ({ formData, companyInfo }) => {
       <Page size="A4" style={styles.page}>
         {/* Section 4 */}
         <Text style={styles.sectionTitle}>
-          4. RESPONSIBILITIES AND CONDITIONS
+          {language === "es"
+            ? "4. RESPONSABILIDADES Y CONDICIONES"
+            : "4. RESPONSIBILITIES AND CONDITIONS"}
         </Text>
         <Text style={styles.paragraph}>
-          4.1 THE COMPANY's Responsibilities:
+          {language === "es"
+            ? "4.1 Responsabilidades de LA EMPRESA:"
+            : "4.1 THE COMPANY's Responsibilities:"}
         </Text>
         <Text style={styles.listItem}>
-          a) To provide all services described in Section 1 with professional
-          care and skill
+          a){" "}
+          {language === "es"
+            ? "Proporcionar todos los servicios descritos en la Sección 1 con cuidado y habilidad profesional"
+            : "To provide all services described in Section 1 with professional care and skill"}
         </Text>
         <Text style={styles.listItem}>
-          b) To coordinate with vendors and suppliers as necessary
+          b){" "}
+          {language === "es"
+            ? "Coordinar con vendedores y proveedores según sea necesario"
+            : "To coordinate with vendors and suppliers as necessary"}
         </Text>
         <Text style={styles.listItem}>
-          c) To perform timely setup and breakdown of event elements
+          c){" "}
+          {language === "es"
+            ? "Realizar la instalación y desmontaje oportuno de los elementos del evento"
+            : "To perform timely setup and breakdown of event elements"}
         </Text>
         <Text style={styles.listItem}>
-          d) To maintain appropriate insurance coverage for the event
+          d){" "}
+          {language === "es"
+            ? "Mantener una cobertura de seguro apropiada para el evento"
+            : "To maintain appropriate insurance coverage for the event"}
         </Text>
         <Text style={styles.listItem}>
-          e) To address any reasonable concerns raised by THE CLIENT during the
-          planning process
+          e){" "}
+          {language === "es"
+            ? "Atender cualquier preocupación razonable planteada por EL CLIENTE durante el proceso de planificación"
+            : "To address any reasonable concerns raised by THE CLIENT during the planning process"}
         </Text>
-
-        <Text style={styles.paragraph}>4.2 THE CLIENT's Responsibilities:</Text>
-        <Text style={styles.listItem}>
-          a) To provide accurate information related to the event
-        </Text>
-        <Text style={styles.listItem}>
-          b) To make payments according to the schedule outlined in Section 2
-        </Text>
-        <Text style={styles.listItem}>
-          c) To notify THE COMPANY of any changes at least 30 days in advance
+        <Text style={[{ marginTop: 10 }]}></Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? "4.2 Responsabilidades del CLIENTE:"
+            : "4.2 THE CLIENT's Responsibilities:"}
         </Text>
         <Text style={styles.listItem}>
-          d) To obtain any necessary permits or permissions not expressly
-          included in this Agreement
+          a){" "}
+          {language === "es"
+            ? "Proporcionar información precisa relacionada con el evento"
+            : "To provide accurate information related to the event"}
         </Text>
         <Text style={styles.listItem}>
-          e) To ensure guests conduct themselves appropriately during the event
+          b){" "}
+          {language === "es"
+            ? "Realizar pagos de acuerdo con la programación establecida en la Sección 2"
+            : "To make payments according to the schedule outlined in Section 2"}
+        </Text>
+        <Text style={styles.listItem}>
+          c){" "}
+          {language === "es"
+            ? "Notificar a LA EMPRESA de cualquier cambio con al menos 30 días de anticipación"
+            : "To notify THE COMPANY of any changes at least 30 days in advance"}
+        </Text>
+        <Text style={styles.listItem}>
+          d){" "}
+          {language === "es"
+            ? "Obtener cualquier permiso o autorización necesaria no incluida expresamente en este Acuerdo"
+            : "To obtain any necessary permits or permissions not expressly included in this Agreement"}
+        </Text>
+        <Text style={styles.listItem}>
+          e){" "}
+          {language === "es"
+            ? "Asegurar que los invitados se comporten adecuadamente durante el evento"
+            : "To ensure guests conduct themselves appropriately during the event"}
         </Text>
 
         {/* Section 5 */}
-        <Text style={styles.sectionTitle}>5. CHANGES AND MODIFICATIONS</Text>
-        <Text style={styles.paragraph}>
-          5.1 Any changes to the services, date, time, or location must be
-          requested in writing at least 30 days before the event date.
+        <Text style={styles.sectionTitle}>
+          {language === "es"
+            ? "5. CAMBIOS Y MODIFICACIONES"
+            : "5. CHANGES AND MODIFICATIONS"}
         </Text>
         <Text style={styles.paragraph}>
-          5.2 THE COMPANY will make reasonable efforts to accommodate requested
-          changes but cannot guarantee availability.
+          {language === "es"
+            ? "5.1 Cualquier cambio en los servicios, fecha, hora o ubicación debe solicitarse por escrito al menos 30 días antes de la fecha del evento."
+            : "5.1 Any changes to the services, date, time, or location must be requested in writing at least 30 days before the event date."}
         </Text>
         <Text style={styles.paragraph}>
-          5.3 Additional services requested after signing this Agreement will be
-          subject to additional fees as determined by THE COMPANY.
+          {language === "es"
+            ? "5.2 LA EMPRESA hará esfuerzos razonables para acomodar los cambios solicitados, pero no puede garantizar la disponibilidad."
+            : "5.2 THE COMPANY will make reasonable efforts to accommodate requested changes but cannot guarantee availability."}
         </Text>
         <Text style={styles.paragraph}>
-          5.4 Changes requested with less than 30 days' notice may not be
-          accommodated and/or may incur substantial additional charges.
+          {language === "es"
+            ? "5.3 Los servicios adicionales solicitados después de firmar este Acuerdo estarán sujetos a cargos adicionales según lo determine LA EMPRESA."
+            : "5.3 Additional services requested after signing this Agreement will be subject to additional fees as determined by THE COMPANY."}
+        </Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? "5.4 Los cambios solicitados con menos de 30 días de anticipación pueden no ser acomodados y/o pueden incurrir en cargos adicionales sustanciales."
+            : "5.4 Changes requested with less than 30 days' notice may not be accommodated and/or may incur substantial additional charges."}
         </Text>
 
         {/* Section 6 */}
         <Text style={styles.sectionTitle}>
-          6. CANCELLATION AND RESCHEDULING
+          {language === "es"
+            ? "6. CANCELACIÓN Y REPROGRAMACIÓN"
+            : "6. CANCELLATION AND RESCHEDULING"}
         </Text>
-        <Text style={styles.paragraph}>6.1 Cancellation by THE CLIENT:</Text>
-        <Text style={styles.listItem}>
-          a) In case of cancellation by THE CLIENT for any reason, the down
-          payment is non-refundable.
-        </Text>
-        <Text style={styles.listItem}>
-          b) If cancelled less than 7 days before the event: The full contract
-          amount is due and non-refundable.
-        </Text>
-
         <Text style={styles.paragraph}>
-          6.2 In case of adverse weather conditions or circumstances beyond THE
-          COMPANY's control, the event may be rescheduled to an alternative date
-          mutually agreed upon by both parties, subject to availability.
+          {language === "es"
+            ? "6.1 Cancelación por parte de EL CLIENTE:"
+            : "6.1 Cancellation by THE CLIENT:"}
+        </Text>
+        <Text style={styles.listItem}>
+          {language === "es"
+            ? "a) En caso de cancelación por parte de EL CLIENTE por cualquier razón, el anticipo no es reembolsable."
+            : "a) In case of cancellation by THE CLIENT for any reason, the down payment is non-refundable."}
+        </Text>
+        <Text style={styles.listItem}>
+          {language === "es"
+            ? "b) Si se cancela menos de 7 días antes del evento: Se debe pagar el monto total del contrato y no es reembolsable."
+            : "b) If cancelled less than 7 days before the event: The full contract amount is due and non-refundable."}
+        </Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? "6.2 En caso de condiciones climáticas adversas o circunstancias más allá del control de LA EMPRESA, el evento puede reprogramarse a una fecha alternativa mutuamente acordada por ambas partes, sujeto a la disponibilidad."
+            : "6.2 In case of adverse weather conditions or circumstances beyond THE COMPANY's control, the event may be rescheduled to an alternative date mutually agreed upon by both parties, subject to availability."}
         </Text>
       </Page>
 
@@ -343,80 +479,98 @@ const ContractPDF = ({ formData, companyInfo }) => {
       <Page size="A4" style={styles.page}>
         {/* Section 7 */}
         <Text style={styles.sectionTitle}>
-          7. LIABILITY AND INDEMNIFICATION
+          {language === "es"
+            ? "7. RESPONSABILIDAD E INDEMNIZACIÓN"
+            : "7. LIABILITY AND INDEMNIFICATION"}
         </Text>
         <Text style={styles.paragraph}>
-          7.1 THE COMPANY shall maintain liability insurance for the event.
+          {language === "es"
+            ? "7.1 LA EMPRESA deberá mantener una cobertura de seguro para el evento."
+            : "7.1 THE COMPANY shall maintain liability insurance for the event."}
         </Text>
         <Text style={styles.paragraph}>
-          7.2 THE CLIENT agrees to indemnify and hold THE COMPANY harmless from
-          any claims, losses, damages, liabilities, costs or expenses arising
-          from THE CLIENT's breach of this Agreement or the negligent acts of
-          THE CLIENT or their guests.
+          {language === "es"
+            ? "7.2 EL CLIENTE acepta indemnizar y liberar a LA EMPRESA de cualquier reclamo, pérdida, daño, responsabilidad, costos o gastos que surjan de la violación de este Acuerdo o las acciones negligentes de EL CLIENTE o sus invitados."
+            : "7.2 THE CLIENT agrees to indemnify and hold THE COMPANY harmless from any claims, losses, damages, liabilities, costs or expenses arising from THE CLIENT's breach of this Agreement or the negligent acts of THE CLIENT or their guests."}
         </Text>
         <Text style={styles.paragraph}>
-          7.3 THE COMPANY's total liability under this Agreement shall not
-          exceed the total amount paid by THE CLIENT.
+          {language === "es"
+            ? "7.3 La responsabilidad total de LA EMPRESA bajo este Acuerdo no excederá el monto total pagado por EL CLIENTE."
+            : "7.3 THE COMPANY's total liability under this Agreement shall not exceed the total amount paid by THE CLIENT."}
         </Text>
 
         {/* Section 8 */}
-        <Text style={styles.sectionTitle}>8. INTELLECTUAL PROPERTY</Text>
-        <Text style={styles.paragraph}>
-          8.1 THE COMPANY reserves the right to use photographs and videos taken
-          during the event for promotional purposes unless otherwise agreed in
-          writing.
+        <Text style={styles.sectionTitle}>
+          {language === "es"
+            ? "8. PROPIEDAD INTELECTUAL"
+            : "8. INTELLECTUAL PROPERTY"}
         </Text>
         <Text style={styles.paragraph}>
-          8.2 THE CLIENT grants THE COMPANY permission to use their likeness in
-          such promotional materials unless specifically prohibited in writing.
+          {language === "es"
+            ? "8.1 LA EMPRESA tiene derecho a usar fotografías y videos tomados durante el evento para promocionar sus servicios a menos que se acuerde lo contrario por escrito."
+            : "8.1 THE COMPANY reserves the right to use photographs and videos taken during the event for promotional purposes unless otherwise agreed in writing."}
+        </Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? "8.2 EL CLIENTE otorga a LA EMPRESA permiso para usar su imagen en tales materiales promocionales a menos que se especifique lo contrario por escrito."
+            : "8.2 THE CLIENT grants THE COMPANY permission to use their likeness in such promotional materials unless specifically prohibited in writing."}
         </Text>
 
         {/* Section 9 */}
-        <Text style={styles.sectionTitle}>9. FORCE MAJEURE</Text>
+        <Text style={styles.sectionTitle}>
+          {language === "es" ? "9. FUERZA MAYOR" : "9. FORCE MAJEURE"}
+        </Text>
         <Text style={styles.paragraph}>
-          Neither party shall be liable for failure to perform under this
-          Agreement due to circumstances beyond their reasonable control,
-          including but not limited to acts of God, natural disasters,
-          governmental restrictions, or other unforeseen catastrophes.
+          {language === "es"
+            ? "Ninguna parte será responsable por el incumplimiento de este Acuerdo debido a circunstancias más allá del control razonable de ambas partes, incluyendo pero no limitado a actos de Dios, desastres naturales, restricciones gubernamentales u otras catástrofes imprevistas."
+            : "Neither party shall be liable for failure to perform under this Agreement due to circumstances beyond their reasonable control, including but not limited to acts of God, natural disasters, governmental restrictions, or other unforeseen catastrophes."}
         </Text>
 
         {/* Section 10 */}
         <Text style={styles.sectionTitle}>
-          10. GOVERNING LAW AND DISPUTE RESOLUTION
+          {language === "es"
+            ? "10. LEY APLICABLE Y RESOLUCIÓN DE DISPUTAS"
+            : "10. GOVERNING LAW AND DISPUTE RESOLUTION"}
         </Text>
         <Text style={styles.paragraph}>
-          10.1 This Agreement shall be governed by the laws of the Dominican
-          Republic.
+          {language === "es"
+            ? "10.1 Este Acuerdo se regirá por las leyes de la República Dominicana."
+            : "10.1 This Agreement shall be governed by the laws of the Dominican Republic."}
         </Text>
         <Text style={styles.paragraph}>
-          10.2 Any disputes arising out of or in connection with this Agreement
-          shall first be attempted to be resolved through negotiation. If
-          negotiation fails, the dispute shall be submitted to mediation and, if
-          necessary, arbitration through the Centro de Resolución Alternativa de
-          Controversias (CRC) of the Chamber of Commerce and Production of Santo
-          Domingo in accordance with its rules and procedures.
+          {language === "es"
+            ? "10.2 Cualquier disputa que surja de o esté relacionada con este Acuerdo se intentará resolver primero a través de la negociación. Si la negociación falla, la disputa se someterá a mediación y, si es necesario, arbitraje a través del Centro de Resolución Alternativa de Controversias (CRC) de la Cámara de Comercio y Producción de Santo Domingo de acuerdo con sus reglas y procedimientos."
+            : "10.2 Any disputes arising out of or in connection with this Agreement shall first be attempted to be resolved through negotiation. If negotiation fails, the dispute shall be submitted to mediation and, if necessary, arbitration through the Centro de Resolución Alternativa de Controversias (CRC) of the Chamber of Commerce and Production of Santo Domingo in accordance with its rules and procedures."}
         </Text>
 
         {/* Section 11 */}
-        <Text style={styles.sectionTitle}>11. ENTIRE AGREEMENT</Text>
+        <Text style={styles.sectionTitle}>
+          {language === "es" ? "11. ACUERDO COMPLETO" : "11. ENTIRE AGREEMENT"}
+        </Text>
         <Text style={styles.paragraph}>
-          This Agreement constitutes the entire understanding between the
-          parties and supersedes all prior negotiations, understandings, and
-          agreements, whether oral or written.
+          {language === "es"
+            ? "Este Acuerdo constituye la comprensión completa entre las partes y supera todas las negociaciones, entendimientos y acuerdos previos, ya sean verbales o escritos."
+            : "This Agreement constitutes the entire understanding between the parties and supersedes all prior negotiations, understandings, and agreements, whether oral or written."}
         </Text>
       </Page>
 
       {/* Fourth Page */}
       <Page size="A4" style={styles.page}>
         {/* Section 12 */}
-        <Text style={styles.sectionTitle}>12. ACCEPTANCE OF THE PARTIES</Text>
-        <Text style={styles.paragraph}>
-          As a sign of agreement and acceptance of the conditions established
-          herein, both parties sign this contract in two copies on the date of
-          its execution.
+        <Text style={styles.sectionTitle}>
+          {language === "es"
+            ? "12. ACEPTACIÓN DE LAS PARTES"
+            : "12. ACCEPTANCE OF THE PARTIES"}
         </Text>
         <Text style={styles.paragraph}>
-          IN Santo Domingo, Dominican Republic, {currentDate}.
+          {language === "es"
+            ? "Como señal de acuerdo y aceptación de las condiciones establecidas en el presente documento, ambas partes firman este contrato en dos ejemplares en la fecha de su ejecución."
+            : "As a sign of agreement and acceptance of the conditions established herein, both parties sign this contract in two copies on the date of its execution."}
+        </Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? `En Santo Domingo, República Dominicana, ${currentDate}.`
+            : `IN Santo Domingo, Dominican Republic, ${currentDate}.`}
         </Text>
 
         {/* Signature Section */}
@@ -425,11 +579,13 @@ const ContractPDF = ({ formData, companyInfo }) => {
             <Text>Sertuin Events</Text>
             <View style={styles.signatureLine} />
             <Text>{formData.representativeName}</Text>
-            <Text>Representative</Text>
+            <Text>
+              {language === "es" ? "Representante" : "Representative"}
+            </Text>
           </View>
 
           <View style={styles.signatureBlock}>
-            <Text>CLIENT</Text>
+            <Text>{language === "es" ? "CLIENTE" : "CLIENT"}</Text>
             <View style={styles.signatureLine} />
             <Text>{formData.clientName}</Text>
           </View>
@@ -443,7 +599,6 @@ const PDFContractGenerator = ({ formData, companyInfo }) => {
   const { language } = useI18next();
 
   const sendQuoteEmail = async () => {
-    console.log(formData);
     try {
       const pdfDoc = (
         <ContractPDF
@@ -474,16 +629,16 @@ const PDFContractGenerator = ({ formData, companyInfo }) => {
       if (response.status === 200) {
         alert(
           language === "es"
-            ? "Cotización enviada exitosamente al cliente!"
-            : "Quote sent successfully to the client!",
+            ? "Contrato enviado exitosamente al cliente!"
+            : "Contract sent successfully to the client!",
         );
       }
     } catch (error) {
-      console.error("Error sending quote email:", error);
+      console.error("Error sending contract email:", error);
       alert(
         language === "es"
-          ? "Error al enviar la cotización. Por favor, inténtelo de nuevo."
-          : "Failed to send quote. Please try again.",
+          ? "Error al enviar el contrato. Por favor, inténtelo de nuevo."
+          : "Failed to send contract. Please try again.",
       );
     }
   };
@@ -504,14 +659,21 @@ const PDFContractGenerator = ({ formData, companyInfo }) => {
   };
 
   const getFileName = () => {
+    const prefix = language === "es" ? "Contrato" : "Contract";
     const date = format(new Date(), "yyyy-MM-dd");
-    return `Sertuin_Events_Contract_${formData.clientName.replace(/\s+/g, "_")}_${date}.pdf`;
+    return `Sertuin_Events_${prefix}_${formData.clientName.replace(/\s+/g, "_")}_${date}.pdf`;
   };
 
   return (
     <div className="flex flex-col space-y-4 items-center mt-6">
       <PDFDownloadLink
-        document={<ContractPDF formData={formData} companyInfo={companyInfo} />}
+        document={
+          <ContractPDF
+            formData={formData}
+            companyInfo={companyInfo}
+            language={language}
+          />
+        }
         fileName={getFileName()}
         className="bg-black hover:bg-gray-800 text-white py-2 px-4 rounded"
       >

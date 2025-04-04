@@ -25,7 +25,7 @@ const PackageContractForm = ({ packages, additions, companyInfo }) => {
     eventStartTime: "",
     eventEndTime: "",
   });
-
+  console.log(formData);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
