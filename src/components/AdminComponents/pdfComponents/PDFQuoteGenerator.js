@@ -139,7 +139,6 @@ const styles = StyleSheet.create({
 // Create Document Component
 const QuotePDF = ({ formData, companyInfo, language }) => {
   // Debug logging
-  console.log("PDF component language:", language);
 
   const logoUrl =
     "https://images.ctfassets.net/vpskymlp6aa0/pKzEbbiqIVQrzq8SeaxPy/8fe23dd9429e712b8c681cb2d287056b/logotipo_sertuin_events.png";

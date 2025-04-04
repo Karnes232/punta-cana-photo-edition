@@ -4,7 +4,7 @@ import ContractClientInfo from "./ContractClientInfo";
 import EventInformation from "./EventInformation";
 import RentalItemSelect from "./RentalItemSelect";
 import RentalContractSummary from "./RentalContractSummary";
-// import PDFContractGenerator from "./pdfComponents/PDFContractGenerator";
+import RentalPDFContractGenerator from "./pdfComponents/RentalPDFContractGenerator";
 
 const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
   const [formData, setFormData] = useState({
@@ -19,6 +19,7 @@ const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
     eventStartTime: "",
     eventEndTime: "",
     selectedItems: [],
+    setupIncluded: false,
     // Add any additional rental-specific fields here
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -27,7 +28,7 @@ const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
     e.preventDefault();
     setFormSubmitted(true);
   };
-
+  console.log(formData);
   return (
     <div className="w-full md:w-full max-w-md flex flex-col justify-center items-center mx-auto my-5">
       {!formSubmitted ? (
@@ -99,10 +100,10 @@ const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
             >
               <Trans>Back to Form</Trans>
             </button>
-            {/* <PDFContractGenerator
+            <RentalPDFContractGenerator
               formData={formData}
               companyInfo={companyInfo}
-            /> */}
+            />
           </div>
         </>
       )}

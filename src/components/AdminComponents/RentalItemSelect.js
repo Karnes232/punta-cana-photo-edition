@@ -70,7 +70,7 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
               styles={style}
               required
               onChange={handleItemChange}
-              placeholder={t("Select Items")}
+              placeholder={t("Select Rental Items")}
             />
           </div>
 
