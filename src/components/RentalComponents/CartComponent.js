@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { CartContext } from "../../context/cart";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";

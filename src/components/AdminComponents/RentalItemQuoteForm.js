@@ -20,31 +20,31 @@ const RentalItemQuoteForm = ({ rentalItems, companyInfo }) => {
     setFormSubmitted(true);
   };
 
-  const handleItemSelection = (item) => {
-    const existingItem = formData.selectedItems.find(
-      (i) => i.rentalItem === item.rentalItem,
-    );
+  // const handleItemSelection = (item) => {
+  //   const existingItem = formData.selectedItems.find(
+  //     (i) => i.rentalItem === item.rentalItem,
+  //   );
 
-    if (existingItem) {
-      setFormData({
-        ...formData,
-        selectedItems: formData.selectedItems.filter(
-          (i) => i.rentalItem !== item.rentalItem,
-        ),
-      });
-    } else {
-      setFormData({
-        ...formData,
-        selectedItems: [...formData.selectedItems, item],
-      });
-    }
-  };
+  //   if (existingItem) {
+  //     setFormData({
+  //       ...formData,
+  //       selectedItems: formData.selectedItems.filter(
+  //         (i) => i.rentalItem !== item.rentalItem,
+  //       ),
+  //     });
+  //   } else {
+  //     setFormData({
+  //       ...formData,
+  //       selectedItems: [...formData.selectedItems, item],
+  //     });
+  //   }
+  // };
 
-  const totalPrice = formData.selectedItems.reduce(
-    (sum, item) => sum + parseFloat(item.price || 0),
-    0,
-  );
-  console.log(formData);
+  // const totalPrice = formData.selectedItems.reduce(
+  //   (sum, item) => sum + parseFloat(item.price || 0),
+  //   0,
+  // );
+  // console.log(formData);
   return (
     <div className="w-full md:w-full max-w-md flex flex-col justify-center items-center mx-auto my-5">
       {!formSubmitted ? (

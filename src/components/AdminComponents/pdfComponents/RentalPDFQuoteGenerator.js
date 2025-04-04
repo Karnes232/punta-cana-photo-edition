@@ -130,10 +130,10 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
   const date = new Date().toLocaleDateString(language, dateOptions);
   const quoteNumber = `${language === "es" ? "CR" : "RQ"}${Date.now().toString().slice(-6)}`;
 
-  const total = formData.selectedItems.reduce(
-    (sum, item) => sum + parseFloat(item.price || 0),
-    0,
-  );
+  // const total = formData.selectedItems.reduce(
+  //   (sum, item) => sum + parseFloat(item.price || 0),
+  //   0,
+  // );
 
   return (
     <Document>

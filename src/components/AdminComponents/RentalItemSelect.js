@@ -92,10 +92,14 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                   </div>
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-24">
-                      <label className="block text-sm text-gray-500 mb-1">
+                      <label
+                        className="block text-sm text-gray-500 mb-1"
+                        htmlFor="quantity"
+                      >
                         <Trans>Quantity</Trans>
                       </label>
                       <input
+                        id="quantity"
                         type="number"
                         value={item.quantity}
                         onChange={(e) => {
@@ -112,10 +116,14 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                       />
                     </div>
                     <div className="w-32">
-                      <label className="block text-sm text-gray-500 mb-1">
+                      <label
+                        className="block text-sm text-gray-500 mb-1"
+                        htmlFor="unitPrice"
+                      >
                         <Trans>Unit Price</Trans>
                       </label>
                       <input
+                        id="unitPrice"
                         type="number"
                         value={item.price}
                         onChange={(e) => {
@@ -129,10 +137,14 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                       />
                     </div>
                     <div className="flex-grow">
-                      <label className="block text-sm text-gray-500 mb-1">
+                      <label
+                        className="block text-sm text-gray-500 mb-1"
+                        htmlFor="totalPrice"
+                      >
                         <Trans>Total Price</Trans>
                       </label>
                       <input
+                        id="totalPrice"
                         type="number"
                         value={(item.price * item.quantity).toFixed(2)}
                         readOnly

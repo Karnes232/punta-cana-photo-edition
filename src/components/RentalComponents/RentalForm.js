@@ -64,10 +64,10 @@ const RentalForm = ({ rentalItems }) => {
 
   useEffect(() => {
     setHost(window.location.origin);
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       rentalItems: JSON.stringify(cartItems), // Convert array to string
-    });
+    }));
   }, [cartItems]);
 
   return (
