@@ -131,7 +131,7 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
   const totalAmount = subtotal + taxAmount;
 
   // Calculate deposit
-  const depositRate = 0.6; // 50% deposit
+  const depositRate = 0.6; // 60% deposit
   const depositAmount = totalAmount * depositRate;
   const balanceDue = totalAmount - depositAmount;
 

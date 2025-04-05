@@ -71,12 +71,24 @@ const styles = StyleSheet.create({
   total: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginTop: 5,
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+  subtotal: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 20,
     paddingTop: 10,
     borderTopWidth: 1,
     borderTopColor: "#000",
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: 12,
+  },
+  tax: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 5,
+    fontSize: 12,
   },
   footer: {
     position: "absolute",
@@ -158,7 +170,12 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
     (sum, addition) => sum + parseFloat(addition.price || 0),
     0,
   );
-  const total = parseFloat(formData.packagePrice) + additionsTotal;
+
+  // Calculate subtotal, tax (ITBIS), and total
+  const subtotal = parseFloat(formData.packagePrice) + additionsTotal;
+  const taxRate = 0.18; // 18% ITBIS
+  const taxAmount = subtotal * taxRate;
+  const total = subtotal + taxAmount;
 
   return (
     <Document>
@@ -249,6 +266,16 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
             ))}
           </View>
         )}
+
+        <View style={styles.subtotal}>
+          <Text>{language === "es" ? "Subtotal" : "Subtotal"}:</Text>
+          <Text>${subtotal.toFixed(2)}</Text>
+        </View>
+
+        <View style={styles.tax}>
+          <Text>{language === "es" ? "ITBIS (18%)" : "ITBIS (18%)"}:</Text>
+          <Text>${taxAmount.toFixed(2)}</Text>
+        </View>
 
         <View style={styles.total}>
           <Text>{language === "es" ? "Total" : "Total"}:</Text>

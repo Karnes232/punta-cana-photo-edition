@@ -24,6 +24,7 @@ const PackagePage = ({ pageContext, data }) => {
     email: "",
     phone: "",
     date: "",
+    hotel: "",
     message: "",
     addOn1: "",
     addOn2: "",

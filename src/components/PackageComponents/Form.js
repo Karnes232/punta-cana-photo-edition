@@ -17,6 +17,7 @@ const Form = ({ formData }) => {
           <input type="text" name="name" defaultValue={formData.name} />
           <input type="email" name="email" defaultValue={formData.email} />
           <input type="tel" name="phone" defaultValue={formData.phone} />
+          <input type="text" name="hotel" defaultValue={formData.hotel} />
           <input type="date" name="date" defaultValue={formData.date} />
           <textarea name="message" value={formData.message}></textarea>
           <input type="text" name="AddOn1" defaultValue={formData.addOn1} />

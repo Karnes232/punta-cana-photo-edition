@@ -163,6 +163,21 @@ const PackageForm = ({
 
               <div>
                 <label
+                  htmlFor="hotel"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  <Trans>Hotel / Accommodation</Trans>
+                </label>
+                <input
+                  type="text"
+                  name="hotel"
+                  value={formData.hotel}
+                  onChange={handleInputChange}
+                  className="w-full p-2 border rounded-md"
+                />
+              </div>
+              <div>
+                <label
                   htmlFor="date"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
