@@ -251,7 +251,6 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
         )}
 
         <View style={styles.total}>
-          <Text>Total:</Text>
           <Text>{language === "es" ? "Total" : "Total"}:</Text>
           <Text>${total.toFixed(2)}</Text>
         </View>
