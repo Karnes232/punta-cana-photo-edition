@@ -69,13 +69,25 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
   },
-  total: {
+  subtotal: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 20,
     paddingTop: 10,
     borderTopWidth: 1,
     borderTopColor: "#000",
+    fontSize: 12,
+  },
+  tax: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 5,
+    fontSize: 12,
+  },
+  total: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 5,
     fontSize: 14,
     fontWeight: "bold",
   },
@@ -130,10 +142,14 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
   const date = new Date().toLocaleDateString(language, dateOptions);
   const quoteNumber = `${language === "es" ? "CR" : "RQ"}${Date.now().toString().slice(-6)}`;
 
-  // const total = formData.selectedItems.reduce(
-  //   (sum, item) => sum + parseFloat(item.price || 0),
-  //   0,
-  // );
+  // Calculate subtotal, tax (ITBIS), and total
+  const subtotal = formData.selectedItems.reduce(
+    (sum, item) => sum + parseFloat(item.price) * item.quantity,
+    0,
+  );
+  const taxRate = 0.18; // 18% ITBIS
+  const taxAmount = subtotal * taxRate;
+  const total = subtotal + taxAmount;
 
   return (
     <Document>
@@ -205,17 +221,19 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
           )}
         </View>
 
+        <View style={styles.subtotal}>
+          <Text>{language === "es" ? "Subtotal" : "Subtotal"}:</Text>
+          <Text>${subtotal.toFixed(2)}</Text>
+        </View>
+
+        <View style={styles.tax}>
+          <Text>{language === "es" ? "ITBIS (18%)" : "ITBIS (18%)"}:</Text>
+          <Text>${taxAmount.toFixed(2)}</Text>
+        </View>
+
         <View style={styles.total}>
           <Text>{language === "es" ? "Total" : "Total"}:</Text>
-          <Text>
-            $
-            {formData.selectedItems
-              .reduce(
-                (sum, item) => sum + parseFloat(item.price) * item.quantity,
-                0,
-              )
-              .toFixed(2)}
-          </Text>
+          <Text>${total.toFixed(2)}</Text>
         </View>
 
         <View style={styles.footer}>

@@ -2,6 +2,17 @@ import React from "react";
 import { Trans } from "gatsby-plugin-react-i18next";
 
 const QuoteSummary = ({ formData }) => {
+  const additionsTotal = formData.additions.reduce(
+    (sum, addition) => sum + parseFloat(addition.price || 0),
+    0,
+  );
+
+  // Calculate subtotal, tax (ITBIS), and total
+  const subtotal = parseFloat(formData.packagePrice) + additionsTotal;
+  const taxRate = 0.18; // 18% ITBIS
+  const taxAmount = subtotal * taxRate;
+  const total = subtotal + taxAmount;
+
   return (
     <div className="bg-gray-100 p-6 rounded-lg mb-6">
       <h5 className="font-bold mb-3">
@@ -71,14 +82,16 @@ const QuoteSummary = ({ formData }) => {
             </div>
           ))}
           <p className="mt-3 font-bold">
-            <Trans>Total Price</Trans>: $
-            {(
-              parseFloat(formData.packagePrice) +
-              formData.additions.reduce(
-                (sum, addition) => sum + parseFloat(addition.price || 0),
-                0,
-              )
-            ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+            <Trans>Subtotal</Trans>: $
+            {subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          </p>
+          <p className="mt-3 font-bold">
+            <Trans>ITBIS (18%)</Trans>: $
+            {taxAmount.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          </p>
+          <p className="mt-3 font-bold">
+            <Trans>Total</Trans>: $
+            {total.toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </p>
         </div>
       )}

@@ -2,6 +2,13 @@ import React from "react";
 import { Trans } from "gatsby-plugin-react-i18next";
 
 const RentalQuoteSummary = ({ formData }) => {
+  const subtotal = formData.selectedItems.reduce(
+    (sum, item) => sum + parseFloat(item.price) * item.quantity,
+    0,
+  );
+  const taxRate = 0.18; // 18% ITBIS
+  const taxAmount = subtotal * taxRate;
+  const total = subtotal + taxAmount;
   return (
     <div className="bg-gray-100 p-6 rounded-lg mb-6">
       <h5 className="font-bold mb-3">
@@ -47,13 +54,16 @@ const RentalQuoteSummary = ({ formData }) => {
           </div>
         ))}
         <p className="mt-3 font-bold">
+          <Trans>Subtotal</Trans>: $
+          {subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+        </p>
+        <p className="mt-3 font-bold">
+          <Trans>ITBIS (18%)</Trans>: $
+          {taxAmount.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+        </p>
+        <p className="mt-3 font-bold">
           <Trans>Total Price</Trans>: $
-          {formData.selectedItems
-            .reduce(
-              (sum, item) => sum + parseFloat(item.price) * item.quantity,
-              0,
-            )
-            .toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          {total.toLocaleString("en-US", { minimumFractionDigits: 2 })}
         </p>
       </div>
 
