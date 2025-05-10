@@ -130,16 +130,40 @@ const ContractSummary = ({ formData }) => {
                 )}
               </div>
             ))}
-            <p className="mt-3 font-bold">
-              <Trans>Total Contract Value</Trans>: $
-              {(
-                parseFloat(formData.packagePrice) +
-                formData.additions.reduce(
-                  (sum, addition) => sum + parseFloat(addition.price || 0),
-                  0,
-                )
-              ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
-            </p>
+            <div className="mt-3">
+              <p className="font-bold">
+                <Trans>Subtotal</Trans>: $
+                {(
+                  parseFloat(formData.packagePrice) +
+                  formData.additions.reduce(
+                    (sum, addition) => sum + parseFloat(addition.price || 0),
+                    0,
+                  )
+                ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+              </p>
+              <p className="font-bold">
+                <Trans>ITBIS (18%)</Trans>: $
+                {(
+                  (parseFloat(formData.packagePrice) +
+                    formData.additions.reduce(
+                      (sum, addition) => sum + parseFloat(addition.price || 0),
+                      0,
+                    )) *
+                  0.18
+                ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+              </p>
+              <p className="font-bold">
+                <Trans>Total Contract Value</Trans>: $
+                {(
+                  (parseFloat(formData.packagePrice) +
+                    formData.additions.reduce(
+                      (sum, addition) => sum + parseFloat(addition.price || 0),
+                      0,
+                    )) *
+                  1.18
+                ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+              </p>
+            </div>
           </div>
         )}
       </div>

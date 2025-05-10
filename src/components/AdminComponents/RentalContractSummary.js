@@ -100,15 +100,35 @@ const RentalContractSummary = ({ formData }) => {
             </p>
           </div>
         ))}
-        <p className="mt-3 font-bold">
-          <Trans>Total Price</Trans>: $
-          {formData.selectedItems
-            .reduce(
-              (sum, item) => sum + parseFloat(item.price) * item.quantity,
-              0,
-            )
-            .toLocaleString("en-US", { minimumFractionDigits: 2 })}
-        </p>
+        <div className="mt-3">
+          <p className="font-bold">
+            <Trans>Subtotal</Trans>: $
+            {formData.selectedItems
+              .reduce(
+                (sum, item) => sum + parseFloat(item.price) * item.quantity,
+                0,
+              )
+              .toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          </p>
+          <p className="font-bold">
+            <Trans>ITBIS (18%)</Trans>: $
+            {(
+              formData.selectedItems.reduce(
+                (sum, item) => sum + parseFloat(item.price) * item.quantity,
+                0,
+              ) * 0.18
+            ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          </p>
+          <p className="font-bold">
+            <Trans>Total Price</Trans>: $
+            {(
+              formData.selectedItems.reduce(
+                (sum, item) => sum + parseFloat(item.price) * item.quantity,
+                0,
+              ) * 1.18
+            ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          </p>
+        </div>
       </div>
     </div>
   );

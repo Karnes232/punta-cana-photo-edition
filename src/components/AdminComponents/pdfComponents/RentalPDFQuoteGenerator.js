@@ -236,12 +236,30 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
           <Text>${total.toFixed(2)}</Text>
         </View>
 
+        {language === "es" ? (
+          <Text style={styles.paymentTerms}>
+            *Si paga en efectivo, disfrute de un **18% de descuento** sobre el
+            total mostrado.
+          </Text>
+        ) : (
+          <Text style={styles.paymentTerms}>
+            *Paying in cash? Enjoy a **18% discount** off the total shown.
+          </Text>
+        )}
+
         <View style={styles.footer}>
           <View style={styles.paymentTermsContainer}>
             <Text style={styles.paymentTerms}>
               {language === "es"
                 ? "Para confirmar esta reserva, se requiere un depósito del 60% del monto total. El 40% restante debe pagarse antes de que comience el evento."
                 : "To confirm this booking, a 60% deposit of the total amount is required. The remaining 40% must be paid before the event starts."}
+            </Text>
+          </View>
+          <View style={styles.paymentTermsContainer}>
+            <Text style={styles.paymentTerms}>
+              {language === "es"
+                ? "*El descuento del 18% aplica solo para pagos en efectivo.."
+                : "*The 18% discount applies only to full cash payments."}
             </Text>
           </View>
           <Text>

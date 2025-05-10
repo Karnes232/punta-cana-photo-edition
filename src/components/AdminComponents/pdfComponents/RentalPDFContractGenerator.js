@@ -126,7 +126,7 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
     (sum, item) => sum + parseFloat(item.price) * parseInt(item.quantity),
     0,
   );
-  const taxRate = 0; // 0% tax
+  const taxRate = 0.18; // 18% ITBIS tax
   const taxAmount = subtotal * taxRate;
   const totalAmount = subtotal + taxAmount;
 
@@ -337,6 +337,46 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
                 { flex: 1, textAlign: "right", fontWeight: "bold" },
               ]}
             >
+              {language === "es" ? "Subtotal:" : "Subtotal:"}
+            </Text>
+            <Text
+              style={[
+                styles.tableCell,
+                { flex: 1, textAlign: "right", fontWeight: "bold" },
+              ]}
+            >
+              ${subtotal.toFixed(2)}
+            </Text>
+          </View>
+          <View style={[styles.totalRow, { borderTopWidth: 0 }]}>
+            <Text style={[styles.tableCell, { flex: 3 }]}></Text>
+            <Text style={[styles.tableCell, { flex: 1 }]}></Text>
+            <Text
+              style={[
+                styles.tableCell,
+                { flex: 1, textAlign: "right", fontWeight: "bold" },
+              ]}
+            >
+              {language === "es" ? "ITBIS (18%):" : "ITBIS (18%):"}
+            </Text>
+            <Text
+              style={[
+                styles.tableCell,
+                { flex: 1, textAlign: "right", fontWeight: "bold" },
+              ]}
+            >
+              ${taxAmount.toFixed(2)}
+            </Text>
+          </View>
+          <View style={[styles.totalRow, { borderTopWidth: 2 }]}>
+            <Text style={[styles.tableCell, { flex: 3 }]}></Text>
+            <Text style={[styles.tableCell, { flex: 1 }]}></Text>
+            <Text
+              style={[
+                styles.tableCell,
+                { flex: 1, textAlign: "right", fontWeight: "bold" },
+              ]}
+            >
               {language === "es" ? "TOTAL:" : "TOTAL:"}
             </Text>
             <Text
@@ -399,6 +439,11 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
           {language === "es"
             ? `3.4 Todos los pagos son no reembolsables excepto como se establece en este Acuerdo.`
             : `3.4 All payments are non-refundable except as otherwise provided in this Agreement.`}
+        </Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? "*Pagando en efectivo? Disfrute de un **descuento del 18%** aplicado al total. Esta oferta es válida solo para pagos en efectivo."
+            : "*Paying in cash? Enjoy a **18% discount** applied to the total. Offer valid only for full cash payments."}
         </Text>
 
         {/* Section 4 */}
@@ -604,6 +649,11 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
           {language === "es"
             ? `En Santo Domingo, República Dominicana, el ${currentDate}.`
             : `IN Santo Domingo, Dominican Republic, ${currentDate}.`}
+        </Text>
+        <Text style={[styles.paragraph, { fontSize: 10, fontStyle: "italic" }]}>
+          {language === "es"
+            ? "*El descuento del 18% aplica solo para pagos en efectivo."
+            : "*The 18% discount applies only to full cash payments."}
         </Text>
         {/* Signature Section */}
         <View style={styles.signatureSection}>

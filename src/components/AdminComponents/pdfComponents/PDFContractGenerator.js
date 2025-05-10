@@ -105,13 +105,17 @@ const styles = StyleSheet.create({
 
 const ContractPDF = ({ formData, companyInfo, language }) => {
   const currentDate = format(new Date(), "MMMM d, yyyy");
-  const totalPrice = (
+  const subtotal = (
     parseFloat(formData.packagePrice) +
     formData.additions.reduce(
       (sum, addition) => sum + parseFloat(addition.price || 0),
       0,
     )
   ).toFixed(2);
+
+  const taxRate = 0.18; // 18% ITBIS
+  const taxAmount = (parseFloat(subtotal) * taxRate).toFixed(2);
+  const totalPrice = (parseFloat(subtotal) + parseFloat(taxAmount)).toFixed(2);
 
   const downPayment = (totalPrice * 0.6).toFixed(2);
   const remainingBalance = (totalPrice - downPayment).toFixed(2);
@@ -319,23 +323,39 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? `2.1 El precio total del paquete "${formData.package}" incluyendo todos los elementos adicionales es $${totalPrice}.`
-            : `2.1 The total price for the "${formData.package}" package including all additional items is $${totalPrice}.`}
+            ? `2.1 El subtotal del paquete "${formData.package}" incluyendo todos los elementos adicionales es $${subtotal}.`
+            : `2.1 The subtotal for the "${formData.package}" package including all additional items is $${subtotal}.`}
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? `2.2 EL CLIENTE acepta realizar un pago inicial (anticipo) del 60% del precio total, equivalente a $${downPayment}, al firmar este Acuerdo.`
-            : `2.2 THE CLIENT agrees to make an initial payment (down payment) of 60% of the total price, equivalent to $${downPayment}, upon signing this Agreement.`}
+            ? `2.2 El ITBIS (18%) aplicable es $${taxAmount}.`
+            : `2.2 The applicable ITBIS (18%) is $${taxAmount}.`}
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? `2.3 El saldo restante de $${remainingBalance} debe pagarse en efectivo, tarjeta de crédito/débito o transferencia bancaria a más tardar 7 días antes de la fecha del evento.`
-            : `2.3 The remaining balance of $${remainingBalance} must be paid in cash, credit/debit card, or bank transfer no later than 7 days before the event date.`}
+            ? `2.3 El precio total incluyendo ITBIS es $${totalPrice}.`
+            : `2.3 The total price including ITBIS is $${totalPrice}.`}
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? "2.4 Todos los pagos no son reembolsables excepto según lo dispuesto en este Acuerdo."
-            : "2.4 All payments are non-refundable except as otherwise provided in this Agreement."}
+            ? `2.4 EL CLIENTE acepta realizar un pago inicial (anticipo) del 60% del precio total, equivalente a $${downPayment}, al firmar este Acuerdo.`
+            : `2.4 THE CLIENT agrees to make an initial payment (down payment) of 60% of the total price, equivalent to $${downPayment}, upon signing this Agreement.`}
+        </Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? `2.5 El saldo restante de $${remainingBalance} debe pagarse en efectivo, tarjeta de crédito/débito o transferencia bancaria a más tardar 7 días antes de la fecha del evento.`
+            : `2.5 The remaining balance of $${remainingBalance} must be paid in cash, credit/debit card, or bank transfer no later than 7 days before the event date.`}
+        </Text>
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? "2.6 Todos los pagos no son reembolsables excepto según lo dispuesto en este Acuerdo."
+            : "2.6 All payments are non-refundable except as otherwise provided in this Agreement."}
+        </Text>
+
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? "*Pagando en efectivo? Disfrute de un **descuento del 18%** aplicado al total. Esta oferta es válida solo para pagos en efectivo."
+            : "*Paying in cash? Enjoy a **18% discount** applied to the total. Offer valid only for cash payments."}
         </Text>
 
         {/* Section 3 */}
@@ -592,6 +612,11 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
           {language === "es"
             ? `En Santo Domingo, República Dominicana, ${currentDate}.`
             : `IN Santo Domingo, Dominican Republic, ${currentDate}.`}
+        </Text>
+        <Text style={[styles.paragraph, { fontSize: 10, fontStyle: "italic" }]}>
+          {language === "es"
+            ? "*El descuento del 18% aplica solo para pagos en efectivo."
+            : "*The 18% discount applies only to full cash payments."}
         </Text>
 
         {/* Signature Section */}
