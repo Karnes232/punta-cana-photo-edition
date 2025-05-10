@@ -35,6 +35,7 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
             price: 0,
             quantity: 1,
             description: "",
+            discount: 0,
           };
         } else {
           // If it's an existing option from the rentalItems array
@@ -46,6 +47,7 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
             price: selectedItem.price,
             quantity: 1,
             description: selectedItem.description || "",
+            discount: 0,
           };
         }
       });
@@ -54,6 +56,12 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
       setFormData({ ...formData, selectedItems: [] });
     }
   };
+  // Add this to convert formData.selectedItems to the format expected by CreatableSelect
+  const selectedValues =
+    formData.selectedItems?.map((item) => ({
+      value: item.rentalItem,
+      label: item.rentalItem,
+    })) || [];
 
   return (
     <>
@@ -71,6 +79,7 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
               required
               onChange={handleItemChange}
               placeholder={t("Select Rental Items")}
+              value={selectedValues}
             />
           </div>
 
@@ -104,10 +113,12 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                         value={item.quantity}
                         onChange={(e) => {
                           const newItems = [...formData.selectedItems];
-                          newItems[index].quantity = Math.max(
-                            1,
-                            parseInt(e.target.value) || 1,
-                          );
+                          const value = e.target.value;
+                          // Allow empty string during typing, but enforce min of 1 for actual numbers
+                          newItems[index].quantity =
+                            value === ""
+                              ? ""
+                              : Math.max(1, parseInt(value) || 1);
                           setFormData({ ...formData, selectedItems: newItems });
                         }}
                         className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
@@ -136,6 +147,36 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                         placeholder={t("Price")}
                       />
                     </div>
+                    <div className="w-32">
+                      <label
+                        className="block text-sm text-gray-500 mb-1"
+                        htmlFor="discount"
+                      >
+                        <Trans>Discount %</Trans>
+                      </label>
+                      <input
+                        id="discount"
+                        type="number"
+                        value={item.discount}
+                        onChange={(e) => {
+                          const newItems = [...formData.selectedItems];
+                          const value = e.target.value;
+                          // Allow empty string during typing, but enforce min/max when there's a value
+                          newItems[index].discount =
+                            value === ""
+                              ? ""
+                              : Math.min(
+                                  100,
+                                  Math.max(0, parseFloat(value) || 0),
+                                );
+                          setFormData({ ...formData, selectedItems: newItems });
+                        }}
+                        className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
+                        min="0"
+                        max="100"
+                        placeholder={t("Discount")}
+                      />
+                    </div>
                     <div className="flex-grow">
                       <label
                         className="block text-sm text-gray-500 mb-1"
@@ -146,7 +187,11 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                       <input
                         id="totalPrice"
                         type="number"
-                        value={(item.price * item.quantity).toFixed(2)}
+                        value={(
+                          item.price *
+                          item.quantity *
+                          (1 - (item.discount || 0) / 100)
+                        ).toFixed(2)}
                         readOnly
                         className="w-full px-3 rounded-lg border border-gray-300 bg-gray-50 focus:ring-0 focus:border-black h-[38px]"
                       />

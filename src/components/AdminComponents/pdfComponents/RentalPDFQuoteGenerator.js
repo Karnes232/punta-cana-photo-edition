@@ -143,10 +143,11 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
   const quoteNumber = `${language === "es" ? "CR" : "RQ"}${Date.now().toString().slice(-6)}`;
 
   // Calculate subtotal, tax (ITBIS), and total
-  const subtotal = formData.selectedItems.reduce(
-    (sum, item) => sum + parseFloat(item.price) * item.quantity,
-    0,
-  );
+  const subtotal = formData.selectedItems.reduce((sum, item) => {
+    const originalPrice = parseFloat(item.price) * item.quantity;
+    const discount = item.discount ? originalPrice * (item.discount / 100) : 0;
+    return sum + (originalPrice - discount);
+  }, 0);
   const taxRate = 0.18; // 18% ITBIS
   const taxAmount = subtotal * taxRate;
   const total = subtotal + taxAmount;
@@ -200,18 +201,27 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
           <Text style={styles.itemsTitle}>
             {language === "es" ? "Artículos Seleccionados" : "Selected Items"}:
           </Text>
-          {formData.selectedItems.map((item, index) => (
-            <View key={index} style={styles.item}>
-              <Text>
-                {item.rentalItem} ({item.quantity}{" "}
-                {language === "es" ? "unidades" : "units"} x $
-                {parseFloat(item.price).toFixed(2)})
-              </Text>
-              <Text>
-                ${(parseFloat(item.price) * item.quantity).toFixed(2)}
-              </Text>
-            </View>
-          ))}
+          {formData.selectedItems.map((item, index) => {
+            const originalPrice = parseFloat(item.price) * item.quantity;
+            const discount = item.discount
+              ? originalPrice * (item.discount / 100)
+              : 0;
+            const finalPrice = originalPrice - discount;
+
+            return (
+              <View key={index} style={styles.item}>
+                <Text>
+                  {item.rentalItem} ({item.quantity}{" "}
+                  {language === "es" ? "unidades" : "units"} x $
+                  {parseFloat(item.price).toFixed(2)}
+                  {item.discount > 0 &&
+                    ` - ${item.discount}% ${language === "es" ? "descuento" : "discount"}`}
+                  )
+                </Text>
+                <Text>${finalPrice.toFixed(2)}</Text>
+              </View>
+            );
+          })}
 
           {formData.itemsDescription && (
             <Text style={styles.notes}>

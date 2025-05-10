@@ -122,10 +122,11 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
   const companyStamp = companyInfo.companyStamp.url;
   const signature = companyInfo.signature.url;
   // Calculate subtotal, taxes and total
-  const subtotal = formData.selectedItems.reduce(
-    (sum, item) => sum + parseFloat(item.price) * parseInt(item.quantity),
-    0,
-  );
+  const subtotal = formData.selectedItems.reduce((sum, item) => {
+    const originalPrice = parseFloat(item.price) * parseInt(item.quantity);
+    const discount = item.discount ? originalPrice * (item.discount / 100) : 0;
+    return sum + (originalPrice - discount);
+  }, 0);
   const taxRate = 0.18; // 18% ITBIS tax
   const taxAmount = subtotal * taxRate;
   const totalAmount = subtotal + taxAmount;
@@ -272,60 +273,67 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
           </View>
 
           {/* Table Rows */}
-          {formData.selectedItems.map((item, index) => (
-            <View key={index}>
-              <View
-                style={[
-                  styles.tableRow,
-                  { borderBottomWidth: item.description ? 0 : 1 },
-                ]}
-              >
-                <Text style={[styles.tableCell, { flex: 3 }]}>
-                  {item.rentalItem}
-                </Text>
-                <Text
-                  style={[styles.tableCell, { flex: 1, textAlign: "center" }]}
-                >
-                  ${parseFloat(item.price).toFixed(2)}
-                </Text>
-                <Text
-                  style={[styles.tableCell, { flex: 1, textAlign: "center" }]}
-                >
-                  {item.quantity}
-                </Text>
-                <Text
-                  style={[styles.tableCell, { flex: 1, textAlign: "right" }]}
-                >
-                  $
-                  {(parseFloat(item.price) * parseInt(item.quantity)).toFixed(
-                    2,
-                  )}
-                </Text>
-              </View>
-              {item.description && (
+          {formData.selectedItems.map((item, index) => {
+            const originalPrice =
+              parseFloat(item.price) * parseInt(item.quantity);
+            const discount = item.discount
+              ? originalPrice * (item.discount / 100)
+              : 0;
+            const finalPrice = originalPrice - discount;
+
+            return (
+              <View key={index}>
                 <View
                   style={[
                     styles.tableRow,
-                    { borderBottomWidth: 1, borderTopWidth: 0 },
+                    { borderBottomWidth: item.description ? 0 : 1 },
                   ]}
                 >
+                  <Text style={[styles.tableCell, { flex: 3 }]}>
+                    {item.rentalItem}
+                    {item.discount > 0 && ` (-${item.discount}%)`}
+                  </Text>
                   <Text
-                    style={[
-                      styles.tableCell,
-                      {
-                        flex: 6,
-                        fontSize: 9,
-                        color: "#666666",
-                        fontStyle: "italic",
-                      },
-                    ]}
+                    style={[styles.tableCell, { flex: 1, textAlign: "center" }]}
                   >
-                    {item.description}
+                    ${parseFloat(item.price).toFixed(2)}
+                  </Text>
+                  <Text
+                    style={[styles.tableCell, { flex: 1, textAlign: "center" }]}
+                  >
+                    {item.quantity}
+                  </Text>
+                  <Text
+                    style={[styles.tableCell, { flex: 1, textAlign: "right" }]}
+                  >
+                    ${finalPrice.toFixed(2)}
                   </Text>
                 </View>
-              )}
-            </View>
-          ))}
+                {item.description && (
+                  <View
+                    style={[
+                      styles.tableRow,
+                      { borderBottomWidth: 1, borderTopWidth: 0 },
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.tableCell,
+                        {
+                          flex: 6,
+                          fontSize: 9,
+                          color: "#666666",
+                          fontStyle: "italic",
+                        },
+                      ]}
+                    >
+                      {item.description}
+                    </Text>
+                  </View>
+                )}
+              </View>
+            );
+          })}
 
           {/* Total */}
           <View style={[styles.totalRow]}>

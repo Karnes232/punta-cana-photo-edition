@@ -84,48 +84,77 @@ const RentalContractSummary = ({ formData }) => {
         <h6 className="font-semibold mb-2">
           <Trans>Selected Items</Trans>
         </h6>
-        {formData.selectedItems.map((item, index) => (
-          <div key={index} className="ml-4 mt-2">
-            <p>
-              <strong>{item.rentalItem}</strong> - {item.quantity}{" "}
-              <Trans>units</Trans> x $
-              {parseFloat(item.price).toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-              })}{" "}
-              = $
-              {(parseFloat(item.price) * item.quantity).toLocaleString(
-                "en-US",
-                { minimumFractionDigits: 2 },
-              )}
-            </p>
-          </div>
-        ))}
+        {formData.selectedItems.map((item, index) => {
+          const originalPrice = parseFloat(item.price) * item.quantity;
+          const discount = item.discount
+            ? originalPrice * (item.discount / 100)
+            : 0;
+          const finalPrice = originalPrice - discount;
+
+          return (
+            <div key={index} className="ml-4 mt-2">
+              <p>
+                <strong>{item.rentalItem}</strong> - {item.quantity}{" "}
+                <Trans>units</Trans> x $
+                {parseFloat(item.price).toLocaleString("en-US", {
+                  minimumFractionDigits: 2,
+                })}{" "}
+                = $
+                {originalPrice.toLocaleString("en-US", {
+                  minimumFractionDigits: 2,
+                })}
+                {item.discount > 0 && (
+                  <span>
+                    {" "}
+                    - {item.discount}% <Trans>discount</Trans> (-$
+                    {discount.toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                    })}
+                    ) = $
+                    {finalPrice.toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                    })}
+                  </span>
+                )}
+              </p>
+            </div>
+          );
+        })}
         <div className="mt-3">
           <p className="font-bold">
             <Trans>Subtotal</Trans>: $
             {formData.selectedItems
-              .reduce(
-                (sum, item) => sum + parseFloat(item.price) * item.quantity,
-                0,
-              )
+              .reduce((sum, item) => {
+                const originalPrice = parseFloat(item.price) * item.quantity;
+                const discount = item.discount
+                  ? originalPrice * (item.discount / 100)
+                  : 0;
+                return sum + (originalPrice - discount);
+              }, 0)
               .toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </p>
           <p className="font-bold">
             <Trans>ITBIS (18%)</Trans>: $
             {(
-              formData.selectedItems.reduce(
-                (sum, item) => sum + parseFloat(item.price) * item.quantity,
-                0,
-              ) * 0.18
+              formData.selectedItems.reduce((sum, item) => {
+                const originalPrice = parseFloat(item.price) * item.quantity;
+                const discount = item.discount
+                  ? originalPrice * (item.discount / 100)
+                  : 0;
+                return sum + (originalPrice - discount);
+              }, 0) * 0.18
             ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </p>
           <p className="font-bold">
             <Trans>Total Price</Trans>: $
             {(
-              formData.selectedItems.reduce(
-                (sum, item) => sum + parseFloat(item.price) * item.quantity,
-                0,
-              ) * 1.18
+              formData.selectedItems.reduce((sum, item) => {
+                const originalPrice = parseFloat(item.price) * item.quantity;
+                const discount = item.discount
+                  ? originalPrice * (item.discount / 100)
+                  : 0;
+                return sum + (originalPrice - discount);
+              }, 0) * 1.18
             ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
           </p>
         </div>

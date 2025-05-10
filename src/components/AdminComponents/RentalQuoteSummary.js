@@ -2,13 +2,15 @@ import React from "react";
 import { Trans } from "gatsby-plugin-react-i18next";
 
 const RentalQuoteSummary = ({ formData }) => {
-  const subtotal = formData.selectedItems.reduce(
-    (sum, item) => sum + parseFloat(item.price) * item.quantity,
-    0,
-  );
+  const subtotal = formData.selectedItems.reduce((sum, item) => {
+    const originalPrice = parseFloat(item.price) * item.quantity;
+    const discount = item.discount ? originalPrice * (item.discount / 100) : 0;
+    return sum + (originalPrice - discount);
+  }, 0);
   const taxRate = 0.18; // 18% ITBIS
   const taxAmount = subtotal * taxRate;
   const total = subtotal + taxAmount;
+
   return (
     <div className="bg-gray-100 p-6 rounded-lg mb-6">
       <h5 className="font-bold mb-3">
@@ -37,22 +39,42 @@ const RentalQuoteSummary = ({ formData }) => {
         <strong>
           <Trans>Selected Items</Trans>:
         </strong>
-        {formData.selectedItems.map((item, index) => (
-          <div key={index} className="ml-4 mt-2">
-            <p>
-              <strong>{item.rentalItem}</strong> -{item.quantity}{" "}
-              <Trans>units</Trans> x $
-              {parseFloat(item.price).toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-              })}{" "}
-              = $
-              {(parseFloat(item.price) * item.quantity).toLocaleString(
-                "en-US",
-                { minimumFractionDigits: 2 },
-              )}
-            </p>
-          </div>
-        ))}
+        {formData.selectedItems.map((item, index) => {
+          const originalPrice = parseFloat(item.price) * item.quantity;
+          const discount = item.discount
+            ? originalPrice * (item.discount / 100)
+            : 0;
+          const finalPrice = originalPrice - discount;
+
+          return (
+            <div key={index} className="ml-4 mt-2">
+              <p>
+                <strong>{item.rentalItem}</strong> - {item.quantity}{" "}
+                <Trans>units</Trans> x $
+                {parseFloat(item.price).toLocaleString("en-US", {
+                  minimumFractionDigits: 2,
+                })}{" "}
+                = $
+                {originalPrice.toLocaleString("en-US", {
+                  minimumFractionDigits: 2,
+                })}
+                {item.discount > 0 && (
+                  <span>
+                    {" "}
+                    - {item.discount}% <Trans>discount</Trans> (-$
+                    {discount.toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                    })}
+                    ) = $
+                    {finalPrice.toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                    })}
+                  </span>
+                )}
+              </p>
+            </div>
+          );
+        })}
         <p className="mt-3 font-bold">
           <Trans>Subtotal</Trans>: $
           {subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}
