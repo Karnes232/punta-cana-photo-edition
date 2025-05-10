@@ -11,14 +11,18 @@ const Button = ({
   function handleClick(e) {
     e.preventDefault();
 
-    addToCart(item);
-    if (cartItems.length < 4) {
+    const currentQuantity =
+      cartItems.find((rentalItem) => rentalItem.rentalItem === item.rentalItem)
+        ?.quantity || 0;
+
+    if (currentQuantity < item.stock) {
+      addToCart(item);
       notifyAddedToCart(item);
     } else {
-      console.log(item);
-      // addVariantToCart(variantId, quantity)
+      notifyCartFull(item);
     }
   }
+
   return (
     <div className="flex justify-center items-center mb-5">
       {!cartItems.find(

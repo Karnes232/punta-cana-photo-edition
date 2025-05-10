@@ -53,19 +53,22 @@ const Index = ({ data }) => {
     });
 
   const notifyCartFull = (item) =>
-    toast.error(`Your Cart is Full!`, {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "colored",
-      style: {
-        backgroundColor: "#fff",
-        color: "#000",
+    toast.error(
+      `You've reached the maximum available stock for this ${item.rentalItem}`,
+      {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        style: {
+          backgroundColor: "#fff",
+          color: "#000",
+        },
       },
-    });
+    );
 
   const notifyRemovedFromCart = (item) =>
     toast.error(`${item.rentalItem} removed from cart!`, {
@@ -237,6 +240,7 @@ export const query = graphql`
         category
         price
         description
+        stock
         images {
           gatsbyImage(width: 450, placeholder: BLURRED, formats: WEBP)
           title

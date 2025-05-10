@@ -123,6 +123,7 @@ export const query = graphql`
         category
         price
         description
+        stock
         images {
           gatsbyImage(width: 450, placeholder: BLURRED, formats: WEBP)
           title

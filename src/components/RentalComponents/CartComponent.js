@@ -8,6 +8,40 @@ const CartComponent = () => {
     useContext(CartContext);
 
   const emptyCart = cartItems.length === 0;
+
+  const notifyAddedToCart = (item) =>
+    toast.success(`${item.rentalItem} added to cart!`, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+      style: {
+        backgroundColor: "#fff",
+        color: "#000",
+      },
+    });
+
+  const notifyCartFull = (item) =>
+    toast.error(
+      `You've reached the maximum available stock for this ${item.rentalItem}`,
+      {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+        style: {
+          backgroundColor: "#fff",
+          color: "#000",
+        },
+      },
+    );
+
   const notifyRemovedFromCart = (item) =>
     toast.error(`${item.rentalItem} removed from cart!`, {
       position: "top-center",
@@ -44,6 +78,15 @@ const CartComponent = () => {
   };
   let cartTotalPrice = getCartTotal();
 
+  const handleAddToCart = (item) => {
+    if (item.quantity < item.stock) {
+      addToCart(item);
+      notifyAddedToCart(item);
+    } else {
+      notifyCartFull(item);
+    }
+  };
+
   return (
     <div className="flex-col flex items-center justify-center my-10">
       <ToastContainer />
@@ -74,7 +117,7 @@ const CartComponent = () => {
                         className="px-4 py-2 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
                         onClick={(e) => {
                           e.preventDefault();
-                          addToCart(item);
+                          handleAddToCart(item);
                         }}
                       >
                         +
@@ -131,8 +174,8 @@ const CartComponent = () => {
         <div className="flex flex-col justify-center items-center max-w-sm">
           <h1 className="text-lg font-bold">Your cart is empty</h1>
           <p className="text-sm text-center my-3">
-            Looks like you haven’t found anything yet. We understand that
-            sometimes it’s hard to choose — maybe this helps:
+            Looks like you haven't found anything yet. We understand that
+            sometimes it's hard to choose — maybe this helps:
           </p>
           <Link to="/event-rentals" className="font-medium text-lg">
             View Our Rentals
