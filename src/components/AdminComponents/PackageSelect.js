@@ -72,6 +72,19 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
     }
   };
 
+  const selectedValues = formData.package
+    ? {
+        value: formData.package,
+        label: formData.package,
+      }
+    : null;
+
+  const selectedAdditions =
+    formData.additions?.map((item) => ({
+      value: item.addition,
+      label: item.addition,
+    })) || [];
+
   return (
     <>
       <div className="relative mb-2 w-full group">
@@ -87,6 +100,7 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
               required
               onChange={handlePackageChange}
               placeholder={t("Package Options")}
+              value={selectedValues}
             />
           </div>
           <div className="w-24 flex items-center ">
@@ -141,9 +155,9 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
           name="Additions"
           options={additionOptions}
           styles={style}
-          required
           onChange={handleAdditionChange}
           placeholder={t("Options")}
+          value={selectedAdditions}
         />
       </div>
 

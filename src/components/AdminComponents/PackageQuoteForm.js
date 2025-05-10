@@ -4,7 +4,8 @@ import { Trans } from "gatsby-plugin-react-i18next";
 import PackageSelect from "./PackageSelect";
 import PDFQuoteGenerator from "./pdfComponents/PDFQuoteGenerator";
 import QuoteSummary from "./QuoteSummary";
-
+import { db } from "../../config/firebase";
+import { doc, setDoc } from "firebase/firestore";
 const PackageQuoteForm = ({ packages, additions, companyInfo }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -16,11 +17,23 @@ const PackageQuoteForm = ({ packages, additions, companyInfo }) => {
     packagesDescription: "",
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Form validation could be added here
     setFormSubmitted(true);
+    let docName = `package-quotes`;
+    await setDoc(doc(db, docName, formData.email), {
+      name: formData.name,
+      email: formData.email,
+      telephone: formData.telephone,
+      package: formData.package,
+      packagePrice: formData.packagePrice,
+      additions: formData.additions,
+      packagesDescription: formData.packagesDescription,
+      createdAt: new Date(),
+    });
   };
+
   return (
     <div className="w-full md:w-full max-w-md flex flex-col justify-center items-center mx-auto my-5">
       {!formSubmitted ? (

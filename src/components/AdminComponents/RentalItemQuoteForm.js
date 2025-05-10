@@ -4,7 +4,8 @@ import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import RentalItemSelect from "./RentalItemSelect";
 import RentalPDFQuoteGenerator from "./pdfComponents/RentalPDFQuoteGenerator";
 import RentalQuoteSummary from "./RentalQuoteSummary";
-
+import { db } from "../../config/firebase";
+import { doc, setDoc } from "firebase/firestore";
 const RentalItemQuoteForm = ({ rentalItems, companyInfo }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -15,36 +16,23 @@ const RentalItemQuoteForm = ({ rentalItems, companyInfo }) => {
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const { t } = useTranslation();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormSubmitted(true);
+
+    // TODO: Add the form data to the database
+    let docName = `rental-items-quotes`;
+    // Save testimonial to Firestore
+    await setDoc(doc(db, docName, formData.email), {
+      name: formData.name,
+      email: formData.email,
+      telephone: formData.telephone,
+      selectedItems: formData.selectedItems,
+      itemsDescription: formData.itemsDescription,
+      createdAt: new Date(),
+    });
   };
 
-  // const handleItemSelection = (item) => {
-  //   const existingItem = formData.selectedItems.find(
-  //     (i) => i.rentalItem === item.rentalItem,
-  //   );
-
-  //   if (existingItem) {
-  //     setFormData({
-  //       ...formData,
-  //       selectedItems: formData.selectedItems.filter(
-  //         (i) => i.rentalItem !== item.rentalItem,
-  //       ),
-  //     });
-  //   } else {
-  //     setFormData({
-  //       ...formData,
-  //       selectedItems: [...formData.selectedItems, item],
-  //     });
-  //   }
-  // };
-
-  // const totalPrice = formData.selectedItems.reduce(
-  //   (sum, item) => sum + parseFloat(item.price || 0),
-  //   0,
-  // );
-  // console.log(formData);
   return (
     <div className="w-full md:w-full max-w-md flex flex-col justify-center items-center mx-auto my-5">
       {!formSubmitted ? (
