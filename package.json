@@ -20,7 +20,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.22.11",
     "@contentful/rich-text-types": "^16.8.5",
-    "@headlessui/react": "^2.1.8",
+    "@headlessui/react": "^2.2.3",
     "@loadable/component": "^5.16.4",
     "@netlify/functions": "^3.0.4",
     "@react-email/components": "^0.0.34",

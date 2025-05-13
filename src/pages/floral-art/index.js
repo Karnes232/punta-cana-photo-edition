@@ -10,6 +10,9 @@ import FloralItemSearch from "../../components/FloralComponents/FloralItemSearch
 
 const Index = ({ data }) => {
   const backendFloralList = data.allContentfulFloralItem.nodes;
+  if (process.env.NODE_ENV === "development") {
+    backendFloralList.push(...backendFloralList, ...backendFloralList);
+  }
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [floralItemsList, setFloralItemsList] = useState(
     data.allContentfulFloralItem.nodes.sort(() => Math.random() - 0.5),
@@ -67,7 +70,7 @@ const Index = ({ data }) => {
           setFloralItemsList={setFloralItemsList}
         />
 
-        <div className="flex flex-col justify-center items-center md:flex-row md:flex-wrap md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto">
+        <div className="flex justify-evenly items-center flex-row flex-wrap md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto">
           {floralItemsList.map((item, index) => {
             return <FloralItemCard item={item} key={index} />;
           })}
