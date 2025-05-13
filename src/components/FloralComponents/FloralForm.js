@@ -20,6 +20,31 @@ const FloralForm = ({ item }) => {
           <Trans>More Info</Trans>
         </button>
       </div>
+      <Dialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        className="relative z-50"
+      >
+        <div className="fixed inset-0 z-50 w-screen overflow-y-auto bg-transparent/80">
+          <div className="flex min-h-screen items-end justify-end p-4">
+            <DialogPanel className="mb-20 mr-6 xl:mr-10 w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
+              <div className="absolute top-2 right-5">
+                <button
+                  className="p-2 text-2xl text-gray-500"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <IoClose />
+                </button>
+              </div>
+              <h1>Hello</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, quos.
+              </p>
+            </DialogPanel>
+          </div>
+        </div>
+      </Dialog>
     </>
   );
 };
