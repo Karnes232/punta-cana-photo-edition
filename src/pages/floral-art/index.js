@@ -1,97 +1,44 @@
 import { graphql } from "gatsby";
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
-import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
-import RichText from "../../components/RichTextComponents/RichText";
 import Seo from "../../components/Layout/seo";
 import { useI18next } from "gatsby-plugin-react-i18next";
-import RentalItemCard from "../../components/RentalComponents/RentalItemCard";
-import RentalItemsSearch from "../../components/RentalComponents/RentalItemsSearch";
-import { ToastContainer, toast } from "react-toastify";
+import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
+import RichText from "../../components/RichTextComponents/RichText";
+import FloralItemCard from "../../components/FloralComponents/FloralItemCard";
+import FloralItemSearch from "../../components/FloralComponents/FloralItemSearch";
+
 const Index = ({ data }) => {
-  const backendRentalList = data.allContentfulRentalItems.nodes;
+  const backendFloralList = data.allContentfulFloralItem.nodes;
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [rentalItemsList, setRentalItemsList] = useState(
-    data.allContentfulRentalItems.nodes.sort(() => Math.random() - 0.5),
+  const [floralItemsList, setFloralItemsList] = useState(
+    data.allContentfulFloralItem.nodes.sort(() => Math.random() - 0.5),
   );
   const allCategories = [
     "All",
     ...new Set(
-      data.allContentfulRentalItems.nodes.flatMap((item) => item.category),
+      data.allContentfulFloralItem.nodes.flatMap((item) => item.category),
     ),
   ].sort();
 
-  // Search Functions
-
   const setFilter = (e) => {
     setSelectedCategory(e.target.dataset.category);
-    const filteredRentalList = backendRentalList.filter((item) => {
+    const filteredRentalList = backendFloralList.filter((item) => {
       if (e.target.innerText === "All") {
         return item;
       }
       const categoryList = item.category;
       return categoryList.includes(e.target.dataset.category);
     });
-    setRentalItemsList(filteredRentalList.sort(() => Math.random() - 0.5));
+    setFloralItemsList(filteredRentalList.sort(() => Math.random() - 0.5));
   };
-
-  //Toast Functions
-
-  const notifyAddedToCart = (item) =>
-    toast.success(`${item.rentalItem} added to cart!`, {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "colored",
-      style: {
-        backgroundColor: "#fff",
-        color: "#000",
-      },
-    });
-
-  const notifyCartFull = (item) =>
-    toast.error(
-      `You've reached the maximum available stock for this ${item.rentalItem}`,
-      {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        theme: "colored",
-        style: {
-          backgroundColor: "#fff",
-          color: "#000",
-        },
-      },
-    );
-
-  const notifyRemovedFromCart = (item) =>
-    toast.error(`${item.rentalItem} removed from cart!`, {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      theme: "colored",
-      style: {
-        backgroundColor: "#000",
-        color: "#fff",
-      },
-    });
 
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <ToastContainer />
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
       <div>
-        <nav className="flex flex-row items-center  overflow-x-scroll xl:overflow-x-auto whitespace-nowrap mx-5 xl:justify-center">
+        <nav className="flex flex-row items-center overflow-x-scroll xl:overflow-x-auto whitespace-nowrap mx-5 xl:justify-center">
           {/* <button onClick={()=>setFilter('All')}>All</button> */}
           {allCategories.map((category, index) => {
             let active = "";
@@ -112,23 +59,17 @@ const Index = ({ data }) => {
             );
           })}
         </nav>
-        <RentalItemsSearch
-          backendRentalList={backendRentalList}
+
+        <FloralItemSearch
+          backendFloralList={backendFloralList}
           allCategories={allCategories}
           setSelectedCategory={setSelectedCategory}
-          setRentalItemsList={setRentalItemsList}
+          setFloralItemsList={setFloralItemsList}
         />
+
         <div className="flex flex-col justify-center items-center md:flex-row md:flex-wrap md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto">
-          {rentalItemsList.map((item, index) => {
-            return (
-              <RentalItemCard
-                key={index}
-                item={item}
-                notifyAddedToCart={notifyAddedToCart}
-                notifyRemovedFromCart={notifyRemovedFromCart}
-                notifyCartFull={notifyCartFull}
-              />
-            );
+          {floralItemsList.map((item, index) => {
+            return <FloralItemCard item={item} key={index} />;
           })}
         </div>
       </div>
@@ -142,7 +83,7 @@ export const Head = ({ data }) => {
   const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/event-rentals"}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/floral-art"}`;
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
   let JsonSchema = {};
@@ -191,7 +132,7 @@ export const query = graphql`
       }
     }
     allContentfulSeo(
-      filter: { page: { eq: "Event Rentals" }, node_locale: { eq: $language } }
+      filter: { page: { eq: "Floral Art" }, node_locale: { eq: $language } }
     ) {
       nodes {
         title
@@ -212,7 +153,7 @@ export const query = graphql`
       }
     }
     allContentfulPageContent(
-      filter: { page: { eq: "Event Rentals" }, node_locale: { eq: $language } }
+      filter: { page: { eq: "Floral Art" }, node_locale: { eq: $language } }
     ) {
       nodes {
         page
@@ -230,20 +171,23 @@ export const query = graphql`
         }
       }
     }
-    allContentfulRentalItems(
-      sort: { rentalItem: ASC }
+    allContentfulFloralItem(
+      sort: { floralItem: ASC }
       filter: { node_locale: { eq: $language } }
     ) {
       nodes {
         id
-        rentalItem
+        floralItem
         category
         price
         description
-        stock
         images {
           gatsbyImage(width: 450, placeholder: BLURRED, formats: WEBP)
           title
+        }
+        additions {
+          price
+          addition
         }
       }
     }
