@@ -262,6 +262,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const floralPath =
+        urlPath === "" ? "/floral-art" : `/${urlPath}/floral-art`;
+      createPage({
+        path: floralPath,
+        component: path.resolve("./src/pages/floral-art/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       const weddingPath = urlPath === "" ? "/wedding" : `/${urlPath}/wedding`;
       createPage({
         path: weddingPath,

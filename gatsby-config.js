@@ -203,6 +203,10 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/floral-art",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/wedding",
             getLanguageFromPath: true,
           },
