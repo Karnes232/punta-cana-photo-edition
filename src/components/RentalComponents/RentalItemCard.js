@@ -9,8 +9,11 @@ const RentalItemCard = ({
   notifyCartFull,
 }) => {
   return (
-    <div className="max-w-sm min-w-[20rem] xl:max-w-xs my-5 mx-2 rounded-lg overflow-hidden shadow-lg">
-      <ItemCardSwiper photoList={item.images} height="h-64 lg:h-60" />
+    <div className="min-w-[15rem] max-w-sm md:max-w-[20rem] my-5 mx-2 rounded-lg overflow-hidden shadow-lg">
+      <ItemCardSwiper
+        photoList={item.images}
+        height={"h-[25rem] md:h-[22rem]"}
+      />
       <div className="px-6 py-4">
         <div className="font-bold h-10 text-lg mb-2 flex justify-between">
           <div className="truncate mr-3" translate="no">

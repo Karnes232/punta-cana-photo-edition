@@ -7,9 +7,11 @@ import {
   DialogPanel,
   DialogTitle,
 } from "@headlessui/react";
+import ItemCardSwiper from "../RentalComponents/ItemCardSwiper";
 
 const FloralForm = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
+  console.log(item);
   return (
     <>
       <div className="flex justify-center items-center mb-5">
@@ -27,7 +29,7 @@ const FloralForm = ({ item }) => {
       >
         <div className="fixed inset-0 z-50 w-screen overflow-y-auto bg-transparent/80">
           <div className="flex min-h-screen items-end justify-end p-4">
-            <DialogPanel className="mb-20 mr-6 xl:mr-10 w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
+            <DialogPanel className="mb-20 xl:mr-10 w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
               <div className="absolute top-2 right-5">
                 <button
                   className="p-2 text-2xl text-gray-500"
@@ -36,11 +38,15 @@ const FloralForm = ({ item }) => {
                   <IoClose />
                 </button>
               </div>
-              <h1>Hello</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quisquam, quos.
-              </p>
+              <div className="flex flex-col gap-2 mt-8">
+                <ItemCardSwiper photoList={item.images} height="h-44" />
+
+                <h1>Hello</h1>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quisquam, quos.
+                </p>
+              </div>
             </DialogPanel>
           </div>
         </div>
