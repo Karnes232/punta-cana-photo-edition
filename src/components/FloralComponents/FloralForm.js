@@ -16,6 +16,16 @@ const FloralForm = ({ item }) => {
 
   return (
     <>
+    <form name="floral-art" data-netlify="true" hidden>
+        <input type="hidden" name="form-name" value="floral-art" />
+        <input type="text" name="floralItem" />
+        <input type="text" name="price" />
+        <input type="text" name="description" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+        <input type="text" name="additions" />
+      </form>
       <div className="flex justify-center items-center mb-5">
         <button
           onClick={() => setIsOpen(!isOpen)}
