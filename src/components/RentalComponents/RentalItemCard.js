@@ -19,7 +19,7 @@ const RentalItemCard = ({
           <div className="truncate mr-3" translate="no">
             {item.rentalItem}
           </div>
-          <div>${item.price}</div>
+          <div>{item.price ? `$${item.price}` : ""}</div>
         </div>
         <p className="text-gray-700 min-h-[9rem] text-base line-clamp-6">
           {item.description}

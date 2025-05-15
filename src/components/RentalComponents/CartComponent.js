@@ -109,7 +109,7 @@ const CartComponent = () => {
                         {item.rentalItem}
                       </h1>
                       <p className="text-gray-600 text-end flex items-center md:justify-end">
-                        ${item.price}
+                        {item.price ? `$${item.price}` : ""}
                       </p>
                     </div>
                     <div className="flex gap-4 justify-center items-center">
@@ -139,7 +139,7 @@ const CartComponent = () => {
                     </div>
                   </div>
                   <div className="flex gap-8 mx-4 text-gray-600 w-12">
-                    ${item.price * item.quantity}
+                    {item.price ? `$${item.price * item.quantity}` : ""}
                   </div>
                 </div>
               </div>
@@ -150,14 +150,14 @@ const CartComponent = () => {
 
       {cartItems.length > 0 ? (
         <div className="flex flex-col justify-between items-center mt-5">
-          <section className="my-5 max-w-xs mx-auto">
+          {/* <section className="my-5 max-w-xs mx-auto">
             <section className="space-x-12 flex justify-between mx-auto">
               <div className="text-lg font-bold">Total Cost:</div>
               <div className="text-lg w-20">
                 ${parseFloat(cartTotalPrice).toFixed(2)}
               </div>
             </section>
-          </section>
+          </section> */}
 
           <button
             className="px-4 py-2 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
