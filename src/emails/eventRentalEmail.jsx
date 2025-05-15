@@ -112,7 +112,7 @@ const eventRentalEmail = ({ name, items }) => {
               </Section>
 
               {/* Totals */}
-              <Section className="mb-6">
+              <Section className="mb-3">
                 <Hr className="border-gray-200 my-3" />
 
                 <Row>
@@ -132,7 +132,7 @@ const eventRentalEmail = ({ name, items }) => {
                 <Section className="mb-6">
                   <Column className="w-full">
                     <Text className="text-base font-semibold text-gray-900 m-0 text-right">
-                      *Prices will be confirmed
+                      **Prices will be confirmed
                     </Text>
                   </Column>
                 </Section>

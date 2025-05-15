@@ -12,6 +12,8 @@ import ContactForm from "./ContactForm";
 
 const FloralForm = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+
   return (
     <>
       <div className="flex justify-center items-center mb-5">
@@ -29,7 +31,7 @@ const FloralForm = ({ item }) => {
       >
         <div className="fixed inset-0 z-50 w-screen overflow-y-auto bg-transparent/80">
           <div className="flex min-h-screen items-end justify-end p-4">
-            <DialogPanel className="mb-20 xl:mr-10 w-full max-w-md md:max-w-4xl rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
+            <DialogPanel className="mb-20 xl:mr-10 w-full max-w-md md:max-w-4xl lg:h-[80vh] rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
               <div className="absolute top-2 right-5">
                 <button
                   className="p-2 text-2xl text-gray-500"
@@ -39,11 +41,11 @@ const FloralForm = ({ item }) => {
                 </button>
               </div>
               <div className="flex flex-col md:justify-center md:items-center lg:flex-row gap-2 mt-8">
-                <div className="flex flex-col gap-2 md:w-[25rem]">
+                <div className="flex flex-col gap-2 md:w-[25rem] lg:gap-0 lg:mt-5 xl:mt-0">
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <ItemCardSwiper
                       photoList={item.images}
-                      height="h-44 md:h-52"
+                      height="h-44 md:h-52 lg:h-60"
                     />
                   </div>
                   <div className="pt-4 md:pr-4">
@@ -62,6 +64,7 @@ const FloralForm = ({ item }) => {
                   <ContactForm item={item} />
                 </div>
               </div>
+              
             </DialogPanel>
           </div>
         </div>
