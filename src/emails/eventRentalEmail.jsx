@@ -20,6 +20,14 @@ const eventRentalEmail = ({ name, items }) => {
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
+  let withOutPrice = false
+  console.log(items)
+  items.forEach(item => {
+    if (item.price === 0) {
+      withOutPrice = true
+    }
+  })
+
   return (
     <Html>
       <Head />
@@ -93,9 +101,10 @@ const eventRentalEmail = ({ name, items }) => {
                     </Column>
                     <Column className="w-1/4">
                       <Text className="text-sm text-gray-700 m-0 text-right">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        {item.price ? `$${(item.price * item.quantity).toFixed(2)}` : "**"}
                       </Text>
                     </Column>
+                    {items.price ? '' : <Text className="text-xs text-gray-700 m-0">Will be confirmed</Text>}
                   </Row>
                 ))}
               </Section>
