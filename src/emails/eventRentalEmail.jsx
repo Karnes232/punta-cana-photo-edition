@@ -85,6 +85,7 @@ const eventRentalEmail = ({ name, items }) => {
               {/* Order Items */}
               <Section className="border border-gray-200 border-t-0 rounded-b-md mb-6">
                 {items.map((item, index) => (
+                  <>
                   <Row
                     key={index}
                     className={`p-3 ${index < items.length - 1 ? "border-b border-gray-200" : ""}`}
@@ -104,8 +105,9 @@ const eventRentalEmail = ({ name, items }) => {
                         {item.price ? `$${(item.price * item.quantity).toFixed(2)}` : "**"}
                       </Text>
                     </Column>
-                    {items.price ? '' : <Text className="text-xs text-gray-700 m-0">Will be confirmed</Text>}
+                    
                   </Row>
+                  {item.price ? '' : (<Row><Text className="text-xs text-gray-700 m-0">Will be confirmed</Text></Row>)}</>
                 ))}
               </Section>
 
