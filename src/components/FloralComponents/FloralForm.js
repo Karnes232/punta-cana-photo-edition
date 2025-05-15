@@ -18,11 +18,12 @@ const FloralForm = ({ item }) => {
     <>
     <form name="floral-art" data-netlify="true" hidden>
         <input type="hidden" name="form-name" value="floral-art" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
         <input type="text" name="floralItem" />
         <input type="text" name="price" />
         <input type="text" name="description" />
-        <input type="text" name="name" />
-        <input type="email" name="email" />
+        
         <textarea name="message"></textarea>
         <input type="text" name="additions" />
       </form>

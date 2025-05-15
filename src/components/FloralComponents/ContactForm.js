@@ -18,14 +18,17 @@ const ContactForm = ({ item }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Create FormData object for submission
     const submissionData = new FormData();
     
-    // Add all form fields to FormData
     Object.entries(formData).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        // Handle arrays (like additions) by joining them
-        submissionData.append(key, value.join(', '));
+      if (key === 'additions') {
+        // Handle additions array specifically
+        const formattedAdditions = value.map(addition => 
+          typeof addition === 'object' ? 
+            `${addition.name}: ${addition.price}` : 
+            addition
+        ).join(', ');
+        submissionData.append(key, formattedAdditions);
       } else {
         submissionData.append(key, value);
       }
@@ -43,7 +46,7 @@ const ContactForm = ({ item }) => {
       })
       .catch((error) => console.log('Form submission error:', error));
   };
-
+console.log(formData)
   return (
     <>
       <form
