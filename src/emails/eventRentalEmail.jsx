@@ -20,13 +20,13 @@ const eventRentalEmail = ({ name, items }) => {
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
-  let withOutPrice = false
-  console.log(items)
-  items.forEach(item => {
-    if (item.price === 0) {
-      withOutPrice = true
-    }
-  })
+  // let withOutPrice = false
+  // console.log(items)
+  // items.forEach(item => {
+  //   if (item.price === 0) {
+  //     withOutPrice = true
+  //   }
+  // })
 
   return (
     <Html>
