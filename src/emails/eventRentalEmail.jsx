@@ -20,13 +20,13 @@ const eventRentalEmail = ({ name, items }) => {
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
-  // let withOutPrice = false
-  // console.log(items)
-  // items.forEach(item => {
-  //   if (item.price === 0) {
-  //     withOutPrice = true
-  //   }
-  // })
+  let withOutPrice = false
+  console.log(items)
+  items.forEach(item => {
+    if (item.price === null) {
+      withOutPrice = true
+    }
+  })
 
   return (
     <Html>
@@ -85,7 +85,7 @@ const eventRentalEmail = ({ name, items }) => {
               {/* Order Items */}
               <Section className="border border-gray-200 border-t-0 rounded-b-md mb-6">
                 {items.map((item, index) => (
-                  <>
+            
                   <Row
                     key={index}
                     className={`p-3 ${index < items.length - 1 ? "border-b border-gray-200" : ""}`}
@@ -107,7 +107,7 @@ const eventRentalEmail = ({ name, items }) => {
                     </Column>
                     
                   </Row>
-                  {item.price ? '' : (<Row><Text className="text-xs text-gray-700 m-0">Will be confirmed</Text></Row>)}</>
+                 
                 ))}
               </Section>
 
@@ -128,6 +128,15 @@ const eventRentalEmail = ({ name, items }) => {
                   </Column>
                 </Row>
               </Section>
+              {withOutPrice && (
+                <Section className="mb-6">
+                  <Column className="w-full">
+                    <Text className="text-base font-semibold text-gray-900 m-0 text-right">
+                      *Prices will be confirmed
+                    </Text>
+                  </Column>
+                </Section>
+              )}
 
               <Hr className="border-gray-200 my-6" />
 
