@@ -45,8 +45,8 @@ const ContactForm = ({ item }) => {
     })
       .then(() => {
         console.log('Form successfully submitted');
-        window.location.href = redirectHref;
-        // navigate(`/contact/thankyou/?name=${formData.name}`)
+        //window.location.href = redirectHref;
+        navigate(`/contact/thankyou/?name=${formData.name}`)
         // You can add navigation or success message here
       })
       .catch((error) => console.log('Form submission error:', error));
