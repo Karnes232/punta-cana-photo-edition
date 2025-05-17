@@ -11,7 +11,6 @@ const ContactForm = ({ item }) => {
     description: item.description,
     name: "",
     email: "",
-    shippingAddress: "",
     message: "",
     additions: [],
   });
@@ -73,7 +72,7 @@ const ContactForm = ({ item }) => {
           <ContactInfo formData={formData} setFormData={setFormData} />
         </div>
       </form>
-      <div className="absolute bottom-10 right-1/2 translate-x-1/2">
+      <div className="flex justify-center items-center lg:absolute lg:bottom-10 lg:right-1/2 lg:translate-x-1/2">
         <button
           className="bg-[#E4C05C] hover:bg-[#C6A855] text-white font-bold py-1 px-4 rounded "
           onClick={handleSubmit}
