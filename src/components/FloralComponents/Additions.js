@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { Checkbox, Field, Label } from "@headlessui/react";
 import CheckBox from "./CheckBox";
 const Additions = ({ additions, formData, setFormData }) => {
   return (

@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { Trans } from "gatsby-plugin-react-i18next";
 import { IoClose } from "react-icons/io5";
-import {
-  Description,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-} from "@headlessui/react";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import ItemCardSwiper from "../RentalComponents/ItemCardSwiper";
 import ContactForm from "./ContactForm";
 

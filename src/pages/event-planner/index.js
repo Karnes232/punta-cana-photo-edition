@@ -13,12 +13,28 @@ import OurPackages from "../../components/PackageComponents/OurPackages";
 import WorkedWith from "../../components/WorkedWithComponent/WorkedWith";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import CompanyInformationComponent from "../../components/CompanyInformationComponent/CompanyInformationComponent";
+import WhyChooseUs from "../../components/CompanyInformationComponent/WhyChooseUs";
 
 const Index = ({ data }) => {
+  console.log(data.allContentfulServiceCard.nodes);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <CompanyInformationComponent
+        yearsInBusiness={
+          data.allContentfulGeneralLayout.nodes[0].yearsInBusiness
+        }
+        eventsPlanned={data.allContentfulGeneralLayout.nodes[0].eventsPlanned}
+        clientSatisfaction={
+          data.allContentfulGeneralLayout.nodes[0].clientSatisfaction
+        }
+      />
+      <WhyChooseUs
+        richText={data.allContentfulPageContent.nodes[0].paragraph1}
+        serviceCards={data.allContentfulServiceCard.nodes}
+      />
+
       <TextComponent
         title={data.allContentfulPhotoGallery.nodes[0].title}
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
@@ -103,6 +119,9 @@ export const query = graphql`
         instagram
         x
         telephone
+        yearsInBusiness
+        eventsPlanned
+        clientSatisfaction
       }
     }
     allContentfulSeo(
@@ -211,6 +230,16 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+    allContentfulServiceCard(filter: { node_locale: { eq: $language } }) {
+      nodes {
+        title
+        description
+        icon {
+          title
+          gatsbyImage(width: 40, formats: WEBP, placeholder: BLURRED)
         }
       }
     }
