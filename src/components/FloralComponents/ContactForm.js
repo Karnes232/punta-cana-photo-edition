@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContactInfo from "./ContactInfo";
 import Additions from "./Additions";
 import { Trans } from "gatsby-plugin-react-i18next";
