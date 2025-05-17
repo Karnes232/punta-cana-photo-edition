@@ -11,6 +11,7 @@ const ContactForm = ({ item }) => {
     description: item.description,
     name: "",
     email: "",
+    shippingAddress: "",
     message: "",
     additions: [],
   });

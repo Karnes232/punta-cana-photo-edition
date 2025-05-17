@@ -14,6 +14,7 @@ const FloralForm = ({ item }) => {
         <input type="hidden" name="form-name" value="floral-art" />
         <input type="text" name="name" />
         <input type="email" name="email" />
+        <input type="text" name="shippingAddress" />
         <input type="text" name="floralItem" />
         <input type="text" name="price" />
         <input type="text" name="description" />
