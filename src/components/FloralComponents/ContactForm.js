@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import ContactInfo from "./ContactInfo";
 import Additions from "./Additions";
 import { Trans } from "gatsby-plugin-react-i18next";
+import { navigate } from "gatsby"
 const ContactForm = ({ item }) => {
-  const [name, setName] = useState("");
+  const [host, setHost] = useState("");
   const [formData, setFormData] = useState({
     "form-name": "floral-art",
     floralItem: item.floralItem,
@@ -14,6 +15,8 @@ const ContactForm = ({ item }) => {
     message: "",
     additions: [],
   });
+
+  let redirectHref = `${host}/contact/thankyou/?name=${formData.name}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,17 +45,23 @@ const ContactForm = ({ item }) => {
     })
       .then(() => {
         console.log('Form successfully submitted');
+        // window.location.href = redirectHref;
+        navigate(`/contact/thankyou/?name=${formData.name}`)
         // You can add navigation or success message here
       })
       .catch((error) => console.log('Form submission error:', error));
   };
-console.log(formData)
+
+  useEffect(() => {
+    setHost(window.location.origin);
+  }, []);
+
   return (
     <>
       <form
         name="floral-art"
         method="POST"
-        action={`/contact/thankyou/?name=${name}`}
+        action={`/contact/thankyou/?name=${formData.name}`}
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         id="floral-art"
@@ -67,8 +76,7 @@ console.log(formData)
             setFormData={setFormData}
           />
           <ContactInfo
-            name={name}
-            setName={setName}
+      
             formData={formData}
             setFormData={setFormData}
           />

@@ -1,7 +1,7 @@
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import React from "react";
 
-const ContactInfo = ({ name, setName, formData, setFormData }) => {
+const ContactInfo = ({ formData, setFormData }) => {
   const { t } = useTranslation();
   const handleChange = ({ target }) => {
     setFormData({
