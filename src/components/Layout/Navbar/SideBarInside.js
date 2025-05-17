@@ -57,6 +57,19 @@ const SideBarInside = ({ footer, setToggled }) => {
             <Trans>Rental Items</Trans>
           </p>
         </MenuItem>
+        <MenuItem
+          component={
+            <Link
+              to="/floral-art"
+              className={footer ? "hamburgerSmall" : "hamburger"}
+              onClick={footer ? undefined : () => setToggled(false)}
+            />
+          }
+        >
+          <p className={footer ? "hamburgerSmall" : "hamburger"}>
+            <Trans>Floral Art</Trans>
+          </p>
+        </MenuItem>
         {/* <MoreServices footer={footer} setToggled={setToggled} /> */}
         <MenuItem
           component={

@@ -81,6 +81,11 @@ const Sitemap = () => {
           <Trans>Rental Items</Trans>
         </button>
       </Link>
+      <Link to="/floral-art" className="no-underline">
+        <button className={`navLinks`} translate="no">
+          <Trans>Floral Art</Trans>
+        </button>
+      </Link>
       {/* <div className="2xl:hidden">
         <PopOverComponent
           title="More photo-video services"
