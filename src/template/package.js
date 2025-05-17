@@ -246,7 +246,7 @@ export default PackagePage;
 
 export const Head = ({ pageContext, data }) => {
   const { language } = useI18next();
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/packages/${data.allContentfulPackagePageContent.nodes[0].urlSlug}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}/packages/${data.allContentfulPackagePageContent.nodes[0].urlSlug}/`;
   const { seoTitle, seoDescription, seoImage, seoKeywords } =
     data.allContentfulPackagePageContent.nodes[0];
 

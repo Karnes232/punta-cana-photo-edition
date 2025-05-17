@@ -34,7 +34,7 @@ export default Index;
 export const Head = ({ data }) => {
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/real-estate-photography`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}/real-estate-photography/`;
 
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ContactInfo from "./ContactInfo";
 import Additions from "./Additions";
 import { Trans } from "gatsby-plugin-react-i18next";
-import { navigate } from "gatsby"
+import { navigate } from "gatsby";
 const ContactForm = ({ item }) => {
   const [formData, setFormData] = useState({
     "form-name": "floral-art",
@@ -15,20 +15,21 @@ const ContactForm = ({ item }) => {
     additions: [],
   });
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const submissionData = new FormData();
-    
+
     Object.entries(formData).forEach(([key, value]) => {
-      if (key === 'additions') {
+      if (key === "additions") {
         // Handle additions array specifically
-        const formattedAdditions = value.map(addition => 
-          typeof addition === 'object' ? 
-            `${addition.name}: ${addition.price}` : 
-            addition
-        ).join(', ');
+        const formattedAdditions = value
+          .map((addition) =>
+            typeof addition === "object"
+              ? `${addition.name}: ${addition.price}`
+              : addition,
+          )
+          .join(", ");
         submissionData.append(key, formattedAdditions);
       } else {
         submissionData.append(key, value);
@@ -36,19 +37,18 @@ const ContactForm = ({ item }) => {
     });
 
     // Submit the form
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(submissionData).toString()
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(submissionData).toString(),
     })
       .then(() => {
-        console.log('Form successfully submitted');
-        navigate(`/contact/thankyou/?name=${formData.name}`)
+        console.log("Form successfully submitted");
+        navigate(`/contact/thankyou/?name=${formData.name}`);
         // You can add navigation or success message here
       })
-      .catch((error) => console.log('Form submission error:', error));
+      .catch((error) => console.log("Form submission error:", error));
   };
-
 
   return (
     <>
@@ -69,21 +69,17 @@ const ContactForm = ({ item }) => {
             formData={formData}
             setFormData={setFormData}
           />
-          <ContactInfo
-      
-            formData={formData}
-            setFormData={setFormData}
-          />
+          <ContactInfo formData={formData} setFormData={setFormData} />
         </div>
       </form>
       <div className="absolute bottom-10 right-1/2 translate-x-1/2">
-                <button
-                  className="bg-[#E4C05C] hover:bg-[#C6A855] text-white font-bold py-1 px-4 rounded "
-                  onClick={handleSubmit}
-              >
-                  <Trans>Contact Us</Trans>
-                </button>
-              </div>
+        <button
+          className="bg-[#E4C05C] hover:bg-[#C6A855] text-white font-bold py-1 px-4 rounded "
+          onClick={handleSubmit}
+        >
+          <Trans>Contact Us</Trans>
+        </button>
+      </div>
     </>
   );
 };

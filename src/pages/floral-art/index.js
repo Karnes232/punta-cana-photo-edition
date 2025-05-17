@@ -86,7 +86,7 @@ export const Head = ({ data }) => {
   const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/floral-art"}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/floral-art/"}`;
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
   let JsonSchema = {};

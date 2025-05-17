@@ -13,17 +13,16 @@ import ContactForm from "./ContactForm";
 const FloralForm = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-
   return (
     <>
-    <form name="floral-art" data-netlify="true" hidden>
+      <form name="floral-art" data-netlify="true" hidden>
         <input type="hidden" name="form-name" value="floral-art" />
         <input type="text" name="name" />
         <input type="email" name="email" />
         <input type="text" name="floralItem" />
         <input type="text" name="price" />
         <input type="text" name="description" />
-        
+
         <textarea name="message"></textarea>
         <input type="text" name="additions" />
       </form>
@@ -75,7 +74,6 @@ const FloralForm = ({ item }) => {
                   <ContactForm item={item} />
                 </div>
               </div>
-              
             </DialogPanel>
           </div>
         </div>

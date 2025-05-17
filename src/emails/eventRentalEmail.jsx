@@ -20,13 +20,13 @@ const eventRentalEmail = ({ name, items }) => {
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
-  let withOutPrice = false
-  console.log(items)
-  items.forEach(item => {
+  let withOutPrice = false;
+  console.log(items);
+  items.forEach((item) => {
     if (item.price === null) {
-      withOutPrice = true
+      withOutPrice = true;
     }
-  })
+  });
 
   return (
     <Html>
@@ -85,7 +85,6 @@ const eventRentalEmail = ({ name, items }) => {
               {/* Order Items */}
               <Section className="border border-gray-200 border-t-0 rounded-b-md mb-6">
                 {items.map((item, index) => (
-            
                   <Row
                     key={index}
                     className={`p-3 ${index < items.length - 1 ? "border-b border-gray-200" : ""}`}
@@ -102,12 +101,12 @@ const eventRentalEmail = ({ name, items }) => {
                     </Column>
                     <Column className="w-1/4">
                       <Text className="text-sm text-gray-700 m-0 text-right">
-                        {item.price ? `$${(item.price * item.quantity).toFixed(2)}` : "**"}
+                        {item.price
+                          ? `$${(item.price * item.quantity).toFixed(2)}`
+                          : "**"}
                       </Text>
                     </Column>
-                    
                   </Row>
-                 
                 ))}
               </Section>
 

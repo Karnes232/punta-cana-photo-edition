@@ -23,12 +23,10 @@ const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
     // Add any additional rental-specific fields here
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
-  console.log(formData);
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormSubmitted(true);
   };
-  console.log(formData);
   return (
     <div className="w-full md:w-full max-w-md flex flex-col justify-center items-center mx-auto my-5">
       {!formSubmitted ? (
