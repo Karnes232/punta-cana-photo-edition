@@ -11,9 +11,28 @@ import FloralItemSearch from "../../components/FloralComponents/FloralItemSearch
 const Index = ({ data }) => {
   const backendFloralList = data.allContentfulFloralItem.nodes;
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12; // Adjust this number as needed
+
   const [floralItemsList, setFloralItemsList] = useState(
     data.allContentfulFloralItem.nodes.sort(() => Math.random() - 0.5),
   );
+
+  // Get current items
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = floralItemsList.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change page
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    // Smooth scroll to top of the floral items section
+    window.scrollTo({
+      top: document.querySelector(".floral-items-section").offsetTop,
+      behavior: "smooth",
+    });
+  };
+
   const allCategories = [
     "All",
     ...new Set(
@@ -22,6 +41,7 @@ const Index = ({ data }) => {
   ].sort();
 
   const setFilter = (e) => {
+    setCurrentPage(1); // Reset to first page when filtering
     setSelectedCategory(e.target.dataset.category);
     const filteredRentalList = backendFloralList.filter((item) => {
       if (e.target.innerText === "All") {
@@ -37,7 +57,7 @@ const Index = ({ data }) => {
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
-      <div>
+      <div className="floral-items-section">
         <nav className="flex flex-row items-center overflow-x-scroll xl:overflow-x-auto whitespace-nowrap mx-5 xl:justify-center">
           {/* <button onClick={()=>setFilter('All')}>All</button> */}
           {allCategories.map((category, index) => {
@@ -68,9 +88,26 @@ const Index = ({ data }) => {
         />
 
         <div className="flex justify-evenly items-center flex-row flex-wrap md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto">
-          {floralItemsList.map((item, index) => {
+          {currentItems.map((item, index) => {
             return <FloralItemCard item={item} key={index} />;
           })}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center mt-8 mb-8">
+          {Array.from({
+            length: Math.ceil(floralItemsList.length / itemsPerPage),
+          }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => paginate(index + 1)}
+              className={`mx-1 px-4 py-2 border rounded ${
+                currentPage === index + 1 ? "bg-gray-200" : "bg-white"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
         </div>
       </div>
     </Layout>
