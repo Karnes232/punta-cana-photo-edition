@@ -76,7 +76,7 @@ const CartComponent = () => {
     removeFromCart(item);
     notifyRemovedFromCart(item);
   };
-  let cartTotalPrice = getCartTotal();
+  // let cartTotalPrice = getCartTotal();
 
   const handleAddToCart = (item) => {
     if (item.quantity < item.stock) {

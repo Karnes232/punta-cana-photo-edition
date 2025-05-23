@@ -90,6 +90,10 @@ module.exports = {
             name: `Montserrat`,
             file: `https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap`,
           },
+          {
+            name: "Playfair Display",
+            file: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+          },
         ],
       },
     },

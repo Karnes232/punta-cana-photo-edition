@@ -156,7 +156,6 @@ const Index = ({ data }) => {
         <div className="flex justify-center mt-8 mb-8">
           {(() => {
             const totalPages = Math.ceil(rentalItemsList.length / itemsPerPage);
-            const maxVisibleButtons = 5; // Adjust this number to show more/fewer buttons
             let buttons = [];
 
             // Always show first page

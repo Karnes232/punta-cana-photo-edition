@@ -22,6 +22,7 @@ module.exports = {
         montserrat: ["Montserrat"],
         lato: ["Lato"],
         garamond: ["Garamond"],
+        playfair: ["Playfair Display"],
       },
     },
   },

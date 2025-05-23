@@ -35,7 +35,7 @@ const CompanyInformationComponent = ({
     }, 1000 / framesPerSecond);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [targetYears, targetEvents, targetSatisfaction]);
   return (
     <div className="w-full bg-gray-100 py-16 -mt-3 md:-mt-10 lg:-mt-20 xl:-mt-16">
       <div className="max-w-6xl mx-auto px-4">

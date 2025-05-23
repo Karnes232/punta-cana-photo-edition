@@ -75,7 +75,7 @@ const TextComponent = ({
         )}
         {paragraph ? (
           <p
-            className={`font-montserrat lg:text-lg text-gray-700 ${pClassName}`}
+            className={`font-crimson lg:text-lg text-gray-700 ${pClassName}`}
             // dangerouslySetInnerHTML={{ __html: paragraph }}
           >
             {paragraph}

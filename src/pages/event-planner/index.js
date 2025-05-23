@@ -3,7 +3,6 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
-import RichText from "../../components/RichTextComponents/RichText";
 import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import TextComponent from "../../components/TextComponent/TextComponent";
 import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
