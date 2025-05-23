@@ -61,7 +61,7 @@ const FloralForm = ({ item }) => {
                       </div>
                       <div className="">${item.price}</div>
                     </div>
-                    <p className="text-gray-700  my-2 text-base  line-clamp-4 min-h-[5rem]">
+                    <p className="text-gray-700  my-2 text-base min-h-[5rem]">
                       {item.description}
                     </p>
                   </div>

@@ -10,9 +10,6 @@ import FloralItemSearch from "../../components/FloralComponents/FloralItemSearch
 
 const Index = ({ data }) => {
   const backendFloralList = data.allContentfulFloralItem.nodes;
-  if (process.env.NODE_ENV === "development") {
-    backendFloralList.push(...backendFloralList, ...backendFloralList);
-  }
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [floralItemsList, setFloralItemsList] = useState(
     data.allContentfulFloralItem.nodes.sort(() => Math.random() - 0.5),
@@ -189,8 +186,10 @@ export const query = graphql`
           title
         }
         additions {
-          price
-          addition
+          ... on ContentfulPackageAdditions {
+            price
+            addition
+          }
         }
       }
     }
