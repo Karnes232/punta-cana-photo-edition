@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { motion } from "framer-motion";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -32,7 +32,6 @@ const HeroSwiperWeddingPuntaCana = ({ heroInfo, className }) => {
     translatePosition = "-translate-y-2/3";
   }
 
-  console.log(heroInfo.heroHeading);
   return (
     <>
       <div className={`absolute top-0 w-full ${height}`}>
@@ -65,9 +64,18 @@ const HeroSwiperWeddingPuntaCana = ({ heroInfo, className }) => {
                       <div
                         className={`relative z-10 flex items-center justify-center w-3/4 md:w-2/3 xl:w-1/2 2xl:w-1/3 mx-auto ${blankDivHeight} mt-[10vh]`}
                       >
-                        <h1 className="text-white font-playfair text-xl md:text-3xl  font-bold text-center">
+                        <motion.h1
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 6,
+                            delay: 2.5,
+                          }}
+                          className="text-white font-playfair text-xl md:text-3xl  font-bold text-center"
+                        >
                           {heroInfo.heroHeading}
-                        </h1>
+                        </motion.h1>
                       </div>
                     )}
                   </div>

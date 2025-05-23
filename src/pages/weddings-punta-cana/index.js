@@ -8,10 +8,10 @@ import BackgroundVideo from "../../components/BackgroundVideoComponents/Backgrou
 import RichText from "../../components/RichTextComponents/RichText";
 import TextComponent from "../../components/TextComponent/TextComponent";
 import HeroSwiperWeddingPuntaCana from "../../components/HeroSwiper/HeroSwiperWeddingPuntaCana";
+import WeddingPackageCard from "../../components/PackageComponents/WeddingPackageCard";
 
 const Index = ({ data }) => {
   const { useVideo } = data.allContentfulPageContent.nodes[0];
-
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {useVideo ? (
@@ -25,11 +25,17 @@ const Index = ({ data }) => {
           heroInfo={data.allContentfulPageContent.nodes[0]}
         />
       )}
-      {/* <TextComponent
-        title={data.allContentfulPageContent.nodes[0].heroHeading}
+      <TextComponent
+        title={data.allContentfulPageContent.nodes[0].sectionTitle}
         className="my-5 mx-5 md:mx-10 md:mt-0 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
-      /> */}
-      {/* <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} /> */}
+      />
+      <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-center md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto gap-8 mb-5">
+        {data.allContentfulPackages.nodes.map((weddingPackage, index) => {
+          return (
+            <WeddingPackageCard weddingPackage={weddingPackage} key={index} />
+          );
+        })}
+      </div>
     </Layout>
   );
 };
@@ -127,6 +133,7 @@ export const query = graphql`
         }
         fullSize
         heroHeading
+        sectionTitle
         paragraph1 {
           raw
         }
@@ -135,6 +142,23 @@ export const query = graphql`
           url
           title
         }
+      }
+    }
+    allContentfulPackages(
+      filter: {
+        page: { eq: "Weddings Punta Cana" }
+        node_locale: { eq: $language }
+      }
+    ) {
+      nodes {
+        title
+        image {
+          gatsbyImage(width: 500, placeholder: BLURRED, formats: WEBP)
+          title
+        }
+        paragraph
+        included
+        callToActionButton
       }
     }
   }
