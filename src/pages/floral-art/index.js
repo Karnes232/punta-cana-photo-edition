@@ -95,19 +95,88 @@ const Index = ({ data }) => {
 
         {/* Pagination */}
         <div className="flex justify-center mt-8 mb-8">
-          {Array.from({
-            length: Math.ceil(floralItemsList.length / itemsPerPage),
-          }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => paginate(index + 1)}
-              className={`mx-1 px-4 py-2 border rounded ${
-                currentPage === index + 1 ? "bg-gray-200" : "bg-white"
-              }`}
-            >
-              {index + 1}
-            </button>
-          ))}
+          {(() => {
+            const totalPages = Math.ceil(floralItemsList.length / itemsPerPage);
+            const maxVisibleButtons = 5; // Adjust this number to show more/fewer buttons
+            let buttons = [];
+
+            // Always show first page
+            buttons.push(
+              <button
+                key={1}
+                onClick={() => paginate(1)}
+                className={`mx-1 px-4 py-2 border rounded ${
+                  currentPage === 1 ? "bg-gray-200" : "bg-white"
+                }`}
+              >
+                1
+              </button>,
+            );
+
+            // Calculate range of visible page buttons
+            let startPage = Math.max(2, currentPage - 1);
+            let endPage = Math.min(totalPages - 1, currentPage + 1);
+
+            // If we're at the start, show more pages after
+            if (currentPage <= 2) {
+              endPage = Math.min(totalPages - 1, 3);
+            }
+
+            // If we're at the end, show more pages before
+            if (currentPage >= totalPages - 1) {
+              startPage = Math.max(2, totalPages - 2);
+            }
+
+            // Add ellipsis after first page if needed
+            if (startPage > 2) {
+              buttons.push(
+                <span key="ellipsis1" className="mx-2">
+                  ...
+                </span>,
+              );
+            }
+
+            // Add middle pages
+            for (let i = startPage; i <= endPage; i++) {
+              buttons.push(
+                <button
+                  key={i}
+                  onClick={() => paginate(i)}
+                  className={`mx-1 px-4 py-2 border rounded ${
+                    currentPage === i ? "bg-gray-200" : "bg-white"
+                  }`}
+                >
+                  {i}
+                </button>,
+              );
+            }
+
+            // Add ellipsis before last page if needed
+            if (endPage < totalPages - 1) {
+              buttons.push(
+                <span key="ellipsis2" className="mx-2">
+                  ...
+                </span>,
+              );
+            }
+
+            // Always show last page if there's more than one page
+            if (totalPages > 1) {
+              buttons.push(
+                <button
+                  key={totalPages}
+                  onClick={() => paginate(totalPages)}
+                  className={`mx-1 px-4 py-2 border rounded ${
+                    currentPage === totalPages ? "bg-gray-200" : "bg-white"
+                  }`}
+                >
+                  {totalPages}
+                </button>,
+              );
+            }
+
+            return buttons;
+          })()}
         </div>
       </div>
     </Layout>
