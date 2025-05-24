@@ -18,6 +18,7 @@ import StyleAestheticSection from './StyleAestheticSection';
 import ExperiencesSection from './ExperiencesSection';
 import BudgetSection from './BudgetSection';
 import FinalDetailsSection from './FinalDetailsSection';
+import WeddingQuestaionnaireForm from './WeddingQuestaionnaireForm';
 const WeddingQuestionnaire = () => {
     const [currentStep, setCurrentStep] = useState(0);
     const [formData, setFormData] = useState({
@@ -119,6 +120,7 @@ const WeddingQuestionnaire = () => {
   
   return (
     <div className="min-h-screen  py-12 px-4">
+      <WeddingQuestaionnaireForm formData={formData} />
     <div className="max-w-4xl mx-auto">
       {/* Header */}
       <motion.div 
