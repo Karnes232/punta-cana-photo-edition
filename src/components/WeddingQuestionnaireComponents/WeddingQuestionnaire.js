@@ -110,10 +110,22 @@ const WeddingQuestionnaire = () => {
     }
   };
 
+  console.log(formData);
+
   const handleSubmit = async () => {
     try {
+      // Create a copy of formData to modify
+      const submissionData = { ...formData };
+      
+      // Transform the inspirationImages array to include only file names
+      if (submissionData.inspirationImages?.length) {
+        submissionData.inspirationImages = submissionData.inspirationImages
+          .map(img => img.name)
+          .join(', ');
+      }
+
       // Encode the form data for submission
-      const encodedData = new URLSearchParams(formData).toString();
+      const encodedData = new URLSearchParams(submissionData).toString();
 
       const response = await fetch("/", {
         method: "POST",

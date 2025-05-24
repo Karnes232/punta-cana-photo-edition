@@ -3,7 +3,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import TextComponent from "../TextComponent/TextComponent";
 import { motion } from "framer-motion";
 const WeddingPackageCard = ({ weddingPackage }) => {
-  console.log(weddingPackage);
   const image = getImage(weddingPackage.image.gatsbyImage);
   return (
     <>
