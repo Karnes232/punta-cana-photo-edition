@@ -114,25 +114,26 @@ const WeddingQuestionnaire = () => {
 
   const handleSubmit = async () => {
     try {
-      // Create a copy of formData to modify
-      const submissionData = { ...formData };
+      // Create FormData object
+      const formDataObj = new FormData();
       
-      // Transform the inspirationImages array to include only file names
-      if (submissionData.inspirationImages?.length) {
-        submissionData.inspirationImages = submissionData.inspirationImages
-          .map(img => img.name)
-          .join(', ');
-      }
+      // Add all regular form fields
+      Object.keys(formData).forEach(key => {
+        if (key !== 'inspirationImages') {
+          formDataObj.append(key, formData[key]);
+        }
+      });
 
-      // Encode the form data for submission
-      const encodedData = new URLSearchParams(submissionData).toString();
+      // Add each image file
+      if (formData.inspirationImages?.length) {
+        formData.inspirationImages.forEach((img, index) => {
+          formDataObj.append(`inspirationImages-${index}`, img.file);
+        });
+      }
 
       const response = await fetch("/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: encodedData,
+        body: formDataObj
       });
 
       if (response.ok) {
