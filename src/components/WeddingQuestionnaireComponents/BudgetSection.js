@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { DollarSign, TrendingUp, Award, Star } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { DollarSign, TrendingUp, Award, Star } from "lucide-react";
 
 const BudgetSection = ({ formData, updateFormData }) => {
   const handleBudgetChange = (value) => {
@@ -8,37 +8,80 @@ const BudgetSection = ({ formData, updateFormData }) => {
   };
 
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
   };
 
   const getBudgetTier = (budget) => {
-    if (budget >= 35000) return { name: 'Luxury', icon: Award, color: 'purple', description: 'Premium experience with all amenities' };
-    if (budget >= 20000) return { name: 'Premium', icon: Star, color: 'blue', description: 'Enhanced features and services' };
-    if (budget >= 10000) return { name: 'Standard', icon: TrendingUp, color: 'green', description: 'Beautiful celebration with great value' };
-    return { name: 'Essential', icon: DollarSign, color: 'yellow', description: 'Elegant and affordable options' };
+    if (budget >= 35000)
+      return {
+        name: "Luxury",
+        icon: Award,
+        color: "purple",
+        description: "Premium experience with all amenities",
+      };
+    if (budget >= 20000)
+      return {
+        name: "Premium",
+        icon: Star,
+        color: "blue",
+        description: "Enhanced features and services",
+      };
+    if (budget >= 10000)
+      return {
+        name: "Standard",
+        icon: TrendingUp,
+        color: "green",
+        description: "Beautiful celebration with great value",
+      };
+    return {
+      name: "Essential",
+      icon: DollarSign,
+      color: "yellow",
+      description: "Elegant and affordable options",
+    };
   };
 
   const currentTier = getBudgetTier(formData.budget);
   const TierIcon = currentTier.icon;
 
   const budgetRanges = [
-    { min: 5000, max: 10000, label: '$5K - $10K', description: 'Intimate & Essential' },
-    { min: 10000, max: 20000, label: '$10K - $20K', description: 'Standard & Beautiful' },
-    { min: 20000, max: 35000, label: '$20K - $35K', description: 'Premium & Enhanced' },
-    { min: 35000, max: 50000, label: '$35K+', description: 'Luxury & Exclusive' }
+    {
+      min: 5000,
+      max: 10000,
+      label: "$5K - $10K",
+      description: "Intimate & Essential",
+    },
+    {
+      min: 10000,
+      max: 20000,
+      label: "$10K - $20K",
+      description: "Standard & Beautiful",
+    },
+    {
+      min: 20000,
+      max: 35000,
+      label: "$20K - $35K",
+      description: "Premium & Enhanced",
+    },
+    {
+      min: 35000,
+      max: 50000,
+      label: "$35K+",
+      description: "Luxury & Exclusive",
+    },
   ];
 
   const getColorClasses = (color) => {
     const colors = {
-      yellow: 'from-yellow-400 to-amber-500',
-      green: 'from-emerald-400 to-green-500',
-      blue: 'from-blue-400 to-indigo-500',
-      purple: 'from-purple-400 to-pink-500'
+      yellow: "from-yellow-400 to-amber-500",
+      green: "from-emerald-400 to-green-500",
+      blue: "from-blue-400 to-indigo-500",
+      purple: "from-purple-400 to-pink-500",
     };
     return colors[color] || colors.yellow;
   };
@@ -53,8 +96,12 @@ const BudgetSection = ({ formData, updateFormData }) => {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
           <DollarSign className="w-8 h-8 text-green-500" />
         </div>
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">Investment Range</h2>
-        <p className="text-gray-600">Help us understand your budget to create the perfect package</p>
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          Investment Range
+        </h2>
+        <p className="text-gray-600">
+          Help us understand your budget to create the perfect package
+        </p>
       </div>
 
       {/* Current Budget Display */}
@@ -65,8 +112,12 @@ const BudgetSection = ({ formData, updateFormData }) => {
         className={`text-center p-8 rounded-2xl bg-gradient-to-r ${getColorClasses(currentTier.color)} text-white shadow-lg`}
       >
         <TierIcon size={32} className="mx-auto mb-4" />
-        <h3 className="text-2xl font-bold mb-2">{formatCurrency(formData.budget)}</h3>
-        <div className="text-lg font-medium mb-2">{currentTier.name} Package</div>
+        <h3 className="text-2xl font-bold mb-2">
+          {formatCurrency(formData.budget)}
+        </h3>
+        <div className="text-lg font-medium mb-2">
+          {currentTier.name} Package
+        </div>
         <p className="text-sm opacity-90">{currentTier.description}</p>
       </motion.div>
 
@@ -82,7 +133,7 @@ const BudgetSection = ({ formData, updateFormData }) => {
             Estimated Budget Range
           </label>
         </div>
-        
+
         <div className="px-4">
           <input
             type="range"
@@ -93,7 +144,7 @@ const BudgetSection = ({ formData, updateFormData }) => {
             onChange={(e) => handleBudgetChange(e.target.value)}
             className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
             style={{
-              background: `linear-gradient(to right, #e4c05c 0%, #e4c05c ${((formData.budget - 5000) / 45000) * 100}%, #e5e7eb ${((formData.budget - 5000) / 45000) * 100}%, #e5e7eb 100%)`
+              background: `linear-gradient(to right, #e4c05c 0%, #e4c05c ${((formData.budget - 5000) / 45000) * 100}%, #e5e7eb ${((formData.budget - 5000) / 45000) * 100}%, #e5e7eb 100%)`,
             }}
           />
           <div className="flex justify-between text-sm text-gray-500 mt-2">
@@ -111,16 +162,20 @@ const BudgetSection = ({ formData, updateFormData }) => {
         className="grid md:grid-cols-4 gap-4"
       >
         {budgetRanges.map((range, index) => {
-          const isActive = formData.budget >= range.min && (range.max === 50000 ? true : formData.budget < range.max);
-          
+          const isActive =
+            formData.budget >= range.min &&
+            (range.max === 50000 ? true : formData.budget < range.max);
+
           return (
             <motion.button
               key={index}
-              onClick={() => handleBudgetChange(range.min + (range.max - range.min) / 2)}
+              onClick={() =>
+                handleBudgetChange(range.min + (range.max - range.min) / 2)
+              }
               className={`p-4 rounded-xl border-2 transition-all text-center ${
                 isActive
-                  ? 'border-yellow-400 bg-yellow-50 shadow-md'
-                  : 'border-gray-200 hover:border-gray-300 hover:shadow-sm'
+                  ? "border-yellow-400 bg-yellow-50 shadow-md"
+                  : "border-gray-200 hover:border-gray-300 hover:shadow-sm"
               }`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -128,7 +183,9 @@ const BudgetSection = ({ formData, updateFormData }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + index * 0.1 }}
             >
-              <div className="font-semibold text-gray-800 mb-1">{range.label}</div>
+              <div className="font-semibold text-gray-800 mb-1">
+                {range.label}
+              </div>
               <div className="text-sm text-gray-600">{range.description}</div>
               {isActive && (
                 <motion.div
@@ -195,8 +252,9 @@ const BudgetSection = ({ formData, updateFormData }) => {
         className="text-center p-4 bg-amber-50 rounded-xl border border-amber-200"
       >
         <p className="text-sm text-amber-800">
-          💰 <strong>Note:</strong> This is an estimated range to help us create your perfect package. 
-          Final pricing will be customized based on your specific requirements and guest count.
+          💰 <strong>Note:</strong> This is an estimated range to help us create
+          your perfect package. Final pricing will be customized based on your
+          specific requirements and guest count.
         </p>
       </motion.div>
     </motion.div>

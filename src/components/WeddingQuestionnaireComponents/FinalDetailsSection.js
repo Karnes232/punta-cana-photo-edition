@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Camera, FileText, Upload, X, Image, Heart } from 'lucide-react';
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
+import { Camera, FileText, Upload, X, Image, Heart } from "lucide-react";
 
 const FinalDetailsSection = ({ formData, updateFormData }) => {
   const fileInputRef = useRef(null);
@@ -11,27 +11,29 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
 
   const handleFileUpload = (event) => {
     const files = Array.from(event.target.files);
-    const validFiles = files.filter(file => 
-      file.type.startsWith('image/') && file.size <= 5 * 1024 * 1024 // 5MB limit
+    const validFiles = files.filter(
+      (file) => file.type.startsWith("image/") && file.size <= 5 * 1024 * 1024, // 5MB limit
     );
 
     if (validFiles.length > 0) {
       const currentImages = formData.inspirationImages || [];
-      const newImages = validFiles.map(file => ({
+      const newImages = validFiles.map((file) => ({
         file,
         name: file.name,
         url: URL.createObjectURL(file),
-        id: Date.now() + Math.random()
+        id: Date.now() + Math.random(),
       }));
-      
-      updateFormData({ 
-        inspirationImages: [...currentImages, ...newImages].slice(0, 10) // Limit to 10 images
+
+      updateFormData({
+        inspirationImages: [...currentImages, ...newImages].slice(0, 10), // Limit to 10 images
       });
     }
   };
 
   const removeImage = (imageId) => {
-    const updatedImages = (formData.inspirationImages || []).filter(img => img.id !== imageId);
+    const updatedImages = (formData.inspirationImages || []).filter(
+      (img) => img.id !== imageId,
+    );
     updateFormData({ inspirationImages: updatedImages });
   };
 
@@ -50,7 +52,9 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
           <Camera className="w-8 h-8 text-pink-500" />
         </div>
         <h2 className="text-3xl font-bold text-gray-800 mb-2">Final Details</h2>
-        <p className="text-gray-600">Share your vision and inspiration with us</p>
+        <p className="text-gray-600">
+          Share your vision and inspiration with us
+        </p>
       </div>
 
       {/* Dream Description */}
@@ -66,8 +70,10 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
         </label>
         <div className="relative">
           <textarea
-            value={formData.dreamDescription || ''}
-            onChange={(e) => handleInputChange('dreamDescription', e.target.value)}
+            value={formData.dreamDescription || ""}
+            onChange={(e) =>
+              handleInputChange("dreamDescription", e.target.value)
+            }
             rows="8"
             className="w-full px-4 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all resize-none"
             placeholder="Tell us about your dream wedding... What atmosphere do you want to create? What moments are most important to you? What would make this day absolutely perfect? Share any special requests, must-haves, or unique ideas you have in mind."
@@ -77,7 +83,8 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
           </div>
         </div>
         <p className="text-xs text-gray-500">
-          💭 Share your vision, special moments, atmosphere, and any unique ideas you have
+          💭 Share your vision, special moments, atmosphere, and any unique
+          ideas you have
         </p>
       </motion.div>
 
@@ -92,7 +99,7 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
           <Image size={16} />
           <span>Inspiration Images</span>
         </label>
-        
+
         {/* Upload Area */}
         <motion.div
           onClick={triggerFileUpload}
@@ -101,14 +108,16 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
           whileTap={{ scale: 0.98 }}
         >
           <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-700 mb-2">Upload Inspiration Images</h3>
+          <h3 className="text-lg font-medium text-gray-700 mb-2">
+            Upload Inspiration Images
+          </h3>
           <p className="text-sm text-gray-500 mb-4">
             Share photos that inspire your wedding vision
           </p>
           <div className="text-xs text-gray-400">
             JPG, PNG, GIF up to 5MB each • Maximum 10 images
           </div>
-          
+
           <input
             ref={fileInputRef}
             type="file"
@@ -131,7 +140,7 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
               <Camera size={14} className="mr-2" />
               Uploaded Images ({formData.inspirationImages.length}/10)
             </h4>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {formData.inspirationImages.map((image) => (
                 <motion.div
@@ -231,7 +240,9 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
           You're Almost Ready! ✨
         </h3>
         <p className="text-sm text-amber-800 mb-4">
-          Thank you for sharing your vision with us. Once you submit this form, our wedding planning team will review your details and create a personalized proposal just for you.
+          Thank you for sharing your vision with us. Once you submit this form,
+          our wedding planning team will review your details and create a
+          personalized proposal just for you.
         </p>
         <div className="text-xs text-amber-700">
           📞 We'll contact you within 24-48 hours to discuss your dream wedding

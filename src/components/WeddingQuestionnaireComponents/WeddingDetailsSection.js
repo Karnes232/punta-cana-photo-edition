@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Calendar, Clock, Users, MapPin, Building, Car } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Calendar, Clock, Users, MapPin, Building, Car } from "lucide-react";
 
 const WeddingDetailsSection = ({ formData, updateFormData }) => {
   const handleInputChange = (field, value) => {
@@ -8,8 +8,8 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
   };
 
   const ceremonyTypes = [
-    { value: 'legal', label: 'Legal Ceremony', icon: '⚖️' },
-    { value: 'symbolic', label: 'Symbolic Ceremony', icon: '💕' }
+    { value: "legal", label: "Legal Ceremony", icon: "⚖️" },
+    { value: "symbolic", label: "Symbolic Ceremony", icon: "💕" },
   ];
 
   return (
@@ -22,7 +22,9 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
           <Calendar className="w-8 h-8 text-blue-500" />
         </div>
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">Wedding Details</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          Wedding Details
+        </h2>
         <p className="text-gray-600">Tell us about your special day</p>
       </div>
 
@@ -41,7 +43,7 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           <input
             type="date"
             value={formData.weddingDate}
-            onChange={(e) => handleInputChange('weddingDate', e.target.value)}
+            onChange={(e) => handleInputChange("weddingDate", e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
           />
         </motion.div>
@@ -60,7 +62,7 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           <input
             type="time"
             value={formData.estimatedTime}
-            onChange={(e) => handleInputChange('estimatedTime', e.target.value)}
+            onChange={(e) => handleInputChange("estimatedTime", e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
           />
         </motion.div>
@@ -82,10 +84,12 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
             max="300"
             step="5"
             value={formData.guestCount}
-            onChange={(e) => handleInputChange('guestCount', parseInt(e.target.value))}
+            onChange={(e) =>
+              handleInputChange("guestCount", parseInt(e.target.value))
+            }
             className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
             style={{
-              background: `linear-gradient(to right, #e4c05c 0%, #e4c05c ${((formData.guestCount - 10) / 290) * 100}%, #e5e7eb ${((formData.guestCount - 10) / 290) * 100}%, #e5e7eb 100%)`
+              background: `linear-gradient(to right, #e4c05c 0%, #e4c05c ${((formData.guestCount - 10) / 290) * 100}%, #e5e7eb ${((formData.guestCount - 10) / 290) * 100}%, #e5e7eb 100%)`,
             }}
           />
           <div className="flex justify-between text-xs text-gray-500">
@@ -107,7 +111,9 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           </label>
           <textarea
             value={formData.desiredLocations}
-            onChange={(e) => handleInputChange('desiredLocations', e.target.value)}
+            onChange={(e) =>
+              handleInputChange("desiredLocations", e.target.value)
+            }
             rows="3"
             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all resize-none"
             placeholder="Beach, garden, specific venues, etc."
@@ -122,16 +128,18 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.5 }}
         className="space-y-4"
       >
-        <label className="text-sm font-medium text-gray-700">Ceremony Type</label>
+        <label className="text-sm font-medium text-gray-700">
+          Ceremony Type
+        </label>
         <div className="grid md:grid-cols-2 gap-4">
           {ceremonyTypes.map((type) => (
             <motion.button
               key={type.value}
-              onClick={() => handleInputChange('ceremonyType', type.value)}
+              onClick={() => handleInputChange("ceremonyType", type.value)}
               className={`p-4 rounded-xl border-2 transition-all text-left ${
                 formData.ceremonyType === type.value
-                  ? 'border-yellow-400 bg-yellow-50'
-                  : 'border-gray-200 hover:border-gray-300'
+                  ? "border-yellow-400 bg-yellow-50"
+                  : "border-gray-200 hover:border-gray-300"
               }`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -161,7 +169,7 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
         <input
           type="text"
           value={formData.hotelStay}
-          onChange={(e) => handleInputChange('hotelStay', e.target.value)}
+          onChange={(e) => handleInputChange("hotelStay", e.target.value)}
           className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
           placeholder="Hotel names or areas"
         />
@@ -178,12 +186,16 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           <input
             type="checkbox"
             checked={formData.needTransportation}
-            onChange={(e) => handleInputChange('needTransportation', e.target.checked)}
+            onChange={(e) =>
+              handleInputChange("needTransportation", e.target.checked)
+            }
             className="w-5 h-5 text-yellow-400 bg-gray-100 border-gray-300 rounded focus:ring-yellow-400 focus:ring-2"
           />
           <div className="flex items-center space-x-2">
             <Car size={16} className="text-gray-600" />
-            <span className="text-sm font-medium text-gray-700">Need guest transportation</span>
+            <span className="text-sm font-medium text-gray-700">
+              Need guest transportation
+            </span>
           </div>
         </label>
       </motion.div>

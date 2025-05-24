@@ -13,7 +13,7 @@ import WeddingQuestionnaire from "../../components/WeddingQuestionnaireComponent
 
 const Index = ({ data }) => {
   const { useVideo } = data.allContentfulPageContent.nodes[0];
- 
+
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {useVideo ? (

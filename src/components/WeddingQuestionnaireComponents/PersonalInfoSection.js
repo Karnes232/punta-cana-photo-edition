@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Heart, Mail, Phone, User } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Heart, Mail, Phone, User } from "lucide-react";
 
 const PersonalInfoSection = ({ formData, updateFormData }) => {
   const handleInputChange = (field, value) => {
@@ -18,7 +18,9 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
           <Heart className="w-8 h-8 text-rose-500" />
         </div>
         <h2 className="text-3xl font-bold text-gray-800 mb-2">About You</h2>
-        <p className="text-gray-600">Let's start with the basics about the happy couple!</p>
+        <p className="text-gray-600">
+          Let's start with the basics about the happy couple!
+        </p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -36,7 +38,7 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
           <input
             type="text"
             value={formData.fullName1}
-            onChange={(e) => handleInputChange('fullName1', e.target.value)}
+            onChange={(e) => handleInputChange("fullName1", e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
             placeholder="Enter full name"
           />
@@ -56,7 +58,7 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
           <input
             type="text"
             value={formData.fullName2}
-            onChange={(e) => handleInputChange('fullName2', e.target.value)}
+            onChange={(e) => handleInputChange("fullName2", e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
             placeholder="Enter full name"
           />
@@ -76,7 +78,7 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
           <input
             type="email"
             value={formData.email}
-            onChange={(e) => handleInputChange('email', e.target.value)}
+            onChange={(e) => handleInputChange("email", e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
             placeholder="your@email.com"
           />
@@ -96,7 +98,7 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
           <input
             type="tel"
             value={formData.phone}
-            onChange={(e) => handleInputChange('phone', e.target.value)}
+            onChange={(e) => handleInputChange("phone", e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
             placeholder="+1 (555) 123-4567"
           />
@@ -112,7 +114,9 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
       >
         <div className="flex items-center space-x-2 text-rose-400">
           <Heart size={16} className="animate-pulse" />
-          <span className="text-sm font-medium">Ready to plan your perfect day?</span>
+          <span className="text-sm font-medium">
+            Ready to plan your perfect day?
+          </span>
           <Heart size={16} className="animate-pulse" />
         </div>
       </motion.div>
