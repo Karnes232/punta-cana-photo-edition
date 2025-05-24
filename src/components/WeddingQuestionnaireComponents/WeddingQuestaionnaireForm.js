@@ -101,11 +101,11 @@ const WeddingQuestaionnaireForm = ({ formData }) => {
             name="inspirationImages"
             defaultValue={formData.inspirationImages}
           />
-          <input
-            type="file"
-            name="inspirationImagesFiles"
-            defaultValue={formData.inspirationImages}
-          />
+           <input type="file" name="inspirationImages-0" />
+        <input type="file" name="inspirationImages-1" />
+        <input type="file" name="inspirationImages-2" />
+        <input type="file" name="inspirationImages-3" />
+        <input type="file" name="inspirationImages-4" />
         </div>
       </form>
     </>

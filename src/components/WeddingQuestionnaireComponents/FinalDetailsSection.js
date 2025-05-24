@@ -25,7 +25,7 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
       }));
 
       updateFormData({
-        inspirationImages: [...currentImages, ...newImages].slice(0, 10), // Limit to 10 images
+        inspirationImages: [...currentImages, ...newImages].slice(0, 4), // Limit to 10 images
       });
     }
   };
@@ -115,7 +115,7 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
             Share photos that inspire your wedding vision
           </p>
           <div className="text-xs text-gray-400">
-            JPG, PNG, GIF up to 5MB each • Maximum 10 images
+            JPG, PNG, GIF up to 5MB each • Maximum 4 images
           </div>
 
           <input
@@ -138,7 +138,7 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
           >
             <h4 className="text-sm font-medium text-gray-700 flex items-center">
               <Camera size={14} className="mr-2" />
-              Uploaded Images ({formData.inspirationImages.length}/10)
+              Uploaded Images ({formData.inspirationImages.length}/4)
             </h4>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
