@@ -129,7 +129,10 @@ const BudgetSection = ({ formData, updateFormData }) => {
         className="space-y-6"
       >
         <div className="text-center">
-          <label htmlFor="budget" className="text-lg font-medium text-gray-700 mb-4 block">
+          <label
+            htmlFor="budget"
+            className="text-lg font-medium text-gray-700 mb-4 block"
+          >
             Estimated Budget Range
           </label>
         </div>

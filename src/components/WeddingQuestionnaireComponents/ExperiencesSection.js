@@ -1,4 +1,5 @@
 import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import { motion } from "framer-motion";
 import {
   MapPin,
@@ -10,8 +11,35 @@ import {
   Utensils,
   Mountain,
 } from "lucide-react";
+import { Trans, useTranslation, useI18next } from "gatsby-plugin-react-i18next";
+import ContentfulSvg from "../ContentfulSvg/ContentfulSvg";
 
 const ExperiencesSection = ({ formData, updateFormData }) => {
+  const { t } = useTranslation();
+  const { language } = useI18next();
+  const data = useStaticQuery(graphql`
+    query ExperiencesQuery {
+      allContentfulWeddingQuestionnaireSelections(
+        filter: { step: { eq: "Experiences Section" } }
+      ) {
+        nodes {
+          node_locale
+          step
+          title
+          description
+          color
+          icon {
+            url
+          }
+        }
+      }
+    }
+  `);
+  const experiences =
+    data.allContentfulWeddingQuestionnaireSelections.nodes.filter(
+      (node) => node.node_locale === language,
+    );
+
   const handleArrayToggle = (field, value) => {
     const currentArray = formData[field] || [];
     const newArray = currentArray.includes(value)
@@ -21,107 +49,49 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
     updateFormData({ [field]: newArray });
   };
 
-  const experiences = [
-    {
-      value: "catamaran",
-      label: "Catamaran Tour",
-      icon: Anchor,
-      description: "Sail the crystal waters",
-      color: "blue",
-    },
-    {
-      value: "isla-saona",
-      label: "Isla Saona",
-      icon: Palmtree,
-      description: "Paradise island excursion",
-      color: "green",
-    },
-    {
-      value: "buggies",
-      label: "Buggy Adventure",
-      icon: Car,
-      description: "Off-road exploration",
-      color: "orange",
-    },
-    {
-      value: "snorkeling",
-      label: "Snorkeling",
-      icon: Camera,
-      description: "Underwater adventure",
-      color: "cyan",
-    },
-    {
-      value: "cultural-tour",
-      label: "Cultural Tour",
-      icon: Mountain,
-      description: "Local heritage experience",
-      color: "purple",
-    },
-    {
-      value: "beach-party",
-      label: "Beach Party",
-      icon: Music,
-      description: "Sunset celebration",
-      color: "pink",
-    },
-    {
-      value: "cooking-class",
-      label: "Cooking Class",
-      icon: Utensils,
-      description: "Learn local cuisine",
-      color: "red",
-    },
-    {
-      value: "spa-day",
-      label: "Spa Day",
-      icon: Palmtree,
-      description: "Relaxation & wellness",
-      color: "indigo",
-    },
-  ];
-
-  const getColorClasses = (color, isSelected) => {
-    const colors = {
-      blue: isSelected
-        ? "border-blue-400 bg-blue-50"
-        : "border-gray-200 hover:border-blue-300",
-      green: isSelected
-        ? "border-green-400 bg-green-50"
-        : "border-gray-200 hover:border-green-300",
-      orange: isSelected
-        ? "border-orange-400 bg-orange-50"
-        : "border-gray-200 hover:border-orange-300",
-      cyan: isSelected
-        ? "border-cyan-400 bg-cyan-50"
-        : "border-gray-200 hover:border-cyan-300",
-      purple: isSelected
-        ? "border-purple-400 bg-purple-50"
-        : "border-gray-200 hover:border-purple-300",
-      pink: isSelected
-        ? "border-pink-400 bg-pink-50"
-        : "border-gray-200 hover:border-pink-300",
-      red: isSelected
-        ? "border-red-400 bg-red-50"
-        : "border-gray-200 hover:border-red-300",
-      indigo: isSelected
-        ? "border-indigo-400 bg-indigo-50"
-        : "border-gray-200 hover:border-indigo-300",
+  const getStyles = (color, isSelected) => {
+    if (!isSelected) {
+      return {
+        borderColor: "#e5e7eb", // gray-200
+        backgroundColor: "#f3f4f6", // gray-100
+      };
+    }
+    console.log(color);
+    // Tailwind 400-level colors
+    const colorMap = {
+      slate: "#94a3b8",
+      gray: "#9ca3af",
+      zinc: "#a1a1aa",
+      neutral: "#a3a3a3",
+      stone: "#a8a29e",
+      red: "#f87171",
+      orange: "#fb923c",
+      amber: "#fbbf24",
+      yellow: "#facc15",
+      lime: "#a3e635",
+      green: "#4ade80",
+      emerald: "#34d399",
+      teal: "#2dd4bf",
+      cyan: "#22d3ee",
+      sky: "#38bdf8",
+      blue: "#60a5fa",
+      indigo: "#818cf8",
+      violet: "#a78bfa",
+      purple: "#c084fc",
+      fuchsia: "#e879f9",
+      pink: "#f472b6",
+      rose: "#fb7185",
     };
-    return colors[color] || colors.blue;
+
+    return {
+      borderColor: colorMap[color] || "#60a5fa", // fallback to blue-400
+      backgroundColor: `${colorMap[color]}15`, // 15 is for 10% opacity
+    };
   };
 
   const getIconColor = (color, isSelected) => {
-    const colors = {
-      blue: isSelected ? "text-blue-500" : "text-gray-400",
-      green: isSelected ? "text-green-500" : "text-gray-400",
-      orange: isSelected ? "text-orange-500" : "text-gray-400",
-      cyan: isSelected ? "text-cyan-500" : "text-gray-400",
-      purple: isSelected ? "text-purple-500" : "text-gray-400",
-      pink: isSelected ? "text-pink-500" : "text-gray-400",
-      red: isSelected ? "text-red-500" : "text-gray-400",
-      indigo: isSelected ? "text-indigo-500" : "text-gray-400",
-    };
-    return colors[color] || colors.blue;
+    if (!isSelected) return "text-gray-400";
+    return `text-${color}-500`;
   };
 
   return (
@@ -130,15 +100,15 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
       animate={{ opacity: 1 }}
       className="space-y-8"
     >
-      <div className="text-center mb-8">
+      <div className="text-center mb-8 border-blue-400">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-100 rounded-full mb-4">
           <MapPin className="w-8 h-8 text-emerald-500" />
         </div>
         <h2 className="text-3xl font-bold text-gray-800 mb-2">
-          Additional Experiences
+          <Trans>Additional Experiences</Trans>
         </h2>
         <p className="text-gray-600">
-          Make your wedding celebration unforgettable
+          <Trans>Make your wedding celebration unforgettable</Trans>
         </p>
       </div>
 
@@ -148,23 +118,30 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.1 }}
         className="space-y-4"
       >
-        <label htmlFor="experiences-group" className="text-sm font-medium text-gray-700">
-          Select experiences you'd like to offer your guests (optional)
+        <label
+          htmlFor="experiences-group"
+          className="text-sm font-medium text-gray-700"
+        >
+          <Trans>
+            Select experiences you'd like to offer your guests (optional)
+          </Trans>
         </label>
-        <div id="experiences-group" className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div
+          id="experiences-group"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
           {experiences.map((experience, index) => {
-            const Icon = experience.icon;
             const isSelected = formData.additionalExperiences?.includes(
-              experience.value,
+              experience.title,
             );
-
             return (
               <motion.button
-                key={experience.value}
+                key={experience.title}
                 onClick={() =>
-                  handleArrayToggle("additionalExperiences", experience.value)
+                  handleArrayToggle("additionalExperiences", experience.title)
                 }
-                className={`p-4 rounded-xl border-2 transition-all text-left ${getColorClasses(experience.color, isSelected)}`}
+                style={getStyles(experience.color, isSelected)}
+                className="p-4 rounded-xl border-2 transition-all text-left"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -175,14 +152,17 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
                   <div
                     className={`p-2 rounded-lg ${isSelected ? "bg-white" : "bg-gray-100"}`}
                   >
-                    <Icon
-                      size={20}
-                      className={getIconColor(experience.color, isSelected)}
+                    <ContentfulSvg
+                      url={experience.icon.url}
+                      color={experience.color}
+                      intensity="500"
+                      className="w-6 h-6"
+                      isSelected={isSelected}
                     />
                   </div>
                   <div className="flex-1">
                     <h3 className="font-medium text-gray-800 mb-1">
-                      {experience.label}
+                      {experience.title}
                     </h3>
                     <p className="text-sm text-gray-600">
                       {experience.description}
@@ -191,7 +171,7 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
                   {isSelected && (
                     <motion.div
                       initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
+                      animate={{ scale: 2 }}
                       className="text-green-500"
                     >
                       ✓
@@ -214,17 +194,18 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
         >
           <h3 className="font-medium text-gray-800 mb-3 flex items-center">
             <MapPin size={16} className="mr-2 text-emerald-500" />
-            Selected Experiences ({formData.additionalExperiences.length})
+            <Trans>Selected Experiences</Trans> (
+            {formData.additionalExperiences.length})
           </h3>
           <div className="flex flex-wrap gap-2">
             {formData.additionalExperiences.map((expValue) => {
-              const exp = experiences.find((e) => e.value === expValue);
+              const exp = experiences.find((e) => e.title === expValue);
               return exp ? (
                 <span
                   key={expValue}
                   className="px-3 py-1 bg-white rounded-full text-sm font-medium text-gray-700 border border-emerald-200"
                 >
-                  {exp.label}
+                  {exp.title}
                 </span>
               ) : null;
             })}
@@ -240,9 +221,14 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
         className="text-center p-4 bg-amber-50 rounded-xl border border-amber-200"
       >
         <p className="text-sm text-amber-800">
-          💡 <strong>Tip:</strong> These experiences can be organized as welcome
-          activities, day-after adventures, or extended celebration options for
-          your guests.
+          💡{" "}
+          <strong>
+            <Trans>Tip:</Trans>
+          </strong>{" "}
+          <Trans>
+            These experiences can be organized as welcome activities, day-after
+            adventures, or extended celebration options for your guests.
+          </Trans>
         </p>
       </motion.div>
     </motion.div>

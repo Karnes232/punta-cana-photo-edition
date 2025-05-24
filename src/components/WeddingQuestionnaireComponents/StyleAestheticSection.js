@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Palette, Sparkles } from "lucide-react";
-
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const StyleAestheticSection = ({ formData, updateFormData }) => {
+  const { t } = useTranslation();
   const handleInputChange = (field, value) => {
     updateFormData({ [field]: value });
   };
@@ -18,58 +19,58 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
 
   const weddingStyles = [
     {
-      value: "boho",
-      label: "Boho",
+      value: t("Boho"),
+      label: t("Boho"),
       icon: "🌸",
-      description: "Free-spirited & natural",
+      description: t("Free-spirited & natural"),
     },
     {
-      value: "tropical",
-      label: "Tropical",
+      value: t("Tropical"),
+      label: t("Tropical"),
       icon: "🌺",
-      description: "Vibrant & exotic",
+      description: t("Vibrant & exotic"),
     },
     {
-      value: "classic",
-      label: "Classic",
+      value: t("Classic"),
+      label: t("Classic"),
       icon: "💎",
-      description: "Timeless & elegant",
+      description: t("Timeless & elegant"),
     },
     {
-      value: "modern",
-      label: "Modern",
+      value: t("Modern"),
+      label: t("Modern"),
       icon: "✨",
-      description: "Clean & contemporary",
+      description: t("Clean & contemporary"),
     },
     {
-      value: "rustic",
-      label: "Rustic",
+      value: t("Rustic"),
+      label: t("Rustic"),
       icon: "🌿",
-      description: "Natural & cozy",
+      description: t("Natural & cozy"),
     },
     {
-      value: "vintage",
-      label: "Vintage",
+      value: t("Vintage"),
+      label: t("Vintage"),
       icon: "🕯️",
-      description: "Nostalgic & romantic",
+      description: t("Nostalgic & romantic"),
     },
   ];
 
   const chairStyles = [
-    { value: "tiffany", label: "Tiffany", icon: "💺" },
-    { value: "ghost", label: "Ghost", icon: "👻" },
-    { value: "chiavari", label: "Chiavari", icon: "🪑" },
-    { value: "crossback", label: "Cross-back", icon: "❌" },
-    { value: "folding", label: "Folding", icon: "📁" },
+    { value: t("Tiffany"), label: t("Tiffany"), icon: "💺" },
+    { value: t("Ghost"), label: t("Ghost"), icon: "👻" },
+    { value: t("Chiavari"), label: t("Chiavari"), icon: "🪑" },
+    { value: t("Cross-back"), label: t("Cross-back"), icon: "❌" },
+    { value: t("Folding"), label: t("Folding"), icon: "📁" },
   ];
 
   const centerpieceStyles = [
-    { value: "tall", label: "Tall", icon: "🏗️" },
-    { value: "low", label: "Low", icon: "🌱" },
-    { value: "candles", label: "Candles", icon: "🕯️" },
-    { value: "flowers", label: "Flowers", icon: "🌹" },
-    { value: "mixed", label: "Mixed Height", icon: "📊" },
-    { value: "minimal", label: "Minimal", icon: "⚪" },
+    { value: t("Tall"), label: t("Tall"), icon: "🏗️" },
+    { value: t("Low"), label: t("Low"), icon: "🌱" },
+    { value: t("Candles"), label: t("Candles"), icon: "🕯️" },
+    { value: t("Flowers"), label: t("Flowers"), icon: "🌹" },
+    { value: t("Mixed Height"), label: t("Mixed Height"), icon: "📊" },
+    { value: t("Minimal"), label: t("Minimal"), icon: "⚪" },
   ];
 
   return (
@@ -83,9 +84,11 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
           <Palette className="w-8 h-8 text-purple-500" />
         </div>
         <h2 className="text-3xl font-bold text-gray-800 mb-2">
-          Style & Aesthetic
+          <Trans>Style & Aesthetic</Trans>
         </h2>
-        <p className="text-gray-600">Let's bring your vision to life</p>
+        <p className="text-gray-600">
+          <Trans>Let's bring your vision to life</Trans>
+        </p>
       </div>
 
       {/* Wedding Styles */}
@@ -95,9 +98,14 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.1 }}
         className="space-y-4"
       >
-        <label htmlFor="weddingStyles" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+        <label
+          htmlFor="weddingStyles"
+          className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+        >
           <Sparkles size={16} />
-          <span>Preferred Wedding Style (select all that apply)</span>
+          <span>
+            <Trans>Preferred Wedding Style (select all that apply)</Trans>
+          </span>
         </label>
         <div id="weddingStyles" className="grid md:grid-cols-3 gap-4">
           {weddingStyles.map((style) => (
@@ -131,9 +139,14 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.2 }}
         className="space-y-2"
       >
-        <label htmlFor="colorPalette" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+        <label
+          htmlFor="colorPalette"
+          className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+        >
           <Palette size={16} />
-          <span>Color Palette (describe or use HEX codes)</span>
+          <span>
+            <Trans>Color Palette (describe or use HEX codes)</Trans>
+          </span>
         </label>
         <input
           id="colorPalette"
@@ -141,7 +154,9 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
           value={formData.colorPalette}
           onChange={(e) => handleInputChange("colorPalette", e.target.value)}
           className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
-          placeholder="e.g., Blush pink and gold, #f8b5c0 #e4c05c, Sage green and cream"
+          placeholder={t(
+            "e.g., Blush pink and gold, #f8b5c0 #e4c05c, Sage green and cream",
+          )}
         />
       </motion.div>
 
@@ -152,8 +167,11 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.3 }}
         className="space-y-4"
       >
-        <label htmlFor="chairStyles" className="text-sm font-medium text-gray-700">
-          Preferred Chair Style
+        <label
+          htmlFor="chairStyles"
+          className="text-sm font-medium text-gray-700"
+        >
+          <Trans>Preferred Chair Style</Trans>
         </label>
         <div id="chairStyles" className="grid md:grid-cols-5 gap-3">
           {chairStyles.map((chair) => (
@@ -184,8 +202,11 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.4 }}
         className="space-y-4"
       >
-        <label htmlFor="centerpieceStyles" className="text-sm font-medium text-gray-700">
-          Centerpiece Style
+        <label
+          htmlFor="centerpieceStyles"
+          className="text-sm font-medium text-gray-700"
+        >
+          <Trans>Centerpiece Style</Trans>
         </label>
         <div id="centerpieceStyles" className="grid md:grid-cols-3 gap-4">
           {centerpieceStyles.map((centerpiece) => (
@@ -220,27 +241,38 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
       >
         <h3 className="font-medium text-gray-800 mb-3 flex items-center">
           <Sparkles size={16} className="mr-2 text-rose-500" />
-          Your Style Summary
+          <Trans>Your Style Summary</Trans>
         </h3>
         <div className="space-y-2 text-sm text-gray-600">
           {formData.weddingStyles?.length > 0 && (
             <p>
-              <strong>Styles:</strong> {formData.weddingStyles.join(", ")}
+              <strong>
+                <Trans>Styles:</Trans>
+              </strong>{" "}
+              {formData.weddingStyles.join(", ")}
             </p>
           )}
           {formData.colorPalette && (
             <p>
-              <strong>Colors:</strong> {formData.colorPalette}
+              <strong>
+                <Trans>Colors:</Trans>
+              </strong>{" "}
+              {formData.colorPalette}
             </p>
           )}
           {formData.chairStyle?.length > 0 && (
             <p>
-              <strong>Chairs:</strong> {formData.chairStyle.join(", ")}
+              <strong>
+                <Trans>Chairs:</Trans>
+              </strong>{" "}
+              {formData.chairStyle.join(", ")}
             </p>
           )}
           {formData.centerpieceStyle?.length > 0 && (
             <p>
-              <strong>Centerpieces:</strong>{" "}
+              <strong>
+                <Trans>Centerpieces:</Trans>
+              </strong>{" "}
               {formData.centerpieceStyle.join(", ")}
             </p>
           )}

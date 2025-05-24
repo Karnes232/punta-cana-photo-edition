@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Trans } from "gatsby-plugin-react-i18next";
 import {
   Heart,
   Calendar,
@@ -61,37 +62,37 @@ const WeddingQuestionnaire = () => {
   const steps = [
     {
       id: "personal",
-      title: "About You",
+      title: <Trans>About You</Trans>,
       icon: Heart,
       component: PersonalInfoSection,
     },
     {
       id: "wedding",
-      title: "Wedding Details",
+      title: <Trans>Wedding Details</Trans>,
       icon: Calendar,
       component: WeddingDetailsSection,
     },
     {
       id: "style",
-      title: "Style & Aesthetic",
+      title: <Trans>Style & Aesthetic</Trans>,
       icon: Palette,
       component: StyleAestheticSection,
     },
     {
       id: "experiences",
-      title: "Additional Experiences",
+      title: <Trans>Additional Experiences</Trans>,
       icon: MapPin,
       component: ExperiencesSection,
     },
     {
       id: "budget",
-      title: "Budget",
+      title: <Trans>Budget</Trans>,
       icon: DollarSign,
       component: BudgetSection,
     },
     {
       id: "final",
-      title: "Final Details",
+      title: <Trans>Final Details</Trans>,
       icon: Camera,
       component: FinalDetailsSection,
     },
@@ -104,13 +105,13 @@ const WeddingQuestionnaire = () => {
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
       // Validate personal info section before proceeding
-      if (currentStep === 0) {
-        const { isValid, errors } = validatePersonalInfo(formData);
-        if (!isValid) {
-          setFormErrors(errors);
-          return;
-        }
-      }
+      // if (currentStep === 0) {
+      //   const { isValid, errors } = validatePersonalInfo(formData);
+      //   if (!isValid) {
+      //     setFormErrors(errors);
+      //     return;
+      //   }
+      // }
       setFormErrors({});
       setCurrentStep(currentStep + 1);
     }
@@ -122,15 +123,14 @@ const WeddingQuestionnaire = () => {
     }
   };
 
-
   const handleSubmit = async () => {
     try {
       // Create FormData object
       const formDataObj = new FormData();
-      
+
       // Add all regular form fields
-      Object.keys(formData).forEach(key => {
-        if (key !== 'inspirationImages') {
+      Object.keys(formData).forEach((key) => {
+        if (key !== "inspirationImages") {
           formDataObj.append(key, formData[key]);
         }
       });
@@ -144,7 +144,7 @@ const WeddingQuestionnaire = () => {
 
       const response = await fetch("/", {
         method: "POST",
-        body: formDataObj
+        body: formDataObj,
       });
 
       if (response.ok) {
@@ -168,7 +168,7 @@ const WeddingQuestionnaire = () => {
   return (
     <div className="min-h-screen  py-12 px-4">
       <WeddingQuestaionnaireForm formData={formData} />
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -176,11 +176,13 @@ const WeddingQuestionnaire = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Your Dream Wedding Awaits ✨
+            <Trans>Your Dream Wedding Awaits ✨</Trans>
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Let's create something magical together. This questionnaire will
-            help us understand your vision perfectly.
+            <Trans>
+              Let's create something magical together. This questionnaire will
+              help us understand your vision perfectly.
+            </Trans>
           </p>
         </motion.div>
 
@@ -188,10 +190,11 @@ const WeddingQuestionnaire = () => {
         <div className="mb-8">
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm font-medium text-gray-600">
-              Step {currentStep + 1} of {steps.length}
+              <Trans>Step</Trans> {currentStep + 1} <Trans>of</Trans>{" "}
+              {steps.length}
             </span>
             <span className="text-sm font-medium text-gray-600">
-              {Math.round(progress)}% Complete
+              {Math.round(progress)}% <Trans>Complete</Trans>
             </span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
@@ -275,7 +278,9 @@ const WeddingQuestionnaire = () => {
               whileTap={currentStep > 0 ? { scale: 0.95 } : {}}
             >
               <ChevronLeft size={20} />
-              <span>Previous</span>
+              <span>
+                <Trans>Previous</Trans>
+              </span>
             </motion.button>
 
             {currentStep < steps.length - 1 ? (
@@ -286,7 +291,9 @@ const WeddingQuestionnaire = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>Next Step</span>
+                <span>
+                  <Trans>Next Step</Trans>
+                </span>
                 <ChevronRight size={20} />
               </motion.button>
             ) : (
@@ -297,7 +304,9 @@ const WeddingQuestionnaire = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Sparkles size={24} />
-                <span>✨ Submit My Dream Wedding Plan</span>
+                <span>
+                  <Trans>✨ Submit My Dream Wedding Plan</Trans>
+                </span>
               </motion.button>
             )}
           </div>

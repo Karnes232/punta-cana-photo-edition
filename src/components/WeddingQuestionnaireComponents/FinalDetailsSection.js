@@ -64,7 +64,10 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.1 }}
         className="space-y-4"
       >
-        <label htmlFor="dreamDescription" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+        <label
+          htmlFor="dreamDescription"
+          className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+        >
           <FileText size={16} />
           <span>Describe Your Dream Wedding</span>
         </label>
@@ -96,7 +99,10 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.2 }}
         className="space-y-4"
       >
-        <label htmlFor="inspirationImages" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+        <label
+          htmlFor="inspirationImages"
+          className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+        >
           <Image size={16} />
           <span>Inspiration Images</span>
         </label>

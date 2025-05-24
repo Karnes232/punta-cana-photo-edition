@@ -263,7 +263,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
 
       const weddingsPuntaCanaPath =
-        urlPath === "" ? "/weddings-punta-cana" : `/${urlPath}/weddings-punta-cana`;
+        urlPath === ""
+          ? "/weddings-punta-cana"
+          : `/${urlPath}/weddings-punta-cana`;
       createPage({
         path: weddingsPuntaCanaPath,
         component: path.resolve("./src/pages/weddings-punta-cana/index.js"),

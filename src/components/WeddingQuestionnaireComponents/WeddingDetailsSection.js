@@ -1,15 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Users, MapPin, Building, Car } from "lucide-react";
-
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const WeddingDetailsSection = ({ formData, updateFormData }) => {
+  const { t } = useTranslation();
   const handleInputChange = (field, value) => {
     updateFormData({ [field]: value });
   };
 
   const ceremonyTypes = [
-    { value: "legal", label: "Legal Ceremony", icon: "⚖️" },
-    { value: "symbolic", label: "Symbolic Ceremony", icon: "💕" },
+    { value: "legal", label: t("Legal Ceremony"), icon: "⚖️" },
+    { value: "symbolic", label: t("Symbolic Ceremony"), icon: "💕" },
   ];
 
   return (
@@ -23,9 +24,11 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           <Calendar className="w-8 h-8 text-blue-500" />
         </div>
         <h2 className="text-3xl font-bold text-gray-800 mb-2">
-          Wedding Details
+          <Trans>Wedding Details</Trans>
         </h2>
-        <p className="text-gray-600">Tell us about your special day</p>
+        <p className="text-gray-600">
+          <Trans>Tell us about your special day</Trans>
+        </p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -36,9 +39,14 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.1 }}
           className="space-y-2"
         >
-          <label htmlFor="weddingDate" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label
+            htmlFor="weddingDate"
+            className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+          >
             <Calendar size={16} />
-            <span>Wedding Date</span>
+            <span>
+              <Trans>Wedding Date</Trans>
+            </span>
           </label>
           <input
             id="weddingDate"
@@ -56,9 +64,14 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.2 }}
           className="space-y-2"
         >
-          <label htmlFor="estimatedTime" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label
+            htmlFor="estimatedTime"
+            className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+          >
             <Clock size={16} />
-            <span>Estimated Time</span>
+            <span>
+              <Trans>Estimated Time</Trans>
+            </span>
           </label>
           <input
             id="estimatedTime"
@@ -76,9 +89,14 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.3 }}
           className="space-y-2"
         >
-          <label htmlFor="guestCount" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label
+            htmlFor="guestCount"
+            className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+          >
             <Users size={16} />
-            <span>Guest Count: {formData.guestCount}</span>
+            <span>
+              <Trans>Guest Count</Trans>: {formData.guestCount}
+            </span>
           </label>
           <input
             id="guestCount"
@@ -108,17 +126,24 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.4 }}
           className="space-y-2"
         >
-          <label htmlFor="desiredLocations" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label
+            htmlFor="desiredLocations"
+            className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+          >
             <MapPin size={16} />
-            <span>Desired Location(s)</span>
+            <span>
+              <Trans>Desired Location(s)</Trans>
+            </span>
           </label>
           <textarea
             id="desiredLocations"
             value={formData.desiredLocations}
-            onChange={(e) => handleInputChange("desiredLocations", e.target.value)}
+            onChange={(e) =>
+              handleInputChange("desiredLocations", e.target.value)
+            }
             rows="3"
             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all resize-none"
-            placeholder="Beach, garden, specific venues, etc."
+            placeholder={t("Beach, garden, specific venues, etc.")}
           />
         </motion.div>
       </div>
@@ -130,8 +155,11 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.5 }}
         className="space-y-4"
       >
-        <label htmlFor="ceremonyType" className="text-sm font-medium text-gray-700">
-          Ceremony Type
+        <label
+          htmlFor="ceremonyType"
+          className="text-sm font-medium text-gray-700"
+        >
+          <Trans>Ceremony Type</Trans>
         </label>
         <div id="ceremonyType" className="grid md:grid-cols-2 gap-4">
           {ceremonyTypes.map((type) => (
@@ -164,9 +192,14 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.6 }}
         className="space-y-2"
       >
-        <label htmlFor="hotelStay" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+        <label
+          htmlFor="hotelStay"
+          className="flex items-center space-x-2 text-sm font-medium text-gray-700"
+        >
           <Building size={16} />
-          <span>Hotel(s) where guests plan to stay</span>
+          <span>
+            <Trans>Hotel(s) where guests plan to stay</Trans>
+          </span>
         </label>
         <input
           id="hotelStay"
@@ -174,7 +207,7 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           value={formData.hotelStay}
           onChange={(e) => handleInputChange("hotelStay", e.target.value)}
           className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
-          placeholder="Hotel names or areas"
+          placeholder={t("Hotel names or areas")}
         />
       </motion.div>
 
@@ -197,7 +230,7 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           <div className="flex items-center space-x-2">
             <Car size={16} className="text-gray-600" />
             <span className="text-sm font-medium text-gray-700">
-              Need guest transportation
+              <Trans>Need guest transportation</Trans>
             </span>
           </div>
         </label>
