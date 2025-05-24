@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart,
-  Users,
   Calendar,
   MapPin,
   Palette,
@@ -19,6 +18,7 @@ import ExperiencesSection from "./ExperiencesSection";
 import BudgetSection from "./BudgetSection";
 import FinalDetailsSection from "./FinalDetailsSection";
 import WeddingQuestaionnaireForm from "./WeddingQuestaionnaireForm";
+import { validatePersonalInfo } from "../../hooks/WeddingQuestaionnaireValidation";
 const WeddingQuestionnaire = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -54,6 +54,9 @@ const WeddingQuestionnaire = () => {
     dreamDescription: "",
     inspirationImages: [],
   });
+
+  // Add new state for form errors
+  const [formErrors, setFormErrors] = useState({});
 
   const steps = [
     {
@@ -100,6 +103,15 @@ const WeddingQuestionnaire = () => {
 
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
+      // Validate personal info section before proceeding
+      if (currentStep === 0) {
+        const { isValid, errors } = validatePersonalInfo(formData);
+        if (!isValid) {
+          setFormErrors(errors);
+          return;
+        }
+      }
+      setFormErrors({});
       setCurrentStep(currentStep + 1);
     }
   };
@@ -110,7 +122,6 @@ const WeddingQuestionnaire = () => {
     }
   };
 
-  console.log(formData);
 
   const handleSubmit = async () => {
     try {
@@ -245,6 +256,7 @@ const WeddingQuestionnaire = () => {
                 onNext={nextStep}
                 onSubmit={handleSubmit}
                 isLastStep={currentStep === steps.length - 1}
+                errors={formErrors}
               />
             </motion.div>
           </AnimatePresence>

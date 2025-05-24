@@ -96,11 +96,6 @@ const WeddingQuestaionnaireForm = ({ formData }) => {
             name="dreamDescription"
             defaultValue={formData.dreamDescription}
           />
-          <input
-            type="text"
-            name="inspirationImages"
-            defaultValue={formData.inspirationImages}
-          />
            <input type="file" name="inspirationImages-0" />
         <input type="file" name="inspirationImages-1" />
         <input type="file" name="inspirationImages-2" />

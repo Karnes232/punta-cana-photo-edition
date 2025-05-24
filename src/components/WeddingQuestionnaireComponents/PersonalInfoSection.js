@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Heart, Mail, Phone, User } from "lucide-react";
 
-const PersonalInfoSection = ({ formData, updateFormData }) => {
+const PersonalInfoSection = ({ formData, updateFormData, errors }) => {
   const handleInputChange = (field, value) => {
     updateFormData({ [field]: value });
   };
@@ -31,17 +31,21 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.1 }}
           className="space-y-2"
         >
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label htmlFor="fullName1" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
             <User size={16} />
             <span>Partner 1 Full Name</span>
           </label>
           <input
+            id="fullName1"
             type="text"
             value={formData.fullName1}
             onChange={(e) => handleInputChange("fullName1", e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
+            className={`w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all ${errors?.fullName1 ? 'border-red-500' : ''}`}
             placeholder="Enter full name"
           />
+          {errors?.fullName1 && (
+            <p className="text-red-500 text-sm mt-1">{errors.fullName1}</p>
+          )}
         </motion.div>
 
         {/* Partner 2 Name */}
@@ -51,17 +55,21 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.2 }}
           className="space-y-2"
         >
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label htmlFor="fullName2" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
             <User size={16} />
             <span>Partner 2 Full Name</span>
           </label>
           <input
+            id="fullName2"
             type="text"
             value={formData.fullName2}
             onChange={(e) => handleInputChange("fullName2", e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
+            className={`w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all ${errors?.fullName2 ? 'border-red-500' : ''}`}
             placeholder="Enter full name"
           />
+          {errors?.fullName2 && (
+            <p className="text-red-500 text-sm mt-1">{errors.fullName2}</p>
+          )}
         </motion.div>
 
         {/* Email */}
@@ -71,17 +79,21 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.3 }}
           className="space-y-2"
         >
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label htmlFor="email" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
             <Mail size={16} />
             <span>Email Address</span>
           </label>
           <input
+            id="email"
             type="email"
             value={formData.email}
             onChange={(e) => handleInputChange("email", e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
+            className={`w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all ${errors?.email ? 'border-red-500' : ''}`}
             placeholder="your@email.com"
           />
+          {errors?.email && (
+            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+          )}
         </motion.div>
 
         {/* Phone */}
@@ -91,17 +103,21 @@ const PersonalInfoSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.4 }}
           className="space-y-2"
         >
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label htmlFor="phone" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
             <Phone size={16} />
             <span>WhatsApp/Phone</span>
           </label>
           <input
+            id="phone"
             type="tel"
             value={formData.phone}
             onChange={(e) => handleInputChange("phone", e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
+            className={`w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all ${errors?.phone ? 'border-red-500' : ''}`}
             placeholder="+1 (555) 123-4567"
           />
+          {errors?.phone && (
+            <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+          )}
         </motion.div>
       </div>
 

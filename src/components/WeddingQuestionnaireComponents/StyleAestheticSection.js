@@ -95,11 +95,11 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.1 }}
         className="space-y-4"
       >
-        <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+        <label htmlFor="weddingStyles" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
           <Sparkles size={16} />
           <span>Preferred Wedding Style (select all that apply)</span>
         </label>
-        <div className="grid md:grid-cols-3 gap-4">
+        <div id="weddingStyles" className="grid md:grid-cols-3 gap-4">
           {weddingStyles.map((style) => (
             <motion.button
               key={style.value}
@@ -131,11 +131,12 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.2 }}
         className="space-y-2"
       >
-        <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+        <label htmlFor="colorPalette" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
           <Palette size={16} />
           <span>Color Palette (describe or use HEX codes)</span>
         </label>
         <input
+          id="colorPalette"
           type="text"
           value={formData.colorPalette}
           onChange={(e) => handleInputChange("colorPalette", e.target.value)}
@@ -151,10 +152,10 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.3 }}
         className="space-y-4"
       >
-        <label className="text-sm font-medium text-gray-700">
+        <label htmlFor="chairStyles" className="text-sm font-medium text-gray-700">
           Preferred Chair Style
         </label>
-        <div className="grid md:grid-cols-5 gap-3">
+        <div id="chairStyles" className="grid md:grid-cols-5 gap-3">
           {chairStyles.map((chair) => (
             <motion.button
               key={chair.value}
@@ -183,10 +184,10 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.4 }}
         className="space-y-4"
       >
-        <label className="text-sm font-medium text-gray-700">
+        <label htmlFor="centerpieceStyles" className="text-sm font-medium text-gray-700">
           Centerpiece Style
         </label>
-        <div className="grid md:grid-cols-3 gap-4">
+        <div id="centerpieceStyles" className="grid md:grid-cols-3 gap-4">
           {centerpieceStyles.map((centerpiece) => (
             <motion.button
               key={centerpiece.value}

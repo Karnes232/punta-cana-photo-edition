@@ -211,6 +211,10 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/weddings-punta-cana",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/wedding",
             getLanguageFromPath: true,
           },

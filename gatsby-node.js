@@ -262,6 +262,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const weddingsPuntaCanaPath =
+        urlPath === "" ? "/weddings-punta-cana" : `/${urlPath}/weddings-punta-cana`;
+      createPage({
+        path: weddingsPuntaCanaPath,
+        component: path.resolve("./src/pages/weddings-punta-cana/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       const floralPath =
         urlPath === "" ? "/floral-art" : `/${urlPath}/floral-art`;
       createPage({

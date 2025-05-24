@@ -148,10 +148,10 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.1 }}
         className="space-y-4"
       >
-        <label className="text-sm font-medium text-gray-700">
+        <label htmlFor="experiences-group" className="text-sm font-medium text-gray-700">
           Select experiences you'd like to offer your guests (optional)
         </label>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div id="experiences-group" className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {experiences.map((experience, index) => {
             const Icon = experience.icon;
             const isSelected = formData.additionalExperiences?.includes(

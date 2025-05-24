@@ -1,11 +1,9 @@
 import { graphql } from "gatsby";
-import React, { useState } from "react";
+import React from "react";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import { useI18next } from "gatsby-plugin-react-i18next";
-import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import BackgroundVideo from "../../components/BackgroundVideoComponents/BackgroundVideo";
-import RichText from "../../components/RichTextComponents/RichText";
 import TextComponent from "../../components/TextComponent/TextComponent";
 import HeroSwiperWeddingPuntaCana from "../../components/HeroSwiper/HeroSwiperWeddingPuntaCana";
 import WeddingPackageCard from "../../components/PackageComponents/WeddingPackageCard";

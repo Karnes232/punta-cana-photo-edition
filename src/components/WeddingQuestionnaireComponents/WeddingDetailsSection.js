@@ -36,11 +36,12 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.1 }}
           className="space-y-2"
         >
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label htmlFor="weddingDate" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
             <Calendar size={16} />
             <span>Wedding Date</span>
           </label>
           <input
+            id="weddingDate"
             type="date"
             value={formData.weddingDate}
             onChange={(e) => handleInputChange("weddingDate", e.target.value)}
@@ -55,11 +56,12 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.2 }}
           className="space-y-2"
         >
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label htmlFor="estimatedTime" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
             <Clock size={16} />
             <span>Estimated Time</span>
           </label>
           <input
+            id="estimatedTime"
             type="time"
             value={formData.estimatedTime}
             onChange={(e) => handleInputChange("estimatedTime", e.target.value)}
@@ -74,11 +76,12 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.3 }}
           className="space-y-2"
         >
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label htmlFor="guestCount" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
             <Users size={16} />
             <span>Guest Count: {formData.guestCount}</span>
           </label>
           <input
+            id="guestCount"
             type="range"
             min="10"
             max="300"
@@ -105,15 +108,14 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
           transition={{ delay: 0.4 }}
           className="space-y-2"
         >
-          <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+          <label htmlFor="desiredLocations" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
             <MapPin size={16} />
             <span>Desired Location(s)</span>
           </label>
           <textarea
+            id="desiredLocations"
             value={formData.desiredLocations}
-            onChange={(e) =>
-              handleInputChange("desiredLocations", e.target.value)
-            }
+            onChange={(e) => handleInputChange("desiredLocations", e.target.value)}
             rows="3"
             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all resize-none"
             placeholder="Beach, garden, specific venues, etc."
@@ -128,10 +130,10 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.5 }}
         className="space-y-4"
       >
-        <label className="text-sm font-medium text-gray-700">
+        <label htmlFor="ceremonyType" className="text-sm font-medium text-gray-700">
           Ceremony Type
         </label>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div id="ceremonyType" className="grid md:grid-cols-2 gap-4">
           {ceremonyTypes.map((type) => (
             <motion.button
               key={type.value}
@@ -162,11 +164,12 @@ const WeddingDetailsSection = ({ formData, updateFormData }) => {
         transition={{ delay: 0.6 }}
         className="space-y-2"
       >
-        <label className="flex items-center space-x-2 text-sm font-medium text-gray-700">
+        <label htmlFor="hotelStay" className="flex items-center space-x-2 text-sm font-medium text-gray-700">
           <Building size={16} />
           <span>Hotel(s) where guests plan to stay</span>
         </label>
         <input
+          id="hotelStay"
           type="text"
           value={formData.hotelStay}
           onChange={(e) => handleInputChange("hotelStay", e.target.value)}
