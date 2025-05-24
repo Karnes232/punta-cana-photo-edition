@@ -62,7 +62,7 @@ const WeddingPackageCard = ({ weddingPackage }) => {
             <></>
           )}
           {weddingPackage.callToActionButton && (
-            <button className="bg-primary-color text-white px-4 py-2 rounded-md w-3/4">
+            <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-4 py-2 rounded-md w-3/4">
               {weddingPackage.callToActionButton}
             </button>
           )}

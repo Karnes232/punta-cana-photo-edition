@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import { useI18next } from "gatsby-plugin-react-i18next";
@@ -9,9 +9,11 @@ import RichText from "../../components/RichTextComponents/RichText";
 import TextComponent from "../../components/TextComponent/TextComponent";
 import HeroSwiperWeddingPuntaCana from "../../components/HeroSwiper/HeroSwiperWeddingPuntaCana";
 import WeddingPackageCard from "../../components/PackageComponents/WeddingPackageCard";
+import WeddingQuestionnaire from "../../components/WeddingQuestionnaireComponents/WeddingQuestionnaire";
 
 const Index = ({ data }) => {
   const { useVideo } = data.allContentfulPageContent.nodes[0];
+ 
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {useVideo ? (
@@ -36,6 +38,8 @@ const Index = ({ data }) => {
           );
         })}
       </div>
+      <hr className="my-10" />
+      <WeddingQuestionnaire />
     </Layout>
   );
 };
