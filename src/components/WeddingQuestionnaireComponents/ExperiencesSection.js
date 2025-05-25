@@ -1,16 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { motion } from "framer-motion";
-import {
-  MapPin,
-  Anchor,
-  Palmtree,
-  Car,
-  Camera,
-  Music,
-  Utensils,
-  Mountain,
-} from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Trans, useTranslation, useI18next } from "gatsby-plugin-react-i18next";
 import ContentfulSvg from "../ContentfulSvg/ContentfulSvg";
 
@@ -56,7 +47,6 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
         backgroundColor: "#f3f4f6", // gray-100
       };
     }
-    console.log(color);
     // Tailwind 400-level colors
     const colorMap = {
       slate: "#94a3b8",

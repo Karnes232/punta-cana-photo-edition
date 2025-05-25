@@ -1,9 +1,80 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Palette, Sparkles } from "lucide-react";
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { Trans, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import { graphql, useStaticQuery } from "gatsby";
 const StyleAestheticSection = ({ formData, updateFormData }) => {
   const { t } = useTranslation();
+  const { language } = useI18next();
+  const weddingStylesData = useStaticQuery(graphql`
+    query StyleAestheticQuery {
+      weddingStyles: allContentfulWeddingQuestionnaireSelections(
+        filter: { step: { eq: "Wedding Style" } }
+      ) {
+        nodes {
+          node_locale
+          step
+          title
+          description
+          color
+          iconEmoji
+        }
+      }
+      chairStyles: allContentfulWeddingQuestionnaireSelections(
+        filter: { step: { eq: "Chair Style" } }
+      ) {
+        nodes {
+          node_locale
+          step
+          title
+          color
+          iconEmoji
+        }
+      }
+      centerpieceStyles: allContentfulWeddingQuestionnaireSelections(
+        filter: { step: { eq: "Centerpiece Style" } }
+      ) {
+        nodes {
+          node_locale
+          step
+          title
+          color
+          iconEmoji
+        }
+      }
+    }
+  `);
+  const weddingStyles2 = weddingStylesData.weddingStyles.nodes.filter(
+    (node) => node.node_locale === language,
+  );
+
+  const weddingStyles = weddingStyles2.map((style) => ({
+    value: style.title,
+    label: style.title,
+    icon: style.iconEmoji,
+    description: style.description,
+  }));
+
+  const chairStyles2 = weddingStylesData.chairStyles.nodes.filter(
+    (node) => node.node_locale === language,
+  );
+
+  const chairStyles = chairStyles2.map((style) => ({
+    value: style.title,
+    label: style.title,
+    icon: style.iconEmoji,
+  }));
+
+  const centerpieceStyles2 = weddingStylesData.centerpieceStyles.nodes.filter(
+    (node) => node.node_locale === language,
+  );
+
+  const centerpieceStyles = centerpieceStyles2.map((style) => ({
+    value: style.title,
+    label: style.title,
+    icon: style.iconEmoji,
+  }));
+
   const handleInputChange = (field, value) => {
     updateFormData({ [field]: value });
   };
@@ -17,61 +88,61 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
     updateFormData({ [field]: newArray });
   };
 
-  const weddingStyles = [
-    {
-      value: t("Boho"),
-      label: t("Boho"),
-      icon: "🌸",
-      description: t("Free-spirited & natural"),
-    },
-    {
-      value: t("Tropical"),
-      label: t("Tropical"),
-      icon: "🌺",
-      description: t("Vibrant & exotic"),
-    },
-    {
-      value: t("Classic"),
-      label: t("Classic"),
-      icon: "💎",
-      description: t("Timeless & elegant"),
-    },
-    {
-      value: t("Modern"),
-      label: t("Modern"),
-      icon: "✨",
-      description: t("Clean & contemporary"),
-    },
-    {
-      value: t("Rustic"),
-      label: t("Rustic"),
-      icon: "🌿",
-      description: t("Natural & cozy"),
-    },
-    {
-      value: t("Vintage"),
-      label: t("Vintage"),
-      icon: "🕯️",
-      description: t("Nostalgic & romantic"),
-    },
-  ];
+  // const weddingStyles = [
+  //   {
+  //     value: t("Boho"),
+  //     label: t("Boho"),
+  //     icon: "🌸",
+  //     description: t("Free-spirited & natural"),
+  //   },
+  //   {
+  //     value: t("Tropical"),
+  //     label: t("Tropical"),
+  //     icon: "🌺",
+  //     description: t("Vibrant & exotic"),
+  //   },
+  //   {
+  //     value: t("Classic"),
+  //     label: t("Classic"),
+  //     icon: "💎",
+  //     description: t("Timeless & elegant"),
+  //   },
+  //   {
+  //     value: t("Modern"),
+  //     label: t("Modern"),
+  //     icon: "✨",
+  //     description: t("Clean & contemporary"),
+  //   },
+  //   {
+  //     value: t("Rustic"),
+  //     label: t("Rustic"),
+  //     icon: "🌿",
+  //     description: t("Natural & cozy"),
+  //   },
+  //   {
+  //     value: t("Vintage"),
+  //     label: t("Vintage"),
+  //     icon: "🕯️",
+  //     description: t("Nostalgic & romantic"),
+  //   },
+  // ];
 
-  const chairStyles = [
-    { value: t("Tiffany"), label: t("Tiffany"), icon: "💺" },
-    { value: t("Ghost"), label: t("Ghost"), icon: "👻" },
-    { value: t("Chiavari"), label: t("Chiavari"), icon: "🪑" },
-    { value: t("Cross-back"), label: t("Cross-back"), icon: "❌" },
-    { value: t("Folding"), label: t("Folding"), icon: "📁" },
-  ];
+  // const chairStyles = [
+  //   { value: t("Tiffany"), label: t("Tiffany"), icon: "💺" },
+  //   { value: t("Ghost"), label: t("Ghost"), icon: "👻" },
+  //   { value: t("Chiavari"), label: t("Chiavari"), icon: "🪑" },
+  //   { value: t("Cross-back"), label: t("Cross-back"), icon: "❌" },
+  //   { value: t("Folding"), label: t("Folding"), icon: "📁" },
+  // ];
 
-  const centerpieceStyles = [
-    { value: t("Tall"), label: t("Tall"), icon: "🏗️" },
-    { value: t("Low"), label: t("Low"), icon: "🌱" },
-    { value: t("Candles"), label: t("Candles"), icon: "🕯️" },
-    { value: t("Flowers"), label: t("Flowers"), icon: "🌹" },
-    { value: t("Mixed Height"), label: t("Mixed Height"), icon: "📊" },
-    { value: t("Minimal"), label: t("Minimal"), icon: "⚪" },
-  ];
+  // const centerpieceStyles = [
+  //   { value: t("Tall"), label: t("Tall"), icon: "🏗️" },
+  //   { value: t("Low"), label: t("Low"), icon: "🌱" },
+  //   { value: t("Candles"), label: t("Candles"), icon: "🕯️" },
+  //   { value: t("Flowers"), label: t("Flowers"), icon: "🌹" },
+  //   { value: t("Mixed Height"), label: t("Mixed Height"), icon: "📊" },
+  //   { value: t("Minimal"), label: t("Minimal"), icon: "⚪" },
+  // ];
 
   return (
     <motion.div
