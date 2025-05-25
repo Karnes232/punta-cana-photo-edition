@@ -79,10 +79,6 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
     };
   };
 
-  const getIconColor = (color, isSelected) => {
-    if (!isSelected) return "text-gray-400";
-    return `text-${color}-500`;
-  };
 
   return (
     <motion.div

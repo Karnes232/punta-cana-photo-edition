@@ -105,13 +105,13 @@ const WeddingQuestionnaire = () => {
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
       // Validate personal info section before proceeding
-      // if (currentStep === 0) {
-      //   const { isValid, errors } = validatePersonalInfo(formData);
-      //   if (!isValid) {
-      //     setFormErrors(errors);
-      //     return;
-      //   }
-      // }
+      if (currentStep === 0) {
+        const { isValid, errors } = validatePersonalInfo(formData);
+        if (!isValid) {
+          setFormErrors(errors);
+          return;
+        }
+      }
       setFormErrors({});
       setCurrentStep(currentStep + 1);
     }
