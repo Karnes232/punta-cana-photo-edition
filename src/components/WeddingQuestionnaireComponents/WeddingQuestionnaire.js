@@ -132,7 +132,6 @@ const WeddingQuestionnaire = () => {
     try {
       // Create FormData object for regular form fields
       const formDataObj = new FormData();
-      let imageUrls = [];
 
       // Upload images to Firebase Storage first
       if (formData.inspirationImages?.length) {
@@ -140,10 +139,12 @@ const WeddingQuestionnaire = () => {
           const storageRef = ref(storage, `wedding-questionnaires/${Date.now()}-${img.file.name}`);
           const uploadResult = await uploadBytes(storageRef, img.file);
           const downloadUrl = await getDownloadURL(uploadResult.ref);
+          // Add each URL individually to match the form input names
+          formDataObj.append(`inspirationImages-${index}`, downloadUrl);
           return downloadUrl;
         });
         
-        imageUrls = await Promise.all(promises);
+        await Promise.all(promises);
       }
 
       // Add all regular form fields
@@ -152,9 +153,6 @@ const WeddingQuestionnaire = () => {
           formDataObj.append(key, formData[key]);
         }
       });
-
-      // Add image URLs instead of files
-      formDataObj.append('imageUrls', JSON.stringify(imageUrls));
 
       const response = await fetch("/", {
         method: "POST",
