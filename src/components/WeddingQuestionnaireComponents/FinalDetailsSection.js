@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Camera, FileText, Upload, X, Image, Heart } from "lucide-react";
-
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const FinalDetailsSection = ({ formData, updateFormData }) => {
+  const { t } = useTranslation();
   const fileInputRef = useRef(null);
 
   const handleInputChange = (field, value) => {
@@ -51,9 +52,11 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-pink-100 rounded-full mb-4">
           <Camera className="w-8 h-8 text-pink-500" />
         </div>
-        <h2 className="text-3xl font-bold text-gray-800 mb-2">Final Details</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          <Trans>Final Details</Trans>
+        </h2>
         <p className="text-gray-600">
-          Share your vision and inspiration with us
+          <Trans>Share your vision and inspiration with us</Trans>
         </p>
       </div>
 
@@ -69,7 +72,9 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
           className="flex items-center space-x-2 text-sm font-medium text-gray-700"
         >
           <FileText size={16} />
-          <span>Describe Your Dream Wedding</span>
+          <span>
+            <Trans>Describe Your Dream Wedding</Trans>
+          </span>
         </label>
         <div className="relative">
           <textarea
@@ -83,12 +88,15 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
             placeholder="Tell us about your dream wedding... What atmosphere do you want to create? What moments are most important to you? What would make this day absolutely perfect? Share any special requests, must-haves, or unique ideas you have in mind."
           />
           <div className="absolute bottom-3 right-3 text-xs text-gray-400">
-            {formData.dreamDescription?.length || 0} characters
+            {formData.dreamDescription?.length || 0} <Trans>characters</Trans>
           </div>
         </div>
         <p className="text-xs text-gray-500">
-          💭 Share your vision, special moments, atmosphere, and any unique
-          ideas you have
+          💭{" "}
+          <Trans>
+            Share your vision, special moments, atmosphere, and any unique ideas
+            you have
+          </Trans>
         </p>
       </motion.div>
 
@@ -104,7 +112,9 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
           className="flex items-center space-x-2 text-sm font-medium text-gray-700"
         >
           <Image size={16} />
-          <span>Inspiration Images</span>
+          <span>
+            <Trans>Inspiration Images</Trans>
+          </span>
         </label>
 
         {/* Upload Area */}
@@ -116,13 +126,14 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
         >
           <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
           <h3 className="text-lg font-medium text-gray-700 mb-2">
-            Upload Inspiration Images
+            <Trans>Upload Inspiration Images</Trans>
           </h3>
           <p className="text-sm text-gray-500 mb-4">
-            Share photos that inspire your wedding vision
+            <Trans>Share photos that inspire your wedding vision</Trans>
           </p>
           <div className="text-xs text-gray-400">
-            JPG, PNG, GIF up to 5MB each • Maximum 4 images
+            <Trans>JPG, PNG, GIF up to 5MB each</Trans> •{" "}
+            <Trans>Maximum 4 images</Trans>
           </div>
 
           <input
@@ -145,7 +156,8 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
           >
             <h4 className="text-sm font-medium text-gray-700 flex items-center">
               <Camera size={14} className="mr-2" />
-              Uploaded Images ({formData.inspirationImages.length}/4)
+              <Trans>Uploaded Images</Trans> (
+              {formData.inspirationImages.length}/4)
             </h4>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -193,43 +205,43 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
       >
         <h3 className="font-medium text-gray-800 mb-3 flex items-center">
           <Heart size={16} className="mr-2 text-pink-500" />
-          Image Inspiration Ideas
+          <Trans>Image Inspiration Ideas</Trans>
         </h3>
         <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
           <div className="space-y-2">
             <div className="flex items-center">
               <span className="w-2 h-2 bg-pink-400 rounded-full mr-2"></span>
-              Wedding dress & attire styles
+              <Trans>Wedding dress & attire styles</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-pink-400 rounded-full mr-2"></span>
-              Venue & ceremony setups
+              <Trans>Venue & ceremony setups</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-pink-400 rounded-full mr-2"></span>
-              Floral arrangements & bouquets
+              <Trans>Floral arrangements & bouquets</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-pink-400 rounded-full mr-2"></span>
-              Table settings & centerpieces
+              <Trans>Table settings & centerpieces</Trans>
             </div>
           </div>
           <div className="space-y-2">
             <div className="flex items-center">
               <span className="w-2 h-2 bg-pink-400 rounded-full mr-2"></span>
-              Color palettes & themes
+              <Trans>Color palettes & themes</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-pink-400 rounded-full mr-2"></span>
-              Lighting & ambiance
+              <Trans>Lighting & ambiance</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-pink-400 rounded-full mr-2"></span>
-              Photography styles
+              <Trans>Photography styles</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-pink-400 rounded-full mr-2"></span>
-              Reception & party ideas
+              <Trans>Reception & party ideas</Trans>
             </div>
           </div>
         </div>
@@ -244,15 +256,20 @@ const FinalDetailsSection = ({ formData, updateFormData }) => {
       >
         <h3 className="font-medium text-gray-800 mb-3 flex items-center">
           <Heart size={16} className="mr-2 text-amber-500" />
-          You're Almost Ready! ✨
+          <Trans>You're Almost Ready! ✨</Trans>
         </h3>
         <p className="text-sm text-amber-800 mb-4">
-          Thank you for sharing your vision with us. Once you submit this form,
-          our wedding planning team will review your details and create a
-          personalized proposal just for you.
+          <Trans>
+            Thank you for sharing your vision with us. Once you submit this
+            form, our wedding planning team will review your details and create
+            a personalized proposal just for you.
+          </Trans>
         </p>
         <div className="text-xs text-amber-700">
-          📞 We'll contact you within 24-48 hours to discuss your dream wedding
+          <Trans>
+            📞 We'll contact you within 24-48 hours to discuss your dream
+            wedding
+          </Trans>
         </div>
       </motion.div>
     </motion.div>

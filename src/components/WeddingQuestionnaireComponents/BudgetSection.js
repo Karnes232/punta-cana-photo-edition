@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { DollarSign, TrendingUp, Award, Star } from "lucide-react";
-
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const BudgetSection = ({ formData, updateFormData }) => {
+  const { t } = useTranslation();
   const handleBudgetChange = (value) => {
     updateFormData({ budget: parseInt(value) });
   };
@@ -19,30 +20,30 @@ const BudgetSection = ({ formData, updateFormData }) => {
   const getBudgetTier = (budget) => {
     if (budget >= 35000)
       return {
-        name: "Luxury",
+        name: t("Luxury"),
         icon: Award,
         color: "purple",
-        description: "Premium experience with all amenities",
+        description: t("Premium experience with all amenities"),
       };
     if (budget >= 20000)
       return {
-        name: "Premium",
+        name: t("Premium"),
         icon: Star,
         color: "blue",
-        description: "Enhanced features and services",
+        description: t("Enhanced features and services"),
       };
     if (budget >= 10000)
       return {
-        name: "Standard",
+        name: t("Standard"),
         icon: TrendingUp,
         color: "green",
-        description: "Beautiful celebration with great value",
+        description: t("Beautiful celebration with great value"),
       };
     return {
-      name: "Essential",
+      name: t("Essential"),
       icon: DollarSign,
       color: "yellow",
-      description: "Elegant and affordable options",
+      description: t("Elegant and affordable options"),
     };
   };
 
@@ -54,25 +55,25 @@ const BudgetSection = ({ formData, updateFormData }) => {
       min: 5000,
       max: 10000,
       label: "$5K - $10K",
-      description: "Intimate & Essential",
+      description: t("Intimate & Essential"),
     },
     {
       min: 10000,
       max: 20000,
       label: "$10K - $20K",
-      description: "Standard & Beautiful",
+      description: t("Standard & Beautiful"),
     },
     {
       min: 20000,
       max: 35000,
       label: "$20K - $35K",
-      description: "Premium & Enhanced",
+      description: t("Premium & Enhanced"),
     },
     {
       min: 35000,
       max: 50000,
       label: "$35K+",
-      description: "Luxury & Exclusive",
+      description: t("Luxury & Exclusive"),
     },
   ];
 
@@ -97,10 +98,12 @@ const BudgetSection = ({ formData, updateFormData }) => {
           <DollarSign className="w-8 h-8 text-green-500" />
         </div>
         <h2 className="text-3xl font-bold text-gray-800 mb-2">
-          Investment Range
+          <Trans>Investment Range</Trans>
         </h2>
         <p className="text-gray-600">
-          Help us understand your budget to create the perfect package
+          <Trans>
+            Help us understand your budget to create the perfect package
+          </Trans>
         </p>
       </div>
 
@@ -116,7 +119,7 @@ const BudgetSection = ({ formData, updateFormData }) => {
           {formatCurrency(formData.budget)}
         </h3>
         <div className="text-lg font-medium mb-2">
-          {currentTier.name} Package
+          {currentTier.name} <Trans>Package</Trans>
         </div>
         <p className="text-sm opacity-90">{currentTier.description}</p>
       </motion.div>
@@ -133,7 +136,7 @@ const BudgetSection = ({ formData, updateFormData }) => {
             htmlFor="budget"
             className="text-lg font-medium text-gray-700 mb-4 block"
           >
-            Estimated Budget Range
+            <Trans>Estimated Budget Range</Trans>
           </label>
         </div>
 
@@ -214,35 +217,35 @@ const BudgetSection = ({ formData, updateFormData }) => {
       >
         <h3 className="font-medium text-blue-800 mb-3 flex items-center">
           <TrendingUp size={16} className="mr-2" />
-          What's Included in Your Package
+          <Trans>What's Included in Your Package</Trans>
         </h3>
         <div className="grid md:grid-cols-2 gap-4 text-sm text-blue-700">
           <div className="space-y-2">
             <div className="flex items-center">
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-              Wedding planning & coordination
+              <Trans>Wedding planning & coordination</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-              Venue setup & styling
+              <Trans>Venue setup & styling</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-              Photography services
+              <Trans>Photography services</Trans>
             </div>
           </div>
           <div className="space-y-2">
             <div className="flex items-center">
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-              Floral arrangements
+              <Trans>Floral arrangements</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-              Music & entertainment
+              <Trans>Music & entertainment</Trans>
             </div>
             <div className="flex items-center">
               <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
-              Catering & beverages
+              <Trans>Catering & beverages</Trans>
             </div>
           </div>
         </div>
@@ -256,9 +259,15 @@ const BudgetSection = ({ formData, updateFormData }) => {
         className="text-center p-4 bg-amber-50 rounded-xl border border-amber-200"
       >
         <p className="text-sm text-amber-800">
-          💰 <strong>Note:</strong> This is an estimated range to help us create
-          your perfect package. Final pricing will be customized based on your
-          specific requirements and guest count.
+          💰{" "}
+          <strong>
+            <Trans>Note:</Trans>
+          </strong>{" "}
+          <Trans>
+            This is an estimated range to help us create your perfect package.
+            Final pricing will be customized based on your specific requirements
+            and guest count.
+          </Trans>
         </p>
       </motion.div>
     </motion.div>

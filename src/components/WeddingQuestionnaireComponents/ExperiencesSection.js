@@ -79,7 +79,6 @@ const ExperiencesSection = ({ formData, updateFormData }) => {
     };
   };
 
-
   return (
     <motion.div
       initial={{ opacity: 0 }}

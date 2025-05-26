@@ -20,6 +20,7 @@ import BudgetSection from "./BudgetSection";
 import FinalDetailsSection from "./FinalDetailsSection";
 import WeddingQuestaionnaireForm from "./WeddingQuestaionnaireForm";
 import { validatePersonalInfo } from "../../hooks/WeddingQuestaionnaireValidation";
+import { navigate } from "gatsby";
 const WeddingQuestionnaire = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -148,9 +149,11 @@ const WeddingQuestionnaire = () => {
       });
 
       if (response.ok) {
-        alert(
-          "Thank you! Your wedding questionnaire has been submitted successfully.",
-        );
+        // alert(
+        //   "Thank you! Your wedding questionnaire has been submitted successfully.",
+        // );
+        console.log("Form successfully submitted");
+        navigate(`/contact/thankyou/?name=${formData.fullName1}`);
       } else {
         throw new Error("Form submission failed");
       }
