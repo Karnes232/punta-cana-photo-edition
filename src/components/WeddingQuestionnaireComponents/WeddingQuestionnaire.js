@@ -132,7 +132,7 @@ const WeddingQuestionnaire = () => {
     try {
       // Create FormData object for regular form fields
       const formDataObj = new FormData();
-      const imageUrls = [];
+      let imageUrls = [];
 
       // Upload images to Firebase Storage first
       if (formData.inspirationImages?.length) {
