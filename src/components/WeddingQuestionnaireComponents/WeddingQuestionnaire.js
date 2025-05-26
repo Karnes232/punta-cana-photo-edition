@@ -110,15 +110,23 @@ const WeddingQuestionnaire = () => {
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
       // Validate personal info section before proceeding
-      if (currentStep === 0) {
-        const { isValid, errors } = validatePersonalInfo(formData);
-        if (!isValid) {
-          setFormErrors(errors);
-          return;
-        }
-      }
+      // if (currentStep === 0) {
+      //   const { isValid, errors } = validatePersonalInfo(formData);
+      //   if (!isValid) {
+      //     setFormErrors(errors);
+      //     return;
+      //   }
+      // }
       setFormErrors({});
       setCurrentStep(currentStep + 1);
+      
+      // Scroll to the progress bar section
+      const progressBar = document.querySelector('.progress-section');
+      if (progressBar) {
+        progressBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Add some extra padding from the top of the viewport
+       
+      }
     }
   };
 
@@ -198,7 +206,7 @@ const WeddingQuestionnaire = () => {
         </motion.div>
 
         {/* Progress Bar */}
-        <div className="mb-8">
+        <div className="mb-8 progress-section">
           <div className="flex justify-between items-center mb-4">
             <span className="text-sm font-medium text-gray-600">
               <Trans>Step</Trans> {currentStep + 1} <Trans>of</Trans>{" "}
@@ -251,7 +259,7 @@ const WeddingQuestionnaire = () => {
 
         {/* Form Content */}
         <motion.div
-          className="bg-white rounded-3xl shadow-xl p-8 md:p-12"
+          className="bg-white rounded-3xl shadow-xl p-8 md:p-12 form-content"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
