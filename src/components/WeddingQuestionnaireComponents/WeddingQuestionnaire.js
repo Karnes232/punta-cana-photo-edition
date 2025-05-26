@@ -21,6 +21,10 @@ import FinalDetailsSection from "./FinalDetailsSection";
 import WeddingQuestaionnaireForm from "./WeddingQuestaionnaireForm";
 import { validatePersonalInfo } from "../../hooks/WeddingQuestaionnaireValidation";
 import { navigate } from "gatsby";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../../config/firebase";
+
+
 const WeddingQuestionnaire = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -126,8 +130,21 @@ const WeddingQuestionnaire = () => {
 
   const handleSubmit = async () => {
     try {
-      // Create FormData object
+      // Create FormData object for regular form fields
       const formDataObj = new FormData();
+      const imageUrls = [];
+
+      // Upload images to Firebase Storage first
+      if (formData.inspirationImages?.length) {
+        const promises = formData.inspirationImages.map(async (img, index) => {
+          const storageRef = ref(storage, `wedding-questionnaires/${Date.now()}-${img.file.name}`);
+          const uploadResult = await uploadBytes(storageRef, img.file);
+          const downloadUrl = await getDownloadURL(uploadResult.ref);
+          return downloadUrl;
+        });
+        
+        imageUrls = await Promise.all(promises);
+      }
 
       // Add all regular form fields
       Object.keys(formData).forEach((key) => {
@@ -136,12 +153,8 @@ const WeddingQuestionnaire = () => {
         }
       });
 
-      // Add each image file
-      if (formData.inspirationImages?.length) {
-        formData.inspirationImages.forEach((img, index) => {
-          formDataObj.append(`inspirationImages-${index}`, img.file);
-        });
-      }
+      // Add image URLs instead of files
+      formDataObj.append('imageUrls', JSON.stringify(imageUrls));
 
       const response = await fetch("/", {
         method: "POST",
@@ -149,9 +162,6 @@ const WeddingQuestionnaire = () => {
       });
 
       if (response.ok) {
-        // alert(
-        //   "Thank you! Your wedding questionnaire has been submitted successfully.",
-        // );
         console.log("Form successfully submitted");
         navigate(`/contact/thankyou/?name=${formData.fullName1}`);
       } else {
