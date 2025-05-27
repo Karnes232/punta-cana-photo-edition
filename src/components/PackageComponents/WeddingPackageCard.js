@@ -2,8 +2,28 @@ import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import TextComponent from "../TextComponent/TextComponent";
 import { motion } from "framer-motion";
-const WeddingPackageCard = ({ weddingPackage }) => {
+
+const WeddingPackageCard = ({ weddingPackage, onPackageSelect }) => {
   const image = getImage(weddingPackage.image.gatsbyImage);
+
+  const handlePackageSelect = () => {
+    // Create the form data based on the package
+    const formData = {
+      weddingStyles: [weddingPackage.weddingStyle.title],
+      chairStyle: [weddingPackage.chairs.title],
+      centerpieceStyle: [weddingPackage.centerpieceStyle.title],
+    };
+
+    // Call the parent handler with the selected package data
+    onPackageSelect(formData);
+
+    // Scroll to questionnaire
+    document.getElementById("wedding-questionnaire")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <>
       <div className="flex flex-col justify-center items-center overflow-hidden shadow-lg group w-11/12 md:w-[20rem] lg:w-[25rem]">
@@ -47,6 +67,15 @@ const WeddingPackageCard = ({ weddingPackage }) => {
                 className="my-5"
               >
                 <ul className="flex flex-col justify-center items-center gap-2">
+                  <li className="list-disc text-sm capitalize">
+                    {weddingPackage.weddingStyle.description}
+                  </li>
+                  <li className="list-disc text-sm capitalize">
+                    {weddingPackage.chairs.title}
+                  </li>
+                  <li className="list-disc text-sm capitalize">
+                    {weddingPackage.centerpieceStyle.description}
+                  </li>
                   {weddingPackage.included.map((item, index) => {
                     return (
                       <li key={index} className="list-disc text-sm capitalize">
@@ -61,7 +90,10 @@ const WeddingPackageCard = ({ weddingPackage }) => {
             <></>
           )}
           {weddingPackage.callToActionButton && (
-            <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-4 py-2 rounded-md w-3/4">
+            <button
+              onClick={handlePackageSelect}
+              className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-4 py-2 rounded-md w-3/4"
+            >
               {weddingPackage.callToActionButton}
             </button>
           )}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Trans } from "gatsby-plugin-react-i18next";
 import {
@@ -24,7 +24,7 @@ import { navigate } from "gatsby";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../config/firebase";
 
-const WeddingQuestionnaire = () => {
+const WeddingQuestionnaire = ({ initialFormData }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
     "form-name": "weddingQuestionnaireForm",
@@ -62,6 +62,18 @@ const WeddingQuestionnaire = () => {
 
   // Add new state for form errors
   const [formErrors, setFormErrors] = useState({});
+
+  // Update form when package is selected
+  useEffect(() => {
+    if (initialFormData) {
+      setFormData((prev) => ({
+        ...prev,
+        ...initialFormData,
+      }));
+      // Set to Style & Aesthetic section (index 2)
+      setCurrentStep(2);
+    }
+  }, [initialFormData]);
 
   const steps = [
     {
@@ -104,6 +116,20 @@ const WeddingQuestionnaire = () => {
 
   const updateFormData = (updates) => {
     setFormData((prev) => ({ ...prev, ...updates }));
+  };
+
+  const handleStepClick = (index) => {
+    // Only validate when trying to move forward from personal info section
+    if (currentStep === 0 && index > currentStep) {
+      const { isValid, errors } = validatePersonalInfo(formData);
+      if (!isValid) {
+        setFormErrors(errors);
+        return;
+      }
+    }
+    // Clear errors and set new step
+    setFormErrors({});
+    setCurrentStep(index);
   };
 
   const nextStep = () => {
@@ -186,7 +212,7 @@ const WeddingQuestionnaire = () => {
   const progress = ((currentStep + 1) / steps.length) * 100;
 
   return (
-    <div className="min-h-screen  py-12 px-4">
+    <div id="wedding-questionnaire" className="min-h-screen py-12 px-4">
       <WeddingQuestaionnaireForm formData={formData} />
       <div className="max-w-5xl mx-auto">
         {/* Header */}
@@ -239,7 +265,7 @@ const WeddingQuestionnaire = () => {
               return (
                 <motion.button
                   key={step.id}
-                  onClick={() => setCurrentStep(index)}
+                  onClick={() => handleStepClick(index)}
                   className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                     isActive
                       ? "bg-yellow-100 text-yellow-800 border-2 border-yellow-300"

@@ -15,7 +15,7 @@ import "swiper/css/pagination";
 const StyleAestheticSection = ({ formData, updateFormData }) => {
   const { t } = useTranslation();
   const { language } = useI18next();
-  
+
   const weddingStylesData = useStaticQuery(graphql`
     query StyleAestheticQuery {
       weddingStyles: allContentfulWeddingQuestionnaireSelections(
@@ -94,8 +94,6 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
     icon: style.iconEmoji,
   }));
 
-
-
   const handleInputChange = (field, value) => {
     updateFormData({ [field]: value });
   };
@@ -127,7 +125,6 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
       <ChevronRight size={20} className="text-gray-600" />
     </button>
   );
-
 
   return (
     <motion.div
@@ -229,7 +226,7 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         >
           <Trans>Preferred Chair Style</Trans>
         </label>
-        
+
         <div className="relative pb-10">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
@@ -244,13 +241,13 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
               },
             }}
             navigation={{
-              prevEl: '.swiper-button-prev-custom',
-              nextEl: '.swiper-button-next-custom',
+              prevEl: ".swiper-button-prev-custom",
+              nextEl: ".swiper-button-next-custom",
             }}
             pagination={{
               clickable: true,
               dynamicBullets: true,
-              el: '.swiper-pagination-custom',
+              el: ".swiper-pagination-custom",
             }}
             autoplay={{
               delay: 4000,
@@ -292,12 +289,14 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
                       })()}
                     </div>
                   )}
-                  
+
                   {/* Chair Info Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-4">
                     <div className="flex items-center space-x-2">
                       <div className="flex-1">
-                        <h3 className="font-medium text-center text-gray-800">{chair.label}</h3>
+                        <h3 className="font-medium text-center text-gray-800">
+                          {chair.label}
+                        </h3>
                       </div>
                     </div>
                   </div>

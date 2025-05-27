@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import { useI18next } from "gatsby-plugin-react-i18next";
@@ -11,6 +11,11 @@ import WeddingQuestionnaire from "../../components/WeddingQuestionnaireComponent
 
 const Index = ({ data }) => {
   const { useVideo } = data.allContentfulPageContent.nodes[0];
+  const [selectedPackageData, setSelectedPackageData] = useState(null);
+
+  const handlePackageSelect = (formData) => {
+    setSelectedPackageData(formData);
+  };
 
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
@@ -32,12 +37,16 @@ const Index = ({ data }) => {
       <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-center md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto gap-8 mb-5">
         {data.allContentfulPackages.nodes.map((weddingPackage, index) => {
           return (
-            <WeddingPackageCard weddingPackage={weddingPackage} key={index} />
+            <WeddingPackageCard
+              weddingPackage={weddingPackage}
+              key={index}
+              onPackageSelect={handlePackageSelect}
+            />
           );
         })}
       </div>
       <hr className="my-10" />
-      <WeddingQuestionnaire />
+      <WeddingQuestionnaire initialFormData={selectedPackageData} />
     </Layout>
   );
 };
@@ -161,6 +170,17 @@ export const query = graphql`
         paragraph
         included
         callToActionButton
+        weddingStyle {
+          description
+          title
+        }
+        chairs {
+          title
+        }
+        centerpieceStyle {
+          description
+          title
+        }
       }
     }
   }
