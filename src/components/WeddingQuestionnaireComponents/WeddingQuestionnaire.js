@@ -71,7 +71,7 @@ const WeddingQuestionnaire = ({ initialFormData }) => {
         ...initialFormData,
       }));
       // Set to Style & Aesthetic section (index 2)
-      setCurrentStep(2);
+      setCurrentStep(0);
     }
   }, [initialFormData]);
 
