@@ -24,7 +24,6 @@ import { navigate } from "gatsby";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../config/firebase";
 
-
 const WeddingQuestionnaire = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -119,13 +118,12 @@ const WeddingQuestionnaire = () => {
       }
       setFormErrors({});
       setCurrentStep(currentStep + 1);
-      
+
       // Scroll to the progress bar section
-      const progressBar = document.querySelector('.progress-section');
+      const progressBar = document.querySelector(".progress-section");
       if (progressBar) {
-        progressBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        progressBar.scrollIntoView({ behavior: "smooth", block: "start" });
         // Add some extra padding from the top of the viewport
-       
       }
     }
   };
@@ -144,14 +142,17 @@ const WeddingQuestionnaire = () => {
       // Upload images to Firebase Storage first
       if (formData.inspirationImages?.length) {
         const promises = formData.inspirationImages.map(async (img, index) => {
-          const storageRef = ref(storage, `wedding-questionnaires/${Date.now()}-${img.file.name}`);
+          const storageRef = ref(
+            storage,
+            `wedding-questionnaires/${Date.now()}-${img.file.name}`,
+          );
           const uploadResult = await uploadBytes(storageRef, img.file);
           const downloadUrl = await getDownloadURL(uploadResult.ref);
           // Add each URL individually to match the form input names
           formDataObj.append(`inspirationImages-${index}`, downloadUrl);
           return downloadUrl;
         });
-        
+
         await Promise.all(promises);
       }
 

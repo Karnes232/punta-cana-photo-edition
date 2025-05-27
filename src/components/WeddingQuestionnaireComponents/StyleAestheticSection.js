@@ -1,11 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Palette, Sparkles } from "lucide-react";
+import { Palette, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { Trans, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 import { graphql, useStaticQuery } from "gatsby";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 const StyleAestheticSection = ({ formData, updateFormData }) => {
   const { t } = useTranslation();
   const { language } = useI18next();
+  
   const weddingStylesData = useStaticQuery(graphql`
     query StyleAestheticQuery {
       weddingStyles: allContentfulWeddingQuestionnaireSelections(
@@ -29,6 +39,13 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
           title
           color
           iconEmoji
+          chairs {
+            rentalItem
+            images {
+              gatsbyImage(width: 500, formats: WEBP, placeholder: BLURRED)
+              title
+            }
+          }
         }
       }
       centerpieceStyles: allContentfulWeddingQuestionnaireSelections(
@@ -44,6 +61,7 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
       }
     }
   `);
+
   const weddingStyles2 = weddingStylesData.weddingStyles.nodes.filter(
     (node) => node.node_locale === language,
   );
@@ -63,6 +81,7 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
     value: style.title,
     label: style.title,
     icon: style.iconEmoji,
+    chairs: style.chairs,
   }));
 
   const centerpieceStyles2 = weddingStylesData.centerpieceStyles.nodes.filter(
@@ -74,6 +93,8 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
     label: style.title,
     icon: style.iconEmoji,
   }));
+
+
 
   const handleInputChange = (field, value) => {
     updateFormData({ [field]: value });
@@ -88,61 +109,25 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
     updateFormData({ [field]: newArray });
   };
 
-  // const weddingStyles = [
-  //   {
-  //     value: t("Boho"),
-  //     label: t("Boho"),
-  //     icon: "🌸",
-  //     description: t("Free-spirited & natural"),
-  //   },
-  //   {
-  //     value: t("Tropical"),
-  //     label: t("Tropical"),
-  //     icon: "🌺",
-  //     description: t("Vibrant & exotic"),
-  //   },
-  //   {
-  //     value: t("Classic"),
-  //     label: t("Classic"),
-  //     icon: "💎",
-  //     description: t("Timeless & elegant"),
-  //   },
-  //   {
-  //     value: t("Modern"),
-  //     label: t("Modern"),
-  //     icon: "✨",
-  //     description: t("Clean & contemporary"),
-  //   },
-  //   {
-  //     value: t("Rustic"),
-  //     label: t("Rustic"),
-  //     icon: "🌿",
-  //     description: t("Natural & cozy"),
-  //   },
-  //   {
-  //     value: t("Vintage"),
-  //     label: t("Vintage"),
-  //     icon: "🕯️",
-  //     description: t("Nostalgic & romantic"),
-  //   },
-  // ];
+  // Custom navigation components for Swiper
+  const CustomPrevButton = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+    >
+      <ChevronLeft size={20} className="text-gray-600" />
+    </button>
+  );
 
-  // const chairStyles = [
-  //   { value: t("Tiffany"), label: t("Tiffany"), icon: "💺" },
-  //   { value: t("Ghost"), label: t("Ghost"), icon: "👻" },
-  //   { value: t("Chiavari"), label: t("Chiavari"), icon: "🪑" },
-  //   { value: t("Cross-back"), label: t("Cross-back"), icon: "❌" },
-  //   { value: t("Folding"), label: t("Folding"), icon: "📁" },
-  // ];
+  const CustomNextButton = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+    >
+      <ChevronRight size={20} className="text-gray-600" />
+    </button>
+  );
 
-  // const centerpieceStyles = [
-  //   { value: t("Tall"), label: t("Tall"), icon: "🏗️" },
-  //   { value: t("Low"), label: t("Low"), icon: "🌱" },
-  //   { value: t("Candles"), label: t("Candles"), icon: "🕯️" },
-  //   { value: t("Flowers"), label: t("Flowers"), icon: "🌹" },
-  //   { value: t("Mixed Height"), label: t("Mixed Height"), icon: "📊" },
-  //   { value: t("Minimal"), label: t("Minimal"), icon: "⚪" },
-  // ];
 
   return (
     <motion.div
@@ -231,7 +216,7 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         />
       </motion.div>
 
-      {/* Chair Styles */}
+      {/* Chair Styles Slideshow */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -244,25 +229,100 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
         >
           <Trans>Preferred Chair Style</Trans>
         </label>
-        <div id="chairStyles" className="grid md:grid-cols-5 gap-3">
-          {chairStyles.map((chair) => (
-            <motion.button
-              key={chair.value}
-              onClick={() => handleArrayToggle("chairStyle", chair.value)}
-              className={`p-3 rounded-xl border-2 transition-all text-center ${
-                formData.chairStyle?.includes(chair.value)
-                  ? "border-yellow-400 bg-yellow-50"
-                  : "border-gray-200 hover:border-gray-300"
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="text-2xl block mb-1">{chair.icon}</span>
-              <span className="text-sm font-medium text-gray-800">
-                {chair.label}
-              </span>
-            </motion.button>
-          ))}
+        
+        <div className="relative pb-10">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            navigation={{
+              prevEl: '.swiper-button-prev-custom',
+              nextEl: '.swiper-button-next-custom',
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+              el: '.swiper-pagination-custom',
+            }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            className="chair-styles-swiper"
+          >
+            {chairStyles.map((chair) => (
+              <SwiperSlide key={chair.value}>
+                <motion.div
+                  className={`relative rounded-xl border-2 transition-all overflow-hidden cursor-pointer ${
+                    formData.chairStyle?.includes(chair.value)
+                      ? "border-yellow-400 bg-yellow-50"
+                      : "border-gray-200 hover:border-gray-300"
+                  }`}
+                  onClick={() => handleArrayToggle("chairStyle", chair.value)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Chair Image */}
+                  {chair.chairs?.images && chair.chairs.images.length > 0 && (
+                    <div className="relative h-96">
+                      {(() => {
+                        const firstImage = chair.chairs.images[0];
+                        const chairImage = getImage(firstImage.gatsbyImage);
+                        return (
+                          <div className="relative h-full">
+                            {chairImage && (
+                              <GatsbyImage
+                                image={chairImage}
+                                alt={firstImage.title || chair.label}
+                                className="h-full w-full object-cover object-bottom"
+                              />
+                            )}
+                            {/* Gradient overlay for better text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  )}
+                  
+                  {/* Chair Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-4">
+                    <div className="flex items-center space-x-2">
+                      <div className="flex-1">
+                        <h3 className="font-medium text-center text-gray-800">{chair.label}</h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Selection Indicator */}
+                  {formData.chairStyle?.includes(chair.value) && (
+                    <div className="absolute top-2 right-2 bg-yellow-400 text-white rounded-full p-1">
+                      <Sparkles size={16} />
+                    </div>
+                  )}
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation Buttons */}
+          <div className="swiper-button-prev-custom">
+            <CustomPrevButton />
+          </div>
+          <div className="swiper-button-next-custom">
+            <CustomNextButton />
+          </div>
+
+          {/* Add custom pagination container */}
+          <div className="swiper-pagination-custom absolute bottom-0 w-full"></div>
         </div>
       </motion.div>
 
