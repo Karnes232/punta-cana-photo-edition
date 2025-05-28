@@ -34,7 +34,7 @@ const Footer = ({ generalInfo }) => {
           <Sitemap />
         </div>
       </div>
-      <div className="flex flex-col md:flex-row justify-between space-y-10 md:space-y-0 md:mt-5">
+      <div className="flex flex-col md:flex-row justify-between space-y-10 md:space-y-0 md:mt-5 md:max-w-6xl md:mx-auto md:gap-20">
         <LanguageSwitcher currentLanguage={language} />
         <SocialMedia generalInfo={generalInfo} />
       </div>

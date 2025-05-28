@@ -9,6 +9,7 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 
 const SocialMedia = ({ generalInfo }) => {
+
   return (
     <div className="flex flex-row space-x-5 py-4 text-slate-400">
       {generalInfo.facebook && (
@@ -18,12 +19,12 @@ const SocialMedia = ({ generalInfo }) => {
           aria-label="Facebook"
           rel="noreferrer"
         >
-          <FaFacebookF className="text-xl md:text-3xl" />
+          <FaFacebookF className="text-xl md:text-3xl"/>
         </a>
       )}
       {generalInfo.x && (
         <a href={generalInfo.x} target="_blank" aria-label="X" rel="noreferrer">
-          <FaXTwitter className="text-xl md:text-3xl" />
+          <FaXTwitter className="text-xl md:text-3xl"/>
         </a>
       )}
       {generalInfo.instagram && (
@@ -33,7 +34,7 @@ const SocialMedia = ({ generalInfo }) => {
           aria-label="Instagram"
           rel="noreferrer"
         >
-          <FaInstagram className="text-xl md:text-3xl" />
+          <FaInstagram className="text-xl md:text-3xl"/>
         </a>
       )}
       {generalInfo.telephone && (
@@ -43,7 +44,7 @@ const SocialMedia = ({ generalInfo }) => {
           aria-label="Call us"
           rel="noreferrer"
         >
-          <FaPhone className="text-xl md:text-3xl" />
+          <FaPhone className="text-xl md:text-3xl"/>
         </a>
       )}
       {generalInfo.telephone && (
@@ -53,17 +54,17 @@ const SocialMedia = ({ generalInfo }) => {
           aria-label="WhatsApp"
           rel="noreferrer"
         >
-          <FaWhatsapp className="text-xl md:text-3xl" />
+          <FaWhatsapp className="text-xl md:text-3xl"/>
         </a>
       )}
       {generalInfo.messengerLink && (
         <a
-          href={`https://m.me/${generalInfo.messengerLink}`}
+          href={`${generalInfo.messengerLink}`}
           target="_blank"
           aria-label="Messenger"
           rel="noreferrer"
         >
-          <FaFacebookMessenger className="text-xl md:text-3xl" />
+          <FaFacebookMessenger className="text-xl md:text-3xl"/>
         </a>
       )}
     </div>
