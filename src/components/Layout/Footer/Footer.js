@@ -30,9 +30,11 @@ const Footer = ({ generalInfo }) => {
         <div className="md:hidden">
           <SideBarInside footer={true} />
         </div>
-        <div className="hidden md:flex md:justify-center md:items-center mt-0">
+        <div className="hidden md:flex md:w-full md:gap-5 md:justify-center md:items-center mt-0">
           <Sitemap />
         </div>
+      </div>
+      <div className="flex flex-col md:flex-row justify-between space-y-10 md:space-y-0 md:mt-5">
         <LanguageSwitcher currentLanguage={language} />
         <SocialMedia generalInfo={generalInfo} />
       </div>

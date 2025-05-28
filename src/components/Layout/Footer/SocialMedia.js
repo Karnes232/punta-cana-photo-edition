@@ -9,7 +9,6 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 
 const SocialMedia = ({ generalInfo }) => {
-
   return (
     <div className="flex flex-row space-x-5 py-4 text-slate-400">
       {generalInfo.facebook && (
@@ -19,12 +18,12 @@ const SocialMedia = ({ generalInfo }) => {
           aria-label="Facebook"
           rel="noreferrer"
         >
-          <FaFacebookF />
+          <FaFacebookF className="text-xl md:text-3xl" />
         </a>
       )}
       {generalInfo.x && (
         <a href={generalInfo.x} target="_blank" aria-label="X" rel="noreferrer">
-          <FaXTwitter />
+          <FaXTwitter className="text-xl md:text-3xl" />
         </a>
       )}
       {generalInfo.instagram && (
@@ -34,7 +33,7 @@ const SocialMedia = ({ generalInfo }) => {
           aria-label="Instagram"
           rel="noreferrer"
         >
-          <FaInstagram />
+          <FaInstagram className="text-xl md:text-3xl" />
         </a>
       )}
       {generalInfo.telephone && (
@@ -44,7 +43,7 @@ const SocialMedia = ({ generalInfo }) => {
           aria-label="Call us"
           rel="noreferrer"
         >
-          <FaPhone />
+          <FaPhone className="text-xl md:text-3xl" />
         </a>
       )}
       {generalInfo.telephone && (
@@ -54,7 +53,7 @@ const SocialMedia = ({ generalInfo }) => {
           aria-label="WhatsApp"
           rel="noreferrer"
         >
-          <FaWhatsapp />
+          <FaWhatsapp className="text-xl md:text-3xl" />
         </a>
       )}
       {generalInfo.messengerLink && (
@@ -64,7 +63,7 @@ const SocialMedia = ({ generalInfo }) => {
           aria-label="Messenger"
           rel="noreferrer"
         >
-          <FaFacebookMessenger />
+          <FaFacebookMessenger className="text-xl md:text-3xl" />
         </a>
       )}
     </div>
