@@ -8,10 +8,8 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-const SocialMedia = ({ generalInfo, telephone, messengerLink }) => {
-  console.log(generalInfo);
-  console.log(telephone);
-  console.log(messengerLink);
+const SocialMedia = ({ generalInfo }) => {
+
   return (
     <div className="flex flex-row space-x-5 py-4 text-slate-400">
       {generalInfo.facebook && (
@@ -61,7 +59,7 @@ const SocialMedia = ({ generalInfo, telephone, messengerLink }) => {
       )}
       {generalInfo.messengerLink && (
         <a
-          href={`https://m.me/${messengerLink}`}
+          href={`https://m.me/${generalInfo.messengerLink}`}
           target="_blank"
           aria-label="Messenger"
           rel="noreferrer"
