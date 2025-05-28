@@ -20,7 +20,7 @@ const ExpandableMessengerButton = ({ messengerLink, telephone }) => {
         } mb-3`}
       >
         <a
-          href={telephone}
+          href={`https://api.whatsapp.com/send?phone=${telephone}`}
           aria-label="WhatsApp"
           rel="noreferrer"
           target="_blank"
