@@ -101,6 +101,7 @@ export const query = graphql`
         instagram
         x
         telephone
+        messengerLink
         rnc
         email
         address

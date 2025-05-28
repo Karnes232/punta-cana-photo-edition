@@ -121,6 +121,7 @@ export const query = graphql`
         yearsInBusiness
         eventsPlanned
         clientSatisfaction
+        messengerLink
       }
     }
     allContentfulSeo(

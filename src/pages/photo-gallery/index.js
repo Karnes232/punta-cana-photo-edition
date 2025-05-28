@@ -117,12 +117,7 @@ export const query = graphql`
         instagram
         x
         telephone
-        # heroImageList {
-        #   gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-        #   title
-        # }
-        # fullSize
-        # heroHeading
+        messengerLink
       }
     }
     allContentfulPreviousWorkPhotoGallery {

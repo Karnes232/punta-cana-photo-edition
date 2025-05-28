@@ -72,6 +72,7 @@ export const query = graphql`
         instagram
         x
         telephone
+        messengerLink
       }
     }
     allContentfulSeo(filter: { page: { eq: "Videos and Comercial Photos" } }) {

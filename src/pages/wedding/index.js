@@ -107,6 +107,7 @@ export const query = graphql`
         instagram
         x
         telephone
+        messengerLink
       }
     }
     allContentfulSeo(

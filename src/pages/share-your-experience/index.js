@@ -66,6 +66,7 @@ export const query = graphql`
         instagram
         x
         telephone
+        messengerLink
         heroImageList {
           gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
           title

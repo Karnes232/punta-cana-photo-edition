@@ -115,6 +115,7 @@ export const query = graphql`
         facebook
         email
         instagram
+        messengerLink
         x
         telephone
         heroImageList {
