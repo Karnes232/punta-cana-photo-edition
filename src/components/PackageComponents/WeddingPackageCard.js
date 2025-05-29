@@ -12,6 +12,7 @@ const WeddingPackageCard = ({ weddingPackage, onPackageSelect }) => {
       weddingStyles: [weddingPackage.weddingStyle.title],
       chairStyle: [weddingPackage.chairs.title],
       centerpieceStyle: [weddingPackage.centerpieceStyle.title],
+      tableStyle: [weddingPackage.tableStyle.title],
     };
 
     // Call the parent handler with the selected package data
@@ -45,7 +46,7 @@ const WeddingPackageCard = ({ weddingPackage, onPackageSelect }) => {
           />
 
           {weddingPackage.paragraph && (
-            <div className="h-[9rem] lg:h-[10rem] overflow-hidden">
+            <div className="h-[7.5rem] md:h-[9rem] lg:h-[10rem] overflow-hidden mt-2">
               <TextComponent
                 paragraph={weddingPackage.paragraph}
                 pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5 line-clamp-5"
@@ -72,6 +73,9 @@ const WeddingPackageCard = ({ weddingPackage, onPackageSelect }) => {
                   </li>
                   <li className="list-disc text-sm capitalize">
                     {weddingPackage.chairs.title}
+                  </li>
+                  <li className="list-disc text-sm capitalize">
+                    {weddingPackage.tableStyle.title}
                   </li>
                   <li className="list-disc text-sm capitalize">
                     {weddingPackage.centerpieceStyle.description}

@@ -38,7 +38,6 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
           step
           title
           color
-          iconEmoji
           chairs {
             rentalItem
             images {
@@ -57,6 +56,23 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
           title
           color
           iconEmoji
+        }
+      }
+      tableStyles: allContentfulWeddingQuestionnaireSelections(
+        filter: { step: { eq: "Table Style" } }
+      ) {
+        nodes {
+          node_locale
+          step
+          title
+          color
+          table {
+            rentalItem
+            images {
+              gatsbyImage(width: 500, formats: WEBP, placeholder: BLURRED)
+              title
+            }
+          }
         }
       }
     }
@@ -80,7 +96,6 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
   const chairStyles = chairStyles2.map((style) => ({
     value: style.title,
     label: style.title,
-    icon: style.iconEmoji,
     chairs: style.chairs,
   }));
 
@@ -92,6 +107,16 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
     value: style.title,
     label: style.title,
     icon: style.iconEmoji,
+  }));
+
+  const tableStyles2 = weddingStylesData.tableStyles.nodes.filter(
+    (node) => node.node_locale === language,
+  );
+
+  const tableStyles = tableStyles2.map((style) => ({
+    value: style.title,
+    label: style.title,
+    table: style.table,
   }));
 
   const handleInputChange = (field, value) => {
@@ -108,19 +133,19 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
   };
 
   // Custom navigation components for Swiper
-  const CustomPrevButton = ({ onClick }) => (
+  const CustomPrevButton = ({ onClick, className }) => (
     <button
       onClick={onClick}
-      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+      className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 ${className}`}
     >
       <ChevronLeft size={20} className="text-gray-600" />
     </button>
   );
 
-  const CustomNextButton = ({ onClick }) => (
+  const CustomNextButton = ({ onClick, className }) => (
     <button
       onClick={onClick}
-      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+      className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 ${className}`}
     >
       <ChevronRight size={20} className="text-gray-600" />
     </button>
@@ -241,13 +266,13 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
               },
             }}
             navigation={{
-              prevEl: ".swiper-button-prev-custom",
-              nextEl: ".swiper-button-next-custom",
+              prevEl: ".swiper-button-prev-chairs",
+              nextEl: ".swiper-button-next-chairs",
             }}
             pagination={{
               clickable: true,
               dynamicBullets: true,
-              el: ".swiper-pagination-custom",
+              el: ".swiper-pagination-chairs",
             }}
             autoplay={{
               delay: 4000,
@@ -312,16 +337,128 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
             ))}
           </Swiper>
 
-          {/* Custom Navigation Buttons */}
-          <div className="swiper-button-prev-custom">
+          {/* Custom Navigation Buttons for Chairs */}
+          <div className="swiper-button-prev-chairs">
             <CustomPrevButton />
           </div>
-          <div className="swiper-button-next-custom">
+          <div className="swiper-button-next-chairs">
             <CustomNextButton />
           </div>
 
-          {/* Add custom pagination container */}
-          <div className="swiper-pagination-custom absolute bottom-0 w-full"></div>
+          {/* Custom pagination container for chairs */}
+          <div className="swiper-pagination-chairs absolute bottom-0 w-full"></div>
+        </div>
+      </motion.div>
+
+      {/* Table Styles Slideshow */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="space-y-4"
+      >
+        <label
+          htmlFor="tableStyles"
+          className="text-sm font-medium text-gray-700"
+        >
+          <Trans>Preferred Table Style</Trans>
+        </label>
+
+        <div className="relative pb-10">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            navigation={{
+              prevEl: ".swiper-button-prev-tables",
+              nextEl: ".swiper-button-next-tables",
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+              el: ".swiper-pagination-tables",
+            }}
+            autoplay={{
+              delay: 4500,
+              disableOnInteraction: false,
+            }}
+            className="table-styles-swiper"
+          >
+            {tableStyles.map((table) => (
+              <SwiperSlide key={table.value}>
+                <motion.div
+                  className={`relative rounded-xl border-2 transition-all overflow-hidden cursor-pointer ${
+                    formData.tableStyle?.includes(table.value)
+                      ? "border-yellow-400 bg-yellow-50"
+                      : "border-gray-200 hover:border-gray-300"
+                  }`}
+                  onClick={() => handleArrayToggle("tableStyle", table.value)}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Table Image */}
+                  {table.table?.images && table.table.images.length > 0 && (
+                    <div className="relative h-80">
+                      {(() => {
+                        const firstImage = table.table.images[0];
+                        const tableImage = getImage(firstImage.gatsbyImage);
+                        return (
+                          <div className="relative h-full">
+                            {tableImage && (
+                              <GatsbyImage
+                                image={tableImage}
+                                alt={firstImage.title || table.label}
+                                className="h-full w-full object-cover object-center"
+                              />
+                            )}
+                            {/* Gradient overlay for better text readability */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  )}
+
+                  {/* Table Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-4">
+                    <div className="flex items-center space-x-2">
+                      <div className="flex-1">
+                        <h3 className="font-medium text-center text-gray-800">
+                          {table.label}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Selection Indicator */}
+                  {formData.tableStyle?.includes(table.value) && (
+                    <div className="absolute top-2 right-2 bg-yellow-400 text-white rounded-full p-1">
+                      <Sparkles size={16} />
+                    </div>
+                  )}
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation Buttons for Tables */}
+          <div className="swiper-button-prev-tables">
+            <CustomPrevButton />
+          </div>
+          <div className="swiper-button-next-tables">
+            <CustomNextButton />
+          </div>
+
+          {/* Custom pagination container for tables */}
+          <div className="swiper-pagination-tables absolute bottom-0 w-full"></div>
         </div>
       </motion.div>
 
@@ -329,7 +466,7 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
+        transition={{ delay: 0.5 }}
         className="space-y-4"
       >
         <label
@@ -366,7 +503,7 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 0.6 }}
         className="bg-gradient-to-r from-rose-50 to-amber-50 p-6 rounded-xl border border-rose-200"
       >
         <h3 className="font-medium text-gray-800 mb-3 flex items-center">
@@ -396,6 +533,14 @@ const StyleAestheticSection = ({ formData, updateFormData }) => {
                 <Trans>Chairs:</Trans>
               </strong>{" "}
               {formData.chairStyle.join(", ")}
+            </p>
+          )}
+          {formData.tableStyle?.length > 0 && (
+            <p>
+              <strong>
+                <Trans>Tables:</Trans>
+              </strong>{" "}
+              {formData.tableStyle.join(", ")}
             </p>
           )}
           {formData.centerpieceStyle?.length > 0 && (

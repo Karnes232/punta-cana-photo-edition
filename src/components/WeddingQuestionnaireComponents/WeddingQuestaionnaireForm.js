@@ -82,6 +82,11 @@ const WeddingQuestaionnaireForm = ({ formData }) => {
           />
           <input
             type="text"
+            name="tableStyle"
+            defaultValue={formData.tableStyle}
+          />
+          <input
+            type="text"
             name="centerpieceStyle"
             defaultValue={formData.centerpieceStyle}
           />

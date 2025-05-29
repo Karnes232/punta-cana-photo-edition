@@ -1,34 +1,34 @@
-export const validatePersonalInfo = (formData) => {
+export const validatePersonalInfo = (formData, translations) => {
   const errors = {};
 
   // Full Name 1 validation
   if (!formData.fullName1?.trim()) {
-    errors.fullName1 = "First partner's name is required";
+    errors.fullName1 = translations.fullName1Required;
   } else if (formData.fullName1.length < 2) {
-    errors.fullName1 = "Name must be at least 2 characters long";
+    errors.fullName1 = translations.nameMinLength;
   }
 
   // Full Name 2 validation
   if (!formData.fullName2?.trim()) {
-    errors.fullName2 = "Second partner's name is required";
+    errors.fullName2 = translations.fullName2Required;
   } else if (formData.fullName2.length < 2) {
-    errors.fullName2 = "Name must be at least 2 characters long";
+    errors.fullName2 = translations.nameMinLength;
   }
 
   // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!formData.email?.trim()) {
-    errors.email = "Email is required";
+    errors.email = translations.emailRequired;
   } else if (!emailRegex.test(formData.email)) {
-    errors.email = "Please enter a valid email address";
+    errors.email = translations.emailInvalid;
   }
 
   // Phone validation
   const phoneRegex = /^\+?[\d\s-()]{10,}$/;
   if (!formData.phone?.trim()) {
-    errors.phone = "Phone number is required";
+    errors.phone = translations.phoneRequired;
   } else if (!phoneRegex.test(formData.phone)) {
-    errors.phone = "Please enter a valid phone number";
+    errors.phone = translations.phoneInvalid;
   }
 
   return {

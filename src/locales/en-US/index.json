@@ -215,6 +215,12 @@
   "Email is invalid": "Email is invalid",
   "Telephone is required": "Telephone is required",
   "Extraordinary bespoke experience with unlimited possibilities": "Extraordinary bespoke experience with unlimited possibilities",
-  "Elite services with world-class amenities": "Elite services with world-class amenities"
-
+  "Elite services with world-class amenities": "Elite services with world-class amenities",
+  "Preferred Table Style": "Preferred Table Style",
+  "First partner's name is required": "First partner's name is required",
+  "Second partner's name is required": "Second partner's name is required",
+  "Name must be at least 2 characters long": "Name must be at least 2 characters long",
+  "Please enter a valid email address": "Please enter a valid email address",
+  "Please enter a valid phone number": "Please enter a valid phone number",
+  "Phone number is required": "Phone number is required"
 }

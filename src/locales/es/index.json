@@ -215,5 +215,12 @@
   "Email is invalid": "Correo electrónico es inválido",
   "Telephone is required": "Teléfono es requerido",
   "Extraordinary bespoke experience with unlimited possibilities": "Experiencia extraordinaria y personalizada con infinitas posibilidades",
-  "Elite services with world-class amenities": "Servicios de primera clase con servicios de primera clase"
+  "Elite services with world-class amenities": "Servicios de primera clase con servicios de primera clase",
+  "Preferred Table Style": "Estilo de mesa preferido",
+  "First partner's name is required": "Nombre del primer partner es requerido",
+  "Second partner's name is required": "Nombre del segundo partner es requerido",
+  "Name must be at least 2 characters long": "Nombre debe tener al menos 2 caracteres",
+  "Please enter a valid email address": "Por favor, ingrese una dirección de correo electrónico válida",
+  "Please enter a valid phone number": "Por favor, ingrese un número de teléfono válido",
+  "Phone number is required": "Número de teléfono es requerido"
 }

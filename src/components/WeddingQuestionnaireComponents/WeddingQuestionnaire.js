@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trans } from "gatsby-plugin-react-i18next";
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import {
   Heart,
   Calendar,
@@ -25,6 +25,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../config/firebase";
 
 const WeddingQuestionnaire = ({ initialFormData }) => {
+  const { t } = useTranslation();
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
     "form-name": "weddingQuestionnaireForm",
@@ -47,6 +48,7 @@ const WeddingQuestionnaire = ({ initialFormData }) => {
     weddingStyles: [],
     colorPalette: "",
     chairStyle: [],
+    tableStyle: [],
     centerpieceStyle: [],
 
     // Experiences
@@ -118,17 +120,27 @@ const WeddingQuestionnaire = ({ initialFormData }) => {
     setFormData((prev) => ({ ...prev, ...updates }));
   };
 
+  const translations = {
+    fullName1Required: t("First partner's name is required"),
+    fullName2Required: t("Second partner's name is required"),
+    nameMinLength: t("Name must be at least 2 characters long"),
+    emailRequired: t("Email is required"),
+    emailInvalid: t("Please enter a valid email address"),
+    phoneRequired: t("Phone number is required"),
+    phoneInvalid: t("Please enter a valid phone number")
+  };
+
   const handleStepClick = (index) => {
     // Only validate when trying to move forward from personal info section
-    // if (currentStep === 0 && index > currentStep) {
-    //   const { isValid, errors } = validatePersonalInfo(formData);
-    //   if (!isValid) {
-    //     setFormErrors(errors);
-    //     return;
-    //   }
-    // }
-    // // Clear errors and set new step
-    // setFormErrors({});
+    if (currentStep === 0 && index > currentStep) {
+      const { isValid, errors } = validatePersonalInfo(formData, translations);
+      if (!isValid) {
+        setFormErrors(errors);
+        return;
+      }
+    }
+    // Clear errors and set new step
+    setFormErrors({});
     setCurrentStep(index);
   };
 
@@ -136,7 +148,7 @@ const WeddingQuestionnaire = ({ initialFormData }) => {
     if (currentStep < steps.length - 1) {
       // Validate personal info section before proceeding
       if (currentStep === 0) {
-        const { isValid, errors } = validatePersonalInfo(formData);
+        const { isValid, errors } = validatePersonalInfo(formData, translations);
         if (!isValid) {
           setFormErrors(errors);
           return;

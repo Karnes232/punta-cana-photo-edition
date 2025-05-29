@@ -182,6 +182,9 @@ export const query = graphql`
           description
           title
         }
+        tableStyle {
+          title
+        }
       }
     }
   }
