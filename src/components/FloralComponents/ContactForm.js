@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ContactInfo from "./ContactInfo";
 import Additions from "./Additions";
-import { Trans } from "gatsby-plugin-react-i18next";
+import { Trans, useTranslations } from "gatsby-plugin-react-i18next";
 import { navigate } from "gatsby";
 const ContactForm = ({ item }) => {
+  const t = useTranslations();
   const [formData, setFormData] = useState({
     "form-name": "floral-art",
     floralItem: item.floralItem,
@@ -24,12 +25,12 @@ const ContactForm = ({ item }) => {
     const newErrors = {};
 
     // Required fields validation
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.name.trim()) newErrors.name = t("Name is required");
+    if (!formData.email.trim()) newErrors.email = t("Email is required");
     else if (!/\S+@\S+\.\S+/.test(formData.email))
-      newErrors.email = "Email is invalid";
+      newErrors.email = t("Email is invalid");
     if (!formData.telephone.trim())
-      newErrors.telephone = "Telephone is required";
+      newErrors.telephone = t("Telephone is required");
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -103,7 +104,7 @@ const ContactForm = ({ item }) => {
       </form>
       {Object.keys(errors).length > 0 && (
         <div className="text-red-500 text-sm mt-2 text-center">
-          Please fill in all required fields correctly
+          <Trans>Please fill in all required fields correctly</Trans>
         </div>
       )}
       <div className="flex justify-center items-center lg:absolute lg:bottom-10 lg:right-1/2 lg:translate-x-1/2">

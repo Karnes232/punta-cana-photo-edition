@@ -8,9 +8,9 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
 
 const StyleAestheticSection = ({ formData, updateFormData }) => {
   const { t } = useTranslation();

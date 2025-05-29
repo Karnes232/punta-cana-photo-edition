@@ -2,11 +2,10 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
-import { Trans, useTranslation, useI18next } from "gatsby-plugin-react-i18next";
+import { Trans, useI18next } from "gatsby-plugin-react-i18next";
 import ContentfulSvg from "../ContentfulSvg/ContentfulSvg";
 
 const ExperiencesSection = ({ formData, updateFormData }) => {
-  const { t } = useTranslation();
   const { language } = useI18next();
   const data = useStaticQuery(graphql`
     query ExperiencesQuery {

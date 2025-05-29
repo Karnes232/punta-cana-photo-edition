@@ -120,15 +120,15 @@ const WeddingQuestionnaire = ({ initialFormData }) => {
 
   const handleStepClick = (index) => {
     // Only validate when trying to move forward from personal info section
-    if (currentStep === 0 && index > currentStep) {
-      const { isValid, errors } = validatePersonalInfo(formData);
-      if (!isValid) {
-        setFormErrors(errors);
-        return;
-      }
-    }
-    // Clear errors and set new step
-    setFormErrors({});
+    // if (currentStep === 0 && index > currentStep) {
+    //   const { isValid, errors } = validatePersonalInfo(formData);
+    //   if (!isValid) {
+    //     setFormErrors(errors);
+    //     return;
+    //   }
+    // }
+    // // Clear errors and set new step
+    // setFormErrors({});
     setCurrentStep(index);
   };
 

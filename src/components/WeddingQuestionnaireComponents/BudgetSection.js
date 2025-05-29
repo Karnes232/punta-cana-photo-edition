@@ -1,7 +1,9 @@
+
 import React from "react";
 import { motion } from "framer-motion";
-import { DollarSign, TrendingUp, Award, Star } from "lucide-react";
+import { DollarSign, TrendingUp, Award, Star, Crown, Gem } from "lucide-react";
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+
 const BudgetSection = ({ formData, updateFormData }) => {
   const { t } = useTranslation();
   const handleBudgetChange = (value) => {
@@ -18,6 +20,20 @@ const BudgetSection = ({ formData, updateFormData }) => {
   };
 
   const getBudgetTier = (budget) => {
+    if (budget >= 80000)
+      return {
+        name: t("Ultra Luxury"),
+        icon: Gem,
+        color: "diamond",
+        description: t("Extraordinary bespoke experience with unlimited possibilities"),
+      };
+    if (budget >= 50000)
+      return {
+        name: t("Exclusive"),
+        icon: Crown,
+        color: "gold",
+        description: t("Elite services with world-class amenities"),
+      };
     if (budget >= 35000)
       return {
         name: t("Luxury"),
@@ -72,8 +88,20 @@ const BudgetSection = ({ formData, updateFormData }) => {
     {
       min: 35000,
       max: 50000,
-      label: "$35K+",
+      label: "$35K - $50K",
       description: t("Luxury & Exclusive"),
+    },
+    {
+      min: 50000,
+      max: 80000,
+      label: "$50K - $80K",
+      description: t("Elite & Sophisticated"),
+    },
+    {
+      min: 80000,
+      max: 100000,
+      label: "$80K+",
+      description: t("Ultra Luxury & Bespoke"),
     },
   ];
 
@@ -83,6 +111,8 @@ const BudgetSection = ({ formData, updateFormData }) => {
       green: "from-emerald-400 to-green-500",
       blue: "from-blue-400 to-indigo-500",
       purple: "from-purple-400 to-pink-500",
+      gold: "from-yellow-500 to-orange-500",
+      diamond: "from-gray-400 via-blue-300 to-purple-400",
     };
     return colors[color] || colors.yellow;
   };
@@ -145,18 +175,18 @@ const BudgetSection = ({ formData, updateFormData }) => {
             id="budget"
             type="range"
             min="5000"
-            max="50000"
-            step="500"
+            max="100000"
+            step="1000"
             value={formData.budget}
             onChange={(e) => handleBudgetChange(e.target.value)}
             className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
             style={{
-              background: `linear-gradient(to right, #e4c05c 0%, #e4c05c ${((formData.budget - 5000) / 45000) * 100}%, #e5e7eb ${((formData.budget - 5000) / 45000) * 100}%, #e5e7eb 100%)`,
+              background: `linear-gradient(to right, #e4c05c 0%, #e4c05c ${((formData.budget - 5000) / 95000) * 100}%, #e5e7eb ${((formData.budget - 5000) / 95000) * 100}%, #e5e7eb 100%)`,
             }}
           />
           <div className="flex justify-between text-sm text-gray-500 mt-2">
             <span>$5,000</span>
-            <span>$50,000+</span>
+            <span>$100,000+</span>
           </div>
         </div>
       </motion.div>
@@ -166,12 +196,12 @@ const BudgetSection = ({ formData, updateFormData }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="grid md:grid-cols-4 gap-4"
+        className="grid md:grid-cols-3 lg:grid-cols-6 gap-4"
       >
         {budgetRanges.map((range, index) => {
           const isActive =
             formData.budget >= range.min &&
-            (range.max === 50000 ? true : formData.budget < range.max);
+            (range.max === 100000 ? true : formData.budget < range.max);
 
           return (
             <motion.button

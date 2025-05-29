@@ -3,7 +3,6 @@ import { useStaticQuery, graphql } from "gatsby";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import { useImageProtection } from "../../hooks/useImageProtection";
-import MessengerButton from "../FloatingButtonComponents/MessengerButton";
 import { CartProvider } from "../../context/cart";
 import FloatingCartButton from "../FloatingButtonComponents/FloatingCartButton";
 import ExpandableMessengerButton from "../FloatingButtonComponents/ExpandableMessengerButton";

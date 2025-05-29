@@ -3,15 +3,14 @@ import { motion } from "framer-motion";
 const BackgroundVideo = ({ videoUrl, fullSize, heroHeading }) => {
   let height = "";
   let blankDivHeight = "";
-  let translatePosition = "";
   if (fullSize) {
     height = "h-screen";
     blankDivHeight = "h-[90vh]";
-    translatePosition = "-translate-y-1/2";
+
   } else {
     height = "h-[65vh]";
     blankDivHeight = "h-[55vh]";
-    translatePosition = "-translate-y-2/3";
+
   }
 
   return (

@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Camera, FileText, Upload, X, Image, Heart } from "lucide-react";
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { Trans } from "gatsby-plugin-react-i18next";
 const FinalDetailsSection = ({ formData, updateFormData }) => {
-  const { t } = useTranslation();
+ 
   const fileInputRef = useRef(null);
 
   const handleInputChange = (field, value) => {
