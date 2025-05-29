@@ -12,6 +12,7 @@ const RentalForm = ({ rentalItems }) => {
     "form-name": "cart",
     name: "",
     email: "",
+    telephone: "",
     Accommodation: "",
     additional: "",
     rentalItems: [],

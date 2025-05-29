@@ -1,7 +1,7 @@
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import React from "react";
 
-const ContactInfo = ({ formData, setFormData }) => {
+const ContactInfo = ({ formData, setFormData, errors }) => {
   const { t } = useTranslation();
   const handleChange = ({ target }) => {
     setFormData({
@@ -16,7 +16,7 @@ const ContactInfo = ({ formData, setFormData }) => {
           type="name"
           name="name"
           id="name"
-          className="contactFormInput peer"
+          className={`contactFormInput peer ${errors.name ? "border-red-500" : ""}`}
           placeholder=" "
           required
           value={formData.name}
@@ -25,13 +25,16 @@ const ContactInfo = ({ formData, setFormData }) => {
         <label htmlFor="name" className="contactFormLabel">
           <Trans>Full Name</Trans>
         </label>
+        {errors.name && (
+          <span className="text-red-500 text-sm">{errors.name}</span>
+        )}
       </div>
       <div className="relative z-0 mb-6 w-full group">
         <input
           type="email"
           name="email"
           id="email"
-          className="contactFormInput peer"
+          className={`contactFormInput peer ${errors.email ? "border-red-500" : ""}`}
           placeholder=" "
           required
           onChange={handleChange}
@@ -39,8 +42,27 @@ const ContactInfo = ({ formData, setFormData }) => {
         <label htmlFor="email" className="contactFormLabel">
           <Trans>Email</Trans>
         </label>
+        {errors.email && (
+          <span className="text-red-500 text-sm">{errors.email}</span>
+        )}
       </div>
-
+      <div className="relative z-0 mb-6 w-full group">
+        <input
+          type="tel"
+          name="telephone"
+          id="telephone"
+          className={`contactFormInput peer ${errors.telephone ? "border-red-500" : ""}`}
+          placeholder=" "
+          required
+          onChange={handleChange}
+        />
+        <label htmlFor="telephone" className="contactFormLabel">
+          <Trans>Telephone</Trans>
+        </label>
+        {errors.telephone && (
+          <span className="text-red-500 text-sm">{errors.telephone}</span>
+        )}
+      </div>
       <div className="relative z-0 mb-6 w-full group">
         <input
           type="text"

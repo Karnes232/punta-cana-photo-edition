@@ -42,6 +42,20 @@ const ContactInfo = ({ name, setName, formData, setFormData }) => {
       </div>
       <div className="relative z-0 mb-6 w-full group">
         <input
+          type="tel"
+          name="telephone"
+          id="telephone"
+          className="contactFormInput peer"
+          placeholder=" "
+          required
+          onChange={handleChange}
+        />
+        <label htmlFor="telephone" className="contactFormLabel">
+          <Trans>Telephone</Trans>
+        </label>
+      </div>
+      <div className="relative z-0 mb-6 w-full group">
+        <input
           type="text"
           name="Accommodation"
           id="Accommodation"
