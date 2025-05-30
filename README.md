@@ -37,7 +37,6 @@ A comprehensive digital platform for a premier event planning company specializi
 
 ## 🚀 Key Features
 
-## 🚀 Key Features
 
 ### 🌐 Multilingual Support
 
@@ -78,7 +77,6 @@ Complete English and Spanish localization with dynamic language switching and SE
 
 ## 🏗️ Website Structure
 
-## 🏗️ Website Structure
 
 ### 🌐 Public Pages
 
@@ -136,7 +134,6 @@ Complete English and Spanish localization with dynamic language switching and SE
 
 ## 💼 Business Value
 
-## 💼 Business Value
 
 This technical architecture delivers significant advantages:
 
@@ -149,21 +146,6 @@ This technical architecture delivers significant advantages:
 
 ---
 
-## 🚀 Installation & Setup
-
-```bash
-# Clone the repository
-git clone [repository-url]
-
-# Install dependencies
-npm install
-
-# Set up environment variables
-cp .env.example .env.local
-
-# Start development server
-gatsby develop
-```
 
 ### Environment Variables
 
@@ -173,6 +155,8 @@ CONTENTFUL_ACCESS_TOKEN=your_access_token
 FIREBASE_API_KEY=your_firebase_key
 FIREBASE_AUTH_DOMAIN=your_auth_domain
 FIREBASE_PROJECT_ID=your_project_id
+SMTP_USER=your_smtp_user
+SMTP_PASSWORD=your_smtp_password
 ```
 
 ---
@@ -190,15 +174,6 @@ The website is automatically deployed to Netlify when changes are pushed to the 
 
 ---
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
 
 ## 🛠️ Maintenance & Support
 
