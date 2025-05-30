@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Camera, FileText, Upload, X, Image, Heart } from "lucide-react";
 import { Trans } from "gatsby-plugin-react-i18next";
 const FinalDetailsSection = ({ formData, updateFormData }) => {
- 
   const fileInputRef = useRef(null);
 
   const handleInputChange = (field, value) => {

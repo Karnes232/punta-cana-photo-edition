@@ -1,49 +1,212 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal Starter
-</h1>
+# Sertuin Events Website
 
-## 🚀 Quick start
+![Sertuin Events](https://sertuinevents.com/favicon.ico)
 
-1.  **Create a Gatsby site.**
+A comprehensive digital platform for a premier event planning company specializing in weddings, celebrations, and corporate events in Punta Cana.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+🌐 **Live Website:** [sertuinevents.com](https://sertuinevents.com/)
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## 📋 Table of Contents
 
-2.  **Start developing.**
+- [Overview](#overview)
+- [Tech Stack](#tech-stack)
+- [Key Features](#key-features)
+- [Website Structure](#website-structure)
+- [Technical Architecture](#technical-architecture)
+- [Installation & Setup](#installation--setup)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
 
-    Navigate into your new site’s directory and start it up.
+## 🎯 Overview
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+## Technical Architecture
 
-3.  **Open the code and start customizing!**
+## 🛠️ Tech Stack
 
-    Your site is now running at http://localhost:8000!
+| Technology       | Purpose              | Details                                          |
+| ---------------- | -------------------- | ------------------------------------------------ |
+| **GatsbyJS**     | Frontend Framework   | Static site generation, React-based architecture |
+| **Netlify**      | Hosting & Deployment | Global CDN, continuous deployment                |
+| **Contentful**   | Content Management   | Headless CMS, API-driven content                 |
+| **Tailwind CSS** | Styling              | Utility-first CSS framework                      |
+| **Firebase**     | Auth & Database      | Google Sign-In, Firestore, Cloud Storage         |
+| **React-PDF**    | Document Generation  | Client-side PDF creation                         |
+| **Nodemailer**   | Email Service        | Automated email delivery                         |
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+---
 
-4.  **Learn more**
+## 🚀 Key Features
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## 🚀 Key Features
 
-## 🚀 Quick start (Netlify)
+### 🌐 Multilingual Support
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+Complete English and Spanish localization with dynamic language switching and SEO optimization for both languages.
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+### 📝 Dynamic Content Management
+
+- **Event Packages** - Auto-generated pages from Contentful data models
+- **Blog System** - Full-featured blog with build-time generation
+  - 📖 [Example: Complete Guide to Organizing Events in Punta Cana](https://sertuinevents.com/blog/complete-guide-to-organizing-events-in-punta-cana/)
+- **Equipment Rentals** - Dynamic catalog with real-time inventory
+  - 🛠️ [Event Rentals Catalog](https://sertuinevents.com/event-rentals/)
+- **Floral Arrangements** - Curated collections with detailed galleries
+  - 🌸 [Floral Art Portfolio](https://sertuinevents.com/floral-art/)
+
+### 🎯 Interactive Tools
+
+- **Wedding Questionnaire** - Interactive planning tool with dynamic budget calculations
+  - 💍 [Wedding Planning Tool](https://sertuinevents.com/weddings-punta-cana/)
+- **Quote Generator** - Custom PDF generation using React-PDF
+- **Contract System** - Automated legal document creation with email delivery
+
+### 🔐 Client Management System
+
+- **Admin Portal** - Secure, Firebase-authenticated interface
+  - 🔒 [Admin Dashboard](https://sertuinevents.com/admin)
+- **Client Database** - Comprehensive customer information storage
+- **Testimonial System** - Client feedback collection and display
+  - 💬 [Share Your Experience](https://sertuinevents.com/share-your-experience/)
+
+### 📄 Document Generation
+
+- **React-PDF** - Client-side PDF creation for professional documents
+- **Email Integration** - Automated delivery via Nodemailer
+- **Custom Templates** - Branded layouts with dynamic data population
+
+---
+
+## 🏗️ Website Structure
+
+## 🏗️ Website Structure
+
+### 🌐 Public Pages
+
+- **🏠 Home** - Company overview and featured services
+- **🎉 Event Services** - Detailed pages for weddings, birthdays, proposals
+- **📦 Package Catalog** - Dynamic pages built from Contentful
+- **📝 Blog** - SEO-optimized articles and guides
+- **🛠️ Equipment Rentals** - Searchable catalog with pricing
+- **🌸 Floral Art** - Gallery and service descriptions
+- **💬 Testimonials** - Client experience sharing system
+
+### 🔐 Administrative System
+
+- **📊 Admin Dashboard** - Secure, authenticated access
+- **💰 Quote Management** - Create and send professional proposals
+- **📄 Contract Generation** - Legal document creation and delivery
+- **👥 Client Database** - Centralized customer information
+- **📝 Content Management** - Direct integration with Contentful
+
+---
+
+## ⚙️ Technical Architecture
+
+### 🚀 Performance Optimization
+
+- **Static Site Generation** - Pages pre-built at deploy time for maximum speed
+- **Image Optimization** - Automatic WebP conversion, lazy loading
+- **Code Splitting** - JavaScript bundles split by route for optimized loading
+- **CDN Distribution** - Content served from global edge locations
+- **SEO Optimization** - Pre-rendered HTML for excellent search engine indexing
+
+### 🔒 Security Implementation
+
+- **Firebase Authentication** - Enterprise-grade security with Google Sign-In
+- **Protected Routes** - Admin-only access to sensitive areas
+- **Data Encryption** - Secure storage of sensitive client information
+- **CORS Configuration** - Cross-origin request security
+- **Input Sanitization** - XSS and SQL injection prevention
+- **Security Headers** - CSP, HSTS implementation
+
+### 🔧 Integration Architecture
+
+- **Headless CMS Integration** - Real-time content sync between Contentful and Gatsby
+- **Real-time Database** - Live data synchronization using Firebase WebSockets
+- **Email Automation** - Professional communication workflows with Nodemailer
+- **PDF Generation** - Browser-based document creation with multilingual support
+
+### ✨ Advanced Features
+
+- **Build-time Content Generation** - Extensive page generation from CMS data
+- **Multi-language Routing** - URL structure optimization for SEO
+- **Form Validation** - Real-time validation with custom error messaging
+
+---
+
+## 💼 Business Value
+
+## 💼 Business Value
+
+This technical architecture delivers significant advantages:
+
+- 🔍 **SEO Excellence** - Static generation and optimized content improve search rankings
+- 🤖 **Professional Automation** - Reduces manual work in quote and contract generation
+- 📈 **Scalable Growth** - Easy to add new services, packages, and content
+- 🎯 **Client Experience** - Fast, responsive website with professional tools
+- ⚡ **Operational Efficiency** - Streamlined admin workflows and client management
+- 🌍 **Global Reach** - Bilingual support and fast international loading
+
+---
+
+## 🚀 Installation & Setup
+
+```bash
+# Clone the repository
+git clone [repository-url]
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+
+# Start development server
+gatsby develop
+```
+
+### Environment Variables
+
+```env
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
+FIREBASE_API_KEY=your_firebase_key
+FIREBASE_AUTH_DOMAIN=your_auth_domain
+FIREBASE_PROJECT_ID=your_project_id
+```
+
+---
+
+## 🌐 Deployment
+
+The website is automatically deployed to Netlify when changes are pushed to the main branch.
+
+### Build Process
+
+1. **Content Fetch** - Gatsby pulls content from Contentful at build time
+2. **Static Generation** - All pages are pre-built for optimal performance
+3. **Asset Optimization** - Images and CSS are automatically optimized
+4. **Deployment** - Site is deployed to Netlify's global CDN
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 🛠️ Maintenance & Support
+
+The website is built with modern, well-supported technologies that ensure:
+
+- Long-term stability and security
+- Easy content updates through Contentful
+- Automated deployments and backups
+- Scalable hosting that grows with your business
+
+This comprehensive solution represents a significant investment in digital infrastructure that will serve Sertuin Events' growth and client service excellence for years to come.

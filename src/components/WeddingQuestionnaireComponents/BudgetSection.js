@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { DollarSign, TrendingUp, Award, Star, Crown, Gem } from "lucide-react";
@@ -25,7 +24,9 @@ const BudgetSection = ({ formData, updateFormData }) => {
         name: t("Ultra Luxury"),
         icon: Gem,
         color: "diamond",
-        description: t("Extraordinary bespoke experience with unlimited possibilities"),
+        description: t(
+          "Extraordinary bespoke experience with unlimited possibilities",
+        ),
       };
     if (budget >= 50000)
       return {

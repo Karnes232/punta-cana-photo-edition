@@ -6,11 +6,9 @@ const BackgroundVideo = ({ videoUrl, fullSize, heroHeading }) => {
   if (fullSize) {
     height = "h-screen";
     blankDivHeight = "h-[90vh]";
-
   } else {
     height = "h-[65vh]";
     blankDivHeight = "h-[55vh]";
-
   }
 
   return (

@@ -70,6 +70,20 @@ const SideBarInside = ({ footer, setToggled }) => {
             <Trans>Floral Art</Trans>
           </p>
         </MenuItem>
+
+        <MenuItem
+          component={
+            <Link
+              to="/wedding-planner"
+              className={footer ? "hamburgerSmall" : "hamburger"}
+              onClick={footer ? undefined : () => setToggled(false)}
+            />
+          }
+        >
+          <p className={footer ? "hamburgerSmall" : "hamburger"}>
+            <Trans>Design Your Day</Trans>
+          </p>
+        </MenuItem>
         {/* <MoreServices footer={footer} setToggled={setToggled} /> */}
         <MenuItem
           component={

@@ -27,10 +27,10 @@ const Footer = ({ generalInfo }) => {
         )}
       </div>
       <div className="flex flex-col lg:flex-row justify-between space-y-10 lg:space-y-0">
-        <div className="md:hidden">
+        <div className="lg:hidden md:w-1/2">
           <SideBarInside footer={true} />
         </div>
-        <div className="hidden md:flex md:w-full md:gap-5 md:justify-center md:items-center mt-0">
+        <div className="hidden lg:flex lg:w-full lg:gap-5 lg:justify-center lg:items-center mt-0">
           <Sitemap />
         </div>
       </div>

@@ -127,7 +127,7 @@ const WeddingQuestionnaire = ({ initialFormData }) => {
     emailRequired: t("Email is required"),
     emailInvalid: t("Please enter a valid email address"),
     phoneRequired: t("Phone number is required"),
-    phoneInvalid: t("Please enter a valid phone number")
+    phoneInvalid: t("Please enter a valid phone number"),
   };
 
   const handleStepClick = (index) => {
@@ -148,7 +148,10 @@ const WeddingQuestionnaire = ({ initialFormData }) => {
     if (currentStep < steps.length - 1) {
       // Validate personal info section before proceeding
       if (currentStep === 0) {
-        const { isValid, errors } = validatePersonalInfo(formData, translations);
+        const { isValid, errors } = validatePersonalInfo(
+          formData,
+          translations,
+        );
         if (!isValid) {
           setFormErrors(errors);
           return;
