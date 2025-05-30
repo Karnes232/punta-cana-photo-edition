@@ -222,5 +222,6 @@
   "Name must be at least 2 characters long": "Nombre debe tener al menos 2 caracteres",
   "Please enter a valid email address": "Por favor, ingrese una dirección de correo electrónico válida",
   "Please enter a valid phone number": "Por favor, ingrese un número de teléfono válido",
-  "Phone number is required": "Número de teléfono es requerido"
+  "Phone number is required": "Número de teléfono es requerido",
+  "Design Your Day": "Diseña tu día"
 }
