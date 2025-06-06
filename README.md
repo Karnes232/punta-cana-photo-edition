@@ -37,7 +37,6 @@ A comprehensive digital platform for a premier event planning company specializi
 
 ## 🚀 Key Features
 
-
 ### 🌐 Multilingual Support
 
 Complete English and Spanish localization with dynamic language switching and SEO optimization for both languages.
@@ -76,7 +75,6 @@ Complete English and Spanish localization with dynamic language switching and SE
 ---
 
 ## 🏗️ Website Structure
-
 
 ### 🌐 Public Pages
 
@@ -134,7 +132,6 @@ Complete English and Spanish localization with dynamic language switching and SE
 
 ## 💼 Business Value
 
-
 This technical architecture delivers significant advantages:
 
 - 🔍 **SEO Excellence** - Static generation and optimized content improve search rankings
@@ -145,7 +142,6 @@ This technical architecture delivers significant advantages:
 - 🌍 **Global Reach** - Bilingual support and fast international loading
 
 ---
-
 
 ### Environment Variables
 
@@ -173,7 +169,6 @@ The website is automatically deployed to Netlify when changes are pushed to the 
 4. **Deployment** - Site is deployed to Netlify's global CDN
 
 ---
-
 
 ## 🛠️ Maintenance & Support
 

@@ -1,10 +1,11 @@
+import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import React, { useState } from "react";
 import ContactInfo from "./ContactInfo";
 import Additions from "./Additions";
-import { Trans, useTranslations } from "gatsby-plugin-react-i18next";
 import { navigate } from "gatsby";
+
 const ContactForm = ({ item }) => {
-  const t = useTranslations();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     "form-name": "floral-art",
     floralItem: item.floralItem,
