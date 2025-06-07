@@ -37,7 +37,7 @@ const FloralForm = ({ item }) => {
         className="relative z-50"
       >
         <div className="fixed inset-0 z-50 w-screen overflow-y-auto bg-transparent/80">
-          <div className="flex min-h-screen items-end justify-end p-4">
+          <div className="flex min-h-screen p-4 justify-center items-center">
             <DialogPanel className="mb-20 xl:mr-10 w-full max-w-md md:max-w-4xl h-auto lg:h-[80vh] rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
               <div className="absolute top-2 right-5">
                 <button
@@ -52,7 +52,7 @@ const FloralForm = ({ item }) => {
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <ItemCardSwiper
                       photoList={item.images}
-                      height="h-44 md:h-52 lg:h-60"
+                      height="lg:h-80"
                     />
                   </div>
                   <div className="pt-4 md:pr-4">
