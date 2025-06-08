@@ -7,6 +7,7 @@ import PDFQuoteGenerator from "./pdfComponents/PDFQuoteGenerator";
 import QuoteSummary from "./QuoteSummary";
 import { db } from "../../config/firebase";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
+import DepositInfo from "./DepositInfo";
 const PackageQuoteForm = ({ packages, additions, companyInfo }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -16,6 +17,8 @@ const PackageQuoteForm = ({ packages, additions, companyInfo }) => {
     packagePrice: 0,
     additions: [],
     packagesDescription: "",
+    deposit: 0,
+    depositPercentage: 0,
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [quotes, setQuotes] = useState([]);
@@ -33,6 +36,8 @@ const PackageQuoteForm = ({ packages, additions, companyInfo }) => {
       packagePrice: formData.packagePrice,
       additions: formData.additions,
       packagesDescription: formData.packagesDescription,
+      deposit: formData.deposit,
+      depositPercentage: formData.depositPercentage,
       createdAt: new Date(),
     });
   };
@@ -96,6 +101,7 @@ const PackageQuoteForm = ({ packages, additions, companyInfo }) => {
               formData={formData}
               setFormData={setFormData}
             />
+            <DepositInfo formData={formData} setFormData={setFormData} />
 
             <div className="flex justify-center mt-6">
               <button

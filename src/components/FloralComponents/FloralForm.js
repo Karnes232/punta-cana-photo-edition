@@ -50,10 +50,7 @@ const FloralForm = ({ item }) => {
               <div className="flex flex-col md:justify-center md:items-center lg:flex-row gap-2 mt-8">
                 <div className="flex flex-col gap-2 md:w-[25rem] lg:gap-0 lg:mt-5 xl:mt-0">
                   <div className="rounded-lg overflow-hidden shadow-lg">
-                    <ItemCardSwiper
-                      photoList={item.images}
-                      height="lg:h-80"
-                    />
+                    <ItemCardSwiper photoList={item.images} height="lg:h-80" />
                   </div>
                   <div className="pt-4 md:pr-4">
                     <div className="font-bold h-10 text-lg mb-2 flex justify-between">

@@ -146,6 +146,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
+  depositInfo: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+    marginBottom: 10,
+    fontSize: 12,
+    fontWeight: "bold",
+    backgroundColor: "#f0f0f0",
+    padding: 8,
+  },
+  remainingBalance: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 5,
+    fontSize: 12,
+    color: "#666",
+  },
 });
 
 // Create Document Component
@@ -176,6 +193,72 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
   const taxRate = 0.18; // 18% ITBIS
   const taxAmount = subtotal * taxRate;
   const total = subtotal + taxAmount;
+
+  // Calculate deposit amount based on percentage or fixed amount (from subtotal)
+  const getDepositAmount = () => {
+    if (formData.deposit && parseFloat(formData.deposit) > 0) {
+      // Use fixed dollar amount if provided
+      return parseFloat(formData.deposit);
+    } else if (
+      formData.depositPercentage &&
+      parseFloat(formData.depositPercentage) > 0
+    ) {
+      // Use percentage of subtotal if provided
+      return subtotal * (parseFloat(formData.depositPercentage) / 100);
+    } else {
+      // Default to 60% of subtotal if no deposit info provided
+      return subtotal * 0.6;
+    }
+  };
+
+  const depositAmount = getDepositAmount();
+  const remainingBalance = total - depositAmount;
+
+  // Get deposit display text
+  const getDepositDisplayText = () => {
+    // Calculate the actual percentage of the deposit relative to subtotal
+    const actualPercentage = ((depositAmount / subtotal) * 100).toFixed(0);
+
+    return language === "es"
+      ? `Depósito Requerido: ${depositAmount.toFixed(2)} (${actualPercentage}%)`
+      : `Required Deposit: ${depositAmount.toFixed(2)} (${actualPercentage}%)`;
+  };
+
+  // Get payment terms text based on deposit configuration
+  const getPaymentTermsText = () => {
+    let depositText = "";
+    let remainingText = "";
+
+    if (formData.deposit && parseFloat(formData.deposit) > 0) {
+      depositText =
+        language === "es"
+          ? `un depósito de ${depositAmount.toFixed(2)}`
+          : `a deposit of ${depositAmount.toFixed(2)}`;
+    } else if (
+      formData.depositPercentage &&
+      parseFloat(formData.depositPercentage) > 0
+    ) {
+      depositText =
+        language === "es"
+          ? `un depósito del ${formData.depositPercentage}% del subtotal`
+          : `a ${formData.depositPercentage}% deposit of the subtotal`;
+    } else {
+      depositText =
+        language === "es"
+          ? `un depósito del 60% del subtotal`
+          : `a 60% deposit of the subtotal`;
+    }
+
+    const remainingPercentage = ((remainingBalance / total) * 100).toFixed(0);
+    remainingText =
+      language === "es"
+        ? `El saldo restante debe pagarse antes de que comience el evento.`
+        : `The remaining balance must be paid before the event starts.`;
+
+    return language === "es"
+      ? `Para confirmar esta reserva, se requiere ${depositText}. ${remainingText}`
+      : `To confirm this booking, ${depositText} is required. ${remainingText}`;
+  };
 
   return (
     <Document>
@@ -282,6 +365,18 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
           <Text>${total.toFixed(2)}</Text>
         </View>
 
+        <View style={styles.depositInfo}>
+          <Text>{getDepositDisplayText()}</Text>
+          <Text></Text>
+        </View>
+
+        <View style={styles.remainingBalance}>
+          <Text>
+            {language === "es" ? "Saldo Restante" : "Remaining Balance"}:
+          </Text>
+          <Text>${remainingBalance.toFixed(2)}</Text>
+        </View>
+
         {language === "es" ? (
           <Text style={styles.paymentTerms}>
             *Si paga en efectivo, disfrute de un **18% de descuento** sobre el
@@ -295,11 +390,7 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
 
         <View style={styles.footer}>
           <View style={styles.paymentTermsContainer}>
-            <Text style={styles.paymentTerms}>
-              {language === "es"
-                ? "Para confirmar esta reserva, se requiere un depósito del 60% del monto total. El 40% restante debe pagarse antes de que comience el evento."
-                : "To confirm this booking, a 60% deposit of the total amount is required. The remaining 40% must be paid before the event starts."}
-            </Text>
+            <Text style={styles.paymentTerms}>{getPaymentTermsText()}</Text>
           </View>
           <View style={styles.paymentTermsContainer}>
             <Text style={styles.paymentTerms}>

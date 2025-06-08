@@ -23,21 +23,37 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
   }));
 
   const handlePackageChange = (e) => {
+    let newFormData;
     if (e) {
       // Check if it's a new option (created by user)
       if (e.__isNew__) {
-        setFormData({ ...formData, package: e.value, packagePrice: 0 });
+        newFormData = { ...formData, package: e.value, packagePrice: 0 };
       } else {
         const selectedPackage = packages.find((pkg) => pkg.title === e.value);
-        setFormData({
+        newFormData = {
           ...formData,
           package: e.value,
           packagePrice: selectedPackage.price,
-        });
+        };
       }
     } else {
-      setFormData({ ...formData, package: "", packagePrice: 0 });
+      newFormData = { ...formData, package: "", packagePrice: 0 };
     }
+    const newDeposit = calculateNewDeposit(newFormData);
+    setFormData({ ...newFormData, deposit: newDeposit });
+  };
+
+  const calculateNewDeposit = (currentFormData) => {
+    const additionsTotal =
+      currentFormData.additions?.reduce(
+        (sum, addition) => sum + (parseFloat(addition.price) || 0),
+        0,
+      ) || 0;
+    const totalPrice =
+      (parseFloat(currentFormData.packagePrice) || 0) + additionsTotal;
+    const depositPercentage =
+      parseFloat(currentFormData.depositPercentage) || 0;
+    return (totalPrice * depositPercentage) / 100;
   };
 
   const handleAdditionChange = (e) => {
@@ -66,10 +82,23 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
           };
         }
       });
-      setFormData({ ...formData, additions: newAdditions });
+      const newFormData = { ...formData, additions: newAdditions };
+      const newDeposit = calculateNewDeposit(newFormData);
+      setFormData({ ...newFormData, deposit: newDeposit });
     } else {
-      setFormData({ ...formData, additions: [] });
+      const newFormData = { ...formData, additions: [] };
+      const newDeposit = calculateNewDeposit(newFormData);
+      setFormData({ ...newFormData, deposit: newDeposit });
     }
+  };
+
+  // Update price change handler for additions
+  const handleAdditionPriceChange = (index, newPrice) => {
+    const newAdditions = [...formData.additions];
+    newAdditions[index].price = newPrice;
+    const newFormData = { ...formData, additions: newAdditions };
+    const newDeposit = calculateNewDeposit(newFormData);
+    setFormData({ ...newFormData, deposit: newDeposit });
   };
 
   const selectedValues = formData.package
@@ -118,9 +147,14 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
                 className="w-full px-3  rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
                 placeholder={t("Package Price")}
                 value={formData.packagePrice}
-                onChange={(e) =>
-                  setFormData({ ...formData, packagePrice: e.target.value })
-                }
+                onChange={(e) => {
+                  const newFormData = {
+                    ...formData,
+                    packagePrice: e.target.value,
+                  };
+                  const newDeposit = calculateNewDeposit(newFormData);
+                  setFormData({ ...newFormData, deposit: newDeposit });
+                }}
                 min="1"
               />
             </div>
@@ -183,9 +217,7 @@ const PackageSelect = ({ packages, additions, formData, setFormData }) => {
                     type="number"
                     value={addition.price}
                     onChange={(e) => {
-                      const newAdditions = [...formData.additions];
-                      newAdditions[index].price = e.target.value;
-                      setFormData({ ...formData, additions: newAdditions });
+                      handleAdditionPriceChange(index, e.target.value);
                     }}
                     className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
                     min="0"

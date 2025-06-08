@@ -6,7 +6,6 @@ const QuoteSummary = ({ formData }) => {
     (sum, addition) => sum + parseFloat(addition.price || 0),
     0,
   );
-
   // Calculate subtotal, tax (ITBIS), and total
   const subtotal = parseFloat(formData.packagePrice) + additionsTotal;
   const taxRate = 0.18; // 18% ITBIS
@@ -84,6 +83,13 @@ const QuoteSummary = ({ formData }) => {
           <p className="mt-3 font-bold">
             <Trans>Subtotal</Trans>: $
             {subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}
+          </p>
+          <p className="mt-3 font-bold">
+            <Trans>Deposit</Trans>: $
+            {formData.deposit.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+            })}
+            {" - "}({formData.depositPercentage}%)
           </p>
           <p className="mt-3 font-bold">
             <Trans>ITBIS (18%)</Trans>: $
