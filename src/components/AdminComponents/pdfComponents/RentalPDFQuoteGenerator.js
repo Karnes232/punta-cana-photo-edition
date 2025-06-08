@@ -91,6 +91,22 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
   },
+  depositInfo: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 10,
+    fontSize: 12,
+    fontWeight: "bold",
+    backgroundColor: "#f5f5f5",
+    padding: 5,
+  },
+  remainingBalance: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 5,
+    fontSize: 12,
+    color: "#666",
+  },
   footer: {
     position: "absolute",
     bottom: 30,
@@ -151,6 +167,68 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
   const taxRate = 0.18; // 18% ITBIS
   const taxAmount = subtotal * taxRate;
   const total = subtotal + taxAmount;
+
+  // Calculate deposit information based on subtotal
+  const getDepositInfo = () => {
+    let depositAmount = 0;
+    let depositPercentage = 0;
+    let depositText = "";
+
+    if (formData.deposit !== undefined && formData.deposit !== null) {
+      // If a specific dollar amount is provided (including 0)
+      depositAmount = parseFloat(formData.deposit);
+      depositPercentage = parseFloat(
+        ((depositAmount / subtotal) * 100).toFixed(2),
+      );
+      depositText =
+        language === "es"
+          ? `Depósito Requerido (${depositAmount.toFixed(2)} - ${depositPercentage}% del subtotal)`
+          : `Required Deposit (${depositAmount.toFixed(2)} - ${depositPercentage}% of subtotal)`;
+    } else if (
+      formData.depositPercentage !== undefined &&
+      formData.depositPercentage !== null
+    ) {
+      // If a percentage is provided (including 0%)
+      depositPercentage = parseFloat(formData.depositPercentage);
+      depositAmount = subtotal * (depositPercentage / 100);
+      depositText =
+        language === "es"
+          ? `Depósito Requerido (${depositPercentage}% del subtotal)`
+          : `Required Deposit (${depositPercentage}% of subtotal)`;
+    } else {
+      // Only default to 60% if no deposit info is provided at all
+      depositPercentage = 60;
+      depositAmount = subtotal * 0.6;
+      depositText =
+        language === "es"
+          ? `Depósito Requerido (${depositPercentage}% del subtotal)`
+          : `Required Deposit (${depositPercentage}% of subtotal)`;
+    }
+
+    // Calculate tax on deposit amount
+    const depositTax = depositAmount * taxRate;
+    const totalDepositWithTax = depositAmount + depositTax;
+
+    // Remaining amounts
+    const remainingSubtotal = subtotal - depositAmount;
+    const remainingTax = taxAmount - depositTax;
+    const remainingTotal = remainingSubtotal + remainingTax;
+    const remainingPercentage = 100 - depositPercentage;
+
+    return {
+      depositAmount,
+      depositTax,
+      totalDepositWithTax,
+      depositPercentage,
+      depositText,
+      remainingSubtotal,
+      remainingTax,
+      remainingTotal,
+      remainingPercentage,
+    };
+  };
+
+  const depositInfo = getDepositInfo();
 
   return (
     <Document>
@@ -246,6 +324,21 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
           <Text>${total.toFixed(2)}</Text>
         </View>
 
+        <View style={styles.depositInfo}>
+          <Text>{depositInfo.depositText}:</Text>
+          <Text>${depositInfo.depositAmount.toFixed(2)}</Text>
+        </View>
+
+        <View style={styles.remainingBalance}>
+          <Text>
+            {language === "es"
+              ? `Saldo Restante (${depositInfo.remainingPercentage.toFixed(1)}% + ITBIS completo)`
+              : `Remaining Balance (${depositInfo.remainingPercentage.toFixed(1)}% + full ITBIS)`}
+            :
+          </Text>
+          <Text>${depositInfo.remainingTotal.toFixed(2)}</Text>
+        </View>
+
         {language === "es" ? (
           <Text style={styles.paymentTerms}>
             *Si paga en efectivo, disfrute de un **18% de descuento** sobre el
@@ -261,8 +354,8 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
           <View style={styles.paymentTermsContainer}>
             <Text style={styles.paymentTerms}>
               {language === "es"
-                ? "Para confirmar esta reserva, se requiere un depósito del 60% del monto total. El 40% restante debe pagarse antes de que comience el evento."
-                : "To confirm this booking, a 60% deposit of the total amount is required. The remaining 40% must be paid before the event starts."}
+                ? `Para confirmar esta reserva, se requiere un depósito de $${depositInfo.depositAmount.toFixed(2)} (${depositInfo.depositPercentage.toFixed(1)}% del subtotal, sin ITBIS). El saldo restante de $${depositInfo.remainingTotal.toFixed(2)} (incluyendo todo el ITBIS) debe pagarse antes de que comience el evento.`
+                : `To confirm this booking, a deposit of $${depositInfo.depositAmount.toFixed(2)} (${depositInfo.depositPercentage.toFixed(1)}% of subtotal, without ITBIS) is required. The remaining balance of $${depositInfo.remainingTotal.toFixed(2)} (including all ITBIS) must be paid before the event starts.`}
             </Text>
           </View>
           <View style={styles.paymentTermsContainer}>

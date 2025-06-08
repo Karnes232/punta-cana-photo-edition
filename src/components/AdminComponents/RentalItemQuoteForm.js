@@ -7,6 +7,7 @@ import RentalQuoteSummary from "./RentalQuoteSummary";
 import { db } from "../../config/firebase";
 import Select from "react-select";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
+import DepositInfoRental from "./DepositInfoRental";
 const RentalItemQuoteForm = ({ rentalItems, companyInfo }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -14,25 +15,30 @@ const RentalItemQuoteForm = ({ rentalItems, companyInfo }) => {
     telephone: "",
     selectedItems: [],
     itemsDescription: "",
+    deposit: 0,
+    depositPercentage: 0,
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [quotes, setQuotes] = useState([]);
   const { t } = useTranslation();
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setFormSubmitted(true);
 
-    // TODO: Add the form data to the database
-    let docName = `rental-items-quotes`;
-    // Save testimonial to Firestore
-    await setDoc(doc(db, docName, formData.email), {
-      name: formData.name,
-      email: formData.email,
-      telephone: formData.telephone,
-      selectedItems: formData.selectedItems,
-      itemsDescription: formData.itemsDescription,
-      createdAt: new Date(),
-    });
+    // // TODO: Add the form data to the database
+    // let docName = `rental-items-quotes`;
+    // // Save testimonial to Firestore
+    // await setDoc(doc(db, docName, formData.email), {
+    //   name: formData.name,
+    //   email: formData.email,
+    //   telephone: formData.telephone,
+    //   selectedItems: formData.selectedItems,
+    //   itemsDescription: formData.itemsDescription,
+    //   deposit: formData.deposit,
+    //   depositPercentage: formData.depositPercentage,
+    //   createdAt: new Date(),
+    // });
   };
 
   const quoteOptions = quotes.map((quote) => ({
@@ -119,6 +125,10 @@ const RentalItemQuoteForm = ({ rentalItems, companyInfo }) => {
                   }
                 ></textarea>
               </div>
+              <DepositInfoRental
+                formData={formData}
+                setFormData={setFormData}
+              />
             </div>
 
             <div className="flex justify-center mt-6">

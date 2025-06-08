@@ -80,6 +80,13 @@ const RentalQuoteSummary = ({ formData }) => {
           {subtotal.toLocaleString("en-US", { minimumFractionDigits: 2 })}
         </p>
         <p className="mt-3 font-bold">
+          <Trans>Deposit</Trans>: $
+          {formData.deposit.toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+          })}
+          {" - "}({formData.depositPercentage}%)
+        </p>
+        <p className="mt-3 font-bold">
           <Trans>ITBIS (18%)</Trans>: $
           {taxAmount.toLocaleString("en-US", { minimumFractionDigits: 2 })}
         </p>

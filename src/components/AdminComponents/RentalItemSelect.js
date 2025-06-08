@@ -17,6 +17,18 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
     label: item.rentalItem,
   }));
 
+  const calculateNewDeposit = (currentFormData) => {
+    const totalPrice =
+      currentFormData.selectedItems?.reduce((sum, item) => {
+        const itemTotal =
+          item.price * item.quantity * (1 - (item.discount || 0) / 100);
+        return sum + (parseFloat(itemTotal) || 0);
+      }, 0) || 0;
+    const depositPercentage =
+      parseFloat(currentFormData.depositPercentage) || 0;
+    return (totalPrice * depositPercentage) / 100;
+  };
+
   const handleItemChange = (e) => {
     if (e) {
       const newItems = e.map((option) => {
@@ -51,11 +63,24 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
           };
         }
       });
-      setFormData({ ...formData, selectedItems: newItems });
+      const newFormData = { ...formData, selectedItems: newItems };
+      const newDeposit = calculateNewDeposit(newFormData);
+      setFormData({ ...newFormData, deposit: newDeposit });
     } else {
-      setFormData({ ...formData, selectedItems: [] });
+      const newFormData = { ...formData, selectedItems: [] };
+      const newDeposit = calculateNewDeposit(newFormData);
+      setFormData({ ...newFormData, deposit: newDeposit });
     }
   };
+
+  const handleItemUpdate = (index, updates) => {
+    const newItems = [...formData.selectedItems];
+    newItems[index] = { ...newItems[index], ...updates };
+    const newFormData = { ...formData, selectedItems: newItems };
+    const newDeposit = calculateNewDeposit(newFormData);
+    setFormData({ ...newFormData, deposit: newDeposit });
+  };
+
   // Add this to convert formData.selectedItems to the format expected by CreatableSelect
   const selectedValues =
     formData.selectedItems?.map((item) => ({
@@ -94,7 +119,7 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                       onChange={(e) => {
                         const newItems = [...formData.selectedItems];
                         newItems[index].rentalItem = e.target.value;
-                        setFormData({ ...formData, selectedItems: newItems });
+                        handleItemUpdate(index, { rentalItem: e.target.value });
                       }}
                       className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
                     />
@@ -112,14 +137,13 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                         type="number"
                         value={item.quantity}
                         onChange={(e) => {
-                          const newItems = [...formData.selectedItems];
                           const value = e.target.value;
                           // Allow empty string during typing, but enforce min of 1 for actual numbers
-                          newItems[index].quantity =
+                          const newQuantity =
                             value === ""
                               ? ""
                               : Math.max(1, parseInt(value) || 1);
-                          setFormData({ ...formData, selectedItems: newItems });
+                          handleItemUpdate(index, { quantity: newQuantity });
                         }}
                         className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
                         min="1"
@@ -138,9 +162,7 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                         type="number"
                         value={item.price}
                         onChange={(e) => {
-                          const newItems = [...formData.selectedItems];
-                          newItems[index].price = e.target.value;
-                          setFormData({ ...formData, selectedItems: newItems });
+                          handleItemUpdate(index, { price: e.target.value });
                         }}
                         className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
                         min="0"
@@ -159,17 +181,16 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                         type="number"
                         value={item.discount}
                         onChange={(e) => {
-                          const newItems = [...formData.selectedItems];
                           const value = e.target.value;
                           // Allow empty string during typing, but enforce min/max when there's a value
-                          newItems[index].discount =
+                          const newDiscount =
                             value === ""
                               ? ""
                               : Math.min(
                                   100,
                                   Math.max(0, parseFloat(value) || 0),
                                 );
-                          setFormData({ ...formData, selectedItems: newItems });
+                          handleItemUpdate(index, { discount: newDiscount });
                         }}
                         className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
                         min="0"
@@ -203,7 +224,7 @@ const RentalItemSelect = ({ rentalItems, formData, setFormData }) => {
                     onChange={(e) => {
                       const newItems = [...formData.selectedItems];
                       newItems[index].description = e.target.value;
-                      setFormData({ ...formData, selectedItems: newItems });
+                      handleItemUpdate(index, { description: e.target.value });
                     }}
                     className="w-full px-3 rounded-lg border border-gray-300 focus:ring-0 focus:border-black h-[38px]"
                     placeholder={t("Item Description")}
