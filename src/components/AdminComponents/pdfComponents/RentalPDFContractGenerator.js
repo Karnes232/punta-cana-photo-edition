@@ -132,8 +132,10 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
   const totalAmount = subtotal + taxAmount;
 
   // Calculate deposit
-  const depositRate = 0.6; // 60% deposit
-  const depositAmount = totalAmount * depositRate;
+  const depositRate = formData.depositPercentage
+    ? formData.depositPercentage / 100
+    : 0.6;
+  const depositAmount = formData.deposit || totalAmount * depositRate;
   const balanceDue = totalAmount - depositAmount;
 
   // Format date
@@ -401,6 +403,36 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
 
       {/* Second Page */}
       <Page size="A4" style={styles.page}>
+        <View style={[styles.table, { marginTop: 20 }]}>
+          <View style={[styles.tableRow, styles.tableHeader]}>
+            <Text style={[styles.tableHeaderCell, { flex: 1 }]}>
+              {language === "es" ? "Resumen de Pagos" : "Payment Summary"}
+            </Text>
+            <Text
+              style={[styles.tableHeaderCell, { flex: 1, textAlign: "right" }]}
+            >
+              {language === "es" ? "Monto" : "Amount"}
+            </Text>
+          </View>
+          <View style={styles.tableRow}>
+            <Text style={[styles.tableCell, { flex: 1 }]}>
+              {language === "es"
+                ? `Depósito ${formData.depositPercentage ? `(${formData.depositPercentage}%)` : "(60%)"}`
+                : `Deposit ${formData.depositPercentage ? `(${formData.depositPercentage}%)` : "(60%)"}`}
+            </Text>
+            <Text style={[styles.tableCell, { flex: 1, textAlign: "right" }]}>
+              ${depositAmount.toFixed(2)}
+            </Text>
+          </View>
+          <View style={styles.tableRow}>
+            <Text style={[styles.tableCell, { flex: 1 }]}>
+              {language === "es" ? "Saldo Restante" : "Remaining Balance"}
+            </Text>
+            <Text style={[styles.tableCell, { flex: 1, textAlign: "right" }]}>
+              ${balanceDue.toFixed(2)}
+            </Text>
+          </View>
+        </View>
         <Text style={styles.paragraph}>
           {language === "es"
             ? `1.2 Los artículos de alquiler se entregarán y recogerán de ${formData.eventLocation}.`
@@ -435,8 +467,8 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? `3.2 EL CLIENTE está de acuerdo en hacer un depósito de $${depositAmount.toFixed(2)} (60% del monto total del alquiler) al firmar este Acuerdo.`
-            : `3.2 THE CLIENT agrees to make a deposit of $${depositAmount.toFixed(2)} (60% of the total rental fee) upon signing this Agreement.`}
+            ? `3.2 EL CLIENTE está de acuerdo en hacer un depósito de $${depositAmount.toFixed(2)} ${formData.depositPercentage ? `(${formData.depositPercentage}% del monto total del alquiler)` : ""} al firmar este Acuerdo.`
+            : `3.2 THE CLIENT agrees to make a deposit of $${depositAmount.toFixed(2)} ${formData.depositPercentage ? `(${formData.depositPercentage}% of the total rental fee)` : ""} upon signing this Agreement.`}
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"

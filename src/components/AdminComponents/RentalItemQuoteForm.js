@@ -27,18 +27,18 @@ const RentalItemQuoteForm = ({ rentalItems, companyInfo }) => {
     setFormSubmitted(true);
 
     // // TODO: Add the form data to the database
-    // let docName = `rental-items-quotes`;
-    // // Save testimonial to Firestore
-    // await setDoc(doc(db, docName, formData.email), {
-    //   name: formData.name,
-    //   email: formData.email,
-    //   telephone: formData.telephone,
-    //   selectedItems: formData.selectedItems,
-    //   itemsDescription: formData.itemsDescription,
-    //   deposit: formData.deposit,
-    //   depositPercentage: formData.depositPercentage,
-    //   createdAt: new Date(),
-    // });
+    let docName = `rental-items-quotes`;
+    // Save testimonial to Firestore
+    await setDoc(doc(db, docName, formData.email), {
+      name: formData.name,
+      email: formData.email,
+      telephone: formData.telephone,
+      selectedItems: formData.selectedItems,
+      itemsDescription: formData.itemsDescription,
+      deposit: formData.deposit,
+      depositPercentage: formData.depositPercentage,
+      createdAt: new Date(),
+    });
   };
 
   const quoteOptions = quotes.map((quote) => ({

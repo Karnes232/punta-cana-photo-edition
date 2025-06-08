@@ -5,6 +5,7 @@ import EventInformation from "./EventInformation";
 import RentalItemSelect from "./RentalItemSelect";
 import RentalContractSummary from "./RentalContractSummary";
 import RentalPDFContractGenerator from "./pdfComponents/RentalPDFContractGenerator";
+import DepositInfoRental from "./DepositInfoRental";
 
 const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,8 @@ const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
     eventEndTime: "",
     selectedItems: [],
     setupIncluded: false,
+    deposit: 0,
+    depositPercentage: 0,
     // Add any additional rental-specific fields here
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -79,6 +82,7 @@ const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
               setFormData={setFormData}
             />
           </div>
+          <DepositInfoRental formData={formData} setFormData={setFormData} />
           <div className="flex justify-center mt-6">
             <button
               type="submit"
