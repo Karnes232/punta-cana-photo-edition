@@ -117,7 +117,12 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
   const taxAmount = (parseFloat(subtotal) * taxRate).toFixed(2);
   const totalPrice = (parseFloat(subtotal) + parseFloat(taxAmount)).toFixed(2);
 
-  const downPayment = (totalPrice * 0.6).toFixed(2);
+  const downPayment = formData.deposit
+    ? parseFloat(formData.deposit).toFixed(2)
+    : (
+        totalPrice *
+        (formData.depositPercentage ? formData.depositPercentage / 100 : 0.6)
+      ).toFixed(2);
   const remainingBalance = (totalPrice - downPayment).toFixed(2);
   const eventLocation = formData.eventLocation;
   const eventDate = formData.eventDate
@@ -338,8 +343,8 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? `2.4 EL CLIENTE acepta realizar un pago inicial (anticipo) del 60% del precio total, equivalente a $${downPayment}, al firmar este Acuerdo.`
-            : `2.4 THE CLIENT agrees to make an initial payment (down payment) of 60% of the total price, equivalent to $${downPayment}, upon signing this Agreement.`}
+            ? `2.4 EL CLIENTE acepta realizar un pago inicial (anticipo) del ${formData.depositPercentage || 60}% del precio total, equivalente a $${downPayment}, al firmar este Acuerdo.`
+            : `2.4 THE CLIENT agrees to make an initial payment (down payment) of ${formData.depositPercentage || 60}% of the total price, equivalent to $${downPayment}, upon signing this Agreement.`}
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"

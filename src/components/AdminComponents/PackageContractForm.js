@@ -5,6 +5,7 @@ import PackageSelect from "./PackageSelect";
 import EventInformation from "./EventInformation";
 import ContractSummary from "./ContractSummary";
 import PDFContractGenerator from "./pdfComponents/PDFContractGenerator";
+import DepositInfo from "./DepositInfo";
 // Import your PDF generator component if you have one
 // import PDFContractGenerator from './pdfComponents/PDFContractGenerator';
 
@@ -24,6 +25,8 @@ const PackageContractForm = ({ packages, additions, companyInfo }) => {
     eventDate: "",
     eventStartTime: "",
     eventEndTime: "",
+    deposit: 0,
+    depositPercentage: 0,
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -78,6 +81,7 @@ const PackageContractForm = ({ packages, additions, companyInfo }) => {
             formData={formData}
             setFormData={setFormData}
           />
+          <DepositInfo formData={formData} setFormData={setFormData} />
 
           <div className="flex justify-center mt-6">
             <button

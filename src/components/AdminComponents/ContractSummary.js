@@ -142,6 +142,13 @@ const ContractSummary = ({ formData }) => {
                 ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
               </p>
               <p className="font-bold">
+                <Trans>Deposit</Trans>: $
+                {formData.deposit.toLocaleString("en-US", {
+                  minimumFractionDigits: 2,
+                })}
+                {" - "}({formData.depositPercentage}%)
+              </p>
+              <p className="font-bold">
                 <Trans>ITBIS (18%)</Trans>: $
                 {(
                   (parseFloat(formData.packagePrice) +

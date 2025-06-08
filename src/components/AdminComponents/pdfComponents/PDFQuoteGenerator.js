@@ -220,8 +220,8 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
     const actualPercentage = ((depositAmount / subtotal) * 100).toFixed(0);
 
     return language === "es"
-      ? `Depósito Requerido: ${depositAmount.toFixed(2)} (${actualPercentage}%)`
-      : `Required Deposit: ${depositAmount.toFixed(2)} (${actualPercentage}%)`;
+      ? `Depósito Requerido: $${depositAmount.toFixed(2)} (${actualPercentage}%)`
+      : `Required Deposit: $${depositAmount.toFixed(2)} (${actualPercentage}%)`;
   };
 
   // Get payment terms text based on deposit configuration
@@ -232,8 +232,8 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
     if (formData.deposit && parseFloat(formData.deposit) > 0) {
       depositText =
         language === "es"
-          ? `un depósito de ${depositAmount.toFixed(2)}`
-          : `a deposit of ${depositAmount.toFixed(2)}`;
+          ? `un depósito de $${depositAmount.toFixed(2)}`
+          : `a deposit of $${depositAmount.toFixed(2)}`;
     } else if (
       formData.depositPercentage &&
       parseFloat(formData.depositPercentage) > 0
