@@ -20,17 +20,7 @@ const SideBarInside = ({ footer, setToggled }) => {
           <p className={footer ? "hamburgerSmall" : "hamburger"}>Home</p>
         </MenuItem>
         <RomanticEvents footer={footer} setToggled={setToggled} />
-        {/* <MenuItem
-          component={
-            <Link
-              to="/photoshoots"
-              className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={footer ? undefined : () => setToggled(false)}
-            />
-          }
-        >
-          <p className={footer ? "hamburgerSmall" : "hamburger"}>Photoshoots</p>
-        </MenuItem> */}
+
         <MenuItem
           component={
             <Link

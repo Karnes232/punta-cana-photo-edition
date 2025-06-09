@@ -50,21 +50,8 @@ const TestimonialForm = () => {
       value: "Bachelor Party",
     },
     {
-      page: "photoshoots",
-      value: "Photoshoots",
-    },
-    {
       page: "event-planner",
       value: "Corporate Events",
-    },
-    {
-      page: "real-estate-photography",
-      value: "Real Estate Photography",
-    },
-
-    {
-      page: "videos-and-comercial-photos",
-      value: "Videos and Comercial Photos",
     },
   ];
 

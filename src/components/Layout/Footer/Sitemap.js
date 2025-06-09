@@ -36,16 +36,6 @@ const Sitemap = () => {
     },
   ];
 
-  // const MoreServicesLinks = [
-  //   {
-  //     name: "Real Estate Photography",
-  //     urlLink: "/real-estate-photography",
-  //   },
-  //   {
-  //     name: "Videos and comercial photos",
-  //     urlLink: "/videos-and-comercial-photos",
-  //   },
-  // ];
 
   return (
     <div className="flex flex-row space-x-4">
@@ -66,11 +56,7 @@ const Sitemap = () => {
           links={RomanticEventLinks}
         />
       </div>
-      {/* <Link to="/photoshoots" className="no-underline">
-        <button className={`navLinks`} translate="no">
-          Photoshoots
-        </button>
-      </Link> */}
+   
       <Link to="/event-planner" className="no-underline">
         <button className={`navLinks`} translate="no">
           <Trans>Corporate events</Trans>
@@ -91,18 +77,7 @@ const Sitemap = () => {
           <Trans>Design Your Day</Trans>
         </button>
       </Link>
-      {/* <div className="2xl:hidden">
-        <PopOverComponent
-          title="More photo-video services"
-          links={MoreServicesLinks}
-        />
-      </div>
-      <div className="hidden 2xl:block">
-        <PopOverComponentHover
-          title="More photo-video services"
-          links={MoreServicesLinks}
-        />
-      </div> */}
+     
       <Link to="/photo-gallery" className="no-underline">
         <button className={`navLinks`} translate="no">
           <Trans>Photo Gallery</Trans>
