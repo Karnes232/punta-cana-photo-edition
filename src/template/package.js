@@ -32,10 +32,10 @@ const PackagePage = ({ pageContext, data }) => {
     addOn4: "",
     addOn5: "",
     addOn6: "",
-    // price: data.allContentfulPackagePageContent.nodes[0].packages[0].price,
-    // packageName: data.allContentfulPackagePageContent.nodes[0].heroHeading,
+    price: data.allContentfulPackagePageContent.nodes[0].packages[0]?.price || 0,
+    packageName: data.allContentfulPackagePageContent.nodes[0].heroHeading,
   });
-  console.log(data.allContentfulPackagePageContent.nodes[0]);
+
   const image = getImage(
     data.allContentfulPackagePageContent.nodes[0].images[0],
   );
