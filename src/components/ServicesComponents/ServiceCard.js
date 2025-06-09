@@ -27,7 +27,7 @@ const ServiceCard = ({ service }) => {
         />
         <TextComponent
           title={service.cardDescription}
-          className="mt-10 mb-10 mx-10 text-base tracking-wide font-crimson font-light uppercase"
+          className="mt-5 mb-10 mx-10 text-base tracking-wide font-crimson font-light uppercase h-60"
         />
         <HiOutlineArrowNarrowRight className="mb-10 text-4xl text-gray-400 xl:opacity-0 group-hover:opacity-100 xl:transition-opacity duration-300" />
       </div>
