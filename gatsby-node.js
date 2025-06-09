@@ -2,6 +2,16 @@ const path = require("path");
 const fetch = require("node-fetch");
 const fs = require("fs");
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type ContentfulPackagePageContent implements Node {
+      videoUrl: String
+    }
+  `;
+  createTypes(typeDefs);
+};
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const queryResults = await graphql(`

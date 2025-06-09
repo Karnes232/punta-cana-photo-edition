@@ -5,7 +5,7 @@ import YouTubeEmbedComponent from "./YouTubeEmbedComponent";
 
 const SocialMediaEmbed = ({ embed }) => {
   if (!embed) return null;
-  // console.log(embed)
+
   const { platform, embedId, caption } = embed;
 
   switch (platform) {

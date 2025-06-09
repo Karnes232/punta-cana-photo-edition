@@ -419,7 +419,6 @@ const PDFQuoteGenerator = ({ formData, companyInfo }) => {
   const { language } = useI18next();
 
   // Debug logging
-  console.log("Parent component language:", language);
 
   const sendQuoteEmail = async () => {
     try {

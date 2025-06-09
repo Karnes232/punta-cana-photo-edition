@@ -2,7 +2,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 
 const ServiceCard = ({ icon, title, description }) => {
-  console.log(icon);
   const image = getImage(icon.gatsbyImage);
   return (
     <div className="flex flex-col p-6 bg-white rounded-lg shadow-lg">

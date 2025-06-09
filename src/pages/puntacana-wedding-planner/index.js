@@ -24,7 +24,6 @@ const Index = ({ data }) => {
     }
   });
 
-  console.log(data.biography);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />

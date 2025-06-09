@@ -16,7 +16,6 @@ import CompanyInformationComponent from "../../components/CompanyInformationComp
 import WhyChooseUs from "../../components/CompanyInformationComponent/WhyChooseUs";
 
 const Index = ({ data }) => {
-  console.log(data.allContentfulServiceCard.nodes);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />

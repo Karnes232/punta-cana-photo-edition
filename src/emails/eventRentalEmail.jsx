@@ -21,7 +21,7 @@ const eventRentalEmail = ({ name, items }) => {
     0,
   );
   let withOutPrice = false;
-  console.log(items);
+
   items.forEach((item) => {
     if (item.price === null) {
       withOutPrice = true;

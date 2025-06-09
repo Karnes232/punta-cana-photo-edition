@@ -37,7 +37,7 @@ export default Index;
 
 export const Head = ({ data }) => {
   const { language } = useI18next();
-  console.log(language);
+
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
   //const siteUrl = `${data.site.siteMetadata.siteUrl}/proposal`;

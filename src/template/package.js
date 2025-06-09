@@ -32,10 +32,10 @@ const PackagePage = ({ pageContext, data }) => {
     addOn4: "",
     addOn5: "",
     addOn6: "",
-    price: data.allContentfulPackagePageContent.nodes[0].packages[0].price,
-    packageName: data.allContentfulPackagePageContent.nodes[0].heroHeading,
+    // price: data.allContentfulPackagePageContent.nodes[0].packages[0].price,
+    // packageName: data.allContentfulPackagePageContent.nodes[0].heroHeading,
   });
-
+  console.log(data.allContentfulPackagePageContent.nodes[0]);
   const image = getImage(
     data.allContentfulPackagePageContent.nodes[0].images[0],
   );
@@ -153,41 +153,47 @@ const PackagePage = ({ pageContext, data }) => {
       <div className="w-full max-w-7xl mx-auto px-4 lg:mt-5 xl:mt-10">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className=" lg:basis-1/2">
-            {data.allContentfulPackagePageContent.nodes[0].packages[0]
-              .included !== null ? (
+            {data.allContentfulPackagePageContent.nodes[0].packages !== null ? (
               <>
-                {" "}
-                <div className="my-5 mx-auto">
-                  <TextComponent
-                    title={t("Included")}
-                    className="my-5 text-center tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
-                  />
-                  <ul className="flex flex-col justify-center items-center gap-2">
-                    {data.allContentfulPackagePageContent.nodes[0].packages[0].included?.map(
-                      (item, index) => {
-                        return (
-                          <li
-                            key={index}
-                            className="list-disc text-sm xl:text-lg capitalize"
-                          >
-                            {item}
-                          </li>
-                        );
-                      },
-                    )}
-                  </ul>
-                </div>
+                {data.allContentfulPackagePageContent.nodes[0].packages[0]
+                  .included !== null ? (
+                  <>
+                    {" "}
+                    <div className="my-5 mx-auto">
+                      <TextComponent
+                        title={t("Included")}
+                        className="my-5 text-center tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+                      />
+                      <ul className="flex flex-col justify-center items-center gap-2">
+                        {data.allContentfulPackagePageContent.nodes[0].packages[0].included?.map(
+                          (item, index) => {
+                            return (
+                              <li
+                                key={index}
+                                className="list-disc text-sm xl:text-lg capitalize"
+                              >
+                                {item}
+                              </li>
+                            );
+                          },
+                        )}
+                      </ul>
+                    </div>
+                  </>
+                ) : (
+                  <div className="flex justify-center items-center h-full">
+                    <TextComponent
+                      paragraph={
+                        data.allContentfulPackagePageContent.nodes[0]
+                          .packages[0].paragraph
+                      }
+                      pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5 text-center"
+                    />
+                  </div>
+                )}{" "}
               </>
             ) : (
-              <div className="flex justify-center items-center h-full">
-                <TextComponent
-                  paragraph={
-                    data.allContentfulPackagePageContent.nodes[0].packages[0]
-                      .paragraph
-                  }
-                  pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5 text-center"
-                />
-              </div>
+              <></>
             )}
           </div>
           {data.allContentfulPackagePageContent.nodes[0].videoUrl !== null ? (
@@ -221,16 +227,21 @@ const PackagePage = ({ pageContext, data }) => {
           )}
         </div>
       </div>
-
-      <PackageForm
-        packageInformation={data.allContentfulPackagePageContent.nodes[0]}
-        formData={formData}
-        setFormData={setFormData}
-        handleSubmit={handleSubmit}
-        selectedAddOns={selectedAddOns}
-        setSelectedAddOns={setSelectedAddOns}
-        handleAddOnToggle={handleAddOnToggle}
-      />
+      {data.allContentfulPackagePageContent.nodes[0].packages !== null ? (
+        <>
+          <PackageForm
+            packageInformation={data.allContentfulPackagePageContent.nodes[0]}
+            formData={formData}
+            setFormData={setFormData}
+            handleSubmit={handleSubmit}
+            selectedAddOns={selectedAddOns}
+            setSelectedAddOns={setSelectedAddOns}
+            handleAddOnToggle={handleAddOnToggle}
+          />{" "}
+        </>
+      ) : (
+        <></>
+      )}
       {data.allContentfulPackagePageContent.nodes[0].faqs !== null ? (
         <>
           <Faqs faqs={data.allContentfulPackagePageContent.nodes[0].faqs} />
