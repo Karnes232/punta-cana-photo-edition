@@ -367,8 +367,8 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
 
         <Text style={styles.paragraph}>
           {language === "es"
-            ? "*Pagando en efectivo? Disfrute de un **descuento del 18%** aplicado al total. Esta oferta es válida solo para pagos en efectivo."
-            : "*Paying in cash? Enjoy a **18% discount** applied to the total. Offer valid only for cash payments."}
+            ? "*Pago en efectivo: Exento de ITBIS (18%) y tarifas de transacción (10%)"
+            : "*Cash payment: Exempt from ITBIS (18%) and transaction fees (10%)"}
         </Text>
 
         {/* Section 3 */}

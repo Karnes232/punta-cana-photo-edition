@@ -472,8 +472,8 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? `3.3 El saldo restante de $${balanceDue.toFixed(2)} debe pagarse antes de que comience el período de alquiler.`
-            : `3.3 The remaining balance of $${balanceDue.toFixed(2)} must be paid no later than 3 days before the rental period begins.`}
+            ? `3.3 El saldo restante de $${balanceDue.toFixed(2)} ${formData.paymentTerms || "debe pagarse según términos acordados entre las partes."}`
+            : `3.3 The remaining balance of $${balanceDue.toFixed(2)} ${formData.paymentTerms || "must be paid according to terms agreed upon by both parties."}`}
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
@@ -482,8 +482,18 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? "*Pagando en efectivo? Disfrute de un **descuento del 18%** aplicado al total. Esta oferta es válida solo para pagos en efectivo."
-            : "*Paying in cash? Enjoy a **18% discount** applied to the total. Offer valid only for full cash payments."}
+            ? `3.5 MÉTODOS DE PAGO Y TARIFAS:`
+            : `3.5 PAYMENT METHODS AND FEES:`}
+        </Text>
+        <Text style={styles.listItem}>
+          {language === "es"
+            ? "• Pago en efectivo: Exento de ITBIS (18%) y tarifas de transacción (10%)"
+            : "• Cash payment: Exempt from ITBIS (18%) and transaction fees (10%)"}
+        </Text>
+        <Text style={styles.listItem}>
+          {language === "es"
+            ? "• Pago por PayPal u otros métodos digitales: Se aplica cargo adicional del 10% por transacción más el 18% de ITBIS sobre el total"
+            : "• PayPal or other digital payment methods: Additional 10% transaction fee plus 18% ITBIS applies to total"}
         </Text>
 
         {/* Section 4 */}

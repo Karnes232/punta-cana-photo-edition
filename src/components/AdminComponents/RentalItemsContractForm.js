@@ -6,7 +6,7 @@ import RentalItemSelect from "./RentalItemSelect";
 import RentalContractSummary from "./RentalContractSummary";
 import RentalPDFContractGenerator from "./pdfComponents/RentalPDFContractGenerator";
 import DepositInfoRental from "./DepositInfoRental";
-
+import PaymentTerms from "./PaymentTerms";
 const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
   const [formData, setFormData] = useState({
     representativeName: "",
@@ -23,6 +23,7 @@ const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
     setupIncluded: false,
     deposit: 0,
     depositPercentage: 0,
+    paymentTerms: "",
     // Add any additional rental-specific fields here
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -83,6 +84,11 @@ const RentalItemsContractForm = ({ companyInfo, rentalItems }) => {
             />
           </div>
           <DepositInfoRental formData={formData} setFormData={setFormData} />
+          <PaymentTerms
+            formData={formData}
+            setFormData={setFormData}
+            placeholder="must be paid no later than 3 days before the rental period begins"
+          />
           <div className="flex justify-center mt-6">
             <button
               type="submit"

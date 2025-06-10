@@ -1,7 +1,7 @@
 import { Trans } from "gatsby-plugin-react-i18next";
 import React from "react";
 
-const PaymentTerms = ({ formData, setFormData }) => {
+const PaymentTerms = ({ formData, setFormData, placeholder }) => {
   return (
     <>
       <div className="relative z-0 mb-6 w-full group">
@@ -10,7 +10,7 @@ const PaymentTerms = ({ formData, setFormData }) => {
           name="paymentTerms"
           id="paymentTerms"
           className="contactFormInput peer"
-          placeholder="Client agrees to pay the remaining balance 1 day before the event."
+          placeholder={placeholder}
           required
           value={formData.paymentTerms}
           onChange={(e) =>

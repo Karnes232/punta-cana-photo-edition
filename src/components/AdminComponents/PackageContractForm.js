@@ -84,7 +84,11 @@ const PackageContractForm = ({ packages, additions, companyInfo }) => {
             setFormData={setFormData}
           />
           <DepositInfo formData={formData} setFormData={setFormData} />
-          <PaymentTerms formData={formData} setFormData={setFormData} />
+          <PaymentTerms
+            formData={formData}
+            setFormData={setFormData}
+            placeholder="Client agrees to pay the remaining balance 1 day before the event."
+          />
           <div className="flex justify-center mt-6">
             <button
               type="submit"
