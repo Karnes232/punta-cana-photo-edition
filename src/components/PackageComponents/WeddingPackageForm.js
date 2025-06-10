@@ -11,6 +11,7 @@ const WeddingPackageForm = ({ weddingPackage }) => {
     <>
       <form name="wedding-package" data-netlify="true" hidden>
         <input type="hidden" name="form-name" value="wedding-package" />
+        <input type="text" name="package" value={weddingPackage.title} />
         <input type="text" name="name" />
         <input type="email" name="email" />
         <input type="tel" name="telephone" />
