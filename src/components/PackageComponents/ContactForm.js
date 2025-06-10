@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ContactInfo from "./ContactInfo";
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { navigate } from "gatsby";
 
 const ContactForm = ({ weddingPackage }) => {
   const { t } = useTranslation();
@@ -68,11 +69,13 @@ const ContactForm = ({ weddingPackage }) => {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="wedding-package" />
-        <ContactInfo
-          formData={formData}
-          setFormData={setFormData}
-          errors={errors}
-        />
+        <div className="w-[310px] md:w-[25rem] lg:w-[20rem] flex flex-col lg:flex-col-reverse gap-4 xl:gap-12">
+          <ContactInfo
+            formData={formData}
+            setFormData={setFormData}
+            errors={errors}
+          />
+        </div>
       </form>
       <div className="flex justify-center items-center lg:absolute lg:bottom-10 lg:right-1/2 lg:translate-x-1/2">
         <button
