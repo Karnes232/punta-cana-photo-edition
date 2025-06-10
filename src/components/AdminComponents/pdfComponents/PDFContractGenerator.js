@@ -242,10 +242,7 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
             : `1.1 THE COMPANY agrees to provide THE CLIENT with the event planning services for ${formData.eventType} under the "${formData.package}" package, which includes:`}
         </Text>
         <Text style={styles.paragraph}>{formData.packagesDescription}</Text>
-      </Page>
 
-      {/* Second Page */}
-      <Page size="A4" style={styles.page}>
         <Text style={styles.paragraph}>
           {language === "es"
             ? "1.2 Elementos Adicionales Solicitados por el Cliente:"
@@ -319,7 +316,10 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
             ? "1.3 El servicio se proporcionará en la fecha y hora acordadas por ambas partes, en el lugar especificado en la Sección 3 de este Acuerdo."
             : " 1.3 The service will be provided on the date and time agreed upon by both parties, at the location specified in Section 3 of this Agreement."}
         </Text>
+      </Page>
 
+      {/* Second Page */}
+      <Page size="A4" style={styles.page}>
         {/* Section 2 */}
         <Text style={styles.sectionTitle}>
           {language === "es"
@@ -348,13 +348,21 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? `2.5 El saldo restante de $${remainingBalance} debe pagarse en efectivo, tarjeta de crédito/débito o transferencia bancaria a más tardar 7 días antes de la fecha del evento.`
-            : `2.5 The remaining balance of $${remainingBalance} must be paid in cash, credit/debit card, or bank transfer no later than 7 days before the event date.`}
+            ? `2.5 El saldo restante de $${remainingBalance} debe pagarse según los términos establecidos específicamente para este evento.`
+            : `2.5 The remaining balance of $${remainingBalance} must be paid according to the specific terms established for this event.`}
+        </Text>
+        {formData.paymentTerms && (
+          <Text style={styles.paragraph}>2.6 {formData.paymentTerms}</Text>
+        )}
+        <Text style={styles.paragraph}>
+          {language === "es"
+            ? `2.7 Si EL CLIENTE decide pagar el saldo restante mediante PayPal u otro método de pago electrónico, deberá pagar un 10% adicional por concepto de transacción, además del 18% de ITBIS. Si el pago se realiza en efectivo, se aplicará un descuento equivalente al 18% de ITBIS y al 10% de transacción.`
+            : `2.7 If THE CLIENT chooses to pay the remaining balance via PayPal or another digital payment method, an additional 10% transaction fee will apply, in addition to the 18% ITBIS. If payment is made in cash, a discount equivalent to the 18% ITBIS and the 10% transaction fee will be applied.`}
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? "2.6 Todos los pagos no son reembolsables excepto según lo dispuesto en este Acuerdo."
-            : "2.6 All payments are non-refundable except as otherwise provided in this Agreement."}
+            ? "2.8 Todos los pagos no son reembolsables excepto según lo dispuesto en este Acuerdo."
+            : "2.8 All payments are non-refundable except as otherwise provided in this Agreement."}
         </Text>
 
         <Text style={styles.paragraph}>
