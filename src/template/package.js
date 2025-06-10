@@ -32,7 +32,8 @@ const PackagePage = ({ pageContext, data }) => {
     addOn4: "",
     addOn5: "",
     addOn6: "",
-    price: data.allContentfulPackagePageContent.nodes[0].packages[0]?.price || 0,
+    price:
+      data.allContentfulPackagePageContent.nodes[0].packages[0]?.price || 0,
     packageName: data.allContentfulPackagePageContent.nodes[0].heroHeading,
   });
 

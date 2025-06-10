@@ -15,6 +15,7 @@ module.exports = {
         // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
         localeFilter: (locale) => true,
+        // downloadLocal: true,
       },
     },
     "gatsby-plugin-image",

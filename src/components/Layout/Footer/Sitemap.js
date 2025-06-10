@@ -36,7 +36,6 @@ const Sitemap = () => {
     },
   ];
 
-
   return (
     <div className="flex flex-row space-x-4">
       <Link to="/" className="no-underline">
@@ -56,7 +55,7 @@ const Sitemap = () => {
           links={RomanticEventLinks}
         />
       </div>
-   
+
       <Link to="/event-planner" className="no-underline">
         <button className={`navLinks`} translate="no">
           <Trans>Corporate events</Trans>
@@ -77,7 +76,7 @@ const Sitemap = () => {
           <Trans>Design Your Day</Trans>
         </button>
       </Link>
-     
+
       <Link to="/photo-gallery" className="no-underline">
         <button className={`navLinks`} translate="no">
           <Trans>Photo Gallery</Trans>

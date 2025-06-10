@@ -2,6 +2,7 @@ import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import TextComponent from "../TextComponent/TextComponent";
 import { motion } from "framer-motion";
+import WeddingPackageForm from "./WeddingPackageForm";
 
 const WeddingPackageCard = ({ weddingPackage, onPackageSelect }) => {
   const image = getImage(weddingPackage.image.gatsbyImage);
@@ -94,12 +95,13 @@ const WeddingPackageCard = ({ weddingPackage, onPackageSelect }) => {
             <></>
           )}
           {weddingPackage.callToActionButton && (
-            <button
-              onClick={handlePackageSelect}
-              className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-4 py-2 rounded-md w-3/4"
-            >
-              {weddingPackage.callToActionButton}
-            </button>
+            // <button
+            //   onClick={handlePackageSelect}
+            //   className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-4 py-2 rounded-md w-3/4"
+            // >
+            //   {weddingPackage.callToActionButton}
+            // </button>
+            <WeddingPackageForm weddingPackage={weddingPackage} />
           )}
         </div>
       </div>
