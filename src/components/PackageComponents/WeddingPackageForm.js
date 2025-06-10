@@ -14,6 +14,8 @@ const WeddingPackageForm = ({ weddingPackage }) => {
         <input type="text" name="name" />
         <input type="email" name="email" />
         <input type="tel" name="telephone" />
+        <input type="date" name="date" />
+        <input type="text" name="message" />
       </form>
       <div className="">
         <button
