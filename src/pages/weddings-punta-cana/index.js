@@ -21,9 +21,9 @@ const Index = ({ data }) => {
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {useVideo ? (
         <BackgroundVideo
-          videoUrl={data.allContentfulPageContent.nodes[0].videoHero.url}
           fullSize={data.allContentfulPageContent.nodes[0].fullSize}
           heroHeading={data.allContentfulPageContent.nodes[0].heroHeading}
+          videoId={data.allContentfulPageContent.nodes[0].videoId}
         />
       ) : (
         <HeroSwiperWeddingPuntaCana
@@ -150,10 +150,7 @@ export const query = graphql`
           raw
         }
         useVideo
-        videoHero {
-          url
-          title
-        }
+        videoId
       }
     }
     allContentfulPackages(

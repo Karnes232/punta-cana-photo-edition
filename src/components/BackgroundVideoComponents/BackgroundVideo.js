@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Trans } from "gatsby-plugin-react-i18next";
-const BackgroundVideo = ({ videoUrl, fullSize, heroHeading }) => {
+const BackgroundVideo = ({ fullSize, heroHeading, videoId }) => {
   let height = "";
   let blankDivHeight = "";
   if (fullSize) {
@@ -11,6 +11,12 @@ const BackgroundVideo = ({ videoUrl, fullSize, heroHeading }) => {
     height = "h-[65vh]";
     blankDivHeight = "h-[55vh]";
   }
+
+  const cloudName = "dswevrfuh"
+
+  const base = `https://res.cloudinary.com/${cloudName}/video/upload`
+
+  console.log(videoId);
 
   return (
     <>
@@ -27,14 +33,28 @@ const BackgroundVideo = ({ videoUrl, fullSize, heroHeading }) => {
         >
           <video
             className="absolute top-0 left-0 bottom-0 right-0 w-full h-full object-cover object-center scale-[1.5]"
-            src={videoUrl}
+            // src={videoUrl}
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
           >
-            Your device does not support playing videos
+            <source
+              src={`${base}/q_auto,f_auto,vc_auto,ac_none,w_1080/${videoId}.mp4`}
+              type="video/mp4"
+              media="(min-width: 1024px)"
+            />
+            <source
+              src={`${base}/q_auto,f_auto,vc_auto,ac_none,w_720/${videoId}.mp4`}
+              type="video/mp4"
+              media="(min-width: 640px)"
+            />
+            <source
+              src={`${base}/q_auto,f_auto,vc_auto,ac_none,w_480/${videoId}.mp4`}
+              type="video/mp4"
+            />
+            {`Your device does not support video playback.`}
           </video>
         </motion.div>
         {heroHeading && (
