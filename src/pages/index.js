@@ -7,15 +7,19 @@ import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
 import QuoteComponent from "../components/QuoteComponent/QuoteComponent";
 import ContentBlock from "../components/ContentBlockComponent/ContentBlock";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import HeroSwiperLocal from "../components/HeroSwiper/HeroSwiperLocal";
+import ContentBlockLocal from "../components/ContentBlockComponent/ContentBlockLocal";
 const IndexPage = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      {/* <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} /> */}
+      <HeroSwiperLocal heroInfo={data.allContentfulPageContent.nodes[0]} />
       <OurServices
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
         services={data.allContentfulServices.nodes}
       />
-      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      {/* <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} /> */}
+      <ContentBlockLocal content={data.allContentfulCardWithImage.nodes[0]} />
       <QuoteComponent quote={data.allContentfulQuotes.nodes[0]} />
     </Layout>
   );
@@ -105,7 +109,12 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          #gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
+            }
+          }
           title
         }
         fullSize
@@ -120,6 +129,11 @@ export const query = graphql`
         cardDescription
         cardImage {
           gatsbyImage(width: 1000, formats: WEBP, placeholder: BLURRED)
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 1000, formats: WEBP, placeholder: BLURRED)
+            }
+          }
           title
         }
         page {
@@ -147,7 +161,12 @@ export const query = graphql`
         buttonText
         linkUrl
         image {
-          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          # gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
+            }
+          }
           title
         }
       }

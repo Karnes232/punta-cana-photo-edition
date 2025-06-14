@@ -1,6 +1,7 @@
 import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
 import ServiceCard from "./ServiceCard";
+import ServiceCardLocal from "./ServiceCardLocal";
 
 const OurServices = ({ title, services }) => {
   return (
@@ -11,7 +12,7 @@ const OurServices = ({ title, services }) => {
       />
       <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-center md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto gap-8 mb-5">
         {services.map((service, index) => {
-          return <ServiceCard service={service} key={index} />;
+          return <ServiceCardLocal service={service} key={index} />;
         })}
       </div>
     </>
