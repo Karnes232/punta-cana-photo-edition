@@ -68,7 +68,9 @@ const Index = ({ data }) => {
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
-      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
+      {data.allContentfulPageContent.nodes[0].paragraph2 && (
+        <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
+      )}
       {/* <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} /> */}
       <ContentBlockLocal content={data.allContentfulCardWithImage.nodes[0]} />
       <PhotoGridLocal photos={section3.images} page={section3.page} />
