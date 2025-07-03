@@ -47,33 +47,60 @@ const Index = ({ data }) => {
   //     }
   //   });
   // };
-
+  console.log(section1.images[0].localFile);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {" "}
-      {/* <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} /> */}
-      <HeroSwiperLocal heroInfo={data.allContentfulPageContent.nodes[0]} />
-      <PhotoGridLocal photos={section1.images} page={section1.page} />
+      {data.allContentfulPageContent.nodes[0].heroImageList[0].localFile ? (
+        <HeroSwiperLocal heroInfo={data.allContentfulPageContent.nodes[0]} />
+      ) : (
+        <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      )}
+      {section1.images[0].localFile ? (
+        <PhotoGridLocal photos={section1.images} page={section1.page} />
+      ) : (
+        <PhotoGrid photos={section1.images} page={section1.page} />
+      )}
       <TextComponent
         title={data.allContentfulPageContent.nodes[0].heroHeading2}
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
-      <OurPackagesLocal
-        title={data.allContentfulPageContent.nodes[0].sectionTitle2}
-        photoPackages={data.allContentfulPackages.nodes}
-      />
-      <PhotoGridLocal photos={section2.images} page={section2.page} />
+      {data.allContentfulPackages.nodes[0].image.localFile ? (
+        <OurPackagesLocal
+          title={data.allContentfulPageContent.nodes[0].sectionTitle2}
+          photoPackages={data.allContentfulPackages.nodes}
+        />
+      ) : (
+        <OurPackages
+          title={data.allContentfulPageContent.nodes[0].sectionTitle2}
+          photoPackages={data.allContentfulPackages.nodes}
+        />
+      )}
+      {section2.images[0].localFile ? (
+        <PhotoGridLocal photos={section2.images} page={section2.page} />
+      ) : (
+        <PhotoGrid photos={section2.images} page={section2.page} />
+      )}
       <TextComponent
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       {data.allContentfulPageContent.nodes[0].paragraph2 && (
-        <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
+        <RichText
+          context={data?.allContentfulPageContent?.nodes[0].paragraph2}
+        />
       )}
-      {/* <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} /> */}
-      <ContentBlockLocal content={data.allContentfulCardWithImage.nodes[0]} />
-      <PhotoGridLocal photos={section3.images} page={section3.page} />
+      {data.allContentfulCardWithImage.nodes[0].image.localFile ? (
+        <ContentBlockLocal content={data.allContentfulCardWithImage.nodes[0]} />
+      ) : (
+        <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      )}
+      {section3.images[0].localFile ? (
+        <PhotoGridLocal photos={section3.images} page={section3.page} />
+      ) : (
+        <PhotoGrid photos={section3.images} page={section3.page} />
+      )}
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
       <FirebaseTestimonialsComponent packagePage={"birthday-celebrations"} />
     </Layout>
@@ -168,7 +195,7 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-         # gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
           localFile {
             childImageSharp {
               gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
@@ -197,7 +224,7 @@ export const query = graphql`
         title
         section
         images {
-          #gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           localFile {
             childImageSharp {
               gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
@@ -222,7 +249,7 @@ export const query = graphql`
         price
         image {
           title
-          #gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           localFile {
             childImageSharp {
               gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
@@ -247,7 +274,7 @@ export const query = graphql`
         linkUrl
         image {
           title
-          #gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           localFile {
             childImageSharp {
               gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)

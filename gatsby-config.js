@@ -150,7 +150,8 @@ module.exports = {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
         trackingIds: [
           // Google Analytics / GA
-          "G-1JE4933FBR", // Google Ads / Adwords / AW
+          "G-1JE4933FBR",
+          "AW-473253666", // Google Ads / Adwords / AW
           // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
         ],
         // This object gets passed directly to the gtag config command

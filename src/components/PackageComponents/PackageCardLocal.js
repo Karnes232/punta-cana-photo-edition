@@ -4,7 +4,9 @@ import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
 import { Trans } from "gatsby-plugin-react-i18next";
 const PackageCardLocal = ({ photoPackage }) => {
-  const image = getImage(photoPackage.image.localFile.childImageSharp.gatsbyImageData);
+  const image = getImage(
+    photoPackage.image.localFile.childImageSharp.gatsbyImageData,
+  );
   let cardHeight = "";
   if (photoPackage.page === "Birthday Celebrations") {
     cardHeight = "h-[27rem]";

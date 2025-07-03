@@ -4,7 +4,15 @@ import TextComponent from "../TextComponent/TextComponent";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { Link } from "gatsby";
 const ServiceCardLocal = ({ service }) => {
-  const image = getImage(service.cardImage.localFile.childImageSharp.gatsbyImageData);
+  let image = null;
+  if (service.cardImage.localFile !== null) {
+    image = getImage(
+      service.cardImage.localFile.childImageSharp.gatsbyImageData,
+    );
+  } else {
+    image = getImage(service.cardImage);
+  }
+
   return (
     <Link
       to={service?.page?.url || "/test"}

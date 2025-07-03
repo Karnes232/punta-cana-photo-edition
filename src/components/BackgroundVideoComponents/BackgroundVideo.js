@@ -12,9 +12,9 @@ const BackgroundVideo = ({ fullSize, heroHeading, videoId }) => {
     blankDivHeight = "h-[55vh]";
   }
 
-  const cloudName = "dswevrfuh"
+  const cloudName = "dswevrfuh";
 
-  const base = `https://res.cloudinary.com/${cloudName}/video/upload`
+  const base = `https://res.cloudinary.com/${cloudName}/video/upload`;
 
   console.log(videoId);
 

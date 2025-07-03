@@ -3,7 +3,9 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 const ContentBlockLocal = ({ content, page }) => {
-  const image = getImage(content.image.localFile.childImageSharp.gatsbyImageData);
+  const image = getImage(
+    content.image.localFile.childImageSharp.gatsbyImageData,
+  );
   let cardHeight = "h-[60rem] md:h-[50rem]";
   let secondaryCardHeight = "md:h-[39rem]  xl:h-[45rem] lg:w-[40rem]";
   if (page === "gender-reveal-and-baby-showers") {

@@ -10,16 +10,23 @@ import { useI18next } from "gatsby-plugin-react-i18next";
 import HeroSwiperLocal from "../components/HeroSwiper/HeroSwiperLocal";
 import ContentBlockLocal from "../components/ContentBlockComponent/ContentBlockLocal";
 const IndexPage = ({ data }) => {
+  console.log(data.allContentfulCardWithImage.nodes[0]);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      {/* <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} /> */}
-      <HeroSwiperLocal heroInfo={data.allContentfulPageContent.nodes[0]} />
+      {data.allContentfulPageContent.nodes[0].heroImageList[0].localFile ? (
+        <HeroSwiperLocal heroInfo={data.allContentfulPageContent.nodes[0]} />
+      ) : (
+        <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      )}
       <OurServices
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
         services={data.allContentfulServices.nodes}
       />
-      {/* <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} /> */}
-      <ContentBlockLocal content={data.allContentfulCardWithImage.nodes[0]} />
+      {data.allContentfulCardWithImage.nodes[0].image.localFile ? (
+        <ContentBlockLocal content={data.allContentfulCardWithImage.nodes[0]} />
+      ) : (
+        <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      )}
       <QuoteComponent quote={data.allContentfulQuotes.nodes[0]} />
     </Layout>
   );
@@ -109,7 +116,7 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-          #gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
           localFile {
             childImageSharp {
               gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
@@ -161,7 +168,7 @@ export const query = graphql`
         buttonText
         linkUrl
         image {
-          # gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
           localFile {
             childImageSharp {
               gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
