@@ -33,7 +33,7 @@ const WeddingPackageForm = ({ weddingPackage }) => {
       >
         <div className="fixed inset-0 z-50 w-screen overflow-y-auto bg-transparent/80">
           <div className="flex min-h-screen p-4 justify-center items-center">
-            <DialogPanel className="mb-20 xl:mr-10 w-full max-w-md md:max-w-4xl h-auto lg:h-[65vh] rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
+            <DialogPanel className="mb-20 xl:mr-10 w-full max-w-md md:max-w-4xl h-auto lg:h-[40rem] rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
               <div className="absolute top-2 right-5">
                 <button
                   className="p-2 text-2xl text-gray-500"
