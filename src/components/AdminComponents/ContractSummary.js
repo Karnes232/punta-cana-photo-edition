@@ -160,6 +160,17 @@ const ContractSummary = ({ formData }) => {
                 ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
               </p>
               <p className="font-bold">
+                <Trans>Electronic payment fee (10%)</Trans>: $
+                {(
+                  (parseFloat(formData.packagePrice) +
+                    formData.additions.reduce(
+                      (sum, addition) => sum + parseFloat(addition.price || 0),
+                      0,
+                    )) *
+                  0.1
+                ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
+              </p>
+              <p className="font-bold">
                 <Trans>Total Contract Value</Trans>: $
                 {(
                   (parseFloat(formData.packagePrice) +
@@ -167,7 +178,7 @@ const ContractSummary = ({ formData }) => {
                       (sum, addition) => sum + parseFloat(addition.price || 0),
                       0,
                     )) *
-                  1.18
+                  1.28
                 ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
               </p>
             </div>

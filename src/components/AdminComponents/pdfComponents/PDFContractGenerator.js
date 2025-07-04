@@ -113,9 +113,18 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
     )
   ).toFixed(2);
 
-  const taxRate = 0.18; // 18% ITBIS
-  const taxAmount = (parseFloat(subtotal) * taxRate).toFixed(2);
-  const totalPrice = (parseFloat(subtotal) + parseFloat(taxAmount)).toFixed(2);
+  const subtotalValue = parseFloat(subtotal);
+  const itbis = subtotalValue * 0.18;
+  const transactionFee = subtotalValue * 0.1;
+
+  const taxAmount = itbis.toFixed(2);
+  const totalPrice = (subtotalValue + itbis + transactionFee).toFixed(2);
+
+  const cashPrice = subtotalValue.toFixed(2);
+
+  // const taxRate = 0.18; // 18% ITBIS
+  // const taxAmount = (parseFloat(subtotal) * taxRate).toFixed(2);
+  // const totalPrice = (parseFloat(subtotal) + parseFloat(taxAmount)).toFixed(2);
 
   const downPayment = formData.deposit
     ? parseFloat(formData.deposit).toFixed(2)
@@ -123,15 +132,17 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         totalPrice *
         (formData.depositPercentage ? formData.depositPercentage / 100 : 0.6)
       ).toFixed(2);
-  const remainingBalance = (totalPrice - downPayment).toFixed(2);
-  const eventLocation = formData.eventLocation;
-  const eventDate = formData.eventDate
-    ? format(new Date(formData.eventDate), "MMMM d, yyyy")
-    : "[DATE]";
-  const eventStartTime = formData.eventStartTime;
-  const eventEndTime = formData.eventEndTime;
-  const companyStamp = companyInfo.companyStamp.url;
-  const signature = companyInfo.signature.url;
+    const remainingBalance = (totalPrice - downPayment).toFixed(2);
+    const cashDiscount = 0.28; // 18% ITBIS + 10% transaction fee
+    // const cashPrice = (parseFloat(totalPrice) / (1 + taxRate) / 1.1).toFixed(2);
+    const eventLocation = formData.eventLocation;
+    const eventDate = formData.eventDate
+      ? format(new Date(formData.eventDate), "MMMM d, yyyy")
+      : "[DATE]";
+    const eventStartTime = formData.eventStartTime;
+    const eventEndTime = formData.eventEndTime;
+    const companyStamp = companyInfo.companyStamp.url;
+    const signature = companyInfo.signature.url;
 
   return (
     <Document>
@@ -338,9 +349,65 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? `2.3 El precio total incluyendo ITBIS es $${totalPrice}.`
-            : `2.3 The total price including ITBIS is $${totalPrice}.`}
+            ? `2.3 El precio total con pago electrónico (incluyendo ITBIS y comisión) es $${totalPrice}.`
+            : `2.3 The total price with electronic payment (including ITBIS and fee) is $${totalPrice}.`}
         </Text>
+        <View style={[styles.table, { width: "80%" }]}>
+          <View
+            style={[
+              styles.tableRow,
+              { backgroundColor: "#f5f5f5", borderBottomWidth: 2 },
+            ]}
+          >
+            <Text style={[styles.tableCell, { flex: 2 }]}>
+              {language === "es" ? "Concepto" : "Item"}
+            </Text>
+            <Text style={[styles.tableCell, { flex: 1 }]}>USD</Text>
+          </View>
+
+          <View style={styles.tableRow}>
+            <Text style={[styles.tableCell, { flex: 2 }]}>
+              {language === "es" ? "Subtotal" : "Subtotal"}
+            </Text>
+            <Text style={[styles.tableCell, { flex: 1 }]}>${subtotal}</Text>
+          </View>
+
+          <View style={styles.tableRow}>
+            <Text style={[styles.tableCell, { flex: 2 }]}>
+              {language === "es" ? "ITBIS (18%)" : "ITBIS (18%)"}
+            </Text>
+            <Text style={[styles.tableCell, { flex: 1 }]}>${taxAmount}</Text>
+          </View>
+
+          <View style={styles.tableRow}>
+            <Text style={[styles.tableCell, { flex: 2 }]}>
+              {language === "es"
+                ? "Comisión por pago electrónico (10%)"
+                : "Electronic payment fee (10%)"}
+            </Text>
+            <Text style={[styles.tableCell, { flex: 1 }]}>
+              ${transactionFee.toFixed(2)}
+            </Text>
+          </View>
+
+          <View style={styles.tableRow}>
+            <Text style={[styles.tableCell, { flex: 2 }]}>
+              {language === "es"
+                ? "Total con pago electrónico"
+                : "Total with electronic payment"}
+            </Text>
+            <Text style={[styles.tableCell, { flex: 1 }]}>${totalPrice}</Text>
+          </View>
+
+          <View style={styles.tableRow}>
+            <Text style={[styles.tableCell, { flex: 2 }]}>
+              {language === "es"
+                ? "Total con pago en efectivo"
+                : "Total with cash payment"}
+            </Text>
+            <Text style={[styles.tableCell, { flex: 1 }]}>${cashPrice}</Text>
+          </View>
+        </View>
         <Text style={styles.paragraph}>
           {language === "es"
             ? `2.4 EL CLIENTE acepta realizar un pago inicial (anticipo) del ${formData.depositPercentage || 60}% del precio total, equivalente a $${downPayment}, al firmar este Acuerdo.`
@@ -361,8 +428,8 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         </Text>
         <Text style={styles.paragraph}>
           {language === "es"
-            ? "2.8 Todos los pagos no son reembolsables excepto según lo dispuesto en este Acuerdo."
-            : "2.8 All payments are non-refundable except as otherwise provided in this Agreement."}
+            ? `2.8 Todos los pagos no son reembolsables excepto según lo dispuesto en este Acuerdo. En caso de que EL CLIENTE decida pagar en efectivo, el monto total a pagar será de $${cashPrice}.`
+            : `2.8 All payments are non-refundable except as otherwise provided in this Agreement. If THE CLIENT chooses to pay in cash, the total amount to be paid will be $${cashPrice}.`}
         </Text>
 
         <Text style={styles.paragraph}>
