@@ -11,9 +11,10 @@ exports.createSchemaCustomization = ({ actions }) => {
   `;
   createTypes(typeDefs);
 };
-
+console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
+  console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
   const queryResults = await graphql(`
     query MyQuery {
       allContentfulGeneralLayout {
@@ -85,6 +86,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // Get proper language path prefix
     const lang = node.node_locale === "en-US" ? "" : node.node_locale;
     const langPrefix = lang ? `/${lang}` : "";
+    console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
 
     createPage({
       path: `${langPrefix}/blog/${node.url?.trim()}`,
@@ -119,7 +121,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // Get language code for URL from the Contentful locale
     const lang = node.node_locale === "en-US" ? "" : node.node_locale;
     const langPrefix = lang ? `/${lang}` : "";
-
+    console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
     createPage({
       path: `${langPrefix}/blog/${node.slug?.trim()}`,
       component: blogTemplate,
@@ -137,6 +139,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     // Get language code for URL from the Contentful locale
     const lang = node.node_locale === "en-US" ? "" : node.node_locale;
     const langPrefix = lang ? `/${lang}` : "";
+    console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
     createPage({
       path: `${langPrefix}/packages/${node.urlSlug?.trim()}`,
       component: packageTemplate,
@@ -151,6 +154,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   queryResults.data.allContentfulPreviousWorkPhotoGallery.nodes.forEach(
     (node) => {
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: `/photo-gallery/${node.urlSlug?.trim()}`,
         component: photoGalleryTemplate,
@@ -196,6 +200,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     ([contentfulCode, { path: urlPath, urlCode }]) => {
       // Create index page
       const indexPath = urlPath === "" ? "/" : `/${urlPath}`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: indexPath,
         component: path.resolve("./src/pages/index.js"),
@@ -206,6 +211,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
 
       const adminPath = urlPath === "" ? "/admin" : `/${urlPath}/admin`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: adminPath,
         component: path.resolve("./src/pages/admin/index.js"),
@@ -216,6 +222,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
 
       const contactPath = urlPath === "" ? "/contact" : `/${urlPath}/contact`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: contactPath,
         component: path.resolve("./src/pages/contact/index.js"),
@@ -227,6 +234,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       const photogalleryPath =
         urlPath === "" ? "/photo-gallery" : `/${urlPath}/photo-gallery`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: photogalleryPath,
         component: path.resolve("./src/pages/photo-gallery/index.js"),
@@ -240,6 +248,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         urlPath === ""
           ? "/blog/complete-guide-to-organizing-events-in-punta-cana"
           : `/${urlPath}/blog/complete-guide-to-organizing-events-in-punta-cana`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: blogGuidPath,
         component: path.resolve(
@@ -253,6 +262,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       const proposalPath =
         urlPath === "" ? "/proposal" : `/${urlPath}/proposal`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: proposalPath,
         component: path.resolve("./src/pages/proposal/index.js"),
@@ -264,7 +274,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       const eventRentalsPath =
         urlPath === "" ? "/event-rentals" : `/${urlPath}/event-rentals`;
-      createPage({
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
+        createPage({
         path: eventRentalsPath,
         component: path.resolve("./src/pages/event-rentals/index.js"),
         context: {
@@ -277,6 +288,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         urlPath === ""
           ? "/weddings-punta-cana"
           : `/${urlPath}/weddings-punta-cana`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: weddingsPuntaCanaPath,
         component: path.resolve("./src/pages/weddings-punta-cana/index.js"),
@@ -288,6 +300,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       const floralPath =
         urlPath === "" ? "/floral-art" : `/${urlPath}/floral-art`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: floralPath,
         component: path.resolve("./src/pages/floral-art/index.js"),
@@ -298,6 +311,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
 
       const weddingPath = urlPath === "" ? "/wedding" : `/${urlPath}/wedding`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: weddingPath,
         component: path.resolve("./src/pages/wedding/index.js"),
@@ -311,6 +325,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         urlPath === ""
           ? "/birthday-celebrations"
           : `/${urlPath}/birthday-celebrations`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: birthdayPath,
         component: path.resolve("./src/pages/birthday-celebrations/index.js"),
@@ -324,6 +339,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         urlPath === ""
           ? "/puntacana-wedding-planner"
           : `/${urlPath}/puntacana-wedding-planner`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: weddingPlannerPath,
         component: path.resolve(
@@ -337,6 +353,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       const eventPlannerPath =
         urlPath === "" ? "/event-planner" : `/${urlPath}/event-planner`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: eventPlannerPath,
         component: path.resolve("./src/pages/event-planner/index.js"),
@@ -350,6 +367,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         urlPath === ""
           ? "/punta-cana-bachelor-party"
           : `/${urlPath}/punta-cana-bachelor-party`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: bachelorPath,
         component: path.resolve(
@@ -365,6 +383,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         urlPath === ""
           ? "/gender-reveal-and-baby-showers"
           : `/${urlPath}/gender-reveal-and-baby-showers`;
+      console.log(`Memory usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`);
       createPage({
         path: genderRevealPath,
         component: path.resolve(
