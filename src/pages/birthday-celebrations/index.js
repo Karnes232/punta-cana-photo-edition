@@ -196,11 +196,11 @@ export const query = graphql`
         page
         heroImageList {
           gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
-            }
-          }
+          # localFile {
+          #   childImageSharp {
+          #     gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
+          #   }
+          # }
           title
         }
         fullSize
@@ -225,11 +225,11 @@ export const query = graphql`
         section
         images {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
-            }
-          }
+          # localFile {
+          #   childImageSharp {
+          #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
+          #   }
+          # }
           title
         }
       }
@@ -250,11 +250,11 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
-            }
-          }
+          # localFile {
+          #   childImageSharp {
+          #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
+          #   }
+          # }
         }
         packagePage {
           urlSlug
@@ -275,11 +275,11 @@ export const query = graphql`
         image {
           title
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
-            }
-          }
+          # localFile {
+          #   childImageSharp {
+          #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
+          #   }
+          # }
         }
       }
     }

@@ -5,7 +5,7 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { Link } from "gatsby";
 const ServiceCardLocal = ({ service }) => {
   let image = null;
-  if (service.cardImage.localFile !== null) {
+  if (service.cardImage.localFile !== undefined) {
     image = getImage(
       service.cardImage.localFile.childImageSharp.gatsbyImageData,
     );

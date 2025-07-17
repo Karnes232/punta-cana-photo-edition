@@ -117,11 +117,11 @@ export const query = graphql`
         page
         heroImageList {
           gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
-            }
-          }
+          # localFile {
+          #   childImageSharp {
+          #     gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
+          #   }
+          # }
           title
         }
         fullSize
@@ -136,11 +136,11 @@ export const query = graphql`
         cardDescription
         cardImage {
           gatsbyImage(width: 1000, formats: WEBP, placeholder: BLURRED)
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 1000, formats: WEBP, placeholder: BLURRED)
-            }
-          }
+          # localFile {
+          #   childImageSharp {
+          #     gatsbyImageData(width: 1000, formats: WEBP, placeholder: BLURRED)
+          #   }
+          # }
           title
         }
         page {
@@ -169,11 +169,11 @@ export const query = graphql`
         linkUrl
         image {
           gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
-          localFile {
-            childImageSharp {
-              gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
-            }
-          }
+          # localFile {
+          #   childImageSharp {
+          #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
+          #   }
+          # }
           title
         }
       }
