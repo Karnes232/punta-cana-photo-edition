@@ -94,7 +94,7 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
           title
         }
         fullSize
@@ -127,24 +127,24 @@ export const query = graphql`
         date(formatString: "DD MMMM, yyyy")
         mainImage {
           title
-          gatsbyImage(width: 4000, formats: WEBP, placeholder: BLURRED)
+          gatsbyImage(layout: CONSTRAINED, width: 800, placeholder: NONE, formats: WEBP, quality: 75)
         }
         videoUrl
-        photoGallery {
-          title
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-        }
+        # photoGallery {
+        #   title
+        #   gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+        # }
       }
     }
-    allContentfulPhotoGallery(filter: { page: { eq: "Photo Gallery" } }) {
-      nodes {
-        page
-        title
-        images {
-          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
-          title
-        }
-      }
-    }
+    # allContentfulPhotoGallery(filter: { page: { eq: "Photo Gallery" } }) {
+    #   nodes {
+    #     page
+    #     title
+    #     images {
+    #       gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+    #       title
+    #     }
+    #   }
+    # }
   }
 `;

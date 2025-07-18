@@ -71,7 +71,7 @@ const SideBarInside = ({ footer, setToggled }) => {
           }
         >
           <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            <Trans>Design Your Day</Trans>
+            <Trans>Wedding Packages</Trans>
           </p>
         </MenuItem>
         {/* <MoreServices footer={footer} setToggled={setToggled} /> */}

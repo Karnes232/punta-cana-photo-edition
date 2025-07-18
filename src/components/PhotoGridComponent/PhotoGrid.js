@@ -25,9 +25,9 @@ const PhotoGrid = ({ photos, page }) => {
   photos.forEach((image, key) => {
     const photoObject = {
       gatsbyImage: image.gatsbyImage,
-      src: image.gatsbyImage.images.fallback.src,
-      width: image.gatsbyImage.width,
-      height: image.gatsbyImage.height,
+      src: `${image.url}?h=320&fm=webp&q=75`,
+      width: image.width,
+      height: image.height,
       alt: image.title,
     };
     photoList.push(photoObject);
@@ -92,7 +92,7 @@ const PhotoGrid = ({ photos, page }) => {
         photos={photoList}
         targetRowHeight={targetHeight}
         defaultContainerWidth={1200}
-        render={{ image: renderGatsbyImage, window: windowWidth }}
+        //render={{ image: renderGatsbyImage, window: windowWidth }}
         sizes={{
           size: "1168px",
           sizes: [

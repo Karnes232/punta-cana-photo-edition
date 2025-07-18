@@ -16,7 +16,6 @@ const BackgroundVideo = ({ fullSize, heroHeading, videoId }) => {
 
   const base = `https://res.cloudinary.com/${cloudName}/video/upload`;
 
-  console.log(videoId);
 
   return (
     <>

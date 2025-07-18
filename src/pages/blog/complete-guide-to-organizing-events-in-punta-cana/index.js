@@ -111,7 +111,7 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
           title
         }
         fullSize
@@ -126,7 +126,7 @@ export const query = graphql`
         blogCategory
         url
         blogImage {
-          gatsbyImage(width: 400, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 400, placeholder: NONE, formats: WEBP, quality: 75)
           title
         }
       }

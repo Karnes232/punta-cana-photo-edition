@@ -70,11 +70,18 @@ function GastbyImageLightbox({ slide, offset, rect }) {
 const PhotoGallery = ({ photos, index, setIndex }) => {
   let photoList = [];
   photos.forEach((image, key) => {
+    // const photoObject = {
+    //   gatsbyImage: image.gatsbyImage,
+    //   src: image.gatsbyImage.images.fallback.src,
+    //   width: image.gatsbyImage.width,
+    //   height: image.gatsbyImage.height,
+    //   alt: image.title,
+    // };
     const photoObject = {
-      gatsbyImage: image.gatsbyImage,
-      src: image.gatsbyImage.images.fallback.src,
-      width: image.gatsbyImage.width,
-      height: image.gatsbyImage.height,
+      // gatsbyImage: image.gatsbyImage,
+      src: image.url,
+      width: image.width,
+      height: image.height,
       alt: image.title,
     };
     photoList.push(photoObject);
@@ -86,7 +93,7 @@ const PhotoGallery = ({ photos, index, setIndex }) => {
       <div className="w-full my-5 mx-auto px-2 xl:px-0 lg:max-w-6xl">
         <MasonryPhotoAlbum
           photos={photoList}
-          render={{ image: renderGatsbyImage, window: windowWidth }}
+          // render={{ image: renderGatsbyImage, window: windowWidth }}
           onClick={({ index }) => setIndex(index)}
           columns={(containerWidth) => {
             if (containerWidth < 320) return 1;
@@ -104,7 +111,7 @@ const PhotoGallery = ({ photos, index, setIndex }) => {
         index={index}
         close={() => setIndex(-1)}
         // enable optional lightbox plugins
-        render={{ slide: GastbyImageLightbox }}
+        // render={{ slide: GastbyImageLightbox }}
       />
     </>
   );

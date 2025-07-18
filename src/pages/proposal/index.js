@@ -118,7 +118,7 @@ export const query = graphql`
         page
         videoUrl
         heroImageList {
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
           title
         }
         fullSize
@@ -132,7 +132,10 @@ export const query = graphql`
         page
         title
         images {
-          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          url
+          width
+          height
+          #gatsbyImage(layout: CONSTRAINED, width: 800, placeholder: NONE, formats: WEBP, quality: 75)
           title
         }
       }
@@ -149,7 +152,7 @@ export const query = graphql`
         price
         image {
           title
-          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 800, placeholder: NONE, formats: WEBP, quality: 75)
         }
         packagePage {
           urlSlug
@@ -160,7 +163,7 @@ export const query = graphql`
       nodes {
         page
         images {
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
           title
         }
       }
@@ -175,7 +178,7 @@ export const query = graphql`
         linkUrl
         image {
           title
-          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
         }
       }
     }

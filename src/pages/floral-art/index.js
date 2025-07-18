@@ -265,7 +265,7 @@ export const query = graphql`
         page
         videoUrl
         heroImageList {
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
           title
         }
         fullSize
@@ -288,7 +288,7 @@ export const query = graphql`
         price
         description
         images {
-          gatsbyImage(width: 450, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 450, placeholder: BLURRED, formats: WEBP, quality: 75)
           title
         }
         additions {

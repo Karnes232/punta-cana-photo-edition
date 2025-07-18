@@ -10,7 +10,6 @@ import { useI18next } from "gatsby-plugin-react-i18next";
 import HeroSwiperLocal from "../components/HeroSwiper/HeroSwiperLocal";
 import ContentBlockLocal from "../components/ContentBlockComponent/ContentBlockLocal";
 const IndexPage = ({ data }) => {
-  console.log(data.allContentfulCardWithImage.nodes[0]);
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       {data.allContentfulPageContent.nodes[0].heroImageList[0].localFile ? (
@@ -116,7 +115,7 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
           # localFile {
           #   childImageSharp {
           #     gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
@@ -135,7 +134,7 @@ export const query = graphql`
         typeOfService
         cardDescription
         cardImage {
-          gatsbyImage(width: 1000, formats: WEBP, placeholder: BLURRED)
+          gatsbyImage(layout: CONSTRAINED, width: 500, formats: WEBP, placeholder: NONE, quality: 75)
           # localFile {
           #   childImageSharp {
           #     gatsbyImageData(width: 1000, formats: WEBP, placeholder: BLURRED)
@@ -168,7 +167,7 @@ export const query = graphql`
         buttonText
         linkUrl
         image {
-          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
           # localFile {
           #   childImageSharp {
           #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)

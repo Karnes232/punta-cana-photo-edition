@@ -131,7 +131,6 @@ const BlogBody = ({ context }) => {
           }
           return image;
         });
-        console.log(image);
         // const imageGatsby = getImage(image.gatsbyImage);
         return (
           <div className="flex justify-center items-center lg:justify-start">

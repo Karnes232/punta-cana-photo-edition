@@ -118,12 +118,15 @@ export const query = graphql`
         date(formatString: "DD MMMM, yyyy")
         mainImage {
           title
-          gatsbyImage(width: 4000, formats: WEBP, placeholder: BLURRED)
+          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
         }
         videoUrl
         photoGallery {
           title
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          url
+          width
+          height
+          # gatsbyImage(layout: CONSTRAINED, width: 800, placeholder: NONE, formats: WEBP, quality: 75)
         }
       }
     }

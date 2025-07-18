@@ -73,7 +73,7 @@ const Sitemap = () => {
       </Link>
       <Link to="/weddings-punta-cana" className="no-underline">
         <button className={`navLinks`} translate="no">
-          <Trans>Design Your Day</Trans>
+          <Trans>Wedding Packages</Trans>
         </button>
       </Link>
 
