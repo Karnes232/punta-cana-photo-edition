@@ -41,12 +41,12 @@ const HeroImage = ({ backgroundImages }) => {
       resizeObserver.disconnect();
     };
   }, []);
-
   return (
     <>
       <div className="absolute top-0 w-full h-[55vh] xl:h-[65vh]">
         <div className="md:hidden">
-          <HeroComponent gImage={backgroundImages[0].gatsbyImage} />
+          {/* <HeroComponent gImage={backgroundImages[0].gatsbyImage} backgroundImages={backgroundImages[0].url}/> */}
+          <HeroComponent backgroundImages={backgroundImages[0].url}/>
         </div>
         <div className="hidden md:flex mx-auto" ref={gridRef}>
           <PhotoGrid tourPhotos={backgroundImages} />

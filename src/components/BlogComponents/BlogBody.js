@@ -4,7 +4,7 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
 // import SyntaxHighlighter from "react-syntax-highlighter";
 // import { monokai } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import TextComponent from "./TextComponent";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+// import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import SocialMediaEmbed from "./SocialMediaComponents/SocialMediaEmbed";
 const BlogBody = ({ context }) => {
   const options = {
@@ -131,11 +131,17 @@ const BlogBody = ({ context }) => {
           }
           return image;
         });
-        const imageGatsby = getImage(image.gatsbyImage);
+        console.log(image);
+        // const imageGatsby = getImage(image.gatsbyImage);
         return (
           <div className="flex justify-center items-center lg:justify-start">
-            <GatsbyImage
+            {/* <GatsbyImage
               image={imageGatsby}
+              alt={image.title}
+              className="rounded-lg w-[20rem] mb-4 lg:w-[30rem] h-[25rem]"
+            /> */}
+            <img
+              src={`${image.url}?w=800&fm=webp&q=75`}
               alt={image.title}
               className="rounded-lg w-[20rem] mb-4 lg:w-[30rem] h-[25rem]"
             />

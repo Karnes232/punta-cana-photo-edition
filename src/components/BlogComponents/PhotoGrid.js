@@ -4,9 +4,11 @@ const PhotoGrid = ({ tourPhotos }) => {
   let photoList = [];
   tourPhotos.forEach((image, key) => {
     const photoObject = {
-      src: image.url,
-      width: image.gatsbyImage.width,
-      height: image.gatsbyImage.height,
+      src: `${image.url}?w=800&fm=webp&q=75`,
+      // width: image.gatsbyImage.width,
+      // height: image.gatsbyImage.height,
+      width: image.width,
+      height: image.height,
       alt: image.title,
     };
     photoList.push(photoObject);

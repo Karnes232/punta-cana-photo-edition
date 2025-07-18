@@ -81,8 +81,10 @@ export const query = graphql`
         description
         backgroundImage {
           title
-          gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
+          # gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP, quality: 50)
           url
+          width
+          height
         }
         schema {
           internal {
@@ -97,10 +99,13 @@ export const query = graphql`
               contentful_id
               __typename
               title
+              url
+              width
+              height
               file {
                 url
               }
-              gatsbyImage(placeholder: BLURRED, formats: WEBP, width: 2000)
+              # gatsbyImage(placeholder: BLURRED, formats: WEBP, width: 2000, quality: 50)
             }
             ... on ContentfulSocialMediaEmbed {
               id
@@ -139,7 +144,10 @@ export const query = graphql`
         description
         backgroundImage {
           title
-          gatsbyImage(width: 1000, placeholder: BLURRED, formats: WEBP)
+         # gatsbyImage(width: 1000, placeholder: BLURRED, formats: WEBP, quality: 50)
+          url
+          width
+          height
         }
       }
     }

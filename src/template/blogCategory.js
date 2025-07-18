@@ -39,13 +39,16 @@ export const query = graphql`
     ) {
       nodes {
         blogCategory
-        blogImage {
-          gatsbyImage(width: 400, placeholder: BLURRED, formats: WEBP)
-          title
-        }
+        # blogImage {
+        #   gatsbyImage(width: 400, placeholder: BLURRED, formats: WEBP)
+        #   title
+        # }
         heroImage {
           title
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          url
+          width
+          height
+         # gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
         }
         paragraph {
           raw
@@ -56,7 +59,10 @@ export const query = graphql`
           slug
           description
           backgroundImage {
-            gatsbyImage(width: 400, placeholder: BLURRED, formats: WEBP)
+            url
+            width
+            height
+            # gatsbyImage(width: 400, placeholder: BLURRED, formats: WEBP)
           }
         }
       }
