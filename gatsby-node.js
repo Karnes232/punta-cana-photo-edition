@@ -48,7 +48,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           description
           node_locale
           backgroundImage {
-            gatsbyImage(width: 2000, placeholder: BLURRED, formats: WEBP)
             url
           }
           blogCategory {
@@ -94,9 +93,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         language: node.node_locale,
         blog: node,
         layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
-        blogList: queryResults.data.allContentfulBlogPost.nodes.filter(
-          (post) => post.node_locale === node.node_locale,
-        ), // Filter blog posts by language
+        // blogList: queryResults.data.allContentfulBlogPost.nodes.filter(
+        //   (post) => post.node_locale === node.node_locale,
+        // ), // Filter blog posts by language
       },
     });
   });
