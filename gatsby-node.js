@@ -132,6 +132,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         blog: node,
         layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
       },
+      defer: true,
     });
   });
 
