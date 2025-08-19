@@ -14,4 +14,4 @@ const TikTokEmbedComponent = ({ videoId, caption }) => {
   );
 };
 
-export default YouTubeEmbedComponent;
+export default TikTokEmbedComponent;
