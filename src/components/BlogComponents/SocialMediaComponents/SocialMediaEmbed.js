@@ -2,6 +2,7 @@ import React from "react";
 import FacebookEmbedComponent from "./FacebookEmbedComponent";
 import InstagramEmbedComponent from "./InstagramEmbedComponent";
 import YouTubeEmbedComponent from "./YouTubeEmbedComponent";
+import TikTokEmbedComponent from "./TikTokEmbedComponent";
 
 const SocialMediaEmbed = ({ embed }) => {
   if (!embed) return null;
@@ -13,6 +14,8 @@ const SocialMediaEmbed = ({ embed }) => {
       return <YouTubeEmbedComponent videoId={embedId} caption={caption} />;
     case "Instagram":
       return <InstagramEmbedComponent postId={embedId} caption={caption} />;
+    case "TikTok":
+      return <TikTokEmbedComponent videoId={embedId} caption={caption} />;
     case "Facebook":
       return <FacebookEmbedComponent postUrl={embedId} caption={caption} />;
     default:
