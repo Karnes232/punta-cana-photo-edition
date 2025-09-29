@@ -205,6 +205,10 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/proposal-packages",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/event-rentals",
             getLanguageFromPath: true,
           },
