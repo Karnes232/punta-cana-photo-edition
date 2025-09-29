@@ -28,7 +28,7 @@ export default Blog;
 
 export const Head = ({ pageContext, data }) => {
   const { language } = useI18next();
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/blog/${data.allContentfulBlogPost.nodes[0].slug}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}/blog/${data.allContentfulBlogPost.nodes[0].slug}/`;
 
   const schema =
     data?.allContentfulBlogPost?.nodes[0]?.schema?.internal?.content;

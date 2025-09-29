@@ -8,7 +8,7 @@ const Sitemap = () => {
   const RomanticEventLinks = [
     {
       name: t("Marriage Proposals"),
-      urlLink: "/proposal",
+      urlLink: "/proposal-packages",
     },
     {
       name: t("Elopement & Vow renewal"),

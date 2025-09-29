@@ -4,6 +4,8 @@ import { graphql } from "gatsby";
 import HeroBlogCategoryComponent from "../components/BlogComponents/HeroBlogCategoryComponent";
 import BlogBody from "../components/BlogComponents/BlogBody";
 import PostList from "../components/BlogComponents/PostList";
+import { useI18next } from "gatsby-plugin-react-i18next";
+import Seo from "../components/Layout/seo";
 
 const blogCategory = ({ pageContext, data }) => {
   return (
@@ -34,6 +36,11 @@ export const query = graphql`
         }
       }
     }
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     allContentfulBlogCategories(
       filter: { id: { eq: $id }, node_locale: { eq: $language } }
     ) {
@@ -43,6 +50,7 @@ export const query = graphql`
         #   gatsbyImage(width: 400, placeholder: BLURRED, formats: WEBP)
         #   title
         # }
+        url
         heroImage {
           title
           url
@@ -69,3 +77,20 @@ export const query = graphql`
     }
   }
 `;
+
+export const Head = ({ data }) => {
+  const { language } = useI18next();
+
+  let siteUrl = "";
+  if (language === "en") {
+    siteUrl = `${data.site.siteMetadata.siteUrl}/blog/${data.allContentfulBlogCategories.nodes[0].url}/`;
+  } else {
+    siteUrl = `${data.site.siteMetadata.siteUrl}/es/blog/${data.allContentfulBlogCategories.nodes[0].url}/`
+  }
+  return (
+    <>
+      <Seo title={data.allContentfulBlogCategories.nodes[0].blogCategory} description={data.allContentfulBlogCategories.nodes[0].blogCategory} keywords={""} image={""} url={siteUrl} />
+      <link rel="canonical" href={siteUrl} />
+    </>
+  );
+}
