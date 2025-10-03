@@ -10,6 +10,8 @@ import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarou
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import RichText from "../../components/RichTextComponents/RichText";
+import Faqs from "../../components/FaqsComponent/Faqs";
 const Index = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
@@ -28,6 +30,9 @@ const Index = ({ data }) => {
         images={data.allContentfulSwiperCarousel.nodes[0].images}
       />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+      <div className="mt-5"></div>
+      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
       <FirebaseTestimonialsComponent packagePage={"proposal"} />
     </Layout>
   );
@@ -125,6 +130,9 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
+        paragraph1 {
+          raw
+        }
       }
     }
     allContentfulPhotoGallery(filter: { page: { eq: "Proposal" } }) {
@@ -179,6 +187,16 @@ export const query = graphql`
         image {
           title
           gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+        }
+      }
+    }
+    allContentfulFaqsComponent(
+      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
+    ) {
+      nodes {
+        title
+        content {
+          content
         }
       }
     }
