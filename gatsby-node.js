@@ -261,16 +261,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
-      const proposalPackagesPath =
-        urlPath === "" ? "/proposal-packages" : `/${urlPath}/proposal-packages`;
-        createPage({
-        path: proposalPackagesPath,
-        component: path.resolve("./src/pages/proposal-packages/index.js"),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
 
       const eventRentalsPath =
         urlPath === "" ? "/event-rentals" : `/${urlPath}/event-rentals`;
