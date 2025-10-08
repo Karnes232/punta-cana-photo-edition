@@ -12,7 +12,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
       <MenuItem
         component={
           <Link
-            to="/proposal-packages"
+            to="/proposal"
             className="no-underline uppercase text-sm"
             onClick={footer ? undefined : () => setToggled(false)}
           />
