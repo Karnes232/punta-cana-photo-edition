@@ -8,6 +8,7 @@ const WorkedWith = ({ title1, title2, image }) => {
     <div className="my-20">
       <TextComponent
         title={title1}
+        heading="h2"
         className="my-10 tracking-wide text-3xl lg:text-4xl"
       />
 
@@ -21,6 +22,7 @@ const WorkedWith = ({ title1, title2, image }) => {
 
       <TextComponent
         title={title2}
+        heading="h2"
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       <div className="border-b w-2/3 mx-auto my-10 border-[#9fa0a3]"></div>

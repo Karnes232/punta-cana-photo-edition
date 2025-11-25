@@ -13,6 +13,7 @@ const Index = ({ data }) => {
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <TextComponent
         title={data.allContentfulPageContent.nodes[0].heroHeading2}
+        heading="h2"
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-6xl"
       />
       <OurPreviousWork

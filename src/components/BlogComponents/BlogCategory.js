@@ -35,12 +35,12 @@ const BlogCategory = ({ title, gImage, url }) => {
             className={`h-full bg-center bg-no-repeat bg-cover`}
             style={HeroStyles}
           >
-            <h1
+            <h3
               translate="no"
               className="relative inline-block text-center text-white z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-yellowtail tracking-widest text-3xl md:text-4xl"
             >
               {title}
-            </h1>
+            </h3>
           </div>
         </div>
       </Link>

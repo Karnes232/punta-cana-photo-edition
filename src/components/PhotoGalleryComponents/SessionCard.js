@@ -27,6 +27,7 @@ const SessionCard = ({ session }) => {
           >
             <TextComponent
               title={session.title}
+              heading="h3"
               paragraph={session.date}
               className="my-2 text-lg font-medium font-montserrat uppercase tracking-wider"
               pClassName="text-sm font-montserrat !text-gray-400 lg:mt-2"

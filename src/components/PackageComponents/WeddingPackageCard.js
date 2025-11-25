@@ -43,6 +43,7 @@ const WeddingPackageCard = ({ weddingPackage, onPackageSelect }) => {
         >
           <TextComponent
             title={weddingPackage.title}
+            heading="h2"
             className="mt-5 2xl:mb-2 text-2xl xl:text-3xl xl:h-8 capitalize"
           />
 

@@ -29,17 +29,20 @@ const Index = ({ data }) => {
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <TextComponent
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
+        heading="h2"
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
       <PhotoGrid photos={section1.images} page={section1.page} />
       <TextComponent
         title={section1.title}
+        heading="h2"
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
       <TextComponent
         title={section2.title}
+        heading="h2"
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       <PhotoGrid photos={section2.images} page={section2.page} />

@@ -21,6 +21,7 @@ const Index = ({ data }) => {
       />
       <TextComponent
         title={data.allContentfulPhotoGallery.nodes[0].title}
+        heading="h2"
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
 

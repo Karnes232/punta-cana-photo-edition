@@ -35,11 +35,13 @@ const Index = ({ data }) => {
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <TextComponent
         title={section1Title}
+        heading="h2"
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       <PhotoGrid photos={section1.images} page={section1.page} />
       <TextComponent
         title={data.allContentfulPageContent.nodes[0].sectionTitle}
+        heading="h2"
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl italic"
       />
 
@@ -50,6 +52,7 @@ const Index = ({ data }) => {
       <PhotoGrid photos={section2.images} page={section2.page} />
       <TextComponent
         title={section2Title}
+        heading="h2"
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl italic mx-2"
       />
       <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
