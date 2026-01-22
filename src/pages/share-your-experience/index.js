@@ -16,10 +16,10 @@ const Index = ({ data }) => {
 
 export default Index;
 
-export const Head = ({ data }) => {
+export const Head = ({ pageContext, data }) => {
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/share-your-experience/`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/share-your-experience/`;
 
   return (
     <>

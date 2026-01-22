@@ -37,10 +37,10 @@ const Index = ({ data }) => {
 
 export default Index;
 
-export const Head = ({ data }) => {
+export const Head = ({ pageContext, data }) => {
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/elopement-vow-renewal/`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/elopement-vow-renewal/`;
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
   let JsonSchema = {};
@@ -56,6 +56,7 @@ export const Head = ({ data }) => {
         image={`https:${images?.file?.url}`}
         url={siteUrl}
         schemaMarkup={JsonSchema}
+        language={pageContext.language === "en-US" ? "en" : pageContext.language}
       />
       <link rel="canonical" href={siteUrl} />
     </>

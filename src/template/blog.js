@@ -28,8 +28,8 @@ export default Blog;
 
 export const Head = ({ pageContext, data }) => {
   const { language } = useI18next();
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/blog/${data.allContentfulBlogPost.nodes[0].slug.trim()}/`;
 
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/blog/${data.allContentfulBlogPost.nodes[0].slug.trim()}/`;
   const schema =
     data?.allContentfulBlogPost?.nodes[0]?.schema?.internal?.content;
 
@@ -46,7 +46,7 @@ export const Head = ({ pageContext, data }) => {
         image={data.allContentfulBlogPost.nodes[0].backgroundImage[0].url}
         url={siteUrl}
         schemaMarkup={JsonSchema}
-        language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
+        language={pageContext.language === "en-US" ? "en" : pageContext.language} // Convert to standard HTML lang attribute
       />
       <link rel="canonical" href={siteUrl} />
     </>

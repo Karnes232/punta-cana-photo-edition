@@ -30,11 +30,11 @@ const Index = ({ data }) => {
 
 export default Index;
 
-export const Head = ({ data }) => {
+export const Head = ({ pageContext, data }) => {
   const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/contact/"}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/contact/`;
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
   let JsonSchema = {};
@@ -50,7 +50,7 @@ export const Head = ({ data }) => {
         image={`https:${images?.file?.url}`}
         url={siteUrl}
         schemaMarkup={JsonSchema}
-        language={language === "en-US" ? "en" : language}
+        language={pageContext.language === "en-US" ? "en" : pageContext.language}
       />
       <link rel="canonical" href={siteUrl} />
     </>
