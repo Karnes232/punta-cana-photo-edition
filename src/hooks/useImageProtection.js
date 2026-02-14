@@ -19,30 +19,34 @@ export const useImageProtection = () => {
             return false;
           });
 
-          // Prevent touch operations (mobile)
+          // Prevent long-press context menu on mobile (without blocking scrolling)
+          let longPressTimer;
           img.addEventListener(
             "touchstart",
             (e) => {
-              e.preventDefault();
+              // Only prevent if touching directly on the image for long-press
+              longPressTimer = setTimeout(() => {
+                e.preventDefault();
+              }, 500);
             },
-            { passive: false },
+            { passive: true }, // Keep passive for better scroll performance
           );
 
           img.addEventListener(
             "touchend",
-            (e) => {
-              e.preventDefault();
+            () => {
+              clearTimeout(longPressTimer);
             },
-            { passive: false },
+            { passive: true },
           );
 
-          // Prevent long-press to save (mobile)
           img.addEventListener(
-            "touchhold",
-            (e) => {
-              e.preventDefault();
+            "touchmove",
+            () => {
+              // Cancel long-press if user is scrolling
+              clearTimeout(longPressTimer);
             },
-            { passive: false },
+            { passive: true },
           );
 
           // Prevent pinch to save (mobile)
@@ -60,13 +64,14 @@ export const useImageProtection = () => {
           img.style.webkitTouchCallout = "none";
           img.style.webkitUserDrag = "none";
           img.setAttribute("draggable", "false");
+          img.style.pointerEvents = "none"; // Prevents context menu on long-press
 
           // Optional: Add force-press protection (iOS)
           img.style.webkitForcePressCallback = "none";
         });
 
         // Prevent save shortcuts (desktop)
-        document.addEventListener("keydown", (e) => {
+        const handleKeyDown = (e) => {
           if (
             (e.ctrlKey || e.metaKey) &&
             (e.key === "s" || e.key === "S" || e.key === "c" || e.key === "C")
@@ -74,16 +79,11 @@ export const useImageProtection = () => {
             e.preventDefault();
             return false;
           }
-        });
+        };
+        document.addEventListener("keydown", handleKeyDown);
 
-        // Prevent force touch (iOS)
-        document.addEventListener(
-          "touchforcechange",
-          (e) => {
-            e.preventDefault();
-          },
-          { passive: false },
-        );
+        // Store cleanup reference
+        return handleKeyDown;
       };
 
       // Handle dynamically loaded images
@@ -100,7 +100,7 @@ export const useImageProtection = () => {
       });
 
       // Initial protection
-      protectImages();
+      const handleKeyDown = protectImages();
 
       // Start observing
       observer.observe(document.documentElement, {
@@ -111,6 +111,9 @@ export const useImageProtection = () => {
       // Cleanup
       return () => {
         observer.disconnect();
+        if (handleKeyDown) {
+          document.removeEventListener("keydown", handleKeyDown);
+        }
       };
     }
   }, []);
