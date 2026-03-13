@@ -56,7 +56,7 @@ export const query = graphql`
           url
           width
           height
-         # gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
+          # gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
         }
         paragraph {
           raw
@@ -85,12 +85,18 @@ export const Head = ({ data }) => {
   if (language === "en") {
     siteUrl = `${data.site.siteMetadata.siteUrl}/blog/${data.allContentfulBlogCategories.nodes[0].url}/`;
   } else {
-    siteUrl = `${data.site.siteMetadata.siteUrl}/es/blog/${data.allContentfulBlogCategories.nodes[0].url}/`
+    siteUrl = `${data.site.siteMetadata.siteUrl}/es/blog/${data.allContentfulBlogCategories.nodes[0].url}/`;
   }
   return (
     <>
-      <Seo title={data.allContentfulBlogCategories.nodes[0].blogCategory} description={data.allContentfulBlogCategories.nodes[0].blogCategory} keywords={""} image={""} url={siteUrl} />
+      <Seo
+        title={data.allContentfulBlogCategories.nodes[0].blogCategory}
+        description={data.allContentfulBlogCategories.nodes[0].blogCategory}
+        keywords={""}
+        image={""}
+        url={siteUrl}
+      />
       <link rel="canonical" href={siteUrl} />
     </>
   );
-}
+};

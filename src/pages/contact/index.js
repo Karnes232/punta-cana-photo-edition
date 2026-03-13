@@ -50,7 +50,9 @@ export const Head = ({ pageContext, data }) => {
         image={`https:${images?.file?.url}`}
         url={siteUrl}
         schemaMarkup={JsonSchema}
-        language={pageContext.language === "en-US" ? "en" : pageContext.language}
+        language={
+          pageContext.language === "en-US" ? "en" : pageContext.language
+        }
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -110,7 +112,13 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
           title
         }
         fullSize

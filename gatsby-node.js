@@ -128,7 +128,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         blog: node,
         layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
       },
-     // defer: true,
+      // defer: true,
     });
   });
 
@@ -261,10 +261,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
-
       const eventRentalsPath =
         urlPath === "" ? "/event-rentals" : `/${urlPath}/event-rentals`;
-        createPage({
+      createPage({
         path: eventRentalsPath,
         component: path.resolve("./src/pages/event-rentals/index.js"),
         context: {

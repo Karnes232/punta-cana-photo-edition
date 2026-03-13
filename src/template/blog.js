@@ -46,7 +46,9 @@ export const Head = ({ pageContext, data }) => {
         image={data.allContentfulBlogPost.nodes[0].backgroundImage[0].url}
         url={siteUrl}
         schemaMarkup={JsonSchema}
-        language={pageContext.language === "en-US" ? "en" : pageContext.language} // Convert to standard HTML lang attribute
+        language={
+          pageContext.language === "en-US" ? "en" : pageContext.language
+        } // Convert to standard HTML lang attribute
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -144,7 +146,7 @@ export const query = graphql`
         description
         backgroundImage {
           title
-         # gatsbyImage(width: 1000, placeholder: BLURRED, formats: WEBP, quality: 50)
+          # gatsbyImage(width: 1000, placeholder: BLURRED, formats: WEBP, quality: 50)
           url
           width
           height

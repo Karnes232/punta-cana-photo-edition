@@ -132,17 +132,17 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         totalPrice *
         (formData.depositPercentage ? formData.depositPercentage / 100 : 0.6)
       ).toFixed(2);
-    const remainingBalance = (totalPrice - downPayment).toFixed(2);
-    const cashDiscount = 0.28; // 18% ITBIS + 10% transaction fee
-    // const cashPrice = (parseFloat(totalPrice) / (1 + taxRate) / 1.1).toFixed(2);
-    const eventLocation = formData.eventLocation;
-    const eventDate = formData.eventDate
-      ? format(new Date(formData.eventDate), "MMMM d, yyyy")
-      : "[DATE]";
-    const eventStartTime = formData.eventStartTime;
-    const eventEndTime = formData.eventEndTime;
-    const companyStamp = companyInfo.companyStamp.url;
-    const signature = companyInfo.signature.url;
+  const remainingBalance = (totalPrice - downPayment).toFixed(2);
+  const cashDiscount = 0.28; // 18% ITBIS + 10% transaction fee
+  // const cashPrice = (parseFloat(totalPrice) / (1 + taxRate) / 1.1).toFixed(2);
+  const eventLocation = formData.eventLocation;
+  const eventDate = formData.eventDate
+    ? format(new Date(formData.eventDate), "MMMM d, yyyy")
+    : "[DATE]";
+  const eventStartTime = formData.eventStartTime;
+  const eventEndTime = formData.eventEndTime;
+  const companyStamp = companyInfo.companyStamp.url;
+  const signature = companyInfo.signature.url;
 
   return (
     <Document>

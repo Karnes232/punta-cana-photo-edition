@@ -1,6 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-const TextComponent = ({ title, heading, paragraph, className, pClassName }) => {
+const TextComponent = ({
+  title,
+  heading,
+  paragraph,
+  className,
+  pClassName,
+}) => {
   return (
     <div className="relative">
       <motion.div

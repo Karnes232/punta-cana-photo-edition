@@ -322,7 +322,13 @@ export const query = graphql`
         }
         videoUrl
         heroImageList {
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
           title
         }
         packageInformation {
@@ -330,7 +336,13 @@ export const query = graphql`
         }
         images {
           title
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
         }
         faqs {
           title

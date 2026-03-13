@@ -16,7 +16,6 @@ const BackgroundVideo = ({ fullSize, heroHeading, videoId }) => {
 
   const base = `https://res.cloudinary.com/${cloudName}/video/upload`;
 
-
   return (
     <>
       <div className={`absolute top-0 w-full ${height}`}>

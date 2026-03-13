@@ -55,7 +55,9 @@ export const Head = ({ pageContext, data }) => {
         image={`https:${images.file.url}`}
         url={siteUrl}
         schemaMarkup={JsonSchema}
-        language={pageContext.language === "en-US" ? "en" : pageContext.language} // Convert to standard HTML lang attribute
+        language={
+          pageContext.language === "en-US" ? "en" : pageContext.language
+        } // Convert to standard HTML lang attribute
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -115,7 +117,13 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
           # localFile {
           #   childImageSharp {
           #     gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
@@ -134,7 +142,13 @@ export const query = graphql`
         typeOfService
         cardDescription
         cardImage {
-          gatsbyImage(layout: CONSTRAINED, width: 500, formats: WEBP, placeholder: NONE, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 500
+            formats: WEBP
+            placeholder: NONE
+            quality: 75
+          )
           # localFile {
           #   childImageSharp {
           #     gatsbyImageData(width: 1000, formats: WEBP, placeholder: BLURRED)
@@ -167,7 +181,13 @@ export const query = graphql`
         buttonText
         linkUrl
         image {
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
           # localFile {
           #   childImageSharp {
           #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)

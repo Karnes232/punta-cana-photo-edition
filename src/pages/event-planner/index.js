@@ -152,7 +152,13 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
           title
         }
         fullSize
@@ -185,7 +191,13 @@ export const query = graphql`
       nodes {
         page
         images {
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
           title
         }
       }
@@ -202,7 +214,13 @@ export const query = graphql`
         linkUrl
         image {
           title
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
         }
       }
     }
@@ -218,7 +236,13 @@ export const query = graphql`
         price
         image {
           title
-          gatsbyImage(layout: CONSTRAINED, width: 800, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 800
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
         }
         packagePage {
           urlSlug
@@ -233,7 +257,13 @@ export const query = graphql`
         title2
         image {
           title
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
         }
       }
     }
@@ -243,7 +273,13 @@ export const query = graphql`
         description
         icon {
           title
-          gatsbyImage(layout: CONSTRAINED, width: 40, formats: WEBP, placeholder: NONE, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 40
+            formats: WEBP
+            placeholder: NONE
+            quality: 75
+          )
         }
       }
     }

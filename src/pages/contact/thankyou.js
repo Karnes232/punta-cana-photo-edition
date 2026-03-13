@@ -119,7 +119,13 @@ export const query = graphql`
         x
         telephone
         heroImageList {
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
           title
         }
         fullSize

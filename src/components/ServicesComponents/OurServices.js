@@ -4,7 +4,6 @@ import ServiceCard from "./ServiceCard";
 import ServiceCardLocal from "./ServiceCardLocal";
 
 const OurServices = ({ title, services }) => {
-  
   return (
     <>
       <TextComponent

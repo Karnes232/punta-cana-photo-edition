@@ -5,10 +5,7 @@ const TikTokEmbedComponent = ({ videoId, caption }) => {
 
   return (
     <div className="flex flex-col max-w-md">
-      <TikTokEmbed
-        url={`https://www.tiktok.com/@${videoId}`}
-        width={"100%"}
-      />
+      <TikTokEmbed url={`https://www.tiktok.com/@${videoId}`} width={"100%"} />
       {caption && <p className="embed-caption">{caption}</p>}
     </div>
   );

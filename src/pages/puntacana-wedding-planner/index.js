@@ -11,6 +11,7 @@ import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import ReversedContentBlock from "../../components/ContentBlockComponent/ReversedContentBlock";
+import OurPackages from "../../components/OurPackages/OurPackages";
 
 const Index = ({ data }) => {
   let section1 = {};
@@ -46,6 +47,7 @@ const Index = ({ data }) => {
         className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
       />
       <PhotoGrid photos={section2.images} page={section2.page} />
+      <OurPackages weddingPackages={data.allContentfulWeddingPackages.nodes} />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
       <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
       <ReversedContentBlock content={data.biography.nodes[0]} />
@@ -80,7 +82,9 @@ export const Head = ({ pageContext, data }) => {
         image={`https:${images?.file?.url}`}
         url={siteUrl}
         schemaMarkup={JsonSchema}
-        language={pageContext.language === "en-US" ? "en" : pageContext.language}
+        language={
+          pageContext.language === "en-US" ? "en" : pageContext.language
+        }
       />
       <link rel="canonical" href={siteUrl} />
     </>
@@ -146,7 +150,13 @@ export const query = graphql`
       nodes {
         page
         heroImageList {
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
           title
         }
         fullSize
@@ -194,7 +204,13 @@ export const query = graphql`
         linkUrl
         image {
           title
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
         }
       }
     }
@@ -210,8 +226,23 @@ export const query = graphql`
         linkUrl
         image {
           title
-          gatsbyImage(layout: CONSTRAINED, width: 1200, placeholder: NONE, formats: WEBP, quality: 75)
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1200
+            placeholder: NONE
+            formats: WEBP
+            quality: 75
+          )
         }
+      }
+    }
+    allContentfulWeddingPackages(filter: { node_locale: { eq: $language } }) {
+      nodes {
+        title
+        description
+        includedItems
+        price
+        mostPopular
       }
     }
   }

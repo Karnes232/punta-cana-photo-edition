@@ -12,7 +12,11 @@ const RecommendationCard = ({ blog }) => {
     <>
       <Link to={`/blog/${blog.slug?.trim()}`}>
         <div className="w-80 mx-auto my-5 rounded-lg overflow-hidden shadow-lg">
-          <img src={image} alt={blog.title} className="w-full object-cover h-40" />
+          <img
+            src={image}
+            alt={blog.title}
+            className="w-full object-cover h-40"
+          />
           {/* <GatsbyImage
             image={image}
             alt={blog.title}
