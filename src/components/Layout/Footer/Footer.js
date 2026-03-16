@@ -38,7 +38,7 @@ const Footer = ({ generalInfo }) => {
         <LanguageSwitcher currentLanguage={language} />
         <SocialMedia generalInfo={generalInfo} />
       </div>
-      <Copyright companyName={generalInfo.companyName} />
+      <Copyright companyName={generalInfo.companyName} language={language} />
       <Signature />
     </div>
   );
