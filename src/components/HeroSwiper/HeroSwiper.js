@@ -57,7 +57,7 @@ const HeroSwiper = ({ heroInfo, className }) => {
                 />
                 <div className="absolute inset-0" style={HeroStyles}>
                   <div
-                    className={`relative max-w-xs lg:max-w-4xl inline-block z-10 top-[85%] md:top-[87%] lg:top-[82%] left-1/2 transform -translate-x-1/2  text-center ${translatePosition}`}
+                    className={`relative max-w-xs lg:max-w-4xl inline-block z-10 top-[75%] md:top-[70%] left-1/2 transform -translate-x-1/2  text-center ${translatePosition}`}
                   >
                     {heroInfo.heroHeading && (
                       <h1

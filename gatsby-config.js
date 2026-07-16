@@ -263,5 +263,6 @@ module.exports = {
   ],
   flags: {
     DEV_SSR: false,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
   },
 };

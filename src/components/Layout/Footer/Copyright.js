@@ -6,7 +6,7 @@ const Copyright = ({ companyName, language }) => {
   useEffect(() => {
     setDate(new Date().getFullYear());
   }, []);
-  console.log(language);
+
   const jsonLd =
     language === "es"
       ? {

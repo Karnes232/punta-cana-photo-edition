@@ -184,8 +184,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         fs.mkdirSync(dir, { recursive: true });
       }
 
-      fs.writeFileSync(path.join(dir, "favicon.png"), buffer);
-      reporter.success("Successfully downloaded favicon from Contentful");
+      // Only rewrite when the favicon actually changed. Rewriting this source
+      // file every build invalidates the manifest/sharp/source caches that
+      // Netlify persists, which is the main build-speed regression.
+      const filePath = path.join(dir, "favicon.png");
+      const unchanged =
+        fs.existsSync(filePath) && fs.readFileSync(filePath).equals(buffer);
+      if (unchanged) {
+        reporter.info(
+          "Favicon unchanged — skipping write to preserve build cache",
+        );
+      } else {
+        fs.writeFileSync(filePath, buffer);
+        reporter.success("Successfully downloaded favicon from Contentful");
+      }
     }
   } catch (error) {
     reporter.error("Error downloading favicon:", error);
@@ -379,6 +391,95 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // following the same pattern
     },
   );
+
+  // --- Client-editable 301 redirects (Contentful "Redirect" content type) ---
+  // Queried separately from MyQuery so that if the "Redirect" content type does
+  // not exist yet in Contentful (or the query fails), it degrades gracefully
+  // instead of breaking the entire page build.
+  const { createRedirect } = actions;
+
+  const redirectResults = await graphql(`
+    query RedirectsQuery {
+      allContentfulRedirect {
+        nodes {
+          from
+          to
+        }
+      }
+    }
+  `);
+
+  if (redirectResults.errors) {
+    reporter.warn(
+      `[redirects] Skipping redirects — GraphQL query failed (is the "Redirect" content type created in Contentful?): ${redirectResults.errors}`,
+    );
+  } else {
+    const rawNodes = redirectResults.data?.allContentfulRedirect?.nodes || [];
+
+    const seen = new Set();
+    let created = 0;
+    let skipped = 0;
+
+    for (const node of rawNodes) {
+      const from = typeof node.from === "string" ? node.from.trim() : "";
+      const to = typeof node.to === "string" ? node.to.trim() : "";
+
+      // Skip malformed entries rather than crashing the build.
+      if (!from || !to) {
+        reporter.warn(
+          `[redirects] Skipping malformed entry (missing from/to): from=${JSON.stringify(
+            node.from,
+          )} to=${JSON.stringify(node.to)}`,
+        );
+        skipped++;
+        continue;
+      }
+
+      // Dedupe: localeFilter yields one node per locale → duplicate pairs.
+      if (seen.has(from)) continue;
+      seen.add(from);
+
+      // trailingSlash defaults to "always": emit BOTH slash variants of the
+      // source so the old URL redirects whether or not it was indexed with a
+      // trailing slash.
+      const noSlash = from.replace(/\/+$/, "");
+      const withSlash = `${noSlash}/`;
+      const fromVariants = noSlash === "" ? [from] : [noSlash, withSlash];
+
+      // Normalize an internal destination to a trailing slash (matches
+      // trailingSlash: "always") to avoid a redirect chain. Leave external
+      // URLs and paths with a query/hash/extension as-is.
+      let toPath = to;
+      const isInternal = to.startsWith("/") && !to.startsWith("//");
+      const hasQueryOrHash = /[?#]/.test(to);
+      const looksLikeFile = /\.[a-z0-9]+$/i.test(to.split(/[?#]/)[0]);
+      if (
+        isInternal &&
+        !hasQueryOrHash &&
+        !looksLikeFile &&
+        !to.endsWith("/")
+      ) {
+        toPath = `${to}/`;
+      }
+
+      for (const fromPath of fromVariants) {
+        createRedirect({
+          fromPath,
+          toPath,
+          statusCode: 301,
+          force: true,
+          isPermanent: true,
+        });
+        created++;
+      }
+    }
+
+    reporter.info(
+      `[redirects] Created ${created} redirect rule(s) from ${seen.size} Contentful entr${
+        seen.size === 1 ? "y" : "ies"
+      } (${skipped} skipped).`,
+    );
+  }
 };
 
 exports.onCreateWebpackConfig = ({ actions, stage }) => {
