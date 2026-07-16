@@ -2,7 +2,6 @@ import React from "react";
 import { CheckCircle, Star } from "lucide-react";
 
 const WeddingPlannerPackageCard = ({ packageData }) => {
-
   return (
     <div
       className={`relative bg-white rounded-lg shadow-lg p-6 border-2 transition-all duration-300 hover:shadow-xl flex flex-col h-full ${
