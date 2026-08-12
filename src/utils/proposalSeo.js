@@ -12,6 +12,8 @@ export const buildProposalSchema = ({
   description,
   image,
   companyName,
+  legalName,
+  directorName,
   telephone,
   instagram,
   googleMapsUrl,
@@ -61,9 +63,39 @@ export const buildProposalSchema = ({
       "@type": "Organization",
       "@id": organizationId,
       name: companyName || "Sertuin Events",
+      legalName: legalName || "Sertuin SRL",
       url: rootUrl,
       telephone,
       sameAs,
+      description:
+        language === "es"
+          ? "Empresa dominicana de planificación de eventos ubicada en Punta Cana, dirigida por la wedding planner Grecia Mejía, con más de 10 años de experiencia y más de 1,800 propuestas de matrimonio realizadas. Las consultas y reuniones presenciales se coordinan con cita previa."
+          : "Dominican event-planning company based in Punta Cana, led by wedding planner Grecia Mejía, with more than 10 years of experience and more than 1,800 marriage proposals created. Consultations and in-person meetings are arranged by appointment.",
+      location: {
+        "@type": "Place",
+        name: "Punta Cana, Dominican Republic",
+      },
+      areaServed: {
+        "@type": "Place",
+        name: "Punta Cana, Dominican Republic",
+      },
+      employee: {
+        "@type": "Person",
+        name: directorName || "Grecia Mejía",
+        jobTitle:
+          language === "es"
+            ? "Wedding planner y directora de la empresa"
+            : "Wedding Planner and Company Director",
+        worksFor: { "@id": organizationId },
+      },
+      contactPoint: telephone
+        ? {
+            "@type": "ContactPoint",
+            telephone,
+            contactType: "customer service",
+            availableLanguage: ["English", "Spanish"],
+          }
+        : undefined,
     },
     {
       "@type": "WebSite",
