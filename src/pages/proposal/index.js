@@ -52,7 +52,11 @@ const Index = ({ data, pageContext }) => {
       <ProposalInclusions language={language} />
       <section aria-labelledby="proposal-moments-heading">
         <ProposalMomentsHeading language={language} />
-        {pageContent.videoUrl && <VideoPlayer url={pageContent.videoUrl} />}
+        {pageContent.videoUrl && (
+          <div className="mb-12 md:mb-16">
+            <VideoPlayer url={pageContent.videoUrl} />
+          </div>
+        )}
         {carousel?.images?.length > 0 && (
           <SwiperCarousel images={carousel.images} />
         )}
