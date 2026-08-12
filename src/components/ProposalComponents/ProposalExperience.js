@@ -7,8 +7,8 @@ import {
   FileText,
   Flower2,
   Instagram,
+  Landmark,
   MapPin,
-  MapPinned,
   Music2,
   PartyPopper,
   ShieldCheck,
@@ -21,6 +21,25 @@ import {
 
 const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/HcYUKFzHrAj86fMh7";
 const GOOGLE_REVIEW_URL = "https://g.page/r/CYRe9l94QQaWEBM/review";
+
+const googleReviewExcerpts = [
+  {
+    author: "Leonardo Leal",
+    excerpt: "Grecia made sure to understand my vision.",
+  },
+  {
+    author: "Joey DeVera",
+    excerpt: "She got every detail right!",
+  },
+  {
+    author: "Cindy Maria Danetra Pedroza",
+    excerpt: "Entendió perfectamente lo que quería.",
+  },
+  {
+    author: "Drew Langdon",
+    excerpt: "Everything was absolutely perfect.",
+  },
+];
 
 const copy = {
   "en-US": {
@@ -113,19 +132,29 @@ const copy = {
       ],
     ],
     contactLabel: "Check availability",
-    trustEyebrow: "Verified business and real experiences",
-    trustTitle: "Connect With Sertuin Events",
+    trustEyebrow: "Local leadership and proven experience",
+    trustTitle: "A Dominican Company Led by Wedding Planner Grecia Mejía",
     trustIntro:
-      "Use our official profiles to see recent work, read client experiences or share your own after your proposal.",
-    mapsTitle: "Google Business Profile",
-    mapsText:
-      "View our verified business information and client reviews on Google Maps.",
+      "Sertuin SRL is a registered Dominican company based in Punta Cana. Grecia Mejía leads the company and its proposal experiences, supported by a team that coordinates each arrival, setup and reveal.",
+    companyTitle: "Sertuin Events at a Glance",
+    experienceFacts: [
+      "More than 10 years of experience",
+      "More than 1,800 marriage proposals created",
+      "Based in Punta Cana, Dominican Republic",
+      "Consultations and in-person meetings by prior appointment",
+    ],
+    appointmentNote:
+      "We do not offer walk-in office service. Please schedule any consultation or in-person meeting in advance.",
+    portfolioText:
+      "Explore recent and historical proposal work through our official Instagram portfolio.",
+    reviewsTitle: "What Clients Say on Google",
+    reviewsIntro:
+      "Short excerpts from reviews published on our current Google Business Profile. Follow the source to read every review in full.",
+    fiveStarsLabel: "5 out of 5 stars",
+    reviewSource: "Review on Google Maps",
     mapsLink: "View on Google Maps",
     reviewLink: "Write a Google review",
-    instagramTitle: "@sertuinevents",
-    instagramText:
-      "See proposal setups, photographs and recent experiences on our official Instagram account.",
-    instagramLink: "Visit Instagram",
+    instagramLink: "View @sertuinevents",
   },
   es: {
     overviewEyebrow: "Una experiencia completa con precios claros",
@@ -217,19 +246,30 @@ const copy = {
       ],
     ],
     contactLabel: "Consultar disponibilidad",
-    trustEyebrow: "Negocio verificado y experiencias reales",
-    trustTitle: "Conecta con Sertuin Events",
+    trustEyebrow: "Liderazgo local y experiencia comprobable",
+    trustTitle:
+      "Una empresa dominicana dirigida por la wedding planner Grecia Mejía",
     trustIntro:
-      "Utiliza nuestros perfiles oficiales para ver trabajos recientes, leer experiencias de clientes o compartir la tuya después de la propuesta.",
-    mapsTitle: "Perfil de Empresa en Google",
-    mapsText:
-      "Consulta la información verificada del negocio y las opiniones de clientes en Google Maps.",
+      "Sertuin SRL es una empresa dominicana registrada y ubicada en Punta Cana. Grecia Mejía dirige la empresa y sus experiencias de propuesta, junto con el equipo que coordina cada llegada, montaje y revelación.",
+    companyTitle: "Sertuin Events en datos",
+    experienceFacts: [
+      "Más de 10 años de experiencia",
+      "Más de 1,800 propuestas de matrimonio realizadas",
+      "Ubicados en Punta Cana, República Dominicana",
+      "Consultas y reuniones presenciales con cita previa",
+    ],
+    appointmentNote:
+      "No ofrecemos atención de oficina sin cita. Programa previamente cualquier consulta o reunión presencial.",
+    portfolioText:
+      "Explora trabajos recientes e históricos de propuestas en nuestro portafolio oficial de Instagram.",
+    reviewsTitle: "Lo que dicen nuestros clientes en Google",
+    reviewsIntro:
+      "Fragmentos breves de opiniones publicadas en nuestro Perfil de Empresa actual en Google. Accede a la fuente para leer cada reseña completa.",
+    fiveStarsLabel: "5 de 5 estrellas",
+    reviewSource: "Reseña en Google Maps",
     mapsLink: "Ver en Google Maps",
     reviewLink: "Escribir una reseña",
-    instagramTitle: "@sertuinevents",
-    instagramText:
-      "Mira decoraciones, fotografías y experiencias recientes en nuestra cuenta oficial de Instagram.",
-    instagramLink: "Visitar Instagram",
+    instagramLink: "Ver @sertuinevents",
   },
 };
 
@@ -528,23 +568,6 @@ export const ProposalTrust = ({ language, instagramUrl }) => {
   const officialInstagram = /^https?:\/\//i.test(instagramUrl || "")
     ? instagramUrl
     : "https://www.instagram.com/sertuinevents/";
-  const cards = [
-    {
-      icon: MapPinned,
-      title: content.mapsTitle,
-      description: content.mapsText,
-      links: [
-        [content.mapsLink, GOOGLE_MAPS_URL],
-        [content.reviewLink, GOOGLE_REVIEW_URL],
-      ],
-    },
-    {
-      icon: Instagram,
-      title: content.instagramTitle,
-      description: content.instagramText,
-      links: [[content.instagramLink, officialInstagram]],
-    },
-  ];
 
   return (
     <section
@@ -558,31 +581,106 @@ export const ProposalTrust = ({ language, instagramUrl }) => {
           title={content.trustTitle}
           intro={content.trustIntro}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 mt-12">
-          {cards.map(({ icon, title, description, links }) => (
-            <article key={title} className="bg-white p-8 text-center">
-              <Icon component={icon} className="mx-auto" />
-              <h3 className="font-crimson text-2xl text-gray-900 mt-5">
-                {title}
-              </h3>
-              <p className="font-crimson text-gray-700 leading-relaxed mt-3">
-                {description}
-              </p>
-              <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mt-6">
-                {links.map(([linkText, url]) => (
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-px bg-gray-200 mt-12">
+          <article className="bg-white p-7 md:p-10 lg:col-span-2">
+            <Icon component={Landmark} />
+            <h3 className="font-crimson text-2xl text-gray-900 mt-5">
+              {content.companyTitle}
+            </h3>
+            <ul className="space-y-4 mt-6">
+              {content.experienceFacts.map((fact) => (
+                <li
+                  key={fact}
+                  className="flex items-start gap-3 font-crimson text-gray-700 leading-relaxed"
+                >
+                  <ShieldCheck
+                    aria-hidden="true"
+                    strokeWidth={1.5}
+                    className="w-5 h-5 text-primary-color shrink-0 mt-0.5"
+                  />
+                  <span>{fact}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="font-crimson text-sm text-gray-600 leading-relaxed mt-6">
+              {content.appointmentNote}
+            </p>
+            <p className="font-crimson text-gray-700 leading-relaxed mt-6">
+              {content.portfolioText}
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-3 mt-5">
+              <a
+                href={officialInstagram}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 font-crimson text-gray-700 underline underline-offset-4"
+              >
+                <Instagram aria-hidden="true" className="w-5 h-5" />
+                {content.instagramLink}
+              </a>
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="font-crimson text-gray-700 underline underline-offset-4"
+              >
+                {content.mapsLink}
+              </a>
+            </div>
+          </article>
+
+          <div className="bg-white p-7 md:p-10 lg:col-span-3">
+            <h3 className="font-crimson text-2xl text-gray-900">
+              {content.reviewsTitle}
+            </h3>
+            <p className="font-crimson text-gray-700 leading-relaxed mt-3">
+              {content.reviewsIntro}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-gray-200 mt-7">
+              {googleReviewExcerpts.map(({ author, excerpt }) => (
+                <article key={author} className="bg-secondary-bg-color p-6">
+                  <div
+                    aria-label={content.fiveStarsLabel}
+                    className="text-primary-color tracking-[0.18em]"
+                  >
+                    <span aria-hidden="true">★★★★★</span>
+                  </div>
+                  <blockquote className="font-crimson text-lg text-gray-800 leading-relaxed mt-4">
+                    “{excerpt}”
+                  </blockquote>
+                  <p className="font-crimson text-sm text-gray-600 mt-4">
+                    {author}
+                  </p>
                   <a
-                    key={url}
-                    href={url}
+                    href={GOOGLE_MAPS_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-crimson text-gray-700 underline underline-offset-4"
+                    className="inline-block font-crimson text-sm text-gray-700 underline underline-offset-4 mt-2"
                   >
-                    {linkText}
+                    {content.reviewSource}
                   </a>
-                ))}
-              </div>
-            </article>
-          ))}
+                </article>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-3 mt-7">
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="font-crimson text-gray-700 underline underline-offset-4"
+              >
+                {content.mapsLink}
+              </a>
+              <a
+                href={GOOGLE_REVIEW_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="font-crimson text-gray-700 underline underline-offset-4"
+              >
+                {content.reviewLink}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
