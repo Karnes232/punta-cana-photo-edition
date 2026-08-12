@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
 import {
-  BadgeDollarSign,
   CalendarCheck2,
   Camera,
   CarFront,
-  Clock3,
   FileText,
   Flower2,
   Instagram,
@@ -19,7 +17,6 @@ import {
   UtensilsCrossed,
   UserRoundCheck,
   Video,
-  Wine,
 } from "lucide-react";
 
 const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/HcYUKFzHrAj86fMh7";
@@ -32,30 +29,6 @@ const copy = {
     overviewParagraphs: [
       "Every Sertuin Events package is a complete, all-inclusive experience held on our own private beach in Uvero Alto. The published package price already includes private round-trip transportation from any hotel or accommodation throughout Punta Cana, private beach access, your selected romantic setup, a celebratory beverage, professional photography, your preferred song and a dedicated on-site coordinator.",
       "Choose the package that reflects your vision, reserve your date with a US$200 deposit and let our team coordinate the arrival, timing and reveal while you focus entirely on your partner and the question you came to ask.",
-    ],
-    quickFacts: [
-      [MapPin, "Private beach included", "No separate rental or venue fee"],
-      [CarFront, "Round-trip transportation", "No Punta Cana zone surcharge"],
-      [
-        Camera,
-        "70+ edited photographs",
-        "Professionally edited in high resolution",
-      ],
-      [
-        Clock3,
-        "Delivered within 48 hours",
-        "Your complete photography gallery",
-      ],
-      [
-        Smartphone,
-        "Proposal video included",
-        "Phone recording at no additional cost",
-      ],
-      [
-        CalendarCheck2,
-        "Reserve with US$200",
-        "No full advance payment required",
-      ],
     ],
     packagesFallbackTitle: "Punta Cana Proposal Packages and Prices",
     inclusionsEyebrow: "Included with every package",
@@ -116,7 +89,7 @@ const copy = {
     bookingEyebrow: "Simple and secure",
     bookingTitle: "How to Reserve Your Punta Cana Proposal",
     bookingIntro:
-      "You do not have to pay the full package price in advance. A US$200 deposit reserves your date and is deducted from the total.",
+      "Booking is simple and secure, and you do not have to pay the full package price in advance.",
     bookingSteps: [
       [
         CalendarCheck2,
@@ -130,13 +103,8 @@ const copy = {
       ],
       [
         FileText,
-        "Receive your service agreement",
-        "We send a written agreement with the selected services, payment terms and a secure PayPal payment link.",
-      ],
-      [
-        BadgeDollarSign,
-        "Reserve with a US$200 deposit",
-        "The deposit is deducted from the total. You do not need to pay the full package price in advance.",
+        "Sign the agreement and reserve your date",
+        "We send a written service agreement and a secure PayPal link. A US$200 deposit reserves the date and is deducted from the total.",
       ],
       [
         PartyPopper,
@@ -144,9 +112,6 @@ const copy = {
         "After confirmation, we coordinate pickup, music, personalization, arrival, timing and reveal. The remaining balance is paid after the experience according to your agreement.",
       ],
     ],
-    pricingTitle: "Clear and Transparent Pricing",
-    pricingText:
-      "There are no separate mandatory charges for the private beach, professional photographer or transportation within Punta Cana. Optional services are added only when you request them and are listed separately in your service agreement.",
     contactLabel: "Check availability",
     trustEyebrow: "Verified business and real experiences",
     trustTitle: "Connect With Sertuin Events",
@@ -156,9 +121,6 @@ const copy = {
     mapsText:
       "View our verified business information and client reviews on Google Maps.",
     mapsLink: "View on Google Maps",
-    reviewTitle: "Share Your Experience",
-    reviewText:
-      "Clients can leave an honest review directly through our official Google review link.",
     reviewLink: "Write a Google review",
     instagramTitle: "@sertuinevents",
     instagramText:
@@ -171,30 +133,6 @@ const copy = {
     overviewParagraphs: [
       "Cada paquete de Sertuin Events es una experiencia completa y todo incluido en nuestra propia playa privada de Uvero Alto. El precio publicado ya incluye transporte privado de ida y vuelta desde cualquier hotel o alojamiento de Punta Cana, acceso a la playa privada, la decoración romántica seleccionada, bebida para celebrar, fotografía profesional, tu canción preferida y un coordinador dedicado en el lugar.",
       "Elige el paquete que represente tu visión, reserva la fecha con un depósito de US$200 y permite que nuestro equipo coordine la llegada, el momento y la revelación mientras tú te concentras completamente en tu pareja.",
-    ],
-    quickFacts: [
-      [MapPin, "Playa privada incluida", "Sin cargo separado de alquiler"],
-      [
-        CarFront,
-        "Transporte de ida y vuelta",
-        "Sin recargo por zona en Punta Cana",
-      ],
-      [
-        Camera,
-        "Más de 70 fotografías",
-        "Editadas profesionalmente en alta resolución",
-      ],
-      [Clock3, "Entrega en 48 horas", "Galería fotográfica completa"],
-      [
-        Smartphone,
-        "Video de la propuesta incluido",
-        "Grabación con teléfono sin costo adicional",
-      ],
-      [
-        CalendarCheck2,
-        "Reserva con US$200",
-        "No requiere pago total anticipado",
-      ],
     ],
     packagesFallbackTitle: "Paquetes y precios de propuestas en Punta Cana",
     inclusionsEyebrow: "Incluido en cada paquete",
@@ -255,7 +193,7 @@ const copy = {
     bookingEyebrow: "Sencillo y seguro",
     bookingTitle: "Cómo reservar tu propuesta en Punta Cana",
     bookingIntro:
-      "No tienes que pagar el precio completo por adelantado. Un depósito de US$200 reserva la fecha y se descuenta del total.",
+      "La reserva es sencilla y segura, y no tienes que pagar el precio completo por adelantado.",
     bookingSteps: [
       [
         CalendarCheck2,
@@ -269,13 +207,8 @@ const copy = {
       ],
       [
         FileText,
-        "Recibe el acuerdo de servicio",
-        "Te enviamos un acuerdo escrito con los servicios, condiciones de pago y un enlace seguro de PayPal.",
-      ],
-      [
-        BadgeDollarSign,
-        "Reserva con un depósito de US$200",
-        "El depósito se descuenta del total. No tienes que pagar el precio completo por adelantado.",
+        "Firma el acuerdo y reserva la fecha",
+        "Te enviamos un acuerdo de servicio escrito y un enlace seguro de PayPal. Un depósito de US$200 reserva la fecha y se descuenta del total.",
       ],
       [
         PartyPopper,
@@ -283,9 +216,6 @@ const copy = {
         "Después de confirmar, coordinamos la recogida, música, personalización, llegada y revelación. El saldo se paga después de la experiencia según el acuerdo.",
       ],
     ],
-    pricingTitle: "Precios claros y transparentes",
-    pricingText:
-      "No existen cargos obligatorios separados por la playa privada, el fotógrafo profesional o el transporte dentro de Punta Cana. Los servicios opcionales solo se agregan cuando los solicitas y aparecen por separado en el acuerdo.",
     contactLabel: "Consultar disponibilidad",
     trustEyebrow: "Negocio verificado y experiencias reales",
     trustTitle: "Conecta con Sertuin Events",
@@ -295,15 +225,118 @@ const copy = {
     mapsText:
       "Consulta la información verificada del negocio y las opiniones de clientes en Google Maps.",
     mapsLink: "Ver en Google Maps",
-    reviewTitle: "Comparte tu experiencia",
-    reviewText:
-      "Los clientes pueden dejar una reseña honesta mediante nuestro enlace oficial de Google.",
     reviewLink: "Escribir una reseña",
     instagramTitle: "@sertuinevents",
     instagramText:
       "Mira decoraciones, fotografías y experiencias recientes en nuestra cuenta oficial de Instagram.",
     instagramLink: "Visitar Instagram",
   },
+};
+
+const formatPrice = (price) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(price);
+
+export const buildProposalFaqs = ({ language, packages = [] }) => {
+  const isSpanish = language === "es";
+  const prices = packages
+    .map((proposalPackage) => Number(proposalPackage.price))
+    .filter((price) => Number.isFinite(price));
+  const minimumPrice = prices.length ? formatPrice(Math.min(...prices)) : null;
+  const maximumPrice = prices.length ? formatPrice(Math.max(...prices)) : null;
+  const priceRange =
+    minimumPrice && maximumPrice
+      ? `${minimumPrice}–${maximumPrice} USD`
+      : isSpanish
+        ? "los precios publicados en esta página"
+        : "the prices published on this page";
+
+  const faqItems = isSpanish
+    ? [
+        [
+          "¿Cuánto cuesta una propuesta de matrimonio en Punta Cana?",
+          `Los paquetes disponibles actualmente van de ${priceRange}, según la experiencia seleccionada. El precio de cada tarjeta corresponde al paquete publicado y los servicios opcionales solo se agregan cuando los solicitas.`,
+        ],
+        [
+          "¿Qué incluye un paquete de propuesta de matrimonio en Punta Cana?",
+          "Cada paquete incluye transporte privado de ida y vuelta desde cualquier hotel o alojamiento de Punta Cana, acceso a nuestra playa privada de Uvero Alto, la decoración seleccionada, una bebida para celebrar, fotografía profesional, tu canción preferida, video de la propuesta grabado con un teléfono y coordinación en el lugar. No existen cargos obligatorios separados por la playa, el fotógrafo o el transporte dentro de Punta Cana.",
+        ],
+        [
+          "¿Cómo reservo mi propuesta con Sertuin Events?",
+          "Elige el paquete, la fecha y el alojamiento. Después de confirmar disponibilidad, enviamos un acuerdo de servicio escrito y un enlace seguro de PayPal. Un depósito de US$200 reserva la fecha, se descuenta del total y el saldo se paga después de la experiencia según el acuerdo.",
+        ],
+        [
+          "¿Dónde se realizan las propuestas?",
+          "Las propuestas se realizan en nuestra propia playa privada de Uvero Alto, Punta Cana. El acceso está incluido en el precio del paquete y no se cobra una tarifa separada de alquiler o lugar.",
+        ],
+        [
+          "¿El transporte está incluido desde cualquier zona de Punta Cana?",
+          "Sí. El precio publicado incluye transporte privado de ida y vuelta desde cualquier hotel o alojamiento de Punta Cana, sin restricciones de zona ni recargos obligatorios de transporte.",
+        ],
+        [
+          "¿Cuántas fotografías recibiremos y cuándo se entregan?",
+          "Recibirás más de 70 fotografías profesionales, editadas y en alta resolución dentro de las 48 horas posteriores a la experiencia.",
+        ],
+        [
+          "¿Se graba el momento de la propuesta?",
+          "Sí. Grabamos la propuesta con un teléfono sin costo adicional, aunque no agregues videografía profesional.",
+        ],
+        [
+          "¿Podemos elegir la música y personalizar la decoración?",
+          "Sí. Coordinamos tu canción preferida y las personalizaciones solicitadas antes de la experiencia. La decoración incluida corresponde al paquete elegido y también puedes solicitar flores personalizadas u otras mejoras opcionales.",
+        ],
+        [
+          "¿Puedo agregar video profesional, dron u otros servicios?",
+          "Sí. Según tu visión y disponibilidad, puedes agregar video cinematográfico y dron, músicos en vivo, cena privada, chispas frías y flores personalizadas. Estos servicios opcionales se cotizan por separado.",
+        ],
+      ]
+    : [
+        [
+          "How much does a marriage proposal in Punta Cana cost?",
+          `The packages currently available range from ${priceRange}, depending on the experience selected. Each card shows the published package price, and optional services are added only when requested.`,
+        ],
+        [
+          "What does a Punta Cana proposal package include?",
+          "Every package includes private round-trip transportation from any hotel or accommodation in Punta Cana, access to our private beach in Uvero Alto, the selected romantic setup, a celebratory beverage, professional photography, your preferred song, a phone recording of the proposal and an on-site coordinator. There are no separate mandatory charges for the beach, photographer or transportation within Punta Cana.",
+        ],
+        [
+          "How do I reserve my proposal with Sertuin Events?",
+          "Choose your package, preferred date and accommodation. After availability is confirmed, we send a written service agreement and a secure PayPal link. A US$200 deposit reserves the date, is deducted from the total and the remaining balance is paid after the experience according to the agreement.",
+        ],
+        [
+          "Where do the proposals take place?",
+          "Proposals take place on our own private beach in Uvero Alto, Punta Cana. Beach access is included in the package price, with no separate rental or venue fee.",
+        ],
+        [
+          "Is transportation included from every area of Punta Cana?",
+          "Yes. The published price includes private round-trip transportation from any hotel or accommodation throughout Punta Cana, with no zone restrictions or mandatory transportation surcharge.",
+        ],
+        [
+          "How many photographs will we receive and when are they delivered?",
+          "You will receive more than 70 professionally edited, high-resolution photographs within 48 hours after the experience.",
+        ],
+        [
+          "Is the proposal moment recorded?",
+          "Yes. We record the actual proposal on a phone at no additional cost, even when professional videography is not added.",
+        ],
+        [
+          "Can we choose the music and personalize the setup?",
+          "Yes. We coordinate your preferred song and requested personalization before the experience. The setup included is based on the package selected, and custom flowers or other optional enhancements can also be requested.",
+        ],
+        [
+          "Can I add professional video, drone coverage or other services?",
+          "Yes. Depending on your vision and availability, you can add cinematic video and drone coverage, live musicians, a private dinner, cold sparks and custom flowers. Optional services are quoted separately.",
+        ],
+      ];
+
+  return faqItems.map(([title, content]) => ({
+    title,
+    content: { content },
+  }));
 };
 
 const getCopy = (language) => copy[language === "es" ? "es" : "en-US"];
@@ -364,21 +397,6 @@ export const ProposalIntroduction = ({ language }) => {
               </p>
             ))}
           </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 mt-px">
-          {content.quickFacts.map(([icon, title, description]) => (
-            <article
-              key={title}
-              className="bg-white flex items-start gap-4 px-6 py-6"
-            >
-              <Icon component={icon} className="shrink-0 mt-1" />
-              <div>
-                <h3 className="font-crimson text-xl text-gray-900">{title}</h3>
-                <p className="font-crimson text-gray-600 mt-1">{description}</p>
-              </div>
-            </article>
-          ))}
         </div>
       </div>
     </section>
@@ -473,7 +491,7 @@ export const ProposalBookingProcess = ({ language }) => {
           intro={content.bookingIntro}
         />
 
-        <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-gray-200 mt-12">
+        <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200 mt-12">
           {content.bookingSteps.map(([icon, title, description], index) => (
             <li key={title} className="bg-secondary-bg-color p-6 md:p-7">
               <div className="flex items-center justify-between">
@@ -492,21 +510,10 @@ export const ProposalBookingProcess = ({ language }) => {
           ))}
         </ol>
 
-        <div className="border border-primary-color px-6 py-9 md:px-12 md:py-10 mt-12 text-center">
-          <Wine
-            aria-hidden="true"
-            strokeWidth={1.35}
-            className="w-8 h-8 text-primary-color mx-auto"
-          />
-          <h3 className="font-crimson text-2xl md:text-3xl text-gray-900 mt-4">
-            {content.pricingTitle}
-          </h3>
-          <p className="font-crimson text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mt-4">
-            {content.pricingText}
-          </p>
+        <div className="mt-10 text-center">
           <Link
             to={contactPath}
-            className="inline-flex no-underline border border-gray-700 rounded-3xl px-7 py-3 mt-7 font-crimson text-gray-700 hover:bg-black hover:text-white transition-colors duration-300"
+            className="inline-flex no-underline border border-gray-700 rounded-3xl px-7 py-3 font-crimson text-gray-700 hover:bg-black hover:text-white transition-colors duration-300"
           >
             {content.contactLabel}
           </Link>
@@ -522,27 +529,21 @@ export const ProposalTrust = ({ language, instagramUrl }) => {
     ? instagramUrl
     : "https://www.instagram.com/sertuinevents/";
   const cards = [
-    [
-      MapPinned,
-      content.mapsTitle,
-      content.mapsText,
-      content.mapsLink,
-      GOOGLE_MAPS_URL,
-    ],
-    [
-      ShieldCheck,
-      content.reviewTitle,
-      content.reviewText,
-      content.reviewLink,
-      GOOGLE_REVIEW_URL,
-    ],
-    [
-      Instagram,
-      content.instagramTitle,
-      content.instagramText,
-      content.instagramLink,
-      officialInstagram,
-    ],
+    {
+      icon: MapPinned,
+      title: content.mapsTitle,
+      description: content.mapsText,
+      links: [
+        [content.mapsLink, GOOGLE_MAPS_URL],
+        [content.reviewLink, GOOGLE_REVIEW_URL],
+      ],
+    },
+    {
+      icon: Instagram,
+      title: content.instagramTitle,
+      description: content.instagramText,
+      links: [[content.instagramLink, officialInstagram]],
+    },
   ];
 
   return (
@@ -557,8 +558,8 @@ export const ProposalTrust = ({ language, instagramUrl }) => {
           title={content.trustTitle}
           intro={content.trustIntro}
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-200 mt-12">
-          {cards.map(([icon, title, description, linkText, url]) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 mt-12">
+          {cards.map(({ icon, title, description, links }) => (
             <article key={title} className="bg-white p-8 text-center">
               <Icon component={icon} className="mx-auto" />
               <h3 className="font-crimson text-2xl text-gray-900 mt-5">
@@ -567,14 +568,19 @@ export const ProposalTrust = ({ language, instagramUrl }) => {
               <p className="font-crimson text-gray-700 leading-relaxed mt-3">
                 {description}
               </p>
-              <a
-                href={url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-block font-crimson text-gray-700 underline underline-offset-4 mt-6"
-              >
-                {linkText}
-              </a>
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mt-6">
+                {links.map(([linkText, url]) => (
+                  <a
+                    key={url}
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-crimson text-gray-700 underline underline-offset-4"
+                  >
+                    {linkText}
+                  </a>
+                ))}
+              </div>
             </article>
           ))}
         </div>

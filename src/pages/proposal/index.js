@@ -3,12 +3,9 @@ import Layout from "../../components/Layout/Layout";
 import { graphql } from "gatsby";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
-import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
-import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
-import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 import Faqs from "../../components/FaqsComponent/Faqs";
 import {
   GOOGLE_MAPS_URL,
@@ -17,22 +14,35 @@ import {
   ProposalIntroduction,
   ProposalMomentsHeading,
   ProposalTrust,
+  buildProposalFaqs,
   getProposalCopy,
 } from "../../components/ProposalComponents/ProposalExperience";
 import { buildProposalSchema } from "../../utils/proposalSeo";
+
+const withoutYear = (text = "") =>
+  text
+    .replace(/\s*(?:[|—–-]\s*)?2026\b(?:\s*[|—–-])?\s*/, " ")
+    .replace(/\s{2,}/g, " ")
+    .trim();
 
 const Index = ({ data, pageContext }) => {
   const language = pageContext.language;
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
   const pageContent = data.allContentfulPageContent.nodes[0];
-  const gallery = data.allContentfulPhotoGallery.nodes[0];
   const carousel = data.allContentfulSwiperCarousel.nodes[0];
-  const contentBlock = data.allContentfulCardWithImage.nodes[0];
   const proposalCopy = getProposalCopy(language);
+  const proposalFaqs = buildProposalFaqs({
+    language,
+    packages: data.allContentfulPackages.nodes,
+  });
+  const heroInfo = {
+    ...pageContent,
+    heroHeading: withoutYear(pageContent.heroHeading),
+  };
 
   return (
     <Layout generalInfo={generalInfo}>
-      <HeroSwiper heroInfo={pageContent} />
+      <HeroSwiper heroInfo={heroInfo} />
       <ProposalIntroduction language={language} />
       <OurPackages
         title={pageContent.sectionTitle || proposalCopy.packagesFallbackTitle}
@@ -41,26 +51,21 @@ const Index = ({ data, pageContext }) => {
       <ProposalInclusions language={language} />
       <section aria-labelledby="proposal-moments-heading">
         <ProposalMomentsHeading language={language} />
-        {gallery?.images?.length > 0 && (
-          <PhotoGrid photos={gallery.images} page={gallery.page} />
-        )}
         {pageContent.videoUrl && <VideoPlayer url={pageContent.videoUrl} />}
         {carousel?.images?.length > 0 && (
           <SwiperCarousel images={carousel.images} />
         )}
       </section>
-      {contentBlock && <ContentBlock content={contentBlock} />}
       <ProposalBookingProcess language={language} />
       <ProposalTrust language={language} instagramUrl={generalInfo.instagram} />
       <Faqs
-        faqs={data.allContentfulFaqsComponent.nodes}
+        faqs={proposalFaqs}
         title={
           language === "es"
             ? "Preguntas frecuentes"
             : "Frequently Asked Questions"
         }
       />
-      <FirebaseTestimonialsComponent packagePage={"proposal"} />
     </Layout>
   );
 };
@@ -68,8 +73,13 @@ const Index = ({ data, pageContext }) => {
 export default Index;
 
 export const Head = ({ pageContext, data }) => {
-  const { title, description, images, keywords } =
-    data.allContentfulSeo.nodes[0];
+  const {
+    title: contentfulTitle,
+    description,
+    images,
+    keywords,
+  } = data.allContentfulSeo.nodes[0];
+  const title = withoutYear(contentfulTitle);
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const language = pageContext.language;
   const languagePrefix = language === "es" ? "/es" : "";
@@ -95,7 +105,10 @@ export const Head = ({ pageContext, data }) => {
     instagram: instagramUrl,
     googleMapsUrl: GOOGLE_MAPS_URL,
     packages: data.allContentfulPackages.nodes,
-    faqs: data.allContentfulFaqsComponent.nodes,
+    faqs: buildProposalFaqs({
+      language,
+      packages: data.allContentfulPackages.nodes,
+    }),
   });
 
   return (
@@ -180,19 +193,6 @@ export const query = graphql`
         sectionTitle
       }
     }
-    allContentfulPhotoGallery(filter: { page: { eq: "Proposal" } }) {
-      nodes {
-        page
-        title
-        images {
-          url
-          width
-          height
-          #gatsbyImage(layout: CONSTRAINED, width: 800, placeholder: NONE, formats: WEBP, quality: 75)
-          title
-        }
-      }
-    }
     allContentfulPackages(
       filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
       sort: { price: ASC }
@@ -230,38 +230,6 @@ export const query = graphql`
             quality: 75
           )
           title
-        }
-      }
-    }
-    allContentfulCardWithImage(
-      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        title
-        secondaryTitle
-        buttonText
-        linkUrl
-        paragraph
-        paragraph2
-        image {
-          title
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-        }
-      }
-    }
-    allContentfulFaqsComponent(
-      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        title
-        content {
-          content
         }
       }
     }
