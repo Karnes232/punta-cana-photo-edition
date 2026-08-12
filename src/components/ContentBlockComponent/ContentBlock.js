@@ -40,7 +40,7 @@ const ContentBlock = ({ content, page }) => {
                     <Link
                       to={content.linkUrl}
                       className="no-underline flex justify-center items-center"
-                      aria-label="Home"
+                      aria-label={content.title || content.secondaryTitle}
                     >
                       {" "}
                       <span>
@@ -53,7 +53,7 @@ const ContentBlock = ({ content, page }) => {
                     <Link
                       to={content.linkUrl}
                       className="no-underline border py-2 xl:py-3 px-6 xl:px-8 xl:text-lg rounded-3xl mt-10 text-gray-400 border-gray-500 transition duration-500 hover:bg-black hover:text-white"
-                      aria-label="Home"
+                      aria-label={content.buttonText || content.title}
                     >
                       {content.buttonText}
                     </Link>

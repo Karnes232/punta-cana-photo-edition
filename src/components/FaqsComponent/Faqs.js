@@ -1,7 +1,7 @@
 import React from "react";
 import Faq from "react-faq-component";
 import uniqueByTitle from "../../hooks/uniqueByTitle";
-const Faqs = ({ faqs }) => {
+const Faqs = ({ faqs, title = "FAQ" }) => {
   const uniqueObjects = uniqueByTitle(faqs);
   let faqsArray = [];
   uniqueObjects.forEach((item) => {
@@ -9,7 +9,6 @@ const Faqs = ({ faqs }) => {
     faqsArray.push(object);
   });
   const data = {
-    title: "FAQ",
     rows: faqsArray,
   };
   const styles = {
@@ -32,9 +31,18 @@ const Faqs = ({ faqs }) => {
     // tabFocus: true
   };
   return (
-    <div className="mx-5 lg:mx-10 xl:mx-auto max-w-5xl my-10">
+    <section
+      aria-labelledby="faq-heading"
+      className="mx-5 lg:mx-10 xl:mx-auto max-w-5xl my-16 md:my-24"
+    >
+      <h2
+        id="faq-heading"
+        className="font-crimson font-normal tracking-wide text-3xl md:text-4xl text-gray-900 text-center mb-10"
+      >
+        {title}
+      </h2>
       <Faq data={data} styles={styles} config={config} />
-    </div>
+    </section>
   );
 };
 

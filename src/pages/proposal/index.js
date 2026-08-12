@@ -9,30 +9,57 @@ import OurPackages from "../../components/PackageComponents/OurPackages";
 import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
-import { useI18next } from "gatsby-plugin-react-i18next";
-import RichText from "../../components/RichTextComponents/RichText";
 import Faqs from "../../components/FaqsComponent/Faqs";
-const Index = ({ data }) => {
-  return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-      <PhotoGrid
-        photos={data.allContentfulPhotoGallery.nodes[0].images}
-        page={data.allContentfulPhotoGallery.nodes[0].page}
-      />
-      <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
+import {
+  GOOGLE_MAPS_URL,
+  ProposalBookingProcess,
+  ProposalInclusions,
+  ProposalIntroduction,
+  ProposalMomentsHeading,
+  ProposalTrust,
+  getProposalCopy,
+} from "../../components/ProposalComponents/ProposalExperience";
+import { buildProposalSchema } from "../../utils/proposalSeo";
 
+const Index = ({ data, pageContext }) => {
+  const language = pageContext.language;
+  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const pageContent = data.allContentfulPageContent.nodes[0];
+  const gallery = data.allContentfulPhotoGallery.nodes[0];
+  const carousel = data.allContentfulSwiperCarousel.nodes[0];
+  const contentBlock = data.allContentfulCardWithImage.nodes[0];
+  const proposalCopy = getProposalCopy(language);
+
+  return (
+    <Layout generalInfo={generalInfo}>
+      <HeroSwiper heroInfo={pageContent} />
+      <ProposalIntroduction language={language} />
       <OurPackages
-        title={data.allContentfulPageContent.nodes[0].sectionTitle}
+        title={pageContent.sectionTitle || proposalCopy.packagesFallbackTitle}
         photoPackages={data.allContentfulPackages.nodes}
       />
-      <SwiperCarousel
-        images={data.allContentfulSwiperCarousel.nodes[0].images}
+      <ProposalInclusions language={language} />
+      <section aria-labelledby="proposal-moments-heading">
+        <ProposalMomentsHeading language={language} />
+        {gallery?.images?.length > 0 && (
+          <PhotoGrid photos={gallery.images} page={gallery.page} />
+        )}
+        {pageContent.videoUrl && <VideoPlayer url={pageContent.videoUrl} />}
+        {carousel?.images?.length > 0 && (
+          <SwiperCarousel images={carousel.images} />
+        )}
+      </section>
+      {contentBlock && <ContentBlock content={contentBlock} />}
+      <ProposalBookingProcess language={language} />
+      <ProposalTrust language={language} instagramUrl={generalInfo.instagram} />
+      <Faqs
+        faqs={data.allContentfulFaqsComponent.nodes}
+        title={
+          language === "es"
+            ? "Preguntas frecuentes"
+            : "Frequently Asked Questions"
+        }
       />
-      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
-      <div className="mt-5"></div>
-      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
-      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
       <FirebaseTestimonialsComponent packagePage={"proposal"} />
     </Layout>
   );
@@ -41,33 +68,51 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ pageContext, data }) => {
-  const { language } = useI18next();
-
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  //const siteUrl = `${data.site.siteMetadata.siteUrl}/proposal`;
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/proposal/`;
+  const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const language = pageContext.language;
+  const languagePrefix = language === "es" ? "/es" : "";
+  const siteUrl = `${rootUrl}${languagePrefix}/proposal/`;
+  const englishUrl = `${rootUrl}/proposal/`;
+  const spanishUrl = `${rootUrl}/es/proposal/`;
+  const seoImage = images?.file?.url
+    ? `${images.file.url.startsWith("//") ? "https:" : ""}${images.file.url}`
+    : undefined;
+  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const instagramUrl = /^https?:\/\//i.test(generalInfo.instagram || "")
+    ? generalInfo.instagram
+    : "https://www.instagram.com/sertuinevents/";
+  const schemaMarkup = buildProposalSchema({
+    siteUrl: rootUrl,
+    pageUrl: siteUrl,
+    language,
+    title,
+    description: description.description,
+    image: seoImage,
+    companyName: generalInfo.companyName,
+    telephone: generalInfo.telephone,
+    instagram: instagramUrl,
+    googleMapsUrl: GOOGLE_MAPS_URL,
+    packages: data.allContentfulPackages.nodes,
+    faqs: data.allContentfulFaqsComponent.nodes,
+  });
 
-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
-
-  let JsonSchema = {};
-  if (schema) {
-    JsonSchema = JSON.parse(schema);
-  }
   return (
     <>
       <Seo
         title={title}
         description={description.description}
         keywords={keywords.join(", ")}
-        image={`https:${images?.file?.url}`}
+        image={seoImage}
         url={siteUrl}
-        schemaMarkup={JsonSchema}
-        language={
-          pageContext.language === "en-US" ? "en" : pageContext.language
-        }
+        schemaMarkup={schemaMarkup}
+        language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
+      <link rel="alternate" hrefLang="en" href={englishUrl} />
+      <link rel="alternate" hrefLang="es" href={spanishUrl} />
+      <link rel="alternate" hrefLang="x-default" href={englishUrl} />
     </>
   );
 };
@@ -111,11 +156,6 @@ export const query = graphql`
         description {
           description
         }
-        schema {
-          internal {
-            content
-          }
-        }
       }
     }
     allContentfulPageContent(
@@ -138,9 +178,6 @@ export const query = graphql`
         heroHeading
         heroHeading2
         sectionTitle
-        paragraph1 {
-          raw
-        }
       }
     }
     allContentfulPhotoGallery(filter: { page: { eq: "Proposal" } }) {
@@ -204,6 +241,8 @@ export const query = graphql`
         secondaryTitle
         buttonText
         linkUrl
+        paragraph
+        paragraph2
         image {
           title
           gatsbyImage(
