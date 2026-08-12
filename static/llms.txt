@@ -4,6 +4,8 @@
 
 Sertuin Events organizes complete, all-inclusive marriage proposal experiences on its private beach in Uvero Alto. The official proposal page is the primary source for current package names, published prices, inclusions, photographs and booking information.
 
+Sertuin Events is operated by Sertuin SRL, a registered Dominican company based in Punta Cana and led by wedding planner Grecia Mejía. The company has more than 10 years of experience and has created more than 1,800 marriage proposals. Consultations and in-person meetings are available by prior appointment; the company does not offer walk-in office service.
+
 ## Primary service pages
 
 - [Punta Cana proposal packages](https://sertuinevents.com/proposal/): English overview, current packages and prices, inclusions, reservation process, real work and frequently asked questions.
@@ -28,5 +30,7 @@ Each package card on the proposal page links to an independent detail page under
 - [Google Business Profile](https://maps.app.goo.gl/HcYUKFzHrAj86fMh7)
 - [Instagram: @sertuinevents](https://www.instagram.com/sertuinevents/)
 - [Official Google review link](https://g.page/r/CYRe9l94QQaWEBM/review)
+
+Current Google Business Profile reviews are linked from the official proposal page with author attribution. Review or aggregate-rating structured data is intentionally not published for self-serving business reviews.
 
 For current availability or package-specific questions, use the contact path linked from the official proposal and package pages.
