@@ -37,17 +37,16 @@ const PackageCard = ({ photoPackage }) => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
+  const packageLink = photoPackage.packagePage
+    ? `/packages/${photoPackage.packagePage?.urlSlug}`
+    : photoPackage.link;
 
   return (
     <>
       <Link
-        to={
-          photoPackage.packagePage
-            ? `/packages/${photoPackage.packagePage?.urlSlug}`
-            : photoPackage.link
-        }
+        to={packageLink}
         className="no-underline w-11/12 md:w-[20rem]"
-        aria-label="Home"
+        aria-label={photoPackage.title}
       >
         <div className="flex flex-col justify-center items-center overflow-hidden shadow-lg group">
           <div className="w-full  h-[20rem]">
@@ -64,7 +63,7 @@ const PackageCard = ({ photoPackage }) => {
           >
             <TextComponent
               title={photoPackage.title}
-              heading="h2"
+              heading="h3"
               className="my-5 2xl:mb-2 text-2xl xl:text-3xl xl:h-8 capitalize"
             />
 

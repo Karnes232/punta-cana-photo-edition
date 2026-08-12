@@ -53,35 +53,39 @@ const HeroSwiper = ({ heroInfo, className }) => {
                 <GatsbyImage
                   image={image.image}
                   alt={image.title}
+                  loading={index === 0 ? "eager" : "lazy"}
                   className={`w-full object-cover object-center ${height}`}
                 />
-                <div className="absolute inset-0" style={HeroStyles}>
-                  <div
-                    className={`relative max-w-xs lg:max-w-4xl inline-block z-10 top-[75%] md:top-[70%] left-1/2 transform -translate-x-1/2  text-center ${translatePosition}`}
-                  >
-                    {heroInfo.heroHeading && (
-                      <h1
-                        translate="no"
-                        className="text-white font-crimson tracking-wider text-4xl lg:text-6xl text-center "
-                      >
-                        {heroInfo.heroHeading}
-                      </h1>
-                    )}
-
-                    {heroInfo.heroHeading2 && (
-                      <h2
-                        translate="no"
-                        className="text-white font-crimson tracking-wider text-xl 2xl:text-2xl lg:mt-5"
-                      >
-                        {heroInfo.heroHeading2}
-                      </h2>
-                    )}
-                  </div>
-                </div>
               </SwiperSlide>
             );
           })}
         </Swiper>
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={HeroStyles}
+        >
+          <div
+            className={`relative max-w-xs lg:max-w-4xl inline-block top-[75%] md:top-[70%] left-1/2 transform -translate-x-1/2 text-center ${translatePosition}`}
+          >
+            {heroInfo.heroHeading && (
+              <h1
+                translate="no"
+                className="text-white font-crimson tracking-wider text-4xl lg:text-6xl text-center"
+              >
+                {heroInfo.heroHeading}
+              </h1>
+            )}
+
+            {heroInfo.heroHeading2 && (
+              <h2
+                translate="no"
+                className="text-white font-crimson tracking-wider text-xl 2xl:text-2xl lg:mt-5"
+              >
+                {heroInfo.heroHeading2}
+              </h2>
+            )}
+          </div>
+        </div>
       </div>
       <div className={`${blankDivHeight}`}></div>
     </>

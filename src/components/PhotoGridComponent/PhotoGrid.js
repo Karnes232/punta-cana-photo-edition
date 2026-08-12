@@ -22,7 +22,7 @@ function renderGatsbyImage(
 
 const PhotoGrid = ({ photos, page }) => {
   let photoList = [];
-  photos.forEach((image, key) => {
+  photos?.forEach((image) => {
     const photoObject = {
       gatsbyImage: image.gatsbyImage,
       src: `${image.url}?h=320&fm=webp&q=75`,
@@ -32,8 +32,6 @@ const PhotoGrid = ({ photos, page }) => {
     };
     photoList.push(photoObject);
   });
-  photoList = photoList.sort(() => Math.random() - 0.5);
-
   const windowWidth = useWindowWidth();
 
   let targetHeight = 500;

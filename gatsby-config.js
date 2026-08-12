@@ -2,6 +2,29 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 require("dotenv").config();
+
+const publicCrawlers = [
+  "*",
+  "Googlebot",
+  "Google-Extended",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "GPTBot",
+  "PerplexityBot",
+  "Perplexity-User",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
+];
+const privatePaths = [
+  "/admin",
+  "/admin/*",
+  "/es/admin",
+  "/es/admin/*",
+  "/**/admin",
+  "/**/admin/*",
+];
+
 module.exports = {
   siteMetadata: {
     title: `Sertuin Events`,
@@ -56,13 +79,11 @@ module.exports = {
       options: {
         host: "https://sertuinevents.com",
         sitemap: "https://sertuinevents.com/sitemap-index.xml",
-        policy: [
-          {
-            userAgent: "*",
-            allow: "/",
-            disallow: ["/admin", "/admin/*", "/**/admin", "/**/admin/*"],
-          },
-        ],
+        policy: publicCrawlers.map((userAgent) => ({
+          userAgent,
+          allow: "/",
+          disallow: privatePaths,
+        })),
       },
     },
     {

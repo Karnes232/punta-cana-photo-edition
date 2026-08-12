@@ -12,7 +12,7 @@ import Form from "../components/PackageComponents/Form";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
 import PackageForm from "../components/PackageForm/PackageForm";
-import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 const PackagePage = ({ pageContext, data }) => {
   const { t } = useTranslation();
   const [host, setHost] = useState("");
@@ -163,6 +163,7 @@ const PackagePage = ({ pageContext, data }) => {
                     <div className="my-5 mx-auto">
                       <TextComponent
                         title={t("Included")}
+                        heading="h2"
                         className="my-5 text-center tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
                       />
                       <ul className="flex flex-col justify-center items-center gap-2">
@@ -257,10 +258,15 @@ const PackagePage = ({ pageContext, data }) => {
 export default PackagePage;
 
 export const Head = ({ pageContext, data }) => {
-  const { language } = useI18next();
-  const siteUrl = `${data.site.siteMetadata.siteUrl}/packages/${data.allContentfulPackagePageContent.nodes[0].urlSlug}/`;
+  const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const language = pageContext.language;
+  const slug = data.allContentfulPackagePageContent.nodes[0].urlSlug;
+  const siteUrl = `${rootUrl}${language === "es" ? "/es" : ""}/packages/${slug}/`;
   const { seoTitle, seoDescription, seoImage, seoKeywords } =
     data.allContentfulPackagePageContent.nodes[0];
+  const seoImageUrl = seoImage?.file?.url
+    ? `${seoImage.file.url.startsWith("//") ? "https:" : ""}${seoImage.file.url}`
+    : undefined;
 
   const schema =
     data?.allContentfulPackagePageContent?.nodes[0]?.schema?.internal?.content;
@@ -276,7 +282,7 @@ export const Head = ({ pageContext, data }) => {
         title={seoTitle}
         description={seoDescription?.seoDescription}
         keywords={seoKeywords?.join(", ")}
-        image={`https:${seoImage?.file?.url}`}
+        image={seoImageUrl}
         url={siteUrl}
         schemaMarkup={JsonSchema}
         language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
