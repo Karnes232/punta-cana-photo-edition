@@ -106,6 +106,8 @@ export const Head = ({ pageContext, data }) => {
     description: description.description,
     image: seoImage,
     companyName: generalInfo.companyName,
+    legalName: "Sertuin SRL",
+    directorName: "Grecia Mejía",
     telephone: generalInfo.telephone,
     instagram: instagramUrl,
     googleMapsUrl: GOOGLE_MAPS_URL,
