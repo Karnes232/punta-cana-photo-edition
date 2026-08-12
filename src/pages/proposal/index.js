@@ -21,7 +21,8 @@ import { buildProposalSchema } from "../../utils/proposalSeo";
 
 const withoutYear = (text = "") =>
   text
-    .replace(/\s*(?:[|—–-]\s*)?2026\b(?:\s*[|—–-])?\s*/, " ")
+    .replace(/\s*[|—–-]\s*2026\s*$/, "")
+    .replace(/\s*2026\b\s*/, " ")
     .replace(/\s{2,}/g, " ")
     .trim();
 
