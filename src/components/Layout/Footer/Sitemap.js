@@ -12,7 +12,7 @@ const Sitemap = () => {
     },
     {
       name: t("Elopement & Vow renewal"),
-      urlLink: "/elopement-vow-renewal",
+      urlLink: "/punta-cana-elopement-packages",
     },
     // {
     //   name: "Punta cana wedding photographer",

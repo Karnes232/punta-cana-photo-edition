@@ -225,6 +225,10 @@ module.exports = {
             matchPath: "/:lang?/proposal",
             getLanguageFromPath: true,
           },
+          {
+            matchPath: "/:lang?/punta-cana-elopement-packages",
+            getLanguageFromPath: true,
+          },
 
           {
             matchPath: "/:lang?/event-rentals",
