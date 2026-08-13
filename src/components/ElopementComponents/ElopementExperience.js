@@ -6,18 +6,14 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  Clock3,
   FileCheck2,
   Flower2,
   HeartHandshake,
-  LockKeyhole,
   MailCheck,
   MapPin,
   Palmtree,
   ShieldCheck,
   ShipWheel,
-  Sparkles,
-  Waves,
 } from "lucide-react";
 
 import blush from "../../images/elopement/blush.webp";
@@ -97,32 +93,16 @@ export const ELOPEMENT_DECORATIONS = [
 
 const COPY = {
   "en-US": {
-    heroEyebrow: "Private beach or private catamaran",
     heroTitle: "Punta Cana Elopement Wedding Packages",
-    breadcrumbHome: "Home",
-    breadcrumbCurrent: "Punta Cana elopement packages",
-    heroText:
-      "Choose your ceremony experience and the décor you love. Transportation for two, photography and the essential wedding details are already included.",
-    heroPrimary: "Build your elopement",
-    heroSecondary: "See what is included",
-    heroFacts: [
-      "Beach from US$999",
-      "Catamaran from US$1,299",
-      "70–100 photos in 48 hours",
-    ],
-    introEyebrow: "Simple by design",
-    introTitle: "One clear way to price your Punta Cana elopement",
-    introText:
-      "Start with the setting, add one décor design and choose whether your ceremony will be symbolic or legally registered. You see the estimated total as you decide.",
     formula: [
       "Ceremony experience",
       "Selected décor",
       "Optional legal wedding",
     ],
     builderEyebrow: "Packages & prices",
-    builderTitle: "Build your elopement in three quick choices",
+    builderTitle: "Punta Cana Elopement Packages & Prices",
     builderIntro:
-      "The published experience price and your selected décor are combined. There is no need to compare nearly identical packages.",
+      "Choose your setting, décor and ceremony type. Your estimated total updates with every selection.",
     stepOne: "1. Choose your setting",
     stepTwo: "2. Choose your décor",
     stepThree: "3. Choose symbolic or legal",
@@ -194,12 +174,15 @@ const COPY = {
     symbolicIncluded: "Included in every base experience",
     symbolicText:
       "Exchange vows and rings with an officiant and receive a symbolic wedding certificate. Ideal for elopements, vow renewals or couples already legally married at home.",
+    symbolicChoiceText: "Officiant and symbolic wedding certificate included.",
     legal: "Legal wedding upgrade",
     legalPrice: "+US$1,200",
     legalText:
       "We receive and review your documents, schedule the civil registry appointment, collect the marriage certificate, apostille it and ship the completed certificate.",
     legalCaution:
       "Legal service is confirmed only after your documents have been reviewed and accepted.",
+    legalChoiceText:
+      "Adds the Dominican civil process after document approval.",
     guestsLabel: "People aboard",
     guestsHelp: "2–10 people are covered by the published catamaran price.",
     customQuote: "Custom quote required",
@@ -227,8 +210,8 @@ const COPY = {
         "70–100 edited, high-resolution images in a digital gallery within 48 hours.",
       ],
       [
-        "Ceremony team",
-        "An officiant and on-site coordination keep the arrival, ceremony and portraits moving smoothly.",
+        "Dedicated wedding coordination",
+        "A coordinator assists you from reservation through planning and is onsite on the wedding day. Your officiant leads the ceremony.",
       ],
       [
         "Personal flowers",
@@ -250,7 +233,7 @@ const COPY = {
     reserveEyebrow: "Reserve your date",
     reserveTitle: "Send your elopement request",
     reserveIntro:
-      "Tell us your preferred date and selections. Our team will verify availability before sending your agreement and payment instructions.",
+      "Send your preferred date and selections. After availability is confirmed, your dedicated coordinator assists you through the wedding day.",
     form: {
       names: "Couple’s names",
       email: "Email",
@@ -265,7 +248,8 @@ const COPY = {
         "We could not send the request. Please try again or contact us through WhatsApp.",
       successTitle: "Request received",
       success:
-        "Your wedding date is confirmed only after availability is validated, your agreement is completed and the US$200 reservation payment is received.",
+        "Your request was emailed to Sertuin Events. A coordinator will contact you after reviewing availability. Your date is reserved only after the agreement and US$200 payment are completed.",
+      notice: "Sending this form does not reserve or confirm the date.",
     },
     paymentTitle: "How reservation and payment work",
     paymentSteps: [
@@ -275,7 +259,7 @@ const COPY = {
       ],
       [
         "We verify availability",
-        "Sertuin reviews the date and, for legal weddings, the required documents.",
+        "Sertuin confirms the date and assigns your coordinator. Legal weddings also require document review.",
       ],
       [
         "Reserve with US$200",
@@ -288,26 +272,6 @@ const COPY = {
     ],
     depositNotice:
       "The US$200 reservation deposit is non-refundable under all circumstances.",
-    confidenceEyebrow: "Plan for the real questions",
-    confidenceTitle: "Clear answers before your wedding day",
-    confidenceCards: [
-      [
-        "Weather options",
-        "If it rains, we may change the time, move to an available covered location or reschedule to a non-rainy day.",
-      ],
-      [
-        "Fast photo delivery",
-        "Your 70–100 edited images are delivered in a digital gallery within 48 hours.",
-      ],
-      [
-        "Private catamaran",
-        "The catamaran is never shared with another group and has capacity for up to 60 people.",
-      ],
-      [
-        "Real Touch florals",
-        "Every décor shown is created with premium artificial Real Touch flowers for a consistent finished design.",
-      ],
-    ],
     realEyebrow: "Created by Sertuin Events",
     realTitle: "Real Punta Cana elopement décor",
     realIntro:
@@ -317,32 +281,16 @@ const COPY = {
     faqIntro: "Open only the questions that matter to your plans.",
   },
   es: {
-    heroEyebrow: "Playa privada o catamarán privado",
     heroTitle: "Paquetes de Elopement en Punta Cana",
-    breadcrumbHome: "Inicio",
-    breadcrumbCurrent: "Paquetes de elopement en Punta Cana",
-    heroText:
-      "Elige la experiencia de ceremonia y la decoración que amas. El transporte para dos, la fotografía y los detalles esenciales de la boda ya están incluidos.",
-    heroPrimary: "Armar mi elopement",
-    heroSecondary: "Ver qué incluye",
-    heroFacts: [
-      "Playa desde US$999",
-      "Catamarán desde US$1,299",
-      "70–100 fotos en 48 horas",
-    ],
-    introEyebrow: "Simple por diseño",
-    introTitle: "Una forma clara de calcular tu elopement en Punta Cana",
-    introText:
-      "Comienza con la locación, agrega una decoración y elige si tu ceremonia será simbólica o legal. Verás el total estimado mientras decides.",
     formula: [
       "Experiencia de ceremonia",
       "Decoración elegida",
       "Boda legal opcional",
     ],
     builderEyebrow: "Paquetes y precios",
-    builderTitle: "Arma tu elopement en tres decisiones rápidas",
+    builderTitle: "Paquetes y precios de elopement en Punta Cana",
     builderIntro:
-      "Combinamos el precio publicado de la experiencia con la decoración elegida. No tienes que comparar paquetes casi idénticos.",
+      "Elige la locación, la decoración y el tipo de ceremonia. El total estimado se actualiza con cada selección.",
     stepOne: "1. Elige la locación",
     stepTwo: "2. Elige la decoración",
     stepThree: "3. Elige ceremonia simbólica o legal",
@@ -414,12 +362,15 @@ const COPY = {
     symbolicIncluded: "Incluida en todas las experiencias base",
     symbolicText:
       "Intercambien votos y anillos con un oficiante y reciban un certificado simbólico. Ideal para elopements, renovaciones de votos o parejas ya casadas legalmente en su país.",
+    symbolicChoiceText: "Oficiante y certificado de boda simbólica incluidos.",
     legal: "Upgrade de boda legal",
     legalPrice: "+US$1,200",
     legalText:
       "Recibimos y revisamos sus documentos, agendamos la cita en la oficialía, recogemos el certificado de matrimonio, lo apostillamos y enviamos.",
     legalCaution:
       "El servicio legal se confirma únicamente después de revisar y aceptar la documentación.",
+    legalChoiceText:
+      "Agrega el proceso civil dominicano después de aprobar los documentos.",
     guestsLabel: "Personas a bordo",
     guestsHelp:
       "De 2 a 10 personas están cubiertas por el precio publicado del catamarán.",
@@ -448,8 +399,8 @@ const COPY = {
         "70–100 imágenes editadas en alta resolución, entregadas en una galería digital en 48 horas.",
       ],
       [
-        "Equipo de ceremonia",
-        "Un oficiante y la coordinación en la locación organizan la llegada, la ceremonia y los retratos.",
+        "Coordinación dedicada de la boda",
+        "Una coordinadora te asiste desde la reserva, acompaña la planificación y está onsite el día de la boda. El oficiante dirige la ceremonia.",
       ],
       [
         "Flores personales",
@@ -471,7 +422,7 @@ const COPY = {
     reserveEyebrow: "Reserva tu fecha",
     reserveTitle: "Envía tu solicitud de elopement",
     reserveIntro:
-      "Indícanos la fecha y tus selecciones. Nuestro equipo verificará disponibilidad antes de enviar el contrato y las instrucciones de pago.",
+      "Envíanos la fecha y tus selecciones. Después de confirmar disponibilidad, tu coordinadora dedicada te asiste hasta el día de la boda.",
     form: {
       names: "Nombres de la pareja",
       email: "Correo electrónico",
@@ -486,7 +437,8 @@ const COPY = {
         "No pudimos enviar la solicitud. Inténtalo nuevamente o contáctanos por WhatsApp.",
       successTitle: "Solicitud recibida",
       success:
-        "Tu fecha se confirma únicamente después de validar disponibilidad, completar el contrato y recibir el pago de reserva de US$200.",
+        "Tu solicitud fue enviada por correo a Sertuin Events. Una coordinadora te contactará después de revisar disponibilidad. La fecha se reserva al completar el contrato y el pago de US$200.",
+      notice: "Enviar este formulario no reserva ni confirma la fecha.",
     },
     paymentTitle: "Cómo funcionan la reserva y el pago",
     paymentSteps: [
@@ -496,7 +448,7 @@ const COPY = {
       ],
       [
         "Verificamos disponibilidad",
-        "Sertuin revisa la fecha y, para bodas legales, la documentación requerida.",
+        "Sertuin confirma la fecha y asigna tu coordinadora. Las bodas legales también requieren revisión de documentos.",
       ],
       [
         "Reserva con US$200",
@@ -509,26 +461,6 @@ const COPY = {
     ],
     depositNotice:
       "El pago de reserva de US$200 no se reembolsa bajo ninguna circunstancia.",
-    confidenceEyebrow: "Planifica las preguntas reales",
-    confidenceTitle: "Respuestas claras antes del día de la boda",
-    confidenceCards: [
-      [
-        "Opciones por lluvia",
-        "Si llueve, podemos cambiar la hora, movernos a una locación techada disponible o reprogramar para un día sin lluvia.",
-      ],
-      [
-        "Entrega rápida",
-        "Tus 70–100 imágenes editadas se entregan en una galería digital en 48 horas.",
-      ],
-      [
-        "Catamarán privado",
-        "La embarcación nunca se comparte con otro grupo y tiene capacidad máxima para 60 personas.",
-      ],
-      [
-        "Flores Real Touch",
-        "Cada decoración se realiza con flores artificiales premium Real Touch para conservar el diseño final.",
-      ],
-    ],
     realEyebrow: "Creado por Sertuin Events",
     realTitle: "Decoraciones reales de elopement en Punta Cana",
     realIntro:
@@ -553,7 +485,11 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "¿Qué incluye el precio base?",
-          "Incluye transporte ida y vuelta para dos desde la zona de Punta Cana, fotógrafo profesional, bouquet, boutonnière, oficiante, coordinación y certificado simbólico. La playa dura hasta dos horas; el catamarán incluye tres horas a bordo, snacks, bebidas, música y snorkel.",
+          "Incluye transporte ida y vuelta para dos desde la zona de Punta Cana, fotógrafo profesional, bouquet, boutonnière, oficiante, coordinadora dedicada y certificado simbólico. La playa dura hasta dos horas; el catamarán incluye tres horas a bordo, snacks, bebidas, música y snorkel.",
+        ],
+        [
+          "¿Tendremos coordinadora para nuestra boda?",
+          "Sí. Todas las bodas incluyen una coordinadora dedicada que les asiste desde la reserva, acompaña la planificación y está onsite el día de la boda.",
         ],
         [
           "¿Cuántas fotos recibiremos y cuándo?",
@@ -596,12 +532,8 @@ export const buildElopementFaqs = (language = "en-US") => {
           "Según disponibilidad y condiciones, podemos cambiar la hora, mover la ceremonia a una locación techada o reprogramarla para un día sin lluvia. En el catamarán, la decisión final de navegación y seguridad corresponde al capitán.",
         ],
         [
-          "¿Cómo se reserva y cuándo se paga?",
-          "Primero enviarán una solicitud. Cuando Sertuin confirme disponibilidad y se complete el contrato, se pagan US$200 por PayPal para reservar. El depósito se acredita al total y no es reembolsable. El restante se paga en efectivo el día de la boda, al llegar a la playa o antes de abordar.",
-        ],
-        [
-          "¿Enviar el formulario confirma la fecha?",
-          "No. La fecha queda confirmada únicamente después de validar disponibilidad, completar el contrato y recibir el pago de reserva de US$200.",
+          "¿Cómo se reserva y enviar el formulario confirma la fecha?",
+          "El formulario solamente envía una solicitud. Cuando Sertuin confirme disponibilidad y se complete el contrato, se pagan US$200 por PayPal para reservar. El depósito se acredita al total y no es reembolsable. El restante se paga en efectivo el día de la boda, al llegar a la playa o antes de abordar.",
         ],
       ]
     : [
@@ -611,7 +543,11 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "What is included in the base price?",
-          "It includes private round-trip transportation for two from the Punta Cana area, a professional photographer, bouquet, boutonnière, officiant, coordination and symbolic certificate. The beach experience lasts up to two hours; the catamaran includes three hours aboard, snacks, drinks, music and snorkeling.",
+          "It includes private round-trip transportation for two from the Punta Cana area, a professional photographer, bouquet, boutonnière, officiant, dedicated coordinator and symbolic certificate. The beach experience lasts up to two hours; the catamaran includes three hours aboard, snacks, drinks, music and snorkeling.",
+        ],
+        [
+          "Will we have a wedding coordinator?",
+          "Yes. Every wedding includes a dedicated coordinator who assists you from reservation through planning and is onsite on the wedding day.",
         ],
         [
           "How many photos will we receive, and when?",
@@ -654,12 +590,8 @@ export const buildElopementFaqs = (language = "en-US") => {
           "Depending on availability and conditions, we can change the time, move the ceremony to a covered location or reschedule for a non-rainy day. For the catamaran, the captain makes the final navigation and safety decision.",
         ],
         [
-          "How do we reserve, and when is payment due?",
-          "First send a request. Once Sertuin confirms availability and the agreement is completed, pay US$200 through PayPal to reserve. The deposit is credited to the total and is non-refundable. The balance is paid in cash on the wedding day, upon arrival at the beach or before boarding.",
-        ],
-        [
-          "Does submitting the form confirm the date?",
-          "No. The date is confirmed only after availability is validated, the agreement is completed and the US$200 reservation payment is received.",
+          "How do we reserve, and does submitting the form confirm the date?",
+          "The form only sends a request. Once Sertuin confirms availability and the agreement is completed, pay US$200 through PayPal to reserve. The deposit is credited to the total and is non-refundable. The balance is paid in cash on the wedding day, upon arrival at the beach or before boarding.",
         ],
       ];
 };
@@ -670,6 +602,21 @@ const money = (value) =>
     currency: "USD",
     maximumFractionDigits: 0,
   }).format(value);
+
+const scrollToSection = (event, id) => {
+  event.preventDefault();
+
+  if (typeof document === "undefined") return;
+
+  document.getElementById(id)?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+
+  if (typeof window !== "undefined") {
+    window.history.replaceState(null, "", `#${id}`);
+  }
+};
 
 const SectionHeading = ({
   eyebrow,
@@ -897,6 +844,7 @@ const Summary = ({ copy, experience, decoration, legal, customQuote }) => {
       </div>
       <a
         href="#reserve"
+        onClick={(event) => scrollToSection(event, "reserve")}
         className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-amber-500 px-5 py-3.5 font-montserrat text-sm font-bold text-white transition hover:bg-amber-600"
       >
         {copy.reserveSelection}
@@ -913,6 +861,7 @@ const ElopementForm = ({
   legal,
   guestCount,
   setGuestCount,
+  language,
 }) => {
   const [status, setStatus] = useState("idle");
   const total =
@@ -926,13 +875,26 @@ const ElopementForm = ({
 
     try {
       const formData = new FormData(form);
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      });
+      const payload = Object.fromEntries(formData.entries());
+      const [archiveResponse, emailResponse] = await Promise.all([
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(formData).toString(),
+        }),
+        fetch("/.netlify/functions/elopementRequest", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }),
+      ]);
 
-      if (!response.ok) throw new Error("Form submission failed");
+      if (!archiveResponse.ok || !emailResponse.ok) {
+        throw new Error("Form submission failed");
+      }
       form.reset();
       setStatus("success");
     } catch (error) {
@@ -975,6 +937,7 @@ const ElopementForm = ({
       className="rounded-3xl border border-stone-200 bg-white p-6 shadow-[0_20px_60px_rgba(74,56,18,0.09)] md:p-8"
     >
       <input type="hidden" name="form-name" value="elopement-request" />
+      <input type="hidden" name="language" value={language} />
       <input
         type="hidden"
         name="experience"
@@ -1087,14 +1050,13 @@ const ElopementForm = ({
         <ArrowRight size={18} />
       </button>
       <p className="mt-4 text-center font-montserrat text-xs leading-5 text-stone-500">
-        {copy.form.success}
+        {copy.form.notice}
       </p>
     </form>
   );
 };
 
 const ICONS = [CarFront, Camera, HeartHandshake, Flower2, FileCheck2, MapPin];
-const CONFIDENCE_ICONS = [Waves, Clock3, LockKeyhole, Sparkles];
 
 const ElopementExperience = ({ language = "en-US" }) => {
   const copy = getElopementCopy(language);
@@ -1126,75 +1088,38 @@ const ElopementExperience = ({ language = "en-US" }) => {
 
   return (
     <main className="overflow-hidden bg-white">
-      <section className="relative -mt-24 min-h-[760px] bg-stone-900 md:-mt-36 md:min-h-[820px]">
+      <section className="absolute left-0 top-0 h-screen w-full bg-stone-900">
         <img
           src={huppa}
-          alt="Tropical huppa for a private beach elopement wedding in Punta Cana"
+          alt="Tropical wedding canopy for a private beach elopement in Punta Cana"
           loading="eager"
           width="1600"
           height="1067"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/70" />
-        <div className="relative z-10 mx-auto flex min-h-[760px] max-w-6xl items-end px-5 pb-16 pt-40 md:min-h-[820px] md:px-10 md:pb-24">
-          <div className="max-w-4xl text-white">
-            <nav
-              aria-label="Breadcrumb"
-              className="mb-5 flex items-center gap-2 font-montserrat text-xs font-semibold text-white/80"
-            >
-              <a
-                href={language === "es" ? "/es/" : "/"}
-                className="pointer-events-auto transition hover:text-amber-300"
-              >
-                {copy.breadcrumbHome}
-              </a>
-              <ChevronRight size={14} aria-hidden="true" />
-              <span aria-current="page">{copy.breadcrumbCurrent}</span>
-            </nav>
-            <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.24em] text-amber-300 md:text-sm">
-              {copy.heroEyebrow}
-            </p>
-            <h1 className="mt-4 max-w-4xl font-crimson text-5xl font-normal leading-[0.98] md:text-7xl lg:text-8xl">
-              {copy.heroTitle}
-            </h1>
-            <p className="mt-6 max-w-2xl font-montserrat text-base leading-7 text-white/90 md:text-lg">
-              {copy.heroText}
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#builder"
-                className="flex items-center justify-center gap-2 rounded-full bg-amber-500 px-6 py-3.5 font-montserrat text-sm font-bold text-white transition hover:bg-amber-600"
-              >
-                {copy.heroPrimary} <ArrowRight size={18} />
-              </a>
-              <a
-                href="#included"
-                className="rounded-full border border-white/70 bg-white/10 px-6 py-3.5 text-center font-montserrat text-sm font-bold text-white backdrop-blur transition hover:bg-white/20"
-              >
-                {copy.heroSecondary}
-              </a>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/30 pt-6 font-montserrat text-xs font-semibold uppercase tracking-wider text-white/90">
-              {copy.heroFacts.map((fact) => (
-                <span key={fact} className="flex items-center gap-2">
-                  <Check size={15} className="text-amber-300" /> {fact}
-                </span>
-              ))}
-            </div>
-          </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/65" />
+        <div className="relative z-10 mx-auto flex h-full max-w-6xl items-end justify-center px-5 pb-[14vh] text-center md:px-10 md:pb-[16vh]">
+          <h1 className="max-w-5xl font-crimson text-5xl font-normal leading-[1.02] text-white md:text-7xl lg:text-8xl">
+            {copy.heroTitle}
+          </h1>
         </div>
       </section>
+      <div className="h-[90vh]" aria-hidden="true" />
 
-      <section className="px-5 py-20 md:px-10 md:py-28">
+      <section
+        id="builder"
+        className="scroll-mt-6 bg-stone-50 px-5 py-20 md:px-10 md:py-24"
+      >
         <SectionHeading
-          eyebrow={copy.introEyebrow}
-          title={copy.introTitle}
-          intro={copy.introText}
+          eyebrow={copy.builderEyebrow}
+          title={copy.builderTitle}
+          intro={copy.builderIntro}
         />
+
         <div className="mx-auto mt-10 grid max-w-4xl gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
           {copy.formula.map((item, index) => (
             <React.Fragment key={item}>
-              <div className="rounded-2xl border border-stone-200 bg-stone-50 px-5 py-5 text-center font-montserrat text-sm font-semibold text-stone-800">
+              <div className="rounded-2xl border border-stone-200 bg-white px-5 py-5 text-center font-montserrat text-sm font-semibold text-stone-800">
                 {item}
               </div>
               {index < copy.formula.length - 1 && (
@@ -1205,17 +1130,6 @@ const ElopementExperience = ({ language = "en-US" }) => {
             </React.Fragment>
           ))}
         </div>
-      </section>
-
-      <section
-        id="builder"
-        className="scroll-mt-6 bg-stone-50 px-5 py-20 md:px-10 md:py-28"
-      >
-        <SectionHeading
-          eyebrow={copy.builderEyebrow}
-          title={copy.builderTitle}
-          intro={copy.builderIntro}
-        />
 
         <div className="mx-auto mt-14 max-w-6xl">
           <h2 className="font-crimson text-3xl text-stone-900">
@@ -1315,7 +1229,7 @@ const ElopementExperience = ({ language = "en-US" }) => {
                   {copy.symbolicIncluded}
                 </p>
                 <p className="mt-4 font-montserrat text-sm leading-6 text-stone-600">
-                  {copy.symbolicText}
+                  {copy.symbolicChoiceText}
                 </p>
               </button>
               <button
@@ -1348,7 +1262,7 @@ const ElopementExperience = ({ language = "en-US" }) => {
                   </span>
                 </div>
                 <p className="mt-4 font-montserrat text-sm leading-6 text-stone-600">
-                  {copy.legalText}
+                  {copy.legalChoiceText}
                 </p>
                 <p className="mt-3 font-montserrat text-xs font-semibold leading-5 text-rose-700">
                   {copy.legalCaution}
@@ -1443,32 +1357,6 @@ const ElopementExperience = ({ language = "en-US" }) => {
         </div>
       </section>
 
-      <section className="bg-amber-50 px-5 py-20 md:px-10 md:py-28">
-        <SectionHeading
-          eyebrow={copy.confidenceEyebrow}
-          title={copy.confidenceTitle}
-        />
-        <div className="mx-auto mt-12 grid max-w-6xl gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {copy.confidenceCards.map(([title, text], index) => {
-            const Icon = CONFIDENCE_ICONS[index];
-            return (
-              <article
-                key={title}
-                className="rounded-3xl bg-white p-6 shadow-sm"
-              >
-                <Icon className="text-amber-700" size={27} strokeWidth={1.5} />
-                <h3 className="mt-5 font-crimson text-2xl text-stone-900">
-                  {title}
-                </h3>
-                <p className="mt-2 font-montserrat text-sm leading-6 text-stone-600">
-                  {text}
-                </p>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
       <section className="px-5 py-20 md:px-10 md:py-28">
         <SectionHeading
           eyebrow={copy.realEyebrow}
@@ -1538,6 +1426,7 @@ const ElopementExperience = ({ language = "en-US" }) => {
             legal={legal}
             guestCount={guestCount}
             setGuestCount={setGuestCount}
+            language={language}
           />
         </div>
       </section>
