@@ -17,6 +17,12 @@ function Seo({
   children,
   schemaMarkup,
   language = "en",
+  robots,
+  imageAlt,
+  twitterCard = "summary",
+  siteName,
+  locale,
+  alternateLocale,
 }) {
   // const { site } = useStaticQuery(graphql`
   //   query {
@@ -35,16 +41,24 @@ function Seo({
       <html lang={language} />
       <title>{title}</title>
       <meta name="description" content={description} />
+      {robots && <meta name="robots" content={robots} />}
       {/* <meta key="fb-app-id" property="fb:app_id" content="632127816093742" />, */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
-      <meta name="twitter:card" content="summary" />
+      {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+      {siteName && <meta property="og:site_name" content={siteName} />}
+      {locale && <meta property="og:locale" content={locale} />}
+      {alternateLocale && (
+        <meta property="og:locale:alternate" content={alternateLocale} />
+      )}
+      <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:url" content={url} />
-      <meta property="twitter:image" content={image} />
+      <meta name="twitter:image" content={image} />
+      {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
       <meta name="twitter:description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       <meta

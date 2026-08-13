@@ -273,6 +273,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const elopementPath =
+        urlPath === ""
+          ? "/punta-cana-elopement-packages"
+          : `/${urlPath}/punta-cana-elopement-packages`;
+      createPage({
+        path: elopementPath,
+        component: path.resolve(
+          "./src/pages/punta-cana-elopement-packages/index.js",
+        ),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       const eventRentalsPath =
         urlPath === "" ? "/event-rentals" : `/${urlPath}/event-rentals`;
       createPage({
@@ -397,6 +412,29 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // not exist yet in Contentful (or the query fails), it degrades gracefully
   // instead of breaking the entire page build.
   const { createRedirect } = actions;
+
+  const permanentElopementRedirects = [
+    {
+      from: "/elopement-vow-renewal",
+      to: "/punta-cana-elopement-packages/",
+    },
+    {
+      from: "/es/elopement-vow-renewal",
+      to: "/es/punta-cana-elopement-packages/",
+    },
+  ];
+
+  permanentElopementRedirects.forEach(({ from, to }) => {
+    [from, `${from}/`].forEach((fromPath) => {
+      createRedirect({
+        fromPath,
+        toPath: to,
+        statusCode: 301,
+        force: true,
+        isPermanent: true,
+      });
+    });
+  });
 
   const redirectResults = await graphql(`
     query RedirectsQuery {

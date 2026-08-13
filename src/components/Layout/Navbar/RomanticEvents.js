@@ -25,7 +25,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
       <MenuItem
         component={
           <Link
-            to="/elopement-vow-renewal"
+            to="/punta-cana-elopement-packages"
             className="no-underline uppercase text-sm"
             onClick={footer ? undefined : () => setToggled(false)}
           />
