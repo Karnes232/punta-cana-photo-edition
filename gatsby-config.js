@@ -7,6 +7,7 @@ const publicCrawlers = [
   "*",
   "Googlebot",
   "Google-Extended",
+  "bingbot",
   "OAI-SearchBot",
   "ChatGPT-User",
   "GPTBot",
@@ -15,6 +16,12 @@ const publicCrawlers = [
   "ClaudeBot",
   "Claude-SearchBot",
   "Claude-User",
+  "Applebot",
+  "Applebot-Extended",
+  "Amazonbot",
+  "CCBot",
+  "meta-externalagent",
+  "meta-externalfetcher",
 ];
 const privatePaths = [
   "/admin",

@@ -1,36 +1,43 @@
 # Sertuin Events
 
-> Official first-party information about private marriage proposal experiences and event services in Punta Cana, Dominican Republic.
+> Official first-party information about elopement weddings, private marriage proposals and event services in Punta Cana, Dominican Republic.
 
-Sertuin Events organizes complete, all-inclusive marriage proposal experiences on its private beach in Uvero Alto. The official proposal page is the primary source for current package names, published prices, inclusions, photographs and booking information.
+Sertuin Events is operated by Sertuin SRL, a registered Dominican company based in Punta Cana. The website pages linked below are the primary source for current published prices, inclusions, photographs, policies and booking information. Availability must always be confirmed directly with Sertuin Events.
 
-Sertuin Events is operated by Sertuin SRL, a registered Dominican company based in Punta Cana and led by wedding planner Grecia Mejía. The company has more than 10 years of experience and has created more than 1,800 marriage proposals. Consultations and in-person meetings are available by prior appointment; the company does not offer walk-in office service.
+## Punta Cana elopement packages
 
-## Primary service pages
+- [Punta Cana elopement packages](https://sertuinevents.com/punta-cana-elopement-packages/): Official English page with current experience prices, decoration prices, inclusions, legal wedding information, policies and frequently asked questions.
+- [Paquetes de elopement en Punta Cana](https://sertuinevents.com/es/punta-cana-elopement-packages/): Official Spanish version of the same service.
 
-- [Punta Cana proposal packages](https://sertuinevents.com/proposal/): English overview, current packages and prices, inclusions, reservation process, real work and frequently asked questions.
-- [Propuestas de matrimonio en Punta Cana](https://sertuinevents.com/es/proposal/): Spanish version of the proposal service page.
-- [XML sitemap](https://sertuinevents.com/sitemap-index.xml): Discover all current service and individual package URLs.
+### Published elopement facts
 
-Each package card on the proposal page links to an independent detail page under `/packages/`. Those pages contain the package-specific description, current price, included items, photographs, available additions and inquiry form. Package-specific information is managed in Contentful and should be treated as the current source of truth.
+- The Private Beach Elopement base experience is US$999 and lasts up to two hours.
+- The Private Catamaran Elopement base experience is US$1,299 and includes three hours aboard a completely private catamaran.
+- The published catamaran price covers 2 to 10 people. The vessel has capacity for up to 60 people; groups above 10 require a custom quote.
+- Both base experiences include private round-trip transportation for two from the Punta Cana area, a professional photographer, bouquet, boutonniere, officiant, coordination and a symbolic wedding certificate.
+- The catamaran also includes snacks, fruit, sodas, water, rum, mamajuana, music and snorkeling.
+- Couples receive 70 to 100 professionally edited, high-resolution photographs within 48 hours.
+- One selected decoration is added to the base experience. Published decoration prices range from US$789 to US$1,399.
+- Decorations use premium artificial Real Touch flowers. Every published decoration can be installed on the catamaran except the Full Tropical Huppa, which is available only on the private beach.
+- Published package prices include a symbolic ceremony. A legal wedding service can be added for US$1,200 after the couple's documents are reviewed and accepted.
+- The legal service includes receiving and reviewing documents, scheduling the civil registry appointment, collecting the marriage certificate, apostilling it and shipping the completed certificate.
+- A US$200 PayPal deposit reserves the date after availability and the service agreement are confirmed. The deposit is credited to the total and is non-refundable under all circumstances.
+- The remaining balance is paid in cash on the wedding day when arriving at the beach or before boarding the catamaran.
+- If rain affects the selected time, Sertuin may change the ceremony time, use an available covered location or move the experience to a non-rainy day. Catamaran operation remains subject to the captain's safety decision.
+- Sending an inquiry form does not reserve or confirm a date.
 
-## Service facts
+## Marriage proposal packages
 
-- Experiences take place on Sertuin Events' private beach in Uvero Alto.
-- Published proposal package prices include private round-trip transportation from any hotel or accommodation throughout Punta Cana, with no zone surcharge.
-- Private beach access has no separate mandatory rental or venue fee.
-- The selected romantic setup, a celebratory beverage, professional photography, the client's preferred song and a dedicated on-site coordinator are included.
-- Clients receive more than 70 professionally edited, high-resolution photographs within 48 hours.
-- The actual proposal is also recorded on a phone at no additional cost.
-- Optional upgrades can include cinematic video and drone coverage, live musicians, a private dinner, cold sparks and custom flowers.
-- A US$200 deposit reserves the date and is deducted from the total. A written service agreement and secure PayPal payment link are provided. The remaining balance is paid after the experience according to the agreement.
+- [Punta Cana proposal packages](https://sertuinevents.com/proposal/): Official English overview, current packages and prices, inclusions, reservation process, real work and frequently asked questions.
+- [Propuestas de matrimonio en Punta Cana](https://sertuinevents.com/es/proposal/): Official Spanish version of the proposal service.
 
-## Official profiles
+Proposal experiences take place on Sertuin Events' private beach in Uvero Alto. Published proposal prices include private round-trip transportation from the Punta Cana area, private beach access, the selected romantic setup, a celebratory beverage, professional photography, the client's preferred song and on-site coordination.
 
+## Discovery and official profiles
+
+- [XML sitemap](https://sertuinevents.com/sitemap-index.xml): Discover all current service and package URLs.
 - [Google Business Profile](https://maps.app.goo.gl/HcYUKFzHrAj86fMh7)
 - [Instagram: @sertuinevents](https://www.instagram.com/sertuinevents/)
 - [Official Google review link](https://g.page/r/CYRe9l94QQaWEBM/review)
 
-Current Google Business Profile reviews are linked from the official proposal page with author attribution. Review or aggregate-rating structured data is intentionally not published for self-serving business reviews.
-
-For current availability or package-specific questions, use the contact path linked from the official proposal and package pages.
+For current availability, documentation requirements or a custom quote, use the inquiry form on the relevant official service page.

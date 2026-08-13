@@ -671,12 +671,6 @@ const money = (value) =>
     maximumFractionDigits: 0,
   }).format(value);
 
-const scrollTo = (id) => {
-  if (typeof document !== "undefined") {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
 const SectionHeading = ({
   eyebrow,
   title,
@@ -901,14 +895,13 @@ const Summary = ({ copy, experience, decoration, legal, customQuote }) => {
           {copy.totalNote}
         </p>
       </div>
-      <button
-        type="button"
-        onClick={() => scrollTo("reserve")}
+      <a
+        href="#reserve"
         className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-amber-500 px-5 py-3.5 font-montserrat text-sm font-bold text-white transition hover:bg-amber-600"
       >
         {copy.reserveSelection}
         <ArrowRight size={17} />
-      </button>
+      </a>
     </aside>
   );
 };
@@ -1168,20 +1161,18 @@ const ElopementExperience = ({ language = "en-US" }) => {
               {copy.heroText}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <button
-                type="button"
-                onClick={() => scrollTo("builder")}
+              <a
+                href="#builder"
                 className="flex items-center justify-center gap-2 rounded-full bg-amber-500 px-6 py-3.5 font-montserrat text-sm font-bold text-white transition hover:bg-amber-600"
               >
                 {copy.heroPrimary} <ArrowRight size={18} />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollTo("included")}
-                className="rounded-full border border-white/70 bg-white/10 px-6 py-3.5 font-montserrat text-sm font-bold text-white backdrop-blur transition hover:bg-white/20"
+              </a>
+              <a
+                href="#included"
+                className="rounded-full border border-white/70 bg-white/10 px-6 py-3.5 text-center font-montserrat text-sm font-bold text-white backdrop-blur transition hover:bg-white/20"
               >
                 {copy.heroSecondary}
-              </button>
+              </a>
             </div>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/30 pt-6 font-montserrat text-xs font-semibold uppercase tracking-wider text-white/90">
               {copy.heroFacts.map((fact) => (

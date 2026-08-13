@@ -36,11 +36,11 @@ export const Head = ({ data, pageContext }) => {
     language === "es"
       ? "Paquetes de elopement en Punta Cana desde US$999. Playa o catamarán privado, transporte para dos, fotógrafo y decoración elegible. Boda legal +US$1,200."
       : "Punta Cana elopement packages from US$999. Private beach or catamaran, transportation for two, photographer and selectable décor. Legal wedding +US$1,200.";
-  const keywords =
-    language === "es"
-      ? "paquetes de elopement Punta Cana, boda íntima Punta Cana, boda simbólica Punta Cana, boda legal Punta Cana, boda en catamarán Punta Cana"
-      : "Punta Cana elopement packages, Punta Cana elopement wedding, private beach elopement Punta Cana, symbolic wedding Punta Cana, legal wedding Punta Cana, Punta Cana catamaran wedding";
   const absoluteImage = `${rootUrl}${heroImage}`;
+  const imageAlt =
+    language === "es"
+      ? "Decoración tropical para una boda elopement en la playa de Punta Cana"
+      : "Tropical décor for a Punta Cana beach elopement wedding";
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
   const schemaMarkup = buildElopementSchema({
     siteUrl: rootUrl,
@@ -57,11 +57,16 @@ export const Head = ({ data, pageContext }) => {
       <Seo
         title={title}
         description={description}
-        keywords={keywords}
         image={absoluteImage}
+        imageAlt={imageAlt}
         url={pageUrl}
         schemaMarkup={schemaMarkup}
         language={language === "es" ? "es" : "en"}
+        robots="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+        twitterCard="summary_large_image"
+        siteName="Sertuin Events"
+        locale={language === "es" ? "es_DO" : "en_US"}
+        alternateLocale={language === "es" ? "en_US" : "es_DO"}
       />
       <link rel="canonical" href={pageUrl} />
       <link rel="alternate" hrefLang="en" href={englishUrl} />
