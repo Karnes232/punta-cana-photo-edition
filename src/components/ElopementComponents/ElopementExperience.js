@@ -237,7 +237,7 @@ const COPY = {
     form: {
       names: "Couple’s names",
       email: "Email",
-      whatsapp: "WhatsApp",
+      whatsapp: "Phone number or WhatsApp",
       date: "Preferred wedding date",
       guests: "Number of people",
       hotel: "Hotel or accommodation",
@@ -426,7 +426,7 @@ const COPY = {
     form: {
       names: "Nombres de la pareja",
       email: "Correo electrónico",
-      whatsapp: "WhatsApp",
+      whatsapp: "Número de teléfono o WhatsApp",
       date: "Fecha preferida de la boda",
       guests: "Cantidad de personas",
       hotel: "Hotel o alojamiento",

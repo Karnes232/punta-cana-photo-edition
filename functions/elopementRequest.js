@@ -95,7 +95,7 @@ exports.handler = async (event) => {
     const rows = [
       ["Pareja / Couple", request.names],
       ["Correo / Email", request.email],
-      ["WhatsApp", request.whatsapp],
+      ["Phone / WhatsApp", request.whatsapp],
       ["Fecha preferida / Preferred date", request.date],
       ["Personas / Guests", request.guests],
       ["Hotel / Accommodation", request.hotel],
