@@ -158,14 +158,14 @@ const COPY = {
       ],
     },
     decorNames: {
-      "white-serenity": "White Serenity",
-      "classic-blush": "Classic Blush",
-      "red-romance": "Red Romance",
-      "golden-pampas-circle": "Golden Pampas Circle",
-      "caribbean-sunshine": "Caribbean Sunshine",
-      "tropical-crescent": "Tropical Crescent",
-      "tropical-garden": "Tropical Garden",
-      "full-tropical-huppa": "Full Tropical Huppa",
+      "white-serenity": "Ivory Tide",
+      "classic-blush": "Blush Horizon",
+      "red-romance": "Crimson Vows",
+      "golden-pampas-circle": "Golden Coast Halo",
+      "caribbean-sunshine": "Sunlit Caribbean",
+      "tropical-crescent": "Island Bloom Crescent",
+      "tropical-garden": "Botanical Shore",
+      "full-tropical-huppa": "Tropical Wedding Canopy",
     },
     decorDescriptions: {
       "white-serenity":
@@ -189,7 +189,7 @@ const COPY = {
     beachAndCatamaran: "Beach or catamaran",
     beachOnly: "Private beach only",
     unavailableCatamaran:
-      "This full huppa cannot be installed on the catamaran.",
+      "This full wedding canopy cannot be installed on the catamaran.",
     symbolic: "Symbolic ceremony",
     symbolicIncluded: "Included in every base experience",
     symbolicText:
@@ -378,14 +378,14 @@ const COPY = {
       ],
     },
     decorNames: {
-      "white-serenity": "Serenidad Blanca",
-      "classic-blush": "Blush Clásico",
-      "red-romance": "Romance Rojo",
-      "golden-pampas-circle": "Círculo de Pampas Doradas",
-      "caribbean-sunshine": "Sol Caribeño",
-      "tropical-crescent": "Creciente Tropical",
-      "tropical-garden": "Jardín Tropical",
-      "full-tropical-huppa": "Huppa Tropical Completa",
+      "white-serenity": "Marea Marfil",
+      "classic-blush": "Horizonte Blush",
+      "red-romance": "Votos Carmesí",
+      "golden-pampas-circle": "Halo de Costa Dorada",
+      "caribbean-sunshine": "Caribe Luminoso",
+      "tropical-crescent": "Media Luna Isleña",
+      "tropical-garden": "Orilla Botánica",
+      "full-tropical-huppa": "Dosel Nupcial Tropical",
     },
     decorDescriptions: {
       "white-serenity":
@@ -409,7 +409,7 @@ const COPY = {
     beachAndCatamaran: "Playa o catamarán",
     beachOnly: "Solo playa privada",
     unavailableCatamaran:
-      "Esta huppa completa no puede instalarse en el catamarán.",
+      "Este dosel nupcial completo no puede instalarse en el catamarán.",
     symbolic: "Ceremonia simbólica",
     symbolicIncluded: "Incluida en todas las experiencias base",
     symbolicText:
@@ -573,7 +573,7 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "¿Todas las decoraciones sirven para el catamarán?",
-          "Todas las decoraciones mostradas pueden adaptarse al catamarán excepto la Huppa Tropical Completa, que se ofrece únicamente en la playa privada.",
+          "Todas las decoraciones mostradas pueden adaptarse al catamarán excepto el Dosel Nupcial Tropical, que se ofrece únicamente en la playa privada.",
         ],
         [
           "¿Las flores son naturales?",
@@ -631,7 +631,7 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "Can every décor be installed on the catamaran?",
-          "Every design shown can be adapted to the catamaran except the Full Tropical Huppa, which is available only on the private beach.",
+          "Every design shown can be adapted to the catamaran except the Tropical Wedding Canopy, which is available only on the private beach.",
         ],
         [
           "Are the flowers fresh?",
