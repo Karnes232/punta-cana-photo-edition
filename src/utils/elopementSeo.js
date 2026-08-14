@@ -152,13 +152,21 @@ export const buildElopementSchema = ({
             "@type": "ListItem",
             position: 1,
             name: copy.breadcrumbHome,
-            item: isSpanish ? `${siteUrl}/es/` : `${siteUrl}/`,
+            item: {
+              "@type": "WebPage",
+              "@id": isSpanish ? `${siteUrl}/es/` : `${siteUrl}/`,
+              name: copy.breadcrumbHome,
+            },
           },
           {
             "@type": "ListItem",
             position: 2,
             name: copy.breadcrumbCurrent,
-            item: pageUrl,
+            item: {
+              "@type": "WebPage",
+              "@id": pageUrl,
+              name: copy.breadcrumbCurrent,
+            },
           },
         ],
       },

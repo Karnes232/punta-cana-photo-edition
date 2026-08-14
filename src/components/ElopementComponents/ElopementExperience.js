@@ -94,6 +94,8 @@ export const ELOPEMENT_DECORATIONS = [
 const COPY = {
   "en-US": {
     heroTitle: "Punta Cana Elopement Wedding Packages",
+    breadcrumbHome: "Home",
+    breadcrumbCurrent: "Punta Cana Elopement Wedding Packages",
     formula: [
       "Ceremony experience",
       "Selected décor",
@@ -282,6 +284,8 @@ const COPY = {
   },
   es: {
     heroTitle: "Paquetes de Elopement en Punta Cana",
+    breadcrumbHome: "Inicio",
+    breadcrumbCurrent: "Paquetes de Elopement en Punta Cana",
     formula: [
       "Experiencia de ceremonia",
       "Decoración elegida",
