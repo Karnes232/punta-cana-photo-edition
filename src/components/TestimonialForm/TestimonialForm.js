@@ -23,15 +23,11 @@ const TestimonialForm = () => {
   const packageOptions = [
     {
       page: "proposal",
-      value: "Proposal Photo Shoot",
+      value: "Marriage Proposal Experience",
     },
     {
       page: "elopement-vow-renewal",
-      value: "Vow Renewal Photo Shoot",
-    },
-    {
-      page: "wedding",
-      value: "Wedding Photo Shoot",
+      value: "Elopement or Vow Renewal",
     },
     {
       page: "puntacana-wedding-planner",

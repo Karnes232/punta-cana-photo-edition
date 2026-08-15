@@ -1,8 +1,8 @@
 {
-  "name": "punta-cana-photo-edition",
+  "name": "sertuin-events",
   "version": "1.0.0",
   "private": true,
-  "description": "punta-cana-photo-edition",
+  "description": "Sertuin Events website",
   "author": "James Karnes",
   "keywords": [
     "gatsby"

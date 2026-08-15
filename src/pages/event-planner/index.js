@@ -14,6 +14,7 @@ import FirebaseTestimonialsComponent from "../../components/TestimonialsComponen
 import { useI18next } from "gatsby-plugin-react-i18next";
 import CompanyInformationComponent from "../../components/CompanyInformationComponent/CompanyInformationComponent";
 import WhyChooseUs from "../../components/CompanyInformationComponent/WhyChooseUs";
+import { buildEventPlannerSchema } from "../../utils/siteSeo";
 
 const Index = ({ data }) => {
   return (
@@ -74,19 +75,19 @@ export const Head = ({ pageContext, data }) => {
     data.allContentfulSeo.nodes[0];
   const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/event-planner/`;
 
-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
-
-  let JsonSchema = {};
-  if (schema) {
-    JsonSchema = JSON.parse(schema);
-  }
+  const image = `https:${images?.file?.url}`;
+  const JsonSchema = buildEventPlannerSchema({
+    image,
+    generalInfo: data.allContentfulGeneralLayout.nodes[0],
+    url: siteUrl,
+  });
   return (
     <>
       <Seo
         title={title}
         description={description.description}
         keywords={keywords.join(", ")}
-        image={`https:${images?.file?.url}`}
+        image={image}
         url={siteUrl}
         schemaMarkup={JsonSchema}
         language={language === "en-US" ? "en" : language}
@@ -138,11 +139,6 @@ export const query = graphql`
         }
         description {
           description
-        }
-        schema {
-          internal {
-            content
-          }
         }
       }
     }

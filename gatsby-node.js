@@ -2,6 +2,31 @@ const path = require("path");
 const fetch = require("node-fetch");
 const fs = require("fs");
 
+// These routes belonged to the former photography/video business. Keep the
+// Contentful entries available for historical reference, but never publish
+// them as Sertuin Events pages or include them in the sitemap.
+const retiredBlogSlugs = new Set([
+  "engagement-photoshoot-punta-cana",
+  "surprise-proposal-videographer-punta-cana",
+]);
+const retiredPackageSlugs = new Set([
+  "photography-event-planner",
+  "videography-event-planner",
+]);
+const retiredStaticPaths = new Set([
+  "/wedding",
+  "/es/wedding",
+  "/photo-gallery",
+  "/es/photo-gallery",
+]);
+
+exports.onCreatePage = ({ page, actions }) => {
+  const normalizedPath = page.path.replace(/\/+$/, "") || "/";
+  if (retiredStaticPaths.has(normalizedPath)) {
+    actions.deletePage(page);
+  }
+};
+
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
@@ -24,13 +49,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           x
           telephone
           messengerLink
-        }
-      }
-      allContentfulPreviousWorkPhotoGallery {
-        nodes {
-          urlSlug
-          title
-          id
         }
       }
       allContentfulPackagePageContent {
@@ -76,7 +94,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   };
 
   const packageTemplate = path.resolve(`src/template/package.js`);
-  const photoGalleryTemplate = path.resolve(`src/template/photogallery.js`);
   const blogTemplate = path.resolve(`src/template/blog.js`);
   const blogCategoryTemplate = path.resolve(`src/template/blogCategory.js`);
 
@@ -115,6 +132,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // });
 
   queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
+    if (retiredBlogSlugs.has(node.slug?.trim())) return;
+
     // Get language code for URL from the Contentful locale
     const lang = node.node_locale === "en-US" ? "" : node.node_locale;
     const langPrefix = lang ? `/${lang}` : "";
@@ -133,6 +152,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   });
 
   queryResults.data.allContentfulPackagePageContent.nodes.forEach((node) => {
+    if (retiredPackageSlugs.has(node.urlSlug?.trim())) return;
+
     // Get language code for URL from the Contentful locale
     const lang = node.node_locale === "en-US" ? "" : node.node_locale;
     const langPrefix = lang ? `/${lang}` : "";
@@ -147,19 +168,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     });
   });
-
-  queryResults.data.allContentfulPreviousWorkPhotoGallery.nodes.forEach(
-    (node) => {
-      createPage({
-        path: `/photo-gallery/${node.urlSlug?.trim()}`,
-        component: photoGalleryTemplate,
-        context: {
-          id: node.id,
-          layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
-        },
-      });
-    },
-  );
 
   try {
     const { data } = await graphql(`
@@ -236,17 +244,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
-      const photogalleryPath =
-        urlPath === "" ? "/photo-gallery" : `/${urlPath}/photo-gallery`;
-      createPage({
-        path: photogalleryPath,
-        component: path.resolve("./src/pages/photo-gallery/index.js"),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
-
       const blogGuidPath =
         urlPath === ""
           ? "/blog/complete-guide-to-organizing-events-in-punta-cana"
@@ -317,16 +314,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: floralPath,
         component: path.resolve("./src/pages/floral-art/index.js"),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
-
-      const weddingPath = urlPath === "" ? "/wedding" : `/${urlPath}/wedding`;
-      createPage({
-        path: weddingPath,
-        component: path.resolve("./src/pages/wedding/index.js"),
         context: {
           language: contentfulCode,
           urlLanguage: urlCode,

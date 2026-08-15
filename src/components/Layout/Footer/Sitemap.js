@@ -14,10 +14,6 @@ const Sitemap = () => {
       name: t("Elopement & Vow renewal"),
       urlLink: "/punta-cana-elopement-packages",
     },
-    // {
-    //   name: "Punta cana wedding photographer",
-    //   urlLink: "/wedding",
-    // },
     {
       name: t("Wedding planning"),
       urlLink: "/puntacana-wedding-planner",
@@ -77,11 +73,6 @@ const Sitemap = () => {
         </button>
       </Link>
 
-      <Link to="/photo-gallery" className="no-underline">
-        <button className={`navLinks`} translate="no">
-          <Trans>Photo Gallery</Trans>
-        </button>
-      </Link>
       <Link
         to="/blog/complete-guide-to-organizing-events-in-punta-cana"
         className="no-underline"

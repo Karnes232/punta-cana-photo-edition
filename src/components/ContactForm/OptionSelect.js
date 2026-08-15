@@ -11,18 +11,10 @@ const OptionSelect = () => {
       boxShadow: "none",
     }),
   };
-  let weddingOptions = [
-    {
-      value: "WEDDING PHOTO/VIDEO PACKAGES",
-      label: t("WEDDING PHOTO/VIDEO PACKAGES"),
-    },
+  const eventOptions = [
     {
       value: "WEDDING PLANNING",
       label: t("WEDDING PLANNING"),
-    },
-    {
-      value: "PHOTOSHOOT",
-      label: t("PHOTOSHOOT"),
     },
     {
       value: "BIRTHDAY CELEBRATION",
@@ -45,14 +37,6 @@ const OptionSelect = () => {
       label: t("CORPORATE EVENT PLANNER"),
     },
     {
-      value: "PHOTOGRAPHY COMMERCIAL AND CORPORATE VIDEO",
-      label: t("PHOTOGRAPHY COMMERCIAL AND CORPORATE VIDEO"),
-    },
-    {
-      value: "REAL ESTATE PHOTOS-VIDEOS",
-      label: t("REAL ESTATE PHOTOS-VIDEOS"),
-    },
-    {
       value: "OTHER",
       label: t("OTHER"),
     },
@@ -64,7 +48,7 @@ const OptionSelect = () => {
         className="contactFormInput"
         classNamePrefix="select"
         name="WeddingOptions"
-        options={weddingOptions}
+        options={eventOptions}
         styles={style}
         required
         // onChange={cityChange}
