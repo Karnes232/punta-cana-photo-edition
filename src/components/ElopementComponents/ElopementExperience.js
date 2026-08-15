@@ -879,24 +879,13 @@ const ElopementForm = ({
 
     try {
       const formData = new FormData(form);
-      const payload = Object.fromEntries(formData.entries());
-      const [archiveResponse, emailResponse] = await Promise.all([
-        fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(formData).toString(),
-        }),
-        fetch("/.netlify/functions/elopementRequest", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }),
-      ]);
+      const archiveResponse = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
 
-      if (!archiveResponse.ok || !emailResponse.ok) {
+      if (!archiveResponse.ok) {
         throw new Error("Form submission failed");
       }
       form.reset();
