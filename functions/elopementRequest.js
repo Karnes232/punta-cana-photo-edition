@@ -1,15 +1,3 @@
-const nodemailer = require("nodemailer");
-
-const DESTINATION_EMAIL = "info@sertuinevents.com";
-
-const escapeHtml = (value = "") =>
-  String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-
 const clean = (value, maxLength = 500) =>
   String(value || "")
     .replace(/[\u0000-\u001f\u007f]/g, " ")
@@ -81,61 +69,15 @@ exports.handler = async (event) => {
       };
     }
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    });
-
-    const rows = [
-      ["Pareja / Couple", request.names],
-      ["Correo / Email", request.email],
-      ["Phone / WhatsApp", request.whatsapp],
-      ["Fecha preferida / Preferred date", request.date],
-      ["Personas / Guests", request.guests],
-      ["Hotel / Accommodation", request.hotel],
-      ["Experiencia / Experience", request.experience],
-      ["Decoración / Décor", request.decoration],
-      ["Ceremonia / Ceremony", request.ceremony],
-      ["Total estimado / Estimated total", request.estimatedTotal],
-      ["Idioma / Language", request.language],
-      ["Mensaje / Message", request.message || "—"],
-    ];
-
-    const htmlRows = rows
-      .map(
-        ([label, value]) =>
-          `<tr><th style="padding:8px 12px;text-align:left;border-bottom:1px solid #e7e5e4">${escapeHtml(label)}</th><td style="padding:8px 12px;border-bottom:1px solid #e7e5e4">${escapeHtml(value)}</td></tr>`,
-      )
-      .join("");
-    const textRows = rows
-      .map(([label, value]) => `${label}: ${value}`)
-      .join("\n");
-
-    await transporter.sendMail({
-      from: {
-        name: "Sertuin Events Website",
-        address: process.env.SMTP_USER,
-      },
-      to: DESTINATION_EMAIL,
-      replyTo: request.email,
-      subject: `Elopement request — ${request.names} — ${request.date}`,
-      text: `Nueva solicitud de elopement desde sertuinevents.com\n\n${textRows}`,
-      html: `<h2 style="font-family:Arial,sans-serif">Nueva solicitud de elopement</h2><p style="font-family:Arial,sans-serif">Enviada desde sertuinevents.com. Responde este correo para contactar directamente a la pareja.</p><table style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">${htmlRows}</table>`,
-    });
-
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: "Request emailed successfully" }),
+      body: JSON.stringify({
+        message: "Request accepted; delivery is handled by Netlify Forms",
+      }),
     };
   } catch (error) {
-    console.error("Elopement request email failed:", error.message);
+    console.error("Elopement compatibility request failed:", error.message);
 
     return {
       statusCode: 500,
