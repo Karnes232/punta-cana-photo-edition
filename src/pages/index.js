@@ -9,7 +9,6 @@ import ContentBlock from "../components/ContentBlockComponent/ContentBlock";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import HeroSwiperLocal from "../components/HeroSwiper/HeroSwiperLocal";
 import ContentBlockLocal from "../components/ContentBlockComponent/ContentBlockLocal";
-import { buildHomeSchema } from "../utils/siteSeo";
 const IndexPage = ({ data }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
@@ -40,11 +39,12 @@ export const Head = ({ pageContext, data }) => {
     data.allContentfulSeo.nodes[0];
   const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}`;
 
-  const image = `https:${images.file.url}`;
-  const JsonSchema = buildHomeSchema({
-    image,
-    generalInfo: data.allContentfulGeneralLayout.nodes[0],
-  });
+  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
+
+  let JsonSchema = {};
+  if (schema) {
+    JsonSchema = JSON.parse(schema);
+  }
 
   return (
     <>
@@ -52,7 +52,7 @@ export const Head = ({ pageContext, data }) => {
         title={title}
         description={description.description}
         keywords={keywords.join(", ")}
-        image={image}
+        image={`https:${images.file.url}`}
         url={siteUrl}
         schemaMarkup={JsonSchema}
         language={
@@ -103,6 +103,11 @@ export const query = graphql`
         }
         description {
           description
+        }
+        schema {
+          internal {
+            content
+          }
         }
       }
     }
