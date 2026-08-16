@@ -67,7 +67,7 @@ const BlogBody = ({ context }) => {
         />
       ),
       [BLOCKS.PARAGRAPH]: (node, children) => (
-        <TextComponent paragraph={children} pClassName="mb-4" />
+        <TextComponent heading="p" paragraph={children} pClassName="mb-4" />
       ),
       [BLOCKS.UL_LIST]: (node, children) => (
         <ul className="list-disc ml-5 blog">{children}</ul>
