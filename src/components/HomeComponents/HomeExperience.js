@@ -155,12 +155,14 @@ const ServiceCard = ({ service, language }) => {
 
   return (
     <article className="group relative min-h-[390px] overflow-hidden bg-black shadow-[0_28px_60px_rgba(0,0,0,0.14)]">
-      <GatsbyImage
-        image={image}
-        alt={service.cardImage?.title || service.typeOfService}
-        className="absolute inset-0 h-full w-full transition duration-700 group-hover:scale-[1.035]"
-        imgClassName="object-cover"
-      />
+      <div className="absolute inset-0 transition duration-700 group-hover:scale-[1.035]">
+        <GatsbyImage
+          image={image}
+          alt={service.cardImage?.title || service.typeOfService}
+          className="h-full w-full"
+          imgClassName="object-cover"
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/5" />
       <div className="relative flex min-h-[390px] flex-col justify-end p-7 md:p-8">
         <h3 className="font-crimson text-3xl font-medium leading-tight text-white">
@@ -495,15 +497,17 @@ const HomeExperience = ({
         <div className="mx-auto grid max-w-7xl overflow-hidden bg-white shadow-[0_32px_80px_rgba(0,0,0,0.13)] lg:grid-cols-2">
           <div className="relative min-h-[420px] bg-black lg:min-h-[620px]">
             {featureImage && (
-              <GatsbyImage
-                image={featureImage}
-                alt={
-                  featureCard?.image?.title ||
-                  "Sertuin Events managing an event in Punta Cana"
-                }
-                className="absolute inset-0 h-full w-full"
-                imgClassName="object-cover"
-              />
+              <div className="absolute inset-0">
+                <GatsbyImage
+                  image={featureImage}
+                  alt={
+                    featureCard?.image?.title ||
+                    "Sertuin Events managing an event in Punta Cana"
+                  }
+                  className="h-full w-full"
+                  imgClassName="object-cover"
+                />
+              </div>
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
           </div>
