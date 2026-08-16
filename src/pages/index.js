@@ -1,32 +1,26 @@
 import { graphql } from "gatsby";
-import * as React from "react";
+import React from "react";
+import { useI18next } from "gatsby-plugin-react-i18next";
+import HomeExperience from "../components/HomeComponents/HomeExperience";
 import Layout from "../components/Layout/Layout";
 import Seo from "../components/Layout/seo";
-import OurServices from "../components/ServicesComponents/OurServices";
-import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
-import QuoteComponent from "../components/QuoteComponent/QuoteComponent";
-import ContentBlock from "../components/ContentBlockComponent/ContentBlock";
-import { useI18next } from "gatsby-plugin-react-i18next";
-import HeroSwiperLocal from "../components/HeroSwiper/HeroSwiperLocal";
-import ContentBlockLocal from "../components/ContentBlockComponent/ContentBlockLocal";
+import { getHomeContent } from "../content/homeContent";
+import { buildHomeSchema } from "../utils/homeSeo";
+
 const IndexPage = ({ data }) => {
+  const { language } = useI18next();
+  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const page = data.allContentfulPageContent.nodes[0];
+
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      {data.allContentfulPageContent.nodes[0].heroImageList[0].localFile ? (
-        <HeroSwiperLocal heroInfo={data.allContentfulPageContent.nodes[0]} />
-      ) : (
-        <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-      )}
-      <OurServices
-        title={data.allContentfulPageContent.nodes[0].sectionTitle}
+    <Layout generalInfo={generalInfo} overlayHeader>
+      <HomeExperience
+        page={page}
         services={data.allContentfulServices.nodes}
+        featureCard={data.allContentfulCardWithImage.nodes[0]}
+        generalInfo={generalInfo}
+        language={language}
       />
-      {data.allContentfulCardWithImage.nodes[0].image.localFile ? (
-        <ContentBlockLocal content={data.allContentfulCardWithImage.nodes[0]} />
-      ) : (
-        <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
-      )}
-      <QuoteComponent quote={data.allContentfulQuotes.nodes[0]} />
     </Layout>
   );
 };
@@ -34,32 +28,78 @@ const IndexPage = ({ data }) => {
 export default IndexPage;
 
 export const Head = ({ pageContext, data }) => {
-  const { language } = useI18next();
-  const { title, description, images, keywords } =
-    data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}`;
-
-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
-
-  let JsonSchema = {};
-  if (schema) {
-    JsonSchema = JSON.parse(schema);
-  }
+  const language = pageContext.language === "es" ? "es" : "en-US";
+  const isSpanish = language === "es";
+  const copy = getHomeContent(language);
+  const seo = data.allContentfulSeo.nodes[0];
+  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const pageUrl = isSpanish
+    ? `${data.site.siteMetadata.siteUrl}/es/`
+    : `${data.site.siteMetadata.siteUrl}/`;
+  const imageUrl = seo?.images?.file?.url
+    ? `https:${seo.images.file.url}`
+    : data.allContentfulPageContent.nodes[0]?.heroImageList?.[0]?.file?.url
+      ? `https:${data.allContentfulPageContent.nodes[0].heroImageList[0].file.url}`
+      : undefined;
+  const title =
+    seo?.title ||
+    (isSpanish
+      ? "Planificación Integral de Eventos en Punta Cana | Sertuin Events"
+      : "Punta Cana Event Planner & Event Management | Sertuin Events");
+  const description =
+    seo?.description?.description ||
+    (isSpanish
+      ? "Planificación y gestión integral de eventos en Punta Cana para empresas, bodas de destino y celebraciones privadas, desde el concepto hasta la ejecución."
+      : "Full-service event planning in Punta Cana for corporate events, destination weddings and private celebrations, from concept through on-site execution.");
+  const schemaMarkup = buildHomeSchema({
+    generalInfo,
+    language,
+    pageUrl,
+    pageTitle: title,
+    pageDescription: description,
+    imageUrl,
+  });
 
   return (
     <>
       <Seo
         title={title}
-        description={description.description}
-        keywords={keywords.join(", ")}
-        image={`https:${images.file.url}`}
-        url={siteUrl}
-        schemaMarkup={JsonSchema}
-        language={
-          pageContext.language === "en-US" ? "en" : pageContext.language
-        } // Convert to standard HTML lang attribute
+        description={description}
+        keywords={seo?.keywords?.join(", ")}
+        image={imageUrl}
+        imageAlt={
+          isSpanish
+            ? "Evento planificado por Sertuin Events en Punta Cana"
+            : "Event planned by Sertuin Events in Punta Cana"
+        }
+        url={pageUrl}
+        schemaMarkup={schemaMarkup}
+        language={isSpanish ? "es" : "en"}
+        twitterCard="summary_large_image"
+        siteName="Sertuin Events"
+        locale={isSpanish ? "es_DO" : "en_US"}
+        alternateLocale={isSpanish ? "en_US" : "es_DO"}
       />
-      <link rel="canonical" href={siteUrl} />
+      <link rel="canonical" href={pageUrl} />
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href={`${data.site.siteMetadata.siteUrl}/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="es"
+        href={`${data.site.siteMetadata.siteUrl}/es/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${data.site.siteMetadata.siteUrl}/`}
+      />
+      <meta name="theme-color" content="#000000" />
+      <meta name="author" content={generalInfo?.legalName || "SERTUIN SRL"} />
+      <meta name="contact" content={generalInfo?.email} />
+      <meta name="subject" content={copy.eyebrow} />
     </>
   );
 };
@@ -80,14 +120,23 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout {
+    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
       nodes {
         companyName
+        legalName
+        rnc
+        email
         facebook
         instagram
         x
         telephone
         messengerLink
+        availability
+        logo {
+          file {
+            url
+          }
+        }
       }
     }
     allContentfulSeo(
@@ -104,11 +153,6 @@ export const query = graphql`
         description {
           description
         }
-        schema {
-          internal {
-            content
-          }
-        }
       }
     }
     allContentfulPageContent(
@@ -118,42 +162,55 @@ export const query = graphql`
         page
         heroImageList {
           gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
+            layout: FULL_WIDTH
+            width: 2200
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 82
           )
-          # localFile {
-          #   childImageSharp {
-          #     gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
-          #   }
-          # }
+          file {
+            url
+          }
           title
         }
-        fullSize
+        heroEyebrow
         heroHeading
         heroHeading2
+        primaryCtaLabel
+        primaryCtaUrl
+        secondaryCtaLabel
+        secondaryCtaUrl
         sectionTitle
+        sectionTitle2
+        contactEyebrow
+        contactHeading
+        contactBody
+        paragraph1 {
+          raw
+        }
+        paragraph2 {
+          raw
+        }
+        paragraph3 {
+          raw
+        }
       }
     }
     allContentfulServices(filter: { node_locale: { eq: $language } }) {
       nodes {
         typeOfService
         cardDescription
+        showOnHome
+        homeOrder
         cardImage {
           gatsbyImage(
             layout: CONSTRAINED
-            width: 500
-            formats: WEBP
-            placeholder: NONE
-            quality: 75
+            width: 900
+            height: 1050
+            formats: [AUTO, WEBP, AVIF]
+            placeholder: BLURRED
+            quality: 80
           )
-          # localFile {
-          #   childImageSharp {
-          #     gatsbyImageData(width: 1000, formats: WEBP, placeholder: BLURRED)
-          #   }
-          # }
           title
         }
         page {
@@ -161,20 +218,10 @@ export const query = graphql`
         }
       }
     }
-    allContentfulQuotes(
-      filter: { page: { eq: "Index" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        page
-        author
-        quote
-      }
-    }
     allContentfulCardWithImage(
       filter: { page: { eq: "Index" }, node_locale: { eq: $language } }
     ) {
       nodes {
-        page
         title
         secondaryTitle
         paragraph
@@ -184,15 +231,11 @@ export const query = graphql`
           gatsbyImage(
             layout: CONSTRAINED
             width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
+            height: 1300
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 82
           )
-          # localFile {
-          #   childImageSharp {
-          #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
-          #   }
-          # }
           title
         }
       }

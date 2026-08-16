@@ -296,19 +296,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
-      const weddingsPuntaCanaPath =
-        urlPath === ""
-          ? "/weddings-punta-cana"
-          : `/${urlPath}/weddings-punta-cana`;
-      createPage({
-        path: weddingsPuntaCanaPath,
-        component: path.resolve("./src/pages/weddings-punta-cana/index.js"),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
-
       const floralPath =
         urlPath === "" ? "/floral-art" : `/${urlPath}/floral-art`;
       createPage({
@@ -353,21 +340,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: eventPlannerPath,
         component: path.resolve("./src/pages/event-planner/index.js"),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
-
-      const bachelorPath =
-        urlPath === ""
-          ? "/punta-cana-bachelor-party"
-          : `/${urlPath}/punta-cana-bachelor-party`;
-      createPage({
-        path: bachelorPath,
-        component: path.resolve(
-          "./src/pages/punta-cana-bachelor-party/index.js",
-        ),
         context: {
           language: contentfulCode,
           urlLanguage: urlCode,

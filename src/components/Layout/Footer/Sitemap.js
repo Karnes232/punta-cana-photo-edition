@@ -26,10 +26,6 @@ const Sitemap = () => {
       name: t("Gender reveal and baby showers"),
       urlLink: "/gender-reveal-and-baby-showers",
     },
-    {
-      name: t("Punta Cana Bachelor Party"),
-      urlLink: "/punta-cana-bachelor-party",
-    },
   ];
 
   return (
@@ -67,12 +63,6 @@ const Sitemap = () => {
           <Trans>Floral Art</Trans>
         </button>
       </Link>
-      <Link to="/weddings-punta-cana" className="no-underline">
-        <button className={`navLinks`} translate="no">
-          <Trans>Wedding Packages</Trans>
-        </button>
-      </Link>
-
       <Link
         to="/blog/complete-guide-to-organizing-events-in-punta-cana"
         className="no-underline"
