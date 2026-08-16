@@ -31,6 +31,11 @@ const privatePaths = [
   "/**/admin",
   "/**/admin/*",
 ];
+const retiredPublicPaths = [
+  "/punta-cana-bachelor-party/",
+  "/weddings-punta-cana/",
+  "/photo-gallery/",
+];
 
 module.exports = {
   siteMetadata: {
@@ -70,7 +75,15 @@ module.exports = {
         }
         `,
         resolvePages: ({ allSitePage: { nodes: allPages } }) => {
-          return allPages.filter((page) => !page.path.includes("admin"));
+          return allPages.filter(
+            (page) =>
+              !page.path.includes("admin") &&
+              !retiredPublicPaths.some(
+                (retiredPath) =>
+                  page.path === retiredPath ||
+                  page.path === `/es${retiredPath}`,
+              ),
+          );
         },
         serialize: (page) => {
           return {
@@ -246,10 +259,6 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
-            matchPath: "/:lang?/weddings-punta-cana",
-            getLanguageFromPath: true,
-          },
-          {
             matchPath: "/:lang?/wedding",
             getLanguageFromPath: true,
           },
@@ -266,10 +275,6 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
-            matchPath: "/:lang?/punta-cana-bachelor-party",
-            getLanguageFromPath: true,
-          },
-          {
             matchPath: "/:lang?/gender-reveal-and-baby-showers",
             getLanguageFromPath: true,
           },
@@ -279,10 +284,6 @@ module.exports = {
           },
           {
             matchPath: "/:lang?/admin",
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath: "/:lang?/photo-gallery",
             getLanguageFromPath: true,
           },
           {

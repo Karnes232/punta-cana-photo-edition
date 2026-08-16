@@ -12,3 +12,39 @@
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"
+
+[[redirects]]
+  from = "/punta-cana-bachelor-party/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/punta-cana-bachelor-party/*"
+  to = "/es/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/weddings-punta-cana/*"
+  to = "/puntacana-wedding-planner/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/weddings-punta-cana/*"
+  to = "/es/puntacana-wedding-planner/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/photo-gallery/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/photo-gallery/*"
+  to = "/es/"
+  status = 301
+  force = true

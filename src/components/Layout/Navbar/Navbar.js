@@ -7,7 +7,7 @@ const Navbar = ({ overlay = false }) => {
     <nav
       className={`z-[200] h-24 w-full pt-5 md:h-36 ${
         overlay
-          ? "absolute inset-x-0 top-0 bg-gradient-to-b from-slate-950/80 via-slate-950/35 to-transparent"
+          ? "absolute inset-x-0 top-0 bg-gradient-to-b from-black/80 via-black/35 to-transparent"
           : "relative bg-transparent"
       }`}
     >

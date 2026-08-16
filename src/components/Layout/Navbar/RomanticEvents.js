@@ -74,19 +74,6 @@ const RomanticEvents = ({ footer, setToggled }) => {
           <Trans>Gender reveal and baby showers</Trans>
         </p>
       </MenuItem>
-      <MenuItem
-        component={
-          <Link
-            to="/punta-cana-bachelor-party"
-            className="no-underline uppercase text-sm"
-            onClick={footer ? undefined : () => setToggled(false)}
-          />
-        }
-      >
-        <p>
-          <Trans>Punta Cana Bachelor Party</Trans>
-        </p>
-      </MenuItem>
     </SubMenu>
   );
 };
