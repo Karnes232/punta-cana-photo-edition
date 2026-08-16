@@ -384,12 +384,14 @@ const CorporateEventPlanner = ({
   return (
     <main className="overflow-hidden bg-[#f7f5f0] text-slate-950">
       <section className="relative min-h-[780px] bg-slate-950 md:min-h-[760px] lg:min-h-[820px]">
-        <EventImage
-          asset={heroImage}
-          alt={heroImage?.title || "Corporate event production in Punta Cana"}
-          className="absolute inset-0 h-full w-full"
-          loading="eager"
-        />
+        <div className="absolute inset-0 overflow-hidden">
+          <EventImage
+            asset={heroImage}
+            alt={heroImage?.title || "Corporate event production in Punta Cana"}
+            className="h-full w-full"
+            loading="eager"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-slate-950/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/20" />
 
