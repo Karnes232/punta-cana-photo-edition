@@ -7,7 +7,7 @@ import { CartProvider } from "../../context/cart";
 import FloatingCartButton from "../FloatingButtonComponents/FloatingCartButton";
 import ExpandableMessengerButton from "../FloatingButtonComponents/ExpandableMessengerButton";
 
-const Layout = ({ children, generalInfo }) => {
+const Layout = ({ children, generalInfo, overlayHeader = false }) => {
   useImageProtection();
 
   const data = useStaticQuery(graphql`
@@ -26,7 +26,7 @@ const Layout = ({ children, generalInfo }) => {
   return (
     <CartProvider>
       <div className="min-h-screen font-crimson flex flex-col justify-between bg-primary-bg-color">
-        <Navbar />
+        <Navbar overlay={overlayHeader} />
         <FloatingCartButton />
         <ExpandableMessengerButton
           messengerLink={messengerLink}

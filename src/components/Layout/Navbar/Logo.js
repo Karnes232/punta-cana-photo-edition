@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-const Logo = () => {
+const Logo = ({ overlay = false }) => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       allContentfulGeneralLayout {
@@ -19,7 +19,11 @@ const Logo = () => {
   );
   return (
     <>
-      <div className="flex justify-center items-center overflow-hidden">
+      <div
+        className={`flex items-center justify-center overflow-hidden ${
+          overlay ? "drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]" : ""
+        }`}
+      >
         <Link to="/" className="no-underline" aria-label="Home">
           <div className="cursor-pointer flex items-center w-20 md:w-20">
             <GatsbyImage

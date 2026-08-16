@@ -12,7 +12,7 @@ const EventPlannerPage = ({ data, pageContext }) => {
   const carousel = data.allContentfulSwiperCarousel.nodes[0];
 
   return (
-    <Layout generalInfo={generalInfo}>
+    <Layout generalInfo={generalInfo} overlayHeader>
       <CorporateEventPlanner
         page={page}
         gallery={gallery}
