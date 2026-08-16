@@ -135,6 +135,13 @@ export const query = graphql`
       filter: {
         blogCategory: { blogCategory: { eq: $category } }
         id: { ne: $id }
+        node_locale: { eq: $language }
+        slug: {
+          nin: [
+            "engagement-photoshoot-punta-cana"
+            "surprise-proposal-videographer-punta-cana"
+          ]
+        }
       }
       sort: { publishedDate: DESC }
     ) {

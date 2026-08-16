@@ -48,26 +48,25 @@ export default ThankYou;
 
 export const Head = ({ data }) => {
   const { language } = useI18next();
-  const { title, description, images, keywords } =
-    data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/contact/thankyou/"}`;
-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
+  const isSpanish = language === "es";
+  const contactUrl = `${data.site.siteMetadata.siteUrl}${isSpanish ? "/es" : ""}/contact/`;
+  const title = isSpanish
+    ? "Gracias por contactarnos | Sertuin Events"
+    : "Thank You for Contacting Us | Sertuin Events";
+  const description = isSpanish
+    ? "Recibimos tu solicitud de evento. El equipo de Sertuin Events se pondrá en contacto contigo muy pronto."
+    : "We received your event inquiry. The Sertuin Events team will contact you shortly.";
 
-  let JsonSchema = {};
-  if (schema) {
-    JsonSchema = JSON.parse(schema);
-  }
   return (
     <>
       <Seo
         title={title}
-        description={description.description}
-        keywords={keywords.join(", ")}
-        image={`https:${images?.file?.url}`}
-        url={siteUrl}
-        schemaMarkup={JsonSchema}
+        description={description}
+        url={contactUrl}
+        language={isSpanish ? "es" : "en"}
+        robots="noindex, follow"
       />
-      <link rel="canonical" href={siteUrl} />
+      <link rel="canonical" href={contactUrl} />
     </>
   );
 };
@@ -86,27 +85,6 @@ export const query = graphql`
     site {
       siteMetadata {
         siteUrl
-      }
-    }
-    allContentfulSeo(
-      filter: { page: { eq: "Contact" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        title
-        keywords
-        images {
-          file {
-            url
-          }
-        }
-        description {
-          description
-        }
-        schema {
-          internal {
-            content
-          }
-        }
       }
     }
     allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {

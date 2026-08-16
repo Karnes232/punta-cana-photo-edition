@@ -35,17 +35,6 @@ const RomanticEvents = ({ footer, setToggled }) => {
           <Trans>Elopement & Vow renewal</Trans>
         </p>
       </MenuItem>
-      {/* <MenuItem
-        component={
-          <Link
-            to="/wedding"
-            className="no-underline uppercase text-sm"
-            onClick={footer ? undefined : () => setToggled(false)}
-          />
-        }
-      >
-        <p>Punta Cana wedding photographer</p>
-      </MenuItem> */}
       <MenuItem
         component={
           <Link
