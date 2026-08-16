@@ -207,7 +207,6 @@ export const query = graphql`
             layout: CONSTRAINED
             width: 900
             height: 1050
-            resizingBehavior: FILL
             formats: [AUTO, WEBP, AVIF]
             placeholder: BLURRED
             quality: 80
@@ -233,7 +232,6 @@ export const query = graphql`
             layout: CONSTRAINED
             width: 1200
             height: 1300
-            resizingBehavior: FILL
             placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
             quality: 82
