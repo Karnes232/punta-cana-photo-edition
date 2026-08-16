@@ -1,103 +1,162 @@
-import { graphql } from "gatsby";
 import React from "react";
+import { graphql } from "gatsby";
 import Layout from "../../components/Layout/Layout";
-import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
-import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
-import TextComponent from "../../components/TextComponent/TextComponent";
-import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
-import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
-import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
-import OurPackages from "../../components/PackageComponents/OurPackages";
-import WorkedWith from "../../components/WorkedWithComponent/WorkedWith";
-import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
-import CompanyInformationComponent from "../../components/CompanyInformationComponent/CompanyInformationComponent";
-import WhyChooseUs from "../../components/CompanyInformationComponent/WhyChooseUs";
+import CorporateEventPlanner from "../../components/CorporateEventPlanner/CorporateEventPlanner";
+import { getCorporateEventContent } from "../../content/corporateEventContent";
 
-const Index = ({ data }) => {
+const EventPlannerPage = ({ data, pageContext }) => {
+  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const page = data.allContentfulPageContent.nodes[0];
+  const gallery = data.allContentfulPhotoGallery.nodes[0];
+  const carousel = data.allContentfulSwiperCarousel.nodes[0];
+
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-      <CompanyInformationComponent
-        yearsInBusiness={
-          data.allContentfulGeneralLayout.nodes[0].yearsInBusiness
-        }
-        eventsPlanned={data.allContentfulGeneralLayout.nodes[0].eventsPlanned}
-        clientSatisfaction={
-          data.allContentfulGeneralLayout.nodes[0].clientSatisfaction
-        }
+    <Layout generalInfo={generalInfo}>
+      <CorporateEventPlanner
+        page={page}
+        gallery={gallery}
+        carousel={carousel}
+        generalInfo={generalInfo}
+        language={pageContext.language}
       />
-      <WhyChooseUs
-        richText={data.allContentfulPageContent.nodes[0].paragraph1}
-        serviceCards={data.allContentfulServiceCard.nodes}
-      />
-
-      <TextComponent
-        title={data.allContentfulPhotoGallery.nodes[0].title}
-        heading="h2"
-        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
-      />
-      <PhotoGrid
-        photos={data.allContentfulPhotoGallery.nodes[0].images}
-        page={data.allContentfulPhotoGallery.nodes[0].page}
-      />
-      <WorkedWith
-        title1={data.allContentfulWorkedWithUs.nodes[0].title1}
-        title2={data.allContentfulWorkedWithUs.nodes[0].title2}
-        image={data.allContentfulWorkedWithUs.nodes[0].image}
-      />
-      <OurPackages
-        title={data.allContentfulPageContent.nodes[0].sectionTitle2}
-        photoPackages={data.allContentfulPackages.nodes}
-      />
-      <SwiperCarousel
-        images={data.allContentfulSwiperCarousel.nodes[0].images}
-      />
-      <TextComponent
-        title={data.allContentfulPageContent.nodes[0].sectionTitle}
-        heading="h2"
-        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
-      />
-      <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
-      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
-      <FirebaseTestimonialsComponent packagePage={"event-planner"} />
     </Layout>
   );
 };
 
-export default Index;
+export default EventPlannerPage;
 
 export const Head = ({ pageContext, data }) => {
-  const { title, description, images, keywords } =
-    data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/event-planner/`;
+  const isSpanish = pageContext.language === "es";
+  const seo = data.allContentfulSeo.nodes[0];
+  const page = data.allContentfulPageContent.nodes[0];
+  const content = getCorporateEventContent(
+    pageContext.language,
+    page?.paragraph3?.raw,
+  );
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${isSpanish ? "/es" : ""}/event-planner/`;
+  const title =
+    seo?.title ||
+    (isSpanish
+      ? "Planificador de eventos corporativos Punta Cana | Sertuin Events"
+      : "Corporate Event Planner Punta Cana | Sertuin Events");
+  const description =
+    seo?.description?.description ||
+    (isSpanish
+      ? "Planificación y gestión de eventos corporativos en Punta Cana. Coordinamos proveedores, personal, catering, logística, producción y ejecución en sitio."
+      : "Corporate event planning and management in Punta Cana. Sertuin coordinates vendors, staffing, catering, logistics, production and on-site execution.");
+  const image = seo?.images?.file?.url
+    ? `https:${seo.images.file.url}`
+    : undefined;
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${siteUrl}#service`,
+        name: isSpanish
+          ? "Planificación y gestión de eventos corporativos en Punta Cana"
+          : "Corporate Event Planning and Management in Punta Cana",
+        serviceType: isSpanish
+          ? "Gestión de eventos corporativos"
+          : "Corporate event management",
+        url: siteUrl,
+        description,
+        image,
+        areaServed: [
+          { "@type": "City", name: "Punta Cana" },
+          { "@type": "Country", name: "Dominican Republic" },
+        ],
+        provider: {
+          "@type": "LocalBusiness",
+          "@id": "https://sertuinevents.com/#business",
+          name: "Sertuin Events",
+          url: "https://sertuinevents.com/",
+          email: "info@sertuinevents.com",
+          telephone: data.allContentfulGeneralLayout.nodes[0]?.telephone,
+        },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: isSpanish
+            ? "Servicios de gestión de eventos"
+            : "Corporate event management services",
+          itemListElement: content.services.map((service) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name: service.title },
+          })),
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${siteUrl}#faq`,
+        mainEntity: content.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: isSpanish ? "Inicio" : "Home",
+            item: isSpanish
+              ? "https://sertuinevents.com/es/"
+              : "https://sertuinevents.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: isSpanish
+              ? "Eventos corporativos"
+              : "Corporate Event Planner",
+            item: siteUrl,
+          },
+        ],
+      },
+    ],
+  };
 
-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
-
-  let JsonSchema = {};
-  if (schema) {
-    JsonSchema = JSON.parse(schema);
-  }
   return (
     <>
       <Seo
         title={title}
-        description={description.description}
-        keywords={keywords.join(", ")}
-        image={`https:${images?.file?.url}`}
+        description={description}
+        keywords={(seo?.keywords || []).join(", ")}
+        image={image}
+        imageAlt="Sertuin Events corporate event management in Punta Cana"
         url={siteUrl}
-        schemaMarkup={JsonSchema}
-        language={
-          pageContext.language === "en-US" ? "en" : pageContext.language
-        }
+        schemaMarkup={schemaMarkup}
+        language={isSpanish ? "es" : "en"}
+        siteName="Sertuin Events"
+        locale={isSpanish ? "es_DO" : "en_US"}
+        alternateLocale={isSpanish ? "en_US" : "es_DO"}
+        twitterCard="summary_large_image"
       />
       <link rel="canonical" href={siteUrl} />
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href="https://sertuinevents.com/event-planner/"
+      />
+      <link
+        rel="alternate"
+        hrefLang="es"
+        href="https://sertuinevents.com/es/event-planner/"
+      />
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href="https://sertuinevents.com/event-planner/"
+      />
     </>
   );
 };
 
 export const query = graphql`
-  query MyQuery($language: String!) {
+  query CorporateEventPlannerPage($language: String!) {
     locales: allLocale {
       edges {
         node {
@@ -112,17 +171,15 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout {
+    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
       nodes {
         companyName
+        email
         facebook
         instagram
-        x
-        telephone
-        yearsInBusiness
-        eventsPlanned
-        clientSatisfaction
         messengerLink
+        telephone
+        x
       }
     }
     allContentfulSeo(
@@ -139,11 +196,6 @@ export const query = graphql`
         description {
           description
         }
-        schema {
-          internal {
-            content
-          }
-        }
       }
     }
     allContentfulPageContent(
@@ -153,21 +205,20 @@ export const query = graphql`
         page
         heroImageList {
           gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
+            layout: FULL_WIDTH
+            width: 1800
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 82
           )
           title
         }
-        fullSize
         heroHeading
         heroHeading2
         sectionTitle
         sectionTitle2
         videoUrl
-        paragraph1 {
+        paragraph3 {
           raw
         }
       }
@@ -176,14 +227,19 @@ export const query = graphql`
       filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
     ) {
       nodes {
-        page
         title
         images {
           url
           width
           height
-          #gatsbyImage(layout: CONSTRAINED, width: 800, placeholder: NONE, formats: WEBP, quality: 75)
           title
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 78
+          )
         }
       }
     }
@@ -191,94 +247,14 @@ export const query = graphql`
       nodes {
         page
         images {
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-          title
-        }
-      }
-    }
-    allContentfulCardWithImage(
-      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        title
-        secondaryTitle
-        buttonText
-        paragraph
-        paragraph2
-        linkUrl
-        image {
+          url
           title
           gatsbyImage(
             layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-        }
-      }
-    }
-    allContentfulPackages(
-      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        page
-        title
-        link
-        included
-        paragraph
-        price
-        image {
-          title
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 800
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-        }
-        packagePage {
-          urlSlug
-        }
-      }
-    }
-    allContentfulWorkedWithUs(
-      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        title1
-        title2
-        image {
-          title
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-        }
-      }
-    }
-    allContentfulServiceCard(filter: { node_locale: { eq: $language } }) {
-      nodes {
-        title
-        description
-        icon {
-          title
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 40
-            formats: WEBP
-            placeholder: NONE
-            quality: 75
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+            quality: 78
           )
         }
       }
