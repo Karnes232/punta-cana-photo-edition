@@ -383,7 +383,7 @@ const CorporateEventPlanner = ({
 
   return (
     <main className="overflow-hidden bg-[#f7f5f0] text-slate-950">
-      <section className="relative min-h-[780px] bg-slate-950 md:min-h-[760px] lg:min-h-[820px]">
+      <section className="relative min-h-[680px] bg-slate-950 md:min-h-[700px] lg:min-h-[720px]">
         <div className="absolute inset-0 overflow-hidden">
           <EventImage
             asset={heroImage}
@@ -395,12 +395,12 @@ const CorporateEventPlanner = ({
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-slate-950/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/20" />
 
-        <div className="relative mx-auto flex min-h-[780px] max-w-7xl items-center px-6 pb-16 pt-36 md:min-h-[760px] md:px-10 lg:min-h-[820px] lg:px-12">
-          <div className="max-w-4xl">
+        <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-center px-6 py-16 md:min-h-[700px] md:px-10 md:py-20 lg:min-h-[720px] lg:px-12">
+          <div className="max-w-5xl">
             <p className="mb-5 font-montserrat text-xs font-semibold uppercase tracking-[0.26em] text-amber-300 md:text-sm">
               {content.eyebrow}
             </p>
-            <h1 className="max-w-4xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+            <h1 className="max-w-5xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-[4.5rem] lg:text-[4.8rem]">
               {page?.heroHeading ||
                 (isSpanish
                   ? "Planificación y gestión de eventos corporativos en Punta Cana"
