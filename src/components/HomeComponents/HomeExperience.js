@@ -327,16 +327,18 @@ const HomeExperience = ({
     <main className="overflow-hidden bg-primary-bg-color text-black">
       <section className="relative min-h-[760px] bg-black md:min-h-[780px]">
         {heroImage && (
-          <GatsbyImage
-            image={heroImage}
-            alt={
-              page?.heroImageList?.[0]?.title ||
-              "Elegant event planned by Sertuin Events in Punta Cana"
-            }
-            loading="eager"
-            className="absolute inset-0 h-full w-full"
-            imgClassName="object-cover object-center"
-          />
+          <div className="absolute inset-0">
+            <GatsbyImage
+              image={heroImage}
+              alt={
+                page?.heroImageList?.[0]?.title ||
+                "Elegant event planned by Sertuin Events in Punta Cana"
+              }
+              loading="eager"
+              className="h-full w-full"
+              imgClassName="object-cover object-center"
+            />
+          </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/75 to-black/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/35" />
