@@ -400,7 +400,7 @@ const CorporateEventPlanner = ({
             <p className="mb-5 font-montserrat text-xs font-semibold uppercase tracking-[0.26em] text-amber-300 md:text-sm">
               {content.eyebrow}
             </p>
-            <h1 className="max-w-5xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-[4.5rem] lg:text-[4.8rem]">
+            <h1 className="max-w-5xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-[4rem]">
               {page?.heroHeading ||
                 (isSpanish
                   ? "Planificación y gestión de eventos corporativos en Punta Cana"
