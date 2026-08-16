@@ -11,7 +11,6 @@ import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import WorkedWith from "../../components/WorkedWithComponent/WorkedWith";
 import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
-import { useI18next } from "gatsby-plugin-react-i18next";
 import CompanyInformationComponent from "../../components/CompanyInformationComponent/CompanyInformationComponent";
 import WhyChooseUs from "../../components/CompanyInformationComponent/WhyChooseUs";
 
@@ -69,7 +68,6 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ pageContext, data }) => {
-  const { language } = useI18next();
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
   const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/event-planner/`;
@@ -89,7 +87,9 @@ export const Head = ({ pageContext, data }) => {
         image={`https:${images?.file?.url}`}
         url={siteUrl}
         schemaMarkup={JsonSchema}
-        language={language === "en-US" ? "en" : language}
+        language={
+          pageContext.language === "en-US" ? "en" : pageContext.language
+        }
       />
       <link rel="canonical" href={siteUrl} />
     </>
