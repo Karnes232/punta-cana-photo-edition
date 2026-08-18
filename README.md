@@ -47,9 +47,7 @@ Complete English and Spanish localization with dynamic language switching and SE
 - **Blog System** - Full-featured blog with build-time generation
   - 📖 [Example: Complete Guide to Organizing Events in Punta Cana](https://sertuinevents.com/blog/complete-guide-to-organizing-events-in-punta-cana/)
 - **Equipment Rentals** - Dynamic catalog with real-time inventory
-  - 🛠️ [Event Rentals Catalog](https://sertuinevents.com/event-rentals/)
 - **Floral Arrangements** - Curated collections with detailed galleries
-  - 🌸 [Floral Art Portfolio](https://sertuinevents.com/floral-art/)
 
 ### 🎯 Interactive Tools
 
@@ -83,7 +81,6 @@ Complete English and Spanish localization with dynamic language switching and SE
 - **📦 Package Catalog** - Dynamic pages built from Contentful
 - **📝 Blog** - SEO-optimized articles and guides
 - **🛠️ Equipment Rentals** - Searchable catalog with pricing
-- **🌸 Floral Art** - Gallery and service descriptions
 - **💬 Testimonials** - Client experience sharing system
 
 ### 🔐 Administrative System

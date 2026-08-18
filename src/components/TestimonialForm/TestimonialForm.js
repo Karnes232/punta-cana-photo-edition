@@ -61,10 +61,8 @@ const TestimonialForm = () => {
                 Elopement or Vow Renewal
               </option>
               <option value="Wedding Planning">Wedding Planning</option>
-              <option value="Birthday Celebration">Birthday Celebration</option>
               <option value="Gender Reveal">Gender Reveal</option>
               <option value="Corporate Event">Corporate Event</option>
-              <option value="Event Rentals">Event Rentals</option>
             </select>
           </label>
           <label className="block font-montserrat text-sm font-semibold text-slate-800">

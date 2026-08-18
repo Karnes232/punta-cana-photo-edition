@@ -8,10 +8,6 @@ const OptionSelect = () => {
       label: t("WEDDING PLANNING"),
     },
     {
-      value: "BIRTHDAY CELEBRATION",
-      label: t("BIRTHDAY CELEBRATION"),
-    },
-    {
       value: "GENDER REVEAL",
       label: t("GENDER REVEAL"),
     },
@@ -26,14 +22,6 @@ const OptionSelect = () => {
     {
       value: "CORPORATE EVENT PLANNER",
       label: t("CORPORATE EVENT PLANNER"),
-    },
-    {
-      value: "EVENT RENTALS",
-      label: t("EVENT RENTALS"),
-    },
-    {
-      value: "FLORAL DESIGN",
-      label: t("FLORAL DESIGN"),
     },
     {
       value: "OTHER",

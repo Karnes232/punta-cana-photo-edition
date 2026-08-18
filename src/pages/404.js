@@ -1,71 +1,62 @@
-import * as React from "react";
 import { graphql, Link } from "gatsby";
-
-import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
+import * as React from "react";
 import Layout from "../components/Layout/Layout";
 
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-};
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-};
+const NotFoundPage = ({ data, location }) => {
+  const isSpanish = location?.pathname?.startsWith("/es/");
 
-const paragraphStyles = {
-  marginBottom: 48,
-};
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-};
-
-const NotFoundPage = ({ data }) => {
   return (
-    <>
-      <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-        <HeroSwiper heroInfo={data.allContentfulGeneralLayout.nodes[0]} />
-        <main
-          style={pageStyles}
-          className="min-h-[50vh] flex flex-col items-center justify-center"
-        >
-          <h1 style={headingStyles} className="text-left w-full">
-            Page not found
-          </h1>
-          <p style={paragraphStyles}>
-            Sorry 😔, we couldn’t find what you were looking for.
-            <br />
-            {process.env.NODE_ENV === "development" ? (
-              <>
-                <br />
-                Try creating a page in{" "}
-                <code style={codeStyles}>src/pages/</code>.
-                <br />
-              </>
-            ) : null}
-            <br />
-            <Link to="/">Go home</Link>.
+    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+      <main className="flex min-h-[72vh] items-center bg-secondary-bg-color px-6 py-24 md:px-10">
+        <div className="mx-auto w-full max-w-4xl border-l-4 border-primary-color bg-white p-8 shadow-xl md:p-14">
+          <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.25em] text-primary-color">
+            404
           </p>
-        </main>
-      </Layout>
-    </>
+          <h1 className="mt-4 font-crimson text-5xl font-medium leading-tight text-black md:text-7xl">
+            {isSpanish ? "Página no encontrada" : "Page not found"}
+          </h1>
+          <p className="mt-6 max-w-2xl font-montserrat text-base leading-8 text-gray-700 md:text-lg">
+            {isSpanish
+              ? "La página que buscas ya no está disponible o fue trasladada. Puedes regresar al inicio para explorar nuestros servicios actuales."
+              : "The page you are looking for is no longer available or has moved. Return home to explore our current services."}
+          </p>
+          <Link
+            to={isSpanish ? "/es/" : "/"}
+            className="mt-8 inline-flex bg-black px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.14em] text-white no-underline transition hover:bg-primary-color hover:text-black"
+          >
+            {isSpanish ? "Volver al inicio" : "Return home"}
+          </Link>
+        </div>
+      </main>
+    </Layout>
   );
 };
 
 export default NotFoundPage;
 
-export const Head = () => (
-  <>
-    <title>Page Not Found | Sertuin Events</title>
-    <meta name="robots" content="noindex,follow" />
-  </>
-);
+export const Head = ({ location }) => {
+  const isSpanish = location?.pathname?.startsWith("/es/");
+
+  return (
+    <>
+      <html lang={isSpanish ? "es" : "en"} />
+      <title>
+        {isSpanish
+          ? "Página no encontrada | Sertuin Events"
+          : "Page Not Found | Sertuin Events"}
+      </title>
+      <meta
+        name="description"
+        content={
+          isSpanish
+            ? "La página solicitada no está disponible. Consulta los servicios actuales de Sertuin Events en Punta Cana."
+            : "The requested page is unavailable. Explore current Sertuin Events services in Punta Cana."
+        }
+      />
+      <meta name="robots" content="noindex,follow" />
+    </>
+  );
+};
 
 export const query = graphql`
   query MyQuery {
@@ -83,12 +74,6 @@ export const query = graphql`
         messengerLink
         x
         telephone
-        heroImageList {
-          gatsbyImage(width: 4000, placeholder: BLURRED, formats: WEBP)
-          title
-        }
-        fullSize
-        heroHeading
       }
     }
   }

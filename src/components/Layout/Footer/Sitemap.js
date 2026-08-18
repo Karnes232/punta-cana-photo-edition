@@ -21,10 +21,6 @@ const Sitemap = () => {
       urlLink: localize("/puntacana-wedding-planner/"),
     },
     {
-      name: t("Birthday Celebrations"),
-      urlLink: localize("/birthday-celebrations/"),
-    },
-    {
       name: t("Gender reveal"),
       urlLink: localize("/gender-reveal-punta-cana/"),
     },
@@ -53,12 +49,6 @@ const Sitemap = () => {
 
       <Link to={localize("/event-planner/")} className="navLinks no-underline">
         <Trans>Corporate events</Trans>
-      </Link>
-      <Link to={localize("/event-rentals/")} className="navLinks no-underline">
-        <Trans>Rental Items</Trans>
-      </Link>
-      <Link to={localize("/floral-art/")} className="navLinks no-underline">
-        <Trans>Floral Art</Trans>
       </Link>
       <Link to={localize("/contact/")} className="navLinks no-underline">
         <Trans>Contact</Trans>

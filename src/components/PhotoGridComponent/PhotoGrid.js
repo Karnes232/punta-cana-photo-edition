@@ -62,12 +62,6 @@ const PhotoGrid = ({ photos, page }) => {
     }
   }
 
-  if (page === "Birthday Celebrations") {
-    if (windowWidth > 450) {
-      targetHeight = 400;
-    }
-  }
-
   if (page === "Bachelor Party") {
     if (windowWidth > 450) {
       targetHeight = 200;

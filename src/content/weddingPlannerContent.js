@@ -89,6 +89,9 @@ const english = {
     body: "Grecia is a Punta Cana wedding planner with 10 years of experience and multiple destination weddings planned and executed. She leads with empathy, close communication and meticulous follow-through—bringing couples, families, venues and vendors into one clear plan.",
     body2:
       "From the first conversation through the wedding day, Grecia and the Sertuin Events team remain available 24/7 to resolve details, protect the plan and help you feel supported.",
+    galleryTitle: "Grecia beside you throughout the experience",
+    galleryBody:
+      "Real planning moments with couples and brides, from the first decisions to the celebration in Punta Cana.",
   },
   faqTitle: "Punta Cana wedding planning FAQ",
   faqs: [
@@ -226,6 +229,9 @@ const spanish = {
     body: "Grecia es wedding planner en Punta Cana con 10 años de experiencia y múltiples bodas de destino planificadas y ejecutadas. Lidera con empatía, comunicación cercana y atención meticulosa, uniendo pareja, familia, venue y proveedores en un solo plan claro.",
     body2:
       "Desde la primera conversación hasta el día de la boda, Grecia y el equipo de Sertuin Events están disponibles 24/7 para resolver detalles, proteger el plan y brindar tranquilidad.",
+    galleryTitle: "Grecia a su lado durante todo el proceso",
+    galleryBody:
+      "Momentos reales de planificación con parejas y novias, desde las primeras decisiones hasta la celebración en Punta Cana.",
   },
   faqTitle: "Preguntas frecuentes sobre wedding planning",
   faqs: [

@@ -53,19 +53,6 @@ const RomanticEvents = ({ footer, setToggled }) => {
       <MenuItem
         component={
           <Link
-            to={localize("/birthday-celebrations/")}
-            className="no-underline uppercase text-sm"
-            onClick={footer ? undefined : () => setToggled(false)}
-          />
-        }
-      >
-        <p>
-          <Trans>Birthday Celebrations</Trans>
-        </p>
-      </MenuItem>
-      <MenuItem
-        component={
-          <Link
             to={localize("/gender-reveal-punta-cana/")}
             className="no-underline uppercase text-sm"
             onClick={footer ? undefined : () => setToggled(false)}

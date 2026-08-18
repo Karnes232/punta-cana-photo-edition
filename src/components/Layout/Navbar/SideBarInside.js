@@ -38,33 +38,6 @@ const SideBarInside = ({ footer, setToggled }) => {
         <MenuItem
           component={
             <Link
-              to={localize("/event-rentals/")}
-              className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={footer ? undefined : () => setToggled(false)}
-            />
-          }
-        >
-          <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            <Trans>Rental Items</Trans>
-          </p>
-        </MenuItem>
-        <MenuItem
-          component={
-            <Link
-              to={localize("/floral-art/")}
-              className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={footer ? undefined : () => setToggled(false)}
-            />
-          }
-        >
-          <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            <Trans>Floral Art</Trans>
-          </p>
-        </MenuItem>
-
-        <MenuItem
-          component={
-            <Link
               to={localize("/contact/")}
               className={footer ? "hamburgerSmall" : "hamburger"}
               onClick={footer ? undefined : () => setToggled(false)}

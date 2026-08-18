@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { Dialog, DialogPanel } from "@headlessui/react";
-import ItemCardSwiper from "../RentalComponents/ItemCardSwiper";
+import ItemCardSwiper from "../ImageCarousel/ItemCardSwiper";
 import ContactForm from "./ContactForm";
 
 const WeddingPackageForm = ({ weddingPackage }) => {

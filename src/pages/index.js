@@ -196,7 +196,16 @@ export const query = graphql`
         }
       }
     }
-    allContentfulServices(filter: { node_locale: { eq: $language } }) {
+    allContentfulServices(
+      filter: {
+        node_locale: { eq: $language }
+        page: {
+          url: {
+            nin: ["/event-rentals/", "/birthday-celebrations/", "/floral-art/"]
+          }
+        }
+      }
+    ) {
       nodes {
         typeOfService
         cardDescription

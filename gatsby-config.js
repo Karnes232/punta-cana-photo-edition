@@ -35,13 +35,16 @@ const retiredPublicPaths = [
   "/punta-cana-bachelor-party/",
   "/weddings-punta-cana/",
   "/photo-gallery/",
+  "/event-rentals/",
+  "/event-rentals/cart/",
+  "/birthday-celebrations/",
+  "/floral-art/",
 ];
 const nonIndexablePaths = [
   "/404/",
   "/404.html",
   "/dev-404-page/",
   "/contact/thankyou/",
-  "/event-rentals/cart/",
   "/share-your-experience/",
 ];
 
@@ -223,19 +226,7 @@ module.exports = {
           },
 
           {
-            matchPath: "/:lang?/event-rentals",
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath: "/:lang?/floral-art",
-            getLanguageFromPath: true,
-          },
-          {
             matchPath: "/:lang?/wedding",
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath: "/:lang?/birthday-celebrations",
             getLanguageFromPath: true,
           },
           {
