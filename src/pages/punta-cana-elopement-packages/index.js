@@ -12,7 +12,13 @@ const Index = ({ data, pageContext }) => {
 
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <ElopementExperience language={language} />
+      <ElopementExperience
+        language={language}
+        page={data.allContentfulPageContent.nodes[0]}
+        packages={data.allContentfulPackages.nodes}
+        galleries={data.allContentfulPhotoGallery.nodes}
+        faqs={data.allContentfulFaqsComponent.nodes}
+      />
     </Layout>
   );
 };
@@ -26,15 +32,21 @@ export const Head = ({ data, pageContext }) => {
   const pageUrl = `${rootUrl}${languagePrefix}/punta-cana-elopement-packages/`;
   const englishUrl = `${rootUrl}/punta-cana-elopement-packages/`;
   const spanishUrl = `${rootUrl}/es/punta-cana-elopement-packages/`;
+  const seo = data.allContentfulSeo.nodes[0];
   const title =
-    language === "es"
+    seo?.title ||
+    (language === "es"
       ? "Paquetes de Elopement en Punta Cana | Sertuin Events"
-      : "Punta Cana Elopement Packages | Sertuin Events";
+      : "Punta Cana Elopement Packages | Sertuin Events");
   const description =
-    language === "es"
+    seo?.description?.description ||
+    (language === "es"
       ? "Paquetes de elopement en Punta Cana desde US$999. Playa o catamarán privado, transporte para dos, fotógrafo y decoración elegible. Boda legal +US$1,200."
-      : "Punta Cana elopement packages from US$999. Private beach or catamaran, transportation for two, photographer and selectable décor. Legal wedding +US$1,200.";
-  const absoluteImage = `${rootUrl}${heroImage}`;
+      : "Punta Cana elopement packages from US$999. Private beach or catamaran, transportation for two, photographer and selectable décor. Legal wedding +US$1,200.");
+  const cmsImage = seo?.images?.file?.url;
+  const absoluteImage = cmsImage
+    ? `${cmsImage.startsWith("//") ? "https:" : ""}${cmsImage}`
+    : `${rootUrl}${heroImage}`;
   const imageAlt =
     language === "es"
       ? "Decoración tropical para una boda elopement en la playa de Punta Cana"
@@ -48,6 +60,10 @@ export const Head = ({ data, pageContext }) => {
     companyName: generalInfo.companyName,
     telephone: generalInfo.telephone,
     instagram: generalInfo.instagram,
+    title,
+    description,
+    experiences: data.allContentfulPackages.nodes,
+    faqs: data.allContentfulFaqsComponent.nodes,
   });
 
   return (
@@ -55,6 +71,7 @@ export const Head = ({ data, pageContext }) => {
       <Seo
         title={title}
         description={description}
+        keywords={(seo?.keywords || []).join(", ")}
         image={absoluteImage}
         imageAlt={imageAlt}
         url={pageUrl}
@@ -98,6 +115,113 @@ export const query = graphql`
         x
         telephone
         messengerLink
+      }
+    }
+    allContentfulSeo(
+      filter: { page: { eq: "Elopement" }, node_locale: { eq: $language } }
+    ) {
+      nodes {
+        title
+        keywords
+        images {
+          file {
+            url
+          }
+        }
+        description {
+          description
+        }
+      }
+    }
+    allContentfulPageContent(
+      filter: { page: { eq: "Elopement" }, node_locale: { eq: $language } }
+    ) {
+      nodes {
+        page
+        heroImageList {
+          gatsbyImage(
+            layout: FULL_WIDTH
+            width: 1800
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 80
+          )
+          file {
+            url
+          }
+          title
+        }
+        heroHeading
+        heroHeading2
+        heroEyebrow
+        sectionTitle
+        sectionTitle2
+        primaryCtaLabel
+        primaryCtaUrl
+        secondaryCtaLabel
+        secondaryCtaUrl
+        contactEyebrow
+        contactHeading
+        contactBody
+        paragraph1 {
+          raw
+        }
+        paragraph2 {
+          raw
+        }
+        paragraph3 {
+          raw
+        }
+      }
+    }
+    allContentfulPackages(
+      filter: { page: { eq: "Elopement" }, node_locale: { eq: $language } }
+      sort: { price: ASC }
+    ) {
+      nodes {
+        id
+        title
+        paragraph
+        included
+        price
+        image {
+          title
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 900
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 78
+          )
+        }
+      }
+    }
+    allContentfulPhotoGallery(
+      filter: { page: { eq: "Elopement" }, node_locale: { eq: $language } }
+    ) {
+      nodes {
+        title
+        images {
+          id
+          title
+          gatsbyImage(
+            layout: CONSTRAINED
+            width: 1100
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 78
+          )
+        }
+      }
+    }
+    allContentfulFaqsComponent(
+      filter: { page: { eq: "Elopement" }, node_locale: { eq: $language } }
+    ) {
+      nodes {
+        title
+        content {
+          content
+        }
       }
     }
   }

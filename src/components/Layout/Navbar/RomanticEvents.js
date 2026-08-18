@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { Trans, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 const RomanticEvents = ({ footer, setToggled }) => {
   const { t } = useTranslation();
+  const { language } = useI18next();
+  const localize = (path) => `${language === "es" ? "/es" : ""}${path}`;
   return (
     <SubMenu
       label={t("Romantic Events")}
@@ -12,7 +14,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
       <MenuItem
         component={
           <Link
-            to="/proposal"
+            to={localize("/proposal/")}
             className="no-underline uppercase text-sm"
             onClick={footer ? undefined : () => setToggled(false)}
           />
@@ -25,7 +27,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
       <MenuItem
         component={
           <Link
-            to="/punta-cana-elopement-packages"
+            to={localize("/punta-cana-elopement-packages/")}
             className="no-underline uppercase text-sm"
             onClick={footer ? undefined : () => setToggled(false)}
           />
@@ -38,7 +40,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
       <MenuItem
         component={
           <Link
-            to="/puntacana-wedding-planner"
+            to={localize("/puntacana-wedding-planner/")}
             className="no-underline uppercase text-sm"
             onClick={footer ? undefined : () => setToggled(false)}
           />
@@ -51,7 +53,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
       <MenuItem
         component={
           <Link
-            to="/birthday-celebrations"
+            to={localize("/birthday-celebrations/")}
             className="no-underline uppercase text-sm"
             onClick={footer ? undefined : () => setToggled(false)}
           />
@@ -64,7 +66,7 @@ const RomanticEvents = ({ footer, setToggled }) => {
       <MenuItem
         component={
           <Link
-            to="/gender-reveal-punta-cana"
+            to={localize("/gender-reveal-punta-cana/")}
             className="no-underline uppercase text-sm"
             onClick={footer ? undefined : () => setToggled(false)}
           />

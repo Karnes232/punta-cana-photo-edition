@@ -61,6 +61,7 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
         className={className}
         imgStyle={{ objectFit: "cover" }}
         loading={loading}
+        fetchPriority={loading === "eager" ? "high" : "auto"}
       />
     );
   }
@@ -73,6 +74,7 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
       }
       className={`${className} object-cover`}
       loading={loading}
+      fetchPriority={loading === "eager" ? "high" : "auto"}
     />
   );
 };
@@ -317,10 +319,11 @@ const WeddingPlannerExperience = ({
   language,
 }) => {
   const isSpanish = language === "es";
-  const content = getWeddingPlannerContent(language);
+  const content = getWeddingPlannerContent(language, page?.paragraph3?.raw);
   const formRef = useRef(null);
   const [selectedPackage, setSelectedPackage] = useState("");
   const heroImage = page?.heroImageList?.[0];
+  const editorialImages = page?.heroImageList?.slice(1) || [];
   const allGalleryImages = useMemo(
     () => (galleries || []).flatMap((gallery) => gallery?.images || []),
     [galleries],
@@ -357,10 +360,7 @@ const WeddingPlannerExperience = ({
         <div className="absolute inset-0 overflow-hidden">
           <ContentfulImage
             asset={heroImage}
-            alt={
-              heroImage?.title ||
-              "Destination wedding ceremony in Punta Cana planned by Sertuin Events"
-            }
+            alt="Destination wedding ceremony in Punta Cana planned by Sertuin Events"
             className="h-full w-full"
             loading="eager"
           />
@@ -432,20 +432,36 @@ const WeddingPlannerExperience = ({
               {content.introduction.body}
             </p>
             <div className="mt-8 grid grid-cols-2 gap-3">
-              <StaticImage
-                src="../../images/wedding-planner/grecia-table-design.webp"
-                alt="Grecia Mejía arranging a beachfront wedding table in Punta Cana"
-                className="h-72 w-full"
-                imgStyle={{ objectFit: "cover" }}
-                placeholder="blurred"
-              />
-              <StaticImage
-                src="../../images/wedding-planner/grecia-wedding-setup.webp"
-                alt="Grecia Mejía overseeing a wedding setup at a Punta Cana resort"
-                className="mt-8 h-72 w-full"
-                imgStyle={{ objectFit: "cover" }}
-                placeholder="blurred"
-              />
+              {editorialImages[0] ? (
+                <ContentfulImage
+                  asset={editorialImages[0]}
+                  alt="Grecia Mejía arranging a beachfront wedding table in Punta Cana"
+                  className="h-72 w-full"
+                />
+              ) : (
+                <StaticImage
+                  src="../../images/wedding-planner/grecia-table-design.webp"
+                  alt="Grecia Mejía arranging a beachfront wedding table in Punta Cana"
+                  className="h-72 w-full"
+                  imgStyle={{ objectFit: "cover" }}
+                  placeholder="blurred"
+                />
+              )}
+              {editorialImages[1] ? (
+                <ContentfulImage
+                  asset={editorialImages[1]}
+                  alt="Grecia Mejía overseeing a wedding setup at a Punta Cana resort"
+                  className="mt-8 h-72 w-full"
+                />
+              ) : (
+                <StaticImage
+                  src="../../images/wedding-planner/grecia-wedding-setup.webp"
+                  alt="Grecia Mejía overseeing a wedding setup at a Punta Cana resort"
+                  className="mt-8 h-72 w-full"
+                  imgStyle={{ objectFit: "cover" }}
+                  placeholder="blurred"
+                />
+              )}
             </div>
           </div>
         </div>
@@ -551,27 +567,51 @@ const WeddingPlannerExperience = ({
       <section className="bg-white px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
           <div className="grid grid-cols-2 gap-3">
-            <StaticImage
-              src="../../images/wedding-planner/south-asian-couple-with-grecia.webp"
-              alt="South Asian couple meeting wedding planner Grecia Mejía in Punta Cana"
-              className="col-span-2 h-80 w-full md:h-[480px]"
-              imgStyle={{ objectFit: "cover" }}
-              placeholder="blurred"
-            />
-            <StaticImage
-              src="../../images/wedding-planner/grecia-planning-at-resort.webp"
-              alt="Grecia Mejía planning wedding logistics at a Punta Cana resort"
-              className="h-56 w-full"
-              imgStyle={{ objectFit: "cover" }}
-              placeholder="blurred"
-            />
-            <StaticImage
-              src="../../images/wedding-planner/grecia-supporting-bride.webp"
-              alt="Grecia Mejía supporting a bride on her Punta Cana wedding day"
-              className="h-56 w-full"
-              imgStyle={{ objectFit: "cover" }}
-              placeholder="blurred"
-            />
+            {editorialImages[2] ? (
+              <ContentfulImage
+                asset={editorialImages[2]}
+                alt="South Asian couple meeting wedding planner Grecia Mejía in Punta Cana"
+                className="col-span-2 h-80 w-full md:h-[480px]"
+              />
+            ) : (
+              <StaticImage
+                src="../../images/wedding-planner/south-asian-couple-with-grecia.webp"
+                alt="South Asian couple meeting wedding planner Grecia Mejía in Punta Cana"
+                className="col-span-2 h-80 w-full md:h-[480px]"
+                imgStyle={{ objectFit: "cover" }}
+                placeholder="blurred"
+              />
+            )}
+            {editorialImages[3] ? (
+              <ContentfulImage
+                asset={editorialImages[3]}
+                alt="Grecia Mejía planning wedding logistics at a Punta Cana resort"
+                className="h-56 w-full"
+              />
+            ) : (
+              <StaticImage
+                src="../../images/wedding-planner/grecia-planning-at-resort.webp"
+                alt="Grecia Mejía planning wedding logistics at a Punta Cana resort"
+                className="h-56 w-full"
+                imgStyle={{ objectFit: "cover" }}
+                placeholder="blurred"
+              />
+            )}
+            {editorialImages[4] ? (
+              <ContentfulImage
+                asset={editorialImages[4]}
+                alt="Grecia Mejía supporting a bride on her Punta Cana wedding day"
+                className="h-56 w-full"
+              />
+            ) : (
+              <StaticImage
+                src="../../images/wedding-planner/grecia-supporting-bride.webp"
+                alt="Grecia Mejía supporting a bride on her Punta Cana wedding day"
+                className="h-56 w-full"
+                imgStyle={{ objectFit: "cover" }}
+                placeholder="blurred"
+              />
+            )}
           </div>
           <div>
             <SectionHeading
@@ -630,13 +670,21 @@ const WeddingPlannerExperience = ({
 
       <section className="bg-slate-950 px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <StaticImage
-            src="../../images/wedding-planner/grecia-supporting-bride.webp"
-            alt="Wedding planner Grecia Mejía with a bride in Punta Cana"
-            className="h-[520px] w-full"
-            imgStyle={{ objectFit: "cover", objectPosition: "center" }}
-            placeholder="blurred"
-          />
+          {editorialImages[5] ? (
+            <ContentfulImage
+              asset={editorialImages[5]}
+              alt="Wedding planner Grecia Mejía with a bride in Punta Cana"
+              className="h-[520px] w-full"
+            />
+          ) : (
+            <StaticImage
+              src="../../images/wedding-planner/grecia-supporting-bride.webp"
+              alt="Wedding planner Grecia Mejía with a bride in Punta Cana"
+              className="h-[520px] w-full"
+              imgStyle={{ objectFit: "cover", objectPosition: "center" }}
+              placeholder="blurred"
+            />
+          )}
           <div>
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.24em] text-amber-300">
               {content.grecia.eyebrow}

@@ -1,7 +1,7 @@
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import React from "react";
 
-const ContactInfo = ({ name, setName, formData, setFormData }) => {
+const ContactInfo = ({ formData, setFormData }) => {
   const { t } = useTranslation();
   const handleChange = ({ target }) => {
     setFormData({
@@ -13,7 +13,7 @@ const ContactInfo = ({ name, setName, formData, setFormData }) => {
     <>
       <div className="relative z-0 mb-6 w-full group">
         <input
-          type="name"
+          type="text"
           name="name"
           id="name"
           className="contactFormInput peer"

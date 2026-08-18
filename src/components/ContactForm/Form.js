@@ -6,7 +6,7 @@ import MoreInfo from "./MoreInfo";
 import OptionSelect from "./OptionSelect";
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 const Form = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const handlePhoneChange = (e) => {
@@ -17,29 +17,39 @@ const Form = () => {
       <form
         name="contact"
         method="POST"
-        action={`/contact/thankyou/?name=${name}`}
+        action={`${i18n.language === "es" ? "/es" : ""}/contact/thankyou/?name=${encodeURIComponent(name)}`}
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         id="contact"
         className="w-10/12 md:w-full max-w-md flex flex-col justify-center items-center mx-auto my-5"
       >
         <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="source" value="Contact page" />
+        <p className="hidden">
+          <label>
+            Do not fill this out: <input name="bot-field" />
+          </label>
+        </p>
         <ContactInfo name={name} setName={setName} />
         <div className="relative z-0 mb-6 w-full group">
           <PhoneInput
             type="tel"
-            name="telphone"
-            id="telphone"
+            name="telephone"
+            id="telephone"
             className={`contactFormInput peer `}
             placeholder={t("Enter phone number")}
             value={phone}
             onChange={handlePhoneChange}
+            required
             // onCountryChange={handleCountryChange}
           />
         </div>
         <OptionSelect />
         <MoreInfo />
-        <button className="no-underline border py-2 xl:py-3 px-6 xl:px-8 xl:text-lg rounded-3xl mt-5 text-gray-400 border-gray-500 transition duration-500 hover:bg-black hover:text-white">
+        <button
+          type="submit"
+          className="no-underline border py-2 xl:py-3 px-6 xl:px-8 xl:text-lg rounded-3xl mt-5 text-gray-400 border-gray-500 transition duration-500 hover:bg-black hover:text-white"
+        >
           <Trans>Send Message</Trans>
         </button>
       </form>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Layout from "../components/Layout/Layout";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
 import RichText from "../components/RichTextComponents/RichText";
@@ -7,18 +7,13 @@ import TextComponent from "../components/RichTextComponents/TextComponent";
 import ReactPlayer from "react-player";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Faqs from "../components/FaqsComponent/Faqs";
-// import Button from "../components/PackageForm/Button";
-import Form from "../components/PackageComponents/Form";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
 import PackageForm from "../components/PackageForm/PackageForm";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 const PackagePage = ({ pageContext, data }) => {
   const { t } = useTranslation();
-  const [host, setHost] = useState("");
-  // const [isSticky, setIsSticky] = useState(false);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,80 +35,6 @@ const PackagePage = ({ pageContext, data }) => {
   const image = getImage(
     data.allContentfulPackagePageContent.nodes[0].images[0],
   );
-  useEffect(() => {
-    setHost(window.location.origin);
-    // const handleScroll = () => {
-    //   const scrollY = window.scrollY; // Get current scroll position
-
-    //   // Define the scroll position at which the button should become sticky
-    //   const triggerPosition = 500; // Adjust this value based on your page layout
-
-    //   // Set the sticky state based on scroll position
-    //   if (scrollY > triggerPosition) {
-    //     setIsSticky(true);
-    //   } else {
-    //     setIsSticky(false);
-    //   }
-    // };
-
-    // // Add the scroll event listener
-    // window.addEventListener("scroll", handleScroll);
-
-    // // Clean up the event listener when the component unmounts
-    // return () => {
-    //   window.removeEventListener("scroll", handleScroll);
-    // };
-  }, [host]);
-
-  useEffect(() => {
-    if (isSubmitting) {
-      // Handle your form submission here
-
-      const redirectHref = `${host}/contact/thankyou/?name=${formData.name}`;
-      const form = document.getElementById("packageForm");
-      const newFormData = new FormData(form);
-      const formDataObj = {};
-      newFormData.forEach((value, key) => (formDataObj[key] = value));
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(newFormData).toString(),
-      }).then(() => {
-        window.location.href = redirectHref;
-      });
-
-      setIsSubmitting(false);
-    }
-  }, [formData, isSubmitting, host]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let totalPrice =
-      data.allContentfulPackagePageContent.nodes[0].packages[0].price;
-
-    const updatedData = selectedAddOns.reduce((acc, addOnId, index) => {
-      const result =
-        data.allContentfulPackagePageContent.nodes[0].packages[0].additions.filter(
-          (addOn) => addOn.id.includes(addOnId),
-        );
-
-      totalPrice += result[0].price;
-
-      return {
-        ...acc,
-        [`addOn${index + 1}`]: `${result[0].addition} - $${result[0].price}`,
-      };
-    }, {});
-
-    setFormData((prev) => ({
-      ...prev,
-      ...updatedData,
-      totalPrice: totalPrice,
-    }));
-
-    setIsSubmitting(true);
-  };
-
   const handleAddOnToggle = (addOnId) => {
     setSelectedAddOns((prev) =>
       prev.includes(addOnId.id)
@@ -125,21 +46,6 @@ const PackagePage = ({ pageContext, data }) => {
   return (
     <Layout generalInfo={pageContext.layout}>
       <HeroSwiper heroInfo={data.allContentfulPackagePageContent.nodes[0]} />
-      <div className="w-full max-w-5xl mx-auto relative">
-        {/* <Button
-          text="Contact Us"
-          customClass=""
-          sticky={isSticky}
-          packageInformation={data.allContentfulPackagePageContent.nodes[0]}
-          formData={formData}
-          setFormData={setFormData}
-          handleSubmit={handleSubmit}
-          selectedAddOns={selectedAddOns}
-          setSelectedAddOns={setSelectedAddOns}
-          handleAddOnToggle={handleAddOnToggle}
-        /> */}
-        <Form formData={formData} />
-      </div>
       <div className="mb-10">
         <RichText
           context={
@@ -235,10 +141,9 @@ const PackagePage = ({ pageContext, data }) => {
             packageInformation={data.allContentfulPackagePageContent.nodes[0]}
             formData={formData}
             setFormData={setFormData}
-            handleSubmit={handleSubmit}
             selectedAddOns={selectedAddOns}
-            setSelectedAddOns={setSelectedAddOns}
             handleAddOnToggle={handleAddOnToggle}
+            language={pageContext.language}
           />{" "}
         </>
       ) : (
@@ -288,6 +193,21 @@ export const Head = ({ pageContext, data }) => {
         language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
       />
       <link rel="canonical" href={siteUrl} />
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href={`${rootUrl}/packages/${slug}/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="es"
+        href={`${rootUrl}/es/packages/${slug}/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${rootUrl}/packages/${slug}/`}
+      />
     </>
   );
 };

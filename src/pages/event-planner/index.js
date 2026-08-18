@@ -68,8 +68,8 @@ export const Head = ({ pageContext, data }) => {
           { "@type": "Country", name: "Dominican Republic" },
         ],
         provider: {
-          "@type": "LocalBusiness",
-          "@id": "https://sertuinevents.com/#business",
+          "@type": "Organization",
+          "@id": "https://sertuinevents.com/#organization",
           name: "Sertuin Events",
           url: "https://sertuinevents.com/",
           email: "info@sertuinevents.com",
@@ -126,7 +126,11 @@ export const Head = ({ pageContext, data }) => {
         description={description}
         keywords={(seo?.keywords || []).join(", ")}
         image={image}
-        imageAlt="Sertuin Events corporate event management in Punta Cana"
+        imageAlt={
+          isSpanish
+            ? "Gestión de eventos corporativos de Sertuin Events en Punta Cana"
+            : "Sertuin Events corporate event management in Punta Cana"
+        }
         url={siteUrl}
         schemaMarkup={schemaMarkup}
         language={isSpanish ? "es" : "en"}
@@ -208,7 +212,7 @@ export const query = graphql`
             layout: FULL_WIDTH
             width: 1800
             placeholder: BLURRED
-            formats: [AUTO, WEBP]
+            formats: [AUTO, WEBP, AVIF]
             quality: 82
           )
           title
@@ -237,7 +241,7 @@ export const query = graphql`
             layout: CONSTRAINED
             width: 1000
             placeholder: BLURRED
-            formats: [AUTO, WEBP]
+            formats: [AUTO, WEBP, AVIF]
             quality: 78
           )
         }
@@ -253,7 +257,7 @@ export const query = graphql`
             layout: CONSTRAINED
             width: 1000
             placeholder: BLURRED
-            formats: [AUTO, WEBP]
+            formats: [AUTO, WEBP, AVIF]
             quality: 78
           )
         }

@@ -10,8 +10,8 @@ const FloralForm = ({ item }) => {
 
   return (
     <>
-      <form name="floral-art" data-netlify="true" hidden>
-        <input type="hidden" name="form-name" value="floral-art" />
+      <form name="contact" method="POST" data-netlify="true" hidden>
+        <input type="hidden" name="form-name" value="contact" />
         <input type="text" name="name" />
         <input type="email" name="email" />
         <input type="tel" name="telephone" />
@@ -25,6 +25,7 @@ const FloralForm = ({ item }) => {
       </form>
       <div className="flex justify-center items-center mb-5">
         <button
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
           className="bg-[#E4C05C] hover:bg-[#C6A855] text-white font-bold py-1 px-4 rounded "
         >
@@ -41,6 +42,7 @@ const FloralForm = ({ item }) => {
             <DialogPanel className="mb-20 xl:mr-10 w-full max-w-md md:max-w-4xl h-auto lg:h-[90vh] xl:h-auto rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
               <div className="absolute top-2 right-5">
                 <button
+                  type="button"
                   className="p-2 text-2xl text-gray-500"
                   onClick={() => setIsOpen(false)}
                 >

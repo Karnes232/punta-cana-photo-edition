@@ -2,16 +2,15 @@ import React from "react";
 import Layout from "../../../components/Layout/Layout";
 import { graphql } from "gatsby";
 import Seo from "../../../components/Layout/seo";
-import { useI18next } from "gatsby-plugin-react-i18next";
 import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
 import RentalForm from "../../../components/RentalComponents/RentalForm";
 
-const Index = ({ data }) => {
+const Index = ({ data, pageContext }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <div>
         <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-        <RentalForm rentalItems={data.allContentfulRentalItems.nodes} />
+        <RentalForm language={pageContext.language} />
       </div>
     </Layout>
   );
@@ -21,11 +20,11 @@ const Index = ({ data }) => {
 
 export default Index;
 
-export const Head = ({ data }) => {
-  const { language } = useI18next();
+export const Head = ({ data, pageContext }) => {
+  const language = pageContext.language;
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en" ? `/${language === "es" ? "es" : language}` : "/event-rentals/cart/"}`;
+  const siteUrl = `${data.site.siteMetadata.siteUrl}${language === "es" ? "/es" : ""}/event-rentals/cart/`;
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
   let JsonSchema = {};
@@ -44,6 +43,7 @@ export const Head = ({ data }) => {
         language={language === "en-US" ? "en" : language}
       />
       <link rel="canonical" href={siteUrl} />
+      <meta name="robots" content="noindex,follow" />
     </>
   );
 };

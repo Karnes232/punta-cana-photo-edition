@@ -3,9 +3,11 @@ import { ToastContainer, toast } from "react-toastify";
 import { CartContext } from "../../context/cart";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
+import { useI18next } from "gatsby-plugin-react-i18next";
 const CartComponent = () => {
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
     useContext(CartContext);
+  const { language } = useI18next();
 
   const emptyCart = cartItems.length === 0;
 
@@ -114,6 +116,7 @@ const CartComponent = () => {
                     </div>
                     <div className="flex gap-4 justify-center items-center">
                       <button
+                        type="button"
                         className="px-4 py-2 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
                         onClick={(e) => {
                           e.preventDefault();
@@ -124,6 +127,7 @@ const CartComponent = () => {
                       </button>
                       <p className="w-5 text-center">{item.quantity}</p>
                       <button
+                        type="button"
                         className="px-4 py-2 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
                         onClick={(e) => {
                           e.preventDefault();
@@ -160,6 +164,7 @@ const CartComponent = () => {
           </section> */}
 
           <button
+            type="button"
             className="px-4 py-2 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
             onClick={(e) => {
               e.preventDefault();
@@ -177,7 +182,10 @@ const CartComponent = () => {
             Looks like you haven't found anything yet. We understand that
             sometimes it's hard to choose — maybe this helps:
           </p>
-          <Link to="/event-rentals" className="font-medium text-lg">
+          <Link
+            to={`${language === "es" ? "/es" : ""}/event-rentals/`}
+            className="font-medium text-lg"
+          >
             View Our Rentals
           </Link>
         </div>

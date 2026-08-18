@@ -2,38 +2,41 @@ import { Link } from "gatsby";
 import React from "react";
 import PopOverComponent from "./PopOverComponent";
 import PopOverComponentHover from "./PopOverComponentHover";
-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import { Trans, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 const Sitemap = () => {
   const { t } = useTranslation();
+  const { language } = useI18next();
+  const localize = (path) => `${language === "es" ? "/es" : ""}${path}`;
   const RomanticEventLinks = [
     {
       name: t("Marriage Proposals"),
-      urlLink: "/proposal",
+      urlLink: localize("/proposal/"),
     },
     {
       name: t("Elopement & Vow renewal"),
-      urlLink: "/punta-cana-elopement-packages",
+      urlLink: localize("/punta-cana-elopement-packages/"),
     },
     {
       name: t("Wedding planning"),
-      urlLink: "/puntacana-wedding-planner",
+      urlLink: localize("/puntacana-wedding-planner/"),
     },
     {
       name: t("Birthday Celebrations"),
-      urlLink: "/birthday-celebrations",
+      urlLink: localize("/birthday-celebrations/"),
     },
     {
       name: t("Gender reveal"),
-      urlLink: "/gender-reveal-punta-cana",
+      urlLink: localize("/gender-reveal-punta-cana/"),
     },
   ];
 
   return (
     <div className="flex flex-row space-x-4">
-      <Link to="/" className="no-underline">
-        <button className={`navLinks`} translate="no">
-          Home
-        </button>
+      <Link
+        to={language === "es" ? "/es/" : "/"}
+        className="navLinks no-underline"
+      >
+        {language === "es" ? "Inicio" : "Home"}
       </Link>
       <div className="2xl:hidden">
         <PopOverComponent
@@ -48,25 +51,17 @@ const Sitemap = () => {
         />
       </div>
 
-      <Link to="/event-planner" className="no-underline">
-        <button className={`navLinks`} translate="no">
-          <Trans>Corporate events</Trans>
-        </button>
+      <Link to={localize("/event-planner/")} className="navLinks no-underline">
+        <Trans>Corporate events</Trans>
       </Link>
-      <Link to="/event-rentals" className="no-underline">
-        <button className={`navLinks`} translate="no">
-          <Trans>Rental Items</Trans>
-        </button>
+      <Link to={localize("/event-rentals/")} className="navLinks no-underline">
+        <Trans>Rental Items</Trans>
       </Link>
-      <Link to="/floral-art" className="no-underline">
-        <button className={`navLinks`} translate="no">
-          <Trans>Floral Art</Trans>
-        </button>
+      <Link to={localize("/floral-art/")} className="navLinks no-underline">
+        <Trans>Floral Art</Trans>
       </Link>
-      <Link to="/contact" className="no-underline">
-        <button className={`navLinks`} translate="no">
-          <Trans>Contact</Trans>
-        </button>
+      <Link to={localize("/contact/")} className="navLinks no-underline">
+        <Trans>Contact</Trans>
       </Link>
     </div>
   );

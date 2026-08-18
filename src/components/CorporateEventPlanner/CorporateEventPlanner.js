@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactPlayer from "react-player/lazy";
 import {
@@ -87,6 +87,7 @@ const EventImage = ({ asset, alt, className = "", loading = "lazy" }) => {
         className={className}
         imgStyle={{ objectFit: "cover" }}
         loading={loading}
+        fetchPriority={loading === "eager" ? "high" : "auto"}
       />
     );
   }
@@ -97,6 +98,7 @@ const EventImage = ({ asset, alt, className = "", loading = "lazy" }) => {
         alt={alt || asset?.title || "Corporate event in Punta Cana"}
         className={`${className} object-cover`}
         loading={loading}
+        fetchPriority={loading === "eager" ? "high" : "auto"}
       />
     );
   }
@@ -129,34 +131,7 @@ const CaseStudyGallery = ({ images, client }) => {
   );
 };
 
-const ProposalForm = ({ copy, whatsappUrl, isSpanish }) => {
-  const [status, setStatus] = useState("idle");
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setStatus("submitting");
-    const form = event.currentTarget;
-    const body = new URLSearchParams(new FormData(form));
-
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
-      });
-      if (!response.ok)
-        throw new Error(`Submission failed: ${response.status}`);
-      form.reset();
-      setStatus("success");
-    } catch {
-      setStatus("error");
-    }
-  };
-
-  const resetError = () => {
-    if (status === "error") setStatus("idle");
-  };
-
+const ProposalForm = ({ copy, isSpanish }) => {
   const labels = isSpanish
     ? {
         name: "Nombre y apellido",
@@ -192,14 +167,12 @@ const ProposalForm = ({ copy, whatsappUrl, isSpanish }) => {
 
   return (
     <form
-      id="proposal-form"
+      id="corporate-event-form"
       name="contact"
       method="POST"
-      action="/contact/thankyou/"
+      action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      onSubmit={handleSubmit}
-      onChange={resetError}
       className="rounded-sm bg-white p-6 shadow-2xl shadow-slate-950/15 md:p-10"
     >
       <input type="hidden" name="form-name" value="contact" />
@@ -313,43 +286,14 @@ const ProposalForm = ({ copy, whatsappUrl, isSpanish }) => {
 
       <button
         type="submit"
-        disabled={status === "submitting"}
-        className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-slate-950 px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-amber-700 disabled:cursor-wait disabled:opacity-60"
+        className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-slate-950 px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-amber-700"
       >
-        {status === "submitting"
-          ? isSpanish
-            ? "Enviando…"
-            : "Sending…"
-          : copy.submit}
-        {status !== "submitting" && <ArrowRight size={18} aria-hidden="true" />}
+        {copy.submit}
+        <ArrowRight size={18} aria-hidden="true" />
       </button>
       <p className="mt-4 text-center font-montserrat text-xs leading-5 text-slate-500">
         {labels.privacy}
       </p>
-
-      <div aria-live="polite">
-        {status === "success" && (
-          <div className="mt-6 border-l-4 border-emerald-600 bg-emerald-50 p-4 text-emerald-950">
-            <p className="font-montserrat font-semibold">{copy.successTitle}</p>
-            <p className="mt-1 font-montserrat text-sm leading-6">
-              {copy.successBody}
-            </p>
-          </div>
-        )}
-        {status === "error" && (
-          <div className="mt-6 border-l-4 border-red-600 bg-red-50 p-4 text-red-950">
-            <p className="font-montserrat text-sm leading-6">{copy.error}</p>
-            <a
-              className="mt-2 inline-flex font-montserrat text-sm font-semibold underline"
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp
-            </a>
-          </div>
-        )}
-      </div>
     </form>
   );
 };
@@ -387,7 +331,7 @@ const CorporateEventPlanner = ({
         <div className="absolute inset-0 overflow-hidden">
           <EventImage
             asset={heroImage}
-            alt={heroImage?.title || "Corporate event production in Punta Cana"}
+            alt="Corporate event production and on-site management in Punta Cana"
             className="h-full w-full"
             loading="eager"
           />

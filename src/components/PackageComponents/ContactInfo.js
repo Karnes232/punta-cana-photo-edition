@@ -13,7 +13,7 @@ const ContactInfo = ({ formData, setFormData, errors }) => {
     <div className="w-full">
       <div className="relative z-0 mb-6 w-full group">
         <input
-          type="name"
+          type="text"
           name="name"
           id="name"
           className={`contactFormInput peer ${errors.name ? "border-red-500" : ""}`}

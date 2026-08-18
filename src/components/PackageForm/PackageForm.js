@@ -5,13 +5,12 @@ const PackageForm = ({
   packageInformation,
   formData,
   setFormData,
-  handleSubmit,
   selectedAddOns,
-  setSelectedAddOns,
   handleAddOnToggle,
+  language,
 }) => {
-  let additions = packageInformation.packages[0].additions?.sort((a, b) =>
-    a.price > b.price ? 1 : -1,
+  const additions = [...(packageInformation.packages[0].additions || [])].sort(
+    (a, b) => (a.price > b.price ? 1 : -1),
   );
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -36,6 +35,13 @@ const PackageForm = ({
     }, 0);
     return packageInformation.packages[0].price + addOnsTotal;
   };
+  const selectedAddOnSummary = selectedAddOns
+    .map((id) => additions.find((item) => item.id === id))
+    .filter(Boolean)
+    .map((item) => `${item.addition} - $${item.price}`)
+    .join(", ");
+  const thankYouPath =
+    language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/";
   return (
     <>
       <div className="mx-auto px-4 py-12 w-full lg:h-full  flex justify-center items-center">
@@ -102,14 +108,42 @@ const PackageForm = ({
               <Trans>Book Your Session</Trans>
             </h3>
             <form
-              onSubmit={handleSubmit}
-              action={`/contact/thankyou/?name=${formData.name}`}
+              method="POST"
+              action={thankYouPath}
               className="space-y-4"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
-              name="packageForm"
+              name="contact"
               id="packageForm"
             >
+              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="source" value="Package detail page" />
+              <input
+                type="hidden"
+                name="subject"
+                value="New package information request"
+              />
+              <input
+                type="hidden"
+                name="package-name"
+                value={formData.packageName}
+              />
+              <input type="hidden" name="base-price" value={formData.price} />
+              <input
+                type="hidden"
+                name="selected-add-ons"
+                value={selectedAddOnSummary || "None"}
+              />
+              <input
+                type="hidden"
+                name="estimated-total"
+                value={calculateTotal()}
+              />
+              <p className="hidden">
+                <label>
+                  Do not fill this out: <input name="bot-field" />
+                </label>
+              </p>
               <div>
                 <label
                   htmlFor="name"

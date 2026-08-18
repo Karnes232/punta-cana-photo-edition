@@ -32,8 +32,6 @@ const PhotoGridLocal = ({ photos, page }) => {
     };
     photoList.push(photoObject);
   });
-  photoList = photoList.sort(() => Math.random() - 0.5);
-
   const windowWidth = useWindowWidth();
 
   let targetHeight = 500;

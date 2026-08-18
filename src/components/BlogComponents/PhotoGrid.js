@@ -13,7 +13,6 @@ const PhotoGrid = ({ tourPhotos }) => {
     };
     photoList.push(photoObject);
   });
-  photoList = photoList.sort(() => Math.random() - 0.5);
   return (
     <div className="min-w-[1080px] w-max ">
       <PhotoAlbum

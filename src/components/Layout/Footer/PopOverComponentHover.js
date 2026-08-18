@@ -58,12 +58,10 @@ const PopOverComponentHover = ({ title, links }) => {
               return (
                 <Link
                   to={link.urlLink}
-                  className="no-underline w-64 my-4 text-center"
+                  className="navLinks popoverLinks my-4 w-64 text-center no-underline"
                   key={index}
                 >
-                  <button className={`navLinks popoverLinks`} translate="no">
-                    {link.name}
-                  </button>
+                  {link.name}
                 </Link>
               );
             })}

@@ -10,7 +10,7 @@ const HeroSwiperLocal = ({ heroInfo, className }) => {
   let photoListEdited = [];
   heroInfo?.heroImageList?.forEach((e) => {
     let image = {
-      title: e.title,
+      title: e.title || heroInfo.heroHeading,
       image: getImage(e.localFile.childImageSharp.gatsbyImageData),
     };
     photoListEdited.push(image);
@@ -54,6 +54,7 @@ const HeroSwiperLocal = ({ heroInfo, className }) => {
                   image={image.image}
                   alt={image.title}
                   loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
                   className={`w-full object-cover object-center ${height}`}
                 />
               </SwiperSlide>

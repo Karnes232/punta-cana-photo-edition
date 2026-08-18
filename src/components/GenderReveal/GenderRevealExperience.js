@@ -95,6 +95,7 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
         className={className}
         imgStyle={{ objectFit: "cover" }}
         loading={loading}
+        fetchPriority={loading === "eager" ? "high" : "auto"}
       />
     );
   }
@@ -105,6 +106,7 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
       alt={alt || asset?.title || "Gender reveal in Punta Cana"}
       className={`${className} object-cover`}
       loading={loading}
+      fetchPriority={loading === "eager" ? "high" : "auto"}
     />
   );
 };
@@ -343,12 +345,10 @@ const GenderRevealExperience = ({
           {heroAsset ? (
             <ContentfulImage
               asset={heroAsset}
-              alt={
-                heroAsset?.title ||
-                "Custom gender reveal celebration in Punta Cana"
-              }
+              alt="Custom gender reveal celebration in Punta Cana"
               className="h-full w-full"
               loading="eager"
+              fetchPriority="high"
             />
           ) : (
             <StaticImage

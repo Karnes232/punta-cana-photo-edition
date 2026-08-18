@@ -1,7 +1,7 @@
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import React from "react";
 
-const ContactInfo = ({ formData, setFormData, errors }) => {
+const ContactInfo = ({ formData, setFormData, errors, idPrefix }) => {
   const { t } = useTranslation();
   const handleChange = ({ target }) => {
     setFormData({
@@ -13,16 +13,16 @@ const ContactInfo = ({ formData, setFormData, errors }) => {
     <div>
       <div className="relative z-0 mb-6 w-full group">
         <input
-          type="name"
+          type="text"
           name="name"
-          id="name"
+          id={`${idPrefix}-name`}
           className={`contactFormInput peer ${errors.name ? "border-red-500" : ""}`}
           placeholder=" "
           required
           value={formData.name}
           onChange={handleChange}
         />
-        <label htmlFor="name" className="contactFormLabel">
+        <label htmlFor={`${idPrefix}-name`} className="contactFormLabel">
           <Trans>Full Name</Trans>
         </label>
         {errors.name && (
@@ -33,13 +33,13 @@ const ContactInfo = ({ formData, setFormData, errors }) => {
         <input
           type="email"
           name="email"
-          id="email"
+          id={`${idPrefix}-email`}
           className={`contactFormInput peer ${errors.email ? "border-red-500" : ""}`}
           placeholder=" "
           required
           onChange={handleChange}
         />
-        <label htmlFor="email" className="contactFormLabel">
+        <label htmlFor={`${idPrefix}-email`} className="contactFormLabel">
           <Trans>Email</Trans>
         </label>
         {errors.email && (
@@ -50,13 +50,13 @@ const ContactInfo = ({ formData, setFormData, errors }) => {
         <input
           type="tel"
           name="telephone"
-          id="telephone"
+          id={`${idPrefix}-telephone`}
           className={`contactFormInput peer ${errors.telephone ? "border-red-500" : ""}`}
           placeholder=" "
           required
           onChange={handleChange}
         />
-        <label htmlFor="telephone" className="contactFormLabel">
+        <label htmlFor={`${idPrefix}-telephone`} className="contactFormLabel">
           <Trans>Telephone</Trans>
         </label>
         {errors.telephone && (
@@ -67,26 +67,29 @@ const ContactInfo = ({ formData, setFormData, errors }) => {
         <input
           type="text"
           name="shippingAddress"
-          id="shippingAddress"
+          id={`${idPrefix}-shipping-address`}
           className="contactFormInput peer"
           placeholder=" "
           required
           onChange={handleChange}
         />
-        <label htmlFor="shippingAddress" className="contactFormLabel">
+        <label
+          htmlFor={`${idPrefix}-shipping-address`}
+          className="contactFormLabel"
+        >
           <Trans>Ship To</Trans>
         </label>
       </div>
 
       <div className="relative z-0 mb-6 w-full group">
         <label
-          htmlFor="message"
+          htmlFor={`${idPrefix}-message`}
           className="block mb-2 text-sm font-medium text-gray-500"
         >
           <Trans>Message</Trans>
         </label>
         <textarea
-          id="message"
+          id={`${idPrefix}-message`}
           name="message"
           rows="4"
           className="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-0 focus:border-black additionalInfo"

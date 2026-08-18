@@ -271,8 +271,53 @@ const spanish = {
   },
 };
 
-export const getWeddingPlannerContent = (language) =>
-  language === "es" ? spanish : english;
+const mergeManagedContent = (base, override) => {
+  if (!override || typeof override !== "object" || Array.isArray(override)) {
+    return base;
+  }
+
+  return Object.entries(override).reduce(
+    (result, [key, value]) => {
+      result[key] =
+        value &&
+        typeof value === "object" &&
+        !Array.isArray(value) &&
+        base?.[key] &&
+        typeof base[key] === "object" &&
+        !Array.isArray(base[key])
+          ? mergeManagedContent(base[key], value)
+          : value;
+      return result;
+    },
+    { ...base },
+  );
+};
+
+const parseManagedContent = (raw) => {
+  if (!raw) return null;
+
+  try {
+    const document = JSON.parse(raw);
+    const readText = (node) => {
+      if (typeof node?.value === "string") return node.value;
+      return (node?.content || []).map(readText).join(" ");
+    };
+    const text = readText(document).trim();
+    const start = text.indexOf("{");
+    const end = text.lastIndexOf("}");
+    return start >= 0 && end > start
+      ? JSON.parse(text.slice(start, end + 1))
+      : null;
+  } catch {
+    return null;
+  }
+};
+
+export const getWeddingPlannerContent = (language, managedRaw) =>
+  mergeManagedContent(
+    language === "es" ? spanish : english,
+    parseManagedContent(managedRaw),
+  );
 
 export const normalizeWeddingFaqs = (nodes, language) => {
   const fallback = getWeddingPlannerContent(language).faqs;

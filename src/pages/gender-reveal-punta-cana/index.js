@@ -201,7 +201,7 @@ export const query = graphql`
             layout: CONSTRAINED
             width: 1600
             placeholder: BLURRED
-            formats: [AUTO, WEBP]
+            formats: [AUTO, WEBP, AVIF]
             quality: 80
           )
         }

@@ -55,6 +55,21 @@ export const Head = ({ pageContext, data }) => {
         }
       />
       <link rel="canonical" href={siteUrl} />
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href={`${data.site.siteMetadata.siteUrl}/contact/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="es"
+        href={`${data.site.siteMetadata.siteUrl}/es/contact/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${data.site.siteMetadata.siteUrl}/contact/`}
+      />
     </>
   );
 };

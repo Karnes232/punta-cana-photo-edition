@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 const TextComponent = ({
   title,
   heading,
@@ -12,16 +11,7 @@ const TextComponent = ({
 
   return (
     <div className="relative">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 3,
-          delay: 0.3,
-        }}
-        className="flex flex-col justify-center max-w-5xl mx-5 lg:p-2 xl:mx-auto"
-      >
+      <div className="flex flex-col justify-center max-w-5xl mx-5 lg:p-2 xl:mx-auto">
         {title && (
           <HeadingTag
             id={id}
@@ -40,7 +30,7 @@ const TextComponent = ({
         ) : (
           <></>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 };

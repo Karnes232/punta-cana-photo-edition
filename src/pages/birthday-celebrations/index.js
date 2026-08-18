@@ -134,6 +134,21 @@ export const Head = ({ pageContext, data }) => {
         }
       />
       <link rel="canonical" href={siteUrl} />
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href={`${data.site.siteMetadata.siteUrl}/birthday-celebrations/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="es"
+        href={`${data.site.siteMetadata.siteUrl}/es/birthday-celebrations/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${data.site.siteMetadata.siteUrl}/birthday-celebrations/`}
+      />
     </>
   );
 };

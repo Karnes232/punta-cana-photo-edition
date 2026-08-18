@@ -179,7 +179,11 @@ const ServiceCard = ({ service, language }) => {
       <div className="absolute inset-0 transition duration-700 group-hover:scale-[1.035]">
         <GatsbyImage
           image={image}
-          alt={service.cardImage?.title || title}
+          alt={
+            language === "es"
+              ? `${title} organizado por Sertuin Events en Punta Cana`
+              : `${title} planned by Sertuin Events in Punta Cana`
+          }
           className="h-full w-full"
           imgClassName="object-cover"
         />
@@ -215,6 +219,8 @@ const HomeContactForm = ({ content, language }) => (
     className="border border-white/15 bg-white p-6 text-black shadow-2xl md:p-9"
   >
     <input type="hidden" name="form-name" value="contact" />
+    <input type="hidden" name="source" value="Sertuin Events home page" />
+    <input type="hidden" name="subject" value="New event planning inquiry" />
     <p className="hidden">
       <label>
         Do not fill this out: <input name="bot-field" />
@@ -354,10 +360,12 @@ const HomeExperience = ({
             <GatsbyImage
               image={heroImage}
               alt={
-                page?.heroImageList?.[0]?.title ||
-                "Elegant event planned by Sertuin Events in Punta Cana"
+                language === "es"
+                  ? "Evento de destino planificado por Sertuin Events en Punta Cana"
+                  : "Destination event planned by Sertuin Events in Punta Cana"
               }
               loading="eager"
+              fetchPriority="high"
               className="h-full w-full"
               imgClassName="object-cover object-center"
             />

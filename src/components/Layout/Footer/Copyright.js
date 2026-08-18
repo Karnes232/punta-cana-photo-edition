@@ -7,35 +7,9 @@ const Copyright = ({ companyName, language }) => {
     setDate(new Date().getFullYear());
   }, []);
 
-  const jsonLd =
-    language === "es"
-      ? {
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          name: "Atribución del desarrollo del sitio web",
-          inLanguage: "es",
-          creator: {
-            "@type": "Organization",
-            "@id": "https://www.dr-webstudio.com/#organization",
-            name: "DR Web Studio",
-            url: "https://www.dr-webstudio.com/es",
-          },
-        }
-      : {
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          name: "Website build attribution",
-          inLanguage: "en",
-          creator: {
-            "@type": "Organization",
-            "@id": "https://www.dr-webstudio.com/#organization",
-            name: "DR Web Studio",
-            url: "https://www.dr-webstudio.com/en",
-          },
-        };
   return (
     <div className=" flex flex-col lg:flex-row justify-between py-4">
-      <Link to="/">
+      <Link to={language === "es" ? "/es/" : "/"}>
         <p className="tracking-wider cursor-pointer text-slate-400">
           All content Copyright &copy; {date} {companyName}
         </p>
@@ -50,11 +24,15 @@ const Copyright = ({ companyName, language }) => {
           }
           className="flex items-center gap-1 hover:text-orange-500 cursor-pointer"
           target="_blank"
+          rel="noreferrer"
         >
           <img
             src="https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png"
-            alt="DR Web Studio"
+            alt="DR Web Studio logo"
             className="h-4"
+            width="17"
+            height="16"
+            loading="lazy"
           />
           DR Web Studio
         </a>
@@ -63,10 +41,6 @@ const Copyright = ({ companyName, language }) => {
           ? "Desarrollo Web en República Dominicana"
           : "Web Development in the Dominican Republic"}
       </p>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
     </div>
   );
 };

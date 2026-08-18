@@ -24,10 +24,9 @@ const ExpandableMessengerButton = ({ messengerLink, telephone }) => {
           aria-label="WhatsApp"
           rel="noreferrer"
           target="_blank"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-shadow duration-200 hover:shadow-xl"
         >
-          <button className="flex justify-center items-center rounded-full h-12 w-12 bg-[#25D366] text-white shadow-lg hover:shadow-xl transition-shadow duration-200">
-            <FaWhatsapp size={24} />
-          </button>
+          <FaWhatsapp size={24} />
         </a>
       </div>
 
@@ -44,10 +43,9 @@ const ExpandableMessengerButton = ({ messengerLink, telephone }) => {
           aria-label="Messenger"
           rel="noreferrer"
           target="_blank"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#007FFF] text-white shadow-lg transition-shadow duration-200 hover:shadow-xl"
         >
-          <button className="flex justify-center items-center rounded-full h-12 w-12 bg-[#007FFF] text-white shadow-lg hover:shadow-xl transition-shadow duration-200">
-            <FaFacebookMessenger size={24} />
-          </button>
+          <FaFacebookMessenger size={24} />
         </a>
       </div>
 
