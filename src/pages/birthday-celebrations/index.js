@@ -9,7 +9,6 @@ import TextComponent from "../../components/TextComponent/TextComponent";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import Faqs from "../../components/FaqsComponent/Faqs";
-import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import HeroSwiperLocal from "../../components/HeroSwiper/HeroSwiperLocal";
 import ContentBlockLocal from "../../components/ContentBlockComponent/ContentBlockLocal";
@@ -104,7 +103,6 @@ const Index = ({ data }) => {
         <PhotoGrid photos={section3.images} page={section3.page} />
       )}
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
-      <FirebaseTestimonialsComponent packagePage={"birthday-celebrations"} />
     </Layout>
   );
 };

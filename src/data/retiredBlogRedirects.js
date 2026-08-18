@@ -77,6 +77,20 @@ const proposalBlogSlugs = split(`
   punta-cana-perfect-stage-sertuin-events
   punta-cana-proposal-package-comparison
   surprise-proposal-videographer-punta-cana
+  100-reasons-why-sertuin-events-is-the-most-recognized-company-for-marriage-proposals-in-punta-cana
+  fiesta-americana-funeeq-punta-cana-proposal-packages-2026-2027
+  exclusive-punta-cana-proposal-packages-with-photography-included
+  punta-cana-beach-proposal-packages
+  romantic-marriage-proposal-punta-cana
+  all-inclusive-resort-proposal-punta-cana
+  luxury-punta-cana-marriage-proposal-packages-for-couples
+  gourmet-dinner-marriage-proposal-packages-punta-cana-2026
+  most-romantic-beach-proposal-packages-punta-cana-2026
+  marriage-proposals-in-punta-cana-luxury-romantic-engagement-packages
+  boho-beach-proposal-punta-cana-romantic-simplicity
+  proposal-on-saona-island-punta-cana
+  uvero-alto-beach-proposal-punta-cana-secluded-romance-in-the-caribbean
+  how-sertuin-events-creates-unforgettable-marriage-proposals-in-punta-cana
 `);
 
 const weddingBlogSlugs = split(`

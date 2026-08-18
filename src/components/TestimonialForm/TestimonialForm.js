@@ -1,232 +1,100 @@
-import React, { useEffect, useState } from "react";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { db, storage } from "../../config/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import React from "react";
 
 const TestimonialForm = () => {
-  const [host, setHost] = useState("");
-  const [error, setError] = useState(false);
-  const [formData, setFormData] = useState({
-    names: "",
-    package: "",
-    testimonial: "",
-    photos: [],
-  });
-
-  useEffect(() => {
-    setHost(window.location.origin); // };
-  }, [host]);
-  const [fileError, setFileError] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const MAX_FILES = 3;
-
-  const packageOptions = [
-    {
-      page: "proposal",
-      value: "Marriage Proposal Experience",
-    },
-    {
-      page: "elopement-vow-renewal",
-      value: "Elopement or Vow Renewal",
-    },
-    {
-      page: "puntacana-wedding-planner",
-      value: "Wedding Planner",
-    },
-    {
-      page: "birthday-celebrations",
-      value: "Birthday Celebrations",
-    },
-    {
-      page: "gender-reveal-and-baby-showers",
-      value: "Gender Reveal and Baby Showers",
-    },
-    {
-      page: "punta-cana-bachelor-party",
-      value: "Bachelor Party",
-    },
-    {
-      page: "event-planner",
-      value: "Corporate Events",
-    },
-  ];
-
-  const handleFileChange = (e) => {
-    const files = Array.from(e.target.files);
-
-    if (files.length > MAX_FILES) {
-      setFileError(`Please select a maximum of ${MAX_FILES} photos`);
-      e.target.value = ""; // Reset file input
-      return;
-    }
-
-    // Optional: Check file sizes (example: 5MB per file)
-    const MAX_SIZE = 5 * 1024 * 1024; // 5MB in bytes
-    const hasLargeFiles = files.some((file) => file.size > MAX_SIZE);
-
-    if (hasLargeFiles) {
-      setFileError("Each file must be less than 5MB");
-      e.target.value = "";
-      return;
-    }
-
-    setFileError("");
-    setFormData({ ...formData, photos: files });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    const redirectHref = `${host}/contact/thankyou/?name=${encodeURIComponent(formData.names)}`;
-    try {
-      // Upload photos
-      const photoUrls = await Promise.all(
-        Array.from(formData.photos).map(async (photo) => {
-          const storageRef = ref(
-            storage,
-            `testimonials/${Date.now()}-${photo.name}`,
-          );
-          await uploadBytes(storageRef, photo);
-          return getDownloadURL(storageRef);
-        }),
-      );
-      let docName = `testimonials-${formData.package}`;
-      // Save testimonial to Firestore
-      await addDoc(collection(db, docName), {
-        names: formData.names,
-        package: formData.package,
-        testimonial: formData.testimonial,
-        photoUrls,
-        createdAt: new Date(),
-      });
-
-      // Reset form
-      await setFormData({
-        names: "",
-        package: "",
-        testimonial: "",
-        photos: [],
-      });
-      window.location.href = redirectHref;
-    } catch (error) {
-      console.error("Error submitting testimonial:", error);
-      setError(true);
-    }
-    setIsSubmitting(false);
-  };
+  const inputClass =
+    "mt-2 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 font-montserrat text-base text-slate-950 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-100";
 
   return (
-    <>
-      <div className="bg-white p-6 rounded-lg shadow-sm border pb-20 lg:pb-10 w-full max-w-3xl mx-auto">
-        <h3 className="text-xl font-semibold mb-6">
+    <section className="mx-auto w-full max-w-3xl px-6 py-16 md:py-24">
+      <div className="border border-slate-200 bg-white p-6 shadow-sm md:p-10">
+        <h1 className="font-crimson text-4xl font-medium text-slate-950 md:text-5xl">
           Tell Us About Your Experience
-        </h3>
+        </h1>
+        <p className="mt-4 font-montserrat text-base leading-7 text-slate-600">
+          Thank you for choosing Sertuin Events. Share your experience with our
+          team; your feedback helps us continue improving every celebration.
+        </p>
         <form
-          onSubmit={handleSubmit}
-          className="max-w-2xl mx-auto p-6 space-y-8"
+          name="contact"
+          method="POST"
+          action="/contact/thankyou/"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          encType="multipart/form-data"
+          className="mt-9 space-y-6"
         >
-          <div>
-            <label
-              htmlFor="names"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Names
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="source" value="Client testimonial" />
+          <input
+            type="hidden"
+            name="subject"
+            value="New Sertuin Events client testimonial"
+          />
+          <p className="hidden">
+            <label>
+              Do not fill this out: <input name="bot-field" />
             </label>
+          </p>
+          <label className="block font-montserrat text-sm font-semibold text-slate-800">
+            Names *
             <input
+              className={inputClass}
               type="text"
               name="names"
-              value={formData.names}
-              onChange={(e) =>
-                setFormData({ ...formData, names: e.target.value })
-              }
-              className="w-full p-2 border rounded-md"
+              autoComplete="name"
               required
             />
-          </div>
-
-          <div>
-            <label
-              htmlFor="package"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Package
-            </label>
-
+          </label>
+          <label className="block font-montserrat text-sm font-semibold text-slate-800">
+            Service *
             <select
-              value={formData.package}
-              onChange={(e) =>
-                setFormData({ ...formData, package: e.target.value })
-              }
+              className={inputClass}
+              name="service"
+              defaultValue=""
               required
-              className="w-full p-2 border rounded-md bg-white"
             >
-              <option value="">Select a package</option>
-              {packageOptions.map((option) => (
-                <option key={option.page} value={option.page}>
-                  {option.value}
-                </option>
-              ))}
+              <option value="">Select a service</option>
+              <option value="Marriage Proposal Experience">
+                Marriage Proposal Experience
+              </option>
+              <option value="Elopement or Vow Renewal">
+                Elopement or Vow Renewal
+              </option>
+              <option value="Wedding Planning">Wedding Planning</option>
+              <option value="Birthday Celebration">Birthday Celebration</option>
+              <option value="Gender Reveal or Baby Shower">
+                Gender Reveal or Baby Shower
+              </option>
+              <option value="Corporate Event">Corporate Event</option>
+              <option value="Event Rentals">Event Rentals</option>
             </select>
-          </div>
-
-          <div>
-            <label
-              htmlFor="testimonial"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Your Experience
-            </label>
+          </label>
+          <label className="block font-montserrat text-sm font-semibold text-slate-800">
+            Your experience *
             <textarea
-              required
+              className={`${inputClass} min-h-40 resize-y`}
               name="testimonial"
-              value={formData.testimonial}
-              onChange={(e) =>
-                setFormData({ ...formData, testimonial: e.target.value })
-              }
-              rows="4"
-              className="w-full p-2 border rounded-md"
+              required
             />
-          </div>
-          <div>
-            <label
-              htmlFor="photos"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Upload Photos (Maximum {MAX_FILES} photos)
-            </label>
+          </label>
+          <label className="block font-montserrat text-sm font-semibold text-slate-800">
+            Optional photo
             <input
+              className={inputClass}
               type="file"
-              name="photos"
-              multiple
-              accept="image/*"
-              onChange={handleFileChange}
-              className="w-full p-2 border rounded-md"
+              name="testimonial-photo"
+              accept="image/jpeg,image/png,image/webp"
             />
-            {fileError && (
-              <p className="text-red-500 text-sm mt-1">{fileError}</p>
-            )}
-            {formData.photos.length > 0 && (
-              <p className="text-sm text-gray-600 mt-1">
-                {formData.photos.length}{" "}
-                {formData.photos.length === 1 ? "photo" : "photos"} selected
-              </p>
-            )}
-          </div>
+          </label>
           <button
             type="submit"
-            disabled={isSubmitting}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
+            className="inline-flex w-full items-center justify-center bg-slate-950 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white transition hover:bg-amber-700"
           >
-            {isSubmitting ? "Submitting..." : "Submit Testimonial"}
+            Submit testimonial
           </button>
-          {error && (
-            <p className="text-red-500 text-sm mt-1">
-              There was an error submitting your testimonial. Please try again.
-            </p>
-          )}
         </form>
       </div>
-    </>
+    </section>
   );
 };
 

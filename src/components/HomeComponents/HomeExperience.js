@@ -18,6 +18,10 @@ const legacyRoutes = new Set([
   "/punta-cana-bachelor-party/",
   "/weddings-punta-cana/",
   "/photo-gallery/",
+  "/real-estate-photography/",
+  "/videos-and-comercial-photos/",
+  "/packages/photography-event-planner/",
+  "/packages/videography-event-planner/",
 ]);
 
 const normalizeInternalPath = (path) => {

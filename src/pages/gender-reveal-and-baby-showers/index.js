@@ -10,7 +10,6 @@ import OurPackages from "../../components/PackageComponents/OurPackages";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
 import Faqs from "../../components/FaqsComponent/Faqs";
-import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Index = ({ data }) => {
@@ -49,9 +48,6 @@ const Index = ({ data }) => {
         page={"gender-reveal-and-baby-showers"}
       />
       <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
-      <FirebaseTestimonialsComponent
-        packagePage={"gender-reveal-and-baby-showers"}
-      />
     </Layout>
   );
 };
