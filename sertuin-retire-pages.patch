@@ -1,0 +1,3129 @@
+diff --git a/README.md b/README.md
+index e16d223..909fedc 100644
+--- a/README.md
++++ b/README.md
+@@ -47,9 +47,7 @@ Complete English and Spanish localization with dynamic language switching and SE
+ - **Blog System** - Full-featured blog with build-time generation
+   - 📖 [Example: Complete Guide to Organizing Events in Punta Cana](https://sertuinevents.com/blog/complete-guide-to-organizing-events-in-punta-cana/)
+ - **Equipment Rentals** - Dynamic catalog with real-time inventory
+-  - 🛠️ [Event Rentals Catalog](https://sertuinevents.com/event-rentals/)
+ - **Floral Arrangements** - Curated collections with detailed galleries
+-  - 🌸 [Floral Art Portfolio](https://sertuinevents.com/floral-art/)
+ 
+ ### 🎯 Interactive Tools
+ 
+@@ -83,7 +81,6 @@ Complete English and Spanish localization with dynamic language switching and SE
+ - **📦 Package Catalog** - Dynamic pages built from Contentful
+ - **📝 Blog** - SEO-optimized articles and guides
+ - **🛠️ Equipment Rentals** - Searchable catalog with pricing
+-- **🌸 Floral Art** - Gallery and service descriptions
+ - **💬 Testimonials** - Client experience sharing system
+ 
+ ### 🔐 Administrative System
+diff --git a/gatsby-config.js b/gatsby-config.js
+index 7be5510..1ac097e 100644
+--- a/gatsby-config.js
++++ b/gatsby-config.js
+@@ -35,13 +35,16 @@ const retiredPublicPaths = [
+   "/punta-cana-bachelor-party/",
+   "/weddings-punta-cana/",
+   "/photo-gallery/",
++  "/event-rentals/",
++  "/event-rentals/cart/",
++  "/birthday-celebrations/",
++  "/floral-art/",
+ ];
+ const nonIndexablePaths = [
+   "/404/",
+   "/404.html",
+   "/dev-404-page/",
+   "/contact/thankyou/",
+-  "/event-rentals/cart/",
+   "/share-your-experience/",
+ ];
+ 
+@@ -222,22 +225,10 @@ module.exports = {
+             getLanguageFromPath: true,
+           },
+ 
+-          {
+-            matchPath: "/:lang?/event-rentals",
+-            getLanguageFromPath: true,
+-          },
+-          {
+-            matchPath: "/:lang?/floral-art",
+-            getLanguageFromPath: true,
+-          },
+           {
+             matchPath: "/:lang?/wedding",
+             getLanguageFromPath: true,
+           },
+-          {
+-            matchPath: "/:lang?/birthday-celebrations",
+-            getLanguageFromPath: true,
+-          },
+           {
+             matchPath: "/:lang?/puntacana-wedding-planner",
+             getLanguageFromPath: true,
+diff --git a/gatsby-node.js b/gatsby-node.js
+index f1b0fb6..5dee71e 100644
+--- a/gatsby-node.js
++++ b/gatsby-node.js
+@@ -22,6 +22,14 @@ const retiredStaticPaths = new Set([
+   "/es/wedding",
+   "/photo-gallery",
+   "/es/photo-gallery",
++  "/event-rentals",
++  "/es/event-rentals",
++  "/event-rentals/cart",
++  "/es/event-rentals/cart",
++  "/birthday-celebrations",
++  "/es/birthday-celebrations",
++  "/floral-art",
++  "/es/floral-art",
+ ]);
+ 
+ exports.onCreatePage = ({ page, actions }) => {
+@@ -256,41 +264,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
+         },
+       });
+ 
+-      const eventRentalsPath =
+-        urlPath === "" ? "/event-rentals" : `/${urlPath}/event-rentals`;
+-      createPage({
+-        path: eventRentalsPath,
+-        component: path.resolve("./src/pages/event-rentals/index.js"),
+-        context: {
+-          language: contentfulCode,
+-          urlLanguage: urlCode,
+-        },
+-      });
+-
+-      const floralPath =
+-        urlPath === "" ? "/floral-art" : `/${urlPath}/floral-art`;
+-      createPage({
+-        path: floralPath,
+-        component: path.resolve("./src/pages/floral-art/index.js"),
+-        context: {
+-          language: contentfulCode,
+-          urlLanguage: urlCode,
+-        },
+-      });
+-
+-      const birthdayPath =
+-        urlPath === ""
+-          ? "/birthday-celebrations"
+-          : `/${urlPath}/birthday-celebrations`;
+-      createPage({
+-        path: birthdayPath,
+-        component: path.resolve("./src/pages/birthday-celebrations/index.js"),
+-        context: {
+-          language: contentfulCode,
+-          urlLanguage: urlCode,
+-        },
+-      });
+-
+       const weddingPlannerPath =
+         urlPath === ""
+           ? "/puntacana-wedding-planner"
+diff --git a/package-lock.json b/package-lock.json
+index 17bd3ed..e7f9b1d 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -58,7 +58,6 @@
+         "react-share-lite": "^1.1.0",
+         "react-social-media-embed": "^2.5.18",
+         "react-syntax-highlighter": "^15.6.1",
+-        "react-toastify": "^11.0.5",
+         "swiper": "^11.1.14",
+         "tailwindcss": "^3.4.11",
+         "yet-another-react-lightbox": "^3.21.6"
+@@ -23942,19 +23941,6 @@
+         "react": ">= 0.14.0"
+       }
+     },
+-    "node_modules/react-toastify": {
+-      "version": "11.0.5",
+-      "resolved": "https://registry.npmjs.org/react-toastify/-/react-toastify-11.0.5.tgz",
+-      "integrity": "sha512-EpqHBGvnSTtHYhCPLxML05NLY2ZX0JURbAdNYa6BUkk+amz4wbKBQvoKQAB0ardvSarUBuY4Q4s1sluAzZwkmA==",
+-      "license": "MIT",
+-      "dependencies": {
+-        "clsx": "^2.1.1"
+-      },
+-      "peerDependencies": {
+-        "react": "^18 || ^19",
+-        "react-dom": "^18 || ^19"
+-      }
+-    },
+     "node_modules/react-transition-group": {
+       "version": "4.4.5",
+       "resolved": "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz",
+diff --git a/package.json b/package.json
+index ea58af4..d71f120 100644
+--- a/package.json
++++ b/package.json
+@@ -68,7 +68,6 @@
+     "react-share-lite": "^1.1.0",
+     "react-social-media-embed": "^2.5.18",
+     "react-syntax-highlighter": "^15.6.1",
+-    "react-toastify": "^11.0.5",
+     "swiper": "^11.1.14",
+     "tailwindcss": "^3.4.11",
+     "yet-another-react-lightbox": "^3.21.6"
+diff --git a/src/components/ContactForm/OptionSelect.js b/src/components/ContactForm/OptionSelect.js
+index bd79d25..2032416 100644
+--- a/src/components/ContactForm/OptionSelect.js
++++ b/src/components/ContactForm/OptionSelect.js
+@@ -7,10 +7,6 @@ const OptionSelect = () => {
+       value: "WEDDING PLANNING",
+       label: t("WEDDING PLANNING"),
+     },
+-    {
+-      value: "BIRTHDAY CELEBRATION",
+-      label: t("BIRTHDAY CELEBRATION"),
+-    },
+     {
+       value: "GENDER REVEAL",
+       label: t("GENDER REVEAL"),
+@@ -27,14 +23,6 @@ const OptionSelect = () => {
+       value: "CORPORATE EVENT PLANNER",
+       label: t("CORPORATE EVENT PLANNER"),
+     },
+-    {
+-      value: "EVENT RENTALS",
+-      label: t("EVENT RENTALS"),
+-    },
+-    {
+-      value: "FLORAL DESIGN",
+-      label: t("FLORAL DESIGN"),
+-    },
+     {
+       value: "OTHER",
+       label: t("OTHER"),
+diff --git a/src/components/FloatingButtonComponents/FloatingCartButton.js b/src/components/FloatingButtonComponents/FloatingCartButton.js
+deleted file mode 100644
+index 785e731..0000000
+--- a/src/components/FloatingButtonComponents/FloatingCartButton.js
++++ /dev/null
+@@ -1,29 +0,0 @@
+-import React, { useContext } from "react";
+-import { CartContext } from "../../context/cart";
+-import { AiOutlineShoppingCart } from "react-icons/ai";
+-import { Link } from "gatsby";
+-import { useI18next } from "gatsby-plugin-react-i18next";
+-const FloatingCartButton = () => {
+-  const { cartItems } = useContext(CartContext);
+-  const { language } = useI18next();
+-  const cartPath = `${language === "es" ? "/es" : ""}/event-rentals/cart/`;
+-
+-  return (
+-    <>
+-      {cartItems.length !== 0 ? (
+-        <Link
+-          to={cartPath}
+-          aria-label={`Event rentals cart with ${cartItems.length} item${cartItems.length === 1 ? "" : "s"}`}
+-          className="fixed bottom-6 right-24 z-50 flex h-14 w-14 transform items-center justify-between rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 px-2 font-bold text-black no-underline shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:from-yellow-300 hover:to-yellow-500 hover:shadow-xl xl:right-32"
+-        >
+-          <AiOutlineShoppingCart size={25} />
+-          {cartItems.length}
+-        </Link>
+-      ) : (
+-        <></>
+-      )}
+-    </>
+-  );
+-};
+-
+-export default FloatingCartButton;
+diff --git a/src/components/FloralComponents/Additions.js b/src/components/FloralComponents/Additions.js
+deleted file mode 100644
+index 18cdfbb..0000000
+--- a/src/components/FloralComponents/Additions.js
++++ /dev/null
+@@ -1,24 +0,0 @@
+-import React from "react";
+-
+-import CheckBox from "./CheckBox";
+-const Additions = ({ additions, formData, setFormData, idPrefix }) => {
+-  const filteredAdditions = additions?.filter(
+-    (addition) => addition.addition !== "None",
+-  );
+-  return (
+-    <div className="flex flex-col gap-2">
+-      {filteredAdditions &&
+-        filteredAdditions.map((addition) => (
+-          <CheckBox
+-            key={addition.id || addition.addition}
+-            addition={addition}
+-            formData={formData}
+-            setFormData={setFormData}
+-            idPrefix={idPrefix}
+-          />
+-        ))}
+-    </div>
+-  );
+-};
+-
+-export default Additions;
+diff --git a/src/components/FloralComponents/CheckBox.js b/src/components/FloralComponents/CheckBox.js
+deleted file mode 100644
+index 7467085..0000000
+--- a/src/components/FloralComponents/CheckBox.js
++++ /dev/null
+@@ -1,50 +0,0 @@
+-import React from "react";
+-
+-const CheckBox = ({ addition, formData, setFormData, idPrefix }) => {
+-  const inputId = `${idPrefix}-addon-${addition.addition
+-    .toLowerCase()
+-    .replace(/[^a-z0-9]+/g, "-")}`;
+-  const handleChange = (e) => {
+-    if (e.target.checked) {
+-      setFormData({
+-        ...formData,
+-        additions: [
+-          ...formData.additions,
+-          {
+-            name: addition.addition,
+-            selected: true,
+-            price: addition.price,
+-          },
+-        ],
+-      });
+-    } else {
+-      setFormData({
+-        ...formData,
+-        additions: formData.additions.filter(
+-          (item) => item.name !== addition.addition,
+-        ),
+-      });
+-    }
+-  };
+-
+-  return (
+-    <div className="flex items-center">
+-      <input
+-        id={inputId}
+-        type="checkbox"
+-        value=""
+-        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+-        onChange={handleChange}
+-      />
+-      <label
+-        htmlFor={inputId}
+-        className="flex justify-between items-center w-full ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+-      >
+-        <span>{addition.addition}</span>{" "}
+-        <span className="font-bold">${addition.price}</span>
+-      </label>
+-    </div>
+-  );
+-};
+-
+-export default CheckBox;
+diff --git a/src/components/FloralComponents/ContactForm.js b/src/components/FloralComponents/ContactForm.js
+deleted file mode 100644
+index 307acff..0000000
+--- a/src/components/FloralComponents/ContactForm.js
++++ /dev/null
+@@ -1,82 +0,0 @@
+-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+-import React, { useState } from "react";
+-import ContactInfo from "./ContactInfo";
+-import Additions from "./Additions";
+-
+-const ContactForm = ({ item }) => {
+-  const { i18n } = useTranslation();
+-  const [formData, setFormData] = useState({
+-    "form-name": "contact",
+-    floralItem: item.floralItem,
+-    price: item.price,
+-    description: item.description,
+-    name: "",
+-    email: "",
+-    telephone: "",
+-    message: "",
+-    additions: [],
+-  });
+-
+-  const formId = `floral-art-${item.id}`;
+-  const additions = formData.additions
+-    .map((addition) => `${addition.name}: $${addition.price}`)
+-    .join(", ");
+-  const thankYouPath =
+-    i18n.language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/";
+-
+-  return (
+-    <>
+-      <form
+-        name="contact"
+-        method="POST"
+-        action={thankYouPath}
+-        data-netlify="true"
+-        data-netlify-honeypot="bot-field"
+-        id={formId}
+-        className="w-full md:w-full max-w- xl:max-w-5xl flex flex-col justify-center items-center mx-auto my-5"
+-      >
+-        <input type="hidden" name="form-name" value="contact" />
+-        <input type="hidden" name="source" value="Floral Art page" />
+-        <input type="hidden" name="subject" value="New floral item inquiry" />
+-        <input type="hidden" name="floral-item" value={item.floralItem} />
+-        <input type="hidden" name="item-price" value={item.price} />
+-        <input type="hidden" name="item-description" value={item.description} />
+-        <input
+-          type="hidden"
+-          name="selected-additions"
+-          value={additions || "None"}
+-        />
+-        <p className="hidden">
+-          <label>
+-            Do not fill this out: <input name="bot-field" />
+-          </label>
+-        </p>
+-        <div className="w-[310px] md:w-[25rem] lg:w-[20rem] flex flex-col lg:flex-col-reverse gap-4 xl:gap-12">
+-          <Additions
+-            additions={item.additions}
+-            formData={formData}
+-            setFormData={setFormData}
+-            idPrefix={formId}
+-          />
+-          <ContactInfo
+-            formData={formData}
+-            setFormData={setFormData}
+-            errors={{}}
+-            idPrefix={formId}
+-          />
+-        </div>
+-      </form>
+-      <div className="flex justify-center items-center lg:absolute lg:bottom-10 lg:right-1/2 lg:translate-x-1/2">
+-        <button
+-          type="submit"
+-          form={formId}
+-          className="bg-[#E4C05C] hover:bg-[#C6A855] text-white font-bold py-1 px-4 rounded "
+-        >
+-          <Trans>Contact Us</Trans>
+-        </button>
+-      </div>
+-    </>
+-  );
+-};
+-
+-export default ContactForm;
+diff --git a/src/components/FloralComponents/ContactInfo.js b/src/components/FloralComponents/ContactInfo.js
+deleted file mode 100644
+index 7ca6c7a..0000000
+--- a/src/components/FloralComponents/ContactInfo.js
++++ /dev/null
+@@ -1,104 +0,0 @@
+-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+-import React from "react";
+-
+-const ContactInfo = ({ formData, setFormData, errors, idPrefix }) => {
+-  const { t } = useTranslation();
+-  const handleChange = ({ target }) => {
+-    setFormData({
+-      ...formData,
+-      [target.name]: target.value,
+-    });
+-  };
+-  return (
+-    <div>
+-      <div className="relative z-0 mb-6 w-full group">
+-        <input
+-          type="text"
+-          name="name"
+-          id={`${idPrefix}-name`}
+-          className={`contactFormInput peer ${errors.name ? "border-red-500" : ""}`}
+-          placeholder=" "
+-          required
+-          value={formData.name}
+-          onChange={handleChange}
+-        />
+-        <label htmlFor={`${idPrefix}-name`} className="contactFormLabel">
+-          <Trans>Full Name</Trans>
+-        </label>
+-        {errors.name && (
+-          <span className="text-red-500 text-sm">{errors.name}</span>
+-        )}
+-      </div>
+-      <div className="relative z-0 mb-6 w-full group">
+-        <input
+-          type="email"
+-          name="email"
+-          id={`${idPrefix}-email`}
+-          className={`contactFormInput peer ${errors.email ? "border-red-500" : ""}`}
+-          placeholder=" "
+-          required
+-          onChange={handleChange}
+-        />
+-        <label htmlFor={`${idPrefix}-email`} className="contactFormLabel">
+-          <Trans>Email</Trans>
+-        </label>
+-        {errors.email && (
+-          <span className="text-red-500 text-sm">{errors.email}</span>
+-        )}
+-      </div>
+-      <div className="relative z-0 mb-6 w-full group">
+-        <input
+-          type="tel"
+-          name="telephone"
+-          id={`${idPrefix}-telephone`}
+-          className={`contactFormInput peer ${errors.telephone ? "border-red-500" : ""}`}
+-          placeholder=" "
+-          required
+-          onChange={handleChange}
+-        />
+-        <label htmlFor={`${idPrefix}-telephone`} className="contactFormLabel">
+-          <Trans>Telephone</Trans>
+-        </label>
+-        {errors.telephone && (
+-          <span className="text-red-500 text-sm">{errors.telephone}</span>
+-        )}
+-      </div>
+-      <div className="relative z-0 mb-6 w-full group">
+-        <input
+-          type="text"
+-          name="shippingAddress"
+-          id={`${idPrefix}-shipping-address`}
+-          className="contactFormInput peer"
+-          placeholder=" "
+-          required
+-          onChange={handleChange}
+-        />
+-        <label
+-          htmlFor={`${idPrefix}-shipping-address`}
+-          className="contactFormLabel"
+-        >
+-          <Trans>Ship To</Trans>
+-        </label>
+-      </div>
+-
+-      <div className="relative z-0 mb-6 w-full group">
+-        <label
+-          htmlFor={`${idPrefix}-message`}
+-          className="block mb-2 text-sm font-medium text-gray-500"
+-        >
+-          <Trans>Message</Trans>
+-        </label>
+-        <textarea
+-          id={`${idPrefix}-message`}
+-          name="message"
+-          rows="4"
+-          className="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-0 focus:border-black additionalInfo"
+-          placeholder={t("Leave a comment...")}
+-          onChange={handleChange}
+-        ></textarea>
+-      </div>
+-    </div>
+-  );
+-};
+-
+-export default ContactInfo;
+diff --git a/src/components/FloralComponents/FloralForm.js b/src/components/FloralComponents/FloralForm.js
+deleted file mode 100644
+index 66233e1..0000000
+--- a/src/components/FloralComponents/FloralForm.js
++++ /dev/null
+@@ -1,81 +0,0 @@
+-import React, { useState } from "react";
+-import { Trans } from "gatsby-plugin-react-i18next";
+-import { IoClose } from "react-icons/io5";
+-import { Dialog, DialogPanel } from "@headlessui/react";
+-import ItemCardSwiper from "../RentalComponents/ItemCardSwiper";
+-import ContactForm from "./ContactForm";
+-
+-const FloralForm = ({ item }) => {
+-  const [isOpen, setIsOpen] = useState(false);
+-
+-  return (
+-    <>
+-      <form name="contact" method="POST" data-netlify="true" hidden>
+-        <input type="hidden" name="form-name" value="contact" />
+-        <input type="text" name="name" />
+-        <input type="email" name="email" />
+-        <input type="tel" name="telephone" />
+-        <input type="text" name="shippingAddress" />
+-        <input type="text" name="floralItem" />
+-        <input type="text" name="price" />
+-        <input type="text" name="description" />
+-
+-        <textarea name="message"></textarea>
+-        <input type="text" name="additions" />
+-      </form>
+-      <div className="flex justify-center items-center mb-5">
+-        <button
+-          type="button"
+-          onClick={() => setIsOpen(!isOpen)}
+-          className="bg-[#E4C05C] hover:bg-[#C6A855] text-white font-bold py-1 px-4 rounded "
+-        >
+-          <Trans>More Info</Trans>
+-        </button>
+-      </div>
+-      <Dialog
+-        open={isOpen}
+-        onClose={() => setIsOpen(false)}
+-        className="relative z-50"
+-      >
+-        <div className="fixed inset-0 z-50 w-screen overflow-y-auto bg-transparent/80">
+-          <div className="flex min-h-screen p-4 justify-center items-center">
+-            <DialogPanel className="mb-20 xl:mr-10 w-full max-w-md md:max-w-4xl h-auto lg:h-[90vh] xl:h-auto rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0">
+-              <div className="absolute top-2 right-5">
+-                <button
+-                  type="button"
+-                  className="p-2 text-2xl text-gray-500"
+-                  onClick={() => setIsOpen(false)}
+-                >
+-                  <IoClose />
+-                </button>
+-              </div>
+-              <div className="flex flex-col md:justify-center md:items-center lg:flex-row gap-2 mt-8">
+-                <div className="flex flex-col gap-2 md:w-[25rem] lg:gap-0 lg:mt-5 xl:mt-0">
+-                  <div className="rounded-lg overflow-hidden shadow-lg">
+-                    <ItemCardSwiper photoList={item.images} height="lg:h-80" />
+-                  </div>
+-                  <div className="pt-4 md:pr-4">
+-                    <div className="font-bold h-10 text-lg mb-2 flex justify-between">
+-                      <div className="truncate mr-3" translate="no">
+-                        {item.floralItem}
+-                      </div>
+-                      <div className="">${item.price}</div>
+-                    </div>
+-                    <p className="text-gray-700  my-2 text-base min-h-[5rem]">
+-                      {item.description}
+-                    </p>
+-                  </div>
+-                </div>
+-                <div className="flex flex-col gap-2 md:w-[25rem]">
+-                  <ContactForm item={item} />
+-                </div>
+-              </div>
+-            </DialogPanel>
+-          </div>
+-        </div>
+-      </Dialog>
+-    </>
+-  );
+-};
+-
+-export default FloralForm;
+diff --git a/src/components/FloralComponents/FloralItemCard.js b/src/components/FloralComponents/FloralItemCard.js
+deleted file mode 100644
+index c57fc4e..0000000
+--- a/src/components/FloralComponents/FloralItemCard.js
++++ /dev/null
+@@ -1,26 +0,0 @@
+-import React from "react";
+-import ItemCardSwiper from "../RentalComponents/ItemCardSwiper";
+-import FloralForm from "./FloralForm";
+-
+-const FloralItemCard = ({ item }) => {
+-  return (
+-    <div className="min-w-[15rem] max-w-sm md:max-w-[20rem] my-5 mx-2 rounded-lg overflow-hidden shadow-lg">
+-      <ItemCardSwiper photoList={item.images} height="h-[25rem] md:h-[22rem]" />
+-      <div className="px-6 py-4">
+-        <div
+-          className="font-bold text-lg flex justify-between truncate"
+-          translate="no"
+-        >
+-          {item.floralItem}
+-        </div>
+-        <p className="text-gray-700  my-2 text-base  line-clamp-4 min-h-[5rem]">
+-          {item.description}
+-        </p>
+-        <div className="text-lg font-bold text-center">${item.price}</div>
+-      </div>
+-      <FloralForm item={item} />
+-    </div>
+-  );
+-};
+-
+-export default FloralItemCard;
+diff --git a/src/components/FloralComponents/FloralItemSearch.js b/src/components/FloralComponents/FloralItemSearch.js
+deleted file mode 100644
+index 27560b8..0000000
+--- a/src/components/FloralComponents/FloralItemSearch.js
++++ /dev/null
+@@ -1,46 +0,0 @@
+-import { useTranslation } from "gatsby-plugin-react-i18next";
+-import React, { useState } from "react";
+-
+-const FloralItemSearch = ({
+-  backendFloralList,
+-  allCategories,
+-  setSelectedCategory,
+-  setFloralItemsList,
+-}) => {
+-  const { t } = useTranslation();
+-  const [searchTerm, setSearchTerm] = useState("");
+-  const handleSearch = (e) => {
+-    const search = e.target.value;
+-    setSearchTerm(search);
+-
+-    // Perform search across title and description
+-    const filteredItems = backendFloralList.filter(
+-      (item) =>
+-        item.floralItem.toLowerCase().includes(search.toLowerCase()) ||
+-        item.description.toLowerCase().includes(search.toLowerCase()),
+-    );
+-
+-    const orderedResults = filteredItems.sort((a, b) =>
+-      (a.floralItem || "").localeCompare(b.floralItem || ""),
+-    );
+-
+-    // Update rental items list
+-    setFloralItemsList(orderedResults);
+-    // Reset category to All when searching
+-    setSelectedCategory("All");
+-  };
+-
+-  return (
+-    <div className="search-container my-3 px-5 flex justify-center items-center">
+-      <input
+-        type="text"
+-        placeholder={t("Search Floral items...")}
+-        value={searchTerm}
+-        onChange={handleSearch}
+-        className="w-full lg:max-w-lg xl:max-w-xl  p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+-      />
+-    </div>
+-  );
+-};
+-
+-export default FloralItemSearch;
+diff --git a/src/components/HomeComponents/HomeExperience.js b/src/components/HomeComponents/HomeExperience.js
+index b80d224..d451ad3 100644
+--- a/src/components/HomeComponents/HomeExperience.js
++++ b/src/components/HomeComponents/HomeExperience.js
+@@ -20,6 +20,9 @@ const legacyRoutes = new Set([
+   "/photo-gallery/",
+   "/real-estate-photography/",
+   "/videos-and-comercial-photos/",
++  "/event-rentals/",
++  "/birthday-celebrations/",
++  "/floral-art/",
+   "/packages/photography-event-planner/",
+   "/packages/videography-event-planner/",
+ ]);
+diff --git a/src/components/ImageCarousel/ItemCardSwiper.js b/src/components/ImageCarousel/ItemCardSwiper.js
+new file mode 100644
+index 0000000..3fab9f9
+--- /dev/null
++++ b/src/components/ImageCarousel/ItemCardSwiper.js
+@@ -0,0 +1,36 @@
++import { GatsbyImage, getImage } from "gatsby-plugin-image";
++import React from "react";
++import { EffectFade } from "swiper/modules";
++import { Swiper, SwiperSlide } from "swiper/react";
++import "swiper/css";
++import "swiper/css/effect-fade";
++
++const ItemCardSwiper = ({ photoList = [], className = "", height = "" }) => {
++  const images = photoList
++    .map((photo) => ({
++      alt: photo?.title || "Sertuin Events wedding design in Punta Cana",
++      image: getImage(photo?.gatsbyImage),
++    }))
++    .filter(({ image }) => image);
++
++  return (
++    <Swiper
++      effect="fade"
++      loop={images.length > 1}
++      modules={[EffectFade]}
++      className={`mySwiper ${className}`}
++    >
++      {images.map(({ alt, image }, index) => (
++        <SwiperSlide className={`w-full object-cover ${height}`} key={index}>
++          <GatsbyImage
++            image={image}
++            alt={alt}
++            className={`w-full object-cover ${height}`}
++          />
++        </SwiperSlide>
++      ))}
++    </Swiper>
++  );
++};
++
++export default ItemCardSwiper;
+diff --git a/src/components/Layout/Footer/Sitemap.js b/src/components/Layout/Footer/Sitemap.js
+index 66f5089..9b4f405 100644
+--- a/src/components/Layout/Footer/Sitemap.js
++++ b/src/components/Layout/Footer/Sitemap.js
+@@ -20,10 +20,6 @@ const Sitemap = () => {
+       name: t("Wedding planning"),
+       urlLink: localize("/puntacana-wedding-planner/"),
+     },
+-    {
+-      name: t("Birthday Celebrations"),
+-      urlLink: localize("/birthday-celebrations/"),
+-    },
+     {
+       name: t("Gender reveal"),
+       urlLink: localize("/gender-reveal-punta-cana/"),
+@@ -54,12 +50,6 @@ const Sitemap = () => {
+       <Link to={localize("/event-planner/")} className="navLinks no-underline">
+         <Trans>Corporate events</Trans>
+       </Link>
+-      <Link to={localize("/event-rentals/")} className="navLinks no-underline">
+-        <Trans>Rental Items</Trans>
+-      </Link>
+-      <Link to={localize("/floral-art/")} className="navLinks no-underline">
+-        <Trans>Floral Art</Trans>
+-      </Link>
+       <Link to={localize("/contact/")} className="navLinks no-underline">
+         <Trans>Contact</Trans>
+       </Link>
+diff --git a/src/components/Layout/Layout.js b/src/components/Layout/Layout.js
+index 217242e..b1dbc90 100644
+--- a/src/components/Layout/Layout.js
++++ b/src/components/Layout/Layout.js
+@@ -2,8 +2,6 @@ import React from "react";
+ import { useStaticQuery, graphql } from "gatsby";
+ import Navbar from "./Navbar/Navbar";
+ import Footer from "./Footer/Footer";
+-import { CartProvider } from "../../context/cart";
+-import FloatingCartButton from "../FloatingButtonComponents/FloatingCartButton";
+ import ExpandableMessengerButton from "../FloatingButtonComponents/ExpandableMessengerButton";
+ 
+ const Layout = ({ children, generalInfo, overlayHeader = false }) => {
+@@ -21,18 +19,15 @@ const Layout = ({ children, generalInfo, overlayHeader = false }) => {
+   const { messengerLink, telephone } = data.allContentfulGeneralLayout.nodes[0];
+ 
+   return (
+-    <CartProvider>
+-      <div className="min-h-screen font-crimson flex flex-col justify-between bg-primary-bg-color">
+-        <Navbar overlay={overlayHeader} />
+-        <FloatingCartButton />
+-        <ExpandableMessengerButton
+-          messengerLink={messengerLink}
+-          telephone={telephone}
+-        />
+-        {children}
+-        <Footer generalInfo={generalInfo} />
+-      </div>
+-    </CartProvider>
++    <div className="min-h-screen font-crimson flex flex-col justify-between bg-primary-bg-color">
++      <Navbar overlay={overlayHeader} />
++      <ExpandableMessengerButton
++        messengerLink={messengerLink}
++        telephone={telephone}
++      />
++      {children}
++      <Footer generalInfo={generalInfo} />
++    </div>
+   );
+ };
+ 
+diff --git a/src/components/Layout/Navbar/RomanticEvents.js b/src/components/Layout/Navbar/RomanticEvents.js
+index 62cade5..2cd1225 100644
+--- a/src/components/Layout/Navbar/RomanticEvents.js
++++ b/src/components/Layout/Navbar/RomanticEvents.js
+@@ -50,19 +50,6 @@ const RomanticEvents = ({ footer, setToggled }) => {
+           <Trans>Wedding planning</Trans>
+         </p>
+       </MenuItem>
+-      <MenuItem
+-        component={
+-          <Link
+-            to={localize("/birthday-celebrations/")}
+-            className="no-underline uppercase text-sm"
+-            onClick={footer ? undefined : () => setToggled(false)}
+-          />
+-        }
+-      >
+-        <p>
+-          <Trans>Birthday Celebrations</Trans>
+-        </p>
+-      </MenuItem>
+       <MenuItem
+         component={
+           <Link
+diff --git a/src/components/Layout/Navbar/SideBarInside.js b/src/components/Layout/Navbar/SideBarInside.js
+index f7794de..887b448 100644
+--- a/src/components/Layout/Navbar/SideBarInside.js
++++ b/src/components/Layout/Navbar/SideBarInside.js
+@@ -35,33 +35,6 @@ const SideBarInside = ({ footer, setToggled }) => {
+             <Trans>Corporate events</Trans>
+           </p>
+         </MenuItem>
+-        <MenuItem
+-          component={
+-            <Link
+-              to={localize("/event-rentals/")}
+-              className={footer ? "hamburgerSmall" : "hamburger"}
+-              onClick={footer ? undefined : () => setToggled(false)}
+-            />
+-          }
+-        >
+-          <p className={footer ? "hamburgerSmall" : "hamburger"}>
+-            <Trans>Rental Items</Trans>
+-          </p>
+-        </MenuItem>
+-        <MenuItem
+-          component={
+-            <Link
+-              to={localize("/floral-art/")}
+-              className={footer ? "hamburgerSmall" : "hamburger"}
+-              onClick={footer ? undefined : () => setToggled(false)}
+-            />
+-          }
+-        >
+-          <p className={footer ? "hamburgerSmall" : "hamburger"}>
+-            <Trans>Floral Art</Trans>
+-          </p>
+-        </MenuItem>
+-
+         <MenuItem
+           component={
+             <Link
+diff --git a/src/components/PackageComponents/PackageCard.js b/src/components/PackageComponents/PackageCard.js
+index 7b776c9..8d1bd9d 100644
+--- a/src/components/PackageComponents/PackageCard.js
++++ b/src/components/PackageComponents/PackageCard.js
+@@ -6,9 +6,6 @@ import { Trans } from "gatsby-plugin-react-i18next";
+ const PackageCard = ({ photoPackage }) => {
+   const image = getImage(photoPackage.image.gatsbyImage);
+   let cardHeight = "";
+-  if (photoPackage.page === "Birthday Celebrations") {
+-    cardHeight = "h-[27rem]";
+-  }
+   if (photoPackage.page === "Photo Shoots") {
+     cardHeight = "h-[23rem]";
+   }
+diff --git a/src/components/PackageComponents/PackageCardLocal.js b/src/components/PackageComponents/PackageCardLocal.js
+index f9eb9b2..1cd340d 100644
+--- a/src/components/PackageComponents/PackageCardLocal.js
++++ b/src/components/PackageComponents/PackageCardLocal.js
+@@ -8,9 +8,6 @@ const PackageCardLocal = ({ photoPackage }) => {
+     photoPackage.image.localFile.childImageSharp.gatsbyImageData,
+   );
+   let cardHeight = "";
+-  if (photoPackage.page === "Birthday Celebrations") {
+-    cardHeight = "h-[27rem]";
+-  }
+   if (photoPackage.page === "Photo Shoots") {
+     cardHeight = "h-[23rem]";
+   }
+diff --git a/src/components/PackageComponents/WeddingPackageForm.js b/src/components/PackageComponents/WeddingPackageForm.js
+index 65e3864..512ea3c 100644
+--- a/src/components/PackageComponents/WeddingPackageForm.js
++++ b/src/components/PackageComponents/WeddingPackageForm.js
+@@ -1,7 +1,7 @@
+ import React, { useState } from "react";
+ import { IoClose } from "react-icons/io5";
+ import { Dialog, DialogPanel } from "@headlessui/react";
+-import ItemCardSwiper from "../RentalComponents/ItemCardSwiper";
++import ItemCardSwiper from "../ImageCarousel/ItemCardSwiper";
+ import ContactForm from "./ContactForm";
+ 
+ const WeddingPackageForm = ({ weddingPackage }) => {
+diff --git a/src/components/PhotoGridComponent/PhotoGrid.js b/src/components/PhotoGridComponent/PhotoGrid.js
+index a169957..9373fbc 100644
+--- a/src/components/PhotoGridComponent/PhotoGrid.js
++++ b/src/components/PhotoGridComponent/PhotoGrid.js
+@@ -62,12 +62,6 @@ const PhotoGrid = ({ photos, page }) => {
+     }
+   }
+ 
+-  if (page === "Birthday Celebrations") {
+-    if (windowWidth > 450) {
+-      targetHeight = 400;
+-    }
+-  }
+-
+   if (page === "Bachelor Party") {
+     if (windowWidth > 450) {
+       targetHeight = 200;
+diff --git a/src/components/PhotoGridComponent/PhotoGridLocal.js b/src/components/PhotoGridComponent/PhotoGridLocal.js
+index ec9830c..3da70c5 100644
+--- a/src/components/PhotoGridComponent/PhotoGridLocal.js
++++ b/src/components/PhotoGridComponent/PhotoGridLocal.js
+@@ -62,12 +62,6 @@ const PhotoGridLocal = ({ photos, page }) => {
+     }
+   }
+ 
+-  if (page === "Birthday Celebrations") {
+-    if (windowWidth > 450) {
+-      targetHeight = 400;
+-    }
+-  }
+-
+   if (page === "Bachelor Party") {
+     if (windowWidth > 450) {
+       targetHeight = 200;
+diff --git a/src/components/RentalComponents/Button.js b/src/components/RentalComponents/Button.js
+deleted file mode 100644
+index ec6fdab..0000000
+--- a/src/components/RentalComponents/Button.js
++++ /dev/null
+@@ -1,77 +0,0 @@
+-import React from "react";
+-import { useContext } from "react";
+-import { CartContext } from "../../context/cart";
+-const Button = ({
+-  item,
+-  notifyAddedToCart,
+-  notifyRemovedFromCart,
+-  notifyCartFull,
+-}) => {
+-  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
+-  function handleClick(e) {
+-    e.preventDefault();
+-
+-    const currentQuantity =
+-      cartItems.find((rentalItem) => rentalItem.rentalItem === item.rentalItem)
+-        ?.quantity || 0;
+-
+-    if (currentQuantity < item.stock) {
+-      addToCart(item);
+-      notifyAddedToCart(item);
+-    } else {
+-      notifyCartFull(item);
+-    }
+-  }
+-
+-  return (
+-    <div className="flex justify-center items-center mb-5">
+-      {!cartItems.find(
+-        (rentalItem) => rentalItem.rentalItem === item.rentalItem,
+-      ) ? (
+-        <button
+-          type="submit"
+-          onClick={handleClick}
+-          className={`bg-[#E4C05C] hover:bg-[#C6A855] text-white font-bold py-1 px-4 rounded `}
+-        >
+-          Add to Cart
+-        </button>
+-      ) : (
+-        <div className="flex gap-4">
+-          <button
+-            type="submit"
+-            onClick={handleClick}
+-            className={`bg-[#E4C05C] hover:bg-[#C6A855] text-white font-bold py-1 px-4 rounded`}
+-          >
+-            +
+-          </button>{" "}
+-          <p className="text-gray-600 flex justify-center items-center">
+-            {
+-              cartItems.find(
+-                (rentalItem) => rentalItem.rentalItem === item.rentalItem,
+-              ).quantity
+-            }
+-          </p>
+-          <button
+-            type="submit"
+-            onClick={() => {
+-              const cartItem = cartItems.find(
+-                (rentalItem) => rentalItem.rentalItem === item.rentalItem,
+-              );
+-              if (cartItem.quantity === 1) {
+-                notifyRemovedFromCart(item);
+-                removeFromCart(item);
+-              } else {
+-                removeFromCart(item);
+-              }
+-            }}
+-            className={`bg-[#E4C05C] hover:bg-[#C6A855] text-white font-bold py-1 px-4 rounded`}
+-          >
+-            -
+-          </button>
+-        </div>
+-      )}
+-    </div>
+-  );
+-};
+-
+-export default Button;
+diff --git a/src/components/RentalComponents/CartComponent.js b/src/components/RentalComponents/CartComponent.js
+deleted file mode 100644
+index db3548b..0000000
+--- a/src/components/RentalComponents/CartComponent.js
++++ /dev/null
+@@ -1,197 +0,0 @@
+-import React, { useContext } from "react";
+-import { ToastContainer, toast } from "react-toastify";
+-import { CartContext } from "../../context/cart";
+-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+-import { Link } from "gatsby";
+-import { useI18next } from "gatsby-plugin-react-i18next";
+-const CartComponent = () => {
+-  const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } =
+-    useContext(CartContext);
+-  const { language } = useI18next();
+-
+-  const emptyCart = cartItems.length === 0;
+-
+-  const notifyAddedToCart = (item) =>
+-    toast.success(`${item.rentalItem} added to cart!`, {
+-      position: "top-center",
+-      autoClose: 2000,
+-      hideProgressBar: true,
+-      closeOnClick: true,
+-      pauseOnHover: true,
+-      draggable: true,
+-      theme: "colored",
+-      style: {
+-        backgroundColor: "#fff",
+-        color: "#000",
+-      },
+-    });
+-
+-  const notifyCartFull = (item) =>
+-    toast.error(
+-      `You've reached the maximum available stock for this ${item.rentalItem}`,
+-      {
+-        position: "top-center",
+-        autoClose: 2000,
+-        hideProgressBar: true,
+-        closeOnClick: true,
+-        pauseOnHover: true,
+-        draggable: true,
+-        theme: "colored",
+-        style: {
+-          backgroundColor: "#fff",
+-          color: "#000",
+-        },
+-      },
+-    );
+-
+-  const notifyRemovedFromCart = (item) =>
+-    toast.error(`${item.rentalItem} removed from cart!`, {
+-      position: "top-center",
+-      autoClose: 2000,
+-      hideProgressBar: true,
+-      closeOnClick: true,
+-      pauseOnHover: true,
+-      draggable: true,
+-      theme: "colored",
+-      style: {
+-        backgroundColor: "#000",
+-        color: "#fff",
+-      },
+-    });
+-
+-  const notifyCartCleared = () =>
+-    toast.error(`Cart cleared!`, {
+-      position: "top-center",
+-      autoClose: 2000,
+-      hideProgressBar: true,
+-      closeOnClick: true,
+-      pauseOnHover: true,
+-      draggable: true,
+-      theme: "colored",
+-      style: {
+-        backgroundColor: "#000",
+-        color: "#fff",
+-      },
+-    });
+-
+-  const handleRemoveFromCart = (item) => {
+-    removeFromCart(item);
+-    notifyRemovedFromCart(item);
+-  };
+-  // let cartTotalPrice = getCartTotal();
+-
+-  const handleAddToCart = (item) => {
+-    if (item.quantity < item.stock) {
+-      addToCart(item);
+-      notifyAddedToCart(item);
+-    } else {
+-      notifyCartFull(item);
+-    }
+-  };
+-
+-  return (
+-    <div className="flex-col flex items-center justify-center my-10">
+-      <ToastContainer />
+-      {emptyCart ? <></> : <h1 className="text-2xl font-bold mb-5">Cart</h1>}
+-      <div className="flex flex-col gap-4">
+-        {cartItems.map((item, index) => {
+-          const image = getImage(item.images[0]?.gatsbyImage);
+-          return (
+-            <div key={item.rentalItem}>
+-              <div className="flex justify-between mb-5 mt-2">
+-                <div className="flex gap-4">
+-                  <GatsbyImage
+-                    image={image}
+-                    alt={item.rentalItem}
+-                    className="rounded-md w-24 h-24 md:w-32 md:h-32 object-cover"
+-                  />
+-                  <div className="flex flex-col md:justify-around lg:flex-row w-40 md:w-72 lg:w-[30rem] xl:w-[25rem]">
+-                    <div className="flex flex-col md:flex-row gap-1 md:gap-8 mb-1 mx-4">
+-                      <h1 className="text-lg font-bold truncate lg:whitespace-normal">
+-                        {item.rentalItem}
+-                      </h1>
+-                      <p className="text-gray-600 text-end flex items-center md:justify-end">
+-                        {item.price ? `$${item.price}` : ""}
+-                      </p>
+-                    </div>
+-                    <div className="flex gap-4 justify-center items-center">
+-                      <button
+-                        type="button"
+-                        className="px-4 py-2 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
+-                        onClick={(e) => {
+-                          e.preventDefault();
+-                          handleAddToCart(item);
+-                        }}
+-                      >
+-                        +
+-                      </button>
+-                      <p className="w-5 text-center">{item.quantity}</p>
+-                      <button
+-                        type="button"
+-                        className="px-4 py-2 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
+-                        onClick={(e) => {
+-                          e.preventDefault();
+-                          if (item.quantity === 1) {
+-                            handleRemoveFromCart(item);
+-                          } else {
+-                            removeFromCart(item);
+-                          }
+-                        }}
+-                      >
+-                        -
+-                      </button>
+-                    </div>
+-                  </div>
+-                  <div className="flex gap-8 mx-4 text-gray-600 w-12">
+-                    {item.price ? `$${item.price * item.quantity}` : ""}
+-                  </div>
+-                </div>
+-              </div>
+-            </div>
+-          );
+-        })}
+-      </div>
+-
+-      {cartItems.length > 0 ? (
+-        <div className="flex flex-col justify-between items-center mt-5">
+-          {/* <section className="my-5 max-w-xs mx-auto">
+-            <section className="space-x-12 flex justify-between mx-auto">
+-              <div className="text-lg font-bold">Total Cost:</div>
+-              <div className="text-lg w-20">
+-                ${parseFloat(cartTotalPrice).toFixed(2)}
+-              </div>
+-            </section>
+-          </section> */}
+-
+-          <button
+-            type="button"
+-            className="px-4 py-2 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
+-            onClick={(e) => {
+-              e.preventDefault();
+-              clearCart();
+-              notifyCartCleared();
+-            }}
+-          >
+-            Clear cart
+-          </button>
+-        </div>
+-      ) : (
+-        <div className="flex flex-col justify-center items-center max-w-sm">
+-          <h1 className="text-lg font-bold">Your cart is empty</h1>
+-          <p className="text-sm text-center my-3">
+-            Looks like you haven't found anything yet. We understand that
+-            sometimes it's hard to choose — maybe this helps:
+-          </p>
+-          <Link
+-            to={`${language === "es" ? "/es" : ""}/event-rentals/`}
+-            className="font-medium text-lg"
+-          >
+-            View Our Rentals
+-          </Link>
+-        </div>
+-      )}
+-    </div>
+-  );
+-};
+-
+-export default CartComponent;
+diff --git a/src/components/RentalComponents/ContactInfo.js b/src/components/RentalComponents/ContactInfo.js
+deleted file mode 100644
+index 73aa3ca..0000000
+--- a/src/components/RentalComponents/ContactInfo.js
++++ /dev/null
+@@ -1,91 +0,0 @@
+-import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+-import React from "react";
+-
+-const ContactInfo = ({ formData, setFormData }) => {
+-  const { t } = useTranslation();
+-  const handleChange = ({ target }) => {
+-    setFormData({
+-      ...formData,
+-      [target.name]: target.value,
+-    });
+-  };
+-  return (
+-    <>
+-      <div className="relative z-0 mb-6 w-full group">
+-        <input
+-          type="text"
+-          name="name"
+-          id="name"
+-          className="contactFormInput peer"
+-          placeholder=" "
+-          required
+-          value={formData.name}
+-          onChange={handleChange}
+-        />
+-        <label htmlFor="name" className="contactFormLabel">
+-          <Trans>Full Name</Trans>
+-        </label>
+-      </div>
+-      <div className="relative z-0 mb-6 w-full group">
+-        <input
+-          type="email"
+-          name="email"
+-          id="email"
+-          className="contactFormInput peer"
+-          placeholder=" "
+-          required
+-          onChange={handleChange}
+-        />
+-        <label htmlFor="email" className="contactFormLabel">
+-          <Trans>Email</Trans>
+-        </label>
+-      </div>
+-      <div className="relative z-0 mb-6 w-full group">
+-        <input
+-          type="tel"
+-          name="telephone"
+-          id="telephone"
+-          className="contactFormInput peer"
+-          placeholder=" "
+-          required
+-          onChange={handleChange}
+-        />
+-        <label htmlFor="telephone" className="contactFormLabel">
+-          <Trans>Telephone</Trans>
+-        </label>
+-      </div>
+-      <div className="relative z-0 mb-6 w-full group">
+-        <input
+-          type="text"
+-          name="Accommodation"
+-          id="Accommodation"
+-          className="contactFormInput peer"
+-          placeholder=" "
+-          required
+-          onChange={handleChange}
+-        />
+-        <label htmlFor="Accommodation" className="contactFormLabel">
+-          <Trans>Accommodation</Trans>
+-        </label>
+-      </div>
+-      <div className="relative z-0 mb-6 w-full group">
+-        <label
+-          htmlFor="additional"
+-          className="block mb-2 text-sm font-medium text-gray-500"
+-        >
+-          <Trans>Message</Trans>
+-        </label>
+-        <textarea
+-          id="additional"
+-          name="additional"
+-          rows="4"
+-          className="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-0 focus:border-black additionalInfo"
+-          placeholder={t("Leave a comment...")}
+-          onChange={handleChange}
+-        ></textarea>
+-      </div>
+-    </>
+-  );
+-};
+-
+-export default ContactInfo;
+diff --git a/src/components/RentalComponents/ItemCardSwiper.js b/src/components/RentalComponents/ItemCardSwiper.js
+deleted file mode 100644
+index fe096c8..0000000
+--- a/src/components/RentalComponents/ItemCardSwiper.js
++++ /dev/null
+@@ -1,51 +0,0 @@
+-import React from "react";
+-import { Swiper, SwiperSlide } from "swiper/react";
+-
+-// Import Swiper styles
+-import "swiper/css";
+-import "swiper/css/effect-fade";
+-import { Autoplay, EffectFade } from "swiper/modules";
+-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+-
+-const ItemCardSwiper = ({ photoList, className, height }) => {
+-  let photoListEdited = [];
+-  photoList?.forEach((e) => {
+-    let image = {
+-      title: e.title,
+-      image: getImage(e.gatsbyImage),
+-    };
+-    photoListEdited.push(image);
+-  });
+-
+-  return (
+-    <div>
+-      <Swiper
+-        effect={"fade"}
+-        loop={true}
+-        // autoplay={{
+-        //   delay: 3000,
+-        //   disableOnInteraction: false,
+-        // }}
+-        modules={[Autoplay, EffectFade]}
+-        className={`mySwiper  ${className}`}
+-      >
+-        {photoListEdited.map((image, index) => {
+-          return (
+-            <SwiperSlide
+-              className={`w-full object-cover ${height}`}
+-              key={index}
+-            >
+-              <GatsbyImage
+-                image={image.image}
+-                alt={image.title}
+-                className={`w-full object-cover ${height}`}
+-              />
+-            </SwiperSlide>
+-          );
+-        })}
+-      </Swiper>
+-    </div>
+-  );
+-};
+-
+-export default ItemCardSwiper;
+diff --git a/src/components/RentalComponents/RentalForm.js b/src/components/RentalComponents/RentalForm.js
+deleted file mode 100644
+index d29c107..0000000
+--- a/src/components/RentalComponents/RentalForm.js
++++ /dev/null
+@@ -1,76 +0,0 @@
+-import React, { useContext, useState } from "react";
+-import { CartContext } from "../../context/cart";
+-import ContactInfo from "./ContactInfo";
+-import CartComponent from "./CartComponent";
+-const RentalForm = ({ language }) => {
+-  const { cartItems } = useContext(CartContext);
+-
+-  const [formData, setFormData] = useState({
+-    "form-name": "contact",
+-    name: "",
+-    email: "",
+-    telephone: "",
+-    Accommodation: "",
+-    additional: "",
+-  });
+-  const thankYouPath =
+-    language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/";
+-  const rentalItemSummary = cartItems
+-    .map(
+-      (item) =>
+-        `${item.rentalItem} - Quantity: ${item.quantity}${item.price ? ` - $${item.price * item.quantity}` : ""}`,
+-    )
+-    .join(", ");
+-
+-  return (
+-    <>
+-      <form
+-        name="contact"
+-        method="POST"
+-        action={thankYouPath}
+-        data-netlify="true"
+-        data-netlify-honeypot="bot-field"
+-        id="cart"
+-        className="w-full md:w-full max-w- xl:max-w-5xl flex flex-col justify-center items-center mx-auto my-5"
+-      >
+-        <input type="hidden" name="form-name" value="contact" />
+-        <input type="hidden" name="source" value="Event Rentals cart" />
+-        <input type="hidden" name="subject" value="New event rental request" />
+-        <input
+-          type="hidden"
+-          name="rental-items"
+-          value={rentalItemSummary || "No items selected"}
+-        />
+-        <p className="hidden">
+-          <label>
+-            Do not fill this out: <input name="bot-field" />
+-          </label>
+-        </p>
+-
+-        <div className="w-80 lg:w-96 xl:w-full flex flex-col xl:flex-row xl:justify-center xl:mt-10 xl:gap-12">
+-          <div className="xl:w-[35rem] flex flex-col mt-5 xl:mt-24">
+-            <ContactInfo formData={formData} setFormData={setFormData} />
+-          </div>
+-          <CartComponent />
+-        </div>
+-        <input
+-          type="hidden"
+-          name="Rental Items"
+-          value={
+-            cartItems
+-              .map((item) => `${item.rentalItem} - Quantity: ${item.quantity}`)
+-              .join(", ") || "None"
+-          }
+-        />
+-        <button
+-          type="submit"
+-          className="px-4 py-2 my-3 bg-[#E4C05C] hover:bg-[#C6A855] text-white text-xs font-bold uppercase rounded hover:opacity-70 focus:outline-none focus:bg-gray-700"
+-        >
+-          Reserve Now
+-        </button>
+-      </form>
+-    </>
+-  );
+-};
+-
+-export default RentalForm;
+diff --git a/src/components/RentalComponents/RentalItemCard.js b/src/components/RentalComponents/RentalItemCard.js
+deleted file mode 100644
+index 75e8d79..0000000
+--- a/src/components/RentalComponents/RentalItemCard.js
++++ /dev/null
+@@ -1,38 +0,0 @@
+-import React from "react";
+-import ItemCardSwiper from "./ItemCardSwiper";
+-import Button from "./Button";
+-
+-const RentalItemCard = ({
+-  item,
+-  notifyAddedToCart,
+-  notifyRemovedFromCart,
+-  notifyCartFull,
+-}) => {
+-  return (
+-    <div className="min-w-[15rem] max-w-sm md:max-w-[20rem] my-5 mx-2 rounded-lg overflow-hidden shadow-lg">
+-      <ItemCardSwiper
+-        photoList={item.images}
+-        height={"h-[25rem] md:h-[22rem]"}
+-      />
+-      <div className="px-6 py-4">
+-        <div className="font-bold h-10 text-lg mb-2 flex justify-between">
+-          <div className="truncate mr-3" translate="no">
+-            {item.rentalItem}
+-          </div>
+-          <div>{item.price ? `$${item.price}` : ""}</div>
+-        </div>
+-        <p className="text-gray-700 min-h-[9rem] text-base line-clamp-6">
+-          {item.description}
+-        </p>
+-      </div>
+-      <Button
+-        item={item}
+-        notifyAddedToCart={notifyAddedToCart}
+-        notifyRemovedFromCart={notifyRemovedFromCart}
+-        notifyCartFull={notifyCartFull}
+-      />
+-    </div>
+-  );
+-};
+-
+-export default RentalItemCard;
+diff --git a/src/components/RentalComponents/RentalItemsSearch.js b/src/components/RentalComponents/RentalItemsSearch.js
+deleted file mode 100644
+index bbd6ef3..0000000
+--- a/src/components/RentalComponents/RentalItemsSearch.js
++++ /dev/null
+@@ -1,47 +0,0 @@
+-import { useTranslation } from "gatsby-plugin-react-i18next";
+-import React, { useState } from "react";
+-
+-const RentalItemsSearch = ({
+-  backendRentalList,
+-  allCategories,
+-  setSelectedCategory,
+-  setRentalItemsList,
+-}) => {
+-  const { t } = useTranslation();
+-  const [searchTerm, setSearchTerm] = useState("");
+-
+-  const handleSearch = (e) => {
+-    const search = e.target.value;
+-    setSearchTerm(search);
+-
+-    // Perform search across title and description
+-    const filteredItems = backendRentalList.filter(
+-      (item) =>
+-        item.rentalItem.toLowerCase().includes(search.toLowerCase()) ||
+-        item.description.toLowerCase().includes(search.toLowerCase()),
+-    );
+-
+-    const orderedResults = filteredItems.sort((a, b) =>
+-      (a.rentalItem || "").localeCompare(b.rentalItem || ""),
+-    );
+-
+-    // Update rental items list
+-    setRentalItemsList(orderedResults);
+-    // Reset category to All when searching
+-    setSelectedCategory("All");
+-  };
+-
+-  return (
+-    <div className="search-container my-3 px-5 flex justify-center items-center">
+-      <input
+-        type="text"
+-        placeholder={t("Search rental items...")}
+-        value={searchTerm}
+-        onChange={handleSearch}
+-        className="w-full lg:max-w-lg xl:max-w-xl  p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+-      />
+-    </div>
+-  );
+-};
+-
+-export default RentalItemsSearch;
+diff --git a/src/components/TestimonialForm/TestimonialForm.js b/src/components/TestimonialForm/TestimonialForm.js
+index 0d2d0a2..0e7a042 100644
+--- a/src/components/TestimonialForm/TestimonialForm.js
++++ b/src/components/TestimonialForm/TestimonialForm.js
+@@ -61,10 +61,8 @@ const TestimonialForm = () => {
+                 Elopement or Vow Renewal
+               </option>
+               <option value="Wedding Planning">Wedding Planning</option>
+-              <option value="Birthday Celebration">Birthday Celebration</option>
+               <option value="Gender Reveal">Gender Reveal</option>
+               <option value="Corporate Event">Corporate Event</option>
+-              <option value="Event Rentals">Event Rentals</option>
+             </select>
+           </label>
+           <label className="block font-montserrat text-sm font-semibold text-slate-800">
+diff --git a/src/content/homeContent.js b/src/content/homeContent.js
+index 4233380..b12123a 100644
+--- a/src/content/homeContent.js
++++ b/src/content/homeContent.js
+@@ -4,10 +4,7 @@ const shared = {
+     "/puntacana-wedding-planner/",
+     "/punta-cana-elopement-packages/",
+     "/proposal/",
+-    "/birthday-celebrations/",
+     "/gender-reveal-punta-cana/",
+-    "/event-rentals/",
+-    "/floral-art/",
+   ],
+ };
+ 
+@@ -84,10 +81,8 @@ export const homeContent = {
+       "Destination wedding",
+       "Elopement",
+       "Marriage proposal",
+-      "Birthday or private celebration",
++      "Private celebration",
+       "Gender reveal",
+-      "Event rentals",
+-      "Floral design",
+       "Other event",
+     ],
+     date: "Preferred date",
+@@ -167,10 +162,8 @@ export const homeContent = {
+       "Boda de destino",
+       "Elopement",
+       "Propuesta de matrimonio",
+-      "Cumpleaños o celebración privada",
++      "Celebración privada",
+       "Revelación de género",
+-      "Alquileres para eventos",
+-      "Diseño floral",
+       "Otro evento",
+     ],
+     date: "Fecha preferida",
+diff --git a/src/context/cart.js b/src/context/cart.js
+deleted file mode 100644
+index 583457f..0000000
+--- a/src/context/cart.js
++++ /dev/null
+@@ -1,103 +0,0 @@
+-import PropTypes from "prop-types";
+-import React, { createContext, useState, useEffect } from "react";
+-
+-export const CartContext = createContext({
+-  cartItems: [],
+-  addToCart: () => {},
+-  removeFromCart: () => {},
+-  clearCart: () => {},
+-  getCartTotal: () => 0,
+-});
+-
+-export const CartProvider = ({ children }) => {
+-  const [cartItems, setCartItems] = useState([]);
+-  const [isClient, setIsClient] = useState(false);
+-
+-  useEffect(() => {
+-    setIsClient(true);
+-    const data = localStorage.getItem("cartItems");
+-    if (data) {
+-      setCartItems(JSON.parse(data));
+-    }
+-  }, []);
+-
+-  const addToCart = (item) => {
+-    const isItemInCart = cartItems.find(
+-      (cartItem) => cartItem.rentalItem === item.rentalItem,
+-    );
+-
+-    if (isItemInCart) {
+-      setCartItems(
+-        cartItems.map((cartItem) =>
+-          cartItem.rentalItem === item.rentalItem
+-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+-            : cartItem,
+-        ),
+-      );
+-    } else {
+-      if (cartItems.length < 4) {
+-        setCartItems([...cartItems, { ...item, quantity: 1 }]);
+-      }
+-    }
+-  };
+-
+-  const removeFromCart = (item) => {
+-    const isItemInCart = cartItems.find(
+-      (cartItem) => cartItem.rentalItem === item.rentalItem,
+-    );
+-
+-    if (isItemInCart.quantity === 1) {
+-      setCartItems(
+-        cartItems.filter((cartItem) => cartItem.rentalItem !== item.rentalItem),
+-      );
+-    } else {
+-      setCartItems(
+-        cartItems.map((cartItem) =>
+-          cartItem.rentalItem === item.rentalItem
+-            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+-            : cartItem,
+-        ),
+-      );
+-    }
+-  };
+-
+-  const clearCart = () => {
+-    setCartItems([]);
+-  };
+-
+-  const getCartTotal = () => {
+-    return cartItems.reduce(
+-      (total, item) => total + item.price * item.quantity,
+-      0,
+-    );
+-  };
+-
+-  useEffect(() => {
+-    const data = localStorage.getItem("cartItems");
+-    if (data) {
+-      setCartItems(JSON.parse(data));
+-    }
+-  }, []);
+-
+-  useEffect(() => {
+-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+-  }, [cartItems]); // Include cartItems as a dependency here
+-
+-  return (
+-    <CartContext.Provider
+-      value={{
+-        cartItems: isClient ? cartItems : [],
+-        addToCart,
+-        removeFromCart,
+-        clearCart,
+-        getCartTotal,
+-      }}
+-    >
+-      {children}
+-    </CartContext.Provider>
+-  );
+-};
+-
+-CartProvider.propTypes = {
+-  children: PropTypes.node.isRequired,
+-};
+diff --git a/src/data/retiredBlogRedirects.js b/src/data/retiredBlogRedirects.js
+index 1fb7ed1..c835614 100644
+--- a/src/data/retiredBlogRedirects.js
++++ b/src/data/retiredBlogRedirects.js
+@@ -150,10 +150,6 @@ const weddingVenueBlogSlugs = split(`
+   verified-wedding-venues-in-punta-cana-why-inspections-matter-for-your-big-day
+ `);
+ 
+-const birthdayBlogSlugs = split(`
+-  ultimate-punta-cana-birthday-celebration-guide
+-`);
+-
+ const genderRevealBlogSlugs = split(`
+   sertuin-events-captures-the-best-gender-reveal-moments-in-punta-cana
+ `);
+@@ -167,6 +163,7 @@ const elopementBlogSlugs = split(`
+ const goneBlogSlugs = split(`
+   engagement-photoshoot-punta-cana
+   ultimate-bachelor-party-guide-punta-cana
++  ultimate-punta-cana-birthday-celebration-guide
+   scuba-diving-punta-cana
+   san-juan-shopping-center
+ `);
+@@ -178,7 +175,6 @@ const groups = [
+     destination: "/puntacana-wedding-planner/",
+   },
+   { slugs: corporateBlogSlugs, destination: "/event-planner/" },
+-  { slugs: birthdayBlogSlugs, destination: "/birthday-celebrations/" },
+   {
+     slugs: genderRevealBlogSlugs,
+     destination: "/gender-reveal-punta-cana/",
+@@ -196,7 +192,6 @@ const categoryRedirects = {
+   "/blog/corporate-events-in-punta-cana": "/event-planner/",
+   "/blog/private-parties-and-celebrations": "/event-planner/",
+   "/blog/concerts-and-festivals": "/event-planner/",
+-  "/blog/birthdays-and-bachelor-parties": "/birthday-celebrations/",
+   "/blog/themed-and-experiential-events": "/event-planner/",
+   "/blog/complete-guide-to-organizing-events-in-punta-cana": "/event-planner/",
+ };
+diff --git a/src/locales/en-US/index.json b/src/locales/en-US/index.json
+index fbf344b..7d51ccf 100644
+--- a/src/locales/en-US/index.json
++++ b/src/locales/en-US/index.json
+@@ -7,7 +7,6 @@
+   "Marriage Proposals": "Marriage Proposals",
+   "Elopement & Vow renewal": "Elopement packages",
+   "Wedding planning": "Wedding planning",
+-  "Birthday Celebrations": "Birthday Celebrations",
+   "Gender reveal": "Gender reveal",
+   "Included": "Included",
+   "Available Add-ons": "Available Add-ons",
+@@ -25,16 +24,12 @@
+   "Leave a comment...": "Leave a comment...",
+   "Options": "Options",
+   "WEDDING PLANNING": "WEDDING PLANNING",
+-  "BIRTHDAY CELEBRATION": "BIRTHDAY CELEBRATION",
+   "GENDER REVEAL": "GENDER REVEAL",
+   "ELOPEMENT OR VOW RENEWAL": "ELOPEMENT OR VOW RENEWAL",
+   "PROPOSAL": "PROPOSAL",
+   "CORPORATE EVENT PLANNER": "CORPORATE EVENT PLANNER",
+-  "EVENT RENTALS": "EVENT RENTALS",
+-  "FLORAL DESIGN": "FLORAL DESIGN",
+   "OTHER": "OTHER",
+   "You Might Also Like": "You Might Also Like",
+-  "Search rental items...": "Search rental items...",
+   "Package Quotes": "Package Quotes",
+   "Package Contract": "Package Contract",
+   "Rental Items Quotes": "Rental Items Quotes",
+@@ -106,7 +101,6 @@
+   "Rental Items": "Rental Items",
+   "Hotel / Accommodation": "Hotel / Accommodation",
+   "Previous Quotes": "Previous Quotes",
+-  "Search Floral items...": "Search Floral items...",
+   "More Info": "More Info",
+   "Ship To": "Ship To",
+   "Your Dream Wedding Awaits ✨": "Your Dream Wedding Awaits ✨",
+diff --git a/src/locales/es/index.json b/src/locales/es/index.json
+index a5e3134..9748d8f 100644
+--- a/src/locales/es/index.json
++++ b/src/locales/es/index.json
+@@ -7,7 +7,6 @@
+   "Marriage Proposals": "Propuestas de matrimonio",
+   "Elopement & Vow renewal": "Paquetes de elopement",
+   "Wedding planning": "Planificación de bodas",
+-  "Birthday Celebrations": "Celebraciones de cumpleaños",
+   "Gender reveal": "Revelación de género",
+   "Included": "Incluido",
+   "Available Add-ons": "Complementos disponibles",
+@@ -25,16 +24,12 @@
+   "Leave a comment...": "Deja un comentario...",
+   "Options": "Opciones",
+   "WEDDING PLANNING": "PLANIFICACIÓN DE BODAS",
+-  "BIRTHDAY CELEBRATION": "CELEBRACIÓN DE CUMPLEAÑOS",
+   "GENDER REVEAL": "REVELACIÓN DE GÉNERO",
+   "ELOPEMENT OR VOW RENEWAL": "ELOPEMENT O RENOVACIÓN DE VOTOS",
+   "PROPOSAL": "PROPUESTA",
+   "CORPORATE EVENT PLANNER": "PLANIFICADOR DE EVENTOS CORPORATIVOS",
+-  "EVENT RENTALS": "ALQUILER DE MOBILIARIO Y EQUIPOS",
+-  "FLORAL DESIGN": "DISEÑO FLORAL",
+   "OTHER": "OTRO",
+   "You Might Also Like": "También te podría gustar",
+-  "Search rental items...": "Buscar artículos de alquiler...",
+   "Package Quotes": "Cotizaciones de paquetes",
+   "Package Contract": "Contrato de paquete",
+   "Rental Items Quotes": "Cotizaciones de artículos de alquiler",
+@@ -106,7 +101,6 @@
+   "Rental Items": "Artículos de alquiler",
+   "Hotel / Accommodation": "Hotel / Alojamiento",
+   "Previous Quotes": "Cotizaciones anteriores",
+-  "Search Floral items...": "Buscar artículos florales...",
+   "More Info": "Más información",
+   "Ship To": "Enviar a",
+   "Your Dream Wedding Awaits ✨": "Tu boda soñada espera ✨",
+diff --git a/src/pages/birthday-celebrations/index.js b/src/pages/birthday-celebrations/index.js
+deleted file mode 100644
+index 80d1608..0000000
+--- a/src/pages/birthday-celebrations/index.js
++++ /dev/null
+@@ -1,338 +0,0 @@
+-import { graphql } from "gatsby";
+-import React from "react";
+-import Layout from "../../components/Layout/Layout";
+-import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
+-import Seo from "../../components/Layout/seo";
+-import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
+-import RichText from "../../components/RichTextComponents/RichText";
+-import TextComponent from "../../components/TextComponent/TextComponent";
+-import OurPackages from "../../components/PackageComponents/OurPackages";
+-import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
+-import Faqs from "../../components/FaqsComponent/Faqs";
+-import { useI18next } from "gatsby-plugin-react-i18next";
+-import HeroSwiperLocal from "../../components/HeroSwiper/HeroSwiperLocal";
+-import ContentBlockLocal from "../../components/ContentBlockComponent/ContentBlockLocal";
+-import PhotoGridLocal from "../../components/PhotoGridComponent/PhotoGridLocal";
+-import OurPackagesLocal from "../../components/PackageComponents/OurPackagesLocal";
+-
+-const Index = ({ data }) => {
+-  let section1 = {};
+-  let section2 = {};
+-  let section3 = {};
+-  data.allContentfulPhotoGallery.nodes.forEach((photoList) => {
+-    if (photoList.section === "1") {
+-      section1 = photoList;
+-    }
+-    if (photoList.section === "2") {
+-      section2 = photoList;
+-    }
+-    if (photoList.section === "3") {
+-      section3 = photoList;
+-    }
+-  });
+-
+-  // const uniqueByTitle = (objects) => {
+-  //   const seenTitles = new Set();
+-
+-  //   return objects.filter((obj) => {
+-  //     // Check if we've seen this title before
+-  //     if (seenTitles.has(obj.title)) {
+-  //       // Already seen, so filter it out
+-  //       return false;
+-  //     } else {
+-  //       // New title, add to set and keep it
+-  //       seenTitles.add(obj.title);
+-  //       return true;
+-  //     }
+-  //   });
+-  // };
+-
+-  return (
+-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+-      {" "}
+-      {data.allContentfulPageContent.nodes[0].heroImageList[0].localFile ? (
+-        <HeroSwiperLocal heroInfo={data.allContentfulPageContent.nodes[0]} />
+-      ) : (
+-        <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+-      )}
+-      {section1.images[0].localFile ? (
+-        <PhotoGridLocal photos={section1.images} page={section1.page} />
+-      ) : (
+-        <PhotoGrid photos={section1.images} page={section1.page} />
+-      )}
+-      <TextComponent
+-        title={data.allContentfulPageContent.nodes[0].heroHeading2}
+-        heading="h2"
+-        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+-      />
+-      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+-      {data.allContentfulPackages.nodes[0].image.localFile ? (
+-        <OurPackagesLocal
+-          title={data.allContentfulPageContent.nodes[0].sectionTitle2}
+-          photoPackages={data.allContentfulPackages.nodes}
+-        />
+-      ) : (
+-        <OurPackages
+-          title={data.allContentfulPageContent.nodes[0].sectionTitle2}
+-          photoPackages={data.allContentfulPackages.nodes}
+-        />
+-      )}
+-      {section2.images[0].localFile ? (
+-        <PhotoGridLocal photos={section2.images} page={section2.page} />
+-      ) : (
+-        <PhotoGrid photos={section2.images} page={section2.page} />
+-      )}
+-      <TextComponent
+-        title={data.allContentfulPageContent.nodes[0].sectionTitle}
+-        heading="h2"
+-        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+-      />
+-      {data.allContentfulPageContent.nodes[0].paragraph2 && (
+-        <RichText
+-          context={data?.allContentfulPageContent?.nodes[0].paragraph2}
+-        />
+-      )}
+-      {data.allContentfulCardWithImage.nodes[0].image.localFile ? (
+-        <ContentBlockLocal content={data.allContentfulCardWithImage.nodes[0]} />
+-      ) : (
+-        <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
+-      )}
+-      {section3.images[0].localFile ? (
+-        <PhotoGridLocal photos={section3.images} page={section3.page} />
+-      ) : (
+-        <PhotoGrid photos={section3.images} page={section3.page} />
+-      )}
+-      <Faqs faqs={data.allContentfulFaqsComponent.nodes} />
+-    </Layout>
+-  );
+-};
+-
+-export default Index;
+-
+-export const Head = ({ pageContext, data }) => {
+-  const { language } = useI18next();
+-  const { title, description, images, keywords } =
+-    data.allContentfulSeo.nodes[0];
+-  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/birthday-celebrations/`;
+-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
+-
+-  let JsonSchema = {};
+-  if (schema) {
+-    JsonSchema = JSON.parse(schema);
+-  }
+-  return (
+-    <>
+-      <Seo
+-        title={title}
+-        description={description.description}
+-        keywords={keywords.join(", ")}
+-        image={`https:${images?.file?.url}`}
+-        url={siteUrl}
+-        schemaMarkup={JsonSchema}
+-        language={
+-          pageContext.language === "en-US" ? "en" : pageContext.language
+-        }
+-      />
+-      <link rel="canonical" href={siteUrl} />
+-      <link
+-        rel="alternate"
+-        hrefLang="en"
+-        href={`${data.site.siteMetadata.siteUrl}/birthday-celebrations/`}
+-      />
+-      <link
+-        rel="alternate"
+-        hrefLang="es"
+-        href={`${data.site.siteMetadata.siteUrl}/es/birthday-celebrations/`}
+-      />
+-      <link
+-        rel="alternate"
+-        hrefLang="x-default"
+-        href={`${data.site.siteMetadata.siteUrl}/birthday-celebrations/`}
+-      />
+-    </>
+-  );
+-};
+-
+-export const query = graphql`
+-  query MyQuery($language: String!) {
+-    locales: allLocale {
+-      edges {
+-        node {
+-          ns
+-          data
+-          language
+-        }
+-      }
+-    }
+-    site {
+-      siteMetadata {
+-        siteUrl
+-      }
+-    }
+-    allContentfulGeneralLayout {
+-      nodes {
+-        companyName
+-        facebook
+-        instagram
+-        x
+-        telephone
+-        messengerLink
+-      }
+-    }
+-    allContentfulSeo(
+-      filter: {
+-        page: { eq: "Birthday Celebrations" }
+-        node_locale: { eq: $language }
+-      }
+-    ) {
+-      nodes {
+-        title
+-        keywords
+-        images {
+-          file {
+-            url
+-          }
+-        }
+-        description {
+-          description
+-        }
+-        schema {
+-          internal {
+-            content
+-          }
+-        }
+-      }
+-    }
+-    allContentfulPageContent(
+-      filter: {
+-        page: { eq: "Birthday Celebrations" }
+-        node_locale: { eq: $language }
+-      }
+-    ) {
+-      nodes {
+-        page
+-        heroImageList {
+-          gatsbyImage(
+-            layout: CONSTRAINED
+-            width: 1200
+-            placeholder: NONE
+-            formats: WEBP
+-            quality: 75
+-          )
+-          # localFile {
+-          #   childImageSharp {
+-          #     gatsbyImageData(width: 4000, placeholder: BLURRED, formats: WEBP)
+-          #   }
+-          # }
+-          title
+-        }
+-        fullSize
+-        heroHeading
+-        heroHeading2
+-        sectionTitle
+-        sectionTitle2
+-        paragraph1 {
+-          raw
+-        }
+-        paragraph2 {
+-          raw
+-        }
+-      }
+-    }
+-    allContentfulPhotoGallery(
+-      filter: { page: { eq: "Birthday Celebrations" } }
+-    ) {
+-      nodes {
+-        page
+-        title
+-        section
+-        images {
+-          url
+-          width
+-          height
+-          #gatsbyImage(layout: CONSTRAINED, width: 800, placeholder: NONE, formats: WEBP, quality: 75)
+-          # localFile {
+-          #   childImageSharp {
+-          #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
+-          #   }
+-          # }
+-          title
+-        }
+-      }
+-    }
+-    allContentfulPackages(
+-      filter: {
+-        page: { eq: "Birthday Celebrations" }
+-        node_locale: { eq: $language }
+-      }
+-      sort: { price: ASC }
+-    ) {
+-      nodes {
+-        page
+-        title
+-        link
+-        included
+-        price
+-        image {
+-          title
+-          gatsbyImage(
+-            layout: CONSTRAINED
+-            width: 800
+-            placeholder: NONE
+-            formats: WEBP
+-            quality: 75
+-          )
+-          # localFile {
+-          #   childImageSharp {
+-          #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
+-          #   }
+-          # }
+-        }
+-        packagePage {
+-          urlSlug
+-        }
+-      }
+-    }
+-    allContentfulCardWithImage(
+-      filter: {
+-        page: { eq: "Birthday Celebrations" }
+-        node_locale: { eq: $language }
+-      }
+-    ) {
+-      nodes {
+-        title
+-        paragraph
+-        buttonText
+-        linkUrl
+-        image {
+-          title
+-          gatsbyImage(
+-            layout: CONSTRAINED
+-            width: 1200
+-            placeholder: NONE
+-            formats: WEBP
+-            quality: 75
+-          )
+-          # localFile {
+-          #   childImageSharp {
+-          #     gatsbyImageData(width: 2000, placeholder: BLURRED, formats: WEBP)
+-          #   }
+-          # }
+-        }
+-      }
+-    }
+-    allContentfulFaqsComponent(
+-      filter: {
+-        page: { eq: "Birthday Celebrations" }
+-        node_locale: { eq: $language }
+-      }
+-    ) {
+-      nodes {
+-        title
+-        content {
+-          content
+-        }
+-      }
+-    }
+-  }
+-`;
+diff --git a/src/pages/event-rentals/cart/index.js b/src/pages/event-rentals/cart/index.js
+deleted file mode 100644
+index bfd026d..0000000
+--- a/src/pages/event-rentals/cart/index.js
++++ /dev/null
+@@ -1,147 +0,0 @@
+-import React from "react";
+-import Layout from "../../../components/Layout/Layout";
+-import { graphql } from "gatsby";
+-import Seo from "../../../components/Layout/seo";
+-import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
+-import RentalForm from "../../../components/RentalComponents/RentalForm";
+-
+-const Index = ({ data, pageContext }) => {
+-  return (
+-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+-      <div>
+-        <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+-        <RentalForm language={pageContext.language} />
+-      </div>
+-    </Layout>
+-  );
+-};
+-
+-// Move the context usage to a child component that renders after Layout
+-
+-export default Index;
+-
+-export const Head = ({ data, pageContext }) => {
+-  const language = pageContext.language;
+-  const { title, description, images, keywords } =
+-    data.allContentfulSeo.nodes[0];
+-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language === "es" ? "/es" : ""}/event-rentals/cart/`;
+-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
+-
+-  let JsonSchema = {};
+-  if (schema) {
+-    JsonSchema = JSON.parse(schema);
+-  }
+-  return (
+-    <>
+-      <Seo
+-        title={title}
+-        description={description.description}
+-        keywords={keywords.join(", ")}
+-        image={`https:${images?.file?.url}`}
+-        url={siteUrl}
+-        schemaMarkup={JsonSchema}
+-        language={language === "en-US" ? "en" : language}
+-      />
+-      <link rel="canonical" href={siteUrl} />
+-      <meta name="robots" content="noindex,follow" />
+-    </>
+-  );
+-};
+-
+-export const query = graphql`
+-  query MyQuery($language: String!) {
+-    locales: allLocale {
+-      edges {
+-        node {
+-          ns
+-          data
+-          language
+-        }
+-      }
+-    }
+-    site {
+-      siteMetadata {
+-        siteUrl
+-      }
+-    }
+-    allContentfulGeneralLayout {
+-      nodes {
+-        companyName
+-        facebook
+-        instagram
+-        x
+-        telephone
+-        messengerLink
+-      }
+-    }
+-    allContentfulSeo(
+-      filter: { page: { eq: "Cart" }, node_locale: { eq: $language } }
+-    ) {
+-      nodes {
+-        title
+-        keywords
+-        images {
+-          file {
+-            url
+-          }
+-        }
+-        description {
+-          description
+-        }
+-        schema {
+-          internal {
+-            content
+-          }
+-        }
+-      }
+-    }
+-    allContentfulPageContent(
+-      filter: { page: { eq: "Cart" }, node_locale: { eq: $language } }
+-    ) {
+-      nodes {
+-        page
+-        videoUrl
+-        heroImageList {
+-          gatsbyImage(
+-            layout: CONSTRAINED
+-            width: 1200
+-            placeholder: NONE
+-            formats: WEBP
+-            quality: 75
+-          )
+-          title
+-        }
+-        fullSize
+-        heroHeading
+-        heroHeading2
+-        sectionTitle
+-        paragraph1 {
+-          raw
+-        }
+-      }
+-    }
+-    allContentfulRentalItems(
+-      sort: { rentalItem: ASC }
+-      filter: { node_locale: { eq: $language } }
+-    ) {
+-      nodes {
+-        id
+-        rentalItem
+-        category
+-        price
+-        description
+-        stock
+-        images {
+-          gatsbyImage(
+-            layout: CONSTRAINED
+-            width: 400
+-            placeholder: NONE
+-            formats: WEBP
+-            quality: 75
+-          )
+-          title
+-        }
+-      }
+-    }
+-  }
+-`;
+diff --git a/src/pages/event-rentals/index.js b/src/pages/event-rentals/index.js
+deleted file mode 100644
+index 6d7bc8f..0000000
+--- a/src/pages/event-rentals/index.js
++++ /dev/null
+@@ -1,392 +0,0 @@
+-import { graphql } from "gatsby";
+-import React, { useState } from "react";
+-import Layout from "../../components/Layout/Layout";
+-import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
+-import RichText from "../../components/RichTextComponents/RichText";
+-import Seo from "../../components/Layout/seo";
+-import { useI18next } from "gatsby-plugin-react-i18next";
+-import RentalItemCard from "../../components/RentalComponents/RentalItemCard";
+-import RentalItemsSearch from "../../components/RentalComponents/RentalItemsSearch";
+-import { ToastContainer, toast } from "react-toastify";
+-const Index = ({ data }) => {
+-  const backendRentalList = data.allContentfulRentalItems.nodes;
+-  const [selectedCategory, setSelectedCategory] = useState("All");
+-  const [currentPage, setCurrentPage] = useState(1);
+-  const itemsPerPage = 12; // Adjust this number as needed
+-
+-  const [rentalItemsList, setRentalItemsList] = useState(
+-    [...data.allContentfulRentalItems.nodes].sort((a, b) =>
+-      (a.rentalItem || "").localeCompare(b.rentalItem || ""),
+-    ),
+-  );
+-
+-  // Get current items
+-  const indexOfLastItem = currentPage * itemsPerPage;
+-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+-  const currentItems = rentalItemsList.slice(indexOfFirstItem, indexOfLastItem);
+-
+-  // Change page
+-  const paginate = (pageNumber) => {
+-    setCurrentPage(pageNumber);
+-    // Smooth scroll to top of the rental items section
+-    window.scrollTo({
+-      top: document.querySelector(".rental-items-section").offsetTop,
+-      behavior: "smooth",
+-    });
+-  };
+-
+-  const allCategories = [
+-    "All",
+-    ...new Set(
+-      data.allContentfulRentalItems.nodes.flatMap((item) => item.category),
+-    ),
+-  ].sort();
+-
+-  // Search Functions
+-
+-  const setFilter = (e) => {
+-    setCurrentPage(1); // Reset to first page when filtering
+-    setSelectedCategory(e.target.dataset.category);
+-    const filteredRentalList = backendRentalList.filter((item) => {
+-      if (e.target.innerText === "All") {
+-        return item;
+-      }
+-      const categoryList = item.category;
+-      return categoryList.includes(e.target.dataset.category);
+-    });
+-    setRentalItemsList(
+-      filteredRentalList.sort((a, b) =>
+-        (a.rentalItem || "").localeCompare(b.rentalItem || ""),
+-      ),
+-    );
+-  };
+-
+-  //Toast Functions
+-
+-  const notifyAddedToCart = (item) =>
+-    toast.success(`${item.rentalItem} added to cart!`, {
+-      position: "top-center",
+-      autoClose: 2000,
+-      hideProgressBar: true,
+-      closeOnClick: true,
+-      pauseOnHover: true,
+-      draggable: true,
+-      theme: "colored",
+-      style: {
+-        backgroundColor: "#fff",
+-        color: "#000",
+-      },
+-    });
+-
+-  const notifyCartFull = (item) =>
+-    toast.error(
+-      `You've reached the maximum available stock for this ${item.rentalItem}`,
+-      {
+-        position: "top-center",
+-        autoClose: 2000,
+-        hideProgressBar: true,
+-        closeOnClick: true,
+-        pauseOnHover: true,
+-        draggable: true,
+-        theme: "colored",
+-        style: {
+-          backgroundColor: "#fff",
+-          color: "#000",
+-        },
+-      },
+-    );
+-
+-  const notifyRemovedFromCart = (item) =>
+-    toast.error(`${item.rentalItem} removed from cart!`, {
+-      position: "top-center",
+-      autoClose: 2000,
+-      hideProgressBar: true,
+-      closeOnClick: true,
+-      pauseOnHover: true,
+-      draggable: true,
+-      theme: "colored",
+-      style: {
+-        backgroundColor: "#000",
+-        color: "#fff",
+-      },
+-    });
+-
+-  return (
+-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+-      <ToastContainer />
+-      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+-      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+-      <div className="rental-items-section">
+-        <nav className="flex flex-row items-center  overflow-x-scroll xl:overflow-x-auto whitespace-nowrap mx-5 xl:justify-center">
+-          {/* <button onClick={()=>setFilter('All')}>All</button> */}
+-          {allCategories.map((category, index) => {
+-            let active = "";
+-            if (category === selectedCategory) {
+-              active = "font-extrabold";
+-            }
+-            return (
+-              <button
+-                key={item.id || item.rentalItem || index}
+-                data-category={category}
+-                onClick={setFilter}
+-                value={category}
+-                translate="no"
+-                className={`cursor-pointer no-underline flex items-center px-5 h-10 ${active} transition-all duration-300 translatedText `}
+-              >
+-                {category}
+-              </button>
+-            );
+-          })}
+-        </nav>
+-        <RentalItemsSearch
+-          backendRentalList={backendRentalList}
+-          allCategories={allCategories}
+-          setSelectedCategory={setSelectedCategory}
+-          setRentalItemsList={setRentalItemsList}
+-        />
+-        <div className="flex flex-col justify-center items-center md:flex-row md:flex-wrap md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto">
+-          {currentItems.map((item, index) => {
+-            return (
+-              <RentalItemCard
+-                key={index}
+-                item={item}
+-                notifyAddedToCart={notifyAddedToCart}
+-                notifyRemovedFromCart={notifyRemovedFromCart}
+-                notifyCartFull={notifyCartFull}
+-              />
+-            );
+-          })}
+-        </div>
+-
+-        {/* Pagination */}
+-        <div className="flex justify-center mt-8 mb-8">
+-          {(() => {
+-            const totalPages = Math.ceil(rentalItemsList.length / itemsPerPage);
+-            let buttons = [];
+-
+-            // Always show first page
+-            buttons.push(
+-              <button
+-                key={1}
+-                onClick={() => paginate(1)}
+-                className={`mx-1 px-4 py-2 border rounded ${
+-                  currentPage === 1 ? "bg-gray-200" : "bg-white"
+-                }`}
+-              >
+-                1
+-              </button>,
+-            );
+-
+-            // Calculate range of visible page buttons
+-            let startPage = Math.max(2, currentPage - 1);
+-            let endPage = Math.min(totalPages - 1, currentPage + 1);
+-
+-            // If we're at the start, show more pages after
+-            if (currentPage <= 2) {
+-              endPage = Math.min(totalPages - 1, 3);
+-            }
+-
+-            // If we're at the end, show more pages before
+-            if (currentPage >= totalPages - 1) {
+-              startPage = Math.max(2, totalPages - 2);
+-            }
+-
+-            // Add ellipsis after first page if needed
+-            if (startPage > 2) {
+-              buttons.push(
+-                <span key="ellipsis1" className="mx-2">
+-                  ...
+-                </span>,
+-              );
+-            }
+-
+-            // Add middle pages
+-            for (let i = startPage; i <= endPage; i++) {
+-              buttons.push(
+-                <button
+-                  key={i}
+-                  onClick={() => paginate(i)}
+-                  className={`mx-1 px-4 py-2 border rounded ${
+-                    currentPage === i ? "bg-gray-200" : "bg-white"
+-                  }`}
+-                >
+-                  {i}
+-                </button>,
+-              );
+-            }
+-
+-            // Add ellipsis before last page if needed
+-            if (endPage < totalPages - 1) {
+-              buttons.push(
+-                <span key="ellipsis2" className="mx-2">
+-                  ...
+-                </span>,
+-              );
+-            }
+-
+-            // Always show last page if there's more than one page
+-            if (totalPages > 1) {
+-              buttons.push(
+-                <button
+-                  key={totalPages}
+-                  onClick={() => paginate(totalPages)}
+-                  className={`mx-1 px-4 py-2 border rounded ${
+-                    currentPage === totalPages ? "bg-gray-200" : "bg-white"
+-                  }`}
+-                >
+-                  {totalPages}
+-                </button>,
+-              );
+-            }
+-
+-            return buttons;
+-          })()}
+-        </div>
+-      </div>
+-    </Layout>
+-  );
+-};
+-
+-export default Index;
+-
+-export const Head = ({ pageContext, data }) => {
+-  const { language } = useI18next();
+-  const { title, description, images, keywords } =
+-    data.allContentfulSeo.nodes[0];
+-  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/event-rentals/`;
+-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
+-
+-  let JsonSchema = {};
+-  if (schema) {
+-    JsonSchema = JSON.parse(schema);
+-  }
+-  return (
+-    <>
+-      <Seo
+-        title={title}
+-        description={description.description}
+-        keywords={keywords.join(", ")}
+-        image={`https:${images?.file?.url}`}
+-        url={siteUrl}
+-        schemaMarkup={JsonSchema}
+-        language={
+-          pageContext.language === "en-US" ? "en" : pageContext.language
+-        }
+-      />
+-      <link rel="canonical" href={siteUrl} />
+-      <link
+-        rel="alternate"
+-        hrefLang="en"
+-        href={`${data.site.siteMetadata.siteUrl}/event-rentals/`}
+-      />
+-      <link
+-        rel="alternate"
+-        hrefLang="es"
+-        href={`${data.site.siteMetadata.siteUrl}/es/event-rentals/`}
+-      />
+-      <link
+-        rel="alternate"
+-        hrefLang="x-default"
+-        href={`${data.site.siteMetadata.siteUrl}/event-rentals/`}
+-      />
+-    </>
+-  );
+-};
+-
+-export const query = graphql`
+-  query MyQuery($language: String!) {
+-    locales: allLocale {
+-      edges {
+-        node {
+-          ns
+-          data
+-          language
+-        }
+-      }
+-    }
+-    site {
+-      siteMetadata {
+-        siteUrl
+-      }
+-    }
+-    allContentfulGeneralLayout {
+-      nodes {
+-        companyName
+-        facebook
+-        instagram
+-        x
+-        telephone
+-        messengerLink
+-      }
+-    }
+-    allContentfulSeo(
+-      filter: { page: { eq: "Event Rentals" }, node_locale: { eq: $language } }
+-    ) {
+-      nodes {
+-        title
+-        keywords
+-        images {
+-          file {
+-            url
+-          }
+-        }
+-        description {
+-          description
+-        }
+-        schema {
+-          internal {
+-            content
+-          }
+-        }
+-      }
+-    }
+-    allContentfulPageContent(
+-      filter: { page: { eq: "Event Rentals" }, node_locale: { eq: $language } }
+-    ) {
+-      nodes {
+-        page
+-        videoUrl
+-        heroImageList {
+-          gatsbyImage(
+-            layout: CONSTRAINED
+-            width: 1200
+-            placeholder: NONE
+-            formats: WEBP
+-            quality: 75
+-          )
+-          title
+-        }
+-        fullSize
+-        heroHeading
+-        heroHeading2
+-        sectionTitle
+-        paragraph1 {
+-          raw
+-        }
+-      }
+-    }
+-    allContentfulRentalItems(
+-      sort: { rentalItem: ASC }
+-      filter: { node_locale: { eq: $language } }
+-    ) {
+-      nodes {
+-        id
+-        rentalItem
+-        category
+-        price
+-        description
+-        stock
+-        images {
+-          gatsbyImage(
+-            layout: CONSTRAINED
+-            width: 400
+-            placeholder: NONE
+-            formats: WEBP
+-            quality: 75
+-          )
+-          title
+-        }
+-      }
+-    }
+-  }
+-`;
+diff --git a/src/pages/floral-art/index.js b/src/pages/floral-art/index.js
+deleted file mode 100644
+index f96fb8d..0000000
+--- a/src/pages/floral-art/index.js
++++ /dev/null
+@@ -1,343 +0,0 @@
+-import { graphql } from "gatsby";
+-import React, { useState } from "react";
+-import Layout from "../../components/Layout/Layout";
+-import Seo from "../../components/Layout/seo";
+-import { useI18next } from "gatsby-plugin-react-i18next";
+-import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
+-import RichText from "../../components/RichTextComponents/RichText";
+-import FloralItemCard from "../../components/FloralComponents/FloralItemCard";
+-import FloralItemSearch from "../../components/FloralComponents/FloralItemSearch";
+-
+-const Index = ({ data }) => {
+-  const backendFloralList = data.allContentfulFloralItem.nodes;
+-  const [selectedCategory, setSelectedCategory] = useState("All");
+-  const [currentPage, setCurrentPage] = useState(1);
+-  const itemsPerPage = 12; // Adjust this number as needed
+-
+-  const [floralItemsList, setFloralItemsList] = useState(
+-    [...data.allContentfulFloralItem.nodes].sort((a, b) =>
+-      (a.floralItem || "").localeCompare(b.floralItem || ""),
+-    ),
+-  );
+-
+-  // Get current items
+-  const indexOfLastItem = currentPage * itemsPerPage;
+-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+-  const currentItems = floralItemsList.slice(indexOfFirstItem, indexOfLastItem);
+-
+-  // Change page
+-  const paginate = (pageNumber) => {
+-    setCurrentPage(pageNumber);
+-    // Smooth scroll to top of the floral items section
+-    window.scrollTo({
+-      top: document.querySelector(".floral-items-section").offsetTop,
+-      behavior: "smooth",
+-    });
+-  };
+-
+-  const allCategories = [
+-    "All",
+-    ...new Set(
+-      data.allContentfulFloralItem.nodes.flatMap((item) => item.category),
+-    ),
+-  ].sort();
+-
+-  const setFilter = (e) => {
+-    setCurrentPage(1); // Reset to first page when filtering
+-    setSelectedCategory(e.target.dataset.category);
+-    const filteredRentalList = backendFloralList.filter((item) => {
+-      if (e.target.innerText === "All") {
+-        return item;
+-      }
+-      const categoryList = item.category;
+-      return categoryList.includes(e.target.dataset.category);
+-    });
+-    setFloralItemsList(
+-      filteredRentalList.sort((a, b) =>
+-        (a.floralItem || "").localeCompare(b.floralItem || ""),
+-      ),
+-    );
+-  };
+-
+-  return (
+-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+-      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+-      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+-      <div className="floral-items-section">
+-        <nav className="flex flex-row items-center overflow-x-scroll xl:overflow-x-auto whitespace-nowrap mx-5 xl:justify-center">
+-          {/* <button onClick={()=>setFilter('All')}>All</button> */}
+-          {allCategories.map((category, index) => {
+-            let active = "";
+-            if (category === selectedCategory) {
+-              active = "font-extrabold";
+-            }
+-            return (
+-              <button
+-                key={index}
+-                data-category={category}
+-                onClick={setFilter}
+-                value={category}
+-                translate="no"
+-                className={`cursor-pointer no-underline flex items-center px-5 h-10 ${active} transition-all duration-300 translatedText `}
+-              >
+-                {category}
+-              </button>
+-            );
+-          })}
+-        </nav>
+-
+-        <FloralItemSearch
+-          backendFloralList={backendFloralList}
+-          allCategories={allCategories}
+-          setSelectedCategory={setSelectedCategory}
+-          setFloralItemsList={setFloralItemsList}
+-        />
+-
+-        <div className="flex justify-evenly items-center flex-row flex-wrap md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto">
+-          {currentItems.map((item, index) => {
+-            return (
+-              <FloralItemCard
+-                item={item}
+-                key={item.id || item.floralItem || index}
+-              />
+-            );
+-          })}
+-        </div>
+-
+-        {/* Pagination */}
+-        <div className="flex justify-center mt-8 mb-8">
+-          {(() => {
+-            const totalPages = Math.ceil(floralItemsList.length / itemsPerPage);
+-            let buttons = [];
+-
+-            // Always show first page
+-            buttons.push(
+-              <button
+-                key={1}
+-                onClick={() => paginate(1)}
+-                className={`mx-1 px-4 py-2 border rounded ${
+-                  currentPage === 1 ? "bg-gray-200" : "bg-white"
+-                }`}
+-              >
+-                1
+-              </button>,
+-            );
+-
+-            // Calculate range of visible page buttons
+-            let startPage = Math.max(2, currentPage - 1);
+-            let endPage = Math.min(totalPages - 1, currentPage + 1);
+-
+-            // If we're at the start, show more pages after
+-            if (currentPage <= 2) {
+-              endPage = Math.min(totalPages - 1, 3);
+-            }
+-
+-            // If we're at the end, show more pages before
+-            if (currentPage >= totalPages - 1) {
+-              startPage = Math.max(2, totalPages - 2);
+-            }
+-
+-            // Add ellipsis after first page if needed
+-            if (startPage > 2) {
+-              buttons.push(
+-                <span key="ellipsis1" className="mx-2">
+-                  ...
+-                </span>,
+-              );
+-            }
+-
+-            // Add middle pages
+-            for (let i = startPage; i <= endPage; i++) {
+-              buttons.push(
+-                <button
+-                  key={i}
+-                  onClick={() => paginate(i)}
+-                  className={`mx-1 px-4 py-2 border rounded ${
+-                    currentPage === i ? "bg-gray-200" : "bg-white"
+-                  }`}
+-                >
+-                  {i}
+-                </button>,
+-              );
+-            }
+-
+-            // Add ellipsis before last page if needed
+-            if (endPage < totalPages - 1) {
+-              buttons.push(
+-                <span key="ellipsis2" className="mx-2">
+-                  ...
+-                </span>,
+-              );
+-            }
+-
+-            // Always show last page if there's more than one page
+-            if (totalPages > 1) {
+-              buttons.push(
+-                <button
+-                  key={totalPages}
+-                  onClick={() => paginate(totalPages)}
+-                  className={`mx-1 px-4 py-2 border rounded ${
+-                    currentPage === totalPages ? "bg-gray-200" : "bg-white"
+-                  }`}
+-                >
+-                  {totalPages}
+-                </button>,
+-              );
+-            }
+-
+-            return buttons;
+-          })()}
+-        </div>
+-      </div>
+-    </Layout>
+-  );
+-};
+-
+-export default Index;
+-
+-export const Head = ({ pageContext, data }) => {
+-  const { language } = useI18next();
+-  const { title, description, images, keywords } =
+-    data.allContentfulSeo.nodes[0];
+-  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/floral-art/`;
+-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
+-
+-  let JsonSchema = {};
+-  if (schema) {
+-    JsonSchema = JSON.parse(schema);
+-  }
+-  return (
+-    <>
+-      <Seo
+-        title={title}
+-        description={description.description}
+-        keywords={keywords.join(", ")}
+-        image={`https:${images?.file?.url}`}
+-        url={siteUrl}
+-        schemaMarkup={JsonSchema}
+-        language={
+-          pageContext.language === "en-US" ? "en" : pageContext.language
+-        }
+-      />
+-      <link rel="canonical" href={siteUrl} />
+-      <link
+-        rel="alternate"
+-        hrefLang="en"
+-        href={`${data.site.siteMetadata.siteUrl}/floral-art/`}
+-      />
+-      <link
+-        rel="alternate"
+-        hrefLang="es"
+-        href={`${data.site.siteMetadata.siteUrl}/es/floral-art/`}
+-      />
+-      <link
+-        rel="alternate"
+-        hrefLang="x-default"
+-        href={`${data.site.siteMetadata.siteUrl}/floral-art/`}
+-      />
+-    </>
+-  );
+-};
+-
+-export const query = graphql`
+-  query MyQuery($language: String!) {
+-    locales: allLocale {
+-      edges {
+-        node {
+-          ns
+-          data
+-          language
+-        }
+-      }
+-    }
+-    site {
+-      siteMetadata {
+-        siteUrl
+-      }
+-    }
+-    allContentfulGeneralLayout {
+-      nodes {
+-        companyName
+-        facebook
+-        instagram
+-        x
+-        telephone
+-        messengerLink
+-      }
+-    }
+-    allContentfulSeo(
+-      filter: { page: { eq: "Floral Art" }, node_locale: { eq: $language } }
+-    ) {
+-      nodes {
+-        title
+-        keywords
+-        images {
+-          file {
+-            url
+-          }
+-        }
+-        description {
+-          description
+-        }
+-        schema {
+-          internal {
+-            content
+-          }
+-        }
+-      }
+-    }
+-    allContentfulPageContent(
+-      filter: { page: { eq: "Floral Art" }, node_locale: { eq: $language } }
+-    ) {
+-      nodes {
+-        page
+-        videoUrl
+-        heroImageList {
+-          gatsbyImage(
+-            layout: CONSTRAINED
+-            width: 1200
+-            placeholder: NONE
+-            formats: WEBP
+-            quality: 75
+-          )
+-          title
+-        }
+-        fullSize
+-        heroHeading
+-        heroHeading2
+-        sectionTitle
+-        paragraph1 {
+-          raw
+-        }
+-      }
+-    }
+-    allContentfulFloralItem(
+-      sort: { floralItem: ASC }
+-      filter: { node_locale: { eq: $language } }
+-    ) {
+-      nodes {
+-        id
+-        floralItem
+-        category
+-        price
+-        description
+-        images {
+-          gatsbyImage(
+-            layout: CONSTRAINED
+-            width: 450
+-            placeholder: BLURRED
+-            formats: WEBP
+-            quality: 75
+-          )
+-          title
+-        }
+-        additions {
+-          ... on ContentfulPackageAdditions {
+-            price
+-            addition
+-          }
+-        }
+-      }
+-    }
+-  }
+-`;
+diff --git a/src/pages/index.js b/src/pages/index.js
+index 610b136..fb57db2 100644
+--- a/src/pages/index.js
++++ b/src/pages/index.js
+@@ -196,7 +196,16 @@ export const query = graphql`
+         }
+       }
+     }
+-    allContentfulServices(filter: { node_locale: { eq: $language } }) {
++    allContentfulServices(
++      filter: {
++        node_locale: { eq: $language }
++        page: {
++          url: {
++            nin: ["/event-rentals/", "/birthday-celebrations/", "/floral-art/"]
++          }
++        }
++      }
++    ) {
+       nodes {
+         typeOfService
+         cardDescription
+diff --git a/static/llms.txt b/static/llms.txt
+index 50bf932..6dd911f 100644
+--- a/static/llms.txt
++++ b/static/llms.txt
+@@ -53,9 +53,6 @@ Sertuin Events does not sell preset gender reveal packages. Clients share their
+ 
+ - [Punta Cana wedding planner](https://sertuinevents.com/puntacana-wedding-planner/): Destination, South Asian and multicultural wedding planning, current planning packages, process, FAQs and inquiry form.
+ - [Corporate event planner in Punta Cana](https://sertuinevents.com/event-planner/): Corporate event planning, production, logistics, supplier coordination and on-site management.
+-- [Birthday celebrations](https://sertuinevents.com/birthday-celebrations/): Custom birthday celebration planning in Punta Cana.
+-- [Event rentals](https://sertuinevents.com/event-rentals/): Current rental inventory managed by Sertuin Events.
+-- [Floral design](https://sertuinevents.com/floral-art/): Current floral design options and custom inquiries.
+ - [Contact Sertuin Events](https://sertuinevents.com/contact/): General event inquiry form and direct contact options.
+ 
+ Grecia Mejía is the lead wedding planner presented by Sertuin Events and has 10 years of experience planning destination weddings in Punta Cana. Wedding planning begins with a discovery meeting, signed agreement and a US$500 deposit, regardless of the planning package selected. The company provides year-round 24/7 planning assistance by WhatsApp, phone and email.
