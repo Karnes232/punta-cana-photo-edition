@@ -6,9 +6,6 @@ import { Trans } from "gatsby-plugin-react-i18next";
 const PackageCard = ({ photoPackage }) => {
   const image = getImage(photoPackage.image.gatsbyImage);
   let cardHeight = "";
-  if (photoPackage.page === "Birthday Celebrations") {
-    cardHeight = "h-[27rem]";
-  }
   if (photoPackage.page === "Photo Shoots") {
     cardHeight = "h-[23rem]";
   }

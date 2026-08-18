@@ -8,9 +8,6 @@ const PackageCardLocal = ({ photoPackage }) => {
     photoPackage.image.localFile.childImageSharp.gatsbyImageData,
   );
   let cardHeight = "";
-  if (photoPackage.page === "Birthday Celebrations") {
-    cardHeight = "h-[27rem]";
-  }
   if (photoPackage.page === "Photo Shoots") {
     cardHeight = "h-[23rem]";
   }

@@ -150,10 +150,6 @@ const weddingVenueBlogSlugs = split(`
   verified-wedding-venues-in-punta-cana-why-inspections-matter-for-your-big-day
 `);
 
-const birthdayBlogSlugs = split(`
-  ultimate-punta-cana-birthday-celebration-guide
-`);
-
 const genderRevealBlogSlugs = split(`
   sertuin-events-captures-the-best-gender-reveal-moments-in-punta-cana
 `);
@@ -167,6 +163,7 @@ const elopementBlogSlugs = split(`
 const goneBlogSlugs = split(`
   engagement-photoshoot-punta-cana
   ultimate-bachelor-party-guide-punta-cana
+  ultimate-punta-cana-birthday-celebration-guide
   scuba-diving-punta-cana
   san-juan-shopping-center
 `);
@@ -178,7 +175,6 @@ const groups = [
     destination: "/puntacana-wedding-planner/",
   },
   { slugs: corporateBlogSlugs, destination: "/event-planner/" },
-  { slugs: birthdayBlogSlugs, destination: "/birthday-celebrations/" },
   {
     slugs: genderRevealBlogSlugs,
     destination: "/gender-reveal-punta-cana/",
@@ -196,7 +192,6 @@ const categoryRedirects = {
   "/blog/corporate-events-in-punta-cana": "/event-planner/",
   "/blog/private-parties-and-celebrations": "/event-planner/",
   "/blog/concerts-and-festivals": "/event-planner/",
-  "/blog/birthdays-and-bachelor-parties": "/birthday-celebrations/",
   "/blog/themed-and-experiential-events": "/event-planner/",
   "/blog/complete-guide-to-organizing-events-in-punta-cana": "/event-planner/",
 };

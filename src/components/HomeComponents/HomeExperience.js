@@ -20,6 +20,9 @@ const legacyRoutes = new Set([
   "/photo-gallery/",
   "/real-estate-photography/",
   "/videos-and-comercial-photos/",
+  "/event-rentals/",
+  "/birthday-celebrations/",
+  "/floral-art/",
   "/packages/photography-event-planner/",
   "/packages/videography-event-planner/",
 ]);

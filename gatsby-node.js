@@ -22,6 +22,14 @@ const retiredStaticPaths = new Set([
   "/es/wedding",
   "/photo-gallery",
   "/es/photo-gallery",
+  "/event-rentals",
+  "/es/event-rentals",
+  "/event-rentals/cart",
+  "/es/event-rentals/cart",
+  "/birthday-celebrations",
+  "/es/birthday-celebrations",
+  "/floral-art",
+  "/es/floral-art",
 ]);
 
 exports.onCreatePage = ({ page, actions }) => {
@@ -250,41 +258,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: path.resolve(
           "./src/pages/punta-cana-elopement-packages/index.js",
         ),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
-
-      const eventRentalsPath =
-        urlPath === "" ? "/event-rentals" : `/${urlPath}/event-rentals`;
-      createPage({
-        path: eventRentalsPath,
-        component: path.resolve("./src/pages/event-rentals/index.js"),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
-
-      const floralPath =
-        urlPath === "" ? "/floral-art" : `/${urlPath}/floral-art`;
-      createPage({
-        path: floralPath,
-        component: path.resolve("./src/pages/floral-art/index.js"),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
-
-      const birthdayPath =
-        urlPath === ""
-          ? "/birthday-celebrations"
-          : `/${urlPath}/birthday-celebrations`;
-      createPage({
-        path: birthdayPath,
-        component: path.resolve("./src/pages/birthday-celebrations/index.js"),
         context: {
           language: contentfulCode,
           urlLanguage: urlCode,

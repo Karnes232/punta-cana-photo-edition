@@ -2,8 +2,6 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
-import { CartProvider } from "../../context/cart";
-import FloatingCartButton from "../FloatingButtonComponents/FloatingCartButton";
 import ExpandableMessengerButton from "../FloatingButtonComponents/ExpandableMessengerButton";
 
 const Layout = ({ children, generalInfo, overlayHeader = false }) => {
@@ -21,18 +19,15 @@ const Layout = ({ children, generalInfo, overlayHeader = false }) => {
   const { messengerLink, telephone } = data.allContentfulGeneralLayout.nodes[0];
 
   return (
-    <CartProvider>
-      <div className="min-h-screen font-crimson flex flex-col justify-between bg-primary-bg-color">
-        <Navbar overlay={overlayHeader} />
-        <FloatingCartButton />
-        <ExpandableMessengerButton
-          messengerLink={messengerLink}
-          telephone={telephone}
-        />
-        {children}
-        <Footer generalInfo={generalInfo} />
-      </div>
-    </CartProvider>
+    <div className="min-h-screen font-crimson flex flex-col justify-between bg-primary-bg-color">
+      <Navbar overlay={overlayHeader} />
+      <ExpandableMessengerButton
+        messengerLink={messengerLink}
+        telephone={telephone}
+      />
+      {children}
+      <Footer generalInfo={generalInfo} />
+    </div>
   );
 };
 
