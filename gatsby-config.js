@@ -233,11 +233,6 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
-            matchPath:
-              "/:lang?/blog/complete-guide-to-organizing-events-in-punta-cana",
-            getLanguageFromPath: true,
-          },
-          {
             matchPath: "/:lang?/packages/:uid",
             getLanguageFromPath: true,
           },

@@ -1,14 +1,15 @@
 const path = require("path");
 const fetch = require("node-fetch");
 const fs = require("fs");
+const {
+  groups: retiredBlogRedirectGroups,
+  categoryRedirects: retiredBlogCategoryRedirects,
+  retiredBlogSlugs,
+} = require("./src/data/retiredBlogRedirects");
 
 // These routes belonged to the former photography/video business. Keep the
 // Contentful entries available for historical reference, but never publish
 // them as Sertuin Events pages or include them in the sitemap.
-const retiredBlogSlugs = new Set([
-  "engagement-photoshoot-punta-cana",
-  "surprise-proposal-videographer-punta-cana",
-]);
 const retiredPackageSlugs = new Set([
   "photography-event-planner",
   "videography-event-planner",
@@ -95,27 +96,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const packageTemplate = path.resolve(`src/template/package.js`);
   const blogTemplate = path.resolve(`src/template/blog.js`);
-  const blogCategoryTemplate = path.resolve(`src/template/blogCategory.js`);
-
-  queryResults.data.allContentfulBlogCategories.nodes.forEach((node) => {
-    // Get proper language path prefix
-    const lang = node.node_locale === "en-US" ? "" : node.node_locale;
-    const langPrefix = lang ? `/${lang}` : "";
-
-    createPage({
-      path: `${langPrefix}/blog/${node.url?.trim()}`,
-      component: blogCategoryTemplate,
-      context: {
-        id: node.id,
-        language: node.node_locale,
-        blog: node,
-        layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
-        // blogList: queryResults.data.allContentfulBlogPost.nodes.filter(
-        //   (post) => post.node_locale === node.node_locale,
-        // ), // Filter blog posts by language
-      },
-    });
-  });
+  // Old category pages were removed with the previous blog library. They are
+  // redirected selectively below when a real replacement exists; empty/thin
+  // category pages are not rebuilt.
 
   // queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
   //   createPage({
@@ -244,21 +227,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
-      const blogGuidPath =
-        urlPath === ""
-          ? "/blog/complete-guide-to-organizing-events-in-punta-cana"
-          : `/${urlPath}/blog/complete-guide-to-organizing-events-in-punta-cana`;
-      createPage({
-        path: blogGuidPath,
-        component: path.resolve(
-          "./src/pages/blog/complete-guide-to-organizing-events-in-punta-cana/index.js",
-        ),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
-
       const proposalPath =
         urlPath === "" ? "/proposal" : `/${urlPath}/proposal`;
       createPage({
@@ -372,6 +340,36 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // instead of breaking the entire page build.
   const { createRedirect } = actions;
 
+  const createPermanentRedirect = (fromPath, toPath) => {
+    const normalizedFrom = fromPath.replace(/\/+$/, "");
+    [normalizedFrom, `${normalizedFrom}/`].forEach((source) => {
+      createRedirect({
+        fromPath: source,
+        toPath,
+        statusCode: 301,
+        force: true,
+        isPermanent: true,
+      });
+    });
+  };
+
+  // Map only deleted URLs whose intent is fully served by a current page.
+  // Both language variants are emitted. All other deleted posts return a real
+  // 404, which follows Google's guidance and avoids soft-404 redirects.
+  retiredBlogRedirectGroups.forEach(({ slugs, destination }) => {
+    slugs.forEach((slug) => {
+      createPermanentRedirect(`/blog/${slug}`, destination);
+      createPermanentRedirect(`/es/blog/${slug}`, `/es${destination}`);
+    });
+  });
+
+  Object.entries(retiredBlogCategoryRedirects).forEach(
+    ([source, destination]) => {
+      createPermanentRedirect(source, destination);
+      createPermanentRedirect(`/es${source}`, `/es${destination}`);
+    },
+  );
+
   const permanentElopementRedirects = [
     {
       from: "/elopement-vow-renewal",
@@ -384,15 +382,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   ];
 
   permanentElopementRedirects.forEach(({ from, to }) => {
-    [from, `${from}/`].forEach((fromPath) => {
-      createRedirect({
-        fromPath,
-        toPath: to,
-        statusCode: 301,
-        force: true,
-        isPermanent: true,
-      });
-    });
+    createPermanentRedirect(from, to);
   });
 
   const redirectResults = await graphql(`
