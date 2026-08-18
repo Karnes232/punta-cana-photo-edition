@@ -171,6 +171,7 @@ export const query = graphql`
             quality: 82
           )
           title
+          description
         }
         heroHeading
         heroHeading2
@@ -207,6 +208,7 @@ export const query = graphql`
           width
           height
           title
+          description
           gatsbyImage(
             layout: CONSTRAINED
             width: 1100

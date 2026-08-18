@@ -2,10 +2,18 @@ import React, { useMemo, useRef, useState } from "react";
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
 import {
   ArrowRight,
+  Award,
+  BadgeDollarSign,
+  CalendarCheck,
   Check,
   ChevronDown,
+  ClipboardCheck,
+  Clock3,
+  Globe2,
   HeartHandshake,
+  MapPinned,
   MessageCircle,
+  Palette,
   ShieldCheck,
   Sparkles,
   Users,
@@ -55,6 +63,7 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
         image={image}
         alt={
           alt ||
+          asset?.description ||
           asset?.title ||
           "Wedding planned by Sertuin Events in Punta Cana"
         }
@@ -70,7 +79,10 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
     <img
       src={`${asset.url}?w=1600&fm=webp&q=80`}
       alt={
-        alt || asset?.title || "Wedding planned by Sertuin Events in Punta Cana"
+        alt ||
+        asset?.description ||
+        asset?.title ||
+        "Wedding planned by Sertuin Events in Punta Cana"
       }
       className={`${className} object-cover`}
       loading={loading}
@@ -79,7 +91,7 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
   );
 };
 
-const PackageCard = ({ item, copy, onSelect }) => {
+const PackageCard = ({ item, copy, onSelect, icon: Icon }) => {
   const items = Array.isArray(item?.includedItems) ? item.includedItems : [];
   const price = Number(item?.price);
   return (
@@ -95,6 +107,9 @@ const PackageCard = ({ item, copy, onSelect }) => {
           {copy.popular}
         </p>
       )}
+      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-700">
+        <Icon size={23} strokeWidth={1.8} aria-hidden="true" />
+      </div>
       <h3 className="font-crimson text-3xl font-medium leading-8 text-slate-950">
         {item?.title}
       </h3>
@@ -324,10 +339,31 @@ const WeddingPlannerExperience = ({
   const [selectedPackage, setSelectedPackage] = useState("");
   const heroImage = page?.heroImageList?.[0];
   const editorialImages = page?.heroImageList?.slice(1) || [];
-  const allGalleryImages = useMemo(
-    () => (galleries || []).flatMap((gallery) => gallery?.images || []),
+  const realWeddingGallery = useMemo(
+    () =>
+      (galleries || []).find((gallery) =>
+        /real[-\s]?weddings?|bodas[-\s]?reales/i.test(
+          `${gallery?.section || ""} ${gallery?.title || ""}`,
+        ),
+      ),
     [galleries],
   );
+  const greciaGallery = useMemo(
+    () =>
+      (galleries || []).find((gallery) =>
+        /grecia|planner[-\s]?(and|y)?[-\s]?(brides|novias)/i.test(
+          `${gallery?.section || ""} ${gallery?.title || ""}`,
+        ),
+      ),
+    [galleries],
+  );
+  const realWeddingImages = useMemo(() => {
+    if (realWeddingGallery?.images?.length) return realWeddingGallery.images;
+    return (galleries || [])
+      .filter((gallery) => gallery !== greciaGallery)
+      .flatMap((gallery) => gallery?.images || []);
+  }, [galleries, greciaGallery, realWeddingGallery]);
+  const greciaGalleryImages = greciaGallery?.images || [];
   const packageList = useMemo(() => {
     const cmsPackages = (packages || []).filter(Boolean);
     const hasSouthAsian = cmsPackages.some((item) =>
@@ -365,8 +401,8 @@ const WeddingPlannerExperience = ({
             loading="eager"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-slate-950/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-slate-950/30" />
         <div className="relative mx-auto flex min-h-[720px] max-w-7xl items-start px-6 pb-16 pt-40 md:items-center md:px-10 md:py-24 lg:px-12">
           <div className="max-w-4xl">
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.26em] text-amber-300 md:text-sm">
@@ -402,21 +438,25 @@ const WeddingPlannerExperience = ({
 
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto grid max-w-7xl divide-y divide-slate-200 px-6 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4 lg:px-12">
-          {content.trust.map((item) => (
-            <div
-              key={item}
-              className="flex items-center gap-3 px-4 py-6 first:pl-0 last:pr-0"
-            >
-              <Check
-                className="shrink-0 text-amber-700"
-                size={19}
-                aria-hidden="true"
-              />
-              <p className="font-montserrat text-sm font-semibold leading-5 text-slate-800">
-                {item}
-              </p>
-            </div>
-          ))}
+          {content.trust.map((item, index) => {
+            const Icon = [Award, Clock3, Globe2, BadgeDollarSign][index];
+            return (
+              <div
+                key={item}
+                className="flex items-center gap-3 px-4 py-6 first:pl-0 last:pr-0"
+              >
+                <Icon
+                  className="shrink-0 text-amber-700"
+                  size={21}
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
+                <p className="font-montserrat text-sm font-semibold leading-5 text-slate-800">
+                  {item}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -467,7 +507,7 @@ const WeddingPlannerExperience = ({
         </div>
       </section>
 
-      {allGalleryImages.length > 0 && (
+      {realWeddingImages.length > 0 && (
         <section
           className="bg-white px-6 py-20 md:px-10 md:py-28 lg:px-12"
           aria-labelledby="wedding-gallery-title"
@@ -490,17 +530,17 @@ const WeddingPlannerExperience = ({
                   : "A selection of Sertuin Events’ current wedding work in Punta Cana."
               }
             />
-            <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
-              {allGalleryImages.map((asset, index) => (
-                <ContentfulImage
+            <div className="-mx-6 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 [scrollbar-width:none] md:-mx-10 md:px-10 lg:-mx-12 lg:px-12 [&::-webkit-scrollbar]:hidden">
+              {realWeddingImages.slice(0, 9).map((asset, index) => (
+                <figure
                   key={`${asset?.title || "wedding"}-${index}`}
-                  asset={asset}
-                  alt={
-                    asset?.title ||
-                    `${isSpanish ? "Boda organizada" : "Wedding planned"} by Sertuin Events in Punta Cana`
-                  }
-                  className={`w-full ${index === 0 || index === 5 ? "col-span-2 h-72 md:col-span-1 md:h-80" : "h-56 md:h-80"}`}
-                />
+                  className="group w-[82vw] max-w-[430px] flex-none snap-center overflow-hidden bg-slate-100 shadow-sm"
+                >
+                  <ContentfulImage
+                    asset={asset}
+                    className="h-[500px] w-full transition duration-700 group-hover:scale-[1.02]"
+                  />
+                </figure>
               ))}
             </div>
           </div>
@@ -552,14 +592,27 @@ const WeddingPlannerExperience = ({
             body={content.packages.intro}
           />
           <div className="mt-14 grid gap-7 md:grid-cols-2 xl:grid-cols-4">
-            {packageList.map((item) => (
-              <PackageCard
-                key={item.title}
-                item={item}
-                copy={content.packages}
-                onSelect={selectPackage}
-              />
-            ))}
+            {packageList.map((item) => {
+              const packageTitle = item?.title || "";
+              const Icon = /south asian|sudeste asi[aá]tico|indian|sikh/i.test(
+                packageTitle,
+              )
+                ? Globe2
+                : /venue|vendor|proveedor/i.test(packageTitle)
+                  ? MapPinned
+                  : /day coordinator|coordinador/i.test(packageTitle)
+                    ? CalendarCheck
+                    : Sparkles;
+              return (
+                <PackageCard
+                  key={item.title}
+                  item={item}
+                  copy={content.packages}
+                  onSelect={selectPackage}
+                  icon={Icon}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
@@ -647,33 +700,45 @@ const WeddingPlannerExperience = ({
             title={content.processTitle}
             body={content.processIntro}
           />
-          <ol className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {content.process.map((step, index) => (
-              <li
-                key={step.title}
-                className="relative border-t border-slate-300 pt-8"
-              >
-                <span className="absolute -top-4 left-0 flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 font-montserrat text-xs font-bold text-white">
-                  {index + 1}
-                </span>
-                <h3 className="font-crimson text-2xl font-medium text-slate-950">
-                  {step.title}
-                </h3>
-                <p className="mt-4 font-montserrat text-sm leading-6 text-slate-600">
-                  {step.body}
-                </p>
-              </li>
-            ))}
+          <ol className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {content.process.map((step, index) => {
+              const Icon = [
+                MessageCircle,
+                ClipboardCheck,
+                Palette,
+                CalendarCheck,
+              ][index];
+              return (
+                <li
+                  key={step.title}
+                  className="border border-slate-200 bg-white p-7 shadow-sm"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-700">
+                      <Icon size={23} strokeWidth={1.8} aria-hidden="true" />
+                    </span>
+                    <span className="font-montserrat text-xs font-bold tracking-[0.2em] text-slate-400">
+                      0{index + 1}
+                    </span>
+                  </div>
+                  <h3 className="mt-6 font-crimson text-2xl font-medium text-slate-950">
+                    {step.title}
+                  </h3>
+                  <p className="mt-4 font-montserrat text-sm leading-6 text-slate-600">
+                    {step.body}
+                  </p>
+                </li>
+              );
+            })}
           </ol>
         </div>
       </section>
 
       <section className="bg-slate-950 px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          {editorialImages[5] ? (
+          {greciaGalleryImages[0] || editorialImages[5] ? (
             <ContentfulImage
-              asset={editorialImages[5]}
-              alt="Wedding planner Grecia Mejía with a bride in Punta Cana"
+              asset={greciaGalleryImages[0] || editorialImages[5]}
               className="h-[520px] w-full"
             />
           ) : (
@@ -708,6 +773,36 @@ const WeddingPlannerExperience = ({
             </div>
           </div>
         </div>
+        {greciaGalleryImages.length > 1 && (
+          <div className="mx-auto mt-16 max-w-7xl border-t border-white/15 pt-12">
+            <div className="flex max-w-3xl items-start gap-4">
+              <HeartHandshake
+                className="mt-1 shrink-0 text-amber-300"
+                size={28}
+                strokeWidth={1.7}
+                aria-hidden="true"
+              />
+              <div>
+                <h3 className="font-crimson text-3xl font-medium text-white md:text-4xl">
+                  {greciaGallery?.title || content.grecia.galleryTitle}
+                </h3>
+                <p className="mt-3 font-montserrat text-sm leading-6 text-slate-300">
+                  {content.grecia.galleryBody}
+                </p>
+              </div>
+            </div>
+            <div className="-mx-6 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 [scrollbar-width:none] md:-mx-10 md:px-10 lg:-mx-12 lg:px-12 [&::-webkit-scrollbar]:hidden">
+              {greciaGalleryImages.slice(1).map((asset, index) => (
+                <figure
+                  key={`${asset?.title || "grecia"}-${index}`}
+                  className="w-[82vw] max-w-[460px] flex-none snap-center overflow-hidden bg-slate-900"
+                >
+                  <ContentfulImage asset={asset} className="h-[390px] w-full" />
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       <section className="bg-white px-6 py-20 md:px-10 md:py-28 lg:px-12">
