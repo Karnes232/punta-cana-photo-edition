@@ -1,0 +1,25 @@
+name: Publish Sertuin service cleanup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/sertuin-retire-pages.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply verified release
+        run: |
+          git config user.name "Sertuin Events Release"
+          git config user.email "info@sertuinevents.com"
+          git apply --index .sertuin-retire-pages.patch
+          git rm .sertuin-retire-pages.patch
+          git rm .github/workflows/sertuin-retire-pages.yml
+          git commit -m "Retire rentals, birthday and floral service pages"
+          git push origin main
