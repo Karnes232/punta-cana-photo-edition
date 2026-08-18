@@ -9,12 +9,13 @@ import Seo from "../components/Layout/seo";
 
 const Blog = ({ pageContext, data }) => {
   const { t } = useTranslation();
+  const body = data?.allContentfulBlogPost?.nodes[0]?.body;
   return (
     <Layout generalInfo={pageContext.layout}>
       <HeroImage
         backgroundImages={data?.allContentfulBlogPost?.nodes[0].backgroundImage}
       />
-      <BlogBody context={data?.allContentfulBlogPost?.nodes[0].body} />
+      <BlogBody context={{ ...body, references: body?.references || [] }} />
 
       <Recommendations
         list={data.relatedPosts.nodes}
@@ -95,36 +96,6 @@ export const query = graphql`
         }
         body {
           raw
-          references {
-            ... on ContentfulAsset {
-              id
-              contentful_id
-              __typename
-              title
-              url
-              width
-              height
-              file {
-                url
-              }
-              # gatsbyImage(placeholder: BLURRED, formats: WEBP, width: 2000, quality: 50)
-            }
-            ... on ContentfulSocialMediaEmbed {
-              id
-              contentful_id
-              platform
-              title
-              embedId
-              caption
-              sys {
-                contentType {
-                  sys {
-                    id
-                  }
-                }
-              }
-            }
-          }
         }
         blogCategory {
           blogCategory
