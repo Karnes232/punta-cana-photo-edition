@@ -62,9 +62,7 @@ const TestimonialForm = () => {
               </option>
               <option value="Wedding Planning">Wedding Planning</option>
               <option value="Birthday Celebration">Birthday Celebration</option>
-              <option value="Gender Reveal or Baby Shower">
-                Gender Reveal or Baby Shower
-              </option>
+              <option value="Gender Reveal">Gender Reveal</option>
               <option value="Corporate Event">Corporate Event</option>
               <option value="Event Rentals">Event Rentals</option>
             </select>

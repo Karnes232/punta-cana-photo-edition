@@ -23,8 +23,8 @@ const Sitemap = () => {
       urlLink: "/birthday-celebrations",
     },
     {
-      name: t("Gender reveal and baby showers"),
-      urlLink: "/gender-reveal-and-baby-showers",
+      name: t("Gender reveal"),
+      urlLink: "/gender-reveal-punta-cana",
     },
   ];
 

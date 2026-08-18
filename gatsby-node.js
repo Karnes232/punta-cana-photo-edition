@@ -13,6 +13,9 @@ const {
 const retiredPackageSlugs = new Set([
   "photography-event-planner",
   "videography-event-planner",
+  "carribean-baby-shower",
+  "sunshine-baby-shower",
+  "blue-ocean-baby-shower",
 ]);
 const retiredStaticPaths = new Set([
   "/wedding",
@@ -316,12 +319,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
       const genderRevealPath =
         urlPath === ""
-          ? "/gender-reveal-and-baby-showers"
-          : `/${urlPath}/gender-reveal-and-baby-showers`;
+          ? "/gender-reveal-punta-cana"
+          : `/${urlPath}/gender-reveal-punta-cana`;
       createPage({
         path: genderRevealPath,
         component: path.resolve(
-          "./src/pages/gender-reveal-and-baby-showers/index.js",
+          "./src/pages/gender-reveal-punta-cana/index.js",
         ),
         context: {
           language: contentfulCode,
@@ -352,6 +355,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
   };
+
+  createPermanentRedirect(
+    "/gender-reveal-and-baby-showers",
+    "/gender-reveal-punta-cana/",
+  );
+  createPermanentRedirect(
+    "/es/gender-reveal-and-baby-showers",
+    "/es/gender-reveal-punta-cana/",
+  );
 
   // Map only deleted URLs whose intent is fully served by a current page.
   // Both language variants are emitted. All other deleted posts return a real

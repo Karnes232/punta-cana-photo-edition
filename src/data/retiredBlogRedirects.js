@@ -181,7 +181,7 @@ const groups = [
   { slugs: birthdayBlogSlugs, destination: "/birthday-celebrations/" },
   {
     slugs: genderRevealBlogSlugs,
-    destination: "/gender-reveal-and-baby-showers/",
+    destination: "/gender-reveal-punta-cana/",
   },
   {
     slugs: elopementBlogSlugs,

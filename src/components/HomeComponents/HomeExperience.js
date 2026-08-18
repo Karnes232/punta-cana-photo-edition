@@ -24,12 +24,17 @@ const legacyRoutes = new Set([
   "/packages/videography-event-planner/",
 ]);
 
+const currentRouteAliases = new Map([
+  ["/gender-reveal-and-baby-showers/", "/gender-reveal-punta-cana/"],
+]);
+
 const normalizeInternalPath = (path) => {
   if (!path || path.startsWith("#") || path.startsWith("http")) return path;
   const withLeadingSlash = path.startsWith("/") ? path : `/${path}`;
-  return withLeadingSlash.endsWith("/")
+  const normalized = withLeadingSlash.endsWith("/")
     ? withLeadingSlash
     : `${withLeadingSlash}/`;
+  return currentRouteAliases.get(normalized) || normalized;
 };
 
 const localizedPath = (path, language) => {
@@ -154,6 +159,18 @@ const getStructuredProcessSteps = (context) => {
 const ServiceCard = ({ service, language }) => {
   const image = getImage(service?.cardImage?.gatsbyImage);
   const url = localizedPath(service?.page?.url, language);
+  const isGenderReveal =
+    normalizeInternalPath(service?.page?.url) === "/gender-reveal-punta-cana/";
+  const title = isGenderReveal
+    ? language === "es"
+      ? "Revelación de género"
+      : "Gender Reveal"
+    : service.typeOfService;
+  const description = isGenderReveal
+    ? language === "es"
+      ? "Diseño, coordinación y ejecución de una revelación personalizada en la locación que elijas en Punta Cana."
+      : "Design, coordination and execution of a custom reveal at your chosen Punta Cana location."
+    : service.cardDescription;
 
   if (!image || !url) return null;
 
@@ -162,7 +179,7 @@ const ServiceCard = ({ service, language }) => {
       <div className="absolute inset-0 transition duration-700 group-hover:scale-[1.035]">
         <GatsbyImage
           image={image}
-          alt={service.cardImage?.title || service.typeOfService}
+          alt={service.cardImage?.title || title}
           className="h-full w-full"
           imgClassName="object-cover"
         />
@@ -170,15 +187,15 @@ const ServiceCard = ({ service, language }) => {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/5" />
       <div className="relative flex min-h-[390px] flex-col justify-end p-7 md:p-8">
         <h3 className="font-crimson text-3xl font-medium leading-tight text-white">
-          {service.typeOfService}
+          {title}
         </h3>
         <p className="mt-3 font-montserrat text-sm leading-6 text-gray-100">
-          {service.cardDescription}
+          {description}
         </p>
         <Link
           to={url}
           className="mt-6 inline-flex items-center gap-2 font-montserrat text-xs font-semibold uppercase tracking-[0.16em] text-primary-color no-underline"
-          aria-label={`${service.typeOfService}`}
+          aria-label={title}
         >
           {language === "es" ? "Ver servicio" : "Explore service"}
           <ArrowRight aria-hidden="true" size={16} />

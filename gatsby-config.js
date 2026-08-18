@@ -270,7 +270,7 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
-            matchPath: "/:lang?/gender-reveal-and-baby-showers",
+            matchPath: "/:lang?/gender-reveal-punta-cana",
             getLanguageFromPath: true,
           },
           {

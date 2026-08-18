@@ -21,8 +21,8 @@ const OptionSelect = () => {
       label: t("BIRTHDAY CELEBRATION"),
     },
     {
-      value: "GENDER REVEAL & BABY SHOWER",
-      label: t("GENDER REVEAL & BABY SHOWER"),
+      value: "GENDER REVEAL",
+      label: t("GENDER REVEAL"),
     },
     {
       value: "BACHELOR PARTY",

@@ -64,14 +64,14 @@ const RomanticEvents = ({ footer, setToggled }) => {
       <MenuItem
         component={
           <Link
-            to="/gender-reveal-and-baby-showers"
+            to="/gender-reveal-punta-cana"
             className="no-underline uppercase text-sm"
             onClick={footer ? undefined : () => setToggled(false)}
           />
         }
       >
         <p>
-          <Trans>Gender reveal and baby showers</Trans>
+          <Trans>Gender reveal</Trans>
         </p>
       </MenuItem>
     </SubMenu>
