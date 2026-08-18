@@ -20,11 +20,12 @@ const FloralItemSearch = ({
         item.description.toLowerCase().includes(search.toLowerCase()),
     );
 
-    // Randomize filtered results
-    const randomizedResults = filteredItems.sort(() => Math.random() - 0.5);
+    const orderedResults = filteredItems.sort((a, b) =>
+      (a.floralItem || "").localeCompare(b.floralItem || ""),
+    );
 
     // Update rental items list
-    setFloralItemsList(randomizedResults);
+    setFloralItemsList(orderedResults);
     // Reset category to All when searching
     setSelectedCategory("All");
   };

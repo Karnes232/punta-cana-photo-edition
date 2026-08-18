@@ -2,15 +2,17 @@ import { Link } from "gatsby";
 import React from "react";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import RomanticEvents from "./RomanticEvents";
-import { Trans } from "gatsby-plugin-react-i18next";
+import { Trans, useI18next } from "gatsby-plugin-react-i18next";
 const SideBarInside = ({ footer, setToggled }) => {
+  const { language } = useI18next();
+  const localize = (path) => `${language === "es" ? "/es" : ""}${path}`;
   return (
     <>
       <Menu className="ml-0 h-full flex flex-col justify-center items-center overflow-hidden">
         <MenuItem
           component={
             <Link
-              to="/"
+              to={language === "es" ? "/es/" : "/"}
               className={footer ? "hamburgerSmall" : "hamburger"}
               onClick={footer ? undefined : () => setToggled(false)}
             />
@@ -23,7 +25,7 @@ const SideBarInside = ({ footer, setToggled }) => {
         <MenuItem
           component={
             <Link
-              to="/event-planner"
+              to={localize("/event-planner/")}
               className={footer ? "hamburgerSmall" : "hamburger"}
               onClick={footer ? undefined : () => setToggled(false)}
             />
@@ -36,7 +38,7 @@ const SideBarInside = ({ footer, setToggled }) => {
         <MenuItem
           component={
             <Link
-              to="/event-rentals"
+              to={localize("/event-rentals/")}
               className={footer ? "hamburgerSmall" : "hamburger"}
               onClick={footer ? undefined : () => setToggled(false)}
             />
@@ -49,7 +51,7 @@ const SideBarInside = ({ footer, setToggled }) => {
         <MenuItem
           component={
             <Link
-              to="/floral-art"
+              to={localize("/floral-art/")}
               className={footer ? "hamburgerSmall" : "hamburger"}
               onClick={footer ? undefined : () => setToggled(false)}
             />
@@ -63,18 +65,7 @@ const SideBarInside = ({ footer, setToggled }) => {
         <MenuItem
           component={
             <Link
-              to="/blog/complete-guide-to-organizing-events-in-punta-cana"
-              className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={footer ? undefined : () => setToggled(false)}
-            />
-          }
-        >
-          <p className={footer ? "hamburgerSmall" : "hamburger"}>Blog</p>
-        </MenuItem>
-        <MenuItem
-          component={
-            <Link
-              to="/contact"
+              to={localize("/contact/")}
               className={footer ? "hamburgerSmall" : "hamburger"}
               onClick={footer ? undefined : () => setToggled(false)}
             />

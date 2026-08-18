@@ -8,7 +8,7 @@ const ReversedContentBlock = ({ content, page }) => {
   let cardHeight = "h-[72rem] md:h-[50rem]";
   let secondaryCardHeight = "md:h-[45rem] xl:h-[45rem] lg:w-[45rem]";
 
-  if (page === "gender-reveal-and-baby-showers") {
+  if (page === "gender-reveal-punta-cana") {
     cardHeight = "h-[72rem] md:h-[50rem]";
     secondaryCardHeight = "md:h-[45rem] xl:h-[45rem] lg:w-[45rem]";
   }

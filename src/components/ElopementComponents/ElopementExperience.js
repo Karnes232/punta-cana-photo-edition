@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import {
   ArrowRight,
   Camera,
@@ -9,7 +10,6 @@ import {
   FileCheck2,
   Flower2,
   HeartHandshake,
-  MailCheck,
   MapPin,
   Palmtree,
   ShieldCheck,
@@ -478,6 +478,106 @@ const COPY = {
 export const getElopementCopy = (language = "en-US") =>
   COPY[language === "es" ? "es" : "en-US"];
 
+const mergeManagedCopy = (base, override) => {
+  if (!override || typeof override !== "object" || Array.isArray(override)) {
+    return base;
+  }
+
+  return Object.entries(override).reduce(
+    (result, [key, value]) => {
+      result[key] =
+        value &&
+        typeof value === "object" &&
+        !Array.isArray(value) &&
+        base?.[key] &&
+        typeof base[key] === "object" &&
+        !Array.isArray(base[key])
+          ? mergeManagedCopy(base[key], value)
+          : value;
+      return result;
+    },
+    { ...base },
+  );
+};
+
+const parseManagedCopy = (raw) => {
+  if (!raw) return null;
+
+  try {
+    const document = JSON.parse(raw);
+    const readText = (node) => {
+      if (typeof node?.value === "string") return node.value;
+      return (node?.content || []).map(readText).join(" ");
+    };
+    const text = readText(document).trim();
+    const start = text.indexOf("{");
+    const end = text.lastIndexOf("}");
+    return start >= 0 && end > start
+      ? JSON.parse(text.slice(start, end + 1))
+      : null;
+  } catch {
+    return null;
+  }
+};
+
+export const getManagedElopementCopy = (
+  language = "en-US",
+  page,
+  packages = [],
+) => {
+  const base = mergeManagedCopy(
+    getElopementCopy(language),
+    parseManagedCopy(page?.paragraph3?.raw),
+  );
+  const isSpanish = language === "es";
+  const beachPackage = packages.find((item) =>
+    /private beach|beach ceremony|playa privada|ceremonia.*playa/i.test(
+      item?.title || "",
+    ),
+  );
+  const catamaranPackage = packages.find((item) =>
+    /catamaran|catamar[aá]n/i.test(item?.title || ""),
+  );
+  const withPageFields = {
+    ...base,
+    heroTitle: page?.heroHeading?.trim() || base.heroTitle,
+    heroIntro: page?.heroHeading2?.trim() || base.heroIntro,
+    builderTitle: page?.sectionTitle?.trim() || base.builderTitle,
+    includedTitle: page?.sectionTitle2?.trim() || base.includedTitle,
+    reserveEyebrow: page?.contactEyebrow?.trim() || base.reserveEyebrow,
+    reserveTitle: page?.contactHeading?.trim() || base.reserveTitle,
+    reserveIntro: page?.contactBody?.trim() || base.reserveIntro,
+  };
+
+  return {
+    ...withPageFields,
+    beach: beachPackage
+      ? {
+          ...withPageFields.beach,
+          title: beachPackage.title,
+          summary: beachPackage.paragraph || withPageFields.beach.summary,
+          includes:
+            beachPackage.included?.length > 0
+              ? beachPackage.included
+              : withPageFields.beach.includes,
+        }
+      : withPageFields.beach,
+    catamaran: catamaranPackage
+      ? {
+          ...withPageFields.catamaran,
+          title: catamaranPackage.title,
+          summary:
+            catamaranPackage.paragraph || withPageFields.catamaran.summary,
+          includes:
+            catamaranPackage.included?.length > 0
+              ? catamaranPackage.included
+              : withPageFields.catamaran.includes,
+        }
+      : withPageFields.catamaran,
+    managedLabel: isSpanish ? "Contenido administrado" : "Managed content",
+  };
+};
+
 export const buildElopementFaqs = (language = "en-US") => {
   const es = language === "es";
 
@@ -867,69 +967,35 @@ const ElopementForm = ({
   setGuestCount,
   language,
 }) => {
-  const [status, setStatus] = useState("idle");
   const total =
     experience.price + decoration.price + (legal ? LEGAL_UPGRADE_PRICE : 0);
   const customQuote = experience.id === "catamaran" && guestCount > 10;
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setStatus("sending");
-    const form = event.currentTarget;
-
-    try {
-      const formData = new FormData(form);
-      const archiveResponse = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      if (!archiveResponse.ok) {
-        throw new Error("Form submission failed");
-      }
-      form.reset();
-      setStatus("success");
-    } catch (error) {
-      setStatus("error");
-    }
-  };
-
-  if (status === "success") {
-    return (
-      <div
-        role="status"
-        className="rounded-3xl border border-emerald-200 bg-emerald-50 p-8 text-center"
-      >
-        <MailCheck
-          className="mx-auto text-emerald-700"
-          size={40}
-          strokeWidth={1.5}
-        />
-        <h3 className="mt-4 font-crimson text-3xl text-stone-900">
-          {copy.form.successTitle}
-        </h3>
-        <p className="mx-auto mt-3 max-w-xl font-montserrat text-sm leading-6 text-stone-700">
-          {copy.form.success}
-        </p>
-      </div>
-    );
-  }
 
   const inputClass =
     "mt-2 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 font-montserrat text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100";
 
   return (
     <form
-      name="elopement-request"
+      name="contact"
       method="POST"
-      action="/contact/thankyou/"
+      action={
+        language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"
+      }
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      onSubmit={handleSubmit}
       className="rounded-3xl border border-stone-200 bg-white p-6 shadow-[0_20px_60px_rgba(74,56,18,0.09)] md:p-8"
     >
-      <input type="hidden" name="form-name" value="elopement-request" />
+      <input type="hidden" name="form-name" value="contact" />
+      <input
+        type="hidden"
+        name="source"
+        value="Punta Cana Elopement Packages page"
+      />
+      <input
+        type="hidden"
+        name="subject"
+        value="New Punta Cana elopement request"
+      />
       <input type="hidden" name="language" value={language} />
       <input
         type="hidden"
@@ -1025,21 +1091,11 @@ const ElopementForm = ({
         </label>
       </div>
 
-      {status === "error" && (
-        <p
-          role="alert"
-          className="mt-5 font-montserrat text-sm font-semibold text-rose-700"
-        >
-          {copy.form.error}
-        </p>
-      )}
-
       <button
         type="submit"
-        disabled={status === "sending"}
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-amber-500 px-6 py-4 font-montserrat text-sm font-bold text-white transition hover:bg-amber-600 disabled:cursor-wait disabled:opacity-70"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-amber-500 px-6 py-4 font-montserrat text-sm font-bold text-white transition hover:bg-amber-600"
       >
-        {status === "sending" ? copy.form.sending : copy.form.send}
+        {copy.form.send}
         <ArrowRight size={18} />
       </button>
       <p className="mt-4 text-center font-montserrat text-xs leading-5 text-stone-500">
@@ -1051,17 +1107,50 @@ const ElopementForm = ({
 
 const ICONS = [CarFront, Camera, HeartHandshake, Flower2, FileCheck2, MapPin];
 
-const ElopementExperience = ({ language = "en-US" }) => {
-  const copy = getElopementCopy(language);
+const ElopementExperience = ({
+  language = "en-US",
+  page,
+  packages = [],
+  galleries = [],
+  faqs: managedFaqs = [],
+}) => {
+  const copy = getManagedElopementCopy(language, page, packages);
   const [experienceId, setExperienceId] = useState("beach");
   const [decorationId, setDecorationId] = useState("white-serenity");
   const [legal, setLegal] = useState(false);
   const [guestCount, setGuestCount] = useState(2);
-  const faqs = buildElopementFaqs(language);
+  const fallbackFaqs = buildElopementFaqs(language);
+  const faqs = useMemo(() => {
+    const normalized = managedFaqs
+      .map((item) => [item?.title?.trim(), item?.content?.content?.trim()])
+      .filter(([question, answer]) => question && answer);
+    return normalized.length >= 3 ? normalized : fallbackFaqs;
+  }, [fallbackFaqs, managedFaqs]);
+  const experiences = useMemo(
+    () =>
+      ELOPEMENT_EXPERIENCES.map((experience) => {
+        const matcher =
+          experience.id === "beach"
+            ? /private beach|beach ceremony|playa privada|ceremonia.*playa/i
+            : /catamaran|catamar[aá]n/i;
+        const managed = packages.find((item) =>
+          matcher.test(item?.title || ""),
+        );
+        return managed && Number.isFinite(Number(managed.price))
+          ? { ...experience, price: Number(managed.price) }
+          : experience;
+      }),
+    [packages],
+  );
+  const heroImage = getImage(page?.heroImageList?.[0]?.gatsbyImage);
+  const galleryImages = useMemo(
+    () => galleries.flatMap((gallery) => gallery?.images || []).slice(0, 8),
+    [galleries],
+  );
 
   const experience = useMemo(
-    () => ELOPEMENT_EXPERIENCES.find((item) => item.id === experienceId),
-    [experienceId],
+    () => experiences.find((item) => item.id === experienceId),
+    [experienceId, experiences],
   );
   const decoration = useMemo(
     () => ELOPEMENT_DECORATIONS.find((item) => item.id === decorationId),
@@ -1082,19 +1171,38 @@ const ElopementExperience = ({ language = "en-US" }) => {
   return (
     <main className="overflow-hidden bg-white">
       <section className="absolute left-0 top-0 h-screen w-full bg-stone-900">
-        <img
-          src={huppa}
-          alt="Tropical wedding canopy for a private beach elopement in Punta Cana"
-          loading="eager"
-          width="1600"
-          height="1067"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
+        {heroImage ? (
+          <GatsbyImage
+            image={heroImage}
+            alt="Tropical wedding canopy for a private beach elopement in Punta Cana"
+            loading="eager"
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full"
+            imgStyle={{ objectFit: "cover", objectPosition: "center" }}
+          />
+        ) : (
+          <img
+            src={huppa}
+            alt="Tropical wedding canopy for a private beach elopement in Punta Cana"
+            loading="eager"
+            fetchPriority="high"
+            width="1600"
+            height="1067"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/65" />
         <div className="relative z-10 mx-auto flex h-full max-w-6xl items-end justify-center px-5 pb-[14vh] text-center md:px-10 md:pb-[16vh]">
-          <h1 className="max-w-5xl font-crimson text-5xl font-normal leading-[1.02] text-white md:text-7xl lg:text-8xl">
-            {copy.heroTitle}
-          </h1>
+          <div>
+            <h1 className="max-w-5xl font-crimson text-5xl font-normal leading-[1.02] text-white md:text-7xl lg:text-8xl">
+              {copy.heroTitle}
+            </h1>
+            {copy.heroIntro && (
+              <p className="mx-auto mt-5 max-w-3xl font-montserrat text-base leading-7 text-stone-100 md:text-xl">
+                {copy.heroIntro}
+              </p>
+            )}
+          </div>
         </div>
       </section>
       <div className="h-[90vh]" aria-hidden="true" />
@@ -1129,7 +1237,7 @@ const ElopementExperience = ({ language = "en-US" }) => {
             {copy.stepOne}
           </h2>
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
-            {ELOPEMENT_EXPERIENCES.map((item) => (
+            {experiences.map((item) => (
               <ExperienceCard
                 key={item.id}
                 experience={item}
@@ -1357,19 +1465,31 @@ const ElopementExperience = ({ language = "en-US" }) => {
           intro={copy.realIntro}
         />
         <div className="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
-          {[sunshine2, white2, crescent2, huppa2].map((image, index) => (
+          {(galleryImages.length >= 4
+            ? galleryImages
+            : [sunshine2, white2, crescent2, huppa2]
+          ).map((image, index) => (
             <div
-              key={image}
+              key={`${image?.id || image?.title || image}-${index}`}
               className={`overflow-hidden rounded-2xl ${index % 2 ? "mt-6 md:mt-10" : ""}`}
             >
-              <img
-                src={image}
-                alt={`Real Punta Cana elopement wedding décor by Sertuin Events ${index + 1}`}
-                loading="lazy"
-                width="1200"
-                height="900"
-                className="h-64 w-full object-cover md:h-96"
-              />
+              {getImage(image?.gatsbyImage) ? (
+                <GatsbyImage
+                  image={getImage(image.gatsbyImage)}
+                  alt={`Real Punta Cana elopement wedding décor by Sertuin Events ${index + 1}`}
+                  className="h-64 w-full md:h-96"
+                  imgStyle={{ objectFit: "cover" }}
+                />
+              ) : (
+                <img
+                  src={image}
+                  alt={`Real Punta Cana elopement wedding décor by Sertuin Events ${index + 1}`}
+                  loading="lazy"
+                  width="1200"
+                  height="900"
+                  className="h-64 w-full object-cover md:h-96"
+                />
+              )}
             </div>
           ))}
         </div>

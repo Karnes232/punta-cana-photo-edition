@@ -1,19 +1,13 @@
 import React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { monokai } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import TextComponent from "./TextComponent";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 const RichText = ({ context }) => {
   const options = {
     renderMark: {
       [MARKS.CODE]: (text) => {
-        return (
-          <SyntaxHighlighter language="javascript" style={monokai}>
-            {text}
-          </SyntaxHighlighter>
-        );
+        return <code className="rounded bg-slate-100 px-1 py-0.5">{text}</code>;
       },
       [MARKS.BOLD]: (text) => {
         return <span className="font-bold">{text}</span>;
@@ -26,7 +20,7 @@ const RichText = ({ context }) => {
       [BLOCKS.HEADING_1]: (node, children) => (
         <TextComponent
           title={children}
-          heading="h1"
+          heading="h2"
           className="my-5 2xl:mb-2 2xl:mt-10 text-3xl md:text-4xl text-center"
         />
       ),
@@ -93,17 +87,19 @@ const RichText = ({ context }) => {
       ),
       [BLOCKS.EMBEDDED_ASSET]: (node, children) => {
         let image = null;
-        context.references.forEach((imageData) => {
+        context.references?.forEach((imageData) => {
           if (imageData.contentful_id === node.data.target.sys.id) {
             image = imageData;
           }
         });
+        if (!image) return null;
         const imageGatsby = getImage(image.gatsbyImage);
+        if (!imageGatsby) return null;
         return (
           <div className="flex justify-center items-center lg:justify-start">
             <GatsbyImage
               image={imageGatsby}
-              alt={image.title}
+              alt={image.title || "Sertuin Events event in Punta Cana"}
               className="rounded-lg w-[20rem] mb-4 lg:w-[30rem]"
             />
           </div>

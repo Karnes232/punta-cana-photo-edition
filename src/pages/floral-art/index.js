@@ -15,7 +15,9 @@ const Index = ({ data }) => {
   const itemsPerPage = 12; // Adjust this number as needed
 
   const [floralItemsList, setFloralItemsList] = useState(
-    data.allContentfulFloralItem.nodes.sort(() => Math.random() - 0.5),
+    [...data.allContentfulFloralItem.nodes].sort((a, b) =>
+      (a.floralItem || "").localeCompare(b.floralItem || ""),
+    ),
   );
 
   // Get current items
@@ -50,7 +52,11 @@ const Index = ({ data }) => {
       const categoryList = item.category;
       return categoryList.includes(e.target.dataset.category);
     });
-    setFloralItemsList(filteredRentalList.sort(() => Math.random() - 0.5));
+    setFloralItemsList(
+      filteredRentalList.sort((a, b) =>
+        (a.floralItem || "").localeCompare(b.floralItem || ""),
+      ),
+    );
   };
 
   return (
@@ -89,7 +95,12 @@ const Index = ({ data }) => {
 
         <div className="flex justify-evenly items-center flex-row flex-wrap md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto">
           {currentItems.map((item, index) => {
-            return <FloralItemCard item={item} key={index} />;
+            return (
+              <FloralItemCard
+                item={item}
+                key={item.id || item.floralItem || index}
+              />
+            );
           })}
         </div>
 
@@ -209,6 +220,21 @@ export const Head = ({ pageContext, data }) => {
         }
       />
       <link rel="canonical" href={siteUrl} />
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href={`${data.site.siteMetadata.siteUrl}/floral-art/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="es"
+        href={`${data.site.siteMetadata.siteUrl}/es/floral-art/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${data.site.siteMetadata.siteUrl}/floral-art/`}
+      />
     </>
   );
 };

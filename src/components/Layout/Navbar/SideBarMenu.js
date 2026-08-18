@@ -17,6 +17,8 @@ const SideBarMenu = ({ toggled, setToggled }) => {
           {toggled && (
             <div className="fixed top-5 right-5">
               <button
+                type="button"
+                aria-label="Close menu"
                 className="p-2 text-2xl text-gray-500"
                 onClick={() => setToggled(false)}
               >

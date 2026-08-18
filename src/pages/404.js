@@ -60,7 +60,12 @@ const NotFoundPage = ({ data }) => {
 
 export default NotFoundPage;
 
-export const Head = () => <title>Not found</title>;
+export const Head = () => (
+  <>
+    <title>Page Not Found | Sertuin Events</title>
+    <meta name="robots" content="noindex,follow" />
+  </>
+);
 
 export const query = graphql`
   query MyQuery {

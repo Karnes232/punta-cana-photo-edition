@@ -72,6 +72,7 @@ export const Head = ({ data }) => {
         language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
       />
       <link rel="canonical" href={siteUrl} />
+      <meta name="robots" content="noindex,nofollow" />
     </>
   );
 };

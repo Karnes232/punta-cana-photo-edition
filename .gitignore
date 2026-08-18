@@ -73,3 +73,5 @@ node_modules
 
 # Local Netlify folder
 .netlify
+.tmp-config/
+.tmp/

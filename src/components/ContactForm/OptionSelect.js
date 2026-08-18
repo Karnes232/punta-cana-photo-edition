@@ -1,16 +1,7 @@
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import React from "react";
-import CreatableSelect from "react-select/creatable";
 const OptionSelect = () => {
   const { t } = useTranslation();
-  const style = {
-    control: (base) => ({
-      ...base,
-      border: 1,
-      // This line disable the blue border
-      boxShadow: "none",
-    }),
-  };
   const eventOptions = [
     {
       value: "WEDDING PLANNING",
@@ -21,12 +12,12 @@ const OptionSelect = () => {
       label: t("BIRTHDAY CELEBRATION"),
     },
     {
-      value: "GENDER REVEAL & BABY SHOWER",
-      label: t("GENDER REVEAL & BABY SHOWER"),
+      value: "GENDER REVEAL",
+      label: t("GENDER REVEAL"),
     },
     {
-      value: "BACHELOR PARTY",
-      label: t("BACHELOR PARTY"),
+      value: "ELOPEMENT OR VOW RENEWAL",
+      label: t("ELOPEMENT OR VOW RENEWAL"),
     },
     {
       value: "PROPOSAL",
@@ -37,23 +28,39 @@ const OptionSelect = () => {
       label: t("CORPORATE EVENT PLANNER"),
     },
     {
+      value: "EVENT RENTALS",
+      label: t("EVENT RENTALS"),
+    },
+    {
+      value: "FLORAL DESIGN",
+      label: t("FLORAL DESIGN"),
+    },
+    {
       value: "OTHER",
       label: t("OTHER"),
     },
   ];
   return (
     <div className="relative mb-2 w-full group">
-      <CreatableSelect
-        isClearable
-        className="contactFormInput"
-        classNamePrefix="select"
-        name="WeddingOptions"
-        options={eventOptions}
-        styles={style}
+      <label htmlFor="event-type" className="sr-only">
+        {t("Options")}
+      </label>
+      <select
+        id="event-type"
+        name="event-type"
+        defaultValue=""
+        className="contactFormInput w-full bg-white"
         required
-        // onChange={cityChange}
-        placeholder={t("Options")}
-      />
+      >
+        <option value="" disabled>
+          {t("Options")}
+        </option>
+        {eventOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

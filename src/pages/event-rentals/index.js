@@ -15,7 +15,9 @@ const Index = ({ data }) => {
   const itemsPerPage = 12; // Adjust this number as needed
 
   const [rentalItemsList, setRentalItemsList] = useState(
-    data.allContentfulRentalItems.nodes.sort(() => Math.random() - 0.5),
+    [...data.allContentfulRentalItems.nodes].sort((a, b) =>
+      (a.rentalItem || "").localeCompare(b.rentalItem || ""),
+    ),
   );
 
   // Get current items
@@ -52,7 +54,11 @@ const Index = ({ data }) => {
       const categoryList = item.category;
       return categoryList.includes(e.target.dataset.category);
     });
-    setRentalItemsList(filteredRentalList.sort(() => Math.random() - 0.5));
+    setRentalItemsList(
+      filteredRentalList.sort((a, b) =>
+        (a.rentalItem || "").localeCompare(b.rentalItem || ""),
+      ),
+    );
   };
 
   //Toast Functions
@@ -120,7 +126,7 @@ const Index = ({ data }) => {
             }
             return (
               <button
-                key={index}
+                key={item.id || item.rentalItem || index}
                 data-category={category}
                 onClick={setFilter}
                 value={category}
@@ -268,6 +274,21 @@ export const Head = ({ pageContext, data }) => {
         }
       />
       <link rel="canonical" href={siteUrl} />
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href={`${data.site.siteMetadata.siteUrl}/event-rentals/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="es"
+        href={`${data.site.siteMetadata.siteUrl}/es/event-rentals/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${data.site.siteMetadata.siteUrl}/event-rentals/`}
+      />
     </>
   );
 };

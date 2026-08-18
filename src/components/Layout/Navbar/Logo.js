@@ -1,7 +1,9 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { useI18next } from "gatsby-plugin-react-i18next";
 const Logo = ({ overlay = false }) => {
+  const { language } = useI18next();
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       allContentfulGeneralLayout {
@@ -24,7 +26,11 @@ const Logo = ({ overlay = false }) => {
           overlay ? "drop-shadow-[0_3px_10px_rgba(0,0,0,0.9)]" : ""
         }`}
       >
-        <Link to="/" className="no-underline" aria-label="Home">
+        <Link
+          to={language === "es" ? "/es/" : "/"}
+          className="no-underline"
+          aria-label={language === "es" ? "Inicio" : "Home"}
+        >
           <div className="cursor-pointer flex items-center w-20 md:w-20">
             <GatsbyImage
               image={image}

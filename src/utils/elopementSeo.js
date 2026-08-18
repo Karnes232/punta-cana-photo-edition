@@ -14,13 +14,35 @@ export const buildElopementSchema = ({
   companyName,
   telephone,
   instagram,
+  title,
+  description: managedDescription,
+  experiences: managedExperiences = [],
+  faqs: managedFaqs = [],
 }) => {
   const copy = getElopementCopy(language);
   const faqs = buildElopementFaqs(language);
   const isSpanish = language === "es";
-  const description = isSpanish
-    ? "Paquetes de elopement en Punta Cana con playa o catamarán privado, transporte para dos, fotógrafo, bouquet y decoración elegible."
-    : "Punta Cana elopement packages with a private beach or catamaran, transportation for two, photographer, bouquet and selectable décor.";
+  const description =
+    managedDescription ||
+    (isSpanish
+      ? "Paquetes de elopement en Punta Cana con playa o catamarán privado, transporte para dos, fotógrafo, bouquet y decoración elegible."
+      : "Punta Cana elopement packages with a private beach or catamaran, transportation for two, photographer, bouquet and selectable décor.");
+  const pageName = title || copy.heroTitle;
+  const experiences = ELOPEMENT_EXPERIENCES.map((experience) => {
+    const matcher =
+      experience.id === "beach"
+        ? /private beach|beach ceremony|playa privada|ceremonia.*playa/i
+        : /catamaran|catamar[aá]n/i;
+    const managed = managedExperiences.find((item) =>
+      matcher.test(item?.title || ""),
+    );
+    return managed && Number.isFinite(Number(managed.price))
+      ? { ...experience, price: Number(managed.price) }
+      : experience;
+  });
+  const normalizedFaqs = managedFaqs
+    .map((item) => [item?.title?.trim(), item?.content?.content?.trim()])
+    .filter(([question, answer]) => question && answer);
 
   return {
     "@context": "https://schema.org",
@@ -56,7 +78,7 @@ export const buildElopementSchema = ({
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: copy.heroTitle,
+        name: pageName,
         description,
         inLanguage: isSpanish ? "es" : "en",
         primaryImageOfPage: image
@@ -81,7 +103,7 @@ export const buildElopementSchema = ({
       {
         "@type": "Service",
         "@id": `${pageUrl}#service`,
-        name: copy.heroTitle,
+        name: pageName,
         description,
         serviceType: "Elopement wedding planning",
         url: pageUrl,
@@ -97,7 +119,7 @@ export const buildElopementSchema = ({
           },
         },
         offers: [
-          ...ELOPEMENT_EXPERIENCES.map((experience) => ({
+          ...experiences.map((experience) => ({
             "@type": "Offer",
             name: copy[experience.id].title,
             description: copy[experience.id].summary,
@@ -173,14 +195,16 @@ export const buildElopementSchema = ({
       {
         "@type": "FAQPage",
         "@id": `${pageUrl}#faq`,
-        mainEntity: faqs.map(([question, answer]) => ({
-          "@type": "Question",
-          name: question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: answer,
-          },
-        })),
+        mainEntity: (normalizedFaqs.length >= 3 ? normalizedFaqs : faqs).map(
+          ([question, answer]) => ({
+            "@type": "Question",
+            name: question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: answer,
+            },
+          }),
+        ),
       },
     ],
   };

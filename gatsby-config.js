@@ -36,6 +36,14 @@ const retiredPublicPaths = [
   "/weddings-punta-cana/",
   "/photo-gallery/",
 ];
+const nonIndexablePaths = [
+  "/404/",
+  "/404.html",
+  "/dev-404-page/",
+  "/contact/thankyou/",
+  "/event-rentals/cart/",
+  "/share-your-experience/",
+];
 
 module.exports = {
   siteMetadata: {
@@ -78,6 +86,11 @@ module.exports = {
           return allPages.filter(
             (page) =>
               !page.path.includes("admin") &&
+              !nonIndexablePaths.some(
+                (privatePath) =>
+                  page.path === privatePath ||
+                  page.path === `/es${privatePath}`,
+              ) &&
               !retiredPublicPaths.some(
                 (retiredPath) =>
                   page.path === retiredPath ||
@@ -126,15 +139,11 @@ module.exports = {
         web: [
           {
             name: `Crimson Pro`,
-            file: `https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap`,
+            file: `https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&display=swap`,
           },
           {
             name: `Montserrat`,
-            file: `https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap`,
-          },
-          {
-            name: "Playfair Display",
-            file: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
+            file: `https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap`,
           },
         ],
       },
@@ -155,37 +164,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: "G-1JE4933FBR",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: true,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        exclude: [],
-        // Delays sending pageview hits on route update (in milliseconds)
-        pageTransitionDelay: 0,
-        // Enables Google Optimize using your container Id
-        // optimizeId: "YOUR_GOOGLE_OPTIMIZE_TRACKING_ID",
-        // // Enables Google Optimize Experiment ID
-        // experimentId: "YOUR_GOOGLE_EXPERIMENT_ID",
-        // // Set Variation ID. 0 for original 1,2,3....
-        // variationId: "YOUR_GOOGLE_OPTIMIZE_VARIATION_ID",
-        // Defers execution of google analytics script after page load
-        defer: false,
-        // Any additional optional fields
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
-        cookieDomain: "example.com",
-        // defaults to false
-        enableWebVitalsTracking: true,
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
@@ -198,14 +176,13 @@ module.exports = {
         // This object gets passed directly to the gtag config command
         // This config will be shared across all trackingIds
         gtagConfig: {
-          optimize_id: "OPT_CONTAINER_ID",
           anonymize_ip: true,
           cookie_expires: 0,
         },
         // This object is used for configuration specific to this plugin
         pluginConfig: {
           // Puts tracking script in the head instead of the body
-          head: true,
+          head: false,
           // Setting this parameter is also optional
           respectDNT: true,
           // Avoids sending pageview hits from custom paths
@@ -230,11 +207,6 @@ module.exports = {
         pages: [
           {
             matchPath: "/:lang?/blog/:uid",
-            getLanguageFromPath: true,
-          },
-          {
-            matchPath:
-              "/:lang?/blog/complete-guide-to-organizing-events-in-punta-cana",
             getLanguageFromPath: true,
           },
           {
@@ -275,7 +247,7 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
-            matchPath: "/:lang?/gender-reveal-and-baby-showers",
+            matchPath: "/:lang?/gender-reveal-punta-cana",
             getLanguageFromPath: true,
           },
           {

@@ -1,98 +1,115 @@
-import { graphql } from "gatsby";
 import React from "react";
+import { graphql } from "gatsby";
 import Layout from "../../components/Layout/Layout";
-import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
-import TextComponent from "../../components/TextComponent/TextComponent";
-import RichText from "../../components/RichTextComponents/RichText";
-import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
-import PhotoGrid from "../../components/PhotoGridComponent/PhotoGrid";
-import ContentBlock from "../../components/ContentBlockComponent/ContentBlock";
-import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
-import { useI18next } from "gatsby-plugin-react-i18next";
-import ReversedContentBlock from "../../components/ContentBlockComponent/ReversedContentBlock";
-import OurPackages from "../../components/OurPackages/OurPackages";
+import WeddingPlannerExperience from "../../components/WeddingPlanner/WeddingPlannerExperience";
+import {
+  getWeddingPlannerContent,
+  normalizeWeddingFaqs,
+} from "../../content/weddingPlannerContent";
+import { buildWeddingPlannerSchema } from "../../utils/weddingPlannerSeo";
 
-const Index = ({ data }) => {
-  let section1 = {};
-  let section2 = {};
-  data.allContentfulPhotoGallery.nodes.forEach((photoList) => {
-    if (photoList.section === "1") {
-      section1 = photoList;
-    }
-    if (photoList.section === "2") {
-      section2 = photoList;
-    }
-  });
-
+const WeddingPlannerPage = ({ data, pageContext }) => {
+  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
-      <TextComponent
-        title={data.allContentfulPageContent.nodes[0].sectionTitle}
-        heading="h2"
-        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
-      />
-      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
-      <PhotoGrid photos={section1.images} page={section1.page} />
-      <TextComponent
-        title={section1.title}
-        heading="h2"
-        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
-      />
-      <VideoPlayer url={data.allContentfulPageContent.nodes[0].videoUrl} />
-      <TextComponent
-        title={section2.title}
-        heading="h2"
-        className="my-10 tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
-      />
-      <PhotoGrid photos={section2.images} page={section2.page} />
-      <OurPackages weddingPackages={data.allContentfulWeddingPackages.nodes} />
-      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph2} />
-      <ContentBlock content={data.allContentfulCardWithImage.nodes[0]} />
-      <ReversedContentBlock content={data.biography.nodes[0]} />
-      <FirebaseTestimonialsComponent
-        packagePage={"puntacana-wedding-planner"}
+    <Layout generalInfo={generalInfo} overlayHeader>
+      <WeddingPlannerExperience
+        page={data.allContentfulPageContent.nodes[0]}
+        galleries={data.allContentfulPhotoGallery.nodes}
+        packages={data.allContentfulWeddingPackages.nodes}
+        faqs={data.allContentfulFaqsComponent.nodes}
+        generalInfo={generalInfo}
+        language={pageContext.language}
       />
     </Layout>
   );
 };
 
-export default Index;
+export default WeddingPlannerPage;
 
 export const Head = ({ pageContext, data }) => {
-  const { language } = useI18next();
-  const { title, description, images, keywords } =
-    data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/puntacana-wedding-planner/`;
-
-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
-
-  let JsonSchema = {};
-  if (schema) {
-    JsonSchema = JSON.parse(schema);
-  }
+  const language = pageContext.language;
+  const isSpanish = language === "es";
+  const content = getWeddingPlannerContent(language);
+  const seo = data.allContentfulSeo.nodes[0];
+  const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const pageUrl = `${rootUrl}${isSpanish ? "/es" : ""}/puntacana-wedding-planner/`;
+  const title =
+    seo?.title ||
+    (isSpanish
+      ? "Wedding Planner en Punta Cana | Planificación Completa"
+      : "Punta Cana Wedding Planner | Full Planning & Coordination");
+  const description =
+    seo?.description?.description ||
+    (isSpanish
+      ? "Wedding planning en Punta Cana con paquetes claros, asistencia 24/7 y experiencia en bodas de destino, multiculturales y del sudeste asiático."
+      : "Punta Cana wedding planning with clear packages, 24/7 support, and expertise in destination, multicultural and South Asian weddings.");
+  const image = seo?.images?.file?.url
+    ? `${seo.images.file.url.startsWith("//") ? "https:" : ""}${seo.images.file.url}`
+    : undefined;
+  const cmsPackages = data.allContentfulWeddingPackages.nodes;
+  const hasSouthAsian = cmsPackages.some((item) =>
+    /south asian|sudeste asi[aá]tico|indian|sikh/i.test(item?.title || ""),
+  );
+  const packages = hasSouthAsian
+    ? cmsPackages
+    : [...cmsPackages, content.packages.fallbackSouthAsian];
+  const faqs = normalizeWeddingFaqs(
+    data.allContentfulFaqsComponent.nodes,
+    language,
+  );
+  const schemaMarkup = buildWeddingPlannerSchema({
+    pageUrl,
+    language,
+    title,
+    description,
+    image,
+    packages,
+    faqs,
+  });
 
   return (
     <>
       <Seo
         title={title}
-        description={description.description}
-        keywords={keywords.join(", ")}
-        image={`https:${images?.file?.url}`}
-        url={siteUrl}
-        schemaMarkup={JsonSchema}
-        language={
-          pageContext.language === "en-US" ? "en" : pageContext.language
+        description={description}
+        keywords={(seo?.keywords || []).join(", ")}
+        image={image}
+        imageAlt={
+          isSpanish
+            ? "Boda de destino organizada por Sertuin Events en Punta Cana"
+            : "Destination wedding planned by Sertuin Events in Punta Cana"
         }
+        url={pageUrl}
+        schemaMarkup={schemaMarkup}
+        language={isSpanish ? "es" : "en"}
+        siteName="Sertuin Events"
+        locale={isSpanish ? "es_DO" : "en_US"}
+        alternateLocale={isSpanish ? "en_US" : "es_DO"}
+        twitterCard="summary_large_image"
       />
-      <link rel="canonical" href={siteUrl} />
+      <link rel="canonical" href={pageUrl} />
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href={`${rootUrl}/puntacana-wedding-planner/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="es"
+        href={`${rootUrl}/es/puntacana-wedding-planner/`}
+      />
+      <link
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${rootUrl}/puntacana-wedding-planner/`}
+      />
     </>
   );
 };
 
 export const query = graphql`
-  query MyQuery($language: String!) {
+  query WeddingPlannerPage($language: String!) {
     locales: allLocale {
       edges {
         node {
@@ -107,14 +124,15 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout {
+    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
       nodes {
         companyName
+        email
         facebook
         instagram
-        x
-        telephone
         messengerLink
+        telephone
+        x
       }
     }
     allContentfulSeo(
@@ -134,11 +152,6 @@ export const query = graphql`
         description {
           description
         }
-        schema {
-          internal {
-            content
-          }
-        }
       }
     }
     allContentfulPageContent(
@@ -151,23 +164,29 @@ export const query = graphql`
         page
         heroImageList {
           gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
+            layout: FULL_WIDTH
+            width: 1800
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 82
           )
           title
         }
-        fullSize
         heroHeading
         heroHeading2
+        heroEyebrow
         sectionTitle
-        videoUrl
+        primaryCtaLabel
+        primaryCtaUrl
+        secondaryCtaLabel
+        secondaryCtaUrl
         paragraph1 {
           raw
         }
         paragraph2 {
+          raw
+        }
+        paragraph3 {
           raw
         }
       }
@@ -177,6 +196,7 @@ export const query = graphql`
         page: { eq: "Wedding-Planner" }
         node_locale: { eq: $language }
       }
+      sort: { section: ASC }
     ) {
       nodes {
         page
@@ -186,52 +206,13 @@ export const query = graphql`
           url
           width
           height
-          #gatsbyImage(layout: CONSTRAINED, width: 800, placeholder: NONE, formats: WEBP, quality: 75)
-          title
-        }
-      }
-    }
-    allContentfulCardWithImage(
-      filter: {
-        page: { eq: "Wedding-Planner" }
-        node_locale: { eq: $language }
-      }
-    ) {
-      nodes {
-        title
-        secondaryTitle
-        buttonText
-        linkUrl
-        image {
           title
           gatsbyImage(
             layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-        }
-      }
-    }
-    biography: allContentfulCardWithImage(
-      filter: { page: { eq: "Biography" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        title
-        paragraph
-        paragraph2
-        secondaryTitle
-        buttonText
-        linkUrl
-        image {
-          title
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
+            width: 1100
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 78
           )
         }
       }
@@ -243,6 +224,16 @@ export const query = graphql`
         includedItems
         price
         mostPopular
+      }
+    }
+    allContentfulFaqsComponent(
+      filter: { page: { eq: "Wedding" }, node_locale: { eq: $language } }
+    ) {
+      nodes {
+        title
+        content {
+          content
+        }
       }
     }
   }

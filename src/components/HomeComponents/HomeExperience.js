@@ -18,14 +18,23 @@ const legacyRoutes = new Set([
   "/punta-cana-bachelor-party/",
   "/weddings-punta-cana/",
   "/photo-gallery/",
+  "/real-estate-photography/",
+  "/videos-and-comercial-photos/",
+  "/packages/photography-event-planner/",
+  "/packages/videography-event-planner/",
+]);
+
+const currentRouteAliases = new Map([
+  ["/gender-reveal-and-baby-showers/", "/gender-reveal-punta-cana/"],
 ]);
 
 const normalizeInternalPath = (path) => {
   if (!path || path.startsWith("#") || path.startsWith("http")) return path;
   const withLeadingSlash = path.startsWith("/") ? path : `/${path}`;
-  return withLeadingSlash.endsWith("/")
+  const normalized = withLeadingSlash.endsWith("/")
     ? withLeadingSlash
     : `${withLeadingSlash}/`;
+  return currentRouteAliases.get(normalized) || normalized;
 };
 
 const localizedPath = (path, language) => {
@@ -150,6 +159,18 @@ const getStructuredProcessSteps = (context) => {
 const ServiceCard = ({ service, language }) => {
   const image = getImage(service?.cardImage?.gatsbyImage);
   const url = localizedPath(service?.page?.url, language);
+  const isGenderReveal =
+    normalizeInternalPath(service?.page?.url) === "/gender-reveal-punta-cana/";
+  const title = isGenderReveal
+    ? language === "es"
+      ? "Revelación de género"
+      : "Gender Reveal"
+    : service.typeOfService;
+  const description = isGenderReveal
+    ? language === "es"
+      ? "Diseño, coordinación y ejecución de una revelación personalizada en la locación que elijas en Punta Cana."
+      : "Design, coordination and execution of a custom reveal at your chosen Punta Cana location."
+    : service.cardDescription;
 
   if (!image || !url) return null;
 
@@ -158,7 +179,11 @@ const ServiceCard = ({ service, language }) => {
       <div className="absolute inset-0 transition duration-700 group-hover:scale-[1.035]">
         <GatsbyImage
           image={image}
-          alt={service.cardImage?.title || service.typeOfService}
+          alt={
+            language === "es"
+              ? `${title} organizado por Sertuin Events en Punta Cana`
+              : `${title} planned by Sertuin Events in Punta Cana`
+          }
           className="h-full w-full"
           imgClassName="object-cover"
         />
@@ -166,15 +191,15 @@ const ServiceCard = ({ service, language }) => {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/5" />
       <div className="relative flex min-h-[390px] flex-col justify-end p-7 md:p-8">
         <h3 className="font-crimson text-3xl font-medium leading-tight text-white">
-          {service.typeOfService}
+          {title}
         </h3>
         <p className="mt-3 font-montserrat text-sm leading-6 text-gray-100">
-          {service.cardDescription}
+          {description}
         </p>
         <Link
           to={url}
           className="mt-6 inline-flex items-center gap-2 font-montserrat text-xs font-semibold uppercase tracking-[0.16em] text-primary-color no-underline"
-          aria-label={`${service.typeOfService}`}
+          aria-label={title}
         >
           {language === "es" ? "Ver servicio" : "Explore service"}
           <ArrowRight aria-hidden="true" size={16} />
@@ -194,6 +219,8 @@ const HomeContactForm = ({ content, language }) => (
     className="border border-white/15 bg-white p-6 text-black shadow-2xl md:p-9"
   >
     <input type="hidden" name="form-name" value="contact" />
+    <input type="hidden" name="source" value="Sertuin Events home page" />
+    <input type="hidden" name="subject" value="New event planning inquiry" />
     <p className="hidden">
       <label>
         Do not fill this out: <input name="bot-field" />
@@ -333,10 +360,12 @@ const HomeExperience = ({
             <GatsbyImage
               image={heroImage}
               alt={
-                page?.heroImageList?.[0]?.title ||
-                "Elegant event planned by Sertuin Events in Punta Cana"
+                language === "es"
+                  ? "Evento de destino planificado por Sertuin Events en Punta Cana"
+                  : "Destination event planned by Sertuin Events in Punta Cana"
               }
               loading="eager"
+              fetchPriority="high"
               className="h-full w-full"
               imgClassName="object-cover object-center"
             />
