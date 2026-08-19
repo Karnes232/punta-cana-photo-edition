@@ -8,7 +8,7 @@ const HamburgerMenu = ({ overlay = false }) => {
     <>
       <div className="flex">
         <SideBarMenu toggled={toggled} setToggled={setToggled} />
-        <main className="flex p-3">
+        <div className="flex p-3">
           <div>
             <button
               aria-label="Menu"
@@ -26,7 +26,7 @@ const HamburgerMenu = ({ overlay = false }) => {
               />
             </button>
           </div>
-        </main>
+        </div>
       </div>
     </>
   );

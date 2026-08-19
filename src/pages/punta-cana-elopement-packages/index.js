@@ -11,7 +11,10 @@ const Index = ({ data, pageContext }) => {
   const language = pageContext.language === "es" ? "es" : "en-US";
 
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+    <Layout
+      generalInfo={data.allContentfulGeneralLayout.nodes[0]}
+      overlayHeader
+    >
       <ElopementExperience
         language={language}
         page={data.allContentfulPageContent.nodes[0]}
