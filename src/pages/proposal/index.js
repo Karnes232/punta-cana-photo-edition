@@ -42,8 +42,8 @@ const Index = ({ data, pageContext }) => {
   };
 
   return (
-    <Layout generalInfo={generalInfo}>
-      <HeroSwiper heroInfo={heroInfo} />
+    <Layout generalInfo={generalInfo} overlayHeader>
+      <HeroSwiper heroInfo={heroInfo} overlayHeader />
       <ProposalIntroduction language={language} />
       <OurPackages
         title={pageContent.sectionTitle || proposalCopy.packagesFallbackTitle}

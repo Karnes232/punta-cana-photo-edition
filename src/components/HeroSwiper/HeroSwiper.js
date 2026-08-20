@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-const HeroSwiper = ({ heroInfo, className }) => {
+const HeroSwiper = ({ heroInfo, className, overlayHeader = false }) => {
   let photoListEdited = [];
   heroInfo?.heroImageList?.forEach((e) => {
     let image = {
@@ -22,13 +22,21 @@ const HeroSwiper = ({ heroInfo, className }) => {
   let height = "";
   let blankDivHeight = "";
   let translatePosition = "";
+  // The hero is `absolute top-0`, so this spacer reserves its space in flow.
+  //
+  // With an overlaid header the navbar is out of flow, so the spacer must match
+  // the hero's height exactly. Without one, the navbar sits in flow above the
+  // spacer, and the legacy heights below are 10vh short to partially compensate
+  // for it — only exactly right at a 1440px-tall viewport, since the navbar is a
+  // fixed 144px (h-24 md:h-36) while 10vh scales. Those values are kept for
+  // callers that still render an in-flow navbar (AdminLayout).
   if (heroInfo.fullSize) {
     height = "h-screen";
-    blankDivHeight = "h-[90vh]";
+    blankDivHeight = overlayHeader ? "h-screen" : "h-[90vh]";
     translatePosition = "-translate-y-1/2";
   } else {
     height = "h-[65vh]";
-    blankDivHeight = "h-[55vh]";
+    blankDivHeight = overlayHeader ? "h-[65vh]" : "h-[55vh]";
     translatePosition = "-translate-y-2/3";
   }
   return (

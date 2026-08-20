@@ -10,8 +10,14 @@ import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Index = ({ data }) => {
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+    <Layout
+      generalInfo={data.allContentfulGeneralLayout.nodes[0]}
+      overlayHeader
+    >
+      <HeroSwiper
+        heroInfo={data.allContentfulPageContent.nodes[0]}
+        overlayHeader
+      />
       <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
       <div className="flex flex-col lg:flex-row lg:mx-10 xl:mx-auto max-w-5xl">
         <div className="basis-1/2 mx-5 lg:mx-0">

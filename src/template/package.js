@@ -45,8 +45,11 @@ const PackagePage = ({ pageContext, data }) => {
   };
 
   return (
-    <Layout generalInfo={pageContext.layout}>
-      <HeroSwiper heroInfo={data.allContentfulPackagePageContent.nodes[0]} />
+    <Layout generalInfo={pageContext.layout} overlayHeader>
+      <HeroSwiper
+        heroInfo={data.allContentfulPackagePageContent.nodes[0]}
+        overlayHeader
+      />
       <div className="mb-10">
         <RichText
           context={
