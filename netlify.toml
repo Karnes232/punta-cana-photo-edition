@@ -24,3 +24,12 @@
   to = "/es/puntacana-wedding-planner/"
   status = 301
   force = true
+
+# The sitemap is emitted at /sitemap-index.xml (gatsby-plugin-sitemap default).
+# Crawlers, SEO tools and AI agents conventionally probe /sitemap.xml first, so
+# point that path at the real one. No `force`: if the sitemap is ever emitted at
+# /sitemap.xml directly, the real file should win over this redirect.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
