@@ -91,6 +91,7 @@ const proposalBlogSlugs = split(`
   proposal-on-saona-island-punta-cana
   uvero-alto-beach-proposal-punta-cana-secluded-romance-in-the-caribbean
   how-sertuin-events-creates-unforgettable-marriage-proposals-in-punta-cana
+  historias-reales-de-amor-vividas-en-punta-cana-con-sertuin-events
 `);
 
 const weddingBlogSlugs = split(`
@@ -119,6 +120,90 @@ const weddingBlogSlugs = split(`
   how-early-to-book-wedding-punta-cana
   top-10-beachfront-wedding-venues-punta-cana
   marriage-in-the-dominican-republic-why-us-citizens-should-choose-sertuin-events
+  barcelo-bavaro-palace-set-up-fee-punta-cana-wedding-contract
+  zoetry-agua-punta-cana-eco-fee-wedding-budget
+  melia-caribe-beach-banquet-service-charge-punta-cana-wedding
+  paradisus-palma-real-decor-coordination-fee-punta-cana-wedding-tips
+  ocean-el-faro-av-add-ons-hidden-punta-cana-wedding-expenses
+  excellence-el-carmen-reception-minimums-punta-cana-wedding-budget
+  majestic-mirage-vendor-penalties-punta-cana-wedding-guide-negotiating-waivers
+  royalton-bavaro-wedding-cocktail-hour-hidden-fees
+  iberostar-grand-bavaro-wedding-ceremony-hidden-fees
+  dreams-macao-beach-wedding-hidden-fees
+  hyatt-ziva-cap-cana-wedding-costs-hidden-fees-guide
+  punta-cana-vs-aruba-caribbean-wedding
+  punta-cana-vs-bahamas-wedding-beaches
+  punta-cana-vs-jamaica-romantic-wedding
+  punta-cana-vs-cabo-san-lucas-wedding
+  punta-cana-vs-tulum-wedding-destination
+  punta-cana-vs-cancun-wedding-destination
+  punta-cana-vs-riviera-maya-wedding-showdown
+  punta-cana-vs-cozumel-beach-wedding
+  punta-cana-vs-amalfi-coast-wedding-comparison
+  punta-cana-vs-santorini-wedding-destination
+  punta-cana-vs-cartagena-wedding-romance-vs-history
+  punta-cana-vs-miami-wedding-comparison
+  punta-cana-vs-bali-destination-wedding
+  punta-cana-vs-seychelles-wedding-paradise
+  punta-cana-vs-hawaii-dream-wedding
+  punta-cana-vs-maldives-romantic-escape
+  punta-cana-vs-bora-bora-luxury-beach-wedding
+  punta-cana-vs-key-west-wedding-comparison
+  punta-cana-vs-belize-nature-vs-luxury-wedding
+  punta-cana-vs-isla-mujeres-beach-wedding
+  punta-cana-vs-st-martin-wedding-comparison
+  punta-cana-vs-barbados-romantic-wedding
+  punta-cana-vs-grenada-private-wedding
+  punta-cana-vs-san-juan-wedding-destination
+  punta-cana-vs-dominica-unique-wedding
+  punta-cana-vs-curacao-wedding-backdrop
+  punta-cana-vs-turks-and-caicos-luxury-wedding
+  punta-cana-vs-st-lucia-wedding-experience
+  punta-cana-vs-puerto-vallarta-wedding-comparison
+  caribbean-beach-wedding-checklist
+  beach-wedding-themes-caribbean-style
+  all-inclusive-caribbean-beach-weddings
+  what-to-wear-caribbean-beach-wedding
+  punta-cana-beach-wedding-worth-it
+  best-time-caribbean-beach-wedding
+  caribbean-beach-vs-resort-wedding
+  destination-vs-traditional-wedding-2025
+  caribbean-wedding-showdown-punta-cana-vs-riviera-maya
+  caribbean-wedding-cost-2025
+  mexico-vs-caribbean-wedding
+  top-caribbean-islands-wedding-ranking
+  punta-cana-vs-cancun-wedding
+  beach-wedding-budget-2025
+  jamaica-vs-dominican-republic-wedding
+  caribbean-wedding-what-i-wish-i-knew
+  from-engagement-to-i-do-caribbean
+  bring-your-own-photographer-fees-dreams-macao-beach-punta-cana
+  rain-plan-strategies-dreams-macao-beach-punta-cana-weddings
+  wedding-dress-trends-2025-dreams-macao-beach-punta-cana-brides
+  planning-mistakes-dreams-macao-beach-punta-cana-wedding
+  dreams-macao-beach-punta-cana-wedding-faqs-2025-2026
+  honeymoon-wedding-combo-dreams-macao-beach-punta-cana
+  music-entertainment-guide-dreams-macao-beach-punta-cana-weddings
+  culinary-delights-weddings-dreams-macao-beach-punta-cana
+  must-have-photos-dreams-macao-beach-punta-cana-weddings
+  trusted-vendors-2025-dreams-macao-beach-punta-cana-weddings
+  best-season-to-marry-dreams-macao-beach-punta-cana
+  dreams-macao-beach-punta-cana-wedding-reviews-2025
+  micro-weddings-dreams-macao-beach-punta-cana-creative-ideas
+  save-18-percent-on-your-dreams-macao-beach-punta-cana-wedding
+  tropical-decor-trends-2025-2026-dreams-macao-beach-punta-cana-weddings
+  top-10-wedding-spots-dreams-macao-beach-punta-cana
+  dreams-macao-beach-punta-cana-wedding-checklist-12-month-plan
+  how-much-does-a-dreams-macao-beach-punta-cana-wedding-cost
+  dreams-macao-beach-punta-cana-wedding-packages-prices-2025-2026-guide
+  how-many-days-before-wedding-punta-cana
+  bring-own-photographer-punta-cana-resort-wedding
+  punta-cana-destination-wedding-guests-with-kids
+  best-month-wedding-punta-cana-no-rain
+  punta-cana-wedding-guests-passport
+  boda-en-capilla-en-punta-cana-experiencia-sagrada-elegante-sertuin-events
+  tropical-elegance-wedding-punta-cana
+  elegant-sunset-wedding-in-punta-cana
 `);
 
 const corporateBlogSlugs = split(`
@@ -142,6 +227,7 @@ const corporateBlogSlugs = split(`
   the-hidden-risks-of-booking-a-venue-online-and-how-our-inspections-solve-them
   organizacion-total-de-eventos-con-sertuin-events
   el-lado-humano-de-los-eventos-en-punta-cana-con-sertuin-events
+  exclusive-beachfront-villas-punta-cana-private-events
 `);
 
 const weddingVenueBlogSlugs = split(`
@@ -156,7 +242,33 @@ const genderRevealBlogSlugs = split(`
 
 const elopementBlogSlugs = split(`
   caribbean-elopement-best-decision
+  symbolic-vs-legal-caribbean-wedding
+  how-to-get-married-dominican-republic
+  legal-tips-foreign-couples-wedding-dreams-macao-beach-punta-cana
+  civil-vs-symbolic-ceremony-dreams-macao-beach-punta-cana
+  symbolic-wedding-in-punta-cana-vs-legal-ceremony
+  symbolic-vs-civil-ceremony-dominican-republic
+  how-long-to-get-marriage-certificate-dominican-republic
+  is-a-civil-ceremony-in-the-dominican-republic-valid-internationally
+  do-you-need-to-speak-spanish-to-get-married-in-the-dominican-republic
+  how-to-make-dominican-republic-wedding-legal-in-home-country
+  is-a-destination-wedding-in-the-dominican-republic-legally-binding
+  do-i-need-to-register-my-dominican-republic-marriage-in-the-us
+  can-us-citizens-legally-marry-in-punta-cana
+  is-a-wedding-in-the-dominican-republic-legally-recognized-in-canada
+  legal-requirements-getting-married-punta-cana
 `);
+
+// Two retired blog CATEGORY hubs are deliberately absent from categoryRedirects
+// below and therefore stay 404:
+//   /blog/local-businesses            - no equivalent service page exists.
+//   /blog/birthdays-and-bachelor-parties
+// The latter looks like it belongs on /event-planner/ (matching the
+// private-parties-and-celebrations entry), but that page is now corporate-only
+// - it mentions "corporate" 34 times and "birthday"/"bachelor" zero times, so
+// the redirect would be a soft-404. Birthdays and bachelor parties currently
+// live only under /packages/*, and /packages/ itself does not exist yet.
+// Revisit once a /packages/ hub page ships: that becomes the honest destination.
 
 // These topics are outside Sertuin Events' current services and have no close
 // replacement. If an old Contentful entry remains, do not recreate the page.
