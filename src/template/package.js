@@ -11,6 +11,7 @@ import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
 import PackageForm from "../components/PackageForm/PackageForm";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { reconcilePackageSchemaPrices } from "../utils/reconcilePackageSchema";
 const PackagePage = ({ pageContext, data }) => {
   const { t } = useTranslation();
   const [selectedAddOns, setSelectedAddOns] = useState([]);
@@ -173,12 +174,29 @@ export const Head = ({ pageContext, data }) => {
     ? `${seoImage.file.url.startsWith("//") ? "https:" : ""}${seoImage.file.url}`
     : undefined;
 
-  const schema =
-    data?.allContentfulPackagePageContent?.nodes[0]?.schema?.internal?.content;
+  const node = data?.allContentfulPackagePageContent?.nodes[0];
+  const schema = node?.schema?.internal?.content;
 
+  // The schema blob and the page price are maintained separately in Contentful
+  // and have drifted apart before. The page price wins; every correction is
+  // logged so the drift is visible in the build output.
   let JsonSchema = {};
   if (schema) {
-    JsonSchema = JSON.parse(schema);
+    try {
+      const { schema: reconciled, corrections } = reconcilePackageSchemaPrices(
+        JSON.parse(schema),
+        node?.packages?.[0],
+      );
+      JsonSchema = reconciled;
+      if (corrections.length) {
+        console.warn(`[schema-price] ${slug}:`, corrections);
+      }
+    } catch (error) {
+      console.error(
+        `[schema-price] ${slug}: could not parse the Contentful schema field —`,
+        error.message,
+      );
+    }
   }
 
   return (
