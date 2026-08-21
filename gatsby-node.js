@@ -85,13 +85,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
-      allContentfulBlogCategories {
-        nodes {
-          id
-          url
-          node_locale
-        }
-      }
     }
   `);
   const localeMapping = {
@@ -107,23 +100,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const packageTemplate = path.resolve(`src/template/package.js`);
   const blogTemplate = path.resolve(`src/template/blog.js`);
-  // Old category pages were removed with the previous blog library. They are
-  // redirected selectively below when a real replacement exists; empty/thin
-  // category pages are not rebuilt.
-
-  // queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
-  //   createPage({
-  //     path: `/blog/${node.slug?.trim()}`,
-  //     component: blogTemplate,
-  //     context: {
-  //       id: node.id,
-  //       category: node.blogCategory.blogCategory,
-  //       blog: node,
-  //       layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
-  //       // blogList: queryResults.data.allContentfulBlogPost.nodes,
-  //     },
-  //   });
-  // });
 
   queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
     if (retiredBlogSlugs.has(node.slug?.trim())) return;
@@ -348,6 +324,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
+  // Old category pages were removed with the previous blog library. They are
+  // redirected selectively here when a real replacement exists; empty/thin
+  // category pages are not rebuilt.
   Object.entries(retiredBlogCategoryRedirects).forEach(
     ([source, destination]) => {
       createPermanentRedirect(source, destination);
