@@ -138,7 +138,7 @@ export const query = graphql`
             width: 1200
             placeholder: NONE
             formats: WEBP
-            quality: 75
+            quality: 65
           )
           title
         }
