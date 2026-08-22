@@ -259,6 +259,7 @@ const PackageForm = ({
                   onChange={handleInputChange}
                   rows="4"
                   className="w-full p-2 border rounded-md"
+                  required
                 ></textarea>
               </div>
 

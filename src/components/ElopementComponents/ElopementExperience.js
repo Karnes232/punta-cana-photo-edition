@@ -1087,7 +1087,7 @@ const ElopementForm = ({
         </label>
         <label className="font-montserrat text-sm font-semibold text-stone-700 md:col-span-2">
           {copy.form.message}
-          <textarea className={inputClass} name="message" rows="4" />
+          <textarea className={inputClass} name="message" rows="4" required />
         </label>
       </div>
 
