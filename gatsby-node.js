@@ -45,6 +45,54 @@ exports.createSchemaCustomization = ({ actions }) => {
     type ContentfulPackagePageContent implements Node {
       videoUrl: String
     }
+
+    type ContentfulBlogPost implements Node {
+      directAnswer: contentfulBlogPostDirectAnswerTextNode @link(from: "directAnswer___NODE")
+      primaryCtaTitle: String
+      primaryCtaText: contentfulBlogPostPrimaryCtaTextTextNode @link(from: "primaryCtaText___NODE")
+      primaryCtaButtonText: String
+      primaryCtaButtonUrl: String
+      galleryImages: [ContentfulBlogGalleryImage] @link(from: "galleryImages___NODE")
+      articleContent: ContentfulBlogPostArticleContent
+      socialEmbeds: [ContentfulBlogSocialEmbed] @link(from: "socialEmbeds___NODE")
+      helpTitle: String
+      helpText: contentfulBlogPostHelpTextTextNode @link(from: "helpText___NODE")
+      helpWhatsAppEnabled: Boolean
+      helpWhatsAppUrl: String
+      helpEmailEnabled: Boolean
+      helpEmailAddress: String
+      helpCustomLinkEnabled: Boolean
+      helpCustomLinkText: String
+      helpCustomLinkUrl: String
+    }
+
+    type contentfulBlogPostDirectAnswerTextNode implements Node {
+      directAnswer: String
+    }
+
+    type contentfulBlogPostPrimaryCtaTextTextNode implements Node {
+      primaryCtaText: String
+    }
+
+    type contentfulBlogPostHelpTextTextNode implements Node {
+      helpText: String
+    }
+
+    type ContentfulBlogPostArticleContent {
+      raw: String
+      references: [ContentfulReference] @link(from: "references___NODE")
+    }
+
+    type ContentfulBlogGalleryImage implements Node {
+      image: ContentfulAsset @link(from: "image___NODE")
+      altText: String
+      caption: String
+    }
+
+    type ContentfulBlogSocialEmbed implements Node {
+      platform: String
+      url: String
+    }
   `;
   createTypes(typeDefs);
 };
