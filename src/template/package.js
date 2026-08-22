@@ -4,7 +4,7 @@ import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
 import RichText from "../components/RichTextComponents/RichText";
 import SwiperCarousel from "../components/SwiperCarouselComponent/SwiperCarousel";
 import TextComponent from "../components/RichTextComponents/TextComponent";
-import ReactPlayer from "react-player";
+import VideoPlayer from "../components/VideoComponent/VideoPlayer";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Faqs from "../components/FaqsComponent/Faqs";
 import { graphql } from "gatsby";
@@ -110,18 +110,15 @@ const PackagePage = ({ pageContext, data }) => {
           </div>
           {data.allContentfulPackagePageContent.nodes[0].videoUrl !== null ? (
             <>
-              <div className="w-full lg:basis-1/2 packagePageVideo">
-                <ReactPlayer
-                  url={data.allContentfulPackagePageContent.nodes[0].videoUrl}
-                  muted
-                  controls
-                  playing={true}
-                  loop
-                  width="100%"
-                  height="100%"
-                  pip
-                />
-              </div>
+              {/* Rendering ReactPlayer during hydration produced markup that
+                  did not match the SSR output: six React #418 errors plus a
+                  #423, which drops the whole root to client rendering.
+                  VideoPlayer renders only a placeholder until the player
+                  scrolls into view, which is why /proposal/ is clean. */}
+              <VideoPlayer
+                url={data.allContentfulPackagePageContent.nodes[0].videoUrl}
+                className="w-full lg:basis-1/2 packagePageVideo"
+              />
             </>
           ) : (
             <>

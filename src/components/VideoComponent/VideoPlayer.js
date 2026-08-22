@@ -5,7 +5,7 @@ import ReactPlayer from "react-player/lazy";
 // defers the player bundle but not the video, and `playing` forces an immediate
 // load, so mounting eagerly pulled ~1.2 MB of Vimeo (including a 757 KB mp4) on
 // every page load for a video that sits well below the fold.
-const VideoPlayer = ({ url, vertical }) => {
+const VideoPlayer = ({ url, vertical, className }) => {
   const containerRef = useRef(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
@@ -41,10 +41,14 @@ const VideoPlayer = ({ url, vertical }) => {
     height = "h-[75vh] md:h-[45vh] lg:h-[70vh] xl:h-[65vh] 2xl:h-[70vh]";
   }
 
+  // Callers with their own sizing (the package template uses .packagePageVideo)
+  // can replace the wrapper classes entirely; everyone else keeps the default.
+  const wrapperClassName = className ?? `mt-3 w-full mx-0 ${height}`;
+
   // The wrapper keeps its height whether or not the player has mounted, so
   // swapping the placeholder for the player causes no layout shift.
   return (
-    <div ref={containerRef} className={`mt-3 w-full mx-0 ${height}`}>
+    <div ref={containerRef} className={wrapperClassName}>
       {shouldLoad ? (
         <ReactPlayer
           url={url}
