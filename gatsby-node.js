@@ -74,15 +74,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         nodes {
           slug
           id
-          title
-          description
           node_locale
-          backgroundImage {
-            url
-          }
-          blogCategory {
-            blogCategory
-          }
         }
       }
     }
@@ -102,18 +94,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const blogTemplate = path.resolve(`src/template/blog.js`);
 
   queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
-    if (retiredBlogSlugs.has(node.slug?.trim())) return;
+    const slug = node.slug?.trim();
+    if (!slug || retiredBlogSlugs.has(slug)) return;
 
     // Get language code for URL from the Contentful locale
     const lang = node.node_locale === "en-US" ? "" : node.node_locale;
     const langPrefix = lang ? `/${lang}` : "";
     createPage({
-      path: `${langPrefix}/blog/${node.slug?.trim()}`,
+      path: `${langPrefix}/blog/${slug}`,
       component: blogTemplate,
       context: {
         id: node.id,
         language: node.node_locale, // Pass the language to the template
-        category: node.blogCategory.blogCategory,
         blog: node,
         layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
       },
@@ -450,3 +442,4 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 
   actions.setWebpackConfig(config);
 };
+
