@@ -10,7 +10,8 @@ const Logo = ({ overlay = false }) => {
         nodes {
           logo {
             title
-            gatsbyImage(width: 500, formats: WEBP, placeholder: BLURRED)
+            # Rendered at w-20 (80px) / md:w-32 (128px); 256 covers 2x DPR.
+            gatsbyImage(width: 256, formats: WEBP, placeholder: BLURRED)
           }
         }
       }

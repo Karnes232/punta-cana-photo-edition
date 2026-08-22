@@ -131,26 +131,9 @@ module.exports = {
         icon: "src/images/favicon.png",
       },
     },
-    {
-      resolve: `gatsby-omni-font-loader`,
-      options: {
-        enableListener: true,
-        preconnect: [
-          `https://fonts.googleapis.com`,
-          `https://fonts.gstatic.com`,
-        ],
-        web: [
-          {
-            name: `Crimson Pro`,
-            file: `https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&display=swap`,
-          },
-          {
-            name: `Montserrat`,
-            file: `https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap`,
-          },
-        ],
-      },
-    },
+    // Fonts are self-hosted via @fontsource-variable, imported in
+    // gatsby-browser.js. gatsby-omni-font-loader used to live here but emitted
+    // plain render-blocking <link rel="stylesheet"> tags to fonts.googleapis.com.
     {
       resolve: "gatsby-source-filesystem",
       options: {

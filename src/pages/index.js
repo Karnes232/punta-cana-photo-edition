@@ -166,7 +166,7 @@ export const query = graphql`
             width: 2200
             placeholder: BLURRED
             formats: [AUTO, WEBP]
-            quality: 82
+            quality: 70
           )
           file {
             url
@@ -212,10 +212,15 @@ export const query = graphql`
         showOnHome
         homeOrder
         cardImage {
+          # Cards sit in a sm:grid-cols-2 lg:grid-cols-4 grid, so they are
+          # ~320px wide on desktop and ~364px on mobile - nowhere near the 900
+          # this used to request. The matching sizes value is applied in
+          # HomeExperience's ServiceCard; the Contentful resolver ignores a
+          # sizes argument here.
           gatsbyImage(
             layout: CONSTRAINED
-            width: 900
-            height: 1050
+            width: 700
+            height: 817
             formats: [AUTO, WEBP]
             placeholder: BLURRED
             quality: 80

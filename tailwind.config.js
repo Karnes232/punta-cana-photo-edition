@@ -18,11 +18,30 @@ module.exports = {
         "secondary-bg-color": "var(--secondary-bg-color)",
       },
       fontFamily: {
-        crimson: ["Crimson Pro"],
-        montserrat: ["Montserrat"],
-        lato: ["Lato"],
-        garamond: ["Garamond"],
-        playfair: ["Playfair Display"],
+        // The self-hosted variable fonts register under "<Name> Variable".
+        // The plain name is kept as a second entry so anything still serving
+        // the old Google Fonts build keeps working, then a real fallback stack.
+        crimson: [
+          "Crimson Pro Variable",
+          "Crimson Pro",
+          "Georgia",
+          "Cambria",
+          "Times New Roman",
+          "serif",
+        ],
+        montserrat: [
+          "Montserrat Variable",
+          "Montserrat",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
+        lato: ["Lato", "system-ui", "sans-serif"],
+        garamond: ["Garamond", "Georgia", "serif"],
+        playfair: ["Playfair Display", "Georgia", "serif"],
       },
     },
   },

@@ -159,8 +159,31 @@ const getStructuredProcessSteps = (context) => {
   }
 };
 
+// The cards render in a sm:grid-cols-2 lg:grid-cols-4 grid, so they are about
+// 320px wide on desktop. gatsby-plugin-image would otherwise derive `sizes`
+// from the source width and tell the browser to fetch a 700px image for that
+// slot. Contentful's gatsbyImage resolver ignores a `sizes` argument, so the
+// correct value is applied to the image data here instead.
+const CARD_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw";
+
+const withSizes = (image, sizes) =>
+  image && {
+    ...image,
+    images: {
+      ...image.images,
+      fallback: image.images?.fallback && {
+        ...image.images.fallback,
+        sizes,
+      },
+      sources: image.images?.sources?.map((source) => ({ ...source, sizes })),
+    },
+  };
+
 const ServiceCard = ({ service, language }) => {
-  const image = getImage(service?.cardImage?.gatsbyImage);
+  const image = withSizes(
+    getImage(service?.cardImage?.gatsbyImage),
+    CARD_SIZES,
+  );
   const url = localizedPath(service?.page?.url, language);
   const isGenderReveal =
     normalizeInternalPath(service?.page?.url) === "/gender-reveal-punta-cana/";
