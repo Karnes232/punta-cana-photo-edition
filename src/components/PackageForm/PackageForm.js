@@ -28,6 +28,16 @@ const PackageForm = ({
     }));
   };
 
+  // Only Enter and Space should activate a card. This previously fired on any
+  // keydown, so tabbing away from a focused add-on silently toggled it and
+  // changed the quoted price.
+  const handleAddOnKeyDown = (event, addition) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    // Space would otherwise scroll the page.
+    event.preventDefault();
+    handleAddOnToggle(addition);
+  };
+
   const calculateTotal = () => {
     const addOnsTotal = selectedAddOns.reduce((sum, id) => {
       const addOn = additions.find((item) => item.id === id);
@@ -73,10 +83,13 @@ const PackageForm = ({
                       : "hover:border-gray-300"
                   }`}
                   onClick={() => handleAddOnToggle(addition)}
-                  onKeyDown={() => handleAddOnToggle(addition)}
+                  onKeyDown={(event) => handleAddOnKeyDown(event, addition)}
                   role="button"
                   tabIndex={0}
-                  aria-label="Addon Button"
+                  aria-pressed={selectedAddOns.includes(addition.id)}
+                  aria-label={`${addition.addition}, ${formatter.format(
+                    addition.price,
+                  )}`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3 ">
@@ -146,13 +159,14 @@ const PackageForm = ({
               </p>
               <div>
                 <label
-                  htmlFor="name"
+                  htmlFor="packageForm-name"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   <Trans>Name</Trans>
                 </label>
                 <input
                   type="text"
+                  id="packageForm-name"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
@@ -163,13 +177,14 @@ const PackageForm = ({
 
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="packageForm-email"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   <Trans>Email</Trans>
                 </label>
                 <input
                   type="email"
+                  id="packageForm-email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -180,13 +195,14 @@ const PackageForm = ({
 
               <div>
                 <label
-                  htmlFor="phone"
+                  htmlFor="packageForm-phone"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   <Trans>Phone</Trans>
                 </label>
                 <input
                   type="tel"
+                  id="packageForm-phone"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
@@ -197,13 +213,14 @@ const PackageForm = ({
 
               <div>
                 <label
-                  htmlFor="hotel"
+                  htmlFor="packageForm-hotel"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   <Trans>Hotel / Accommodation</Trans>
                 </label>
                 <input
                   type="text"
+                  id="packageForm-hotel"
                   name="hotel"
                   value={formData.hotel}
                   onChange={handleInputChange}
@@ -212,13 +229,14 @@ const PackageForm = ({
               </div>
               <div>
                 <label
-                  htmlFor="date"
+                  htmlFor="packageForm-date"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   <Trans>Preferred Date</Trans>
                 </label>
                 <input
                   type="date"
+                  id="packageForm-date"
                   name="date"
                   value={formData.date}
                   onChange={handleInputChange}
@@ -229,12 +247,13 @@ const PackageForm = ({
 
               <div>
                 <label
-                  htmlFor="message"
+                  htmlFor="packageForm-message"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
                   <Trans>Message</Trans>
                 </label>
                 <textarea
+                  id="packageForm-message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
