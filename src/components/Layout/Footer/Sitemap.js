@@ -50,6 +50,9 @@ const Sitemap = () => {
       <Link to={localize("/event-planner/")} className="navLinks no-underline">
         <Trans>Corporate events</Trans>
       </Link>
+      <Link to={localize("/blog/")} className="navLinks no-underline">
+        Blog
+      </Link>
       <Link to={localize("/contact/")} className="navLinks no-underline">
         <Trans>Contact</Trans>
       </Link>
@@ -58,3 +61,4 @@ const Sitemap = () => {
 };
 
 export default Sitemap;
+
