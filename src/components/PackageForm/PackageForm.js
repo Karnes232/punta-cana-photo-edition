@@ -126,10 +126,10 @@ const PackageForm = ({
               className="space-y-4"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
-              name="contact"
+              name="package-detail"
               id="packageForm"
             >
-              <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="form-name" value="package-detail" />
               <input type="hidden" name="source" value="Package detail page" />
               <input
                 type="hidden"

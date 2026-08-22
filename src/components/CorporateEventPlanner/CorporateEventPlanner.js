@@ -168,14 +168,14 @@ const ProposalForm = ({ copy, isSpanish }) => {
   return (
     <form
       id="corporate-event-form"
-      name="contact"
+      name="corporate-event-planner"
       method="POST"
       action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="rounded-sm bg-white p-6 shadow-2xl shadow-slate-950/15 md:p-10"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="corporate-event-planner" />
       <input type="hidden" name="source" value="Corporate Event Planner page" />
       <input
         type="hidden"

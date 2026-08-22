@@ -193,14 +193,14 @@ const InquiryForm = ({
   return (
     <form
       id="wedding-inquiry"
-      name="contact"
+      name="wedding-planner"
       method="POST"
       action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="bg-white p-6 shadow-2xl shadow-slate-950/15 md:p-10"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="wedding-planner" />
       <input
         type="hidden"
         name="source"

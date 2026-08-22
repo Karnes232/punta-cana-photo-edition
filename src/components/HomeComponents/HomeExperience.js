@@ -222,14 +222,14 @@ const ServiceCard = ({ service, language }) => {
 
 const HomeContactForm = ({ content, language }) => (
   <form
-    name="contact"
+    name="home-page"
     method="POST"
     action={language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"}
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     className="border border-white/15 bg-white p-6 text-black shadow-2xl md:p-9"
   >
-    <input type="hidden" name="form-name" value="contact" />
+    <input type="hidden" name="form-name" value="home-page" />
     <input type="hidden" name="source" value="Sertuin Events home page" />
     <input type="hidden" name="subject" value="New event planning inquiry" />
     <p className="hidden">

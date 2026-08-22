@@ -151,14 +151,14 @@ const InquiryForm = ({ copy, isSpanish }) => {
   return (
     <form
       id="gender-reveal-quote"
-      name="contact"
+      name="gender-reveal"
       method="POST"
       action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="bg-white p-6 shadow-2xl shadow-slate-950/15 md:p-10"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="gender-reveal" />
       <input
         type="hidden"
         name="source"

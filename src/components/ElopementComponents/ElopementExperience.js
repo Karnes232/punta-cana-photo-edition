@@ -976,7 +976,7 @@ const ElopementForm = ({
 
   return (
     <form
-      name="contact"
+      name="elopement"
       method="POST"
       action={
         language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"
@@ -985,7 +985,7 @@ const ElopementForm = ({
       data-netlify-honeypot="bot-field"
       className="rounded-3xl border border-stone-200 bg-white p-6 shadow-[0_20px_60px_rgba(74,56,18,0.09)] md:p-8"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="elopement" />
       <input
         type="hidden"
         name="source"
