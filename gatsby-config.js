@@ -198,6 +198,10 @@ module.exports = {
         },
         pages: [
           {
+            matchPath: "/:lang?/blog",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/blog/:uid",
             getLanguageFromPath: true,
           },
@@ -251,3 +255,4 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
   },
 };
+

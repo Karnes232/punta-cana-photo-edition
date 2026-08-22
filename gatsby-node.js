@@ -321,6 +321,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const blogPath = urlPath === "" ? "/blog" : `/${urlPath}/blog`;
+      createPage({
+        path: blogPath,
+        component: path.resolve("./src/pages/blog/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       // You can add code here to create other pages (blog, about, etc.)
       // following the same pattern
     },
@@ -490,4 +500,5 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 
   actions.setWebpackConfig(config);
 };
+
 

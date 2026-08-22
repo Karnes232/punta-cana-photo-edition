@@ -48,9 +48,22 @@ const SideBarInside = ({ footer, setToggled }) => {
             <Trans>Contact</Trans>
           </p>
         </MenuItem>
+        {footer && (
+          <MenuItem
+            component={
+              <Link
+                to={localize("/blog/")}
+                className="hamburgerSmall"
+              />
+            }
+          >
+            <p className="hamburgerSmall">Blog</p>
+          </MenuItem>
+        )}
       </Menu>
     </>
   );
 };
 
 export default SideBarInside;
+
