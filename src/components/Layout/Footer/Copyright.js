@@ -10,7 +10,7 @@ const Copyright = ({ companyName, language }) => {
   // Queried here rather than threaded through props: generalLayout is selected
   // in 16 page queries plus gatsby-node, so passing it down would mean editing
   // 17 files and would fail silently on any one that was missed. Matches the
-  // existing pattern in Layout.js and MessengerButton.js.
+  // existing pattern in Layout.js.
   const data = useStaticQuery(graphql`
     query {
       allContentfulGeneralLayout {
