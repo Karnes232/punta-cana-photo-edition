@@ -190,7 +190,7 @@ export const query = graphql`
             width: 1200
             placeholder: NONE
             formats: WEBP
-            quality: 75
+            quality: 65
           )
           title
         }
@@ -217,7 +217,7 @@ export const query = graphql`
             width: 800
             placeholder: NONE
             formats: WEBP
-            quality: 75
+            quality: 65
           )
         }
         packagePage {
@@ -234,7 +234,7 @@ export const query = graphql`
             width: 1200
             placeholder: NONE
             formats: WEBP
-            quality: 75
+            quality: 65
           )
           title
         }

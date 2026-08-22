@@ -2,6 +2,7 @@ import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { withSizes } from "../../utils/imageSizes";
 import {
   ArrowRight,
   CalendarDays,
@@ -160,24 +161,8 @@ const getStructuredProcessSteps = (context) => {
 };
 
 // The cards render in a sm:grid-cols-2 lg:grid-cols-4 grid, so they are about
-// 320px wide on desktop. gatsby-plugin-image would otherwise derive `sizes`
-// from the source width and tell the browser to fetch a 700px image for that
-// slot. Contentful's gatsbyImage resolver ignores a `sizes` argument, so the
-// correct value is applied to the image data here instead.
+// 320px wide on desktop rather than the source width.
 const CARD_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw";
-
-const withSizes = (image, sizes) =>
-  image && {
-    ...image,
-    images: {
-      ...image.images,
-      fallback: image.images?.fallback && {
-        ...image.images.fallback,
-        sizes,
-      },
-      sources: image.images?.sources?.map((source) => ({ ...source, sizes })),
-    },
-  };
 
 const ServiceCard = ({ service, language }) => {
   const image = withSizes(

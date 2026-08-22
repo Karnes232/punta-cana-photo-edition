@@ -68,6 +68,12 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
+    // react-pro-sidebar (the navbar menu) styles itself with emotion. Without
+    // emotion's SSR extraction the server-injected <style> blocks do not match
+    // what the client regenerates, which broke hydration site-wide: seven
+    // React #418 errors plus a #423 that dropped the whole root back to client
+    // rendering.
+    "gatsby-plugin-emotion",
     {
       resolve: "gatsby-plugin-sitemap",
       options: {
