@@ -165,7 +165,7 @@ export const query = graphql`
             layout: FULL_WIDTH
             width: 2200
             placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
+            formats: [AUTO, WEBP]
             quality: 82
           )
           file {
@@ -216,7 +216,7 @@ export const query = graphql`
             layout: CONSTRAINED
             width: 900
             height: 1050
-            formats: [AUTO, WEBP, AVIF]
+            formats: [AUTO, WEBP]
             placeholder: BLURRED
             quality: 80
           )
@@ -242,7 +242,7 @@ export const query = graphql`
             width: 1200
             height: 1300
             placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
+            formats: [AUTO, WEBP]
             quality: 82
           )
           title

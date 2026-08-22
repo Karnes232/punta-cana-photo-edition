@@ -51,8 +51,11 @@ const Copyright = ({ companyName, language }) => {
           target="_blank"
           rel="noreferrer"
         >
+          {/* Sanity's CDN transcodes on request. The source is a 512x487 PNG
+              (328 KB) but this renders at 17x16, so ask for webp at ~4x the
+              render width: 2.2 KB instead. */}
           <img
-            src="https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png"
+            src="https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png?fm=webp&q=80&w=64"
             alt="DR Web Studio logo"
             className="h-4"
             width="17"
