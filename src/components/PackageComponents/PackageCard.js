@@ -74,16 +74,24 @@ const PackageCard = ({ photoPackage }) => {
                 {" "}
                 <div className="my-5">
                   <ul className="flex flex-col justify-center items-center gap-2">
-                    {photoPackage.included.map((item, index) => {
-                      return (
-                        <li
-                          key={index}
-                          className="list-disc text-sm capitalize"
-                        >
-                          {item}
-                        </li>
-                      );
-                    })}
+                    {photoPackage.included
+                      .filter(
+                        (item) =>
+                          photoPackage.page !== "Proposal" ||
+                          !/^(also included:|también incluye:)/i.test(
+                            item.trim(),
+                          ),
+                      )
+                      .map((item, index) => {
+                        return (
+                          <li
+                            key={index}
+                            className="list-disc text-sm capitalize"
+                          >
+                            {item}
+                          </li>
+                        );
+                      })}
                   </ul>
                 </div>
               </>
