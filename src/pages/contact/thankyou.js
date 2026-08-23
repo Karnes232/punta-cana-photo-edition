@@ -13,8 +13,14 @@ const ThankYou = ({ data }) => {
     setName(searchParams.get("name") || "");
   }, []);
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroSwiper heroInfo={data.allContentfulGeneralLayout.nodes[0]} />
+    <Layout
+      generalInfo={data.allContentfulGeneralLayout.nodes[0]}
+      overlayHeader
+    >
+      <HeroSwiper
+        heroInfo={data.allContentfulGeneralLayout.nodes[0]}
+        overlayHeader
+      />
       <main className="">
         <div className="flex flex-col items-center justify-center max-w-xs xl:max-w-sm mx-auto min-h-[50vh]">
           <div className="">

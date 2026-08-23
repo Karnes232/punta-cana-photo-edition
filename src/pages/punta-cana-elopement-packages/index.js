@@ -11,7 +11,10 @@ const Index = ({ data, pageContext }) => {
   const language = pageContext.language === "es" ? "es" : "en-US";
 
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+    <Layout
+      generalInfo={data.allContentfulGeneralLayout.nodes[0]}
+      overlayHeader
+    >
       <ElopementExperience
         language={language}
         page={data.allContentfulPageContent.nodes[0]}
@@ -143,7 +146,7 @@ export const query = graphql`
             layout: FULL_WIDTH
             width: 1800
             placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
+            formats: [AUTO, WEBP]
             quality: 80
           )
           file {
@@ -190,7 +193,7 @@ export const query = graphql`
             layout: CONSTRAINED
             width: 900
             placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
+            formats: [AUTO, WEBP]
             quality: 78
           )
         }
@@ -208,7 +211,7 @@ export const query = graphql`
             layout: CONSTRAINED
             width: 1100
             placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
+            formats: [AUTO, WEBP]
             quality: 78
           )
         }

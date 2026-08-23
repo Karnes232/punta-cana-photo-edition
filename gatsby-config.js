@@ -68,6 +68,12 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
+    // react-pro-sidebar (the navbar menu) styles itself with emotion. Without
+    // emotion's SSR extraction the server-injected <style> blocks do not match
+    // what the client regenerates, which broke hydration site-wide: seven
+    // React #418 errors plus a #423 that dropped the whole root back to client
+    // rendering.
+    "gatsby-plugin-emotion",
     {
       resolve: "gatsby-plugin-sitemap",
       options: {
@@ -131,26 +137,9 @@ module.exports = {
         icon: "src/images/favicon.png",
       },
     },
-    {
-      resolve: `gatsby-omni-font-loader`,
-      options: {
-        enableListener: true,
-        preconnect: [
-          `https://fonts.googleapis.com`,
-          `https://fonts.gstatic.com`,
-        ],
-        web: [
-          {
-            name: `Crimson Pro`,
-            file: `https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&display=swap`,
-          },
-          {
-            name: `Montserrat`,
-            file: `https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap`,
-          },
-        ],
-      },
-    },
+    // Fonts are self-hosted via @fontsource-variable, imported in
+    // gatsby-browser.js. gatsby-omni-font-loader used to live here but emitted
+    // plain render-blocking <link rel="stylesheet"> tags to fonts.googleapis.com.
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -209,6 +198,10 @@ module.exports = {
         },
         pages: [
           {
+            matchPath: "/:lang?/blog",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/blog/:uid",
             getLanguageFromPath: true,
           },
@@ -262,3 +255,4 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
   },
 };
+

@@ -15,7 +15,7 @@ const TestimonialForm = () => {
           team; your feedback helps us continue improving every celebration.
         </p>
         <form
-          name="contact"
+          name="testimonial"
           method="POST"
           action="/contact/thankyou/"
           data-netlify="true"
@@ -23,7 +23,7 @@ const TestimonialForm = () => {
           encType="multipart/form-data"
           className="mt-9 space-y-6"
         >
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="form-name" value="testimonial" />
           <input type="hidden" name="source" value="Client testimonial" />
           <input
             type="hidden"

@@ -42,8 +42,8 @@ const Index = ({ data, pageContext }) => {
   };
 
   return (
-    <Layout generalInfo={generalInfo}>
-      <HeroSwiper heroInfo={heroInfo} />
+    <Layout generalInfo={generalInfo} overlayHeader>
+      <HeroSwiper heroInfo={heroInfo} overlayHeader />
       <ProposalIntroduction language={language} />
       <OurPackages
         title={pageContent.sectionTitle || proposalCopy.packagesFallbackTitle}
@@ -190,7 +190,7 @@ export const query = graphql`
             width: 1200
             placeholder: NONE
             formats: WEBP
-            quality: 75
+            quality: 65
           )
           title
         }
@@ -217,7 +217,7 @@ export const query = graphql`
             width: 800
             placeholder: NONE
             formats: WEBP
-            quality: 75
+            quality: 65
           )
         }
         packagePage {
@@ -234,7 +234,7 @@ export const query = graphql`
             width: 1200
             placeholder: NONE
             formats: WEBP
-            quality: 75
+            quality: 65
           )
           title
         }

@@ -7,8 +7,14 @@ import Seo from "../../components/Layout/seo";
 
 const Index = ({ data }) => {
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <HeroSwiper heroInfo={data.allContentfulGeneralLayout.nodes[0]} />
+    <Layout
+      generalInfo={data.allContentfulGeneralLayout.nodes[0]}
+      overlayHeader
+    >
+      <HeroSwiper
+        heroInfo={data.allContentfulGeneralLayout.nodes[0]}
+        overlayHeader
+      />
       <TestimonialForm />
     </Layout>
   );

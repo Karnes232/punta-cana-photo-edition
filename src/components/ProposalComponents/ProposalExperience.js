@@ -640,7 +640,10 @@ export const ProposalTrust = ({ language, instagramUrl }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-gray-200 mt-7">
               {googleReviewExcerpts.map(({ author, excerpt }) => (
                 <article key={author} className="bg-secondary-bg-color p-6">
+                  {/* role="img" is required for aria-label to be permitted;
+                      on a bare div the implicit generic role discards it. */}
                   <div
+                    role="img"
                     aria-label={content.fiveStarsLabel}
                     className="text-primary-color tracking-[0.18em]"
                   >

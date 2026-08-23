@@ -3,8 +3,13 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
 import { Trans } from "gatsby-plugin-react-i18next";
+import { withSizes } from "../../utils/imageSizes";
+
+// The card is w-11/12 on mobile and a fixed w-[20rem] (320px) from md up.
+const CARD_SIZES = "(min-width: 768px) 320px, 92vw";
+
 const PackageCard = ({ photoPackage }) => {
-  const image = getImage(photoPackage.image.gatsbyImage);
+  const image = withSizes(getImage(photoPackage.image.gatsbyImage), CARD_SIZES);
   let cardHeight = "";
   if (photoPackage.page === "Photo Shoots") {
     cardHeight = "h-[23rem]";

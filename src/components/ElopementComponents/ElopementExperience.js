@@ -994,7 +994,7 @@ const ElopementForm = ({
 
   return (
     <form
-      name="contact"
+      name="elopement"
       method="POST"
       action={
         language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"
@@ -1003,7 +1003,7 @@ const ElopementForm = ({
       data-netlify-honeypot="bot-field"
       className="rounded-3xl border border-stone-200 bg-white p-6 shadow-[0_20px_60px_rgba(74,56,18,0.09)] md:p-8"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="elopement" />
       <input
         type="hidden"
         name="source"
@@ -1101,7 +1101,7 @@ const ElopementForm = ({
         </label>
         <label className="font-montserrat text-sm font-semibold text-stone-700 md:col-span-2">
           {copy.form.message}
-          <textarea className={inputClass} name="message" rows="4" />
+          <textarea className={inputClass} name="message" rows="4" required />
         </label>
       </div>
 
@@ -1195,26 +1195,28 @@ const ElopementExperience = ({
   return (
     <main className="overflow-hidden bg-white">
       <section className="absolute left-0 top-0 h-screen w-full bg-stone-900">
-        {heroImage ? (
-          <GatsbyImage
-            image={heroImage}
-            alt="Tropical wedding canopy for a private beach elopement in Punta Cana"
-            loading="eager"
-            fetchPriority="high"
-            className="absolute inset-0 h-full w-full"
-            imgStyle={{ objectFit: "cover", objectPosition: "center" }}
-          />
-        ) : (
-          <img
-            src={huppa}
-            alt="Tropical wedding canopy for a private beach elopement in Punta Cana"
-            loading="eager"
-            fetchPriority="high"
-            width="1600"
-            height="1067"
-            className="absolute inset-0 h-full w-full object-cover object-center"
-          />
-        )}
+        <div className="absolute inset-0 overflow-hidden">
+          {heroImage ? (
+            <GatsbyImage
+              image={heroImage}
+              alt="Tropical wedding canopy for a private beach elopement in Punta Cana"
+              loading="eager"
+              fetchPriority="high"
+              className="h-full w-full"
+              imgStyle={{ objectFit: "cover", objectPosition: "center" }}
+            />
+          ) : (
+            <img
+              src={huppa}
+              alt="Tropical wedding canopy for a private beach elopement in Punta Cana"
+              loading="eager"
+              fetchPriority="high"
+              width="1600"
+              height="1067"
+              className="h-full w-full object-cover object-center"
+            />
+          )}
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/65" />
         <div className="relative z-10 mx-auto flex h-full max-w-6xl items-end justify-center px-5 pb-[14vh] text-center md:px-10 md:pb-[16vh]">
           <div>
@@ -1229,7 +1231,7 @@ const ElopementExperience = ({
           </div>
         </div>
       </section>
-      <div className="h-[90vh]" aria-hidden="true" />
+      <div className="h-[100vh]" aria-hidden="true" />
 
       <section
         id="builder"

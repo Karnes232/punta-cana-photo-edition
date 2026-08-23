@@ -2,6 +2,12 @@ import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import { withSizes } from "../../../utils/imageSizes";
+
+// Rendered at w-20 (80px), or w-32 (128px) from md up. Without this the
+// derived sizes claims 256px, which makes high-DPR devices fetch the 512px
+// candidate for an 80px slot.
+const LOGO_SIZES = "(min-width: 768px) 128px, 80px";
 const Logo = ({ overlay = false }) => {
   const { language } = useI18next();
   const data = useStaticQuery(graphql`
@@ -10,14 +16,21 @@ const Logo = ({ overlay = false }) => {
         nodes {
           logo {
             title
-            gatsbyImage(width: 500, formats: WEBP, placeholder: BLURRED)
+            # Rendered at w-20 (80px) / md:w-32 (128px); 256 covers 2x DPR.
+            gatsbyImage(
+              width: 256
+              formats: WEBP
+              placeholder: BLURRED
+              quality: 65
+            )
           }
         }
       }
     }
   `);
-  const image = getImage(
-    data.allContentfulGeneralLayout.nodes[0].logo.gatsbyImage,
+  const image = withSizes(
+    getImage(data.allContentfulGeneralLayout.nodes[0].logo.gatsbyImage),
+    LOGO_SIZES,
   );
   return (
     <>

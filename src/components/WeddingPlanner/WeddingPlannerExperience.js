@@ -7,6 +7,8 @@ import {
   CalendarCheck,
   Check,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ClipboardCheck,
   Clock3,
   Globe2,
@@ -191,14 +193,14 @@ const InquiryForm = ({
   return (
     <form
       id="wedding-inquiry"
-      name="contact"
+      name="wedding-planner"
       method="POST"
       action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="bg-white p-6 shadow-2xl shadow-slate-950/15 md:p-10"
     >
-      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="form-name" value="wedding-planner" />
       <input
         type="hidden"
         name="source"
@@ -336,6 +338,7 @@ const WeddingPlannerExperience = ({
   const isSpanish = language === "es";
   const content = getWeddingPlannerContent(language, page?.paragraph3?.raw);
   const formRef = useRef(null);
+  const greciaCarouselRef = useRef(null);
   const [selectedPackage, setSelectedPackage] = useState("");
   const heroImage = page?.heroImageList?.[0];
   const editorialImages = page?.heroImageList?.slice(1) || [];
@@ -364,6 +367,7 @@ const WeddingPlannerExperience = ({
       .flatMap((gallery) => gallery?.images || []);
   }, [galleries, greciaGallery, realWeddingGallery]);
   const greciaGalleryImages = greciaGallery?.images || [];
+  const greciaCarouselImages = greciaGalleryImages.slice(1);
   const packageList = useMemo(() => {
     const cmsPackages = (packages || []).filter(Boolean);
     const hasSouthAsian = cmsPackages.some((item) =>
@@ -387,6 +391,16 @@ const WeddingPlannerExperience = ({
       document
         .getElementById("wedding-inquiry")
         ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
+
+  const scrollGreciaCarousel = (direction) => {
+    const carousel = greciaCarouselRef.current;
+    if (!carousel) return;
+    const cardWidth = carousel.firstElementChild?.getBoundingClientRect().width;
+    carousel.scrollBy({
+      left: direction * ((cardWidth || carousel.clientWidth * 0.82) + 16),
+      behavior: "smooth",
     });
   };
 
@@ -773,26 +787,59 @@ const WeddingPlannerExperience = ({
             </div>
           </div>
         </div>
-        {greciaGalleryImages.length > 1 && (
+        {greciaCarouselImages.length > 0 && (
           <div className="mx-auto mt-16 max-w-7xl border-t border-white/15 pt-12">
-            <div className="flex max-w-3xl items-start gap-4">
-              <HeartHandshake
-                className="mt-1 shrink-0 text-amber-300"
-                size={28}
-                strokeWidth={1.7}
-                aria-hidden="true"
-              />
-              <div>
-                <h3 className="font-crimson text-3xl font-medium text-white md:text-4xl">
-                  {greciaGallery?.title || content.grecia.galleryTitle}
-                </h3>
-                <p className="mt-3 font-montserrat text-sm leading-6 text-slate-300">
-                  {content.grecia.galleryBody}
-                </p>
+            <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
+              <div className="flex max-w-3xl items-start gap-4">
+                <HeartHandshake
+                  className="mt-1 shrink-0 text-amber-300"
+                  size={28}
+                  strokeWidth={1.7}
+                  aria-hidden="true"
+                />
+                <div>
+                  <h3 className="font-crimson text-3xl font-medium text-white md:text-4xl">
+                    {greciaGallery?.title || content.grecia.galleryTitle}
+                  </h3>
+                  <p className="mt-3 font-montserrat text-sm leading-6 text-slate-300">
+                    {content.grecia.galleryBody}
+                  </p>
+                </div>
               </div>
+              {greciaCarouselImages.length > 1 && (
+                <div className="flex gap-3 pl-11 md:pl-0">
+                  <button
+                    type="button"
+                    onClick={() => scrollGreciaCarousel(-1)}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-amber-300 hover:text-amber-300"
+                    aria-label={isSpanish ? "Foto anterior" : "Previous photo"}
+                  >
+                    <ChevronLeft size={21} aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollGreciaCarousel(1)}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-amber-300 hover:text-amber-300"
+                    aria-label={isSpanish ? "Foto siguiente" : "Next photo"}
+                  >
+                    <ChevronRight size={21} aria-hidden="true" />
+                  </button>
+                </div>
+              )}
             </div>
-            <div className="-mx-6 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 [scrollbar-width:none] md:-mx-10 md:px-10 lg:-mx-12 lg:px-12 [&::-webkit-scrollbar]:hidden">
-              {greciaGalleryImages.slice(1).map((asset, index) => (
+            <div
+              ref={greciaCarouselRef}
+              role="region"
+              aria-roledescription="carousel"
+              aria-label={
+                isSpanish
+                  ? "Grecia con parejas y novias"
+                  : "Grecia with couples and brides"
+              }
+              tabIndex="0"
+              className="-mx-6 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-6 pb-4 [scrollbar-width:none] md:-mx-10 md:px-10 lg:-mx-12 lg:px-12 [&::-webkit-scrollbar]:hidden"
+            >
+              {greciaCarouselImages.map((asset, index) => (
                 <figure
                   key={`${asset?.title || "grecia"}-${index}`}
                   className="w-[82vw] max-w-[460px] flex-none snap-center overflow-hidden bg-slate-900"

@@ -18,6 +18,7 @@ const MoreInfo = () => {
           rows="4"
           className="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-0 focus:border-black additionalInfo"
           placeholder={t("Leave a comment...")}
+          required
         ></textarea>
       </div>
     </>

@@ -4,13 +4,14 @@ import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
 import RichText from "../components/RichTextComponents/RichText";
 import SwiperCarousel from "../components/SwiperCarouselComponent/SwiperCarousel";
 import TextComponent from "../components/RichTextComponents/TextComponent";
-import ReactPlayer from "react-player";
+import VideoPlayer from "../components/VideoComponent/VideoPlayer";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Faqs from "../components/FaqsComponent/Faqs";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
 import PackageForm from "../components/PackageForm/PackageForm";
 import { useTranslation } from "gatsby-plugin-react-i18next";
+import { reconcilePackageSchemaPrices } from "../utils/reconcilePackageSchema";
 const PackagePage = ({ pageContext, data }) => {
   const { t } = useTranslation();
   const [selectedAddOns, setSelectedAddOns] = useState([]);
@@ -44,8 +45,11 @@ const PackagePage = ({ pageContext, data }) => {
   };
 
   return (
-    <Layout generalInfo={pageContext.layout}>
-      <HeroSwiper heroInfo={data.allContentfulPackagePageContent.nodes[0]} />
+    <Layout generalInfo={pageContext.layout} overlayHeader>
+      <HeroSwiper
+        heroInfo={data.allContentfulPackagePageContent.nodes[0]}
+        overlayHeader
+      />
       <div className="mb-10">
         <RichText
           context={
@@ -106,18 +110,15 @@ const PackagePage = ({ pageContext, data }) => {
           </div>
           {data.allContentfulPackagePageContent.nodes[0].videoUrl !== null ? (
             <>
-              <div className="w-full lg:basis-1/2 packagePageVideo">
-                <ReactPlayer
-                  url={data.allContentfulPackagePageContent.nodes[0].videoUrl}
-                  muted
-                  controls
-                  playing={true}
-                  loop
-                  width="100%"
-                  height="100%"
-                  pip
-                />
-              </div>
+              {/* Rendering ReactPlayer during hydration produced markup that
+                  did not match the SSR output: six React #418 errors plus a
+                  #423, which drops the whole root to client rendering.
+                  VideoPlayer renders only a placeholder until the player
+                  scrolls into view, which is why /proposal/ is clean. */}
+              <VideoPlayer
+                url={data.allContentfulPackagePageContent.nodes[0].videoUrl}
+                className="w-full lg:basis-1/2 packagePageVideo"
+              />
             </>
           ) : (
             <>
@@ -173,12 +174,29 @@ export const Head = ({ pageContext, data }) => {
     ? `${seoImage.file.url.startsWith("//") ? "https:" : ""}${seoImage.file.url}`
     : undefined;
 
-  const schema =
-    data?.allContentfulPackagePageContent?.nodes[0]?.schema?.internal?.content;
+  const node = data?.allContentfulPackagePageContent?.nodes[0];
+  const schema = node?.schema?.internal?.content;
 
+  // The schema blob and the page price are maintained separately in Contentful
+  // and have drifted apart before. The page price wins; every correction is
+  // logged so the drift is visible in the build output.
   let JsonSchema = {};
   if (schema) {
-    JsonSchema = JSON.parse(schema);
+    try {
+      const { schema: reconciled, corrections } = reconcilePackageSchemaPrices(
+        JSON.parse(schema),
+        node?.packages?.[0],
+      );
+      JsonSchema = reconciled;
+      if (corrections.length) {
+        console.warn(`[schema-price] ${slug}:`, corrections);
+      }
+    } catch (error) {
+      console.error(
+        `[schema-price] ${slug}: could not parse the Contentful schema field —`,
+        error.message,
+      );
+    }
   }
 
   return (

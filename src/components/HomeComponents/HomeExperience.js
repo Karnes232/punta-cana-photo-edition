@@ -2,6 +2,7 @@ import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { withSizes } from "../../utils/imageSizes";
 import {
   ArrowRight,
   CalendarDays,
@@ -159,8 +160,15 @@ const getStructuredProcessSteps = (context) => {
   }
 };
 
+// The cards render in a sm:grid-cols-2 lg:grid-cols-4 grid, so they are about
+// 320px wide on desktop rather than the source width.
+const CARD_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw";
+
 const ServiceCard = ({ service, language }) => {
-  const image = getImage(service?.cardImage?.gatsbyImage);
+  const image = withSizes(
+    getImage(service?.cardImage?.gatsbyImage),
+    CARD_SIZES,
+  );
   const url = localizedPath(service?.page?.url, language);
   const isGenderReveal =
     normalizeInternalPath(service?.page?.url) === "/gender-reveal-punta-cana/";
@@ -214,14 +222,14 @@ const ServiceCard = ({ service, language }) => {
 
 const HomeContactForm = ({ content, language }) => (
   <form
-    name="contact"
+    name="home-page"
     method="POST"
     action={language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"}
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     className="border border-white/15 bg-white p-6 text-black shadow-2xl md:p-9"
   >
-    <input type="hidden" name="form-name" value="contact" />
+    <input type="hidden" name="form-name" value="home-page" />
     <input type="hidden" name="source" value="Sertuin Events home page" />
     <input type="hidden" name="subject" value="New event planning inquiry" />
     <p className="hidden">
