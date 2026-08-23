@@ -142,7 +142,7 @@ const ProposalForm = ({ copy, isSpanish }) => {
         guests: "Cantidad estimada de invitados",
         venue: "Hotel o sede, si ya lo sabe",
         details: "Cuéntenos sobre su evento",
-        budget: "Presupuesto estimado (opcional)",
+        budget: "Presupuesto estimado",
         select: "Seleccione un rango",
         privacy:
           "Al enviar este formulario, autoriza a Sertuin Events a contactarle sobre esta solicitud.",
@@ -156,7 +156,7 @@ const ProposalForm = ({ copy, isSpanish }) => {
         guests: "Estimated guest count",
         venue: "Hotel or venue, if known",
         details: "Tell us about your event",
-        budget: "Estimated budget (optional)",
+        budget: "Estimated budget",
         select: "Select a range",
         privacy:
           "By submitting, you authorize Sertuin Events to contact you about this inquiry.",
@@ -265,11 +265,12 @@ const ProposalForm = ({ copy, isSpanish }) => {
           />
         </label>
         <label className="font-montserrat text-sm font-semibold text-slate-800 md:col-span-2">
-          {labels.budget}
+          {labels.budget} *
           <select
             className={inputClass}
             name="estimated-budget"
             defaultValue=""
+            required
           >
             <option value="">{labels.select}</option>
             <option value="Under USD 15,000">Under USD 15,000</option>
