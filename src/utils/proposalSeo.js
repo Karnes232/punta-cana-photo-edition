@@ -69,8 +69,8 @@ export const buildProposalSchema = ({
       sameAs,
       description:
         language === "es"
-          ? "Empresa dominicana de planificación de eventos ubicada en Punta Cana, dirigida por la wedding planner Grecia Mejía, con más de 10 años de experiencia y más de 1,800 propuestas de matrimonio realizadas. Las consultas y reuniones presenciales se coordinan con cita previa."
-          : "Dominican event-planning company based in Punta Cana, led by wedding planner Grecia Mejía, with more than 10 years of experience and more than 1,800 marriage proposals created. Consultations and in-person meetings are arranged by appointment.",
+          ? "Empresa dominicana de planificación de eventos ubicada en Punta Cana, dirigida por la wedding planner Grecia Mejía, con más de 10 años de experiencia y más de 1,800 propuestas de matrimonio realizadas. Los clientes comienzan por WhatsApp, teléfono o el formulario."
+          : "Dominican event-planning company based in Punta Cana, led by wedding planner Grecia Mejía, with more than 10 years of experience and more than 1,800 marriage proposals created. Clients begin through WhatsApp, phone or the inquiry form.",
       location: {
         "@type": "Place",
         name: "Punta Cana, Dominican Republic",
@@ -126,8 +126,8 @@ export const buildProposalSchema = ({
       "@id": serviceId,
       name:
         language === "es"
-          ? "Propuestas de matrimonio privadas en Punta Cana"
-          : "Private Marriage Proposals in Punta Cana",
+          ? "Planificación de propuestas de matrimonio en Punta Cana"
+          : "Marriage Proposal Planning in Punta Cana",
       description,
       url: pageUrl,
       provider: { "@id": organizationId },
