@@ -34,6 +34,7 @@ import white from "../../images/elopement/white.webp";
 import white2 from "../../images/elopement/white2.webp";
 
 export const LEGAL_UPGRADE_PRICE = 1200;
+export const CATAMARAN_EXTRA_GUEST_PRICE = 70;
 
 export const ELOPEMENT_EXPERIENCES = [
   { id: "beach", price: 999 },
@@ -98,15 +99,15 @@ const COPY = {
     breadcrumbCurrent: "Punta Cana Elopement Wedding Packages",
     formula: [
       "Ceremony experience",
-      "Selected décor",
+      "Optional décor",
       "Optional legal wedding",
     ],
     builderEyebrow: "Packages & prices",
     builderTitle: "Punta Cana Elopement Packages & Prices",
     builderIntro:
-      "Choose your setting, décor and ceremony type. Your estimated total updates with every selection.",
+      "Choose your setting, optional décor and ceremony type. Your estimated total updates with every selection.",
     stepOne: "1. Choose your setting",
-    stepTwo: "2. Choose your décor",
+    stepTwo: "2. Choose optional décor",
     stepThree: "3. Choose symbolic or legal",
     selected: "Selected",
     select: "Select",
@@ -118,7 +119,7 @@ const COPY = {
         "An intimate ceremony on Sertuin Events’ private beach, coordinated from arrival through the final photographs.",
       bullets: [
         "Private beach access",
-        "Round-trip transportation for two from Punta Cana",
+        "Round-trip transportation for up to 10 people from Punta Cana",
         "Professional photographer",
         "Bouquet and boutonnière",
         "Officiant, coordination and symbolic certificate",
@@ -132,7 +133,7 @@ const COPY = {
         "A completely private catamaran experience with capacity for up to 60 people. The published base price covers 2–10 people.",
       bullets: [
         "Completely private catamaran",
-        "Round-trip transportation for two from Punta Cana",
+        "Round-trip transportation for up to 10 people from Punta Cana",
         "Photography, bouquet, boutonnière and ceremony team",
         "Nachos, fruit, sodas and water",
         "Rum, mamajuana and music",
@@ -170,6 +171,9 @@ const COPY = {
     realTouch: "Premium Real Touch artificial flowers",
     beachAndCatamaran: "Beach or catamaran",
     beachOnly: "Private beach only",
+    noDecor: "Ceremony without décor",
+    noDecorDescription:
+      "Keep the ceremony simple with the included officiant, photographer, personal flowers, eight guest chairs and ceremony table.",
     unavailableCatamaran:
       "This full wedding canopy cannot be installed on the catamaran.",
     symbolic: "Symbolic ceremony",
@@ -186,14 +190,16 @@ const COPY = {
     legalChoiceText:
       "Adds the Dominican civil process after document approval.",
     guestsLabel: "People aboard",
-    guestsHelp: "2–10 people are covered by the published catamaran price.",
+    guestsHelp:
+      "2–10 people are covered by the published catamaran price; each additional guest is US$70, up to 60 people.",
     customQuote: "Custom quote required",
     customQuoteText:
-      "For more than 10 people, send your request so we can confirm the additional cost. The boat has capacity for up to 60 people.",
+      "Each person above 10 adds US$70. The boat has capacity for up to 60 people.",
     estimate: "Your estimated elopement total",
     experienceLine: "Experience",
     decorLine: "Décor",
     legalLine: "Legal wedding",
+    additionalGuestsLine: "Additional catamaran guests",
     included: "Included",
     totalNote:
       "Estimate for the selections shown. Availability is verified before any reservation is confirmed.",
@@ -204,8 +210,8 @@ const COPY = {
       "These essentials are part of the experience price before you add your décor.",
     inclusions: [
       [
-        "Transportation for two",
-        "Private round trip from any hotel or accommodation in the Punta Cana area.",
+        "Transportation for up to 10 people",
+        "Private round trip for the couple and up to eight guests from one hotel or accommodation in the Punta Cana area. Additional pickup points are quoted separately.",
       ],
       [
         "Professional photography",
@@ -217,7 +223,7 @@ const COPY = {
       ],
       [
         "Personal flowers",
-        "A bouquet and boutonnière complement your selected ceremony design.",
+        "A bouquet and boutonnière are included even when you choose a ceremony without décor.",
       ],
       [
         "Symbolic certificate",
@@ -268,12 +274,12 @@ const COPY = {
         "Complete the agreement and pay the non-refundable deposit through PayPal. It is credited to your total.",
       ],
       [
-        "Pay the balance on arrival",
-        "The remaining balance is paid in cash on the wedding day, at the beach or before boarding.",
+        "Pay the balance after the experience",
+        "The remaining balance is normally paid in cash when leaving the private beach or catamaran, according to the agreement.",
       ],
     ],
     depositNotice:
-      "The US$200 reservation deposit is non-refundable under all circumstances.",
+      "The US$200 reservation deposit is normally non-refundable. If weather makes the elopement impossible during the stay after every reasonable alternative is exhausted, the deposit is returned. Weather changes may be rescheduled up to twice.",
     realEyebrow: "Created by Sertuin Events",
     realTitle: "Real Punta Cana elopement décor",
     realIntro:
@@ -288,15 +294,15 @@ const COPY = {
     breadcrumbCurrent: "Paquetes de Elopement en Punta Cana",
     formula: [
       "Experiencia de ceremonia",
-      "Decoración elegida",
+      "Decoración opcional",
       "Boda legal opcional",
     ],
     builderEyebrow: "Paquetes y precios",
     builderTitle: "Paquetes y precios de elopement en Punta Cana",
     builderIntro:
-      "Elige la locación, la decoración y el tipo de ceremonia. El total estimado se actualiza con cada selección.",
+      "Elige la locación, la decoración opcional y el tipo de ceremonia. El total estimado se actualiza con cada selección.",
     stepOne: "1. Elige la locación",
-    stepTwo: "2. Elige la decoración",
+    stepTwo: "2. Elige decoración opcional",
     stepThree: "3. Elige ceremonia simbólica o legal",
     selected: "Seleccionado",
     select: "Elegir",
@@ -308,7 +314,7 @@ const COPY = {
         "Una ceremonia íntima en la playa privada de Sertuin Events, coordinada desde la llegada hasta las fotografías finales.",
       bullets: [
         "Acceso a playa privada",
-        "Transporte ida y vuelta para dos desde Punta Cana",
+        "Transporte ida y vuelta para hasta 10 personas desde Punta Cana",
         "Fotógrafo profesional",
         "Bouquet y boutonnière",
         "Oficiante, coordinación y certificado simbólico",
@@ -322,7 +328,7 @@ const COPY = {
         "Una experiencia en catamarán completamente privado con capacidad máxima para 60 personas. El precio base publicado cubre de 2 a 10 personas.",
       bullets: [
         "Catamarán completamente privado",
-        "Transporte ida y vuelta para dos desde Punta Cana",
+        "Transporte ida y vuelta para hasta 10 personas desde Punta Cana",
         "Fotografía, bouquet, boutonnière y equipo de ceremonia",
         "Nachos, frutas, sodas y agua",
         "Ron, mamajuana y música",
@@ -360,6 +366,9 @@ const COPY = {
     realTouch: "Flores artificiales premium Real Touch",
     beachAndCatamaran: "Playa o catamarán",
     beachOnly: "Solo playa privada",
+    noDecor: "Ceremonia sin decoración",
+    noDecorDescription:
+      "Mantén una ceremonia sencilla con oficiante, fotógrafo, flores personales, ocho sillas para invitados y mesa de ceremonia incluidos.",
     unavailableCatamaran:
       "Este dosel nupcial completo no puede instalarse en el catamarán.",
     symbolic: "Ceremonia simbólica",
@@ -377,14 +386,15 @@ const COPY = {
       "Agrega el proceso civil dominicano después de aprobar los documentos.",
     guestsLabel: "Personas a bordo",
     guestsHelp:
-      "De 2 a 10 personas están cubiertas por el precio publicado del catamarán.",
+      "De 2 a 10 personas están cubiertas por el precio publicado del catamarán; cada invitado adicional cuesta US$70, hasta 60 personas.",
     customQuote: "Requiere cotización personalizada",
     customQuoteText:
-      "Para más de 10 personas, envía la solicitud para confirmar el costo adicional. La embarcación tiene capacidad máxima para 60 personas.",
+      "Cada persona después de las primeras 10 agrega US$70. La embarcación tiene capacidad máxima para 60 personas.",
     estimate: "Total estimado de tu elopement",
     experienceLine: "Experiencia",
     decorLine: "Decoración",
     legalLine: "Boda legal",
+    additionalGuestsLine: "Invitados adicionales en catamarán",
     included: "Incluido",
     totalNote:
       "Estimado para las selecciones mostradas. Verificamos disponibilidad antes de confirmar cualquier reserva.",
@@ -395,8 +405,8 @@ const COPY = {
       "Estos elementos forman parte de la experiencia antes de agregar la decoración.",
     inclusions: [
       [
-        "Transporte para dos",
-        "Traslado privado ida y vuelta desde cualquier hotel o alojamiento de la zona de Punta Cana.",
+        "Transporte para hasta 10 personas",
+        "Traslado privado ida y vuelta para la pareja y hasta ocho invitados desde un hotel o alojamiento de Punta Cana. Los puntos de recogida adicionales se cotizan por separado.",
       ],
       [
         "Fotografía profesional",
@@ -408,7 +418,7 @@ const COPY = {
       ],
       [
         "Flores personales",
-        "Bouquet y boutonnière coordinados con el diseño de ceremonia elegido.",
+        "Bouquet y boutonnière incluidos aunque elijan una ceremonia sin decoración.",
       ],
       [
         "Certificado simbólico",
@@ -459,12 +469,12 @@ const COPY = {
         "Completa el contrato y paga por PayPal el depósito no reembolsable. Se acredita al total.",
       ],
       [
-        "Paga el balance al llegar",
-        "El restante se paga en efectivo el día de la boda, al llegar a la playa o antes de abordar.",
+        "Paga el balance al finalizar",
+        "El restante normalmente se paga en efectivo al salir de la playa privada o del catamarán, según el contrato.",
       ],
     ],
     depositNotice:
-      "El pago de reserva de US$200 no se reembolsa bajo ninguna circunstancia.",
+      "El pago de reserva de US$200 normalmente no es reembolsable. Si el clima impide realizar el elopement durante la estadía después de agotar las alternativas razonables, se devuelve. Los cambios por clima pueden reprogramarse hasta dos veces.",
     realEyebrow: "Creado por Sertuin Events",
     realTitle: "Decoraciones reales de elopement en Punta Cana",
     realIntro:
@@ -585,11 +595,11 @@ export const buildElopementFaqs = (language = "en-US") => {
     ? [
         [
           "¿Cuánto cuesta un elopement en Punta Cana?",
-          "La experiencia base en playa privada cuesta US$999 y el catamarán privado US$1,299. A ese precio se agrega la decoración elegida, desde US$789 hasta US$1,399. La boda legal es opcional por US$1,200 adicionales.",
+          "La experiencia base en playa privada cuesta US$999 y el catamarán privado US$1,299. La decoración es opcional; los diseños publicados cuestan entre US$789 y US$1,399. La boda legal es opcional por US$1,200 adicionales.",
         ],
         [
           "¿Qué incluye el precio base?",
-          "Incluye transporte ida y vuelta para dos desde la zona de Punta Cana, fotógrafo profesional, bouquet, boutonnière, oficiante, coordinadora dedicada y certificado simbólico. La playa dura hasta dos horas; el catamarán incluye tres horas a bordo, snacks, bebidas, música y snorkel.",
+          "Incluye transporte ida y vuelta para hasta 10 personas desde un mismo alojamiento en Punta Cana, fotógrafo profesional, bouquet, boutonnière, oficiante, coordinadora, ocho sillas para invitados y mesa de ceremonia. Sin decoración no incluye pasillo, estructuras ni sonido. El catamarán incluye tres horas, snacks, bebidas, música y snorkel.",
         ],
         [
           "¿Tendremos coordinadora para nuestra boda?",
@@ -605,7 +615,7 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "¿Qué sucede si somos más de 10 personas en el catamarán?",
-          "Envíen una solicitud con la cantidad exacta. Sertuin confirmará el costo adicional antes de reservar; la página no lo calcula automáticamente.",
+          "Cada persona adicional después de las primeras 10 cuesta US$70. La embarcación admite hasta 60 personas.",
         ],
         [
           "¿Qué snacks y bebidas incluye el catamarán?",
@@ -633,21 +643,21 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "¿Qué sucede si llueve?",
-          "Según disponibilidad y condiciones, podemos cambiar la hora, mover la ceremonia a una locación techada o reprogramarla para un día sin lluvia. En el catamarán, la decisión final de navegación y seguridad corresponde al capitán.",
+          "Podemos cambiar la hora, mover la ceremonia a una locación techada o reprogramar hasta dos veces. Si el clima impide realizarla durante toda la estadía después de agotar las alternativas razonables, devolvemos el depósito. En el catamarán, el capitán toma la decisión final de navegación y seguridad.",
         ],
         [
           "¿Cómo se reserva y enviar el formulario confirma la fecha?",
-          "El formulario solamente envía una solicitud. Cuando Sertuin confirme disponibilidad y se complete el contrato, se pagan US$200 por PayPal para reservar. El depósito se acredita al total y no es reembolsable. El restante se paga en efectivo el día de la boda, al llegar a la playa o antes de abordar.",
+          "El formulario solamente envía una solicitud. Cuando Sertuin confirme disponibilidad y se complete el contrato, se pagan US$200 por PayPal para reservar. El depósito se acredita al total y normalmente no es reembolsable, excepto cuando el clima imposibilita realizar el servicio durante la estadía. El balance se paga normalmente al finalizar la experiencia.",
         ],
       ]
     : [
         [
           "How much does a Punta Cana elopement cost?",
-          "The private beach base experience is US$999 and the private catamaran is US$1,299. Add your selected décor, priced from US$789 to US$1,399. A legal wedding is optional for an additional US$1,200.",
+          "The private beach base experience is US$999 and the private catamaran is US$1,299. Décor is optional; the published designs cost US$789–US$1,399. A legal wedding is optional for an additional US$1,200.",
         ],
         [
           "What is included in the base price?",
-          "It includes private round-trip transportation for two from the Punta Cana area, a professional photographer, bouquet, boutonnière, officiant, dedicated coordinator and symbolic certificate. The beach experience lasts up to two hours; the catamaran includes three hours aboard, snacks, drinks, music and snorkeling.",
+          "It includes private round-trip transportation for up to 10 people from one Punta Cana accommodation, a professional photographer, bouquet, boutonnière, officiant, coordinator, eight guest chairs and a ceremony table. Without décor, no aisle, structures or sound are included. The catamaran includes three hours, snacks, drinks, music and snorkeling.",
         ],
         [
           "Will we have a wedding coordinator?",
@@ -663,7 +673,7 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "What if more than 10 people join the catamaran?",
-          "Send a request with the exact number of people. Sertuin will confirm the additional cost before booking; the page does not calculate it automatically.",
+          "Each person after the first 10 costs US$70. The boat holds up to 60 people.",
         ],
         [
           "Which catamaran snacks and drinks are included?",
@@ -691,11 +701,11 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "What happens if it rains?",
-          "Depending on availability and conditions, we can change the time, move the ceremony to a covered location or reschedule for a non-rainy day. For the catamaran, the captain makes the final navigation and safety decision.",
+          "We can change the time, move the ceremony to a covered location or reschedule up to twice. If weather prevents the service throughout the stay after reasonable alternatives are exhausted, we return the deposit. For the catamaran, the captain makes the final navigation and safety decision.",
         ],
         [
           "How do we reserve, and does submitting the form confirm the date?",
-          "The form only sends a request. Once Sertuin confirms availability and the agreement is completed, pay US$200 through PayPal to reserve. The deposit is credited to the total and is non-refundable. The balance is paid in cash on the wedding day, upon arrival at the beach or before boarding.",
+          "The form only sends a request. Once Sertuin confirms availability and the agreement is completed, pay US$200 through PayPal to reserve. The deposit is credited to the total and is normally non-refundable, except when weather makes the service impossible during the stay. The balance is normally paid at the end of the experience.",
         ],
       ];
 };
@@ -896,9 +906,16 @@ const DecorCard = ({ decoration, copy, active, disabled, onSelect }) => {
   );
 };
 
-const Summary = ({ copy, experience, decoration, legal, customQuote }) => {
+const Summary = ({ copy, experience, decoration, legal, guestCount }) => {
+  const additionalGuestTotal =
+    experience.id === "catamaran"
+      ? Math.max(0, guestCount - 10) * CATAMARAN_EXTRA_GUEST_PRICE
+      : 0;
   const total =
-    experience.price + decoration.price + (legal ? LEGAL_UPGRADE_PRICE : 0);
+    experience.price +
+    (decoration?.price || 0) +
+    (legal ? LEGAL_UPGRADE_PRICE : 0) +
+    additionalGuestTotal;
 
   return (
     <aside className="rounded-3xl bg-stone-950 p-6 text-white shadow-2xl md:p-8 lg:sticky lg:top-6">
@@ -918,30 +935,25 @@ const Summary = ({ copy, experience, decoration, legal, customQuote }) => {
         <div className="flex items-start justify-between gap-4">
           <span className="text-stone-300">{copy.decorLine}</span>
           <span className="text-right">
-            {copy.decorNames[decoration.id]}
+            {decoration ? copy.decorNames[decoration.id] : copy.noDecor}
             <strong className="block text-base">
-              {money(decoration.price)}
+              {decoration ? money(decoration.price) : copy.included}
             </strong>
           </span>
         </div>
+        {additionalGuestTotal > 0 && (
+          <div className="flex items-start justify-between gap-4">
+            <span className="text-stone-300">{copy.additionalGuestsLine}</span>
+            <strong>{money(additionalGuestTotal)}</strong>
+          </div>
+        )}
         <div className="flex items-start justify-between gap-4">
           <span className="text-stone-300">{copy.legalLine}</span>
           <strong>{legal ? money(LEGAL_UPGRADE_PRICE) : copy.included}</strong>
         </div>
       </div>
       <div className="mt-6 border-t border-white/20 pt-6">
-        {customQuote ? (
-          <>
-            <p className="font-crimson text-3xl text-amber-300">
-              {copy.customQuote}
-            </p>
-            <p className="mt-3 font-montserrat text-sm leading-6 text-stone-300">
-              {copy.customQuoteText}
-            </p>
-          </>
-        ) : (
-          <p className="font-crimson text-5xl text-amber-300">{money(total)}</p>
-        )}
+        <p className="font-crimson text-5xl text-amber-300">{money(total)}</p>
         <p className="mt-3 font-montserrat text-xs leading-5 text-stone-400">
           {copy.totalNote}
         </p>
@@ -967,9 +979,15 @@ const ElopementForm = ({
   setGuestCount,
   language,
 }) => {
+  const additionalGuestTotal =
+    experience.id === "catamaran"
+      ? Math.max(0, guestCount - 10) * CATAMARAN_EXTRA_GUEST_PRICE
+      : 0;
   const total =
-    experience.price + decoration.price + (legal ? LEGAL_UPGRADE_PRICE : 0);
-  const customQuote = experience.id === "catamaran" && guestCount > 10;
+    experience.price +
+    (decoration?.price || 0) +
+    (legal ? LEGAL_UPGRADE_PRICE : 0) +
+    additionalGuestTotal;
 
   const inputClass =
     "mt-2 w-full rounded-xl border border-stone-300 bg-white px-4 py-3 font-montserrat text-sm text-stone-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100";
@@ -1005,18 +1023,14 @@ const ElopementForm = ({
       <input
         type="hidden"
         name="decoration"
-        value={copy.decorNames[decoration.id]}
+        value={decoration ? copy.decorNames[decoration.id] : copy.noDecor}
       />
       <input
         type="hidden"
         name="ceremony"
         value={legal ? copy.legal : copy.symbolic}
       />
-      <input
-        type="hidden"
-        name="estimated-total"
-        value={customQuote ? copy.customQuote : money(total)}
-      />
+      <input type="hidden" name="estimated-total" value={money(total)} />
       <p className="hidden">
         <label>
           Do not fill this out: <input name="bot-field" />
@@ -1028,11 +1042,11 @@ const ElopementForm = ({
           {copy.selected}
         </p>
         <p className="mt-2 font-crimson text-2xl text-stone-900">
-          {copy[experience.id].title} + {copy.decorNames[decoration.id]}
+          {copy[experience.id].title} +{" "}
+          {decoration ? copy.decorNames[decoration.id] : copy.noDecor}
         </p>
         <p className="mt-1 font-montserrat text-sm text-stone-600">
-          {customQuote ? copy.customQuote : money(total)} ·{" "}
-          {legal ? copy.legal : copy.symbolic}
+          {money(total)} · {legal ? copy.legal : copy.symbolic}
         </p>
       </div>
 
@@ -1116,7 +1130,7 @@ const ElopementExperience = ({
 }) => {
   const copy = getManagedElopementCopy(language, page, packages);
   const [experienceId, setExperienceId] = useState("beach");
-  const [decorationId, setDecorationId] = useState("white-serenity");
+  const [decorationId, setDecorationId] = useState(null);
   const [legal, setLegal] = useState(false);
   const [guestCount, setGuestCount] = useState(2);
   const fallbackFaqs = buildElopementFaqs(language);
@@ -1124,7 +1138,15 @@ const ElopementExperience = ({
     const normalized = managedFaqs
       .map((item) => [item?.title?.trim(), item?.content?.content?.trim()])
       .filter(([question, answer]) => question && answer);
-    return normalized.length >= 3 ? normalized : fallbackFaqs;
+    const managedFaqsAreCurrent =
+      normalized.length >= 3 &&
+      normalized.every(
+        ([question, answer]) =>
+          !/transport(?:ation)? for two|transporte (?:ida y vuelta )?para dos|non-refundable under all|no se reembolsa bajo ninguna|before boarding|antes de abordar|on arrival|al llegar/i.test(
+            `${question} ${answer}`,
+          ),
+      );
+    return managedFaqsAreCurrent ? normalized : fallbackFaqs;
   }, [fallbackFaqs, managedFaqs]);
   const experiences = useMemo(
     () =>
@@ -1153,17 +1175,19 @@ const ElopementExperience = ({
     [experienceId, experiences],
   );
   const decoration = useMemo(
-    () => ELOPEMENT_DECORATIONS.find((item) => item.id === decorationId),
+    () =>
+      decorationId
+        ? ELOPEMENT_DECORATIONS.find((item) => item.id === decorationId)
+        : null,
     [decorationId],
   );
-  const customQuote = experience.id === "catamaran" && guestCount > 10;
 
   const selectExperience = (id) => {
     setExperienceId(id);
     if (id === "catamaran") {
       setGuestCount((current) => Math.min(current, 60));
     }
-    if (id === "catamaran" && !decoration.catamaran) {
+    if (id === "catamaran" && decoration && !decoration.catamaran) {
       setDecorationId("white-serenity");
     }
   };
@@ -1282,6 +1306,31 @@ const ElopementExperience = ({
           <h2 className="font-crimson text-3xl text-stone-900">
             {copy.stepTwo}
           </h2>
+          <button
+            type="button"
+            onClick={() => setDecorationId(null)}
+            className={`mt-6 w-full rounded-3xl border p-6 text-left transition ${
+              decorationId === null
+                ? "border-amber-500 bg-amber-50"
+                : "border-stone-200 bg-white"
+            }`}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 className="font-crimson text-3xl text-stone-900">
+                  {copy.noDecor}
+                </h3>
+                <p className="mt-3 max-w-3xl font-montserrat text-sm leading-6 text-stone-600">
+                  {copy.noDecorDescription}
+                </p>
+              </div>
+              {decorationId === null && (
+                <span className="rounded-full bg-amber-500 px-3 py-1 font-montserrat text-xs font-bold text-white">
+                  {copy.selected}
+                </span>
+              )}
+            </div>
+          </button>
           <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {ELOPEMENT_DECORATIONS.map((item) => (
               <DecorCard
@@ -1376,7 +1425,7 @@ const ElopementExperience = ({
             experience={experience}
             decoration={decoration}
             legal={legal}
-            customQuote={customQuote}
+            guestCount={guestCount}
           />
         </div>
       </section>
