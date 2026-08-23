@@ -5,6 +5,31 @@ import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
 const findReference = (context, id) =>
   context?.references?.find((item) => item.contentful_id === id);
 
+const correctConfirmedLanguageClaims = (value) => {
+  if (Array.isArray(value)) return value.map(correctConfirmedLanguageClaims);
+  if (!value || typeof value !== "object") return value;
+
+  return Object.fromEntries(
+    Object.entries(value).map(([key, item]) => {
+      if (key === "value" && typeof item === "string") {
+        return [
+          key,
+          item
+            .replace(
+              "Sertuin Events communicates in English, Spanish and French as needed",
+              "Sertuin Events guarantees planning and coordination in English and Spanish",
+            )
+            .replace(
+              "Sertuin Events se comunica en inglés, español y francés cuando es necesario",
+              "Sertuin Events garantiza planificación y coordinación en inglés y español",
+            ),
+        ];
+      }
+      return [key, correctConfirmedLanguageClaims(item)];
+    }),
+  );
+};
+
 const BlogBody = ({ context }) => {
   if (!context?.raw) return null;
   const options = {
@@ -58,7 +83,7 @@ const BlogBody = ({ context }) => {
 
   let document;
   try {
-    document = JSON.parse(context.raw);
+    document = correctConfirmedLanguageClaims(JSON.parse(context.raw));
   } catch {
     return null;
   }

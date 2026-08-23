@@ -102,4 +102,3 @@ const LazySocialEmbeds = ({ embeds = [], language }) => {
 };
 
 export default LazySocialEmbeds;
-

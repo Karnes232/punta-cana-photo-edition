@@ -64,7 +64,7 @@ export const buildWeddingPlannerSchema = ({
           : "Lead Wedding Planner",
         worksFor: { "@id": organizationId },
         description: isSpanish
-          ? "Wedding planner en Punta Cana con 10 años de experiencia en bodas de destino, multiculturales y del sudeste asiático."
+          ? "Wedding planner en Punta Cana con 10 años de experiencia en bodas de destino, multiculturales y del sur de Asia."
           : "Punta Cana wedding planner with 10 years of experience in destination, multicultural and South Asian weddings.",
         knowsAbout: [
           "Destination wedding planning",

@@ -137,4 +137,3 @@ const BlogGallery = ({ images = [] }) => {
 };
 
 export default BlogGallery;
-

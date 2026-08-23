@@ -25,8 +25,8 @@ export const buildElopementSchema = ({
   const description =
     managedDescription ||
     (isSpanish
-      ? "Paquetes de elopement en Punta Cana con playa o catamarán privado, transporte para dos, fotógrafo, bouquet y decoración elegible."
-      : "Punta Cana elopement packages with a private beach or catamaran, transportation for two, photographer, bouquet and selectable décor.");
+      ? "Paquetes de elopement en Punta Cana con playa o catamarán privado, transporte para hasta 10 personas, fotógrafo, bouquet y decoración opcional."
+      : "Punta Cana elopement packages with a private beach or catamaran, transportation for up to 10 people, photographer, bouquet and optional décor.");
   const pageName = title || copy.heroTitle;
   const experiences = ELOPEMENT_EXPERIENCES.map((experience) => {
     const matcher =
@@ -43,6 +43,14 @@ export const buildElopementSchema = ({
   const normalizedFaqs = managedFaqs
     .map((item) => [item?.title?.trim(), item?.content?.content?.trim()])
     .filter(([question, answer]) => question && answer);
+  const managedFaqsAreCurrent =
+    normalizedFaqs.length >= 3 &&
+    normalizedFaqs.every(
+      ([question, answer]) =>
+        !/transport(?:ation)? for two|transporte (?:ida y vuelta )?para dos|non-refundable under all|no se reembolsa bajo ninguna|before boarding|antes de abordar|on arrival|al llegar/i.test(
+          `${question} ${answer}`,
+        ),
+    );
 
   return {
     "@context": "https://schema.org",
@@ -195,7 +203,7 @@ export const buildElopementSchema = ({
       {
         "@type": "FAQPage",
         "@id": `${pageUrl}#faq`,
-        mainEntity: (normalizedFaqs.length >= 3 ? normalizedFaqs : faqs).map(
+        mainEntity: (managedFaqsAreCurrent ? normalizedFaqs : faqs).map(
           ([question, answer]) => ({
             "@type": "Question",
             name: question,

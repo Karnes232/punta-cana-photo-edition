@@ -281,14 +281,25 @@ export const normalizeGenderRevealFaqs = (nodes, language) => {
     }))
     .filter((item) => item.question && item.answer);
   const isCurrentSet =
-    candidates.length >= 4 &&
+    candidates.length > 0 &&
     candidates.every(
       ({ question, answer }) =>
         isCurrentGenderRevealCopy(`${question} ${answer}`) &&
         !/\$\s*\d|fixed package|paquete fijo/i.test(`${question} ${answer}`),
     );
 
-  return isCurrentSet ? candidates : fallback;
+  if (!isCurrentSet) return fallback;
+
+  const managedQuestions = new Set(
+    candidates.map(({ question }) => question.toLocaleLowerCase()),
+  );
+
+  return [
+    ...candidates,
+    ...fallback.filter(
+      ({ question }) => !managedQuestions.has(question.toLocaleLowerCase()),
+    ),
+  ];
 };
 
 export const getGenderRevealContent = (language) =>
