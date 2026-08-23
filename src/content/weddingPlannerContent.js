@@ -141,13 +141,13 @@ const spanish = {
   eyebrow: "Bodas de destino en Punta Cana",
   heroTitle: "Wedding Planner en Punta Cana",
   heroText:
-    "Un equipo local para bodas de destino, del sudeste asiático y multiculturales: diseñamos su visión y gestionamos cada detalle desde la primera reunión.",
+    "Un equipo local para bodas de destino, del sur de Asia y multiculturales: diseñamos su visión y gestionamos cada detalle desde la primera reunión.",
   primaryCta: "Ver paquetes de planificación",
   secondaryCta: "Hablar con una wedding planner",
   trust: [
     "10 años de experiencia planificando bodas",
     "Asistencia de planificación 24/7",
-    "Experiencia multicultural y del sudeste asiático",
+    "Experiencia multicultural y del sur de Asia",
     "Depósito de $500 para cualquier paquete",
   ],
   introduction: {
@@ -165,7 +165,7 @@ const spanish = {
       body: "Selección local de venues, proveedores, logística de invitados, diseño, cronograma y coordinación para parejas que planifican desde el extranjero.",
     },
     {
-      title: "Bodas del sudeste asiático",
+      title: "Bodas del sur de Asia",
       body: "Planificación completa de celebraciones con varios eventos que pueden incluir bienvenida, mehndi, sangeet, baraat y ceremonia, adaptada a sus tradiciones.",
     },
     {
@@ -182,7 +182,7 @@ const spanish = {
     select: "Elegir este paquete",
     from: "USD",
     fallbackSouthAsian: {
-      title: "Planificación de bodas del sudeste asiático",
+      title: "Planificación de bodas del sur de Asia",
       description:
         "Planificación y coordinación completa para una boda de destino culturalmente detallada y con varios eventos.",
       includedItems: [
@@ -198,7 +198,7 @@ const spanish = {
   },
   southAsian: {
     eyebrow: "Planificación completa especializada",
-    title: "Bodas del sudeste asiático en Punta Cana desde $4,999",
+    title: "Bodas del sur de Asia en Punta Cana desde $4,999",
     body: "Las celebraciones complejas necesitan más que una lista. Coordinamos el venue, requisitos de ceremonia, diseño, proveedores especializados, catering, transporte y el programa de cada evento. Sus tradiciones guían el plan; nuestro equipo local lo hace funcionar en Punta Cana.",
     note: "Depósito de $500 para comenzar. El resto del servicio de planificación sigue el calendario de pagos del contrato. Venue, proveedores y producción se cotizan por separado salvo inclusión expresa.",
   },
@@ -251,9 +251,9 @@ const spanish = {
         "Incluye estructura de planificación, diseño, búsqueda o coordinación del venue, selección y gestión de proveedores, orientación de presupuesto, cronograma, logística, confirmaciones y ejecución. Las inclusiones exactas quedan documentadas en el paquete y contrato.",
     },
     {
-      question: "¿Planifican bodas del sudeste asiático y multiculturales?",
+      question: "¿Planifican bodas del sur de Asia y multiculturales?",
       answer:
-        "Sí. Planificamos bodas del sudeste asiático y multiculturales en Punta Cana, incluso celebraciones con varios eventos, ceremonias culturales, proveedores especializados y logística familiar. Primero conocemos sus tradiciones y prioridades.",
+        "Sí. Planificamos bodas del sur de Asia y multiculturales en Punta Cana, incluso celebraciones con varios eventos, ceremonias culturales, proveedores especializados y logística familiar. Primero conocemos sus tradiciones y prioridades.",
     },
     {
       question:
