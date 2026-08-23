@@ -44,26 +44,26 @@ const googleReviewExcerpts = [
 const copy = {
   "en-US": {
     overviewEyebrow: "A complete experience, clearly priced",
-    overviewTitle: "A Private, All-Inclusive Proposal in Punta Cana",
+    overviewTitle: "Complete Marriage Proposal Packages in Punta Cana",
     overviewParagraphs: [
-      "Every Sertuin Events package is a complete, all-inclusive experience held on our own private beach in Uvero Alto. The published package price already includes private round-trip transportation from any hotel or accommodation throughout Punta Cana, private beach access, your selected romantic setup, a celebratory beverage, professional photography, your preferred song and a dedicated on-site coordinator.",
+      "Our standard packages are designed for Sertuin Events’ private beach in Uvero Alto. We can also coordinate a proposal at a villa, resort, yacht or another approved location when the client obtains the required access and the venue permits the setup. Every published package includes round-trip transportation for the couple from anywhere in Punta Cana, the selected setup, bouquet, celebratory beverage, professional photography, a raw phone video and your preferred song.",
       "Choose the package that reflects your vision, reserve your date with a US$200 deposit and let our team coordinate the arrival, timing and reveal while you focus entirely on your partner and the question you came to ask.",
     ],
     packagesFallbackTitle: "Punta Cana Proposal Packages and Prices",
     inclusionsEyebrow: "Included with every package",
     inclusionsTitle: "Everything Essential Is Already Included",
     inclusionsIntro:
-      "The published package price covers the services needed to coordinate, create and document your proposal. There are no separate mandatory charges for transportation within Punta Cana, private beach access or professional photography.",
+      "The published package price covers the services needed to coordinate, create and document your standard private-beach proposal. Other venues may charge their own access, location or outside-provider fees.",
     inclusions: [
       [
         MapPin,
-        "Private Beach Access",
-        "Your experience takes place on our own private beach in Uvero Alto, with no separate beach rental or venue fee.",
+        "Recommended Private Beach",
+        "Standard packages use our private beach in Uvero Alto. Villas, resorts, yachts and other approved locations are available by quotation and permission.",
       ],
       [
         CarFront,
         "Private Transportation",
-        "Private pickup and return transportation from any hotel or accommodation throughout Punta Cana, with no zone surcharge.",
+        "Private pickup and return transportation for the couple from any hotel or accommodation throughout Punta Cana. Additional companions are quoted separately.",
       ],
       [
         Flower2,
@@ -73,7 +73,7 @@ const copy = {
       [
         Camera,
         "Professional Photography",
-        "Receive more than 70 professionally edited, high-resolution photographs within 48 hours.",
+        "Receive more than 70 professionally edited, high-resolution photographs within 48 hours through a permanent Google Drive link.",
       ],
       [
         Smartphone,
@@ -98,13 +98,13 @@ const copy = {
       [Video, "Cinematic video and drone coverage"],
       [Music2, "Live musicians"],
       [UtensilsCrossed, "Private romantic dinner"],
-      [Sparkles, "Cold sparks"],
+      [Sparkles, "Cold sparks — US$150 per pair"],
       [Flower2, "Custom flowers"],
     ],
     momentsEyebrow: "Real Sertuin Events experiences",
     momentsTitle: "Real Punta Cana Proposal Moments",
     momentsIntro:
-      "Explore real setups and celebrations created by our team on the private beach in Uvero Alto.",
+      "Explore real setups and celebrations created by our team in Punta Cana.",
     bookingEyebrow: "Simple and secure",
     bookingTitle: "How to Reserve Your Punta Cana Proposal",
     bookingIntro:
@@ -118,7 +118,7 @@ const copy = {
       [
         ShieldCheck,
         "Confirm availability",
-        "Our team confirms the private beach, transportation and the services associated with your selected package.",
+        "Our team confirms the location, transportation and services associated with your selected package.",
       ],
       [
         FileText,
@@ -141,10 +141,10 @@ const copy = {
       "More than 10 years of experience",
       "More than 1,800 marriage proposals created",
       "Based in Punta Cana, Dominican Republic",
-      "Consultations and in-person meetings by prior appointment",
+      "Planning in English and Spanish",
     ],
     appointmentNote:
-      "We do not offer walk-in office service. Please schedule any consultation or in-person meeting in advance.",
+      "Start through WhatsApp, phone or the inquiry form. We then coordinate the next planning steps with you.",
     portfolioText:
       "Explore recent and historical proposal work through our official Instagram portfolio.",
     reviewsTitle: "What Clients Say on Google",
@@ -158,26 +158,27 @@ const copy = {
   },
   es: {
     overviewEyebrow: "Una experiencia completa con precios claros",
-    overviewTitle: "Una propuesta privada y todo incluido en Punta Cana",
+    overviewTitle:
+      "Paquetes completos de propuestas de matrimonio en Punta Cana",
     overviewParagraphs: [
-      "Cada paquete de Sertuin Events es una experiencia completa y todo incluido en nuestra propia playa privada de Uvero Alto. El precio publicado ya incluye transporte privado de ida y vuelta desde cualquier hotel o alojamiento de Punta Cana, acceso a la playa privada, la decoración romántica seleccionada, bebida para celebrar, fotografía profesional, tu canción preferida y un coordinador dedicado en el lugar.",
+      "Nuestros paquetes estándar están diseñados para la playa privada de Sertuin Events en Uvero Alto. También podemos coordinar una propuesta en una villa, resort, yate u otra locación aprobada cuando el cliente obtiene los accesos necesarios y el lugar permite el montaje. Cada paquete publicado incluye transporte ida y vuelta para la pareja desde cualquier zona de Punta Cana, el montaje elegido, bouquet, bebida para celebrar, fotografía profesional, video crudo con teléfono y la canción preferida.",
       "Elige el paquete que represente tu visión, reserva la fecha con un depósito de US$200 y permite que nuestro equipo coordine la llegada, el momento y la revelación mientras tú te concentras completamente en tu pareja.",
     ],
     packagesFallbackTitle: "Paquetes y precios de propuestas en Punta Cana",
     inclusionsEyebrow: "Incluido en cada paquete",
     inclusionsTitle: "Todo lo esencial ya está incluido",
     inclusionsIntro:
-      "El precio publicado cubre los servicios necesarios para coordinar, crear y documentar la propuesta. No existen cargos obligatorios separados por transporte dentro de Punta Cana, acceso a la playa privada o fotografía profesional.",
+      "El precio publicado cubre los servicios necesarios para coordinar, crear y documentar la propuesta estándar en nuestra playa privada. Otras locaciones pueden aplicar sus propios cargos de acceso, uso del lugar o proveedores externos.",
     inclusions: [
       [
         MapPin,
-        "Acceso a playa privada",
-        "La experiencia se realiza en nuestra propia playa privada de Uvero Alto, sin cargo separado de alquiler o lugar.",
+        "Playa privada recomendada",
+        "Los paquetes estándar utilizan nuestra playa privada en Uvero Alto. Villas, resorts, yates y otras locaciones aprobadas se cotizan según permisos.",
       ],
       [
         CarFront,
         "Transporte privado",
-        "Recogida y regreso desde cualquier hotel o alojamiento de Punta Cana, sin recargo por zona.",
+        "Recogida y regreso para la pareja desde cualquier hotel o alojamiento de Punta Cana. Los acompañantes adicionales se cotizan por separado.",
       ],
       [
         Flower2,
@@ -187,7 +188,7 @@ const copy = {
       [
         Camera,
         "Fotografía profesional",
-        "Recibe más de 70 fotografías editadas profesionalmente y en alta resolución dentro de 48 horas.",
+        "Recibe más de 70 fotografías editadas profesionalmente y en alta resolución dentro de 48 horas mediante un enlace permanente de Google Drive.",
       ],
       [
         Smartphone,
@@ -212,13 +213,13 @@ const copy = {
       [Video, "Video cinematográfico y dron"],
       [Music2, "Músicos en vivo"],
       [UtensilsCrossed, "Cena romántica privada"],
-      [Sparkles, "Chispas frías"],
+      [Sparkles, "Chispas frías — US$150 el par"],
       [Flower2, "Flores personalizadas"],
     ],
     momentsEyebrow: "Experiencias reales de Sertuin Events",
     momentsTitle: "Momentos reales de propuestas en Punta Cana",
     momentsIntro:
-      "Descubre decoraciones y celebraciones reales creadas por nuestro equipo en la playa privada de Uvero Alto.",
+      "Descubre decoraciones y celebraciones reales creadas por nuestro equipo en Punta Cana.",
     bookingEyebrow: "Sencillo y seguro",
     bookingTitle: "Cómo reservar tu propuesta en Punta Cana",
     bookingIntro:
@@ -232,7 +233,7 @@ const copy = {
       [
         ShieldCheck,
         "Confirma disponibilidad",
-        "Nuestro equipo confirma la playa privada, el transporte y los servicios correspondientes al paquete seleccionado.",
+        "Nuestro equipo confirma la locación, el transporte y los servicios correspondientes al paquete seleccionado.",
       ],
       [
         FileText,
@@ -256,10 +257,10 @@ const copy = {
       "Más de 10 años de experiencia",
       "Más de 1,800 propuestas de matrimonio realizadas",
       "Ubicados en Punta Cana, República Dominicana",
-      "Consultas y reuniones presenciales con cita previa",
+      "Planificación en inglés y español",
     ],
     appointmentNote:
-      "No ofrecemos atención de oficina sin cita. Programa previamente cualquier consulta o reunión presencial.",
+      "Comienza por WhatsApp, teléfono o el formulario. Luego coordinamos contigo los próximos pasos de la planificación.",
     portfolioText:
       "Explora trabajos recientes e históricos de propuestas en nuestro portafolio oficial de Instagram.",
     reviewsTitle: "Lo que dicen nuestros clientes en Google",
@@ -303,7 +304,7 @@ export const buildProposalFaqs = ({ language, packages = [] }) => {
         ],
         [
           "¿Qué incluye un paquete de propuesta de matrimonio en Punta Cana?",
-          "Cada paquete incluye transporte privado de ida y vuelta desde cualquier hotel o alojamiento de Punta Cana, acceso a nuestra playa privada de Uvero Alto, la decoración seleccionada, una bebida para celebrar, fotografía profesional, tu canción preferida, video de la propuesta grabado con un teléfono y coordinación en el lugar. No existen cargos obligatorios separados por la playa, el fotógrafo o el transporte dentro de Punta Cana.",
+          "Cada paquete incluye transporte privado ida y vuelta para la pareja desde cualquier hotel o alojamiento de Punta Cana, la decoración seleccionada, bouquet, bebida para celebrar, fotografía profesional, tu canción preferida, video crudo de la propuesta grabado con un teléfono y coordinación en el lugar. Los acompañantes y las locaciones externas se cotizan según acceso y permisos.",
         ],
         [
           "¿Cómo reservo mi propuesta con Sertuin Events?",
@@ -311,15 +312,15 @@ export const buildProposalFaqs = ({ language, packages = [] }) => {
         ],
         [
           "¿Dónde se realizan las propuestas?",
-          "Las propuestas se realizan en nuestra propia playa privada de Uvero Alto, Punta Cana. El acceso está incluido en el precio del paquete y no se cobra una tarifa separada de alquiler o lugar.",
+          "La opción estándar y recomendada es nuestra playa privada de Uvero Alto. También podemos trabajar en una villa, resort, yate u otra locación aprobada cuando el cliente obtiene el acceso y el lugar autoriza el montaje; esos cargos externos se cotizan aparte.",
         ],
         [
           "¿El transporte está incluido desde cualquier zona de Punta Cana?",
-          "Sí. El precio publicado incluye transporte privado de ida y vuelta desde cualquier hotel o alojamiento de Punta Cana, sin restricciones de zona ni recargos obligatorios de transporte.",
+          "Sí. El precio publicado incluye transporte privado ida y vuelta para la pareja desde cualquier hotel o alojamiento de Punta Cana. Cualquier acompañante adicional requiere cotización.",
         ],
         [
           "¿Cuántas fotografías recibiremos y cuándo se entregan?",
-          "Recibirás más de 70 fotografías profesionales, editadas y en alta resolución dentro de las 48 horas posteriores a la experiencia.",
+          "Recibirás más de 70 fotografías profesionales, editadas y en alta resolución dentro de las 48 horas posteriores a la experiencia mediante un enlace permanente de Google Drive.",
         ],
         [
           "¿Se graba el momento de la propuesta?",
@@ -331,7 +332,7 @@ export const buildProposalFaqs = ({ language, packages = [] }) => {
         ],
         [
           "¿Puedo agregar video profesional, dron u otros servicios?",
-          "Sí. Según tu visión y disponibilidad, puedes agregar video cinematográfico y dron, músicos en vivo, cena privada, chispas frías y flores personalizadas. Estos servicios opcionales se cotizan por separado.",
+          "Sí. Según disponibilidad, puedes agregar video cinematográfico y dron, músicos en vivo, cena privada y flores personalizadas. Las chispas frías cuestan US$150 el par.",
         ],
       ]
     : [
@@ -341,7 +342,7 @@ export const buildProposalFaqs = ({ language, packages = [] }) => {
         ],
         [
           "What does a Punta Cana proposal package include?",
-          "Every package includes private round-trip transportation from any hotel or accommodation in Punta Cana, access to our private beach in Uvero Alto, the selected romantic setup, a celebratory beverage, professional photography, your preferred song, a phone recording of the proposal and an on-site coordinator. There are no separate mandatory charges for the beach, photographer or transportation within Punta Cana.",
+          "Every package includes private round-trip transportation for the couple from any hotel or accommodation in Punta Cana, the selected romantic setup, bouquet, a celebratory beverage, professional photography, your preferred song, a raw phone recording of the proposal and on-site coordination. Additional companions and external locations are quoted according to access and permits.",
         ],
         [
           "How do I reserve my proposal with Sertuin Events?",
@@ -349,15 +350,15 @@ export const buildProposalFaqs = ({ language, packages = [] }) => {
         ],
         [
           "Where do the proposals take place?",
-          "Proposals take place on our own private beach in Uvero Alto, Punta Cana. Beach access is included in the package price, with no separate rental or venue fee.",
+          "Our standard and recommended option is the Sertuin Events private beach in Uvero Alto. We can also work at a villa, resort, yacht or another approved location when the client obtains access and the venue permits the setup; external venue charges are quoted separately.",
         ],
         [
           "Is transportation included from every area of Punta Cana?",
-          "Yes. The published price includes private round-trip transportation from any hotel or accommodation throughout Punta Cana, with no zone restrictions or mandatory transportation surcharge.",
+          "Yes. The published price includes private round-trip transportation for the couple from any hotel or accommodation throughout Punta Cana. Any additional companion requires a quotation.",
         ],
         [
           "How many photographs will we receive and when are they delivered?",
-          "You will receive more than 70 professionally edited, high-resolution photographs within 48 hours after the experience.",
+          "You will receive more than 70 professionally edited, high-resolution photographs within 48 hours after the experience through a permanent Google Drive link.",
         ],
         [
           "Is the proposal moment recorded?",
@@ -369,7 +370,7 @@ export const buildProposalFaqs = ({ language, packages = [] }) => {
         ],
         [
           "Can I add professional video, drone coverage or other services?",
-          "Yes. Depending on your vision and availability, you can add cinematic video and drone coverage, live musicians, a private dinner, cold sparks and custom flowers. Optional services are quoted separately.",
+          "Yes. Depending on availability, you can add cinematic video and drone coverage, live musicians, a private dinner and custom flowers. Cold sparks cost US$150 per pair.",
         ],
       ];
 
