@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import React from "react";
 import { getHomeContent } from "../../content/homeContent";
+import { passVisitorName } from "../../utils/thankYouName";
 
 const legacyRoutes = new Set([
   "/punta-cana-bachelor-party/",
@@ -224,6 +225,7 @@ const HomeContactForm = ({ content, language }) => (
   <form
     name="home-page"
     method="POST"
+    onSubmit={passVisitorName()}
     action={language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"}
     data-netlify="true"
     data-netlify-honeypot="bot-field"

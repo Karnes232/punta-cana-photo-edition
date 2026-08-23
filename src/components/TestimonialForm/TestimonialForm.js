@@ -1,4 +1,5 @@
 import React from "react";
+import { passVisitorName } from "../../utils/thankYouName";
 
 const TestimonialForm = () => {
   const inputClass =
@@ -17,6 +18,7 @@ const TestimonialForm = () => {
         <form
           name="testimonial"
           method="POST"
+          onSubmit={passVisitorName("names")}
           action="/contact/thankyou/"
           data-netlify="true"
           data-netlify-honeypot="bot-field"

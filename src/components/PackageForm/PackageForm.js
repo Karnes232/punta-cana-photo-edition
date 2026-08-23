@@ -1,6 +1,7 @@
 import React from "react";
 import { Check } from "lucide-react";
 import { Trans } from "gatsby-plugin-react-i18next";
+import { passVisitorName } from "../../utils/thankYouName";
 const PackageForm = ({
   packageInformation,
   formData,
@@ -122,6 +123,7 @@ const PackageForm = ({
             </h3>
             <form
               method="POST"
+              onSubmit={passVisitorName()}
               action={thankYouPath}
               className="space-y-4"
               data-netlify="true"

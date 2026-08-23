@@ -32,6 +32,7 @@ import sunshine from "../../images/elopement/rr.webp";
 import sunshine2 from "../../images/elopement/rr2.webp";
 import white from "../../images/elopement/white.webp";
 import white2 from "../../images/elopement/white2.webp";
+import { passVisitorName } from "../../utils/thankYouName";
 
 export const LEGAL_UPGRADE_PRICE = 1200;
 export const CATAMARAN_EXTRA_GUEST_PRICE = 70;
@@ -996,6 +997,7 @@ const ElopementForm = ({
     <form
       name="elopement"
       method="POST"
+      onSubmit={passVisitorName("couple-names")}
       action={
         language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"
       }

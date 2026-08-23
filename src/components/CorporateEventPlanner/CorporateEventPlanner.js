@@ -20,6 +20,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import { getCorporateEventContent } from "../../content/corporateEventContent";
+import { passVisitorName } from "../../utils/thankYouName";
 
 const serviceIcons = [
   ClipboardCheck,
@@ -170,6 +171,7 @@ const ProposalForm = ({ copy, isSpanish }) => {
       id="corporate-event-form"
       name="corporate-event-planner"
       method="POST"
+      onSubmit={passVisitorName()}
       action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
       data-netlify="true"
       data-netlify-honeypot="bot-field"

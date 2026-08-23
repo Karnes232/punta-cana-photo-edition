@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
+import { passVisitorName } from "../../utils/thankYouName";
 import {
   ArrowRight,
   Award,
@@ -195,6 +196,7 @@ const InquiryForm = ({
       id="wedding-inquiry"
       name="wedding-planner"
       method="POST"
+      onSubmit={passVisitorName()}
       action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
