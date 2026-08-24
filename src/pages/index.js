@@ -219,11 +219,12 @@ export const query = graphql`
           # sizes argument here.
           gatsbyImage(
             layout: CONSTRAINED
-            width: 700
-            height: 817
+            width: 460
+            height: 537
             formats: [AUTO, WEBP]
             placeholder: BLURRED
             quality: 80
+            outputPixelDensities: [0.5, 1, 2]
           )
           title
         }
@@ -256,3 +257,4 @@ export const query = graphql`
     }
   }
 `;
+
