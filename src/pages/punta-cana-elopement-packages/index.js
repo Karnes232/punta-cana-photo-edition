@@ -4,7 +4,6 @@ import { graphql } from "gatsby";
 import ElopementExperience from "../../components/ElopementComponents/ElopementExperience";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
-import FirebaseTestimonialsComponent from "../../components/TestimonialsComponent/FirebaseTestimonialsComponent";
 import { buildElopementSchema } from "../../utils/elopementSeo";
 
 const heroImage =
@@ -16,7 +15,6 @@ const Index = ({ data, pageContext }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <ElopementExperience language={language} />
-      <FirebaseTestimonialsComponent packagePage="elopement-vow-renewal" />
     </Layout>
   );
 };
