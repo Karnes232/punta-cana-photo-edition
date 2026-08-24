@@ -969,7 +969,7 @@ const ElopementForm = ({
     event.preventDefault();
     setFormError("");
 
-    if (!phoneCountry || !phone || !isValidPhoneNumber(phone)) {
+    if (!phoneCountry || !phone || !isPossiblePhoneNumber(phone)) {
       setStatus("error");
       setFormError(copy.form.phoneError);
       return;
