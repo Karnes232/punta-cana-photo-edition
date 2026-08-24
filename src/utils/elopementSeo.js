@@ -14,43 +14,13 @@ export const buildElopementSchema = ({
   companyName,
   telephone,
   instagram,
-  title,
-  description: managedDescription,
-  experiences: managedExperiences = [],
-  faqs: managedFaqs = [],
 }) => {
   const copy = getElopementCopy(language);
   const faqs = buildElopementFaqs(language);
   const isSpanish = language === "es";
-  const description =
-    managedDescription ||
-    (isSpanish
-      ? "Paquetes de elopement en Punta Cana con playa o catamarán privado, transporte para hasta 10 personas, fotógrafo, bouquet y decoración opcional."
-      : "Punta Cana elopement packages with a private beach or catamaran, transportation for up to 10 people, photographer, bouquet and optional décor.");
-  const pageName = title || copy.heroTitle;
-  const experiences = ELOPEMENT_EXPERIENCES.map((experience) => {
-    const matcher =
-      experience.id === "beach"
-        ? /private beach|beach ceremony|playa privada|ceremonia.*playa/i
-        : /catamaran|catamar[aá]n/i;
-    const managed = managedExperiences.find((item) =>
-      matcher.test(item?.title || ""),
-    );
-    return managed && Number.isFinite(Number(managed.price))
-      ? { ...experience, price: Number(managed.price) }
-      : experience;
-  });
-  const normalizedFaqs = managedFaqs
-    .map((item) => [item?.title?.trim(), item?.content?.content?.trim()])
-    .filter(([question, answer]) => question && answer);
-  const managedFaqsAreCurrent =
-    normalizedFaqs.length >= 3 &&
-    normalizedFaqs.every(
-      ([question, answer]) =>
-        !/transport(?:ation)? for two|transporte (?:ida y vuelta )?para dos|non-refundable under all|no se reembolsa bajo ninguna|before boarding|antes de abordar|on arrival|al llegar/i.test(
-          `${question} ${answer}`,
-        ),
-    );
+  const description = isSpanish
+    ? "Paquetes de elopement en Punta Cana con playa o catamarán privado, transporte para hasta 10 personas, cobertura fotográfica de la ceremonia, bouquet y decoración elegible."
+    : "Punta Cana elopement packages with a private beach or catamaran, transportation for up to 10 people, ceremony photo coverage, bouquet and selectable décor.";
 
   return {
     "@context": "https://schema.org",
@@ -86,7 +56,7 @@ export const buildElopementSchema = ({
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: pageName,
+        name: copy.heroTitle,
         description,
         inLanguage: isSpanish ? "es" : "en",
         primaryImageOfPage: image
@@ -111,7 +81,7 @@ export const buildElopementSchema = ({
       {
         "@type": "Service",
         "@id": `${pageUrl}#service`,
-        name: pageName,
+        name: copy.heroTitle,
         description,
         serviceType: "Elopement wedding planning",
         url: pageUrl,
@@ -127,7 +97,7 @@ export const buildElopementSchema = ({
           },
         },
         offers: [
-          ...experiences.map((experience) => ({
+          ...ELOPEMENT_EXPERIENCES.map((experience) => ({
             "@type": "Offer",
             name: copy[experience.id].title,
             description: copy[experience.id].summary,
@@ -203,16 +173,14 @@ export const buildElopementSchema = ({
       {
         "@type": "FAQPage",
         "@id": `${pageUrl}#faq`,
-        mainEntity: (managedFaqsAreCurrent ? normalizedFaqs : faqs).map(
-          ([question, answer]) => ({
-            "@type": "Question",
-            name: question,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: answer,
-            },
-          }),
-        ),
+        mainEntity: faqs.map(([question, answer]) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: answer,
+          },
+        })),
       },
     ],
   };
