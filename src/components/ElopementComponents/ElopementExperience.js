@@ -980,6 +980,8 @@ const ElopementForm = ({
 
     try {
       const formData = new FormData(form);
+      formData.set("whatsapp", phone);
+      formData.set("phone-country", phoneCountry);
       const payload = Object.fromEntries(formData.entries());
       const emailResponse = await fetch(
         "/.netlify/functions/elopementRequest",
