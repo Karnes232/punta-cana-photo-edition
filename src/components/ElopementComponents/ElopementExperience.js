@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import PhoneInput, {
-  isValidPhoneNumber,
+    isPossiblePhoneNumber,
   parsePhoneNumber,
 } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
