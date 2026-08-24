@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "deny": [
+      "mcp__contentful__delete_content_type",
+      "mcp__contentful__delete_environment",
+      "mcp__contentful__delete_locale"
+    ]
+  }
+}
