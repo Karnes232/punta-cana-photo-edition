@@ -1134,7 +1134,7 @@ const ElopementForm = ({
                 setFormError("");
               }
             }}
-            countrySelectProps={{ "aria-label": copy.form.phoneCountry }}
+            countrySelectProps={{ "aria-label": copy.form.phoneCountry, required: true }}
             numberInputProps={{
               className:
                 "w-full bg-transparent px-3 py-3 font-montserrat text-sm text-stone-900 outline-none",
