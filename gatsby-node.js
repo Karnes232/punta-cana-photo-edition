@@ -93,6 +93,18 @@ exports.createSchemaCustomization = ({ actions }) => {
       platform: String
       url: String
     }
+
+    # Optional fields on this type are inferred from entry data, so the schema
+    # loses a field the moment no entry populates it — which breaks any query
+    # selecting it. Only two entries remain (Index and Gender Reveal), so
+    # declare the optional scalars explicitly rather than depend on inference.
+    type ContentfulCardWithImage implements Node {
+      secondaryTitle: String
+      paragraph: String
+      paragraph2: String
+      buttonText: String
+      linkUrl: String
+    }
   `;
   createTypes(typeDefs);
 };
