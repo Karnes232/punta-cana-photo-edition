@@ -982,6 +982,29 @@ const ElopementForm = ({
       const formData = new FormData(form);
       formData.set("whatsapp", phone);
       formData.set("phone-country", phoneCountry);
+      const validationPayload = Object.fromEntries(formData.entries());
+      validationPayload["validate-only"] = true;
+      const validationResponse = await fetch(
+        "/.netlify/functions/elopementRequest",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(validationPayload),
+        },
+      );
+      const validationResult = await validationResponse
+        .json()
+        .catch(() => ({}));
+
+      if (!validationResponse.ok) {
+        throw new Error(
+          validationResult.error || "Form validation failed",
+        );
+      }
+
       const formResponse = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
