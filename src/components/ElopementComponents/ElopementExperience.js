@@ -982,31 +982,15 @@ const ElopementForm = ({
       const formData = new FormData(form);
       formData.set("whatsapp", phone);
       formData.set("phone-country", phoneCountry);
-      const payload = Object.fromEntries(formData.entries());
-      const emailResponse = await fetch(
-        "/.netlify/functions/elopementRequest",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        },
-      );
-      const emailResult = await emailResponse.json().catch(() => ({}));
-
-      if (!emailResponse.ok) {
-        throw new Error(emailResult.error || "Form submission failed");
-      }
-
-      // The email response is authoritative. Archiving is useful, but a backup
-      // failure must never show an error after the request was already emailed.
-      await fetch("/", {
+      const formResponse = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData).toString(),
-      }).catch(() => null);
+      });
+
+      if (!formResponse.ok) {
+        throw new Error("Form submission failed");
+      }
 
       form.reset();
       setPhone("");
