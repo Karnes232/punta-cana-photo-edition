@@ -127,6 +127,14 @@ exports.handler = async (event) => {
       };
     }
 
+    if (body["validate-only"]) {
+      return {
+        statusCode: 200,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: "Request validated" }),
+      };
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
