@@ -12,8 +12,13 @@ import Seo from "../components/Layout/seo";
 import PackageForm from "../components/PackageForm/PackageForm";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { reconcilePackageSchemaPrices } from "../utils/reconcilePackageSchema";
+import { localizePackageFaqs } from "../utils/packageLocalization";
 const PackagePage = ({ pageContext, data }) => {
   const { t } = useTranslation();
+  const localizedFaqs = localizePackageFaqs(
+    data.allContentfulPackagePageContent.nodes[0].faqs,
+    pageContext.language,
+  );
   const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
@@ -150,9 +155,9 @@ const PackagePage = ({ pageContext, data }) => {
       ) : (
         <></>
       )}
-      {data.allContentfulPackagePageContent.nodes[0].faqs !== null ? (
+      {localizedFaqs?.length ? (
         <>
-          <Faqs faqs={data.allContentfulPackagePageContent.nodes[0].faqs} />
+          <Faqs faqs={localizedFaqs} title={t("Frequently Asked Questions")} />
         </>
       ) : (
         <></>

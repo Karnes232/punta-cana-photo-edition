@@ -66,7 +66,7 @@ const PackageForm = ({
                 ${calculateTotal()}
               </p>
               <p className="text-gray-600 mt-2">
-                Base price:{" "}
+                <Trans>Base price</Trans>:{" "}
                 {formatter.format(packageInformation.packages[0].price)}
               </p>
             </div>
@@ -156,7 +156,8 @@ const PackageForm = ({
               />
               <p className="hidden">
                 <label>
-                  Do not fill this out: <input name="bot-field" />
+                  <Trans>Do not fill this out</Trans>:{" "}
+                  <input name="bot-field" />
                 </label>
               </p>
               <div>
