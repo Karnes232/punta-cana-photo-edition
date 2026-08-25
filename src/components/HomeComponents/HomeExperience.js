@@ -2,7 +2,6 @@ import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { isPossiblePhoneNumber, parsePhoneNumber } from "libphonenumber-js";
 import { withSizes } from "../../utils/imageSizes";
 import {
   ArrowRight,
@@ -15,8 +14,11 @@ import {
   Phone,
 } from "lucide-react";
 import React, { useState } from "react";
-import { PhoneInput } from "react-international-phone";
-import "react-international-phone/style.css";
+import PhoneInput, {
+  isPossiblePhoneNumber,
+  parsePhoneNumber,
+} from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import { getHomeContent } from "../../content/homeContent";
 
 
@@ -407,10 +409,11 @@ const HomeContactForm = ({ content, language }) => {
         <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
           {content.phone}
           <PhoneInput
-            defaultCountry="us"
+            international
+            name="telephone"
             value={phone}
             onChange={(value) => {
-              setPhone(value);
+              setPhone(value || "");
               if (status === "error") {
                 setStatus("idle");
                 setFormError("");
@@ -422,16 +425,13 @@ const HomeContactForm = ({ content, language }) => {
             }}
             numberInputProps={{
               "aria-label": content.phone,
-              name: "telephone",
+              className:
+                "w-full bg-transparent px-4 py-3 font-montserrat text-base font-normal text-black outline-none",
               autoComplete: "tel",
-              required: true,
+              inputMode: "tel",
             }}
-            inputClassName="!h-auto !w-full !border-0 !bg-transparent !px-4 !py-3 !font-montserrat !text-base !font-normal !text-black !outline-none"
-            countrySelectorStyleProps={{
-              buttonClassName:
-                "!h-full !rounded-none !border-0 !border-r !border-gray-300 !bg-white !px-3",
-            }}
-            className="mt-2 !flex w-full border border-gray-300 bg-white transition focus-within:border-primary-color focus-within:ring-2 focus-within:ring-primary-color"
+            className="mt-2 border border-gray-300 bg-white px-3 transition focus-within:border-primary-color focus-within:ring-2 focus-within:ring-primary-color"
+            required
           />
         </label>
         <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
