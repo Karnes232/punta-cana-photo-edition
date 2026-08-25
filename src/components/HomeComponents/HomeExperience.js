@@ -2,6 +2,7 @@ import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { isPossiblePhoneNumber, parsePhoneNumber } from "libphonenumber-js";
 import { withSizes } from "../../utils/imageSizes";
 import {
   ArrowRight,
@@ -9,12 +10,15 @@ import {
   Check,
   Clock3,
   Mail,
+  MailCheck,
   MessageCircle,
   Phone,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { getHomeContent } from "../../content/homeContent";
-import { passVisitorName } from "../../utils/thankYouName";
+
 
 const legacyRoutes = new Set([
   "/punta-cana-bachelor-party/",
@@ -29,9 +33,11 @@ const legacyRoutes = new Set([
   "/packages/videography-event-planner/",
 ]);
 
+
 const currentRouteAliases = new Map([
   ["/gender-reveal-and-baby-showers/", "/gender-reveal-punta-cana/"],
 ]);
+
 
 const normalizeInternalPath = (path) => {
   if (!path || path.startsWith("#") || path.startsWith("http")) return path;
@@ -42,6 +48,7 @@ const normalizeInternalPath = (path) => {
   return currentRouteAliases.get(normalized) || normalized;
 };
 
+
 const localizedPath = (path, language) => {
   if (!path || path.startsWith("#") || path.startsWith("http")) return path;
   const normalizedPath = normalizeInternalPath(path);
@@ -50,6 +57,7 @@ const localizedPath = (path, language) => {
   }
   return normalizedPath === "/" ? "/es/" : `/es${normalizedPath}`;
 };
+
 
 const RichTextBlock = ({ context, fallbackParagraphs, fallbackItems }) => {
   if (!context?.raw) {
@@ -83,6 +91,7 @@ const RichTextBlock = ({ context, fallbackParagraphs, fallbackItems }) => {
       </>
     );
   }
+
 
   const options = {
     renderMark: {
@@ -128,11 +137,14 @@ const RichTextBlock = ({ context, fallbackParagraphs, fallbackItems }) => {
     },
   };
 
+
   return documentToReactComponents(JSON.parse(context.raw), options);
 };
 
+
 const getStructuredProcessSteps = (context) => {
   if (!context?.raw) return null;
+
 
   try {
     const document = JSON.parse(context.raw);
@@ -146,7 +158,9 @@ const getStructuredProcessSteps = (context) => {
       .map((section) => section.trim())
       .filter(Boolean);
 
+
     if (sections.length !== 3) return null;
+
 
     const steps = sections.map((section) => {
       const match = section.match(/^(\d{2})\s*[—-]\s*([^.!?]+)[.!?]\s*(.+)$/);
@@ -155,15 +169,18 @@ const getStructuredProcessSteps = (context) => {
         : null;
     });
 
+
     return steps.every(Boolean) ? steps : null;
   } catch {
     return null;
   }
 };
 
+
 // The cards render in a sm:grid-cols-2 lg:grid-cols-4 grid, so they are about
 // 320px wide on desktop rather than the source width.
 const CARD_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw";
+
 
 const ServiceCard = ({ service, language }) => {
   const image = withSizes(
@@ -184,7 +201,9 @@ const ServiceCard = ({ service, language }) => {
       : "Design, coordination and execution of a custom reveal at your chosen Punta Cana location."
     : service.cardDescription;
 
+
   if (!image || !url) return null;
+
 
   return (
     <article className="group relative min-h-[390px] overflow-hidden bg-black shadow-[0_28px_60px_rgba(0,0,0,0.14)]">
@@ -221,100 +240,258 @@ const ServiceCard = ({ service, language }) => {
   );
 };
 
-const HomeContactForm = ({ content, language }) => (
-  <form
-    name="home-page"
-    method="POST"
-    onSubmit={passVisitorName()}
-    action={language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"}
-    data-netlify="true"
-    data-netlify-honeypot="bot-field"
-    className="border border-white/15 bg-white p-6 text-black shadow-2xl md:p-9"
-  >
-    <input type="hidden" name="form-name" value="home-page" />
-    <input type="hidden" name="source" value="Sertuin Events home page" />
-    <input type="hidden" name="subject" value="New event planning inquiry" />
-    <p className="hidden">
-      <label>
-        Do not fill this out: <input name="bot-field" />
-      </label>
-    </p>
-    <h3 className="font-crimson text-3xl font-medium">{content.formTitle}</h3>
-    <div className="mt-7 grid gap-5 sm:grid-cols-2">
-      <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
-        {content.name}
-        <input
-          required
-          name="name"
-          autoComplete="name"
-          className="mt-2 w-full border border-gray-300 px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
+
+const HomeContactForm = ({ content, language }) => {
+  const [status, setStatus] = useState("idle");
+  const [phone, setPhone] = useState("");
+  const [formError, setFormError] = useState("");
+  const phoneCountry = parsePhoneNumber(phone || "")?.country || "";
+  const messages =
+    language === "es"
+      ? {
+          phoneCountry: "Seleccionar país del teléfono",
+          phoneError:
+            "Ingresa un número de teléfono válido con su código de país.",
+          emailError:
+            "Ingresa un correo electrónico válido con un dominio activo.",
+          sending: "Enviando...",
+          successTitle: "Solicitud recibida",
+          success:
+            "Tu solicitud fue enviada correctamente. Te contactaremos muy pronto.",
+          error:
+            "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
+        }
+      : {
+          phoneCountry: "Select phone country",
+          phoneError:
+            "Enter a valid phone number with its country code.",
+          emailError:
+            "Enter a valid email address with an active domain.",
+          sending: "Sending...",
+          successTitle: "Request received",
+          success:
+            "Your request was sent successfully. We will contact you shortly.",
+          error:
+            "We could not send your request. Please try again.",
+        };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setFormError("");
+
+    if (!phoneCountry || !phone || !isPossiblePhoneNumber(phone)) {
+      setStatus("error");
+      setFormError(messages.phoneError);
+      return;
+    }
+
+    setStatus("sending");
+    const form = event.currentTarget;
+
+    try {
+      const formData = new FormData(form);
+      formData.set("telephone", phone);
+      formData.set("phone-country", phoneCountry);
+
+      const validationPayload = Object.fromEntries(formData.entries());
+      validationPayload.whatsapp = phone;
+      validationPayload["validate-only"] = true;
+
+      const validationResponse = await fetch(
+        "/.netlify/functions/elopementRequest",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(validationPayload),
+        },
+      );
+      const validationResult = await validationResponse
+        .json()
+        .catch(() => ({}));
+
+      if (!validationResponse.ok) {
+        throw new Error(
+          validationResult.error || "Form validation failed",
+        );
+      }
+
+      const formResponse = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (!formResponse.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      form.reset();
+      setPhone("");
+      setStatus("success");
+    } catch (error) {
+      setStatus("error");
+      setFormError(
+        /email/i.test(error.message)
+          ? messages.emailError
+          : /phone/i.test(error.message)
+            ? messages.phoneError
+            : messages.error,
+      );
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div
+        role="status"
+        className="flex min-h-[420px] flex-col items-center justify-center border border-white/15 bg-white p-8 text-center text-black shadow-2xl"
+      >
+        <MailCheck
+          aria-hidden="true"
+          className="text-primary-color"
+          size={44}
         />
-      </label>
-      <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
-        {content.emailLabel}
-        <input
-          required
-          type="email"
-          name="email"
-          autoComplete="email"
-          className="mt-2 w-full border border-gray-300 px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
-        />
-      </label>
-      <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
-        {content.phone}
-        <input
-          required
-          type="tel"
-          name="telephone"
-          autoComplete="tel"
-          className="mt-2 w-full border border-gray-300 px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
-        />
-      </label>
-      <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
-        {content.eventType}
-        <select
-          required
-          name="event-type"
-          defaultValue=""
-          className="mt-2 w-full border border-gray-300 bg-white px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
-        >
-          <option value="" disabled>
-            {content.selectEvent}
-          </option>
-          {content.eventOptions.map((option) => (
-            <option value={option} key={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700 sm:col-span-2">
-        {content.date}
-        <input
-          type="date"
-          name="event-date"
-          className="mt-2 w-full border border-gray-300 px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
-        />
-      </label>
-      <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700 sm:col-span-2">
-        {content.details}
-        <textarea
-          required
-          name="additionalInfo"
-          rows={5}
-          className="mt-2 w-full resize-y border border-gray-300 px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
-        />
-      </label>
-    </div>
-    <button
-      type="submit"
-      className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-primary-color px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-black transition hover:opacity-90"
+        <h3 className="mt-5 font-crimson text-3xl font-medium">
+          {messages.successTitle}
+        </h3>
+        <p className="mt-3 max-w-md font-montserrat text-base leading-7 text-gray-700">
+          {messages.success}
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      name="home-page"
+      method="POST"
+      onSubmit={handleSubmit}
+      action={language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"}
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      className="border border-white/15 bg-white p-6 text-black shadow-2xl md:p-9"
     >
-      {content.submit}
-      <ArrowRight aria-hidden="true" size={18} />
-    </button>
-  </form>
-);
+      <input type="hidden" name="form-name" value="home-page" />
+      <input type="hidden" name="source" value="Sertuin Events home page" />
+      <input type="hidden" name="subject" value="New event planning inquiry" />
+      <input type="hidden" name="phone-country" value={phoneCountry} />
+      <p className="hidden">
+        <label>
+          Do not fill this out: <input name="bot-field" />
+        </label>
+      </p>
+      <h3 className="font-crimson text-3xl font-medium">{content.formTitle}</h3>
+      <div className="mt-7 grid gap-5 sm:grid-cols-2">
+        <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
+          {content.name}
+          <input
+            required
+            name="name"
+            autoComplete="name"
+            className="mt-2 w-full border border-gray-300 px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
+          />
+        </label>
+        <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
+          {content.emailLabel}
+          <input
+            required
+            type="email"
+            name="email"
+            autoComplete="email"
+            className="mt-2 w-full border border-gray-300 px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
+          />
+        </label>
+        <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
+          {content.phone}
+          <PhoneInput
+            defaultCountry="us"
+            value={phone}
+            onChange={(value) => {
+              setPhone(value);
+              if (status === "error") {
+                setStatus("idle");
+                setFormError("");
+              }
+            }}
+            countrySelectProps={{
+              "aria-label": messages.phoneCountry,
+              required: true,
+            }}
+            numberInputProps={{
+              "aria-label": content.phone,
+              name: "telephone",
+              autoComplete: "tel",
+              required: true,
+            }}
+            inputClassName="!h-auto !w-full !border-0 !bg-transparent !px-4 !py-3 !font-montserrat !text-base !font-normal !text-black !outline-none"
+            countrySelectorStyleProps={{
+              buttonClassName:
+                "!h-full !rounded-none !border-0 !border-r !border-gray-300 !bg-white !px-3",
+            }}
+            className="mt-2 !flex w-full border border-gray-300 bg-white transition focus-within:border-primary-color focus-within:ring-2 focus-within:ring-primary-color"
+          />
+        </label>
+        <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700">
+          {content.eventType}
+          <select
+            required
+            name="event-type"
+            defaultValue=""
+            className="mt-2 w-full border border-gray-300 bg-white px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
+          >
+            <option value="" disabled>
+              {content.selectEvent}
+            </option>
+            {content.eventOptions.map((option) => (
+              <option value={option} key={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700 sm:col-span-2">
+          {content.date}
+          <input
+            required
+            type="date"
+            name="event-date"
+            className="mt-2 w-full border border-gray-300 px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
+          />
+        </label>
+        <label className="font-montserrat text-xs font-semibold uppercase tracking-[0.12em] text-gray-700 sm:col-span-2">
+          {content.details}
+          <textarea
+            required
+            name="additionalInfo"
+            rows={5}
+            className="mt-2 w-full resize-y border border-gray-300 px-4 py-3 font-montserrat text-base font-normal normal-case tracking-normal outline-none transition focus:border-primary-color focus:ring-2 focus:ring-primary-color"
+          />
+        </label>
+      </div>
+      {formError && (
+        <p
+          role="alert"
+          aria-live="assertive"
+          className="mt-5 font-montserrat text-sm font-semibold text-red-700"
+        >
+          {formError}
+        </p>
+      )}
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-primary-color px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-black transition hover:opacity-90 disabled:cursor-wait disabled:opacity-60"
+      >
+        {status === "sending" ? messages.sending : content.submit}
+        <ArrowRight aria-hidden="true" size={18} />
+      </button>
+    </form>
+  );
+};
+
 
 const HomeExperience = ({
   page,
@@ -364,6 +541,7 @@ const HomeExperience = ({
   const contactSectionId = "start-your-event";
   const primaryCtaUrl = page?.primaryCtaUrl || content.primaryCtaUrl;
   const secondaryCtaUrl = page?.secondaryCtaUrl || content.secondaryCtaUrl;
+
 
   return (
     <main className="overflow-hidden bg-primary-bg-color text-black">
@@ -416,6 +594,7 @@ const HomeExperience = ({
         </div>
       </section>
 
+
       <section className="border-b border-gray-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-px bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
           {[
@@ -453,6 +632,7 @@ const HomeExperience = ({
         </div>
       </section>
 
+
       <section id={eventsSectionId} className="px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
@@ -478,6 +658,7 @@ const HomeExperience = ({
         </div>
       </section>
 
+
       <section className="bg-white px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
@@ -497,6 +678,7 @@ const HomeExperience = ({
           </div>
         </div>
       </section>
+
 
       <section className="bg-black px-6 py-20 text-white md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
@@ -534,6 +716,7 @@ const HomeExperience = ({
           )}
         </div>
       </section>
+
 
       <section className="bg-secondary-bg-color px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-7xl overflow-hidden bg-white shadow-[0_32px_80px_rgba(0,0,0,0.13)] lg:grid-cols-2">
@@ -577,6 +760,7 @@ const HomeExperience = ({
           </div>
         </div>
       </section>
+
 
       <section
         id={contactSectionId}
@@ -650,5 +834,6 @@ const HomeExperience = ({
     </main>
   );
 };
+
 
 export default HomeExperience;
