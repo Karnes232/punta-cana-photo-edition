@@ -1,7 +1,9 @@
 const nodemailer = require("nodemailer");
 const dns = require("node:dns").promises;
 
+
 const DESTINATION_EMAIL = "info@sertuinevents.com";
+
 
 const escapeHtml = (value = "") =>
   String(value)
@@ -11,6 +13,7 @@ const escapeHtml = (value = "") =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
+
 const clean = (value, maxLength = 500) =>
   String(value || "")
     .replace(/[\u0000-\u001f\u007f]/g, " ")
@@ -18,9 +21,11 @@ const clean = (value, maxLength = 500) =>
     .trim()
     .slice(0, maxLength);
 
+
 const hasActiveEmailDomain = async (email) => {
   const domain = email.split("@").pop()?.toLowerCase();
   if (!domain) return false;
+
 
   try {
     const mxRecords = await dns.resolveMx(domain);
@@ -29,12 +34,14 @@ const hasActiveEmailDomain = async (email) => {
     // A domain may legally receive mail through its A/AAAA record.
   }
 
+
   try {
     const addresses = await dns.resolve4(domain);
     if (addresses.length) return true;
   } catch (error) {
     // Try IPv6 before rejecting the domain.
   }
+
 
   try {
     const addresses = await dns.resolve6(domain);
@@ -43,6 +50,7 @@ const hasActiveEmailDomain = async (email) => {
     return false;
   }
 };
+
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
@@ -53,12 +61,15 @@ exports.handler = async (event) => {
     };
   }
 
+
   try {
     if (!event.body || event.body.length > 20000) {
       throw new Error("Invalid request body");
     }
 
+
     const body = JSON.parse(event.body);
+
 
     if (body["bot-field"]) {
       return {
@@ -66,6 +77,7 @@ exports.handler = async (event) => {
         body: JSON.stringify({ message: "Request received" }),
       };
     }
+
 
     const request = {
       names: clean(body["couple-names"], 160),
@@ -83,18 +95,23 @@ exports.handler = async (event) => {
       language: clean(body.language, 10),
     };
 
-    const required = [
-      request.names,
-      request.email,
-      request.whatsapp,
-      request.phoneCountry,
-      request.date,
-      request.guests,
-      request.hotel,
-      request.experience,
-      request.decoration,
-      request.ceremony,
-    ];
+
+    const validationOnly = Boolean(body["validate-only"]);
+    const required = validationOnly
+      ? [request.email, request.whatsapp, request.phoneCountry]
+      : [
+          request.names,
+          request.email,
+          request.whatsapp,
+          request.phoneCountry,
+          request.date,
+          request.guests,
+          request.hotel,
+          request.experience,
+          request.decoration,
+          request.ceremony,
+        ];
+
 
     if (required.some((value) => !value)) {
       return {
@@ -103,6 +120,7 @@ exports.handler = async (event) => {
       };
     }
 
+
     if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(request.email)) {
       return {
         statusCode: 400,
@@ -110,12 +128,14 @@ exports.handler = async (event) => {
       };
     }
 
+
     if (!(await hasActiveEmailDomain(request.email))) {
       return {
         statusCode: 400,
         body: JSON.stringify({ error: "Invalid email domain" }),
       };
     }
+
 
     if (
       !/^\+[1-9]\d{7,14}$/.test(request.whatsapp) ||
@@ -127,6 +147,7 @@ exports.handler = async (event) => {
       };
     }
 
+
     if (body["validate-only"]) {
       return {
         statusCode: 200,
@@ -134,6 +155,7 @@ exports.handler = async (event) => {
         body: JSON.stringify({ message: "Request validated" }),
       };
     }
+
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -145,6 +167,7 @@ exports.handler = async (event) => {
         pass: process.env.SMTP_PASSWORD,
       },
     });
+
 
     const rows = [
       ["Pareja / Couple", request.names],
@@ -162,6 +185,7 @@ exports.handler = async (event) => {
       ["Mensaje / Message", request.message || "—"],
     ];
 
+
     const htmlRows = rows
       .map(
         ([label, value]) =>
@@ -171,6 +195,7 @@ exports.handler = async (event) => {
     const textRows = rows
       .map(([label, value]) => `${label}: ${value}`)
       .join("\n");
+
 
     await transporter.sendMail({
       from: {
@@ -184,6 +209,7 @@ exports.handler = async (event) => {
       html: `<h2 style="font-family:Arial,sans-serif">Nueva solicitud de elopement</h2><p style="font-family:Arial,sans-serif">Enviada desde sertuinevents.com. Responde este correo para contactar directamente a la pareja.</p><table style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">${htmlRows}</table>`,
     });
 
+
     return {
       statusCode: 200,
       headers: { "Content-Type": "application/json" },
@@ -191,6 +217,7 @@ exports.handler = async (event) => {
     };
   } catch (error) {
     console.error("Elopement request email failed:", error.message);
+
 
     return {
       statusCode: 500,
