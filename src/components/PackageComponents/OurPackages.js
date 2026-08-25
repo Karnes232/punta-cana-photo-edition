@@ -3,7 +3,7 @@ import TextComponent from "../TextComponent/TextComponent";
 import PackageCard from "./PackageCard";
 import uniqueByTitle from "../../hooks/uniqueByTitle";
 
-const OurPackages = ({ title, photoPackages }) => {
+const OurPackages = ({ title, photoPackages, language }) => {
   const uniqueObjects = uniqueByTitle(photoPackages);
   return (
     <section
@@ -24,6 +24,7 @@ const OurPackages = ({ title, photoPackages }) => {
           return (
             <PackageCard
               photoPackage={photoPackage}
+              language={language}
               key={photoPackage.packagePage?.urlSlug || photoPackage.title}
             />
           );

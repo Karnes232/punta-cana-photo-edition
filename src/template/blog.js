@@ -5,6 +5,7 @@ import BlogBody from "../components/BlogComponents/BlogBody";
 import BlogGallery from "../components/BlogComponents/BlogGallery";
 import LazySocialEmbeds from "../components/BlogComponents/LazySocialEmbeds";
 import Seo from "../components/Layout/seo";
+import { localizeSpanishProposalUrl } from "../utils/localizedLinks";
 
 const safeUrl = (value) => {
   if (typeof value !== "string") return "";
@@ -22,8 +23,11 @@ const normalizePost = (post) => ({
   helpText: textValue(post.helpText, "helpText"),
 });
 
-const BlogCta = ({ post }) => {
-  const url = safeUrl(post.primaryCtaButtonUrl);
+const BlogCta = ({ post, language }) => {
+  const url = localizeSpanishProposalUrl(
+    safeUrl(post.primaryCtaButtonUrl),
+    language,
+  );
   if (
     !post.primaryCtaTitle &&
     !post.primaryCtaText &&
@@ -45,7 +49,7 @@ const BlogCta = ({ post }) => {
   );
 };
 
-const BlogHelp = ({ post }) => {
+const BlogHelp = ({ post, language }) => {
   const whatsappUrl = post.helpWhatsAppEnabled
     ? safeUrl(post.helpWhatsAppUrl)
     : "";
@@ -53,7 +57,7 @@ const BlogHelp = ({ post }) => {
     ? String(post.helpEmailAddress || "").trim()
     : "";
   const customUrl = post.helpCustomLinkEnabled
-    ? safeUrl(post.helpCustomLinkUrl)
+    ? localizeSpanishProposalUrl(safeUrl(post.helpCustomLinkUrl), language)
     : "";
   const hasLinks =
     whatsappUrl || email || (customUrl && post.helpCustomLinkText);
@@ -81,6 +85,7 @@ const Blog = ({ pageContext, data }) => {
   const rawPost = data?.allContentfulBlogPost?.nodes?.[0];
   if (!rawPost) return null;
   const post = normalizePost(rawPost);
+  const language = pageContext.language === "es" ? "es" : "en-US";
 
   return (
     <Layout generalInfo={pageContext.layout}>
@@ -92,14 +97,14 @@ const Blog = ({ pageContext, data }) => {
               <p className="universal-blog__answer">{post.directAnswer}</p>
             )}
           </header>
-          <BlogCta post={post} />
+          <BlogCta post={post} language={language} />
           <BlogGallery images={post.galleryImages || []} />
-          <BlogBody context={post.articleContent} />
+          <BlogBody context={post.articleContent} language={language} />
           <LazySocialEmbeds
             embeds={post.socialEmbeds}
             language={pageContext.language}
           />
-          <BlogHelp post={post} />
+          <BlogHelp post={post} language={language} />
         </article>
       </main>
     </Layout>
@@ -114,8 +119,10 @@ export const Head = ({ pageContext, data }) => {
   const post = normalizePost(rawPost);
 
   const language = pageContext.language === "en-US" ? "en" : "es";
-  const languagePrefix = language === "en" ? "" : "/es";
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${languagePrefix}/blog/${post.slug.trim()}/`;
+  const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const englishUrl = `${rootUrl}/blog/${post.slug.trim()}/`;
+  const spanishUrl = `${rootUrl}/es/blog/${post.slug.trim()}/`;
+  const siteUrl = language === "en" ? englishUrl : spanishUrl;
   const socialImage = post.galleryImages?.[0]?.image;
   const imageUrl = socialImage?.url;
   const imageAlt = post.galleryImages?.[0]?.altText || "";
@@ -162,6 +169,9 @@ export const Head = ({ pageContext, data }) => {
         twitterCard={imageUrl ? "summary_large_image" : "summary"}
       />
       <link rel="canonical" href={siteUrl} />
+      <link rel="alternate" hrefLang="en" href={englishUrl} />
+      <link rel="alternate" hrefLang="es" href={spanishUrl} />
+      <link rel="alternate" hrefLang="x-default" href={englishUrl} />
     </>
   );
 };
@@ -248,4 +258,3 @@ export const query = graphql`
     }
   }
 `;
-

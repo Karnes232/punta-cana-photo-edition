@@ -48,6 +48,7 @@ const Index = ({ data, pageContext }) => {
       <OurPackages
         title={pageContent.sectionTitle || proposalCopy.packagesFallbackTitle}
         photoPackages={data.allContentfulPackages.nodes}
+        language={language}
       />
       <ProposalInclusions language={language} />
       <section aria-labelledby="proposal-moments-heading">

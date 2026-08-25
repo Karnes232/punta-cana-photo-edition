@@ -4,11 +4,12 @@ import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
 import { Trans } from "gatsby-plugin-react-i18next";
 import { withSizes } from "../../utils/imageSizes";
+import { localizeSpanishProposalUrl } from "../../utils/localizedLinks";
 
 // The card is w-11/12 on mobile and a fixed w-[20rem] (320px) from md up.
 const CARD_SIZES = "(min-width: 768px) 320px, 92vw";
 
-const PackageCard = ({ photoPackage }) => {
+const PackageCard = ({ photoPackage, language }) => {
   const image = withSizes(getImage(photoPackage.image.gatsbyImage), CARD_SIZES);
   let cardHeight = "";
   if (photoPackage.page === "Photo Shoots") {
@@ -39,9 +40,10 @@ const PackageCard = ({ photoPackage }) => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
+  const languagePrefix = language === "es" ? "/es" : "";
   const packageLink = photoPackage.packagePage
-    ? `/packages/${photoPackage.packagePage?.urlSlug}`
-    : photoPackage.link;
+    ? `${languagePrefix}/packages/${photoPackage.packagePage?.urlSlug}/`
+    : localizeSpanishProposalUrl(photoPackage.link, language);
 
   return (
     <>

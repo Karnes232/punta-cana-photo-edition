@@ -1,6 +1,10 @@
 import React from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
+import {
+  isExternalSiteUrl,
+  localizeSpanishProposalUrl,
+} from "../../utils/localizedLinks";
 
 const findReference = (context, id) =>
   context?.references?.find((item) => item.contentful_id === id);
@@ -30,7 +34,7 @@ const correctConfirmedLanguageClaims = (value) => {
   );
 };
 
-const BlogBody = ({ context }) => {
+const BlogBody = ({ context, language }) => {
   if (!context?.raw) return null;
   const options = {
     renderMark: {
@@ -66,10 +70,11 @@ const BlogBody = ({ context }) => {
         );
       },
       [INLINES.HYPERLINK]: (node, children) => {
-        const external = /^https?:\/\//i.test(node.data.uri);
+        const href = localizeSpanishProposalUrl(node.data.uri, language);
+        const external = isExternalSiteUrl(href);
         return (
           <a
-            href={node.data.uri}
+            href={href}
             {...(external
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
@@ -95,4 +100,3 @@ const BlogBody = ({ context }) => {
 };
 
 export default BlogBody;
-
