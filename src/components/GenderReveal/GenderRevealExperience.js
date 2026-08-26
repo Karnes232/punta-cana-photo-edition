@@ -1,6 +1,7 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
 import { passVisitorName } from "../../utils/thankYouName";
+import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
 import {
   ArrowRight,
   Check,
@@ -113,6 +114,7 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
 };
 
 const InquiryForm = ({ copy, isSpanish }) => {
+  const [phone, setPhone] = useState("");
   const labels = isSpanish
     ? {
         name: "Nombre y apellido",
@@ -200,11 +202,13 @@ const InquiryForm = ({ copy, isSpanish }) => {
         </label>
         <label className="font-montserrat text-sm font-semibold text-slate-800">
           {labels.phone} *
-          <input
+          <InternationalPhoneField
             className={inputClass}
-            type="tel"
             name="phone"
-            autoComplete="tel"
+            id="gender-reveal-phone"
+            value={phone}
+            onChange={setPhone}
+            language={isSpanish ? "es" : "en-US"}
             required
           />
         </label>

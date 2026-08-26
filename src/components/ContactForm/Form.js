@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import ContactInfo from "./ContactInfo";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 import MoreInfo from "./MoreInfo";
 import OptionSelect from "./OptionSelect";
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
+import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
 const Form = () => {
   const { t, i18n } = useTranslation();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const handlePhoneChange = (e) => {
-    setPhone(e);
-  };
   return (
     <>
       <form
@@ -32,16 +28,15 @@ const Form = () => {
         </p>
         <ContactInfo name={name} setName={setName} />
         <div className="relative z-0 mb-6 w-full group">
-          <PhoneInput
-            type="tel"
+          <InternationalPhoneField
             name="telephone"
             id="telephone"
             className={`contactFormInput peer `}
             placeholder={t("Enter phone number")}
             value={phone}
-            onChange={handlePhoneChange}
+            onChange={setPhone}
+            language={i18n.language}
             required
-            // onCountryChange={handleCountryChange}
           />
         </div>
         <OptionSelect />

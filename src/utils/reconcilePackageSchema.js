@@ -1,3 +1,5 @@
+import { proposalAddOnType } from "./proposalPackageRules";
+
 /**
  * Reconciles the hand-authored Contentful `schema` JSON against the structured
  * package data, treating the PAGE PRICE as the single source of truth.
@@ -48,17 +50,29 @@ const normalizeName = (value) =>
 const clone = (value) => JSON.parse(JSON.stringify(value));
 
 /**
- * Exact match on the normalized name, deliberately with no fuzzy fallback.
+ * Exact match on the normalized name, followed only by a verified canonical
+ * add-on category match.
  *
- * A containment fallback looks helpful but matches ACROSS LANGUAGES by accident:
- * the English offer "Violinist" is a prefix of the Spanish addition "Violinista",
- * so a Spanish add-on price would silently be assigned to an English offer. A
- * name that does not match exactly is reported, never guessed.
+ * A containment fallback looks helpful but matches across languages by
+ * accident. Canonical categories avoid that problem while still allowing an
+ * old schema label such as "Cameraman with drone" to match the verified
+ * "Professional video with drone" addition.
  */
 const findAddition = (additions, offerName) => {
   const name = normalizeName(offerName);
   if (!name) return null;
-  return additions.find((a) => normalizeName(a.addition) === name) ?? null;
+  const exact =
+    additions.find((a) => normalizeName(a.addition) === name) ?? null;
+  if (exact) return exact;
+
+  const offerType = proposalAddOnType(offerName);
+  if (!offerType) return null;
+
+  return (
+    additions.find(
+      (addition) => proposalAddOnType(addition.addition)?.key === offerType.key,
+    ) ?? null
+  );
 };
 
 /**

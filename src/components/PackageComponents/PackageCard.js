@@ -5,12 +5,18 @@ import TextComponent from "../TextComponent/TextComponent";
 import { Trans } from "gatsby-plugin-react-i18next";
 import { withSizes } from "../../utils/imageSizes";
 import { localizeSpanishProposalUrl } from "../../utils/localizedLinks";
+import { getImageSeo } from "../../utils/imageSeo";
 
 // The card is w-11/12 on mobile and a fixed w-[20rem] (320px) from md up.
 const CARD_SIZES = "(min-width: 768px) 320px, 92vw";
 
 const PackageCard = ({ photoPackage, language }) => {
   const image = withSizes(getImage(photoPackage.image.gatsbyImage), CARD_SIZES);
+  const imageSeo = getImageSeo(photoPackage.image, {
+    language,
+    subject: photoPackage.title,
+    context: "card",
+  });
   let cardHeight = "";
   if (photoPackage.page === "Photo Shoots") {
     cardHeight = "h-[23rem]";
@@ -56,7 +62,8 @@ const PackageCard = ({ photoPackage, language }) => {
           <div className="w-full  h-[20rem]">
             <GatsbyImage
               image={image}
-              alt={photoPackage.image.title}
+              alt={imageSeo.alt}
+              title={imageSeo.title}
               className="w-full object-cover object-center h-full"
               imgClassName=""
               objectPosition=""

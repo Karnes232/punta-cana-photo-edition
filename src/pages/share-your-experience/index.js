@@ -5,7 +5,7 @@ import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import TestimonialForm from "../../components/TestimonialForm/TestimonialForm";
 import Seo from "../../components/Layout/seo";
 
-const Index = ({ data }) => {
+const Index = ({ data, pageContext }) => {
   return (
     <Layout
       generalInfo={data.allContentfulGeneralLayout.nodes[0]}
@@ -15,7 +15,7 @@ const Index = ({ data }) => {
         heroInfo={data.allContentfulGeneralLayout.nodes[0]}
         overlayHeader
       />
-      <TestimonialForm />
+      <TestimonialForm language={pageContext.language} />
     </Layout>
   );
 };

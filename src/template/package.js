@@ -13,12 +13,36 @@ import PackageForm from "../components/PackageForm/PackageForm";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { reconcilePackageSchemaPrices } from "../utils/reconcilePackageSchema";
 import { localizePackageFaqs } from "../utils/packageLocalization";
+import { getProposalAdditions } from "../utils/proposalPackageRules";
+import { getImageSeo } from "../utils/imageSeo";
+import { getProposalPackageDetails } from "../data/proposalPackageDetails";
+import { buildProposalPackageFaqs } from "../data/proposalPackageFaqs";
+import ProposalPackageDetails from "../components/ProposalComponents/ProposalPackageDetails";
 const PackagePage = ({ pageContext, data }) => {
   const { t } = useTranslation();
-  const localizedFaqs = localizePackageFaqs(
-    data.allContentfulPackagePageContent.nodes[0].faqs,
-    pageContext.language,
-  );
+  const node = data.allContentfulPackagePageContent.nodes[0];
+  const proposalDetails = getProposalPackageDetails(node, pageContext.language);
+  const packageInformation = proposalDetails
+    ? {
+        ...node,
+        heroHeading: proposalDetails.name,
+        packages: node.packages?.length
+          ? [
+              {
+                ...node.packages[0],
+                price: proposalDetails.price,
+              },
+              ...node.packages.slice(1),
+            ]
+          : node.packages,
+      }
+    : node;
+  const localizedFaqs = proposalDetails
+    ? buildProposalPackageFaqs({
+        language: pageContext.language,
+        details: proposalDetails,
+      })
+    : localizePackageFaqs(node.faqs, pageContext.language);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
@@ -33,14 +57,16 @@ const PackagePage = ({ pageContext, data }) => {
     addOn4: "",
     addOn5: "",
     addOn6: "",
-    price:
-      data.allContentfulPackagePageContent.nodes[0].packages[0]?.price || 0,
-    packageName: data.allContentfulPackagePageContent.nodes[0].heroHeading,
+    price: packageInformation.packages[0]?.price || 0,
+    packageName: packageInformation.heroHeading,
   });
 
-  const image = getImage(
-    data.allContentfulPackagePageContent.nodes[0].images[0],
-  );
+  const image = getImage(packageInformation.images[0]);
+  const featureImageSeo = getImageSeo(packageInformation.images[0], {
+    language: pageContext.language,
+    subject: packageInformation.heroHeading,
+    context: "feature",
+  });
   const handleAddOnToggle = (addOnId) => {
     setSelectedAddOns((prev) =>
       prev.includes(addOnId.id)
@@ -52,68 +78,72 @@ const PackagePage = ({ pageContext, data }) => {
   return (
     <Layout generalInfo={pageContext.layout} overlayHeader>
       <HeroSwiper
-        heroInfo={data.allContentfulPackagePageContent.nodes[0]}
+        heroInfo={packageInformation}
         overlayHeader
+        language={pageContext.language}
       />
-      <div className="mb-10">
-        <RichText
-          context={
-            data.allContentfulPackagePageContent.nodes[0].packageInformation
-          }
+      {proposalDetails ? (
+        <ProposalPackageDetails
+          details={proposalDetails}
+          language={pageContext.language}
         />
-      </div>
+      ) : (
+        <div className="mb-10">
+          <RichText context={packageInformation.packageInformation} />
+        </div>
+      )}
       <SwiperCarousel
-        images={data.allContentfulPackagePageContent.nodes[0].images}
+        images={packageInformation.images}
+        language={pageContext.language}
+        subject={packageInformation.heroHeading}
       />
 
       <div className="w-full max-w-7xl mx-auto px-4 lg:mt-5 xl:mt-10">
         <div className="flex flex-col lg:flex-row gap-8">
-          <div className=" lg:basis-1/2">
-            {data.allContentfulPackagePageContent.nodes[0].packages !== null ? (
-              <>
-                {data.allContentfulPackagePageContent.nodes[0].packages[0]
-                  .included !== null ? (
-                  <>
-                    {" "}
-                    <div className="my-5 mx-auto">
+          {!proposalDetails && (
+            <div className="lg:basis-1/2">
+              {packageInformation.packages !== null ? (
+                <>
+                  {packageInformation.packages[0].included !== null ? (
+                    <>
+                      {" "}
+                      <div className="my-5 mx-auto">
+                        <TextComponent
+                          title={t("Included")}
+                          heading="h2"
+                          className="my-5 text-center tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+                        />
+                        <ul className="flex flex-col justify-center items-center gap-2">
+                          {packageInformation.packages[0].included?.map(
+                            (item, index) => {
+                              return (
+                                <li
+                                  key={index}
+                                  className="list-disc text-sm xl:text-lg capitalize"
+                                >
+                                  {item}
+                                </li>
+                              );
+                            },
+                          )}
+                        </ul>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="flex justify-center items-center h-full">
                       <TextComponent
-                        title={t("Included")}
-                        heading="h2"
-                        className="my-5 text-center tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
+                        paragraph={packageInformation.packages[0].paragraph}
+                        pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5 text-center"
                       />
-                      <ul className="flex flex-col justify-center items-center gap-2">
-                        {data.allContentfulPackagePageContent.nodes[0].packages[0].included?.map(
-                          (item, index) => {
-                            return (
-                              <li
-                                key={index}
-                                className="list-disc text-sm xl:text-lg capitalize"
-                              >
-                                {item}
-                              </li>
-                            );
-                          },
-                        )}
-                      </ul>
                     </div>
-                  </>
-                ) : (
-                  <div className="flex justify-center items-center h-full">
-                    <TextComponent
-                      paragraph={
-                        data.allContentfulPackagePageContent.nodes[0]
-                          .packages[0].paragraph
-                      }
-                      pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5 text-center"
-                    />
-                  </div>
-                )}{" "}
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
-          {data.allContentfulPackagePageContent.nodes[0].videoUrl !== null ? (
+                  )}{" "}
+                </>
+              ) : (
+                <></>
+              )}
+            </div>
+          )}
+          {packageInformation.videoUrl !== null ? (
             <>
               {/* Rendering ReactPlayer during hydration produced markup that
                   did not match the SSR output: six React #418 errors plus a
@@ -121,19 +151,23 @@ const PackagePage = ({ pageContext, data }) => {
                   VideoPlayer renders only a placeholder until the player
                   scrolls into view, which is why /proposal/ is clean. */}
               <VideoPlayer
-                url={data.allContentfulPackagePageContent.nodes[0].videoUrl}
-                className="w-full lg:basis-1/2 packagePageVideo"
+                url={packageInformation.videoUrl}
+                className={`w-full packagePageVideo ${
+                  proposalDetails ? "lg:max-w-5xl lg:mx-auto" : "lg:basis-1/2"
+                }`}
               />
             </>
           ) : (
             <>
-              <div className="w-full lg:basis-1/2 packagePageVideo ">
+              <div
+                className={`w-full packagePageVideo ${
+                  proposalDetails ? "lg:max-w-5xl lg:mx-auto" : "lg:basis-1/2"
+                }`}
+              >
                 <GatsbyImage
                   image={image}
-                  alt={
-                    data.allContentfulPackagePageContent.nodes[0].images[0]
-                      .title
-                  }
+                  alt={featureImageSeo.alt}
+                  title={featureImageSeo.title}
                   className={`w-full object-fill object-center packagePageVideo`}
                 />
               </div>
@@ -141,10 +175,10 @@ const PackagePage = ({ pageContext, data }) => {
           )}
         </div>
       </div>
-      {data.allContentfulPackagePageContent.nodes[0].packages !== null ? (
+      {packageInformation.packages !== null ? (
         <>
           <PackageForm
-            packageInformation={data.allContentfulPackagePageContent.nodes[0]}
+            packageInformation={packageInformation}
             formData={formData}
             setFormData={setFormData}
             selectedAddOns={selectedAddOns}
@@ -180,6 +214,26 @@ export const Head = ({ pageContext, data }) => {
     : undefined;
 
   const node = data?.allContentfulPackagePageContent?.nodes[0];
+  const proposalDetails = getProposalPackageDetails(node, language);
+  const resolvedSeoTitle = proposalDetails
+    ? language === "es"
+      ? `${proposalDetails.name} | Propuesta de matrimonio en Punta Cana | Sertuin Events`
+      : `${proposalDetails.name} | Punta Cana Marriage Proposal | Sertuin Events`
+    : seoTitle;
+  const nodeWithCanonicalPrice = proposalDetails
+    ? {
+        ...node,
+        packages: node.packages?.length
+          ? [
+              {
+                ...node.packages[0],
+                price: proposalDetails.price,
+              },
+              ...node.packages.slice(1),
+            ]
+          : node.packages,
+      }
+    : node;
   const schema = node?.schema?.internal?.content;
 
   // The schema blob and the page price are maintained separately in Contentful
@@ -188,9 +242,18 @@ export const Head = ({ pageContext, data }) => {
   let JsonSchema = {};
   if (schema) {
     try {
+      const packageForSchema = nodeWithCanonicalPrice?.packages?.[0]
+        ? {
+            ...nodeWithCanonicalPrice.packages[0],
+            // Contentful's schema field is shared between locales and authored
+            // in English, so reconcile it against the canonical English add-on
+            // names even while rendering the Spanish page.
+            additions: getProposalAdditions(nodeWithCanonicalPrice, "en-US"),
+          }
+        : nodeWithCanonicalPrice?.packages?.[0];
       const { schema: reconciled, corrections } = reconcilePackageSchemaPrices(
         JSON.parse(schema),
-        node?.packages?.[0],
+        packageForSchema,
       );
       JsonSchema = reconciled;
       if (corrections.length) {
@@ -207,8 +270,10 @@ export const Head = ({ pageContext, data }) => {
   return (
     <>
       <Seo
-        title={seoTitle}
-        description={seoDescription?.seoDescription}
+        title={resolvedSeoTitle}
+        description={
+          proposalDetails?.content.summary || seoDescription?.seoDescription
+        }
         keywords={seoKeywords?.join(", ")}
         image={seoImageUrl}
         url={siteUrl}
@@ -260,6 +325,7 @@ export const query = graphql`
         heroHeading
         fullSize
         packages {
+          page
           price
           included
           paragraph
@@ -274,23 +340,25 @@ export const query = graphql`
           gatsbyImage(
             layout: CONSTRAINED
             width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 65
           )
           title
+          description
         }
         packageInformation {
           raw
         }
         images {
           title
+          description
           gatsbyImage(
             layout: CONSTRAINED
             width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+            quality: 65
           )
         }
         faqs {

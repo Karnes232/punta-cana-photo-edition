@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactPlayer from "react-player/lazy";
 import {
@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { getCorporateEventContent } from "../../content/corporateEventContent";
 import { passVisitorName } from "../../utils/thankYouName";
+import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
 
 const serviceIcons = [
   ClipboardCheck,
@@ -133,6 +134,7 @@ const CaseStudyGallery = ({ images, client }) => {
 };
 
 const ProposalForm = ({ copy, isSpanish }) => {
+  const [phone, setPhone] = useState("");
   const labels = isSpanish
     ? {
         name: "Nombre y apellido",
@@ -223,11 +225,13 @@ const ProposalForm = ({ copy, isSpanish }) => {
         </label>
         <label className="font-montserrat text-sm font-semibold text-slate-800">
           {labels.phone} *
-          <input
+          <InternationalPhoneField
             className={inputClass}
-            type="tel"
             name="phone"
-            autoComplete="tel"
+            id="corporate-event-phone"
+            value={phone}
+            onChange={setPhone}
+            language={isSpanish ? "es" : "en-US"}
             required
           />
         </label>

@@ -6,12 +6,25 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { Autoplay, EffectFade } from "swiper/modules";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-const HeroSwiper = ({ heroInfo, className, overlayHeader = false }) => {
+import { withSizes } from "../../utils/imageSizes";
+import { getImageSeo } from "../../utils/imageSeo";
+const HeroSwiper = ({
+  heroInfo,
+  className,
+  overlayHeader = false,
+  language = "en-US",
+}) => {
   let photoListEdited = [];
-  heroInfo?.heroImageList?.forEach((e) => {
+  heroInfo?.heroImageList?.forEach((e, index) => {
+    const seo = getImageSeo(e, {
+      language,
+      subject: heroInfo.heroHeading,
+      context: "hero",
+      index,
+    });
     let image = {
-      title: e.title || heroInfo.heroHeading,
-      image: getImage(e.gatsbyImage),
+      ...seo,
+      image: withSizes(getImage(e.gatsbyImage), "100vw"),
     };
     photoListEdited.push(image);
   });
@@ -60,7 +73,8 @@ const HeroSwiper = ({ heroInfo, className, overlayHeader = false }) => {
               >
                 <GatsbyImage
                   image={image.image}
-                  alt={image.title}
+                  alt={image.alt}
+                  title={image.title}
                   loading={index === 0 ? "eager" : "lazy"}
                   fetchPriority={index === 0 ? "high" : "auto"}
                   className={`w-full object-cover object-center ${height}`}

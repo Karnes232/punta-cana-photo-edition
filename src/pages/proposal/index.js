@@ -18,6 +18,7 @@ import {
   getProposalCopy,
 } from "../../components/ProposalComponents/ProposalExperience";
 import { buildProposalSchema } from "../../utils/proposalSeo";
+import { getProposalPackageDetailsFromCard } from "../../data/proposalPackageDetails";
 
 const withoutYear = (text = "") =>
   text
@@ -26,15 +27,54 @@ const withoutYear = (text = "") =>
     .replace(/\s{2,}/g, " ")
     .trim();
 
+const withoutRetiredProposalPackages = (packages = [], language = "en-US") =>
+  packages
+    .filter((proposalPackage) => {
+      const slug = proposalPackage.packagePage?.urlSlug?.trim().toLowerCase();
+      const link = proposalPackage.link?.trim().toLowerCase();
+      const title = proposalPackage.title?.trim().toLowerCase();
+      return (
+        slug !== "ocean-of-love" &&
+        !link?.includes("/ocean-of-love") &&
+        title !== "ocean of love" &&
+        title !== "océano de amor" &&
+        title !== "oceano de amor"
+      );
+    })
+    .map((proposalPackage) => {
+      const details = getProposalPackageDetailsFromCard(proposalPackage);
+      return details
+        ? {
+            ...proposalPackage,
+            title: details.name,
+            price: details.price,
+            included: [
+              details.copy[language === "es" ? "es" : "en"].setup[0],
+              language === "es"
+                ? "Transporte privado para la pareja"
+                : "Private transportation for the couple",
+              language === "es"
+                ? "Más de 70 fotografías editadas"
+                : "More than 70 edited photographs",
+            ],
+          }
+        : proposalPackage;
+    })
+    .sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
+
 const Index = ({ data, pageContext }) => {
   const language = pageContext.language;
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
   const pageContent = data.allContentfulPageContent.nodes[0];
   const carousel = data.allContentfulSwiperCarousel.nodes[0];
   const proposalCopy = getProposalCopy(language);
+  const proposalPackages = withoutRetiredProposalPackages(
+    data.allContentfulPackages.nodes,
+    language,
+  );
   const proposalFaqs = buildProposalFaqs({
     language,
-    packages: data.allContentfulPackages.nodes,
+    packages: proposalPackages,
   });
   const heroInfo = {
     ...pageContent,
@@ -43,11 +83,11 @@ const Index = ({ data, pageContext }) => {
 
   return (
     <Layout generalInfo={generalInfo} overlayHeader>
-      <HeroSwiper heroInfo={heroInfo} overlayHeader />
+      <HeroSwiper heroInfo={heroInfo} overlayHeader language={language} />
       <ProposalIntroduction language={language} />
       <OurPackages
         title={pageContent.sectionTitle || proposalCopy.packagesFallbackTitle}
-        photoPackages={data.allContentfulPackages.nodes}
+        photoPackages={proposalPackages}
         language={language}
       />
       <ProposalInclusions language={language} />
@@ -59,7 +99,11 @@ const Index = ({ data, pageContext }) => {
           </div>
         )}
         {carousel?.images?.length > 0 && (
-          <SwiperCarousel images={carousel.images} />
+          <SwiperCarousel
+            images={carousel.images}
+            language={language}
+            subject={heroInfo.heroHeading}
+          />
         )}
       </section>
       <ProposalBookingProcess language={language} />
@@ -96,6 +140,10 @@ export const Head = ({ pageContext, data }) => {
     ? `${images.file.url.startsWith("//") ? "https:" : ""}${images.file.url}`
     : undefined;
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const proposalPackages = withoutRetiredProposalPackages(
+    data.allContentfulPackages.nodes,
+    language,
+  );
   const instagramUrl = /^https?:\/\//i.test(generalInfo.instagram || "")
     ? generalInfo.instagram
     : "https://www.instagram.com/sertuinevents/";
@@ -112,10 +160,10 @@ export const Head = ({ pageContext, data }) => {
     telephone: generalInfo.telephone,
     instagram: instagramUrl,
     googleMapsUrl: GOOGLE_MAPS_URL,
-    packages: data.allContentfulPackages.nodes,
+    packages: proposalPackages,
     faqs: buildProposalFaqs({
       language,
-      packages: data.allContentfulPackages.nodes,
+      packages: proposalPackages,
     }),
   });
 
@@ -189,11 +237,12 @@ export const query = graphql`
           gatsbyImage(
             layout: CONSTRAINED
             width: 1200
-            placeholder: NONE
-            formats: WEBP
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
             quality: 65
           )
           title
+          description
         }
         fullSize
         heroHeading
@@ -213,11 +262,12 @@ export const query = graphql`
         price
         image {
           title
+          description
           gatsbyImage(
             layout: CONSTRAINED
             width: 800
-            placeholder: NONE
-            formats: WEBP
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
             quality: 65
           )
         }
@@ -233,11 +283,12 @@ export const query = graphql`
           gatsbyImage(
             layout: CONSTRAINED
             width: 1200
-            placeholder: NONE
-            formats: WEBP
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
             quality: 65
           )
           title
+          description
         }
       }
     }

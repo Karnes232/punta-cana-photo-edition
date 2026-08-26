@@ -16,6 +16,7 @@ const retiredPackageSlugs = new Set([
   "carribean-baby-shower",
   "sunshine-baby-shower",
   "blue-ocean-baby-shower",
+  "ocean-of-love",
 ]);
 const retiredStaticPaths = new Set([
   "/wedding",
@@ -512,5 +513,3 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 
   actions.setWebpackConfig(config);
 };
-
-

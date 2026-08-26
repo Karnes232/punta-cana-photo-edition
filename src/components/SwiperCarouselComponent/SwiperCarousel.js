@@ -8,8 +8,10 @@ import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { withSizes } from "../../utils/imageSizes";
+import { getImageSeo } from "../../utils/imageSeo";
 
-const SwiperCarousel = ({ images, className }) => {
+const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
   let photoListEdited = [];
   let HeroStyles = {
     backgroundImage:
@@ -17,10 +19,19 @@ const SwiperCarousel = ({ images, className }) => {
   };
   let imageHeight = "h-[15rem] md:h-[29rem] lg:h-[41rem] xl:h-[45rem]";
   let slideHeight = "h-[17.5rem] md:h-[32rem] lg:h-[45rem] xl:h-[48rem]";
-  images?.forEach((e) => {
+  images?.forEach((e, index) => {
+    const seo = getImageSeo(e, {
+      language,
+      subject,
+      context: "gallery",
+      index,
+    });
     let image = {
-      title: e.title,
-      image: getImage(e.gatsbyImage),
+      ...seo,
+      image: withSizes(
+        getImage(e.gatsbyImage),
+        "(min-width: 768px) 59vw, 100vw",
+      ),
     };
     photoListEdited.push(image);
   });
@@ -57,7 +68,8 @@ const SwiperCarousel = ({ images, className }) => {
               >
                 <GatsbyImage
                   image={image.image}
-                  alt={image.title}
+                  alt={image.alt}
+                  title={image.title}
                   className={`w-full object-cover object-center ${imageHeight}`}
                 />
                 <div
