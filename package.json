@@ -10,7 +10,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "node scripts/validate-proposal-schema-source.js && gatsby build && node scripts/validate-proposal-seo.js",
     "validate:proposal-seo-source": "node scripts/validate-proposal-schema-source.js",
     "validate:proposal-seo": "node scripts/validate-proposal-seo.js",
     "serve": "gatsby serve",

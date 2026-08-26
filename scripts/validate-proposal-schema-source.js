@@ -45,6 +45,19 @@ const expectedPrices = new Map([
   ["cozy-love", 1489],
   ["eternal-passion", 1799],
 ]);
+const routeSlugs = new Map([
+  ["infinity-love", "infinity-love-proposal"],
+  ["golden-whisper", "golden-whisper"],
+  ["amour-essence", "amour-essence"],
+  ["sign-of-love", "sign-of-love-proposal"],
+  ["amour-by-the-sea", "amour-by-the-sea"],
+  ["coral-passion", "coral-passion"],
+  ["romantic-hoopa", "romantic-huppa-proposal"],
+  ["white-serenity", "white-serenity-proposal"],
+  ["romantic-dinner-marriage-proposal", "romantic-dinner-marriage-proposal"],
+  ["cozy-love", "cozy-love"],
+  ["eternal-passion", "eternal-passion"],
+]);
 
 assert.equal(proposalPackageDetails.length, 11);
 assert.deepEqual(
@@ -58,7 +71,7 @@ proposalPackageDetails.forEach((item) => {
 const packageCards = proposalPackageDetails.map((item) => ({
   title: item.name,
   price: item.price,
-  packagePage: { urlSlug: item.id },
+  packagePage: { urlSlug: routeSlugs.get(item.id) },
 }));
 
 for (const { language, prefix } of [
@@ -86,7 +99,7 @@ for (const { language, prefix } of [
   assert.equal(hubService.hasOfferCatalog["@id"], catalog["@id"]);
 
   proposalPackageDetails.forEach((item, index) => {
-    const pageUrl = `${rootUrl}${prefix}/packages/${item.id}/`;
+    const pageUrl = `${rootUrl}${prefix}/packages/${routeSlugs.get(item.id)}/`;
     const hubOffer = catalog.itemListElement[index];
     assert.equal(hubOffer["@id"], `${pageUrl}#offer`);
     assert.equal(hubOffer.url, pageUrl);

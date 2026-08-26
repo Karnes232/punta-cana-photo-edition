@@ -5,14 +5,14 @@ const path = require("node:path");
 const rootUrl = "https://sertuinevents.com";
 const publicDir = path.resolve(__dirname, "..", "public");
 const expectedPackages = [
-  ["infinity-love", "Infinity Love", 999],
+  ["infinity-love-proposal", "Infinity Love", 999],
   ["golden-whisper", "Golden Whisper", 1089],
   ["amour-essence", "Amour Essence", 1099],
-  ["sign-of-love", "Sign of Love", 1169],
+  ["sign-of-love-proposal", "Sign of Love", 1169],
   ["amour-by-the-sea", "Amour by the Sea", 1189],
   ["coral-passion", "Coral Passion", 1199],
-  ["romantic-hoopa", "Romantic Hoopa", 1239],
-  ["white-serenity", "White Serenity", 1389],
+  ["romantic-huppa-proposal", "Romantic Hoopa", 1239],
+  ["white-serenity-proposal", "White Serenity", 1389],
   [
     "romantic-dinner-marriage-proposal",
     "Romantic Dinner Marriage Proposal",
