@@ -27,7 +27,7 @@ const withoutYear = (text = "") =>
     .replace(/\s{2,}/g, " ")
     .trim();
 
-const withoutRetiredProposalPackages = (packages = [], language = "en-US") =>
+const withoutRetiredProposalPackages = (packages = []) =>
   packages
     .filter((proposalPackage) => {
       const slug = proposalPackage.packagePage?.urlSlug?.trim().toLowerCase();
@@ -48,15 +48,6 @@ const withoutRetiredProposalPackages = (packages = [], language = "en-US") =>
             ...proposalPackage,
             title: details.name,
             price: details.price,
-            included: [
-              details.copy[language === "es" ? "es" : "en"].setup[0],
-              language === "es"
-                ? "Transporte privado para la pareja"
-                : "Private transportation for the couple",
-              language === "es"
-                ? "Más de 70 fotografías editadas"
-                : "More than 70 edited photographs",
-            ],
           }
         : proposalPackage;
     })
@@ -70,7 +61,6 @@ const Index = ({ data, pageContext }) => {
   const proposalCopy = getProposalCopy(language);
   const proposalPackages = withoutRetiredProposalPackages(
     data.allContentfulPackages.nodes,
-    language,
   );
   const proposalFaqs = buildProposalFaqs({
     language,
@@ -142,7 +132,6 @@ export const Head = ({ pageContext, data }) => {
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
   const proposalPackages = withoutRetiredProposalPackages(
     data.allContentfulPackages.nodes,
-    language,
   );
   const instagramUrl = /^https?:\/\//i.test(generalInfo.instagram || "")
     ? generalInfo.instagram
