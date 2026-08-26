@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from "react";
 import PhoneInput, {
-    isPossiblePhoneNumber,
+  isPossiblePhoneNumber,
   parsePhoneNumber,
 } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { trackFormError, trackFormSuccess } from "../../utils/analytics";
 import {
   ArrowRight,
   Camera,
@@ -972,6 +973,7 @@ const ElopementForm = ({
     if (!phoneCountry || !phone || !isPossiblePhoneNumber(phone)) {
       setStatus("error");
       setFormError(copy.form.phoneError);
+      trackFormError(event.currentTarget, "invalid_phone");
       return;
     }
 
@@ -1000,9 +1002,7 @@ const ElopementForm = ({
         .catch(() => ({}));
 
       if (!validationResponse.ok) {
-        throw new Error(
-          validationResult.error || "Form validation failed",
-        );
+        throw new Error(validationResult.error || "Form validation failed");
       }
 
       const formResponse = await fetch("/", {
@@ -1015,10 +1015,19 @@ const ElopementForm = ({
         throw new Error("Form submission failed");
       }
 
+      trackFormSuccess(form);
       form.reset();
       setPhone("");
       setStatus("success");
     } catch (error) {
+      trackFormError(
+        form,
+        /email/i.test(error.message)
+          ? "invalid_email"
+          : /phone/i.test(error.message)
+            ? "invalid_phone"
+            : "submission_error",
+      );
       setStatus("error");
       setFormError(
         /email/i.test(error.message)
@@ -1058,7 +1067,9 @@ const ElopementForm = ({
     <form
       name="elopement-request"
       method="POST"
-      action="/contact/thankyou/"
+      action={
+        language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"
+      }
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
@@ -1143,7 +1154,10 @@ const ElopementForm = ({
                 setFormError("");
               }
             }}
-            countrySelectProps={{ "aria-label": copy.form.phoneCountry, required: true }}
+            countrySelectProps={{
+              "aria-label": copy.form.phoneCountry,
+              required: true,
+            }}
             numberInputProps={{
               className:
                 "w-full bg-transparent px-3 py-3 font-montserrat text-sm text-stone-900 outline-none",

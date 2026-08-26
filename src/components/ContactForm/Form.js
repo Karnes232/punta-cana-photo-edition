@@ -4,6 +4,7 @@ import MoreInfo from "./MoreInfo";
 import OptionSelect from "./OptionSelect";
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
+import { passVisitorName } from "../../utils/thankYouName";
 const Form = () => {
   const { t, i18n } = useTranslation();
   const [name, setName] = useState("");
@@ -13,7 +14,8 @@ const Form = () => {
       <form
         name="contact"
         method="POST"
-        action={`${i18n.language === "es" ? "/es" : ""}/contact/thankyou/?name=${encodeURIComponent(name)}`}
+        action={`${i18n.language === "es" ? "/es" : ""}/contact/thankyou/`}
+        onSubmit={passVisitorName()}
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         id="contact"

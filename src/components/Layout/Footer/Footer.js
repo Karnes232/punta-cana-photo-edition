@@ -7,6 +7,7 @@ import Sitemap from "./Sitemap";
 import Signature from "./Signature";
 import LanguageSwitcher from "../../LanguageSwitcherComponents/LanguageSwitcher";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import { Link } from "gatsby";
 const Footer = ({ generalInfo }) => {
   const { language } = useI18next();
   const instatag = generalInfo.instagram.split("/")[3];
@@ -39,6 +40,23 @@ const Footer = ({ generalInfo }) => {
         <SocialMedia generalInfo={generalInfo} />
       </div>
       <Copyright companyName={generalInfo.companyName} language={language} />
+      <div className="flex flex-wrap items-center gap-4 font-montserrat text-xs text-slate-400">
+        <Link
+          to={language === "es" ? "/es/privacy/" : "/privacy/"}
+          className="underline underline-offset-2 hover:text-slate-700"
+        >
+          {language === "es" ? "Política de privacidad" : "Privacy policy"}
+        </Link>
+        <button
+          type="button"
+          onClick={() =>
+            window.dispatchEvent(new Event("sertuin:privacy-settings"))
+          }
+          className="underline underline-offset-2 hover:text-slate-700"
+        >
+          {language === "es" ? "Preferencias de cookies" : "Cookie preferences"}
+        </button>
+      </div>
       <Signature />
     </div>
   );

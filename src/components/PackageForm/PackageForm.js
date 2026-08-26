@@ -12,6 +12,7 @@ import { getMenuItemLabel } from "../../data/proposalDinnerMenu";
 import DinnerMenuSelector, {
   createEmptyDinnerSelection,
 } from "./DinnerMenuSelector";
+import { trackEvent } from "../../utils/analytics";
 const PackageForm = ({
   packageInformation,
   formData,
@@ -137,7 +138,16 @@ const PackageForm = ({
                       ? "border-blue-500 bg-blue-50 "
                       : "hover:border-gray-300"
                   }`}
-                  onClick={() => handleAddOnToggle(addition)}
+                  onClick={() => {
+                    const wasSelected = selectedAddOns.includes(addition.id);
+                    handleAddOnToggle(addition);
+                    trackEvent("package_option_change", {
+                      option_type:
+                        proposalAddOnType(addition.addition)?.key || "add_on",
+                      option_name: addition.addition,
+                      option_state: wasSelected ? "removed" : "selected",
+                    });
+                  }}
                   aria-pressed={selectedAddOns.includes(addition.id)}
                   aria-label={`${addition.addition}, ${formatter.format(
                     addition.price,

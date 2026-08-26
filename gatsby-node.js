@@ -267,6 +267,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      const privacyPath = urlPath === "" ? "/privacy" : `/${urlPath}/privacy`;
+      createPage({
+        path: privacyPath,
+        component: path.resolve("./src/pages/privacy/index.js"),
+        context: {
+          language: contentfulCode,
+          urlLanguage: urlCode,
+        },
+      });
+
       const proposalPath =
         urlPath === "" ? "/proposal" : `/${urlPath}/proposal`;
       createPage({
