@@ -18,6 +18,8 @@ import { getImageSeo } from "../utils/imageSeo";
 import { getProposalPackageDetails } from "../data/proposalPackageDetails";
 import { buildProposalPackageFaqs } from "../data/proposalPackageFaqs";
 import ProposalPackageDetails from "../components/ProposalComponents/ProposalPackageDetails";
+import { buildProposalPackageSchema } from "../utils/proposalSeo";
+import { GOOGLE_MAPS_URL } from "../components/ProposalComponents/ProposalExperience";
 const PackagePage = ({ pageContext, data }) => {
   const { t } = useTranslation();
   const node = data.allContentfulPackagePageContent.nodes[0];
@@ -235,12 +237,49 @@ export const Head = ({ pageContext, data }) => {
       }
     : node;
   const schema = node?.schema?.internal?.content;
+  const resolvedDescription =
+    proposalDetails?.content.summary || seoDescription?.seoDescription;
 
   // The schema blob and the page price are maintained separately in Contentful
   // and have drifted apart before. The page price wins; every correction is
   // logged so the drift is visible in the build output.
   let JsonSchema = {};
-  if (schema) {
+  if (proposalDetails) {
+    const proposalPageUrl = `${rootUrl}${language === "es" ? "/es" : ""}/proposal/`;
+    const instagramUrl = /^https?:\/\//i.test(
+      pageContext.layout?.instagram || "",
+    )
+      ? pageContext.layout.instagram
+      : "https://www.instagram.com/sertuinevents/";
+    const schemaImages = [
+      seoImageUrl
+        ? {
+            url: seoImageUrl,
+            title: proposalDetails.name,
+            description: resolvedDescription,
+          }
+        : null,
+      ...(node.heroImageList || []),
+      ...(node.images || []),
+    ].filter(Boolean);
+
+    JsonSchema = buildProposalPackageSchema({
+      siteUrl: rootUrl,
+      pageUrl: siteUrl,
+      proposalPageUrl,
+      language,
+      packageName: proposalDetails.name,
+      description: resolvedDescription,
+      price: proposalDetails.price,
+      images: schemaImages,
+      companyName: pageContext.layout?.companyName,
+      legalName: "Sertuin SRL",
+      directorName: "Grecia Mejía",
+      telephone: pageContext.layout?.telephone,
+      instagram: instagramUrl,
+      googleMapsUrl: GOOGLE_MAPS_URL,
+    });
+  } else if (schema) {
     try {
       const packageForSchema = nodeWithCanonicalPrice?.packages?.[0]
         ? {
@@ -271,9 +310,7 @@ export const Head = ({ pageContext, data }) => {
     <>
       <Seo
         title={resolvedSeoTitle}
-        description={
-          proposalDetails?.content.summary || seoDescription?.seoDescription
-        }
+        description={resolvedDescription}
         keywords={seoKeywords?.join(", ")}
         image={seoImageUrl}
         url={siteUrl}
@@ -346,6 +383,9 @@ export const query = graphql`
           )
           title
           description
+          file {
+            url
+          }
         }
         packageInformation {
           raw
@@ -353,6 +393,9 @@ export const query = graphql`
         images {
           title
           description
+          file {
+            url
+          }
           gatsbyImage(
             layout: CONSTRAINED
             width: 1200

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 import {
   Camera,
   CarFront,
@@ -16,6 +17,9 @@ import {
 
 const copy = {
   en: {
+    breadcrumbLabel: "Package navigation",
+    breadcrumbHome: "Home",
+    breadcrumbProposals: "Marriage proposal packages",
     eyebrow: "Exactly what you are booking",
     basePrice: "Base price",
     priceNote:
@@ -107,6 +111,9 @@ const copy = {
     ],
   },
   es: {
+    breadcrumbLabel: "Navegación del paquete",
+    breadcrumbHome: "Inicio",
+    breadcrumbProposals: "Paquetes de propuestas de matrimonio",
     eyebrow: "Exactamente lo que estás reservando",
     basePrice: "Precio base",
     priceNote:
@@ -210,7 +217,10 @@ const DetailIcon = ({ icon: Icon }) => (
 );
 
 const ProposalPackageDetails = ({ details, language }) => {
-  const content = copy[language === "es" ? "es" : "en"];
+  const isSpanish = language === "es";
+  const content = copy[isSpanish ? "es" : "en"];
+  const homePath = isSpanish ? "/es/" : "/";
+  const proposalPath = isSpanish ? "/es/proposal/" : "/proposal/";
 
   if (!details) return null;
 
@@ -241,6 +251,36 @@ const ProposalPackageDetails = ({ details, language }) => {
   return (
     <div className="bg-secondary-bg-color">
       <section className="mx-auto max-w-6xl px-5 py-10 md:py-14">
+        <nav aria-label={content.breadcrumbLabel} className="mb-7">
+          <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+            <li>
+              <Link
+                to={homePath}
+                className="underline decoration-gray-300 underline-offset-4 transition-colors hover:text-primary-color"
+              >
+                {content.breadcrumbHome}
+              </Link>
+            </li>
+            <li aria-hidden="true" className="text-gray-400">
+              /
+            </li>
+            <li>
+              <Link
+                to={proposalPath}
+                className="underline decoration-gray-300 underline-offset-4 transition-colors hover:text-primary-color"
+              >
+                {content.breadcrumbProposals}
+              </Link>
+            </li>
+            <li aria-hidden="true" className="text-gray-400">
+              /
+            </li>
+            <li aria-current="page" className="text-gray-800">
+              {details.name}
+            </li>
+          </ol>
+        </nav>
+
         <div className="grid items-center gap-8 border-b border-stone-200 pb-9 lg:grid-cols-[1fr_auto]">
           <div className="max-w-3xl">
             <p className="font-crimson text-xs uppercase tracking-[0.24em] text-gray-500 md:text-sm">
