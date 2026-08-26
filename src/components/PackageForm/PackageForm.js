@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Check } from "lucide-react";
 import { Trans } from "gatsby-plugin-react-i18next";
 import { passVisitorName } from "../../utils/thankYouName";
+import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
+import {
+  getProposalAdditions,
+  proposalAddOnType,
+} from "../../utils/proposalPackageRules";
+import { getProposalPackageDetails } from "../../data/proposalPackageDetails";
+import { getMenuItemLabel } from "../../data/proposalDinnerMenu";
+import DinnerMenuSelector, {
+  createEmptyDinnerSelection,
+} from "./DinnerMenuSelector";
 const PackageForm = ({
   packageInformation,
   formData,
@@ -10,8 +20,24 @@ const PackageForm = ({
   handleAddOnToggle,
   language,
 }) => {
-  const additions = [...(packageInformation.packages[0].additions || [])].sort(
-    (a, b) => (a.price > b.price ? 1 : -1),
+  const [dinnerSelection, setDinnerSelection] = useState(
+    createEmptyDinnerSelection,
+  );
+  const proposalDetails = getProposalPackageDetails(
+    packageInformation,
+    language,
+  );
+  const additions = getProposalAdditions(packageInformation, language).sort(
+    (a, b) => Number(a.price || 0) - Number(b.price || 0),
+  );
+  const dinnerAddition = additions.find(
+    (addition) => proposalAddOnType(addition.addition)?.key === "dinner",
+  );
+  const dinnerIsSelected = Boolean(
+    dinnerAddition && selectedAddOns.includes(dinnerAddition.id),
+  );
+  const dinnerIsAvailable = Boolean(
+    proposalDetails?.dinnerIncluded || dinnerIsSelected,
   );
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -42,7 +68,7 @@ const PackageForm = ({
   const calculateTotal = () => {
     const addOnsTotal = selectedAddOns.reduce((sum, id) => {
       const addOn = additions.find((item) => item.id === id);
-      return sum + addOn.price;
+      return sum + Number(addOn?.price || 0);
     }, 0);
     return packageInformation.packages[0].price + addOnsTotal;
   };
@@ -51,11 +77,40 @@ const PackageForm = ({
     .filter(Boolean)
     .map((item) => `${item.addition} - $${item.price}`)
     .join(", ");
+  const chooseLater =
+    language === "es"
+      ? "Elegir después con el coordinador"
+      : "Choose later with coordinator";
+  const menuValue = (guest, section) =>
+    getMenuItemLabel(
+      section,
+      dinnerSelection[guest]?.[
+        section === "starters"
+          ? "starter"
+          : section === "mains"
+            ? "main"
+            : "dessert"
+      ],
+      language,
+    ) || chooseLater;
+  const wineChoice =
+    dinnerSelection.wine === "red"
+      ? language === "es"
+        ? "Vino tinto"
+        : "Red wine"
+      : dinnerSelection.wine === "white"
+        ? language === "es"
+          ? "Vino blanco"
+          : "White wine"
+        : chooseLater;
   const thankYouPath =
     language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/";
   return (
     <>
-      <div className="mx-auto px-4 py-12 w-full lg:h-full  flex justify-center items-center">
+      <div
+        id="package-booking"
+        className="mx-auto px-4 py-12 w-full lg:h-full flex scroll-mt-24 justify-center items-center"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
           <div className="space-y-8">
             <div className="text-center p-6  rounded-lg">
@@ -154,6 +209,61 @@ const PackageForm = ({
                 name="estimated-total"
                 value={calculateTotal()}
               />
+              <input
+                type="hidden"
+                name="dinner-selection-status"
+                value={
+                  dinnerIsAvailable
+                    ? proposalDetails?.dinnerIncluded
+                      ? "Included in package"
+                      : "Selected add-on"
+                    : "Not selected"
+                }
+              />
+              <input
+                type="hidden"
+                name="dinner-guest-1-starter"
+                value={dinnerIsAvailable ? menuValue("guest1", "starters") : ""}
+              />
+              <input
+                type="hidden"
+                name="dinner-guest-1-main"
+                value={dinnerIsAvailable ? menuValue("guest1", "mains") : ""}
+              />
+              <input
+                type="hidden"
+                name="dinner-guest-1-dessert"
+                value={dinnerIsAvailable ? menuValue("guest1", "desserts") : ""}
+              />
+              <input
+                type="hidden"
+                name="dinner-guest-2-starter"
+                value={dinnerIsAvailable ? menuValue("guest2", "starters") : ""}
+              />
+              <input
+                type="hidden"
+                name="dinner-guest-2-main"
+                value={dinnerIsAvailable ? menuValue("guest2", "mains") : ""}
+              />
+              <input
+                type="hidden"
+                name="dinner-guest-2-dessert"
+                value={dinnerIsAvailable ? menuValue("guest2", "desserts") : ""}
+              />
+              <input
+                type="hidden"
+                name="dinner-wine"
+                value={dinnerIsAvailable ? wineChoice : ""}
+              />
+              <input
+                type="hidden"
+                name="dietary-restrictions"
+                value={
+                  dinnerIsAvailable
+                    ? dinnerSelection.restrictions || "None provided"
+                    : ""
+                }
+              />
               <p className="hidden">
                 <label>
                   <Trans>Do not fill this out</Trans>:{" "}
@@ -203,12 +313,14 @@ const PackageForm = ({
                 >
                   <Trans>Phone</Trans>
                 </label>
-                <input
-                  type="tel"
+                <InternationalPhoneField
                   id="packageForm-phone"
                   name="phone"
                   value={formData.phone}
-                  onChange={handleInputChange}
+                  onChange={(phone) =>
+                    setFormData((prev) => ({ ...prev, phone }))
+                  }
+                  language={language}
                   className="w-full p-2 border rounded-md"
                   required
                 />
@@ -265,6 +377,14 @@ const PackageForm = ({
                   required
                 ></textarea>
               </div>
+
+              {dinnerIsAvailable && (
+                <DinnerMenuSelector
+                  language={language}
+                  value={dinnerSelection}
+                  onChange={setDinnerSelection}
+                />
+              )}
 
               <button
                 type="submit"

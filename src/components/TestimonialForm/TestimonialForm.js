@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { passVisitorName } from "../../utils/thankYouName";
+import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
 
-const TestimonialForm = () => {
+const TestimonialForm = ({ language = "en-US" }) => {
+  const [phone, setPhone] = useState("");
   const inputClass =
     "mt-2 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 font-montserrat text-base text-slate-950 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-100";
 
@@ -44,6 +46,28 @@ const TestimonialForm = () => {
               type="text"
               name="names"
               autoComplete="name"
+              required
+            />
+          </label>
+          <label className="block font-montserrat text-sm font-semibold text-slate-800">
+            Email *
+            <input
+              className={inputClass}
+              type="email"
+              name="email"
+              autoComplete="email"
+              required
+            />
+          </label>
+          <label className="block font-montserrat text-sm font-semibold text-slate-800">
+            Phone / WhatsApp *
+            <InternationalPhoneField
+              id="testimonial-phone"
+              name="phone"
+              value={phone}
+              onChange={setPhone}
+              language={language}
+              className={inputClass}
               required
             />
           </label>
