@@ -134,7 +134,7 @@ const packages = [
   {
     id: "sign-of-love",
     name: "Sign of Love",
-    aliases: ["sign of love"],
+    aliases: ["sign of love", "sign of love proposal", "signo de amor"],
     price: 1169,
     coldSparks: true,
     copy: {
@@ -256,7 +256,13 @@ const packages = [
   {
     id: "romantic-hoopa",
     name: "Romantic Hoopa",
-    aliases: ["romantic hoopa"],
+    aliases: [
+      "romantic hoopa",
+      "romantic huppa",
+      "romantic huppa proposal",
+      "juppa romantica",
+      "huppa romantica",
+    ],
     price: 1239,
     coldSparks: true,
     charcuterieIncluded: true,
@@ -298,7 +304,7 @@ const packages = [
   {
     id: "white-serenity",
     name: "White Serenity",
-    aliases: ["white serenity"],
+    aliases: ["white serenity", "white serenity proposal", "esencia de calma"],
     price: 1389,
     coldSparks: true,
     charcuterieIncluded: true,
