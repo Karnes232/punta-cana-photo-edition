@@ -27,7 +27,66 @@ const withoutYear = (text = "") =>
     .replace(/\s{2,}/g, " ")
     .trim();
 
-const withoutRetiredProposalPackages = (packages = []) =>
+const getConciseProposalInclusions = (details, language) => {
+  const isSpanish = language === "es";
+  const labels = isSpanish
+    ? {
+        transportation: "Transporte privado para la pareja",
+        photography: "Más de 70 fotografías editadas",
+        bouquetWine: "Bouquet natural y vino espumante",
+        duration: "De 90 a 120 minutos en la playa",
+        charcuterie: "Charcutería para dos",
+        dinner: "Cena privada de tres tiempos para dos",
+        dinnerDrinks: "Vino espumante y vino tinto o blanco",
+        violin: "Violinista en vivo durante 45 minutos",
+      }
+    : {
+        transportation: "Private transportation for the couple",
+        photography: "More than 70 edited photographs",
+        bouquetWine: "Natural bouquet and sparkling wine",
+        duration: "90 to 120 minutes on the beach",
+        charcuterie: "Charcuterie for two",
+        dinner: "Private three-course dinner for two",
+        dinnerDrinks: "Sparkling wine plus red or white wine",
+        violin: "Live violinist for 45 minutes",
+      };
+
+  if (details.dinnerIncluded) {
+    return [
+      labels.transportation,
+      labels.photography,
+      labels.dinner,
+      details.violinIncluded ? labels.violin : labels.dinnerDrinks,
+    ];
+  }
+
+  if (details.charcuterieIncluded) {
+    return [
+      labels.transportation,
+      labels.photography,
+      labels.charcuterie,
+      labels.bouquetWine,
+    ];
+  }
+
+  if (details.violinIncluded) {
+    return [
+      labels.transportation,
+      labels.photography,
+      labels.violin,
+      labels.bouquetWine,
+    ];
+  }
+
+  return [
+    labels.transportation,
+    labels.photography,
+    labels.bouquetWine,
+    labels.duration,
+  ];
+};
+
+const withoutRetiredProposalPackages = (packages = [], language = "en-US") =>
   packages
     .filter((proposalPackage) => {
       const slug = proposalPackage.packagePage?.urlSlug?.trim().toLowerCase();
@@ -48,6 +107,7 @@ const withoutRetiredProposalPackages = (packages = []) =>
             ...proposalPackage,
             title: details.name,
             price: details.price,
+            included: getConciseProposalInclusions(details, language),
           }
         : proposalPackage;
     })
@@ -61,6 +121,7 @@ const Index = ({ data, pageContext }) => {
   const proposalCopy = getProposalCopy(language);
   const proposalPackages = withoutRetiredProposalPackages(
     data.allContentfulPackages.nodes,
+    language,
   );
   const proposalFaqs = buildProposalFaqs({
     language,
@@ -132,6 +193,7 @@ export const Head = ({ pageContext, data }) => {
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
   const proposalPackages = withoutRetiredProposalPackages(
     data.allContentfulPackages.nodes,
+    language,
   );
   const instagramUrl = /^https?:\/\//i.test(generalInfo.instagram || "")
     ? generalInfo.instagram
