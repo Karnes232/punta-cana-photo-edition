@@ -182,8 +182,8 @@ const DinnerMenuSelector = ({ language, value, onChange }) => {
             <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-y-auto p-4 md:p-8">
-            <div className="flex min-h-full items-center justify-center">
+          <div className="fixed inset-0 flex items-center justify-center p-4 md:p-8">
+            <div className="flex w-full items-center justify-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-200"
@@ -193,8 +193,8 @@ const DinnerMenuSelector = ({ language, value, onChange }) => {
                 leaveFrom="opacity-100 translate-y-0"
                 leaveTo="opacity-0 translate-y-4"
               >
-                <DialogPanel className="w-full max-w-6xl bg-white p-6 shadow-2xl md:p-10">
-                  <div className="flex items-start justify-between gap-5">
+                <DialogPanel className="max-h-[calc(100dvh-2rem)] w-full max-w-6xl overflow-y-auto overscroll-contain bg-white shadow-2xl [-webkit-overflow-scrolling:touch] md:max-h-[calc(100dvh-4rem)]">
+                  <div className="sticky top-0 z-10 flex items-start justify-between gap-5 border-b border-stone-200 bg-white p-6 md:px-10 md:py-7">
                     <div>
                       <DialogTitle className="font-crimson text-3xl font-normal text-gray-900 md:text-4xl">
                         {labels.title}
@@ -213,7 +213,7 @@ const DinnerMenuSelector = ({ language, value, onChange }) => {
                     </button>
                   </div>
 
-                  <div className="mt-9 grid gap-9 lg:grid-cols-[0.9fr_1.1fr]">
+                  <div className="grid gap-9 p-6 lg:grid-cols-[0.9fr_1.1fr] md:p-10">
                     <div className="space-y-7">
                       {["guest1", "guest2"].map((guest, guestIndex) => (
                         <fieldset
@@ -297,7 +297,7 @@ const DinnerMenuSelector = ({ language, value, onChange }) => {
                     <MenuList language={language} labels={labels} />
                   </div>
 
-                  <div className="mt-9 flex justify-end border-t border-stone-200 pt-6">
+                  <div className="sticky bottom-0 z-10 flex justify-end border-t border-stone-200 bg-white p-5 md:px-10 md:py-6">
                     <button
                       type="button"
                       onClick={() => setOpen(false)}

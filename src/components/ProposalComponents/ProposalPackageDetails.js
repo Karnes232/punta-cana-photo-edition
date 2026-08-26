@@ -1,15 +1,15 @@
 import React from "react";
+import { Link } from "gatsby";
 import {
   Camera,
   CarFront,
   Check,
+  ChevronDown,
   Clock3,
   Flower2,
   GlassWater,
-  Info,
   MapPin,
   Music2,
-  ShieldCheck,
   Smartphone,
   UsersRound,
   UtensilsCrossed,
@@ -17,10 +17,17 @@ import {
 
 const copy = {
   en: {
+    breadcrumbLabel: "Package navigation",
+    breadcrumbHome: "Home",
+    breadcrumbProposals: "Marriage proposal packages",
     eyebrow: "Exactly what you are booking",
     basePrice: "Base price",
     priceNote:
       "US$200 deposit and remaining balance in cash after the experience",
+    quickTitle: "Essentials included",
+    setupDetailsLabel: "See the setup and specific inclusions",
+    completeInfoLabel: "See logistics, payments and policies",
+    specialTitle: "Included especially with this package",
     setupTitle: "The setup",
     setupIntro:
       "The photographed design and every element listed below are part of the standard package. Minor placement variations may occur without reducing the promised visual volume.",
@@ -31,12 +38,15 @@ const copy = {
     charcuterieTitle: "Charcuterie for two included",
     charcuterieText:
       "One shared board with cold cuts, seasonal cheeses and fruit, nuts and olives. Ingredients may vary by season while preserving an equivalent quantity. Vegetarian, allergy and dietary adaptations are available without an extra charge when requested in advance. Toothpicks and napkins are included; plates and cutlery are not.",
+    charcuterieShort: "A seasonal shared charcuterie board for two.",
     dinnerTitle: "Private three-course dinner for two included",
     dinnerText:
       "Each guest independently chooses one starter, one main course and one dessert. The dinner includes water, one 750 ml sparkling wine and one additional 750 ml bottle of red or white wine. It is prepared by a professional chef in the property kitchen and served by a dedicated waiter after the proposal and the first photographs. Menu choices may be made later and modified up to 48 hours before the experience.",
+    dinnerShort: "A private, fully served three-course dinner for two.",
     violinTitle: "Live violin included",
     violinText:
       "An amplified 45-minute violin set accompanies the arrival, reveal and proposal. Special songs must be requested at least two weeks in advance so the artist can prepare them.",
+    violinShort: "An amplified 45-minute live violin performance.",
     importantTitle: "Important booking conditions",
     importantIntro:
       "Clear operating and payment rules protect the timing, privacy and quality of your experience.",
@@ -101,10 +111,17 @@ const copy = {
     ],
   },
   es: {
+    breadcrumbLabel: "Navegación del paquete",
+    breadcrumbHome: "Inicio",
+    breadcrumbProposals: "Paquetes de propuestas de matrimonio",
     eyebrow: "Exactamente lo que estás reservando",
     basePrice: "Precio base",
     priceNote:
       "Depósito de US$200 y saldo restante en efectivo después de la experiencia",
+    quickTitle: "Lo esencial incluido",
+    setupDetailsLabel: "Ver montaje e inclusiones específicas",
+    completeInfoLabel: "Ver logística, pagos y políticas",
+    specialTitle: "Incluido especialmente en este paquete",
     setupTitle: "El montaje",
     setupIntro:
       "El diseño fotografiado y cada elemento descrito a continuación forman parte del paquete estándar. Puede haber pequeños cambios de ubicación sin reducir el volumen visual prometido.",
@@ -115,12 +132,17 @@ const copy = {
     charcuterieTitle: "Charcutería para dos incluida",
     charcuterieText:
       "Una tabla compartida con embutidos, quesos y frutas de temporada, frutos secos y olivas. Los ingredientes pueden variar según la temporada manteniendo una cantidad equivalente. Puede adaptarse gratuitamente para vegetarianos, alergias o restricciones alimentarias si se solicita con anticipación. Incluye palillos y servilletas; no incluye platos ni cubertería.",
+    charcuterieShort:
+      "Tabla de charcutería de temporada para compartir entre dos.",
     dinnerTitle: "Cena privada de tres tiempos para dos incluida",
     dinnerText:
       "Cada integrante elige independientemente una entrada, un plato fuerte y un postre. La cena incluye agua, una botella de vino espumante de 750 ml y una botella adicional de vino tinto o blanco de 750 ml. Un chef profesional la prepara en la cocina de la propiedad y un camarero dedicado la sirve después de la propuesta y las primeras fotografías. El menú puede elegirse posteriormente y modificarse hasta 48 horas antes.",
+    dinnerShort: "Cena privada de tres tiempos con servicio completo para dos.",
     violinTitle: "Violín en vivo incluido",
     violinText:
       "Una presentación amplificada de violín de 45 minutos acompaña la llegada, la revelación y la propuesta. Las canciones especiales deben solicitarse con al menos dos semanas de anticipación para que el artista pueda prepararlas.",
+    violinShort:
+      "Presentación amplificada de violín en vivo durante 45 minutos.",
     importantTitle: "Condiciones importantes de la reserva",
     importantIntro:
       "Reglas operativas y de pago claras protegen el tiempo, la privacidad y la calidad de la experiencia.",
@@ -194,36 +216,95 @@ const DetailIcon = ({ icon: Icon }) => (
   />
 );
 
-const Highlight = ({ icon, title, children }) => (
-  <article className="border border-stone-200 bg-white p-6 md:p-7">
-    <div className="flex items-center gap-3">
-      <DetailIcon icon={icon} />
-      <h3 className="font-crimson text-2xl font-normal text-gray-900">
-        {title}
-      </h3>
-    </div>
-    <p className="mt-4 font-crimson text-lg leading-relaxed text-gray-700">
-      {children}
-    </p>
-  </article>
-);
-
 const ProposalPackageDetails = ({ details, language }) => {
-  const content = copy[language === "es" ? "es" : "en"];
+  const isSpanish = language === "es";
+  const content = copy[isSpanish ? "es" : "en"];
+  const homePath = isSpanish ? "/es/" : "/";
+  const proposalPath = isSpanish ? "/es/proposal/" : "/proposal/";
 
   if (!details) return null;
 
+  const quickInclusions = [0, 1, 3, 4, 5, 6].map(
+    (index) => content.common[index],
+  );
+  const specialInclusions = [
+    details.charcuterieIncluded && {
+      icon: UtensilsCrossed,
+      title: content.charcuterieTitle,
+      short: content.charcuterieShort,
+      description: content.charcuterieText,
+    },
+    details.dinnerIncluded && {
+      icon: UtensilsCrossed,
+      title: content.dinnerTitle,
+      short: content.dinnerShort,
+      description: content.dinnerText,
+    },
+    details.violinIncluded && {
+      icon: Music2,
+      title: content.violinTitle,
+      short: content.violinShort,
+      description: content.violinText,
+    },
+  ].filter(Boolean);
+
+  const handleBookingClick = (event) => {
+    const bookingSection = document.getElementById("package-booking");
+    if (!bookingSection) return;
+
+    event.preventDefault();
+    const reduceMotion = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    bookingSection.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className="bg-secondary-bg-color">
-      <section className="mx-auto max-w-7xl px-5 py-14 md:py-20">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="font-crimson text-xs uppercase tracking-[0.24em] text-gray-500 md:text-sm">
-            {content.eyebrow}
-          </p>
-          <p className="mt-5 font-crimson text-xl leading-relaxed text-gray-700 md:text-2xl">
-            {details.content.summary}
-          </p>
-          <div className="mt-7">
+      <section className="mx-auto max-w-6xl px-5 py-10 md:py-14">
+        <nav aria-label={content.breadcrumbLabel} className="mb-7">
+          <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+            <li>
+              <Link
+                to={homePath}
+                className="underline decoration-gray-300 underline-offset-4 transition-colors hover:text-primary-color"
+              >
+                {content.breadcrumbHome}
+              </Link>
+            </li>
+            <li aria-hidden="true" className="text-gray-400">
+              /
+            </li>
+            <li>
+              <Link
+                to={proposalPath}
+                className="underline decoration-gray-300 underline-offset-4 transition-colors hover:text-primary-color"
+              >
+                {content.breadcrumbProposals}
+              </Link>
+            </li>
+            <li aria-hidden="true" className="text-gray-400">
+              /
+            </li>
+            <li aria-current="page" className="text-gray-800">
+              {details.name}
+            </li>
+          </ol>
+        </nav>
+
+        <div className="grid items-center gap-8 border-b border-stone-200 pb-9 lg:grid-cols-[1fr_auto]">
+          <div className="max-w-3xl">
+            <p className="font-crimson text-xs uppercase tracking-[0.24em] text-gray-500 md:text-sm">
+              {content.eyebrow}
+            </p>
+            <p className="mt-3 font-crimson text-xl leading-relaxed text-gray-700 md:text-2xl">
+              {details.content.summary}
+            </p>
+          </div>
+          <div className="lg:min-w-72 lg:text-right">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
               {content.basePrice}
             </p>
@@ -235,154 +316,174 @@ const ProposalPackageDetails = ({ details, language }) => {
               }).format(details.price)}
             </p>
             <p className="mt-2 text-sm text-gray-600">{content.priceNote}</p>
-          </div>
-        </div>
-
-        <div className="mt-12 grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
-          <div className="bg-white p-7 md:p-10">
-            <h2 className="font-crimson text-3xl font-normal text-gray-900 md:text-4xl">
-              {content.setupTitle}
-            </h2>
-            <p className="mt-4 font-crimson text-lg leading-relaxed text-gray-700">
-              {content.setupIntro}
-            </p>
-            <ul className="mt-7 space-y-4">
-              {details.content.setup.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 font-crimson text-lg leading-relaxed text-gray-800"
-                >
-                  <Check
-                    aria-hidden="true"
-                    strokeWidth={1.8}
-                    className="mt-1 h-5 w-5 shrink-0 text-primary-color"
-                  />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <aside className="border border-stone-200 bg-stone-50 p-7 md:p-9">
-            <div className="flex items-center gap-3">
-              <DetailIcon icon={Info} />
-              <h2 className="font-crimson text-2xl font-normal text-gray-900">
-                {content.exclusionsTitle}
-              </h2>
-            </div>
-            <ul className="mt-6 space-y-4">
-              {details.content.exclusions.map((item) => (
-                <li
-                  key={item}
-                  className="font-crimson text-base leading-relaxed text-gray-700"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
             <a
               href="#package-booking"
-              className="mt-8 inline-flex rounded-full border border-gray-800 px-6 py-3 font-crimson text-gray-800 no-underline transition-colors hover:bg-black hover:text-white"
+              aria-controls="packageForm"
+              onClick={handleBookingClick}
+              className="mt-5 inline-flex rounded-full bg-black px-6 py-3 font-crimson text-white no-underline transition-colors hover:bg-primary-color"
             >
               {content.bookLabel}
             </a>
-          </aside>
-        </div>
-
-        {(details.charcuterieIncluded ||
-          details.dinnerIncluded ||
-          details.violinIncluded) && (
-          <div className="mt-8 grid gap-px bg-stone-200 md:grid-cols-2">
-            {details.charcuterieIncluded && (
-              <Highlight
-                icon={UtensilsCrossed}
-                title={content.charcuterieTitle}
-              >
-                {content.charcuterieText}
-              </Highlight>
-            )}
-            {details.dinnerIncluded && (
-              <Highlight icon={UtensilsCrossed} title={content.dinnerTitle}>
-                {content.dinnerText}
-              </Highlight>
-            )}
-            {details.violinIncluded && (
-              <Highlight icon={Music2} title={content.violinTitle}>
-                {content.violinText}
-              </Highlight>
-            )}
-          </div>
-        )}
-      </section>
-
-      <section
-        aria-labelledby="package-common-inclusions"
-        className="bg-white py-16 md:py-24"
-      >
-        <div className="mx-auto max-w-7xl px-5">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2
-              id="package-common-inclusions"
-              className="font-crimson text-3xl font-normal text-gray-900 md:text-4xl"
-            >
-              {content.commonTitle}
-            </h2>
-            <p className="mt-4 font-crimson text-lg leading-relaxed text-gray-700">
-              {content.commonIntro}
-            </p>
-          </div>
-          <div className="mt-11 grid gap-px bg-stone-200 md:grid-cols-2 lg:grid-cols-3">
-            {content.common.map(([icon, title, description]) => (
-              <article key={title} className="bg-secondary-bg-color p-6 md:p-7">
-                <DetailIcon icon={icon} />
-                <h3 className="mt-5 font-crimson text-xl font-normal text-gray-900">
-                  {title}
-                </h3>
-                <p className="mt-3 font-crimson leading-relaxed text-gray-700">
-                  {description}
-                </p>
-              </article>
-            ))}
           </div>
         </div>
-      </section>
 
-      <section
-        aria-labelledby="package-booking-conditions"
-        className="py-16 md:py-20"
-      >
-        <div className="mx-auto max-w-5xl px-5">
-          <div className="mx-auto max-w-3xl text-center">
-            <ShieldCheck
-              aria-hidden="true"
-              strokeWidth={1.4}
-              className="mx-auto h-8 w-8 text-primary-color"
-            />
-            <h2
-              id="package-booking-conditions"
-              className="mt-4 font-crimson text-3xl font-normal text-gray-900 md:text-4xl"
-            >
-              {content.importantTitle}
-            </h2>
-            <p className="mt-4 font-crimson text-lg leading-relaxed text-gray-700">
-              {content.importantIntro}
-            </p>
-          </div>
-          <ul className="mt-10 grid gap-4 md:grid-cols-2">
-            {content.conditions.map((condition) => (
+        <div className="mt-8">
+          <h2 className="font-crimson text-2xl font-normal text-gray-900 md:text-3xl">
+            {content.quickTitle}
+          </h2>
+          <ul className="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+            {quickInclusions.map(([icon, title]) => (
               <li
-                key={condition}
-                className="flex items-start gap-3 border border-stone-200 bg-white p-5 font-crimson leading-relaxed text-gray-700"
+                key={title}
+                className="flex items-center gap-3 font-crimson text-lg text-gray-800"
               >
-                <Check
-                  aria-hidden="true"
-                  strokeWidth={1.7}
-                  className="mt-0.5 h-5 w-5 shrink-0 text-primary-color"
-                />
-                <span>{condition}</span>
+                <DetailIcon icon={icon} />
+                <span>{title}</span>
               </li>
             ))}
           </ul>
+        </div>
+
+        {specialInclusions.length > 0 && (
+          <div className="mt-7 border-l-2 border-primary-color bg-white px-5 py-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
+              {content.specialTitle}
+            </p>
+            <div className="mt-3 grid gap-4 md:grid-cols-2">
+              {specialInclusions.map(({ icon, title, short }) => (
+                <div key={title} className="flex items-start gap-3">
+                  <DetailIcon icon={icon} />
+                  <div>
+                    <h3 className="font-crimson text-xl text-gray-900">
+                      {title}
+                    </h3>
+                    <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                      {short}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="mt-8 space-y-3">
+          <details className="group border border-stone-200 bg-white">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-crimson text-xl text-gray-900 md:px-6">
+              <span>{content.setupDetailsLabel}</span>
+              <ChevronDown
+                aria-hidden="true"
+                className="h-5 w-5 shrink-0 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div className="border-t border-stone-200 px-5 py-6 md:px-6">
+              <h2 className="font-crimson text-2xl text-gray-900">
+                {content.setupTitle}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                {content.setupIntro}
+              </p>
+              <ul className="mt-5 grid gap-3 md:grid-cols-2">
+                {details.content.setup.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 font-crimson text-base leading-relaxed text-gray-700"
+                  >
+                    <Check
+                      aria-hidden="true"
+                      className="mt-1 h-4 w-4 shrink-0 text-primary-color"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {specialInclusions.length > 0 && (
+                <div className="mt-6 grid gap-4 md:grid-cols-2">
+                  {specialInclusions.map(({ title, description }) => (
+                    <div key={title} className="bg-stone-50 p-4">
+                      <h3 className="font-crimson text-lg text-gray-900">
+                        {title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                        {description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {details.content.exclusions?.length > 0 && (
+                <div className="mt-6 border-t border-stone-200 pt-5">
+                  <h3 className="font-crimson text-xl text-gray-900">
+                    {content.exclusionsTitle}
+                  </h3>
+                  <ul className="mt-3 space-y-2 text-sm leading-relaxed text-gray-600">
+                    {details.content.exclusions.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </details>
+
+          <details className="group border border-stone-200 bg-white">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-crimson text-xl text-gray-900 md:px-6">
+              <span>{content.completeInfoLabel}</span>
+              <ChevronDown
+                aria-hidden="true"
+                className="h-5 w-5 shrink-0 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div className="grid gap-8 border-t border-stone-200 px-5 py-6 lg:grid-cols-2 md:px-6">
+              <div>
+                <h2 className="font-crimson text-2xl text-gray-900">
+                  {content.commonTitle}
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                  {content.commonIntro}
+                </p>
+                <div className="mt-5 space-y-4">
+                  {content.common.map(([icon, title, description]) => (
+                    <div key={title} className="flex items-start gap-3">
+                      <DetailIcon icon={icon} />
+                      <div>
+                        <h3 className="font-crimson text-lg text-gray-900">
+                          {title}
+                        </h3>
+                        <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                          {description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h2 className="font-crimson text-2xl text-gray-900">
+                  {content.importantTitle}
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                  {content.importantIntro}
+                </p>
+                <ul className="mt-5 space-y-3">
+                  {content.conditions.map((condition) => (
+                    <li
+                      key={condition}
+                      className="flex items-start gap-3 text-sm leading-relaxed text-gray-600"
+                    >
+                      <Check
+                        aria-hidden="true"
+                        className="mt-1 h-4 w-4 shrink-0 text-primary-color"
+                      />
+                      <span>{condition}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
     </div>
