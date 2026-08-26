@@ -10,7 +10,9 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "node scripts/validate-proposal-schema-source.js && gatsby build && node scripts/validate-proposal-seo.js",
+    "build": "node scripts/validate-analytics.js && node scripts/test-analytics.js && node scripts/validate-proposal-schema-source.js && gatsby build && node scripts/validate-proposal-seo.js",
+    "validate:analytics": "node scripts/validate-analytics.js",
+    "test:analytics": "node scripts/test-analytics.js",
     "validate:proposal-seo-source": "node scripts/validate-proposal-schema-source.js",
     "validate:proposal-seo": "node scripts/validate-proposal-seo.js",
     "serve": "gatsby serve",
@@ -44,7 +46,6 @@
     "framer-motion": "^11.5.6",
     "gatsby": "^5.13.7",
     "gatsby-plugin-emotion": "^8.16.0",
-    "gatsby-plugin-google-gtag": "^5.13.1",
     "gatsby-plugin-image": "^3.13.1",
     "gatsby-plugin-manifest": "^5.13.1",
     "gatsby-plugin-postcss": "^6.13.1",
@@ -70,7 +71,8 @@
     "react-social-media-embed": "^2.5.18",
     "react-syntax-highlighter": "^15.6.1",
     "swiper": "^11.1.14",
-    "tailwindcss": "^3.4.11"
+    "tailwindcss": "^3.4.11",
+    "web-vitals": "^4.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.26.10",

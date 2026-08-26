@@ -4,13 +4,13 @@ import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
 import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import { consumeThankYouName } from "../../utils/analytics";
 
 const ThankYou = ({ data }) => {
   const { t } = useTranslation();
   const [name, setName] = useState("");
   useEffect(() => {
-    const searchParams = new URLSearchParams(document.location.search);
-    setName(searchParams.get("name") || "");
+    setName(consumeThankYouName());
   }, []);
   return (
     <Layout

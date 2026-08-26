@@ -9,6 +9,18 @@ import "./src/components/Layout/Navbar/header.css";
 import "./src/components/Layout/Footer/Footer.css";
 import "./src/components/SwiperCarouselComponent/swiper.css";
 import "./src/components/ContactForm/contact.css";
+import {
+  initializeAnalyticsTracking,
+  trackRouteUpdate,
+} from "./src/utils/analytics";
+
+export const onClientEntry = () => {
+  initializeAnalyticsTracking();
+};
+
+export const onRouteUpdate = ({ location }) => {
+  window.setTimeout(() => trackRouteUpdate(location), 0);
+};
 
 export const shouldUpdateScroll = ({
   routerProps: { location },
