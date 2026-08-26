@@ -39,6 +39,13 @@ const PackageForm = ({
   const dinnerIsAvailable = Boolean(
     proposalDetails?.dinnerIncluded || dinnerIsSelected,
   );
+  const isSpanish = language === "es";
+  const proposalFormTitle = isSpanish
+    ? "Solicita tu propuesta"
+    : "Request your proposal";
+  const proposalSubmitLabel = isSpanish
+    ? "Enviar solicitud de propuesta"
+    : "Send proposal request";
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -53,16 +60,6 @@ const PackageForm = ({
       ...prev,
       [name]: value,
     }));
-  };
-
-  // Only Enter and Space should activate a card. This previously fired on any
-  // keydown, so tabbing away from a focused add-on silently toggled it and
-  // changed the quoted price.
-  const handleAddOnKeyDown = (event, addition) => {
-    if (event.key !== "Enter" && event.key !== " ") return;
-    // Space would otherwise scroll the page.
-    event.preventDefault();
-    handleAddOnToggle(addition);
   };
 
   const calculateTotal = () => {
@@ -107,11 +104,12 @@ const PackageForm = ({
     language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/";
   return (
     <>
-      <div
+      <section
         id="package-booking"
-        className="mx-auto px-4 py-12 w-full lg:h-full flex scroll-mt-24 justify-center items-center"
+        aria-labelledby="package-booking-heading"
+        className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-12"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
+        <div className="grid w-full grid-cols-1 items-start gap-12 lg:grid-cols-2">
           <div className="space-y-8">
             <div className="text-center p-6  rounded-lg">
               <h2 className="text-3xl font-semibold mb-2">
@@ -131,17 +129,15 @@ const PackageForm = ({
                 <Trans>Available Add-ons</Trans>
               </h3>
               {additions.map((addition, index) => (
-                <div
-                  key={index}
-                  className={`p-4 border rounded-lg cursor-pointer transition-colors bg-gray-50 ${
+                <button
+                  key={addition.id || index}
+                  type="button"
+                  className={`w-full rounded-lg border bg-gray-50 p-4 text-left transition-colors ${
                     selectedAddOns.includes(addition.id)
                       ? "border-blue-500 bg-blue-50 "
                       : "hover:border-gray-300"
                   }`}
                   onClick={() => handleAddOnToggle(addition)}
-                  onKeyDown={(event) => handleAddOnKeyDown(event, addition)}
-                  role="button"
-                  tabIndex={0}
                   aria-pressed={selectedAddOns.includes(addition.id)}
                   aria-label={`${addition.addition}, ${formatter.format(
                     addition.price,
@@ -167,14 +163,21 @@ const PackageForm = ({
                     </div>
                     <span className="font-semibold">${addition.price}</span>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           </div>
 
           <div className="bg-gray-50 p-6 rounded-lg shadow-sm border pb-20 lg:pb-10">
-            <h3 className="text-xl font-semibold mb-6">
-              <Trans>Book Your Session</Trans>
+            <h3
+              id="package-booking-heading"
+              className="mb-6 text-xl font-semibold"
+            >
+              {proposalDetails ? (
+                proposalFormTitle
+              ) : (
+                <Trans>Book Your Session</Trans>
+              )}
             </h3>
             <form
               method="POST"
@@ -390,12 +393,16 @@ const PackageForm = ({
                 type="submit"
                 className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
               >
-                <Trans>Contact Us</Trans>
+                {proposalDetails ? (
+                  proposalSubmitLabel
+                ) : (
+                  <Trans>Contact Us</Trans>
+                )}
               </button>
             </form>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

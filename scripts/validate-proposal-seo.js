@@ -125,6 +125,24 @@ const validatePackage = ({ language, prefix, hub, expectedPackage }) => {
   assert.equal(service.image.length, images.length);
 
   assert.match(html, new RegExp(`href=["']${hub.route}["']`));
+  assert.match(
+    html,
+    new RegExp(
+      `<h3[^>]*package-booking-heading[^>]*>\\s*${
+        language === "es" ? "Solicita tu propuesta" : "Request your proposal"
+      }\\s*</h3>`,
+    ),
+  );
+  assert.match(
+    html,
+    new RegExp(
+      `<button[^>]*type=["']submit["'][^>]*>\\s*${
+        language === "es"
+          ? "Enviar solicitud de propuesta"
+          : "Send proposal request"
+      }\\s*</button>`,
+    ),
+  );
   assert.doesNotMatch(html, /es uno de los 11 paquetes/i);
   assert.doesNotMatch(html, /one of the 11 (marriage )?proposal packages/i);
 };

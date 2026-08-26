@@ -248,6 +248,20 @@ const ProposalPackageDetails = ({ details, language }) => {
     },
   ].filter(Boolean);
 
+  const handleBookingClick = (event) => {
+    const bookingSection = document.getElementById("package-booking");
+    if (!bookingSection) return;
+
+    event.preventDefault();
+    const reduceMotion = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    bookingSection.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className="bg-secondary-bg-color">
       <section className="mx-auto max-w-6xl px-5 py-10 md:py-14">
@@ -304,6 +318,8 @@ const ProposalPackageDetails = ({ details, language }) => {
             <p className="mt-2 text-sm text-gray-600">{content.priceNote}</p>
             <a
               href="#package-booking"
+              aria-controls="packageForm"
+              onClick={handleBookingClick}
               className="mt-5 inline-flex rounded-full bg-black px-6 py-3 font-crimson text-white no-underline transition-colors hover:bg-primary-color"
             >
               {content.bookLabel}
