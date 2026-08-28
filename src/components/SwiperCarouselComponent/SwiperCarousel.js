@@ -5,11 +5,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "./swiper.css";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { withSizes } from "../../utils/imageSizes";
 import { getImageSeo } from "../../utils/imageSeo";
+import ContentfulResponsiveImage from "../ContentfulResponsiveImage";
 
 const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
   let photoListEdited = [];
@@ -28,6 +30,7 @@ const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
     });
     let image = {
       ...seo,
+      asset: e,
       image: withSizes(
         getImage(e.gatsbyImage),
         "(min-width: 768px) 59vw, 100vw",
@@ -66,12 +69,25 @@ const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
                 className={`relative object-cover object-center h-full w-full ${imageHeight}`}
                 key={index}
               >
-                <GatsbyImage
-                  image={image.image}
-                  alt={image.alt}
-                  title={image.title}
-                  className={`w-full object-cover object-center ${imageHeight}`}
-                />
+                {image.image ? (
+                  <GatsbyImage
+                    image={image.image}
+                    alt={image.alt}
+                    title={image.title}
+                    loading="lazy"
+                    className={`w-full object-cover object-center ${imageHeight}`}
+                  />
+                ) : (
+                  <ContentfulResponsiveImage
+                    asset={image.asset}
+                    alt={image.alt}
+                    title={image.title}
+                    className={`w-full ${imageHeight}`}
+                    imgClassName={`h-full w-full object-cover object-center ${imageHeight}`}
+                    sizes="(min-width: 768px) 59vw, 100vw"
+                    widths={[480, 800, 1200, 1600]}
+                  />
+                )}
                 <div
                   className={`absolute inset-0 ${imageHeight}`}
                   style={HeroStyles}

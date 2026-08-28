@@ -15,6 +15,10 @@ const RecommendationCard = ({ blog }) => {
           <img
             src={image}
             alt={blog.title}
+            width="320"
+            height="160"
+            loading="lazy"
+            decoding="async"
             className="w-full object-cover h-40"
           />
           {/* <GatsbyImage

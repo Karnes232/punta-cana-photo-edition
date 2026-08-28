@@ -27,7 +27,11 @@ const FirebaseTestimonialCard = ({ testimonial }) => {
                 <SwiperSlide key={index}>
                   <img
                     src={photoUrl}
-                    alt="testimonial"
+                    alt={`Testimonial from ${testimonial.names}`}
+                    width="960"
+                    height="640"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full object-cover h-[16rem]"
                   />
                 </SwiperSlide>
@@ -77,7 +81,11 @@ const FirebaseTestimonialCard = ({ testimonial }) => {
                 <SwiperSlide key={index}>
                   <img
                     src={photoUrl}
-                    alt="testimonial"
+                    alt={`Testimonial from ${testimonial.names}`}
+                    width="1200"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full object-cover object-center md:h-[25rem] lg:h-[30rem]"
                   />
                 </SwiperSlide>

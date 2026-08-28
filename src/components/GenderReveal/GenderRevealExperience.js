@@ -105,10 +105,15 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
   return (
     <img
       src={`${asset.url}?w=1800&fm=webp&q=80`}
+      srcSet={`${asset.url}?w=480&fm=webp&q=76 480w, ${asset.url}?w=960&fm=webp&q=76 960w, ${asset.url}?w=1800&fm=webp&q=76 1800w`}
+      sizes="100vw"
+      width={asset.width || 1800}
+      height={asset.height || 1200}
       alt={alt || asset?.title || "Gender reveal in Punta Cana"}
       className={`${className} object-cover`}
       loading={loading}
       fetchPriority={loading === "eager" ? "high" : "auto"}
+      decoding="async"
     />
   );
 };

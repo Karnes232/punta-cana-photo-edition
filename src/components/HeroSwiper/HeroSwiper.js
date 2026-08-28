@@ -8,6 +8,7 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { withSizes } from "../../utils/imageSizes";
 import { getImageSeo } from "../../utils/imageSeo";
+import ContentfulResponsiveImage from "../ContentfulResponsiveImage";
 const HeroSwiper = ({
   heroInfo,
   className,
@@ -24,6 +25,7 @@ const HeroSwiper = ({
     });
     let image = {
       ...seo,
+      asset: e,
       image: withSizes(getImage(e.gatsbyImage), "100vw"),
     };
     photoListEdited.push(image);
@@ -71,14 +73,28 @@ const HeroSwiper = ({
                 className={`relative w-full object-cover object-center ${height}`}
                 key={index}
               >
-                <GatsbyImage
-                  image={image.image}
-                  alt={image.alt}
-                  title={image.title}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : "auto"}
-                  className={`w-full object-cover object-center ${height}`}
-                />
+                {image.image ? (
+                  <GatsbyImage
+                    image={image.image}
+                    alt={image.alt}
+                    title={image.title}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    className={`w-full object-cover object-center ${height}`}
+                  />
+                ) : (
+                  <ContentfulResponsiveImage
+                    asset={image.asset}
+                    alt={image.alt}
+                    title={image.title}
+                    className={`h-full w-full ${height}`}
+                    imgClassName={`h-full w-full object-cover object-center ${height}`}
+                    sizes="100vw"
+                    widths={[640, 960, 1280, 1600, 1920, 2400]}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                  />
+                )}
               </SwiperSlide>
             );
           })}

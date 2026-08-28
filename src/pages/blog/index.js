@@ -3,13 +3,13 @@ import { graphql, Link } from "gatsby";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 
-const { retiredBlogSlugs } = require("../../data/retiredBlogRedirects");
+const { isPublishedBlogSlug } = require("../../data/publishedBlogSlugs");
 
 const BlogIndex = ({ data, pageContext }) => {
   const isSpanish = pageContext.language === "es";
   const prefix = isSpanish ? "/es" : "";
-  const posts = (data.allContentfulBlogPost.nodes || []).filter(
-    ({ slug }) => slug?.trim() && !retiredBlogSlugs.has(slug.trim()),
+  const posts = (data.allContentfulBlogPost.nodes || []).filter(({ slug }) =>
+    isPublishedBlogSlug(slug),
   );
 
   return (
@@ -96,8 +96,8 @@ export const Head = ({ data, pageContext }) => {
   const isSpanish = pageContext.language === "es";
   const baseUrl = data.site.siteMetadata.siteUrl;
   const pageUrl = `${baseUrl}${isSpanish ? "/es" : ""}/blog/`;
-  const hasPosts = data.allContentfulBlogPost.nodes.some(
-    ({ slug }) => slug?.trim() && !retiredBlogSlugs.has(slug.trim()),
+  const hasPosts = data.allContentfulBlogPost.nodes.some(({ slug }) =>
+    isPublishedBlogSlug(slug),
   );
   const title = isSpanish
     ? "Blog de Eventos en Punta Cana | Sertuin Events"
@@ -174,4 +174,3 @@ export const query = graphql`
     }
   }
 `;
-

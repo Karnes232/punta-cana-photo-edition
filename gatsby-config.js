@@ -3,6 +3,9 @@
  */
 require("dotenv").config();
 
+const { publishedBlogSlugs } = require("./src/data/publishedBlogSlugs");
+const { retiredPackageSlugs } = require("./src/data/retiredPackageSlugs");
+
 const publicCrawlers = [
   "*",
   "Googlebot",
@@ -47,6 +50,22 @@ const nonIndexablePaths = [
   "/contact/thankyou/",
   "/share-your-experience/",
 ];
+
+// Sitemap defence in depth: page creation already blocks these routes, but the
+// sitemap must also remain clean if another plugin or future template creates
+// one accidentally.
+const isRetiredOrUnapprovedContentPath = (value) => {
+  const normalized = `/${String(value || "")}`.replace(/\/{2,}/g, "/");
+  const blogMatch = normalized.match(/^\/(?:es\/)?blog\/([^/]+)\/?$/);
+  if (blogMatch && !publishedBlogSlugs.has(blogMatch[1].toLowerCase())) {
+    return true;
+  }
+
+  const packageMatch = normalized.match(/^\/(?:es\/)?packages\/([^/]+)\/?$/);
+  return Boolean(
+    packageMatch && retiredPackageSlugs.has(packageMatch[1].toLowerCase()),
+  );
+};
 
 module.exports = {
   siteMetadata: {
@@ -95,6 +114,7 @@ module.exports = {
           return allPages.filter(
             (page) =>
               !page.path.includes("admin") &&
+              !isRetiredOrUnapprovedContentPath(page.path) &&
               !nonIndexablePaths.some(
                 (privatePath) =>
                   page.path === privatePath ||
@@ -255,4 +275,3 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
   },
 };
-

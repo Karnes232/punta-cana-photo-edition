@@ -4,20 +4,10 @@ const fs = require("fs");
 const {
   groups: retiredBlogRedirectGroups,
   categoryRedirects: retiredBlogCategoryRedirects,
-  retiredBlogSlugs,
 } = require("./src/data/retiredBlogRedirects");
+const { isPublishedBlogSlug } = require("./src/data/publishedBlogSlugs");
+const { retiredPackageSlugs } = require("./src/data/retiredPackageSlugs");
 
-// These routes belonged to the former photography/video business. Keep the
-// Contentful entries available for historical reference, but never publish
-// them as Sertuin Events pages or include them in the sitemap.
-const retiredPackageSlugs = new Set([
-  "photography-event-planner",
-  "videography-event-planner",
-  "carribean-baby-shower",
-  "sunshine-baby-shower",
-  "blue-ocean-baby-shower",
-  "ocean-of-love",
-]);
 const retiredStaticPaths = new Set([
   "/wedding",
   "/es/wedding",
@@ -156,7 +146,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
     const slug = node.slug?.trim();
-    if (!slug || retiredBlogSlugs.has(slug)) return;
+    if (!slug || !isPublishedBlogSlug(slug)) return;
 
     // Get language code for URL from the Contentful locale
     const lang = node.node_locale === "en-US" ? "" : node.node_locale;

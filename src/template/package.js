@@ -5,7 +5,6 @@ import RichText from "../components/RichTextComponents/RichText";
 import SwiperCarousel from "../components/SwiperCarouselComponent/SwiperCarousel";
 import TextComponent from "../components/RichTextComponents/TextComponent";
 import VideoPlayer from "../components/VideoComponent/VideoPlayer";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Faqs from "../components/FaqsComponent/Faqs";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
@@ -18,6 +17,7 @@ import { getImageSeo } from "../utils/imageSeo";
 import { getProposalPackageDetails } from "../data/proposalPackageDetails";
 import { buildProposalPackageFaqs } from "../data/proposalPackageFaqs";
 import ProposalPackageDetails from "../components/ProposalComponents/ProposalPackageDetails";
+import ContentfulResponsiveImage from "../components/ContentfulResponsiveImage";
 import { buildProposalPackageSchema } from "../utils/proposalSeo";
 import { GOOGLE_MAPS_URL } from "../components/ProposalComponents/ProposalExperience";
 const PackagePage = ({ pageContext, data }) => {
@@ -63,7 +63,6 @@ const PackagePage = ({ pageContext, data }) => {
     packageName: packageInformation.heroHeading,
   });
 
-  const image = getImage(packageInformation.images[0]);
   const featureImageSeo = getImageSeo(packageInformation.images[0], {
     language: pageContext.language,
     subject: packageInformation.heroHeading,
@@ -166,11 +165,14 @@ const PackagePage = ({ pageContext, data }) => {
                   proposalDetails ? "lg:max-w-5xl lg:mx-auto" : "lg:basis-1/2"
                 }`}
               >
-                <GatsbyImage
-                  image={image}
+                <ContentfulResponsiveImage
+                  asset={packageInformation.images[0]}
                   alt={featureImageSeo.alt}
                   title={featureImageSeo.title}
-                  className={`w-full object-fill object-center packagePageVideo`}
+                  className="w-full object-fill object-center packagePageVideo"
+                  imgClassName="h-full w-full object-fill object-center"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  widths={[480, 960, 1400]}
                 />
               </div>
             </>
@@ -374,13 +376,9 @@ export const query = graphql`
         }
         videoUrl
         heroImageList {
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
-            quality: 65
-          )
+          url
+          width
+          height
           title
           description
           file {
@@ -396,13 +394,9 @@ export const query = graphql`
           file {
             url
           }
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
-            quality: 65
-          )
+          url
+          width
+          height
         }
         faqs {
           title
