@@ -75,6 +75,24 @@ const PackagePage = ({ pageContext, data }) => {
         : [...prev, addOnId.id],
     );
   };
+  const proposalBookingMedia = proposalDetails ? (
+    packageInformation.videoUrl !== null ? (
+      <VideoPlayer
+        url={packageInformation.videoUrl}
+        className="h-full w-full overflow-hidden"
+      />
+    ) : (
+      <ContentfulResponsiveImage
+        asset={packageInformation.images[0]}
+        alt={featureImageSeo.alt}
+        title={featureImageSeo.title}
+        className="h-full w-full overflow-hidden"
+        imgClassName="h-full w-full object-cover object-center"
+        sizes="(min-width: 1280px) 560px, (min-width: 1024px) 46vw, calc(100vw - 2rem)"
+        widths={[480, 720, 960, 1200]}
+      />
+    )
+  ) : null;
 
   return (
     <Layout generalInfo={pageContext.layout} overlayHeader>
@@ -99,9 +117,9 @@ const PackagePage = ({ pageContext, data }) => {
         subject={packageInformation.heroHeading}
       />
 
-      <div className="w-full max-w-7xl mx-auto px-4 lg:mt-5 xl:mt-10">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {!proposalDetails && (
+      {!proposalDetails && (
+        <div className="w-full max-w-7xl mx-auto px-4 lg:mt-5 xl:mt-10">
+          <div className="flex flex-col lg:flex-row gap-8">
             <div className="lg:basis-1/2">
               {packageInformation.packages !== null ? (
                 <>
@@ -143,42 +161,36 @@ const PackagePage = ({ pageContext, data }) => {
                 <></>
               )}
             </div>
-          )}
-          {packageInformation.videoUrl !== null ? (
-            <>
-              {/* Rendering ReactPlayer during hydration produced markup that
-                  did not match the SSR output: six React #418 errors plus a
-                  #423, which drops the whole root to client rendering.
-                  VideoPlayer renders only a placeholder until the player
-                  scrolls into view, which is why /proposal/ is clean. */}
-              <VideoPlayer
-                url={packageInformation.videoUrl}
-                className={`w-full packagePageVideo ${
-                  proposalDetails ? "lg:max-w-5xl lg:mx-auto" : "lg:basis-1/2"
-                }`}
-              />
-            </>
-          ) : (
-            <>
-              <div
-                className={`w-full packagePageVideo ${
-                  proposalDetails ? "lg:max-w-5xl lg:mx-auto" : "lg:basis-1/2"
-                }`}
-              >
-                <ContentfulResponsiveImage
-                  asset={packageInformation.images[0]}
-                  alt={featureImageSeo.alt}
-                  title={featureImageSeo.title}
-                  className="w-full object-fill object-center packagePageVideo"
-                  imgClassName="h-full w-full object-fill object-center"
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  widths={[480, 960, 1400]}
+            {packageInformation.videoUrl !== null ? (
+              <>
+                {/* Rendering ReactPlayer during hydration produced markup that
+                    did not match the SSR output: six React #418 errors plus a
+                    #423, which drops the whole root to client rendering.
+                    VideoPlayer renders only a placeholder until the player
+                    scrolls into view, which is why /proposal/ is clean. */}
+                <VideoPlayer
+                  url={packageInformation.videoUrl}
+                  className="w-full packagePageVideo lg:basis-1/2"
                 />
-              </div>
-            </>
-          )}
+              </>
+            ) : (
+              <>
+                <div className="w-full packagePageVideo lg:basis-1/2">
+                  <ContentfulResponsiveImage
+                    asset={packageInformation.images[0]}
+                    alt={featureImageSeo.alt}
+                    title={featureImageSeo.title}
+                    className="w-full overflow-hidden packagePageVideo"
+                    imgClassName="h-full w-full object-cover object-center"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    widths={[480, 960, 1400]}
+                  />
+                </div>
+              </>
+            )}
+          </div>
         </div>
-      </div>
+      )}
       {packageInformation.packages !== null ? (
         <>
           <PackageForm
@@ -188,6 +200,7 @@ const PackagePage = ({ pageContext, data }) => {
             selectedAddOns={selectedAddOns}
             handleAddOnToggle={handleAddOnToggle}
             language={pageContext.language}
+            sideMedia={proposalBookingMedia}
           />{" "}
         </>
       ) : (
