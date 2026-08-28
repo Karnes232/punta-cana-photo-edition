@@ -19,6 +19,7 @@ const PackageForm = ({
   selectedAddOns,
   handleAddOnToggle,
   language,
+  sideMedia,
 }) => {
   const [dinnerSelection, setDinnerSelection] = useState(
     createEmptyDinnerSelection,
@@ -110,7 +111,12 @@ const PackageForm = ({
         className="mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-12"
       >
         <div className="grid w-full grid-cols-1 items-start gap-12 lg:grid-cols-2">
-          <div className="space-y-8">
+          <div className="min-w-0 space-y-8">
+            {sideMedia && (
+              <div className="mx-auto aspect-[3/2] w-full max-w-xl overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-sm">
+                {sideMedia}
+              </div>
+            )}
             <div className="text-center p-6  rounded-lg">
               <h2 className="text-3xl font-semibold mb-2">
                 {packageInformation.heroHeading}

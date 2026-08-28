@@ -19,8 +19,13 @@ const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
     backgroundImage:
       "linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))",
   };
-  let imageHeight = "h-[15rem] md:h-[29rem] lg:h-[41rem] xl:h-[45rem]";
-  let slideHeight = "h-[17.5rem] md:h-[32rem] lg:h-[45rem] xl:h-[48rem]";
+  // Keep a calm, photographic proportion at every breakpoint. The previous
+  // 15rem -> 41rem jump made the same image feel cramped on phones and
+  // oversized on common laptops.
+  let imageHeight =
+    "h-[18rem] sm:h-[23rem] md:h-[29rem] lg:h-[34rem] xl:h-[38rem] 2xl:h-[42rem]";
+  let slideHeight =
+    "h-[21rem] sm:h-[26rem] md:h-[32rem] lg:h-[37rem] xl:h-[41rem] 2xl:h-[45rem]";
   images?.forEach((e, index) => {
     const seo = getImageSeo(e, {
       language,
@@ -44,7 +49,10 @@ const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
-          lazy={"true"}
+          // Swiper removes native lazy-loading from the neighbouring slides
+          // before autoplay reaches them. This prevents an unloaded grey
+          // frame without downloading the complete gallery up front.
+          lazyPreloadPrevNext={2}
           centeredSlides={true}
           breakpoints={{
             768: {

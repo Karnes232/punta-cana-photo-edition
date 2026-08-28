@@ -13,6 +13,7 @@ const heroCarousel = source("src/components/HeroSwiper/HeroSwiper.js");
 const packageCarousel = source(
   "src/components/SwiperCarouselComponent/SwiperCarousel.js",
 );
+const packageForm = source("src/components/PackageForm/PackageForm.js");
 
 // The proposal package experience is a product contract: keep the same hero,
 // carousel, slide order, autoplay, loop, navigation and form structure. Image
@@ -35,7 +36,12 @@ assert.match(packageCarousel, /navigation=\{true\}/);
 assert.match(packageCarousel, /type: "fraction"/);
 assert.match(packageCarousel, /photoListEdited\.map/);
 assert.match(packageCarousel, /<ContentfulResponsiveImage\b/);
+assert.match(packageCarousel, /lazyPreloadPrevNext=\{2\}/);
 assert.doesNotMatch(packageCarousel, /images\?*\.slice\(/);
+
+assert.match(packageTemplate, /sideMedia=\{proposalBookingMedia\}/);
+assert.doesNotMatch(packageTemplate, /object-fill/);
+assert.match(packageForm, /aspect-\[3\/2\]/);
 
 assert.match(packageTemplate, /heroImageList\s*\{\s*url\s*width\s*height/s);
 assert.match(packageTemplate, /images\s*\{[\s\S]*?url\s*width\s*height/);
