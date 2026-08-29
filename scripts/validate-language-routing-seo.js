@@ -5,6 +5,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const publicDir = path.join(__dirname, "..", "public");
+const sourceRoot = path.join(__dirname, "..");
 const read = (relativePath) =>
   fs.readFileSync(path.join(publicDir, relativePath), "utf8");
 const page = (relativePath) =>
@@ -23,6 +24,15 @@ const spanishWedding = page("es/puntacana-wedding-planner");
 const spanishGenderReveal = page("es/gender-reveal-punta-cana");
 const spanishElopement = page("es/punta-cana-elopement-packages");
 const spanishHome = page("es");
+const gatsbyConfig = fs.readFileSync(
+  path.join(sourceRoot, "gatsby-config.js"),
+  "utf8",
+);
+
+assert.match(
+  gatsbyConfig,
+  /resolve:\s*["'`]gatsby-plugin-react-i18next["'`][\s\S]*?redirect:\s*false/,
+);
 
 assert.match(
   spanishWedding,

@@ -224,6 +224,11 @@ module.exports = {
         localeJsonSourceName: `locale`,
         languages: ["en-US", "es"],
         defaultLanguage: "en-US",
+        // Keep every language tied to its explicit URL. Automatic browser-
+        // language redirects can turn an English URL into /es/ after a visitor
+        // has selected Spanish, which muddies language signals and makes shared
+        // search-result links behave inconsistently.
+        redirect: false,
         siteUrl: "https://sertuinevents.com/",
         i18nextOptions: {
           interpolation: {
