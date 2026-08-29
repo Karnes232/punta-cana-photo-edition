@@ -91,7 +91,7 @@ for (const url of [
   assert.match(
     sitemap,
     new RegExp(
-      `<loc>${escapedUrl}</loc>[\\s\\S]*?<lastmod>2026-08-29</lastmod>`,
+      `<loc>${escapedUrl}</loc>[\\s\\S]*?<lastmod>2026-08-29(?:T00:00:00\\.000Z)?</lastmod>`,
     ),
   );
 }
