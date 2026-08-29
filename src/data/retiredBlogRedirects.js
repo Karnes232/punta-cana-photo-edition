@@ -81,6 +81,9 @@ const proposalBlogSlugs = split(`
   fiesta-americana-funeeq-punta-cana-proposal-packages-2026-2027
   exclusive-punta-cana-proposal-packages-with-photography-included
   punta-cana-beach-proposal-packages
+  marriage-proposal-packages-punta-cana
+  propuestas-matrimonio-punta-cana-sertuin-events
+  romantic-beach-dinner-for-proposal-punta-cana
   romantic-marriage-proposal-punta-cana
   all-inclusive-resort-proposal-punta-cana
   luxury-punta-cana-marriage-proposal-packages-for-couples

@@ -34,9 +34,21 @@ for (const slug of gonePackageSlugs) {
 }
 assert.equal(retiredPackageSlugs.has("tropical-bliss-elopement"), true);
 assert.equal(retiredPackageSlugs.has("tropical-bliss"), true);
+for (const slug of [
+  "marriage-proposal-packages-punta-cana",
+  "propuestas-matrimonio-punta-cana-sertuin-events",
+  "romantic-beach-dinner-for-proposal-punta-cana",
+]) {
+  assert.equal(
+    retiredBlogSlugs.has(slug),
+    true,
+    `Missing language-safe proposal migration for ${slug}`,
+  );
+}
 
 assert.match(source("gatsby-node.js"), /!isPublishedBlogSlug\(slug\)/);
 assert.match(source("gatsby-node.js"), /retiredPackageSlugs\.has/);
+assert.match(source("gatsby-node.js"), /protectedRedirectSources/);
 assert.match(
   source("gatsby-config.js"),
   /!isRetiredOrUnapprovedContentPath\(page\.path\)/,

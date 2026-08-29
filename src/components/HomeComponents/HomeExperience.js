@@ -21,7 +21,6 @@ import PhoneInput, {
 import "react-phone-number-input/style.css";
 import { getHomeContent } from "../../content/homeContent";
 
-
 const legacyRoutes = new Set([
   "/punta-cana-bachelor-party/",
   "/weddings-punta-cana/",
@@ -35,11 +34,11 @@ const legacyRoutes = new Set([
   "/packages/videography-event-planner/",
 ]);
 
-
 const currentRouteAliases = new Map([
   ["/gender-reveal-and-baby-showers/", "/gender-reveal-punta-cana/"],
+  ["/weddings-punta-cana/", "/puntacana-wedding-planner/"],
+  ["/elopement-vow-renewal/", "/punta-cana-elopement-packages/"],
 ]);
-
 
 const normalizeInternalPath = (path) => {
   if (!path || path.startsWith("#") || path.startsWith("http")) return path;
@@ -50,7 +49,6 @@ const normalizeInternalPath = (path) => {
   return currentRouteAliases.get(normalized) || normalized;
 };
 
-
 const localizedPath = (path, language) => {
   if (!path || path.startsWith("#") || path.startsWith("http")) return path;
   const normalizedPath = normalizeInternalPath(path);
@@ -59,7 +57,6 @@ const localizedPath = (path, language) => {
   }
   return normalizedPath === "/" ? "/es/" : `/es${normalizedPath}`;
 };
-
 
 const RichTextBlock = ({ context, fallbackParagraphs, fallbackItems }) => {
   if (!context?.raw) {
@@ -93,7 +90,6 @@ const RichTextBlock = ({ context, fallbackParagraphs, fallbackItems }) => {
       </>
     );
   }
-
 
   const options = {
     renderMark: {
@@ -139,14 +135,11 @@ const RichTextBlock = ({ context, fallbackParagraphs, fallbackItems }) => {
     },
   };
 
-
   return documentToReactComponents(JSON.parse(context.raw), options);
 };
 
-
 const getStructuredProcessSteps = (context) => {
   if (!context?.raw) return null;
-
 
   try {
     const document = JSON.parse(context.raw);
@@ -160,9 +153,7 @@ const getStructuredProcessSteps = (context) => {
       .map((section) => section.trim())
       .filter(Boolean);
 
-
     if (sections.length !== 3) return null;
-
 
     const steps = sections.map((section) => {
       const match = section.match(/^(\d{2})\s*[—-]\s*([^.!?]+)[.!?]\s*(.+)$/);
@@ -171,18 +162,15 @@ const getStructuredProcessSteps = (context) => {
         : null;
     });
 
-
     return steps.every(Boolean) ? steps : null;
   } catch {
     return null;
   }
 };
 
-
 // The cards render in a sm:grid-cols-2 lg:grid-cols-4 grid, so they are about
 // 320px wide on desktop rather than the source width.
 const CARD_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw";
-
 
 const ServiceCard = ({ service, language }) => {
   const image = withSizes(
@@ -190,22 +178,38 @@ const ServiceCard = ({ service, language }) => {
     CARD_SIZES,
   );
   const url = localizedPath(service?.page?.url, language);
-  const isGenderReveal =
-    normalizeInternalPath(service?.page?.url) === "/gender-reveal-punta-cana/";
+  const normalizedRoute = normalizeInternalPath(service?.page?.url);
+  const isGenderReveal = normalizedRoute === "/gender-reveal-punta-cana/";
+  const isWedding = normalizedRoute === "/puntacana-wedding-planner/";
+  const isElopement = normalizedRoute === "/punta-cana-elopement-packages/";
   const title = isGenderReveal
     ? language === "es"
       ? "Revelación de género"
       : "Gender Reveal"
-    : service.typeOfService;
+    : isWedding
+      ? language === "es"
+        ? "Planificación de bodas"
+        : "Wedding Planning"
+      : isElopement
+        ? language === "es"
+          ? "Bodas íntimas"
+          : "Elopement Packages"
+        : service.typeOfService;
   const description = isGenderReveal
     ? language === "es"
       ? "Diseño, coordinación y ejecución de una revelación personalizada en la locación que elijas en Punta Cana."
       : "Design, coordination and execution of a custom reveal at your chosen Punta Cana location."
-    : service.cardDescription;
-
+    : isWedding
+      ? language === "es"
+        ? "Planificación integral, proveedores y coordinación local para tu boda de destino en Punta Cana."
+        : "Full planning, vendor management and local coordination for your destination wedding in Punta Cana."
+      : isElopement
+        ? language === "es"
+          ? "Paquetes para bodas íntimas en playa o catamarán privado, con planificación local en Punta Cana."
+          : "Private beach and catamaran elopement packages with local planning in Punta Cana."
+        : service.cardDescription;
 
   if (!image || !url) return null;
-
 
   return (
     <article className="group relative min-h-[390px] overflow-hidden bg-black shadow-[0_28px_60px_rgba(0,0,0,0.14)]">
@@ -242,7 +246,6 @@ const ServiceCard = ({ service, language }) => {
   );
 };
 
-
 const HomeContactForm = ({ content, language }) => {
   const [status, setStatus] = useState("idle");
   const [phone, setPhone] = useState("");
@@ -260,21 +263,17 @@ const HomeContactForm = ({ content, language }) => {
           successTitle: "Solicitud recibida",
           success:
             "Tu solicitud fue enviada correctamente. Te contactaremos muy pronto.",
-          error:
-            "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
+          error: "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
         }
       : {
           phoneCountry: "Select phone country",
-          phoneError:
-            "Enter a valid phone number with its country code.",
-          emailError:
-            "Enter a valid email address with an active domain.",
+          phoneError: "Enter a valid phone number with its country code.",
+          emailError: "Enter a valid email address with an active domain.",
           sending: "Sending...",
           successTitle: "Request received",
           success:
             "Your request was sent successfully. We will contact you shortly.",
-          error:
-            "We could not send your request. Please try again.",
+          error: "We could not send your request. Please try again.",
         };
 
   const handleSubmit = async (event) => {
@@ -315,9 +314,7 @@ const HomeContactForm = ({ content, language }) => {
         .catch(() => ({}));
 
       if (!validationResponse.ok) {
-        throw new Error(
-          validationResult.error || "Form validation failed",
-        );
+        throw new Error(validationResult.error || "Form validation failed");
       }
 
       const formResponse = await fetch("/", {
@@ -371,7 +368,9 @@ const HomeContactForm = ({ content, language }) => {
       name="home-page"
       method="POST"
       onSubmit={handleSubmit}
-      action={language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"}
+      action={
+        language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"
+      }
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="border border-white/15 bg-white p-6 text-black shadow-2xl md:p-9"
@@ -382,7 +381,10 @@ const HomeContactForm = ({ content, language }) => {
       <input type="hidden" name="phone-country" value={phoneCountry} />
       <p className="hidden">
         <label>
-          Do not fill this out: <input name="bot-field" />
+          {language === "es"
+            ? "No completes este campo:"
+            : "Do not fill this out:"}{" "}
+          <input name="bot-field" />
         </label>
       </p>
       <h3 className="font-crimson text-3xl font-medium">{content.formTitle}</h3>
@@ -492,7 +494,6 @@ const HomeContactForm = ({ content, language }) => {
   );
 };
 
-
 const HomeExperience = ({
   page,
   services,
@@ -501,6 +502,18 @@ const HomeExperience = ({
   language,
 }) => {
   const content = getHomeContent(language);
+  const managedText = (value, fallback) => {
+    if (!value) return fallback;
+    if (
+      language === "es" &&
+      /\belopements?\b|\bwedding (?:planner|planning)\b|\bgender\s*reveal\b/i.test(
+        value,
+      )
+    ) {
+      return fallback;
+    }
+    return value;
+  };
   const heroImage = getImage(page?.heroImageList?.[0]?.gatsbyImage);
   const featureImage = getImage(featureCard?.image?.gatsbyImage);
   const phoneDigits = (generalInfo?.telephone || "+18295222900").replace(
@@ -542,7 +555,6 @@ const HomeExperience = ({
   const primaryCtaUrl = page?.primaryCtaUrl || content.primaryCtaUrl;
   const secondaryCtaUrl = page?.secondaryCtaUrl || content.secondaryCtaUrl;
 
-
   return (
     <main className="overflow-hidden bg-primary-bg-color text-black">
       <section className="relative min-h-[760px] bg-black md:min-h-[780px]">
@@ -567,38 +579,37 @@ const HomeExperience = ({
         <div className="relative mx-auto flex min-h-[760px] max-w-7xl items-center px-6 pb-16 pt-40 md:min-h-[780px] md:px-10 md:pt-44 lg:px-12">
           <div className="max-w-5xl">
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.28em] text-primary-color md:text-sm">
-              {page?.heroEyebrow || content.eyebrow}
+              {managedText(page?.heroEyebrow, content.eyebrow)}
             </p>
             <h1 className="mt-6 max-w-5xl font-crimson text-5xl font-medium leading-[0.95] text-white sm:text-6xl md:text-7xl">
-              {page?.heroHeading || content.heroHeading}
+              {managedText(page?.heroHeading, content.heroHeading)}
             </h1>
             <p className="mt-7 max-w-3xl font-montserrat text-base leading-8 text-gray-100 md:text-xl md:leading-9">
-              {page?.heroHeading2 || content.heroIntro}
+              {managedText(page?.heroHeading2, content.heroIntro)}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href={primaryCtaUrl}
                 className="inline-flex items-center justify-center gap-2 bg-primary-color px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-black no-underline transition hover:opacity-90"
               >
-                {page?.primaryCtaLabel || content.primaryCta}
+                {managedText(page?.primaryCtaLabel, content.primaryCta)}
                 <ArrowRight aria-hidden="true" size={18} />
               </a>
               <a
                 href={secondaryCtaUrl}
                 className="inline-flex items-center justify-center gap-2 border border-white/60 bg-black/20 px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-white no-underline backdrop-blur-sm transition hover:bg-white hover:text-black"
               >
-                {page?.secondaryCtaLabel || content.secondaryCta}
+                {managedText(page?.secondaryCtaLabel, content.secondaryCta)}
               </a>
             </div>
           </div>
         </div>
       </section>
 
-
       <section className="border-b border-gray-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-px bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            page?.contactEyebrow || content.availability,
+            managedText(page?.contactEyebrow, content.availability),
             language === "es"
               ? "Un solo punto de contacto"
               : "One point of contact",
@@ -632,7 +643,6 @@ const HomeExperience = ({
         </div>
       </section>
 
-
       <section id={eventsSectionId} className="px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
@@ -640,7 +650,7 @@ const HomeExperience = ({
               {content.eventsEyebrow}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight text-black md:text-6xl">
-              {page?.sectionTitle || content.eventsTitle}
+              {managedText(page?.sectionTitle, content.eventsTitle)}
             </h2>
             <p className="mt-6 font-montserrat text-base leading-8 text-gray-700 md:text-lg">
               {content.eventsIntro}
@@ -658,7 +668,6 @@ const HomeExperience = ({
         </div>
       </section>
 
-
       <section className="bg-white px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
@@ -666,7 +675,7 @@ const HomeExperience = ({
               {content.whatEyebrow}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight text-black md:text-6xl">
-              {page?.sectionTitle2 || content.whatTitle}
+              {managedText(page?.sectionTitle2, content.whatTitle)}
             </h2>
           </div>
           <div>
@@ -678,7 +687,6 @@ const HomeExperience = ({
           </div>
         </div>
       </section>
-
 
       <section className="bg-black px-6 py-20 text-white md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
@@ -717,7 +725,6 @@ const HomeExperience = ({
         </div>
       </section>
 
-
       <section className="bg-secondary-bg-color px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-7xl overflow-hidden bg-white shadow-[0_32px_80px_rgba(0,0,0,0.13)] lg:grid-cols-2">
           <div className="relative min-h-[420px] bg-black lg:min-h-[620px]">
@@ -738,29 +745,31 @@ const HomeExperience = ({
           </div>
           <div className="flex flex-col justify-center p-8 md:p-14 lg:p-16">
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-primary-color">
-              {featureCard?.secondaryTitle || content.commitmentEyebrow}
+              {managedText(
+                featureCard?.secondaryTitle,
+                content.commitmentEyebrow,
+              )}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight text-black md:text-5xl">
-              {featureCard?.title || content.commitmentTitle}
+              {managedText(featureCard?.title, content.commitmentTitle)}
             </h2>
             {page?.paragraph3?.raw ? (
               <RichTextBlock context={page.paragraph3} />
             ) : (
               <p className="mt-7 font-montserrat text-base leading-8 text-gray-700 md:text-lg">
-                {featureCard?.paragraph || content.commitmentBody}
+                {managedText(featureCard?.paragraph, content.commitmentBody)}
               </p>
             )}
             <a
               href={primaryCtaUrl}
               className="mt-8 inline-flex w-fit items-center gap-2 border-b border-primary-color pb-2 font-montserrat text-xs font-semibold uppercase tracking-[0.14em] text-black no-underline"
             >
-              {featureCard?.buttonText || content.primaryCta}
+              {managedText(featureCard?.buttonText, content.primaryCta)}
               <ArrowRight aria-hidden="true" size={17} />
             </a>
           </div>
         </div>
       </section>
-
 
       <section
         id={contactSectionId}
@@ -769,13 +778,13 @@ const HomeExperience = ({
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-primary-color">
-              {page?.contactEyebrow || content.contactEyebrow}
+              {managedText(page?.contactEyebrow, content.contactEyebrow)}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight md:text-6xl">
-              {page?.contactHeading || content.contactTitle}
+              {managedText(page?.contactHeading, content.contactTitle)}
             </h2>
             <p className="mt-6 font-montserrat text-base leading-8 text-gray-300 md:text-lg">
-              {page?.contactBody || content.contactBody}
+              {managedText(page?.contactBody, content.contactBody)}
             </p>
             <div className="mt-9 space-y-4">
               <a
@@ -824,7 +833,7 @@ const HomeExperience = ({
                   aria-hidden="true"
                   className="text-primary-color"
                 />
-                {page?.contactEyebrow || content.availability}
+                {managedText(page?.contactEyebrow, content.availability)}
               </p>
             </div>
           </div>
@@ -834,6 +843,5 @@ const HomeExperience = ({
     </main>
   );
 };
-
 
 export default HomeExperience;

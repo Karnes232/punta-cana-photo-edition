@@ -139,11 +139,11 @@ const english = {
 
 const spanish = {
   eyebrow: "Bodas de destino en Punta Cana",
-  heroTitle: "Wedding Planner en Punta Cana",
+  heroTitle: "Planificación de Bodas en Punta Cana",
   heroText:
     "Un equipo local para bodas de destino, del sur de Asia y multiculturales: diseñamos su visión y gestionamos cada detalle desde la primera reunión.",
   primaryCta: "Ver paquetes de planificación",
-  secondaryCta: "Hablar con una wedding planner",
+  secondaryCta: "Hablar con una planificadora de bodas",
   trust: [
     "10 años de experiencia planificando bodas",
     "Asistencia de planificación 24/7",
@@ -175,7 +175,7 @@ const spanish = {
   ],
   packages: {
     eyebrow: "Opciones claras",
-    title: "Paquetes de wedding planning en Punta Cana",
+    title: "Paquetes de planificación de bodas en Punta Cana",
     intro:
       "Elijan el nivel de apoyo que necesitan. Cada paquete comienza con una reunión, un contrato firmado y un depósito de $500 aplicado al balance.",
     popular: "Más elegido",
@@ -224,16 +224,16 @@ const spanish = {
     },
   ],
   grecia: {
-    eyebrow: "Su wedding planner principal",
+    eyebrow: "Su planificadora principal",
     title: "Conozcan a Grecia Mejía",
-    body: "Grecia es wedding planner en Punta Cana con 10 años de experiencia y múltiples bodas de destino planificadas y ejecutadas. Lidera con empatía, comunicación cercana y atención meticulosa, uniendo pareja, familia, venue y proveedores en un solo plan claro.",
+    body: "Grecia es planificadora de bodas en Punta Cana con 10 años de experiencia y múltiples bodas de destino planificadas y ejecutadas. Lidera con empatía, comunicación cercana y atención meticulosa, uniendo pareja, familia, locación y proveedores en un solo plan claro.",
     body2:
       "Desde la primera conversación hasta el día de la boda, Grecia y el equipo de Sertuin Events están disponibles 24/7 para resolver detalles, proteger el plan y brindar tranquilidad.",
     galleryTitle: "Grecia a su lado durante todo el proceso",
     galleryBody:
       "Momentos reales de planificación con parejas y novias, desde las primeras decisiones hasta la celebración en Punta Cana.",
   },
-  faqTitle: "Preguntas frecuentes sobre wedding planning",
+  faqTitle: "Preguntas frecuentes sobre planificación de bodas",
   faqs: [
     {
       question: "¿Cuánto es el depósito para un paquete de planificación?",
@@ -241,7 +241,7 @@ const spanish = {
         "El depósito inicial siempre es de $500, sin importar el paquete elegido. La fecha y el servicio se confirman después de firmar el contrato y recibir el depósito. El depósito se aplica al balance; las condiciones de cancelación y pagos constan en el contrato.",
     },
     {
-      question: "¿Cómo comienza el proceso de wedding planning?",
+      question: "¿Cómo comienza el proceso de planificación de bodas?",
       answer:
         "Comenzamos con una reunión inicial. Después eligen el paquete, preparamos el contrato, envían el depósito de $500 y comenzamos a desarrollar el plan, diseño, opciones de venue y estrategia de proveedores.",
     },
@@ -319,18 +319,25 @@ const parseManagedContent = (raw) => {
   }
 };
 
-export const getWeddingPlannerContent = (language, managedRaw) =>
-  mergeManagedContent(
-    language === "es" ? spanish : english,
-    parseManagedContent(managedRaw),
-  );
+export const getWeddingPlannerContent = (language, managedRaw) => {
+  if (language === "es") return spanish;
+  return mergeManagedContent(english, parseManagedContent(managedRaw));
+};
 
 export const normalizeWeddingFaqs = (nodes, language) => {
   const fallback = getWeddingPlannerContent(language).faqs;
+  const localize = (value) =>
+    language === "es"
+      ? String(value || "")
+          .replace(/\bwedding planner\b/gi, "planificadora de bodas")
+          .replace(/\bwedding planning\b/gi, "planificación de bodas")
+          .replace(/\bvenues\b/gi, "locaciones")
+          .replace(/\bvenue\b/gi, "locación")
+      : value || "";
   const cmsFaqs = (nodes || [])
     .map((item) => ({
-      question: item?.title || "",
-      answer: item?.content?.content || "",
+      question: localize(item?.title),
+      answer: localize(item?.content?.content),
     }))
     .filter(
       (item) =>

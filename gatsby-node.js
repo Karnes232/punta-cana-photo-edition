@@ -344,10 +344,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // not exist yet in Contentful (or the query fails), it degrades gracefully
   // instead of breaking the entire page build.
   const { createRedirect } = actions;
+  const protectedRedirectSources = new Set();
 
   const createPermanentRedirect = (fromPath, toPath) => {
     const normalizedFrom = fromPath.replace(/\/+$/, "");
     [normalizedFrom, `${normalizedFrom}/`].forEach((source) => {
+      protectedRedirectSources.add(source);
       createRedirect({
         fromPath: source,
         toPath,
@@ -449,6 +451,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const noSlash = from.replace(/\/+$/, "");
       const withSlash = `${noSlash}/`;
       const fromVariants = noSlash === "" ? [from] : [noSlash, withSlash];
+
+      // Source-controlled migrations are reviewed and language-safe. A stale
+      // Contentful entry must not override one of them (this previously sent a
+      // Spanish proposal article to the English proposal page).
+      if (fromVariants.some((source) => protectedRedirectSources.has(source))) {
+        reporter.warn(
+          `[redirects] Skipping Contentful override for protected source ${from}`,
+        );
+        skipped++;
+        continue;
+      }
 
       // Normalize an internal destination to a trailing slash (matches
       // trailingSlash: "always") to avoid a redirect chain. Leave external

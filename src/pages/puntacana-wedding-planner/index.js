@@ -34,16 +34,16 @@ export const Head = ({ pageContext, data }) => {
   const seo = data.allContentfulSeo.nodes[0];
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const pageUrl = `${rootUrl}${isSpanish ? "/es" : ""}/puntacana-wedding-planner/`;
-  const title =
-    seo?.title ||
-    (isSpanish
-      ? "Wedding Planner en Punta Cana | Planificación Completa"
-      : "Punta Cana Wedding Planner | Full Planning & Coordination");
-  const description =
-    seo?.description?.description ||
-    (isSpanish
-      ? "Wedding planning en Punta Cana con paquetes claros, asistencia 24/7 y experiencia en bodas de destino, multiculturales y del sudeste asiático."
-      : "Punta Cana wedding planning with clear packages, 24/7 support, and expertise in destination, multicultural and South Asian weddings.");
+  // Keep the Spanish result linguistically distinct from the English page.
+  // Search Console showed the Spanish URL receiving more impressions for the
+  // English query "wedding planner punta cana" than the English URL.
+  const title = isSpanish
+    ? "Planificación de Bodas en Punta Cana | Servicio Completo"
+    : seo?.title || "Punta Cana Wedding Planner | Full Planning & Coordination";
+  const description = isSpanish
+    ? "Planificamos bodas de destino en Punta Cana con paquetes claros, asistencia 24/7 y experiencia en celebraciones multiculturales y del sur de Asia."
+    : seo?.description?.description ||
+      "Punta Cana wedding planning with clear packages, 24/7 support, and expertise in destination, multicultural and South Asian weddings.";
   const image = seo?.images?.file?.url
     ? `${seo.images.file.url.startsWith("//") ? "https:" : ""}${seo.images.file.url}`
     : undefined;

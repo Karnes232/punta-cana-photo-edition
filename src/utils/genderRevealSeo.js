@@ -11,7 +11,7 @@ export const buildGenderRevealSchema = ({
   const isSpanish = language === "es";
   const homeUrl = `https://sertuinevents.com${isSpanish ? "/es/" : "/"}`;
   const serviceName = isSpanish
-    ? "Planificación de gender reveal en Punta Cana"
+    ? "Planificación de revelaciones de género en Punta Cana"
     : "Punta Cana gender reveal planning";
 
   return {

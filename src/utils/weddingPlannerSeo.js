@@ -60,32 +60,47 @@ export const buildWeddingPlannerSchema = ({
         "@id": `${pageUrl}#grecia-mejia`,
         name: "Grecia Mejía",
         jobTitle: isSpanish
-          ? "Wedding planner principal"
+          ? "Planificadora de bodas principal"
           : "Lead Wedding Planner",
         worksFor: { "@id": organizationId },
         description: isSpanish
-          ? "Wedding planner en Punta Cana con 10 años de experiencia en bodas de destino, multiculturales y del sur de Asia."
+          ? "Planificadora de bodas en Punta Cana con 10 años de experiencia en bodas de destino, multiculturales y del sur de Asia."
           : "Punta Cana wedding planner with 10 years of experience in destination, multicultural and South Asian weddings.",
-        knowsAbout: [
-          "Destination wedding planning",
-          "South Asian weddings",
-          "Multicultural weddings",
-          "Punta Cana wedding venues",
-          "Wedding vendor coordination",
-        ],
+        knowsAbout: isSpanish
+          ? [
+              "Planificación de bodas de destino",
+              "Bodas del sur de Asia",
+              "Bodas multiculturales",
+              "Locaciones para bodas en Punta Cana",
+              "Coordinación de proveedores para bodas",
+            ]
+          : [
+              "Destination wedding planning",
+              "South Asian weddings",
+              "Multicultural weddings",
+              "Punta Cana wedding venues",
+              "Wedding vendor coordination",
+            ],
       },
       {
         "@type": "Service",
         "@id": serviceId,
         name: isSpanish
-          ? "Wedding planning en Punta Cana"
+          ? "Planificación de bodas en Punta Cana"
           : "Punta Cana Wedding Planning",
-        serviceType: [
-          "Destination wedding planning",
-          "South Asian wedding planning",
-          "Multicultural wedding planning",
-          "Wedding day coordination",
-        ],
+        serviceType: isSpanish
+          ? [
+              "Planificación de bodas de destino",
+              "Planificación de bodas del sur de Asia",
+              "Planificación de bodas multiculturales",
+              "Coordinación del día de la boda",
+            ]
+          : [
+              "Destination wedding planning",
+              "South Asian wedding planning",
+              "Multicultural wedding planning",
+              "Wedding day coordination",
+            ],
         url: pageUrl,
         description,
         image,
@@ -150,7 +165,7 @@ export const buildWeddingPlannerSchema = ({
             "@type": "ListItem",
             position: 2,
             name: isSpanish
-              ? "Wedding Planner en Punta Cana"
+              ? "Planificación de Bodas en Punta Cana"
               : "Punta Cana Wedding Planner",
             item: pageUrl,
           },
