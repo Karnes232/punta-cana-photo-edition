@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import PhoneInput, {
-    isPossiblePhoneNumber,
+  isPossiblePhoneNumber,
   parsePhoneNumber,
 } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -613,13 +613,33 @@ const COPY = {
   },
 };
 
+const localizeSpanishElopementTerms = (value) => {
+  if (typeof value === "string") {
+    return value
+      .replace(/\bUn elopement\b/g, "Una boda íntima")
+      .replace(/\belopements\b/gi, "bodas íntimas")
+      .replace(/\belopement\b/gi, "boda íntima")
+      .replace(/\bonsite\b/gi, "presente");
+  }
+  if (Array.isArray(value)) return value.map(localizeSpanishElopementTerms);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [
+        key,
+        localizeSpanishElopementTerms(item),
+      ]),
+    );
+  }
+  return value;
+};
+
 export const getElopementCopy = (language = "en-US") =>
-  COPY[language === "es" ? "es" : "en-US"];
+  language === "es" ? localizeSpanishElopementTerms(COPY.es) : COPY["en-US"];
 
 export const buildElopementFaqs = (language = "en-US") => {
   const es = language === "es";
 
-  return es
+  const questions = es
     ? [
         [
           "¿Cuánto cuesta un elopement en Punta Cana?",
@@ -688,6 +708,8 @@ export const buildElopementFaqs = (language = "en-US") => {
           "The form only sends a request. The date is reserved after availability is confirmed, the agreement is completed and the US$200 deposit is paid through PayPal. The balance is paid in cash on the elopement day, upon arrival at the beach or before boarding.",
         ],
       ];
+
+  return es ? localizeSpanishElopementTerms(questions) : questions;
 };
 
 const money = (value) =>
@@ -792,7 +814,14 @@ const ExperienceCard = ({ experience, copy, active, onSelect }) => {
   );
 };
 
-const DecorCard = ({ decoration, copy, active, disabled, onSelect }) => {
+const DecorCard = ({
+  decoration,
+  copy,
+  active,
+  disabled,
+  onSelect,
+  isSpanish,
+}) => {
   const [photo, setPhoto] = useState(0);
   const name = copy.decorNames[decoration.id];
 
@@ -815,7 +844,11 @@ const DecorCard = ({ decoration, copy, active, disabled, onSelect }) => {
       <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
         <img
           src={decoration.images[photo]}
-          alt={`${name} Punta Cana elopement décor by Sertuin Events`}
+          alt={
+            isSpanish
+              ? `${name} para una boda íntima en Punta Cana por Sertuin Events`
+              : `${name} Punta Cana elopement décor by Sertuin Events`
+          }
           loading="lazy"
           width="1600"
           height="1200"
@@ -1000,9 +1033,7 @@ const ElopementForm = ({
         .catch(() => ({}));
 
       if (!validationResponse.ok) {
-        throw new Error(
-          validationResult.error || "Form validation failed",
-        );
+        throw new Error(validationResult.error || "Form validation failed");
       }
 
       const formResponse = await fetch("/", {
@@ -1143,7 +1174,10 @@ const ElopementForm = ({
                 setFormError("");
               }
             }}
-            countrySelectProps={{ "aria-label": copy.form.phoneCountry, required: true }}
+            countrySelectProps={{
+              "aria-label": copy.form.phoneCountry,
+              required: true,
+            }}
             numberInputProps={{
               className:
                 "w-full bg-transparent px-3 py-3 font-montserrat text-sm text-stone-900 outline-none",
@@ -1269,7 +1303,7 @@ const ElopementExperience = ({ language = "en-US" }) => {
           sizes="100vw"
           alt={
             language === "es"
-              ? ELOPEMENT_GALLERY[0].es
+              ? localizeSpanishElopementTerms(ELOPEMENT_GALLERY[0].es)
               : ELOPEMENT_GALLERY[0].en
           }
           loading="eager"
@@ -1372,6 +1406,7 @@ const ElopementExperience = ({ language = "en-US" }) => {
                 active={decorationId === item.id}
                 disabled={experienceId === "catamaran" && !item.catamaran}
                 onSelect={() => setDecorationId(item.id)}
+                isSpanish={language === "es"}
               />
             ))}
           </div>
@@ -1556,7 +1591,11 @@ const ElopementExperience = ({ language = "en-US" }) => {
                 src={gallerySource(image.slug, 960)}
                 srcSet={`${gallerySource(image.slug, 480)} 480w, ${gallerySource(image.slug, 960)} 960w, ${gallerySource(image.slug, 1600)} 1600w`}
                 sizes="(min-width: 1024px) 280px, (min-width: 768px) 33vw, 50vw"
-                alt={language === "es" ? image.es : image.en}
+                alt={
+                  language === "es"
+                    ? localizeSpanishElopementTerms(image.es)
+                    : image.en
+                }
                 loading="lazy"
                 decoding="async"
                 width={image.width}

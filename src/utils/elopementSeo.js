@@ -19,7 +19,7 @@ export const buildElopementSchema = ({
   const faqs = buildElopementFaqs(language);
   const isSpanish = language === "es";
   const description = isSpanish
-    ? "Paquetes de elopement en Punta Cana con playa o catamarán privado, transporte para hasta 10 personas, cobertura fotográfica de la ceremonia, bouquet y decoración elegible."
+    ? "Paquetes para bodas íntimas en Punta Cana con playa o catamarán privado, transporte para hasta 10 personas, cobertura fotográfica, ramo y decoración a elegir."
     : "Punta Cana elopement packages with a private beach or catamaran, transportation for up to 10 people, ceremony photo coverage, bouquet and selectable décor.";
 
   return {
@@ -83,7 +83,9 @@ export const buildElopementSchema = ({
         "@id": `${pageUrl}#service`,
         name: copy.heroTitle,
         description,
-        serviceType: "Elopement wedding planning",
+        serviceType: isSpanish
+          ? "Planificación de bodas íntimas"
+          : "Elopement wedding planning",
         url: pageUrl,
         image,
         inLanguage: isSpanish ? "es" : "en",
@@ -103,8 +105,12 @@ export const buildElopementSchema = ({
             description: copy[experience.id].summary,
             category:
               experience.id === "beach"
-                ? "Private beach elopement"
-                : "Private catamaran elopement",
+                ? isSpanish
+                  ? "Boda íntima en playa privada"
+                  : "Private beach elopement"
+                : isSpanish
+                  ? "Boda íntima en catamarán privado"
+                  : "Private catamaran elopement",
             price: experience.price,
             priceCurrency: "USD",
             availability: "https://schema.org/LimitedAvailability",
@@ -116,7 +122,7 @@ export const buildElopementSchema = ({
                     "@type": "QuantitativeValue",
                     minValue: 2,
                     maxValue: 10,
-                    unitText: "people",
+                    unitText: isSpanish ? "personas" : "people",
                   }
                 : undefined,
           })),
@@ -124,7 +130,9 @@ export const buildElopementSchema = ({
             "@type": "Offer",
             name: copy.decorNames[decoration.id],
             description: copy.decorDescriptions[decoration.id],
-            category: "Elopement wedding décor",
+            category: isSpanish
+              ? "Decoración para boda íntima"
+              : "Elopement wedding décor",
             price: decoration.price,
             priceCurrency: "USD",
             availability: "https://schema.org/LimitedAvailability",
@@ -135,7 +143,9 @@ export const buildElopementSchema = ({
             "@type": "Offer",
             name: copy.legal,
             description: copy.legalText,
-            category: "Legal wedding upgrade",
+            category: isSpanish
+              ? "Servicio adicional de boda legal"
+              : "Legal wedding upgrade",
             price: LEGAL_UPGRADE_PRICE,
             priceCurrency: "USD",
             availability: "https://schema.org/LimitedAvailability",

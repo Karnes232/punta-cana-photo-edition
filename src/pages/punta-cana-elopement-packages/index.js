@@ -30,16 +30,16 @@ export const Head = ({ data, pageContext }) => {
   const spanishUrl = `${rootUrl}/es/punta-cana-elopement-packages/`;
   const title =
     language === "es"
-      ? "Paquetes de Elopement en Punta Cana | Sertuin Events"
+      ? "Boda Íntima en Punta Cana | Paquetes Desde US$999"
       : "Punta Cana Elopement Packages | Sertuin Events";
   const description =
     language === "es"
-      ? "Paquetes de elopement en Punta Cana desde US$999. Playa o catamarán privado, transporte para hasta 10 personas, cobertura fotográfica y decoración elegible."
+      ? "Paquetes para una boda íntima en Punta Cana desde US$999: playa o catamarán privado, transporte, fotografías de la ceremonia y decoración a elegir."
       : "Punta Cana elopement packages from US$999. Private beach or catamaran, transportation for up to 10 people, ceremony photo coverage and selectable décor.";
   const absoluteImage = `${rootUrl}${heroImage}`;
   const imageAlt =
     language === "es"
-      ? "Decoración tropical para una boda elopement en la playa de Punta Cana"
+      ? "Decoración tropical para una boda íntima en una playa de Punta Cana"
       : "Tropical décor for a Punta Cana beach elopement wedding";
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
   const schemaMarkup = buildElopementSchema({

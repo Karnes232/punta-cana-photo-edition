@@ -303,6 +303,10 @@ const GenderRevealExperience = ({
 }) => {
   const isSpanish = language === "es";
   const content = getGenderRevealContent(language);
+  const safeLocalizedText = (value, fallback) =>
+    isSpanish && /\bgender\s*reveal/i.test(value || "")
+      ? fallback
+      : safeText(value, fallback);
   const faqList = normalizeGenderRevealFaqs(faqs, language);
   const telephone = (generalInfo?.telephone || "8295222900").replace(/\D/g, "");
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${telephone}&text=${encodeURIComponent(
@@ -332,20 +336,30 @@ const GenderRevealExperience = ({
         (card) =>
           card.title &&
           card.body &&
-          isCurrentGenderRevealCopy(`${card.title} ${card.body}`),
+          isCurrentGenderRevealCopy(`${card.title} ${card.body}`) &&
+          (!isSpanish ||
+            !/\bgender\s*reveal/i.test(`${card.title} ${card.body}`)),
       );
     return currentCards.length >= 3 ? currentCards : null;
-  }, [cards]);
+  }, [cards, isSpanish]);
   const heroAsset = managedGallery?.images?.[0];
   const cmsGalleryImages = managedGallery?.images?.slice(1) || [];
-  const managedPageCurrent = isCurrentGenderRevealCopy(page?.heroHeading);
-  const introTitle = safeText(page?.sectionTitle, content.introduction.title);
-  const serviceTitle = safeText(page?.sectionTitle2, content.service.title);
+  const managedPageCurrent =
+    isCurrentGenderRevealCopy(page?.heroHeading) &&
+    (!isSpanish || !/\bgender\s*reveal/i.test(page?.heroHeading || ""));
+  const introTitle = safeLocalizedText(
+    page?.sectionTitle,
+    content.introduction.title,
+  );
+  const serviceTitle = safeLocalizedText(
+    page?.sectionTitle2,
+    content.service.title,
+  );
   const formCopy = {
     ...content.form,
-    eyebrow: safeText(page?.contactEyebrow, content.form.eyebrow),
-    title: safeText(page?.contactHeading, content.form.title),
-    body: safeText(page?.contactBody, content.form.body),
+    eyebrow: safeLocalizedText(page?.contactEyebrow, content.form.eyebrow),
+    title: safeLocalizedText(page?.contactHeading, content.form.title),
+    body: safeLocalizedText(page?.contactBody, content.form.body),
   };
   const locationCards = managedCards || content.locations.items;
 
@@ -356,7 +370,11 @@ const GenderRevealExperience = ({
           {heroAsset ? (
             <ContentfulImage
               asset={heroAsset}
-              alt="Custom gender reveal celebration in Punta Cana"
+              alt={
+                isSpanish
+                  ? "Revelación de género personalizada en Punta Cana"
+                  : "Custom gender reveal celebration in Punta Cana"
+              }
               className="h-full w-full"
               loading="eager"
               fetchPriority="high"
@@ -364,7 +382,11 @@ const GenderRevealExperience = ({
           ) : (
             <StaticImage
               src="../../images/gender-reveal/punta-cana-gender-reveal-beach.webp"
-              alt="Blue smoke gender reveal celebration on a Punta Cana beach"
+              alt={
+                isSpanish
+                  ? "Revelación con humo azul en una playa de Punta Cana"
+                  : "Blue smoke gender reveal celebration on a Punta Cana beach"
+              }
               className="h-full w-full"
               imgStyle={{ objectFit: "cover", objectPosition: "center 56%" }}
               loading="eager"
@@ -379,20 +401,20 @@ const GenderRevealExperience = ({
         <div className="relative mx-auto flex min-h-[720px] max-w-7xl items-start px-6 pb-16 pt-44 md:items-center md:px-10 md:py-24 lg:px-12">
           <div className="max-w-4xl">
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.26em] text-amber-300 md:text-sm">
-              {safeText(page?.heroEyebrow, content.eyebrow)}
+              {safeLocalizedText(page?.heroEyebrow, content.eyebrow)}
             </p>
             <h1 className="mt-5 max-w-4xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-7xl">
-              {safeText(page?.heroHeading, content.heroTitle)}
+              {safeLocalizedText(page?.heroHeading, content.heroTitle)}
             </h1>
             <p className="mt-7 max-w-2xl font-montserrat text-lg leading-8 text-slate-100 md:text-xl">
-              {safeText(page?.heroHeading2, content.heroText)}
+              {safeLocalizedText(page?.heroHeading2, content.heroText)}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#gender-reveal-quote"
                 className="inline-flex items-center justify-center gap-2 bg-amber-600 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white no-underline transition hover:bg-amber-500"
               >
-                {safeText(page?.primaryCtaLabel, content.primaryCta)}
+                {safeLocalizedText(page?.primaryCtaLabel, content.primaryCta)}
                 <ArrowRight size={18} aria-hidden="true" />
               </a>
               <a
@@ -402,7 +424,10 @@ const GenderRevealExperience = ({
                 className="inline-flex items-center justify-center gap-2 border border-white/70 bg-white/10 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white no-underline backdrop-blur-sm transition hover:bg-white hover:text-slate-950"
               >
                 <MessageCircle size={18} aria-hidden="true" />
-                {safeText(page?.secondaryCtaLabel, content.secondaryCta)}
+                {safeLocalizedText(
+                  page?.secondaryCtaLabel,
+                  content.secondaryCta,
+                )}
               </a>
             </div>
           </div>
@@ -445,14 +470,22 @@ const GenderRevealExperience = ({
           <div className="grid grid-cols-2 gap-3">
             <StaticImage
               src="../../images/gender-reveal/gender-reveal-setup-punta-cana.webp"
-              alt="Custom gender reveal setup on a Punta Cana beach"
+              alt={
+                isSpanish
+                  ? "Decoración personalizada para una revelación en una playa de Punta Cana"
+                  : "Custom gender reveal setup on a Punta Cana beach"
+              }
               className="h-80 w-full"
               imgStyle={{ objectFit: "cover" }}
               placeholder="blurred"
             />
             <StaticImage
               src="../../images/gender-reveal/expecting-couple-gender-reveal-punta-cana.webp"
-              alt="Expecting couple at their Punta Cana gender reveal"
+              alt={
+                isSpanish
+                  ? "Pareja embarazada durante su revelación de género en Punta Cana"
+                  : "Expecting couple at their Punta Cana gender reveal"
+              }
               className="mt-10 h-80 w-full"
               imgStyle={{ objectFit: "cover" }}
               placeholder="blurred"
@@ -557,8 +590,10 @@ const GenderRevealExperience = ({
                   key={`${asset?.title || "gender-reveal"}-${index}`}
                   asset={asset}
                   alt={
-                    asset?.title ||
-                    "Custom gender reveal planned by Sertuin Events in Punta Cana"
+                    isSpanish
+                      ? "Revelación de género planificada por Sertuin Events en Punta Cana"
+                      : asset?.title ||
+                        "Custom gender reveal planned by Sertuin Events in Punta Cana"
                   }
                   className={`${index === 0 || index === 5 ? "col-span-2" : ""} h-64 w-full md:h-80`}
                 />
@@ -568,35 +603,55 @@ const GenderRevealExperience = ({
             <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
               <StaticImage
                 src="../../images/gender-reveal/blue-smoke-gender-reveal-punta-cana.webp"
-                alt="Blue smoke reveal moment on a Punta Cana beach"
+                alt={
+                  isSpanish
+                    ? "Momento de revelación con humo azul en una playa de Punta Cana"
+                    : "Blue smoke reveal moment on a Punta Cana beach"
+                }
                 className="col-span-2 h-72 w-full md:h-96"
                 imgStyle={{ objectFit: "cover" }}
                 placeholder="blurred"
               />
               <StaticImage
                 src="../../images/gender-reveal/gender-reveal-villa-punta-cana.webp"
-                alt="Pink and blue gender reveal decoration at a private Punta Cana villa"
+                alt={
+                  isSpanish
+                    ? "Decoración rosa y azul para una revelación en una villa de Punta Cana"
+                    : "Pink and blue gender reveal decoration at a private Punta Cana villa"
+                }
                 className="h-72 w-full md:h-96"
                 imgStyle={{ objectFit: "cover" }}
                 placeholder="blurred"
               />
               <StaticImage
                 src="../../images/gender-reveal/gender-reveal-couple-punta-cana-beach.webp"
-                alt="Couple celebrating a gender reveal on the beach in Punta Cana"
+                alt={
+                  isSpanish
+                    ? "Pareja celebrando su revelación en una playa de Punta Cana"
+                    : "Couple celebrating a gender reveal on the beach in Punta Cana"
+                }
                 className="h-72 w-full md:h-96"
                 imgStyle={{ objectFit: "cover" }}
                 placeholder="blurred"
               />
               <StaticImage
                 src="../../images/gender-reveal/gender-reveal-celebration-punta-cana.webp"
-                alt="Gender reveal celebration with décor and sparkling effects in Punta Cana"
+                alt={
+                  isSpanish
+                    ? "Celebración de revelación con decoración y efectos de luces en Punta Cana"
+                    : "Gender reveal celebration with décor and sparkling effects in Punta Cana"
+                }
                 className="h-72 w-full md:col-span-2 md:h-96"
                 imgStyle={{ objectFit: "cover" }}
                 placeholder="blurred"
               />
               <StaticImage
                 src="../../images/gender-reveal/gender-reveal-sunset-punta-cana.webp"
-                alt="Expecting parents after their Punta Cana gender reveal at sunset"
+                alt={
+                  isSpanish
+                    ? "Futuros padres después de su revelación al atardecer en Punta Cana"
+                    : "Expecting parents after their Punta Cana gender reveal at sunset"
+                }
                 className="h-72 w-full md:col-span-2 md:h-96"
                 imgStyle={{ objectFit: "cover" }}
                 placeholder="blurred"

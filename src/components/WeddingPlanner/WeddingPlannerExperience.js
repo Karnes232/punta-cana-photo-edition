@@ -348,6 +348,19 @@ const WeddingPlannerExperience = ({
 }) => {
   const isSpanish = language === "es";
   const content = getWeddingPlannerContent(language, page?.paragraph3?.raw);
+  const localizedPageText = (value, fallback) => {
+    if (!value) return fallback;
+    return isSpanish && /\bwedding\b|\bvenue\b/i.test(value) ? fallback : value;
+  };
+  const localizeSpanishTerm = (value) => {
+    if (!isSpanish || typeof value !== "string") return value;
+    return value
+      .replace(/\bwedding planner\b/gi, "planificadora de bodas")
+      .replace(/\bwedding planning\b/gi, "planificación de bodas")
+      .replace(/\bvenues\b/gi, "locaciones")
+      .replace(/\bvenue\b/gi, "locación")
+      .replace(/\bonsite\b/gi, "presente");
+  };
   const formRef = useRef(null);
   const greciaCarouselRef = useRef(null);
   const [selectedPackage, setSelectedPackage] = useState("");
@@ -380,14 +393,23 @@ const WeddingPlannerExperience = ({
   const greciaGalleryImages = greciaGallery?.images || [];
   const greciaCarouselImages = greciaGalleryImages.slice(1);
   const packageList = useMemo(() => {
-    const cmsPackages = (packages || []).filter(Boolean);
+    const cmsPackages = (packages || []).filter(Boolean).map((item) =>
+      isSpanish
+        ? {
+            ...item,
+            title: localizeSpanishTerm(item.title),
+            description: localizeSpanishTerm(item.description),
+            includedItems: (item.includedItems || []).map(localizeSpanishTerm),
+          }
+        : item,
+    );
     const hasSouthAsian = cmsPackages.some((item) =>
       /south asian|sudeste asi[aá]tico|indian|sikh/i.test(item?.title || ""),
     );
     return hasSouthAsian
       ? cmsPackages
       : [...cmsPackages, content.packages.fallbackSouthAsian];
-  }, [packages, content.packages.fallbackSouthAsian]);
+  }, [packages, content.packages.fallbackSouthAsian, isSpanish]);
   const faqList = normalizeWeddingFaqs(faqs, language);
   const telephone = (generalInfo?.telephone || "8295222900").replace(/\D/g, "");
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${telephone}&text=${encodeURIComponent(
@@ -431,20 +453,20 @@ const WeddingPlannerExperience = ({
         <div className="relative mx-auto flex min-h-[720px] max-w-7xl items-start px-6 pb-16 pt-40 md:items-center md:px-10 md:py-24 lg:px-12">
           <div className="max-w-4xl">
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.26em] text-amber-300 md:text-sm">
-              {page?.heroEyebrow || content.eyebrow}
+              {localizedPageText(page?.heroEyebrow, content.eyebrow)}
             </p>
             <h1 className="mt-5 max-w-4xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-7xl">
-              {page?.heroHeading || content.heroTitle}
+              {localizedPageText(page?.heroHeading, content.heroTitle)}
             </h1>
             <p className="mt-7 max-w-2xl font-montserrat text-lg leading-8 text-slate-100 md:text-xl">
-              {page?.heroHeading2 || content.heroText}
+              {localizedPageText(page?.heroHeading2, content.heroText)}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#wedding-packages"
                 className="inline-flex items-center justify-center gap-2 bg-amber-600 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white no-underline transition hover:bg-amber-500"
               >
-                {page?.primaryCtaLabel || content.primaryCta}
+                {localizedPageText(page?.primaryCtaLabel, content.primaryCta)}
                 <ArrowRight size={18} aria-hidden="true" />
               </a>
               <a
@@ -454,7 +476,10 @@ const WeddingPlannerExperience = ({
                 className="inline-flex items-center justify-center gap-2 border border-white/70 bg-white/10 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white no-underline backdrop-blur-sm transition hover:bg-white hover:text-slate-950"
               >
                 <MessageCircle size={18} aria-hidden="true" />
-                {page?.secondaryCtaLabel || content.secondaryCta}
+                {localizedPageText(
+                  page?.secondaryCtaLabel,
+                  content.secondaryCta,
+                )}
               </a>
             </div>
           </div>
@@ -613,7 +638,10 @@ const WeddingPlannerExperience = ({
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow={content.packages.eyebrow}
-            title={page?.sectionTitle || content.packages.title}
+            title={localizedPageText(
+              page?.sectionTitle,
+              content.packages.title,
+            )}
             body={content.packages.intro}
           />
           <div className="mt-14 grid gap-7 md:grid-cols-2 xl:grid-cols-4">

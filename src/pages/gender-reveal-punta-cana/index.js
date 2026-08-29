@@ -36,28 +36,29 @@ export const Head = ({ pageContext, data }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const pageUrl = `${rootUrl}${isSpanish ? "/es" : ""}/gender-reveal-punta-cana/`;
   const fallbackTitle = isSpanish
-    ? "Gender Reveal en Punta Cana | Planificación Personalizada"
+    ? "Revelación de Género en Punta Cana | Evento a Medida"
     : "Gender Reveal in Punta Cana | Custom Planning";
   const fallbackDescription = isSpanish
-    ? "Planificamos tu gender reveal en Punta Cana en hotel, villa, playa o locación elegida. Sin paquetes: cuéntanos tu idea y recibe una cotización personalizada."
+    ? "Planificamos tu revelación de género en Punta Cana en hotel, villa, playa o locación elegida. Cuéntanos tu idea y recibe una cotización personalizada."
     : "Plan your Punta Cana gender reveal at a hotel, villa, beach or selected venue. No preset packages—share your idea and receive a custom quote.";
-  const title = isCurrentGenderRevealCopy(seo?.title)
-    ? seo.title
-    : fallbackTitle;
-  const description = isCurrentGenderRevealCopy(seo?.description?.description)
-    ? seo.description.description
-    : fallbackDescription;
+  const title =
+    !isSpanish && isCurrentGenderRevealCopy(seo?.title)
+      ? seo.title
+      : fallbackTitle;
+  const description =
+    !isSpanish && isCurrentGenderRevealCopy(seo?.description?.description)
+      ? seo.description.description
+      : fallbackDescription;
   const image = `${rootUrl}/images/punta-cana-gender-reveal-planning.webp`;
   const keywords = (seo?.keywords || []).filter((keyword) =>
     isCurrentGenderRevealCopy(keyword),
   );
   const fallbackKeywords = isSpanish
     ? [
-        "gender reveal Punta Cana",
         "revelación de género Punta Cana",
-        "organización gender reveal Punta Cana",
-        "gender reveal en villa Punta Cana",
-        "gender reveal en hotel Punta Cana",
+        "organización de revelación de género Punta Cana",
+        "revelación de género en villa Punta Cana",
+        "revelación de género en hotel Punta Cana",
       ]
     : [
         "gender reveal Punta Cana",
@@ -84,13 +85,14 @@ export const Head = ({ pageContext, data }) => {
       <Seo
         title={title}
         description={description}
-        keywords={(keywords.length > 0 ? keywords : fallbackKeywords).join(
-          ", ",
-        )}
+        keywords={(!isSpanish && keywords.length > 0
+          ? keywords
+          : fallbackKeywords
+        ).join(", ")}
         image={image}
         imageAlt={
           isSpanish
-            ? "Gender reveal personalizado en una playa de Punta Cana"
+            ? "Revelación de género personalizada en una playa de Punta Cana"
             : "Custom gender reveal celebration on a Punta Cana beach"
         }
         url={pageUrl}

@@ -51,6 +51,21 @@ const nonIndexablePaths = [
   "/share-your-experience/",
 ];
 
+// These dates are changed only when the corresponding page receives a
+// meaningful content or SEO update. Unlike a build timestamp, they remain an
+// honest last-modified signal on later no-op deploys.
+const seoLastModified = new Map(
+  [
+    "/",
+    "/gender-reveal-punta-cana/",
+    "/puntacana-wedding-planner/",
+    "/punta-cana-elopement-packages/",
+  ].flatMap((pagePath) => [
+    [pagePath, "2026-08-29"],
+    [pagePath === "/" ? "/es/" : `/es${pagePath}`, "2026-08-29"],
+  ]),
+);
+
 // Sitemap defence in depth: page creation already blocks these routes, but the
 // sitemap must also remain clean if another plugin or future template creates
 // one accidentally.
@@ -130,8 +145,9 @@ module.exports = {
         serialize: (page) => {
           return {
             url: page.path,
-            changefreq: `daily`,
-            priority: page.path === "/" ? 1.0 : 0.7,
+            ...(seoLastModified.has(page.path)
+              ? { lastmod: seoLastModified.get(page.path) }
+              : {}),
           };
         },
       },

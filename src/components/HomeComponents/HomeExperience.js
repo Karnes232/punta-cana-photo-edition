@@ -21,7 +21,6 @@ import PhoneInput, {
 import "react-phone-number-input/style.css";
 import { getHomeContent } from "../../content/homeContent";
 
-
 const legacyRoutes = new Set([
   "/punta-cana-bachelor-party/",
   "/weddings-punta-cana/",
@@ -35,11 +34,11 @@ const legacyRoutes = new Set([
   "/packages/videography-event-planner/",
 ]);
 
-
 const currentRouteAliases = new Map([
   ["/gender-reveal-and-baby-showers/", "/gender-reveal-punta-cana/"],
+  ["/weddings-punta-cana/", "/puntacana-wedding-planner/"],
+  ["/elopement-vow-renewal/", "/punta-cana-elopement-packages/"],
 ]);
-
 
 const normalizeInternalPath = (path) => {
   if (!path || path.startsWith("#") || path.startsWith("http")) return path;
@@ -50,7 +49,6 @@ const normalizeInternalPath = (path) => {
   return currentRouteAliases.get(normalized) || normalized;
 };
 
-
 const localizedPath = (path, language) => {
   if (!path || path.startsWith("#") || path.startsWith("http")) return path;
   const normalizedPath = normalizeInternalPath(path);
@@ -59,7 +57,6 @@ const localizedPath = (path, language) => {
   }
   return normalizedPath === "/" ? "/es/" : `/es${normalizedPath}`;
 };
-
 
 const RichTextBlock = ({ context, fallbackParagraphs, fallbackItems }) => {
   if (!context?.raw) {
@@ -93,7 +90,6 @@ const RichTextBlock = ({ context, fallbackParagraphs, fallbackItems }) => {
       </>
     );
   }
-
 
   const options = {
     renderMark: {
@@ -139,14 +135,11 @@ const RichTextBlock = ({ context, fallbackParagraphs, fallbackItems }) => {
     },
   };
 
-
   return documentToReactComponents(JSON.parse(context.raw), options);
 };
 
-
 const getStructuredProcessSteps = (context) => {
   if (!context?.raw) return null;
-
 
   try {
     const document = JSON.parse(context.raw);
@@ -160,9 +153,7 @@ const getStructuredProcessSteps = (context) => {
       .map((section) => section.trim())
       .filter(Boolean);
 
-
     if (sections.length !== 3) return null;
-
 
     const steps = sections.map((section) => {
       const match = section.match(/^(\d{2})\s*[—-]\s*([^.!?]+)[.!?]\s*(.+)$/);
@@ -171,18 +162,15 @@ const getStructuredProcessSteps = (context) => {
         : null;
     });
 
-
     return steps.every(Boolean) ? steps : null;
   } catch {
     return null;
   }
 };
 
-
 // The cards render in a sm:grid-cols-2 lg:grid-cols-4 grid, so they are about
 // 320px wide on desktop rather than the source width.
 const CARD_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw";
-
 
 const ServiceCard = ({ service, language }) => {
   const image = withSizes(
@@ -190,22 +178,38 @@ const ServiceCard = ({ service, language }) => {
     CARD_SIZES,
   );
   const url = localizedPath(service?.page?.url, language);
-  const isGenderReveal =
-    normalizeInternalPath(service?.page?.url) === "/gender-reveal-punta-cana/";
+  const normalizedRoute = normalizeInternalPath(service?.page?.url);
+  const isGenderReveal = normalizedRoute === "/gender-reveal-punta-cana/";
+  const isWedding = normalizedRoute === "/puntacana-wedding-planner/";
+  const isElopement = normalizedRoute === "/punta-cana-elopement-packages/";
   const title = isGenderReveal
     ? language === "es"
       ? "Revelación de género"
       : "Gender Reveal"
-    : service.typeOfService;
+    : isWedding
+      ? language === "es"
+        ? "Planificación de bodas"
+        : "Wedding Planning"
+      : isElopement
+        ? language === "es"
+          ? "Bodas íntimas"
+          : "Elopement Packages"
+        : service.typeOfService;
   const description = isGenderReveal
     ? language === "es"
       ? "Diseño, coordinación y ejecución de una revelación personalizada en la locación que elijas en Punta Cana."
       : "Design, coordination and execution of a custom reveal at your chosen Punta Cana location."
-    : service.cardDescription;
-
+    : isWedding
+      ? language === "es"
+        ? "Planificación integral, proveedores y coordinación local para tu boda de destino en Punta Cana."
+        : "Full planning, vendor management and local coordination for your destination wedding in Punta Cana."
+      : isElopement
+        ? language === "es"
+          ? "Paquetes para bodas íntimas en playa o catamarán privado, con planificación local en Punta Cana."
+          : "Private beach and catamaran elopement packages with local planning in Punta Cana."
+        : service.cardDescription;
 
   if (!image || !url) return null;
-
 
   return (
     <article className="group relative min-h-[390px] overflow-hidden bg-black shadow-[0_28px_60px_rgba(0,0,0,0.14)]">
@@ -242,7 +246,6 @@ const ServiceCard = ({ service, language }) => {
   );
 };
 
-
 const HomeContactForm = ({ content, language }) => {
   const [status, setStatus] = useState("idle");
   const [phone, setPhone] = useState("");
@@ -260,21 +263,17 @@ const HomeContactForm = ({ content, language }) => {
           successTitle: "Solicitud recibida",
           success:
             "Tu solicitud fue enviada correctamente. Te contactaremos muy pronto.",
-          error:
-            "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
+          error: "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
         }
       : {
           phoneCountry: "Select phone country",
-          phoneError:
-            "Enter a valid phone number with its country code.",
-          emailError:
-            "Enter a valid email address with an active domain.",
+          phoneError: "Enter a valid phone number with its country code.",
+          emailError: "Enter a valid email address with an active domain.",
           sending: "Sending...",
           successTitle: "Request received",
           success:
             "Your request was sent successfully. We will contact you shortly.",
-          error:
-            "We could not send your request. Please try again.",
+          error: "We could not send your request. Please try again.",
         };
 
   const handleSubmit = async (event) => {
@@ -315,9 +314,7 @@ const HomeContactForm = ({ content, language }) => {
         .catch(() => ({}));
 
       if (!validationResponse.ok) {
-        throw new Error(
-          validationResult.error || "Form validation failed",
-        );
+        throw new Error(validationResult.error || "Form validation failed");
       }
 
       const formResponse = await fetch("/", {
@@ -371,7 +368,9 @@ const HomeContactForm = ({ content, language }) => {
       name="home-page"
       method="POST"
       onSubmit={handleSubmit}
-      action={language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"}
+      action={
+        language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/"
+      }
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="border border-white/15 bg-white p-6 text-black shadow-2xl md:p-9"
@@ -492,7 +491,6 @@ const HomeContactForm = ({ content, language }) => {
   );
 };
 
-
 const HomeExperience = ({
   page,
   services,
@@ -541,7 +539,6 @@ const HomeExperience = ({
   const contactSectionId = "start-your-event";
   const primaryCtaUrl = page?.primaryCtaUrl || content.primaryCtaUrl;
   const secondaryCtaUrl = page?.secondaryCtaUrl || content.secondaryCtaUrl;
-
 
   return (
     <main className="overflow-hidden bg-primary-bg-color text-black">
@@ -594,7 +591,6 @@ const HomeExperience = ({
         </div>
       </section>
 
-
       <section className="border-b border-gray-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-px bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
           {[
@@ -632,7 +628,6 @@ const HomeExperience = ({
         </div>
       </section>
 
-
       <section id={eventsSectionId} className="px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
@@ -658,7 +653,6 @@ const HomeExperience = ({
         </div>
       </section>
 
-
       <section className="bg-white px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
@@ -678,7 +672,6 @@ const HomeExperience = ({
           </div>
         </div>
       </section>
-
 
       <section className="bg-black px-6 py-20 text-white md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
@@ -716,7 +709,6 @@ const HomeExperience = ({
           )}
         </div>
       </section>
-
 
       <section className="bg-secondary-bg-color px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-7xl overflow-hidden bg-white shadow-[0_32px_80px_rgba(0,0,0,0.13)] lg:grid-cols-2">
@@ -760,7 +752,6 @@ const HomeExperience = ({
           </div>
         </div>
       </section>
-
 
       <section
         id={contactSectionId}
@@ -834,6 +825,5 @@ const HomeExperience = ({
     </main>
   );
 };
-
 
 export default HomeExperience;

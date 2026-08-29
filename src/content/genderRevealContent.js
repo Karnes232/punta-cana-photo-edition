@@ -132,8 +132,8 @@ const english = {
 };
 
 const spanish = {
-  eyebrow: "Planificación personalizada de gender reveal en Punta Cana",
-  heroTitle: "Gender Reveal en Punta Cana",
+  eyebrow: "Planificación personalizada de revelaciones en Punta Cana",
+  heroTitle: "Revelación de Género en Punta Cana",
   heroText:
     "Cuéntanos qué imaginas. Diseñamos, cotizamos, coordinamos y ejecutamos una revelación única en tu villa, hotel, resort o locación aprobada en Punta Cana.",
   primaryCta: "Solicitar cotización",
@@ -188,7 +188,7 @@ const spanish = {
     ],
   },
   gallery: {
-    eyebrow: "Gender reveals reales en Punta Cana",
+    eyebrow: "Revelaciones reales en Punta Cana",
     title: "Ideas hechas realidad por Sertuin Events",
     intro:
       "Cada evento comienza con una visión diferente. Estas imágenes muestran la variedad de espacios, ambientaciones y momentos que podemos coordinar.",
@@ -221,10 +221,10 @@ const spanish = {
       },
     ],
   },
-  faqTitle: "Preguntas frecuentes sobre gender reveal en Punta Cana",
+  faqTitle: "Preguntas frecuentes sobre revelaciones de género en Punta Cana",
   faqs: [
     {
-      question: "¿Ofrecen paquetes fijos para gender reveal?",
+      question: "¿Ofrecen paquetes fijos para revelaciones de género?",
       answer:
         "No. Cada revelación se cotiza de forma individual según la locación, el diseño, la cantidad de invitados, el método de revelación, los proveedores y la logística necesaria.",
     },
@@ -240,7 +240,7 @@ const spanish = {
         "Envíanos tu idea y los datos del evento. Preparamos una cotización personalizada; después de aprobarla y realizar el depósito indicado, comenzamos la planificación y coordinación.",
     },
     {
-      question: "¿Cuánto cuesta un gender reveal en Punta Cana?",
+      question: "¿Cuánto cuesta una revelación de género en Punta Cana?",
       answer:
         "El precio depende de la locación, decoración, método de revelación, invitados, accesos, permisos y proveedores. Completa el formulario y prepararemos una cotización para tu idea específica.",
     },
@@ -258,11 +258,11 @@ const spanish = {
   ],
   form: {
     eyebrow: "Comienza tu cotización",
-    title: "Cuéntanos sobre tu gender reveal",
+    title: "Cuéntanos sobre tu revelación de género",
     body: "Comparte lo que sabes hoy. La fecha, cantidad de invitados o locación todavía pueden ser aproximadas.",
     submit: "Solicitar mi cotización",
     privacy:
-      "Al enviar, autorizas a Sertuin Events a contactarte sobre esta solicitud de gender reveal.",
+      "Al enviar, autorizas a Sertuin Events a contactarte sobre esta solicitud de revelación de género.",
   },
 };
 
