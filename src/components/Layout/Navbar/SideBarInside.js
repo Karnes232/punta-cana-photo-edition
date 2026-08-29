@@ -18,7 +18,9 @@ const SideBarInside = ({ footer, setToggled }) => {
             />
           }
         >
-          <p className={footer ? "hamburgerSmall" : "hamburger"}>Home</p>
+          <p className={footer ? "hamburgerSmall" : "hamburger"}>
+            {language === "es" ? "Inicio" : "Home"}
+          </p>
         </MenuItem>
         <RomanticEvents footer={footer} setToggled={setToggled} />
 
@@ -51,10 +53,7 @@ const SideBarInside = ({ footer, setToggled }) => {
         {footer && (
           <MenuItem
             component={
-              <Link
-                to={localize("/blog/")}
-                className="hamburgerSmall"
-              />
+              <Link to={localize("/blog/")} className="hamburgerSmall" />
             }
           >
             <p className="hamburgerSmall">Blog</p>
@@ -66,4 +65,3 @@ const SideBarInside = ({ footer, setToggled }) => {
 };
 
 export default SideBarInside;
-

@@ -96,7 +96,7 @@ export const homeContent = {
     heroHeading:
       "Planificación Integral de Eventos en Punta Cana — Tu Evento, Nuestra Responsabilidad",
     heroIntro:
-      "Planificamos, diseñamos, coordinamos y gestionamos eventos corporativos, bodas de destino, elopements, propuestas de matrimonio y celebraciones privadas, desde la primera idea hasta la ejecución en sitio.",
+      "Planificamos, diseñamos, coordinamos y gestionamos eventos corporativos, bodas de destino, bodas íntimas, propuestas de matrimonio y celebraciones privadas, desde la primera idea hasta la ejecución en sitio.",
     primaryCta: "Cuéntanos Sobre Tu Evento",
     primaryCtaUrl: "#start-your-event",
     secondaryCta: "Explorar Tipos de Eventos",
@@ -160,7 +160,7 @@ export const homeContent = {
     eventOptions: [
       "Evento corporativo",
       "Boda de destino",
-      "Elopement",
+      "Boda íntima",
       "Propuesta de matrimonio",
       "Celebración privada",
       "Revelación de género",

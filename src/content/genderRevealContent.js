@@ -232,7 +232,7 @@ const spanish = {
       question:
         "¿Dónde pueden organizar una revelación de género en Punta Cana?",
       answer:
-        "Podemos planificarla en una villa privada, hotel, resort, playa, venue independiente u otra locación elegida por el cliente, siempre que el lugar autorice la actividad y el plan cumpla las normas locales y de seguridad.",
+        "Podemos planificarla en una villa privada, hotel, resort, playa, espacio independiente u otra locación elegida por el cliente, siempre que el lugar autorice la actividad y el plan cumpla las normas locales y de seguridad.",
     },
     {
       question: "¿Cómo reservamos el servicio?",
@@ -274,10 +274,18 @@ export const isCurrentGenderRevealCopy = (value) =>
 
 export const normalizeGenderRevealFaqs = (nodes, language) => {
   const fallback = language === "es" ? spanish.faqs : english.faqs;
+  const localize = (value) => {
+    if (language !== "es" || typeof value !== "string") return value;
+    return value
+      .replace(/\bgender\s+reveals\b/gi, "revelaciones de género")
+      .replace(/\bgender\s+reveal\b/gi, "revelación de género")
+      .replace(/\bvenues\b/gi, "locaciones")
+      .replace(/\bvenue\b/gi, "locación");
+  };
   const candidates = (nodes || [])
     .map((node) => ({
-      question: node?.title?.trim(),
-      answer: node?.content?.content?.trim(),
+      question: localize(node?.title?.trim()),
+      answer: localize(node?.content?.content?.trim()),
     }))
     .filter((item) => item.question && item.answer);
   const isCurrentSet =

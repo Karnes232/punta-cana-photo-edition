@@ -28,7 +28,10 @@ const Copyright = ({ companyName, language }) => {
       <div className="flex flex-col gap-1">
         <Link to={language === "es" ? "/es/" : "/"}>
           <p className="tracking-wider cursor-pointer text-slate-400">
-            All content Copyright &copy; {date} {companyName}
+            {language === "es"
+              ? "Todos los derechos reservados"
+              : "All content Copyright"}{" "}
+            &copy; {date} {companyName}
           </p>
         </Link>
       </div>

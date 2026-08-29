@@ -134,7 +134,7 @@ const InquiryForm = ({ copy, isSpanish }) => {
         choose: "Selecciona una opción",
         hotel: "Hotel o resort",
         villa: "Villa privada",
-        beach: "Playa o venue independiente",
+        beach: "Playa o espacio independiente",
         other: "Otra locación / por definir",
       }
     : {
@@ -180,7 +180,8 @@ const InquiryForm = ({ copy, isSpanish }) => {
       />
       <p className="hidden">
         <label>
-          Do not fill this out: <input name="bot-field" />
+          {isSpanish ? "No completes este campo:" : "Do not fill this out:"}{" "}
+          <input name="bot-field" />
         </label>
       </p>
 

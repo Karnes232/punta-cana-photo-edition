@@ -381,7 +381,10 @@ const HomeContactForm = ({ content, language }) => {
       <input type="hidden" name="phone-country" value={phoneCountry} />
       <p className="hidden">
         <label>
-          Do not fill this out: <input name="bot-field" />
+          {language === "es"
+            ? "No completes este campo:"
+            : "Do not fill this out:"}{" "}
+          <input name="bot-field" />
         </label>
       </p>
       <h3 className="font-crimson text-3xl font-medium">{content.formTitle}</h3>
@@ -499,6 +502,18 @@ const HomeExperience = ({
   language,
 }) => {
   const content = getHomeContent(language);
+  const managedText = (value, fallback) => {
+    if (!value) return fallback;
+    if (
+      language === "es" &&
+      /\belopements?\b|\bwedding (?:planner|planning)\b|\bgender\s*reveal\b/i.test(
+        value,
+      )
+    ) {
+      return fallback;
+    }
+    return value;
+  };
   const heroImage = getImage(page?.heroImageList?.[0]?.gatsbyImage);
   const featureImage = getImage(featureCard?.image?.gatsbyImage);
   const phoneDigits = (generalInfo?.telephone || "+18295222900").replace(
@@ -564,27 +579,27 @@ const HomeExperience = ({
         <div className="relative mx-auto flex min-h-[760px] max-w-7xl items-center px-6 pb-16 pt-40 md:min-h-[780px] md:px-10 md:pt-44 lg:px-12">
           <div className="max-w-5xl">
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.28em] text-primary-color md:text-sm">
-              {page?.heroEyebrow || content.eyebrow}
+              {managedText(page?.heroEyebrow, content.eyebrow)}
             </p>
             <h1 className="mt-6 max-w-5xl font-crimson text-5xl font-medium leading-[0.95] text-white sm:text-6xl md:text-7xl">
-              {page?.heroHeading || content.heroHeading}
+              {managedText(page?.heroHeading, content.heroHeading)}
             </h1>
             <p className="mt-7 max-w-3xl font-montserrat text-base leading-8 text-gray-100 md:text-xl md:leading-9">
-              {page?.heroHeading2 || content.heroIntro}
+              {managedText(page?.heroHeading2, content.heroIntro)}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href={primaryCtaUrl}
                 className="inline-flex items-center justify-center gap-2 bg-primary-color px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-black no-underline transition hover:opacity-90"
               >
-                {page?.primaryCtaLabel || content.primaryCta}
+                {managedText(page?.primaryCtaLabel, content.primaryCta)}
                 <ArrowRight aria-hidden="true" size={18} />
               </a>
               <a
                 href={secondaryCtaUrl}
                 className="inline-flex items-center justify-center gap-2 border border-white/60 bg-black/20 px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-white no-underline backdrop-blur-sm transition hover:bg-white hover:text-black"
               >
-                {page?.secondaryCtaLabel || content.secondaryCta}
+                {managedText(page?.secondaryCtaLabel, content.secondaryCta)}
               </a>
             </div>
           </div>
@@ -594,7 +609,7 @@ const HomeExperience = ({
       <section className="border-b border-gray-200 bg-white">
         <div className="mx-auto grid max-w-7xl gap-px bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            page?.contactEyebrow || content.availability,
+            managedText(page?.contactEyebrow, content.availability),
             language === "es"
               ? "Un solo punto de contacto"
               : "One point of contact",
@@ -635,7 +650,7 @@ const HomeExperience = ({
               {content.eventsEyebrow}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight text-black md:text-6xl">
-              {page?.sectionTitle || content.eventsTitle}
+              {managedText(page?.sectionTitle, content.eventsTitle)}
             </h2>
             <p className="mt-6 font-montserrat text-base leading-8 text-gray-700 md:text-lg">
               {content.eventsIntro}
@@ -660,7 +675,7 @@ const HomeExperience = ({
               {content.whatEyebrow}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight text-black md:text-6xl">
-              {page?.sectionTitle2 || content.whatTitle}
+              {managedText(page?.sectionTitle2, content.whatTitle)}
             </h2>
           </div>
           <div>
@@ -730,23 +745,26 @@ const HomeExperience = ({
           </div>
           <div className="flex flex-col justify-center p-8 md:p-14 lg:p-16">
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-primary-color">
-              {featureCard?.secondaryTitle || content.commitmentEyebrow}
+              {managedText(
+                featureCard?.secondaryTitle,
+                content.commitmentEyebrow,
+              )}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight text-black md:text-5xl">
-              {featureCard?.title || content.commitmentTitle}
+              {managedText(featureCard?.title, content.commitmentTitle)}
             </h2>
             {page?.paragraph3?.raw ? (
               <RichTextBlock context={page.paragraph3} />
             ) : (
               <p className="mt-7 font-montserrat text-base leading-8 text-gray-700 md:text-lg">
-                {featureCard?.paragraph || content.commitmentBody}
+                {managedText(featureCard?.paragraph, content.commitmentBody)}
               </p>
             )}
             <a
               href={primaryCtaUrl}
               className="mt-8 inline-flex w-fit items-center gap-2 border-b border-primary-color pb-2 font-montserrat text-xs font-semibold uppercase tracking-[0.14em] text-black no-underline"
             >
-              {featureCard?.buttonText || content.primaryCta}
+              {managedText(featureCard?.buttonText, content.primaryCta)}
               <ArrowRight aria-hidden="true" size={17} />
             </a>
           </div>
@@ -760,13 +778,13 @@ const HomeExperience = ({
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-primary-color">
-              {page?.contactEyebrow || content.contactEyebrow}
+              {managedText(page?.contactEyebrow, content.contactEyebrow)}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight md:text-6xl">
-              {page?.contactHeading || content.contactTitle}
+              {managedText(page?.contactHeading, content.contactTitle)}
             </h2>
             <p className="mt-6 font-montserrat text-base leading-8 text-gray-300 md:text-lg">
-              {page?.contactBody || content.contactBody}
+              {managedText(page?.contactBody, content.contactBody)}
             </p>
             <div className="mt-9 space-y-4">
               <a
@@ -815,7 +833,7 @@ const HomeExperience = ({
                   aria-hidden="true"
                   className="text-primary-color"
                 />
-                {page?.contactEyebrow || content.availability}
+                {managedText(page?.contactEyebrow, content.availability)}
               </p>
             </div>
           </div>

@@ -22,6 +22,7 @@ const visibleText = (html) =>
 const spanishWedding = page("es/puntacana-wedding-planner");
 const spanishGenderReveal = page("es/gender-reveal-punta-cana");
 const spanishElopement = page("es/punta-cana-elopement-packages");
+const spanishHome = page("es");
 
 assert.match(
   spanishWedding,
@@ -43,6 +44,18 @@ assert.match(
   /<title[^>]*>Boda Íntima en Punta Cana \| Paquetes Desde US\$999<\/title>/i,
 );
 assert.doesNotMatch(visibleText(spanishElopement), /\belopements?\b/i);
+
+for (const spanishPage of [
+  spanishHome,
+  spanishWedding,
+  spanishGenderReveal,
+  spanishElopement,
+]) {
+  const copy = visibleText(spanishPage);
+  assert.doesNotMatch(copy, /\bAll content Copyright\b/i);
+  assert.doesNotMatch(copy, /\bPaquetes de elopements?\b/i);
+}
+assert.doesNotMatch(visibleText(spanishHome), /\belopements?\b/i);
 
 for (const [homePath, prefix] of [
   ["index.html", ""],
