@@ -247,7 +247,9 @@ export const Head = ({ pageContext, data }) => {
   const proposalDetails = getProposalPackageDetails(node, language);
   const resolvedSeoTitle = proposalDetails
     ? isPortuguese
-      ? `${proposalDetails.name} | Pedido de Casamento em Punta Cana | Sertuin`
+      ? proposalDetails.id === "romantic-dinner-marriage-proposal"
+        ? "Jantar Romântico e Pedido de Casamento em Punta Cana"
+        : `${proposalDetails.name} | Pedido de Casamento em Punta Cana | Sertuin`
       : language === "es"
         ? `${proposalDetails.name} | Propuesta de matrimonio en Punta Cana | Sertuin Events`
         : `${proposalDetails.name} | Punta Cana Marriage Proposal | Sertuin Events`

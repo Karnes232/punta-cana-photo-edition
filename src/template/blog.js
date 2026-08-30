@@ -95,6 +95,7 @@ const Blog = ({ pageContext, data }) => {
   const post = normalizePost(
     portuguese ? { ...rawPost, ...portuguese } : rawPost,
   );
+  const seoTitle = portuguese?.seoTitle || post.title;
   if (portuguese && post.helpCustomLinkEnabled) {
     post.helpCustomLinkText = "Saiba mais";
   }
@@ -186,7 +187,7 @@ export const Head = ({ pageContext, data }) => {
   return (
     <>
       <Seo
-        title={post.title}
+        title={seoTitle}
         description={post.description || post.directAnswer}
         image={imageUrl}
         imageAlt={imageAlt}

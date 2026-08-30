@@ -9,6 +9,7 @@ export const portugueseBlogContent = {
     {
       title:
         "Pedido de Casamento em Resort de Punta Cana: Permissões, Taxas e Privacidade",
+      seoTitle: "Pedido em Resort de Punta Cana: Regras, Taxas e Privacidade",
       description:
         "Antes de pedir alguém em casamento em um resort de Punta Cana, confirme acesso, taxas de fornecedores externos, regras de fotografia e privacidade.",
       directAnswer:
@@ -84,6 +85,7 @@ export const portugueseBlogContent = {
       author: "Por Grecia Mejía, wedding planner principal da Sertuin Events",
       title:
         "Guia para Convidados de Casamento em Punta Cana: Chegada, Roupa e Acesso",
+      seoTitle: "Casamento em Punta Cana: Guia de Viagem para Convidados",
       description:
         "Oriente os convidados sobre chegada, acesso ao resort, roupas para praia, transporte e os erros de horário mais comuns em Punta Cana.",
       directAnswer:
@@ -167,6 +169,7 @@ export const portugueseBlogContent = {
       author: "Por Grecia Mejía, wedding planner principal da Sertuin Events",
       title:
         "O que Definir Antes da Primeira Reunião com uma Wedding Planner em Punta Cana",
+      seoTitle: "Primeira Reunião com Wedding Planner em Punta Cana",
       description:
         "Prepare datas, orçamento estimado, número de convidados, tipo de cerimônia e prioridades culturais para a primeira reunião de casamento em Punta Cana.",
       directAnswer:
@@ -210,6 +213,7 @@ export const portugueseBlogContent = {
       author: "Por Grecia Mejía, wedding planner principal da Sertuin Events",
       title:
         "Como Planejar um Casamento Multicultural em Punta Cana sem Perder as Tradições",
+      seoTitle: "Casamento Multicultural em Punta Cana: Como Planejar",
       description:
         "Organize um casamento multicultural com autoridade clara, representante cultural, fornecedores especializados, regras alimentares e um só cronograma.",
       directAnswer:
@@ -254,6 +258,7 @@ export const portugueseBlogContent = {
       author: "Por Grecia Mejía, wedding planner principal da Sertuin Events",
       title:
         "Casamento Sul-Asiático em Punta Cana: Checklist de Venue e Logística",
+      seoTitle: "Casamento Sul-Asiático em Punta Cana: Checklist de Logística",
       description:
         "Verifique fornecedores externos, fogo cerimonial, Mehndi, Sangeet, Haldi, Baraat, trocas de roupa e transporte para um casamento sul-asiático.",
       directAnswer:
@@ -338,6 +343,7 @@ export const portugueseBlogContent = {
     {
       title:
         "Cronograma de Transporte e Montagem para Eventos Corporativos em Punta Cana",
+      seoTitle: "Evento Corporativo em Punta Cana: Transporte e Montagem",
       description:
         "Planeje voos, veículos, chegada de convidados, janelas de montagem, testes técnicos, margens de segurança e Plano B climático.",
       directAnswer:
@@ -381,6 +387,7 @@ export const portugueseBlogContent = {
     {
       title:
         "Venue Corporativo em Punta Cana: Salão, Praia ou Espaço Privativo?",
+      seoTitle: "Venue Corporativo em Punta Cana: Salão, Praia ou Privativo?",
       description:
         "Escolha o venue por objetivo, capacidade, ar-condicionado, telas, internet, branding, banheiros e acessibilidade.",
       directAnswer:
@@ -549,6 +556,7 @@ export const portugueseBlogContent = {
       author: "Por Grecia Mejía, wedding planner principal da Sertuin Events",
       title:
         "Venue de Casamento em Punta Cana: Resort All-Inclusive ou Espaço Privativo?",
+      seoTitle: "Casamento em Punta Cana: Resort ou Venue Privativo?",
       description:
         "Compare resorts all-inclusive, villas, praias privativas e restaurantes por convidados, liberdade de fornecedores, logística e custo.",
       directAnswer:
@@ -585,6 +593,7 @@ export const portugueseBlogContent = {
     {
       title:
         "Como se Preparar e Qual Desculpa Usar para um Pedido de Casamento em Punta Cana",
+      seoTitle: "Pedido de Casamento em Punta Cana: Como Preparar a Surpresa",
       description:
         "Descubra a melhor desculpa, o que vestir e por que o fim de tarde cria um momento mais romântico para seu pedido em Punta Cana.",
       directAnswer:
