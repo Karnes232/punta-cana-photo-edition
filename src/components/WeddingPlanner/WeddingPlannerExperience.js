@@ -122,7 +122,10 @@ const PackageCard = ({ item, copy, onSelect, icon: Icon }) => {
       <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-700">
         <Icon size={23} strokeWidth={1.8} aria-hidden="true" />
       </div>
-      <h3 className="font-crimson text-3xl font-medium leading-8 text-slate-950">
+      <h3
+        data-wedding-package-title
+        className="font-crimson text-3xl font-medium leading-8 text-slate-950"
+      >
         {item?.title}
       </h3>
       {item?.description && (

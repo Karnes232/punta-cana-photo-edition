@@ -132,7 +132,11 @@ assert.doesNotMatch(
 const southAsianHeadingPattern =
   /south[\s-]*asian|sur\s+de\s+asia|sudeste[\s-]*asi[aá]tic[oa]s?|sud[\s-]*asiati(?:que|ques)|sul[\s-]*asi[aá]tic[oa]s?|indian|sikh/i;
 const countSouthAsianPackageHeadings = (html) =>
-  [...html.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/gi)]
+  [
+    ...html.matchAll(
+      /<h3\b[^>]*data-wedding-package-title[^>]*>([\s\S]*?)<\/h3>/gi,
+    ),
+  ]
     .map((match) => visibleText(match[1]))
     .filter((heading) => southAsianHeadingPattern.test(heading)).length;
 
