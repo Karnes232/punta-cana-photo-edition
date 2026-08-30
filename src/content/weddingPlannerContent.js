@@ -1,3 +1,5 @@
+import { portugueseWeddingPlannerContent } from "./portugueseCoreContent";
+
 const english = {
   eyebrow: "Destination weddings in Punta Cana",
   heroTitle: "Punta Cana Wedding Planner",
@@ -321,11 +323,13 @@ const parseManagedContent = (raw) => {
 
 export const getWeddingPlannerContent = (language, managedRaw) => {
   if (language === "es") return spanish;
+  if (language === "pt") return portugueseWeddingPlannerContent;
   return mergeManagedContent(english, parseManagedContent(managedRaw));
 };
 
 export const normalizeWeddingFaqs = (nodes, language) => {
   const fallback = getWeddingPlannerContent(language).faqs;
+  if (language === "pt") return fallback;
   const localize = (value) =>
     language === "es"
       ? String(value || "")
@@ -359,4 +363,68 @@ export const normalizeWeddingFaqs = (nodes, language) => {
     .slice(0, 6);
 };
 
-export const weddingPlannerFallbacks = { "en-US": english, es: spanish };
+export const localizePortugueseWeddingPackage = (
+  item,
+  fallbackSouthAsian = portugueseWeddingPlannerContent.packages
+    .fallbackSouthAsian,
+) => {
+  if (!item?.title) return item;
+  const key = item.title.toLowerCase();
+  if (/south asian|indian|sikh/.test(key)) {
+    return { ...item, ...fallbackSouthAsian };
+  }
+  if (/coordinator|coordination/.test(key) && !/full/.test(key)) {
+    return {
+      ...item,
+      title: "Coordenação do Dia do Casamento",
+      description:
+        "Coordenação exclusiva do dia, com revisão do venue, fornecedores e cronograma a partir da contratação; ensaio não incluído.",
+      includedItems: [
+        "Revisão do venue e dos fornecedores desde a contratação",
+        "Cronograma final e confirmações do casamento",
+        "Coordenação no local durante as horas necessárias",
+        "Comunicação operacional com casal e fornecedores",
+        "Somente o dia do casamento; ensaio não incluído",
+      ],
+    };
+  }
+  if (/venue|vendor|design/.test(key) && !/full/.test(key)) {
+    return {
+      ...item,
+      title: "Pesquisa de Venue e Fornecedores",
+      description:
+        "Cinco opções adequadas de venue e fornecedores disponíveis, normalmente entregues em uma semana útil.",
+      includedItems: [
+        "Cinco opções adequadas de venue",
+        "Fornecedores disponíveis por categoria necessária",
+        "Cotações e comparações práticas",
+        "Entrega normalmente em uma semana útil",
+        "Orientação para a escolha final do casal",
+      ],
+    };
+  }
+  if (/full|complete/.test(key)) {
+    return {
+      ...item,
+      title: "Planejamento Completo do Casamento",
+      description:
+        "Taxa fixa de US$ 2.500 para planejamento e coordenação completos; custos de produção são separados.",
+      includedItems: [
+        "Pesquisa e negociação de venue",
+        "Conceito, moodboard, plantas e renders",
+        "Orçamento de trabalho e cronograma mestre",
+        "Reuniões ilimitadas conforme necessário",
+        "Assistência de planejamento 24 horas",
+        "Coordenação de fornecedores; o casal aprova e paga",
+        "Coordenação do dia pelas horas necessárias",
+      ],
+    };
+  }
+  return item;
+};
+
+export const weddingPlannerFallbacks = {
+  "en-US": english,
+  es: spanish,
+  pt: portugueseWeddingPlannerContent,
+};

@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
 import { passVisitorName } from "../../utils/thankYouName";
 import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
+import { localizedPath } from "../../utils/siteLocales";
 import {
   ArrowRight,
   Check,
@@ -118,41 +119,60 @@ const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
   );
 };
 
-const InquiryForm = ({ copy, isSpanish }) => {
+const InquiryForm = ({ copy, language }) => {
   const [phone, setPhone] = useState("");
-  const labels = isSpanish
+  const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
+  const labels = isPortuguese
     ? {
-        name: "Nombre y apellido",
-        email: "Correo electrónico",
-        phone: "Teléfono / WhatsApp",
-        country: "País de residencia",
-        date: "Fecha o mes aproximado",
-        guests: "Cantidad aproximada de invitados",
-        location: "Tipo de locación",
-        locationName: "Nombre del hotel, villa o locación, si lo sabes",
-        vision: "Cuéntanos qué quieres para la revelación",
-        choose: "Selecciona una opción",
-        hotel: "Hotel o resort",
-        villa: "Villa privada",
-        beach: "Playa o espacio independiente",
-        other: "Otra locación / por definir",
+        name: "Nome e sobrenome",
+        email: "E-mail",
+        phone: "Telefone / WhatsApp",
+        country: "País de residência",
+        date: "Data ou mês aproximado",
+        guests: "Número aproximado de convidados",
+        location: "Tipo de local",
+        locationName: "Nome do hotel, villa ou local, se souber",
+        vision: "Conte-nos o que deseja para a revelação",
+        choose: "Selecione uma opção",
+        hotel: "Hotel ou resort",
+        villa: "Villa privativa",
+        beach: "Praia ou venue independente",
+        other: "Outro local / ainda não decidido",
       }
-    : {
-        name: "Full name",
-        email: "Email address",
-        phone: "Phone / WhatsApp",
-        country: "Country of residence",
-        date: "Date or approximate month",
-        guests: "Approximate guest count",
-        location: "Location type",
-        locationName: "Hotel, villa or venue name, if known",
-        vision: "Tell us what you want for the reveal",
-        choose: "Select an option",
-        hotel: "Hotel or resort",
-        villa: "Private villa",
-        beach: "Beach or independent venue",
-        other: "Another location / not decided",
-      };
+    : isSpanish
+      ? {
+          name: "Nombre y apellido",
+          email: "Correo electrónico",
+          phone: "Teléfono / WhatsApp",
+          country: "País de residencia",
+          date: "Fecha o mes aproximado",
+          guests: "Cantidad aproximada de invitados",
+          location: "Tipo de locación",
+          locationName: "Nombre del hotel, villa o locación, si lo sabes",
+          vision: "Cuéntanos qué quieres para la revelación",
+          choose: "Selecciona una opción",
+          hotel: "Hotel o resort",
+          villa: "Villa privada",
+          beach: "Playa o espacio independiente",
+          other: "Otra locación / por definir",
+        }
+      : {
+          name: "Full name",
+          email: "Email address",
+          phone: "Phone / WhatsApp",
+          country: "Country of residence",
+          date: "Date or approximate month",
+          guests: "Approximate guest count",
+          location: "Location type",
+          locationName: "Hotel, villa or venue name, if known",
+          vision: "Tell us what you want for the reveal",
+          choose: "Select an option",
+          hotel: "Hotel or resort",
+          villa: "Private villa",
+          beach: "Beach or independent venue",
+          other: "Another location / not decided",
+        };
   const inputClass =
     "mt-2 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 font-montserrat text-base text-slate-950 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-100";
 
@@ -162,7 +182,7 @@ const InquiryForm = ({ copy, isSpanish }) => {
       name="gender-reveal"
       method="POST"
       onSubmit={passVisitorName()}
-      action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
+      action={localizedPath("/contact/thankyou/", language)}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="bg-white p-6 shadow-2xl shadow-slate-950/15 md:p-10"
@@ -180,7 +200,11 @@ const InquiryForm = ({ copy, isSpanish }) => {
       />
       <p className="hidden">
         <label>
-          {isSpanish ? "No completes este campo:" : "Do not fill this out:"}{" "}
+          {isPortuguese
+            ? "Não preencha este campo:"
+            : isSpanish
+              ? "No completes este campo:"
+              : "Do not fill this out:"}{" "}
           <input name="bot-field" />
         </label>
       </p>
@@ -214,7 +238,7 @@ const InquiryForm = ({ copy, isSpanish }) => {
             id="gender-reveal-phone"
             value={phone}
             onChange={setPhone}
-            language={isSpanish ? "es" : "en-US"}
+            language={language}
             required
           />
         </label>
@@ -234,7 +258,11 @@ const InquiryForm = ({ copy, isSpanish }) => {
             type="text"
             name="event-date"
             placeholder={
-              isSpanish ? "Ej. noviembre de 2027" : "e.g. November 2027"
+              isPortuguese
+                ? "Ex.: novembro de 2027"
+                : isSpanish
+                  ? "Ej. noviembre de 2027"
+                  : "e.g. November 2027"
             }
             required
           />
@@ -303,17 +331,20 @@ const GenderRevealExperience = ({
   language,
 }) => {
   const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
   const content = getGenderRevealContent(language);
   const safeLocalizedText = (value, fallback) =>
-    isSpanish && /\bgender\s*reveal/i.test(value || "")
+    isPortuguese || (isSpanish && /\bgender\s*reveal/i.test(value || ""))
       ? fallback
       : safeText(value, fallback);
   const faqList = normalizeGenderRevealFaqs(faqs, language);
   const telephone = (generalInfo?.telephone || "8295222900").replace(/\D/g, "");
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${telephone}&text=${encodeURIComponent(
-    isSpanish
-      ? "Hola, quiero cotizar una revelación de género en Punta Cana."
-      : "Hello, I would like a quote for a gender reveal in Punta Cana.",
+    isPortuguese
+      ? "Olá, quero solicitar uma cotação para um chá revelação em Punta Cana."
+      : isSpanish
+        ? "Hola, quiero cotizar una revelación de género en Punta Cana."
+        : "Hello, I would like a quote for a gender reveal in Punta Cana.",
   )}`;
   const managedGallery = useMemo(
     () =>
@@ -341,12 +372,13 @@ const GenderRevealExperience = ({
           (!isSpanish ||
             !/\bgender\s*reveal/i.test(`${card.title} ${card.body}`)),
       );
-    return currentCards.length >= 3 ? currentCards : null;
-  }, [cards, isSpanish]);
+    return !isPortuguese && currentCards.length >= 3 ? currentCards : null;
+  }, [cards, isSpanish, isPortuguese]);
   const heroAsset = managedGallery?.images?.[0];
   const cmsGalleryImages = managedGallery?.images?.slice(1) || [];
   const managedPageCurrent =
     isCurrentGenderRevealCopy(page?.heroHeading) &&
+    !isPortuguese &&
     (!isSpanish || !/\bgender\s*reveal/i.test(page?.heroHeading || ""));
   const introTitle = safeLocalizedText(
     page?.sectionTitle,
@@ -372,9 +404,11 @@ const GenderRevealExperience = ({
             <ContentfulImage
               asset={heroAsset}
               alt={
-                isSpanish
-                  ? "Revelación de género personalizada en Punta Cana"
-                  : "Custom gender reveal celebration in Punta Cana"
+                isPortuguese
+                  ? "Chá revelação personalizado em Punta Cana"
+                  : isSpanish
+                    ? "Revelación de género personalizada en Punta Cana"
+                    : "Custom gender reveal celebration in Punta Cana"
               }
               className="h-full w-full"
               loading="eager"
@@ -384,9 +418,11 @@ const GenderRevealExperience = ({
             <StaticImage
               src="../../images/gender-reveal/punta-cana-gender-reveal-beach.webp"
               alt={
-                isSpanish
-                  ? "Revelación con humo azul en una playa de Punta Cana"
-                  : "Blue smoke gender reveal celebration on a Punta Cana beach"
+                isPortuguese
+                  ? "Chá revelação com fumaça azul em uma praia de Punta Cana"
+                  : isSpanish
+                    ? "Revelación con humo azul en una playa de Punta Cana"
+                    : "Blue smoke gender reveal celebration on a Punta Cana beach"
               }
               className="h-full w-full"
               imgStyle={{ objectFit: "cover", objectPosition: "center 56%" }}
@@ -472,9 +508,11 @@ const GenderRevealExperience = ({
             <StaticImage
               src="../../images/gender-reveal/gender-reveal-setup-punta-cana.webp"
               alt={
-                isSpanish
-                  ? "Decoración personalizada para una revelación en una playa de Punta Cana"
-                  : "Custom gender reveal setup on a Punta Cana beach"
+                isPortuguese
+                  ? "Decoração personalizada para chá revelação em uma praia de Punta Cana"
+                  : isSpanish
+                    ? "Decoración personalizada para una revelación en una playa de Punta Cana"
+                    : "Custom gender reveal setup on a Punta Cana beach"
               }
               className="h-80 w-full"
               imgStyle={{ objectFit: "cover" }}
@@ -483,9 +521,11 @@ const GenderRevealExperience = ({
             <StaticImage
               src="../../images/gender-reveal/expecting-couple-gender-reveal-punta-cana.webp"
               alt={
-                isSpanish
-                  ? "Pareja embarazada durante su revelación de género en Punta Cana"
-                  : "Expecting couple at their Punta Cana gender reveal"
+                isPortuguese
+                  ? "Casal durante seu chá revelação em Punta Cana"
+                  : isSpanish
+                    ? "Pareja embarazada durante su revelación de género en Punta Cana"
+                    : "Expecting couple at their Punta Cana gender reveal"
               }
               className="mt-10 h-80 w-full"
               imgStyle={{ objectFit: "cover" }}
@@ -591,10 +631,12 @@ const GenderRevealExperience = ({
                   key={`${asset?.title || "gender-reveal"}-${index}`}
                   asset={asset}
                   alt={
-                    isSpanish
-                      ? "Revelación de género planificada por Sertuin Events en Punta Cana"
-                      : asset?.title ||
-                        "Custom gender reveal planned by Sertuin Events in Punta Cana"
+                    isPortuguese
+                      ? "Chá revelação planejado pela Sertuin Events em Punta Cana"
+                      : isSpanish
+                        ? "Revelación de género planificada por Sertuin Events en Punta Cana"
+                        : asset?.title ||
+                          "Custom gender reveal planned by Sertuin Events in Punta Cana"
                   }
                   className={`${index === 0 || index === 5 ? "col-span-2" : ""} h-64 w-full md:h-80`}
                 />
@@ -605,9 +647,11 @@ const GenderRevealExperience = ({
               <StaticImage
                 src="../../images/gender-reveal/blue-smoke-gender-reveal-punta-cana.webp"
                 alt={
-                  isSpanish
-                    ? "Momento de revelación con humo azul en una playa de Punta Cana"
-                    : "Blue smoke reveal moment on a Punta Cana beach"
+                  isPortuguese
+                    ? "Momento da revelação com fumaça azul em uma praia de Punta Cana"
+                    : isSpanish
+                      ? "Momento de revelación con humo azul en una playa de Punta Cana"
+                      : "Blue smoke reveal moment on a Punta Cana beach"
                 }
                 className="col-span-2 h-72 w-full md:h-96"
                 imgStyle={{ objectFit: "cover" }}
@@ -616,9 +660,11 @@ const GenderRevealExperience = ({
               <StaticImage
                 src="../../images/gender-reveal/gender-reveal-villa-punta-cana.webp"
                 alt={
-                  isSpanish
-                    ? "Decoración rosa y azul para una revelación en una villa de Punta Cana"
-                    : "Pink and blue gender reveal decoration at a private Punta Cana villa"
+                  isPortuguese
+                    ? "Decoração rosa e azul para chá revelação em uma villa privativa de Punta Cana"
+                    : isSpanish
+                      ? "Decoración rosa y azul para una revelación en una villa de Punta Cana"
+                      : "Pink and blue gender reveal decoration at a private Punta Cana villa"
                 }
                 className="h-72 w-full md:h-96"
                 imgStyle={{ objectFit: "cover" }}
@@ -627,9 +673,11 @@ const GenderRevealExperience = ({
               <StaticImage
                 src="../../images/gender-reveal/gender-reveal-couple-punta-cana-beach.webp"
                 alt={
-                  isSpanish
-                    ? "Pareja celebrando su revelación en una playa de Punta Cana"
-                    : "Couple celebrating a gender reveal on the beach in Punta Cana"
+                  isPortuguese
+                    ? "Casal celebrando um chá revelação na praia em Punta Cana"
+                    : isSpanish
+                      ? "Pareja celebrando su revelación en una playa de Punta Cana"
+                      : "Couple celebrating a gender reveal on the beach in Punta Cana"
                 }
                 className="h-72 w-full md:h-96"
                 imgStyle={{ objectFit: "cover" }}
@@ -638,9 +686,11 @@ const GenderRevealExperience = ({
               <StaticImage
                 src="../../images/gender-reveal/gender-reveal-celebration-punta-cana.webp"
                 alt={
-                  isSpanish
-                    ? "Celebración de revelación con decoración y efectos de luces en Punta Cana"
-                    : "Gender reveal celebration with décor and sparkling effects in Punta Cana"
+                  isPortuguese
+                    ? "Chá revelação com decoração e efeitos de luz em Punta Cana"
+                    : isSpanish
+                      ? "Celebración de revelación con decoración y efectos de luces en Punta Cana"
+                      : "Gender reveal celebration with décor and sparkling effects in Punta Cana"
                 }
                 className="h-72 w-full md:col-span-2 md:h-96"
                 imgStyle={{ objectFit: "cover" }}
@@ -649,9 +699,11 @@ const GenderRevealExperience = ({
               <StaticImage
                 src="../../images/gender-reveal/gender-reveal-sunset-punta-cana.webp"
                 alt={
-                  isSpanish
-                    ? "Futuros padres después de su revelación al atardecer en Punta Cana"
-                    : "Expecting parents after their Punta Cana gender reveal at sunset"
+                  isPortuguese
+                    ? "Futuros pais após o chá revelação ao pôr do sol em Punta Cana"
+                    : isSpanish
+                      ? "Futuros padres después de su revelación al atardecer en Punta Cana"
+                      : "Expecting parents after their Punta Cana gender reveal at sunset"
                 }
                 className="h-72 w-full md:col-span-2 md:h-96"
                 imgStyle={{ objectFit: "cover" }}
@@ -706,7 +758,7 @@ const GenderRevealExperience = ({
               {content.secondaryCta}
             </a>
           </div>
-          <InquiryForm copy={formCopy} isSpanish={isSpanish} />
+          <InquiryForm copy={formCopy} language={language} />
         </div>
       </section>
 

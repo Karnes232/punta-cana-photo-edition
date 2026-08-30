@@ -1,5 +1,6 @@
 import { Link, useStaticQuery, graphql } from "gatsby";
 import React, { useEffect, useState } from "react";
+import { localizedPath } from "../../../utils/siteLocales";
 
 const Copyright = ({ companyName, language }) => {
   const [date, setDate] = useState(new Date().getFullYear());
@@ -26,11 +27,13 @@ const Copyright = ({ companyName, language }) => {
   return (
     <div className=" flex flex-col xl:flex-row justify-between xl:gap-10 py-4 w-full">
       <div className="flex flex-col gap-1">
-        <Link to={language === "es" ? "/es/" : "/"}>
+        <Link to={localizedPath("/", language)}>
           <p className="tracking-wider cursor-pointer text-slate-400">
-            {language === "es"
-              ? "Todos los derechos reservados"
-              : "All content Copyright"}{" "}
+            {language === "pt"
+              ? "Todos os direitos reservados"
+              : language === "es"
+                ? "Todos los derechos reservados"
+                : "All content Copyright"}{" "}
             &copy; {date} {companyName}
           </p>
         </Link>
@@ -43,12 +46,18 @@ const Copyright = ({ companyName, language }) => {
         </p>
       )}
       <p className="text-slate-400 flex flex-col md:flex-row items-center gap-2 lg:flex-1 lg:justify-start  mt-5 lg:mt-0">
-        {language === "es" ? "Desarrollado por" : "Built by"}
+        {language === "pt"
+          ? "Desenvolvido por"
+          : language === "es"
+            ? "Desarrollado por"
+            : "Built by"}
         <a
           href={
-            language === "es"
-              ? "https://www.dr-webstudio.com/es"
-              : "https://www.dr-webstudio.com/en"
+            language === "pt"
+              ? "https://www.dr-webstudio.com/en"
+              : language === "es"
+                ? "https://www.dr-webstudio.com/es"
+                : "https://www.dr-webstudio.com/en"
           }
           className="flex items-center gap-1 hover:text-orange-500 cursor-pointer"
           target="_blank"
@@ -68,9 +77,11 @@ const Copyright = ({ companyName, language }) => {
           DR Web Studio
         </a>
         <span className="hidden lg:inline"> —</span>
-        {language === "es"
-          ? "Desarrollo Web en República Dominicana"
-          : "Web Development in the Dominican Republic"}
+        {language === "pt"
+          ? "Desenvolvimento web na República Dominicana"
+          : language === "es"
+            ? "Desarrollo Web en República Dominicana"
+            : "Web Development in the Dominican Republic"}
       </p>
     </div>
   );

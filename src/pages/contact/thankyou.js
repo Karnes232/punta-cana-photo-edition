@@ -7,6 +7,7 @@ import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 
 const ThankYou = ({ data }) => {
   const { t } = useTranslation();
+  const { language } = useI18next();
   const [name, setName] = useState("");
   useEffect(() => {
     const searchParams = new URLSearchParams(document.location.search);
@@ -20,6 +21,7 @@ const ThankYou = ({ data }) => {
       <HeroSwiper
         heroInfo={data.allContentfulGeneralLayout.nodes[0]}
         overlayHeader
+        language={language}
       />
       <main className="">
         <div className="flex flex-col items-center justify-center max-w-xs xl:max-w-sm mx-auto min-h-[50vh]">
@@ -56,13 +58,19 @@ export default ThankYou;
 export const Head = ({ data }) => {
   const { language } = useI18next();
   const isSpanish = language === "es";
-  const contactUrl = `${data.site.siteMetadata.siteUrl}${isSpanish ? "/es" : ""}/contact/`;
-  const title = isSpanish
-    ? "Gracias por contactarnos | Sertuin Events"
-    : "Thank You for Contacting Us | Sertuin Events";
-  const description = isSpanish
-    ? "Recibimos tu solicitud de evento. El equipo de Sertuin Events se pondrá en contacto contigo muy pronto."
-    : "We received your event inquiry. The Sertuin Events team will contact you shortly.";
+  const isPortuguese = language === "pt";
+  const languagePrefix = isPortuguese ? "/pt" : isSpanish ? "/es" : "";
+  const contactUrl = `${data.site.siteMetadata.siteUrl}${languagePrefix}/contact/`;
+  const title = isPortuguese
+    ? "Obrigado por entrar em contato | Sertuin Events"
+    : isSpanish
+      ? "Gracias por contactarnos | Sertuin Events"
+      : "Thank You for Contacting Us | Sertuin Events";
+  const description = isPortuguese
+    ? "Recebemos sua solicitação de evento. A equipe da Sertuin Events entrará em contato em breve."
+    : isSpanish
+      ? "Recibimos tu solicitud de evento. El equipo de Sertuin Events se pondrá en contacto contigo muy pronto."
+      : "We received your event inquiry. The Sertuin Events team will contact you shortly.";
 
   return (
     <>
@@ -70,7 +78,7 @@ export const Head = ({ data }) => {
         title={title}
         description={description}
         url={contactUrl}
-        language={isSpanish ? "es" : "en"}
+        language={isPortuguese ? "pt-BR" : isSpanish ? "es" : "en"}
         robots="noindex, follow"
       />
       <link rel="canonical" href={contactUrl} />
@@ -79,7 +87,7 @@ export const Head = ({ data }) => {
 };
 
 export const query = graphql`
-  query MyQuery($language: String!) {
+  query MyQuery($contentLanguage: String = "en-US") {
     locales: allLocale {
       edges {
         node {
@@ -94,7 +102,9 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
+    allContentfulGeneralLayout(
+      filter: { node_locale: { eq: $contentLanguage } }
+    ) {
       nodes {
         companyName
         facebook

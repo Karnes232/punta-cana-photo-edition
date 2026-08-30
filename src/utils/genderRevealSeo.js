@@ -9,10 +9,13 @@ export const buildGenderRevealSchema = ({
   faqs,
 }) => {
   const isSpanish = language === "es";
-  const homeUrl = `https://sertuinevents.com${isSpanish ? "/es/" : "/"}`;
-  const serviceName = isSpanish
-    ? "Planificación de revelaciones de género en Punta Cana"
-    : "Punta Cana gender reveal planning";
+  const isPortuguese = language === "pt";
+  const homeUrl = `https://sertuinevents.com${isSpanish ? "/es/" : isPortuguese ? "/pt/" : "/"}`;
+  const serviceName = isPortuguese
+    ? "Planejamento de chá revelação em Punta Cana"
+    : isSpanish
+      ? "Planificación de revelaciones de género en Punta Cana"
+      : "Punta Cana gender reveal planning";
 
   return {
     "@context": "https://schema.org",
@@ -68,7 +71,7 @@ export const buildGenderRevealSchema = ({
         url: pageUrl,
         name: title,
         description,
-        inLanguage: isSpanish ? "es-DO" : "en-US",
+        inLanguage: isSpanish ? "es-DO" : isPortuguese ? "pt-BR" : "en-US",
         about: { "@id": `${pageUrl}#service` },
         primaryImageOfPage: image
           ? { "@type": "ImageObject", url: image }
@@ -90,9 +93,11 @@ export const buildGenderRevealSchema = ({
         },
         audience: {
           "@type": "Audience",
-          audienceType: isSpanish
-            ? "Familias que planifican una revelación de género"
-            : "Families planning a gender reveal",
+          audienceType: isPortuguese
+            ? "Famílias que planejam um chá revelação"
+            : isSpanish
+              ? "Familias que planifican una revelación de género"
+              : "Families planning a gender reveal",
         },
         availableChannel: {
           "@type": "ServiceChannel",
@@ -111,7 +116,7 @@ export const buildGenderRevealSchema = ({
           {
             "@type": "ListItem",
             position: 1,
-            name: isSpanish ? "Inicio" : "Home",
+            name: isPortuguese ? "Início" : isSpanish ? "Inicio" : "Home",
             item: homeUrl,
           },
           {

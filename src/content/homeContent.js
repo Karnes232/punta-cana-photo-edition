@@ -172,7 +172,89 @@ export const homeContent = {
     availability:
       "Disponibles las 24 horas, los 7 días de la semana, todo el año.",
   },
+  pt: {
+    ...shared,
+    eyebrow: "Planejamento e gestão de eventos em Punta Cana",
+    heroHeading:
+      "Planejamento Completo de Eventos em Punta Cana — Seu Evento, Nossa Responsabilidade",
+    heroIntro:
+      "Planejamos, desenhamos, coordenamos e gerenciamos eventos corporativos, casamentos de destino, elopements, pedidos de casamento e celebrações privadas, da primeira ideia à execução no local.",
+    primaryCta: "Conte-nos Sobre Seu Evento",
+    primaryCtaUrl: "#start-your-event",
+    secondaryCta: "Explorar Tipos de Eventos",
+    secondaryCtaUrl: "#events-we-plan",
+    eventsEyebrow: "Eventos que planejamos",
+    eventsTitle: "O que Você Está Planejando em Punta Cana?",
+    eventsIntro:
+      "Escolha o evento que melhor corresponde aos seus planos. Cada página explica a experiência, o que gerenciamos e como começar.",
+    whatEyebrow: "Uma responsabilidade coordenada",
+    whatTitle: "Tudo o que Seu Evento Precisa, Gerenciado por uma Equipe Local",
+    whatParagraphs: [
+      "A Sertuin Events planeja conceito, orçamento e cronograma; coordena venues e fornecedores confiáveis; desenvolve design, decoração e direção floral; organiza locações, catering, transporte, equipe e logística de produção; e gerencia o evento no local.",
+      "Você mantém um único ponto de contato e um plano coordenado enquanto assumimos a responsabilidade por cada parte do evento.",
+    ],
+    whatItems: [
+      "Conceito, planejamento e orçamento",
+      "Venues e coordenação de fornecedores",
+      "Design, decoração e arte floral",
+      "Locações e logística de produção",
+      "Catering, transporte e equipe",
+      "Montagem e gestão no local",
+    ],
+    processEyebrow: "Como trabalhamos",
+    processTitle: "Ouvimos. Organizamos. Assumimos a Responsabilidade.",
+    processIntro:
+      "Nosso trabalho não termina quando o plano está escrito. Permanecemos envolvidos até a entrega do evento.",
+    process: [
+      {
+        number: "01",
+        title: "Ouvimos",
+        body: "Entendemos o objetivo do evento, o que mais importa e o que você deseja que os convidados sintam.",
+      },
+      {
+        number: "02",
+        title: "Organizamos",
+        body: "Transformamos ideias em decisões, orçamento realista, fornecedores confiáveis, responsabilidades claras e cronograma coordenado.",
+      },
+      {
+        number: "03",
+        title: "Assumimos a responsabilidade",
+        body: "Antecipamos, coordenamos e permanecemos presentes durante a execução para que você nunca precise gerenciar o evento sozinho.",
+      },
+    ],
+    commitmentEyebrow: "O compromisso Sertuin",
+    commitmentTitle: "Quando Você Confia Seu Evento a Nós, Ele se Torna Nosso",
+    commitmentBody:
+      "Planejar um evento não é apenas concluir tarefas. É aceitar a responsabilidade por um momento importante para outra pessoa. Cuidamos de cada decisão com dedicação, atenção e o compromisso de fazer tudo o que está sob nossa responsabilidade para que o evento dê certo.",
+    contactEyebrow: "Disponíveis 24 horas, o ano inteiro",
+    contactTitle: "Conte-nos o que Você Está Planejando",
+    contactBody:
+      "Envie uma mensagem pelo WhatsApp, ligue ou preencha o formulário. Analisaremos as informações e coordenaremos diretamente com você os próximos passos.",
+    whatsapp: "Falar pelo WhatsApp",
+    call: "Ligar para a Sertuin",
+    email: "Enviar um e-mail",
+    formTitle: "Solicitar Informações do Evento",
+    name: "Nome",
+    emailLabel: "E-mail",
+    phone: "Telefone ou WhatsApp",
+    eventType: "Tipo de evento",
+    selectEvent: "Selecione um evento",
+    eventOptions: [
+      "Evento corporativo",
+      "Casamento de destino",
+      "Elopement",
+      "Pedido de casamento",
+      "Celebração privada",
+      "Chá revelação",
+      "Outro evento",
+    ],
+    date: "Data preferida",
+    details: "Conte-nos sobre seu evento",
+    submit: "Enviar Solicitação",
+    availability:
+      "Disponíveis 24 horas por dia, 7 dias por semana, o ano inteiro.",
+  },
 };
 
 export const getHomeContent = (language) =>
-  homeContent[language === "es" ? "es" : "en-US"];
+  homeContent[language === "es" ? "es" : language === "pt" ? "pt" : "en-US"];

@@ -3,6 +3,7 @@ import Layout from "../../components/Layout/Layout";
 import { graphql } from "gatsby";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import VideoPlayer from "../../components/VideoComponent/VideoPlayer";
 import OurPackages from "../../components/PackageComponents/OurPackages";
 import SwiperCarousel from "../../components/SwiperCarouselComponent/SwiperCarousel";
@@ -19,6 +20,11 @@ import {
 } from "../../components/ProposalComponents/ProposalExperience";
 import { buildProposalSchema } from "../../utils/proposalSeo";
 import { getProposalPackageDetailsFromCard } from "../../data/proposalPackageDetails";
+import {
+  getLanguageConfig,
+  localizedUrl,
+  normalizeLanguage,
+} from "../../utils/siteLocales";
 
 const withoutYear = (text = "") =>
   text
@@ -29,27 +35,39 @@ const withoutYear = (text = "") =>
 
 const getConciseProposalInclusions = (details, language) => {
   const isSpanish = language === "es";
-  const labels = isSpanish
+  const isPortuguese = language === "pt";
+  const labels = isPortuguese
     ? {
-        transportation: "Transporte privado para la pareja",
-        photography: "Más de 70 fotografías editadas",
-        bouquetWine: "Bouquet natural y vino espumante",
-        duration: "De 90 a 120 minutos en la playa",
-        charcuterie: "Charcutería para dos",
-        dinner: "Cena privada de tres tiempos para dos",
-        dinnerDrinks: "Vino espumante y vino tinto o blanco",
-        violin: "Violinista en vivo durante 45 minutos",
+        transportation: "Transporte privativo para o casal",
+        photography: "Mais de 70 fotografias editadas",
+        bouquetWine: "Buquê natural e vinho espumante",
+        duration: "De 90 a 120 minutos na praia",
+        charcuterie: "Tábua de frios para dois",
+        dinner: "Jantar privativo de três tempos para dois",
+        dinnerDrinks: "Espumante e vinho tinto ou branco",
+        violin: "Violinista ao vivo por 45 minutos",
       }
-    : {
-        transportation: "Private transportation for the couple",
-        photography: "More than 70 edited photographs",
-        bouquetWine: "Natural bouquet and sparkling wine",
-        duration: "90 to 120 minutes on the beach",
-        charcuterie: "Charcuterie for two",
-        dinner: "Private three-course dinner for two",
-        dinnerDrinks: "Sparkling wine plus red or white wine",
-        violin: "Live violinist for 45 minutes",
-      };
+    : isSpanish
+      ? {
+          transportation: "Transporte privado para la pareja",
+          photography: "Más de 70 fotografías editadas",
+          bouquetWine: "Bouquet natural y vino espumante",
+          duration: "De 90 a 120 minutos en la playa",
+          charcuterie: "Charcutería para dos",
+          dinner: "Cena privada de tres tiempos para dos",
+          dinnerDrinks: "Vino espumante y vino tinto o blanco",
+          violin: "Violinista en vivo durante 45 minutos",
+        }
+      : {
+          transportation: "Private transportation for the couple",
+          photography: "More than 70 edited photographs",
+          bouquetWine: "Natural bouquet and sparkling wine",
+          duration: "90 to 120 minutes on the beach",
+          charcuterie: "Charcuterie for two",
+          dinner: "Private three-course dinner for two",
+          dinnerDrinks: "Sparkling wine plus red or white wine",
+          violin: "Live violinist for 45 minutes",
+        };
 
   if (details.dinnerIncluded) {
     return [
@@ -114,7 +132,7 @@ const withoutRetiredProposalPackages = (packages = [], language = "en-US") =>
     .sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
 
 const Index = ({ data, pageContext }) => {
-  const language = pageContext.language;
+  const language = normalizeLanguage(pageContext.language);
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
   const pageContent = data.allContentfulPageContent.nodes[0];
   const carousel = data.allContentfulSwiperCarousel.nodes[0];
@@ -129,7 +147,14 @@ const Index = ({ data, pageContext }) => {
   });
   const heroInfo = {
     ...pageContent,
-    heroHeading: withoutYear(pageContent.heroHeading),
+    heroHeading:
+      language === "pt"
+        ? "Pedidos de Casamento em Punta Cana"
+        : withoutYear(pageContent.heroHeading),
+    heroHeading2:
+      language === "pt"
+        ? "Pacotes românticos completos em praia privativa, com transporte, decoração, fotografia e coordenação local."
+        : pageContent.heroHeading2,
   };
 
   return (
@@ -137,7 +162,11 @@ const Index = ({ data, pageContext }) => {
       <HeroSwiper heroInfo={heroInfo} overlayHeader language={language} />
       <ProposalIntroduction language={language} />
       <OurPackages
-        title={pageContent.sectionTitle || proposalCopy.packagesFallbackTitle}
+        title={
+          language === "pt"
+            ? proposalCopy.packagesFallbackTitle
+            : pageContent.sectionTitle || proposalCopy.packagesFallbackTitle
+        }
         photoPackages={proposalPackages}
         language={language}
       />
@@ -162,9 +191,11 @@ const Index = ({ data, pageContext }) => {
       <Faqs
         faqs={proposalFaqs}
         title={
-          language === "es"
-            ? "Preguntas frecuentes"
-            : "Frequently Asked Questions"
+          language === "pt"
+            ? "Perguntas frequentes"
+            : language === "es"
+              ? "Preguntas frecuentes"
+              : "Frequently Asked Questions"
         }
       />
     </Layout>
@@ -180,13 +211,17 @@ export const Head = ({ pageContext, data }) => {
     images,
     keywords,
   } = data.allContentfulSeo.nodes[0];
-  const title = withoutYear(contentfulTitle);
+  const language = normalizeLanguage(pageContext.language);
+  const isPortuguese = language === "pt";
+  const languageConfig = getLanguageConfig(language);
+  const title = isPortuguese
+    ? "Pedido de Casamento em Punta Cana | Pacotes Românticos"
+    : withoutYear(contentfulTitle);
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
-  const language = pageContext.language;
-  const languagePrefix = language === "es" ? "/es" : "";
-  const siteUrl = `${rootUrl}${languagePrefix}/proposal/`;
-  const englishUrl = `${rootUrl}/proposal/`;
-  const spanishUrl = `${rootUrl}/es/proposal/`;
+  const siteUrl = localizedUrl(rootUrl, "/proposal/", language);
+  const seoDescription = isPortuguese
+    ? "Pacotes de pedido de casamento em Punta Cana com praia privativa, transporte, decoração romântica, fotografia profissional e coordenação local."
+    : description.description;
   const seoImage = images?.file?.url
     ? `${images.file.url.startsWith("//") ? "https:" : ""}${images.file.url}`
     : undefined;
@@ -203,7 +238,7 @@ export const Head = ({ pageContext, data }) => {
     pageUrl: siteUrl,
     language,
     title,
-    description: description.description,
+    description: seoDescription,
     image: seoImage,
     companyName: generalInfo.companyName,
     legalName: "Sertuin SRL",
@@ -222,22 +257,29 @@ export const Head = ({ pageContext, data }) => {
     <>
       <Seo
         title={title}
-        description={description.description}
-        keywords={keywords.join(", ")}
+        description={seoDescription}
+        keywords={(isPortuguese
+          ? [
+              "pedido de casamento Punta Cana",
+              "pacotes de pedido de casamento Punta Cana",
+              "pedido romântico em Punta Cana",
+              "pedido na praia Punta Cana",
+            ]
+          : keywords
+        ).join(", ")}
         image={seoImage}
         url={siteUrl}
         schemaMarkup={schemaMarkup}
-        language={language === "en-US" ? "en" : language}
+        language={languageConfig.htmlLang}
+        locale={languageConfig.ogLocale}
       />
       <link rel="canonical" href={siteUrl} />
-      <link rel="alternate" hrefLang="en" href={englishUrl} />
-      <link rel="alternate" hrefLang="es" href={spanishUrl} />
-      <link rel="alternate" hrefLang="x-default" href={englishUrl} />
+      <LocalizedAlternates rootUrl={rootUrl} path="/proposal/" />
     </>
   );
 };
 export const query = graphql`
-  query MyQuery($language: String!) {
+  query MyQuery($contentLanguage: String = "en-US") {
     locales: allLocale {
       edges {
         node {
@@ -263,7 +305,10 @@ export const query = graphql`
       }
     }
     allContentfulSeo(
-      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Proposal" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         title
@@ -279,7 +324,10 @@ export const query = graphql`
       }
     }
     allContentfulPageContent(
-      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Proposal" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         page
@@ -302,7 +350,10 @@ export const query = graphql`
       }
     }
     allContentfulPackages(
-      filter: { page: { eq: "Proposal" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Proposal" }
+        node_locale: { eq: $contentLanguage }
+      }
       sort: { price: ASC }
     ) {
       nodes {

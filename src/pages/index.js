@@ -4,8 +4,14 @@ import { useI18next } from "gatsby-plugin-react-i18next";
 import HomeExperience from "../components/HomeComponents/HomeExperience";
 import Layout from "../components/Layout/Layout";
 import Seo from "../components/Layout/seo";
+import LocalizedAlternates from "../components/Layout/LocalizedAlternates";
 import { getHomeContent } from "../content/homeContent";
 import { buildHomeSchema } from "../utils/homeSeo";
+import {
+  getLanguageConfig,
+  localizedUrl,
+  normalizeLanguage,
+} from "../utils/siteLocales";
 
 const IndexPage = ({ data }) => {
   const { language } = useI18next();
@@ -28,29 +34,34 @@ const IndexPage = ({ data }) => {
 export default IndexPage;
 
 export const Head = ({ pageContext, data }) => {
-  const language = pageContext.language === "es" ? "es" : "en-US";
+  const language = normalizeLanguage(pageContext.language);
   const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
+  const languageConfig = getLanguageConfig(language);
   const copy = getHomeContent(language);
   const seo = data.allContentfulSeo.nodes[0];
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
-  const pageUrl = isSpanish
-    ? `${data.site.siteMetadata.siteUrl}/es/`
-    : `${data.site.siteMetadata.siteUrl}/`;
+  const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const pageUrl = localizedUrl(rootUrl, "/", language);
   const imageUrl = seo?.images?.file?.url
     ? `https:${seo.images.file.url}`
     : data.allContentfulPageContent.nodes[0]?.heroImageList?.[0]?.file?.url
       ? `https:${data.allContentfulPageContent.nodes[0].heroImageList[0].file.url}`
       : undefined;
   const title =
-    seo?.title ||
-    (isSpanish
-      ? "Planificación Integral de Eventos en Punta Cana | Sertuin Events"
-      : "Punta Cana Event Planner & Event Management | Sertuin Events");
+    (isPortuguese ? null : seo?.title) ||
+    (isPortuguese
+      ? "Planejamento de Eventos em Punta Cana | Sertuin Events"
+      : isSpanish
+        ? "Planificación Integral de Eventos en Punta Cana | Sertuin Events"
+        : "Punta Cana Event Planner & Event Management | Sertuin Events");
   const description =
-    seo?.description?.description ||
-    (isSpanish
-      ? "Planificación y gestión integral de eventos en Punta Cana para empresas, bodas de destino y celebraciones privadas, desde el concepto hasta la ejecución."
-      : "Full-service event planning in Punta Cana for corporate events, destination weddings and private celebrations, from concept through on-site execution.");
+    (isPortuguese ? null : seo?.description?.description) ||
+    (isPortuguese
+      ? "Planejamento completo de eventos em Punta Cana para empresas, casamentos de destino, pedidos de casamento e celebrações, do conceito à execução."
+      : isSpanish
+        ? "Planificación y gestión integral de eventos en Punta Cana para empresas, bodas de destino y celebraciones privadas, desde el concepto hasta la ejecución."
+        : "Full-service event planning in Punta Cana for corporate events, destination weddings and private celebrations, from concept through on-site execution.");
   const schemaMarkup = buildHomeSchema({
     generalInfo,
     language,
@@ -65,37 +76,34 @@ export const Head = ({ pageContext, data }) => {
       <Seo
         title={title}
         description={description}
-        keywords={seo?.keywords?.join(", ")}
+        keywords={(isPortuguese
+          ? [
+              "planejamento de eventos Punta Cana",
+              "organização de eventos Punta Cana",
+              "wedding planner Punta Cana",
+              "pedido de casamento Punta Cana",
+              "eventos corporativos Punta Cana",
+            ]
+          : seo?.keywords || []
+        ).join(", ")}
         image={imageUrl}
         imageAlt={
-          isSpanish
-            ? "Evento planificado por Sertuin Events en Punta Cana"
-            : "Event planned by Sertuin Events in Punta Cana"
+          isPortuguese
+            ? "Evento planejado pela Sertuin Events em Punta Cana"
+            : isSpanish
+              ? "Evento planificado por Sertuin Events en Punta Cana"
+              : "Event planned by Sertuin Events in Punta Cana"
         }
         url={pageUrl}
         schemaMarkup={schemaMarkup}
-        language={isSpanish ? "es" : "en"}
+        language={languageConfig.htmlLang}
         twitterCard="summary_large_image"
         siteName="Sertuin Events"
-        locale={isSpanish ? "es_DO" : "en_US"}
-        alternateLocale={isSpanish ? "en_US" : "es_DO"}
+        locale={languageConfig.ogLocale}
+        alternateLocale={language === "en-US" ? "es_DO" : "en_US"}
       />
       <link rel="canonical" href={pageUrl} />
-      <link
-        rel="alternate"
-        hrefLang="en"
-        href={`${data.site.siteMetadata.siteUrl}/`}
-      />
-      <link
-        rel="alternate"
-        hrefLang="es"
-        href={`${data.site.siteMetadata.siteUrl}/es/`}
-      />
-      <link
-        rel="alternate"
-        hrefLang="x-default"
-        href={`${data.site.siteMetadata.siteUrl}/`}
-      />
+      <LocalizedAlternates rootUrl={rootUrl} path="/" />
       <meta name="theme-color" content="#000000" />
       <meta name="author" content={generalInfo?.legalName || "SERTUIN SRL"} />
       <meta name="contact" content={generalInfo?.email} />
@@ -105,7 +113,7 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query IndexPageQuery($language: String!) {
+  query IndexPageQuery($contentLanguage: String = "en-US") {
     locales: allLocale {
       edges {
         node {
@@ -120,7 +128,9 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
+    allContentfulGeneralLayout(
+      filter: { node_locale: { eq: $contentLanguage } }
+    ) {
       nodes {
         companyName
         legalName
@@ -140,7 +150,7 @@ export const query = graphql`
       }
     }
     allContentfulSeo(
-      filter: { page: { eq: "Index" }, node_locale: { eq: $language } }
+      filter: { page: { eq: "Index" }, node_locale: { eq: $contentLanguage } }
     ) {
       nodes {
         title
@@ -156,7 +166,7 @@ export const query = graphql`
       }
     }
     allContentfulPageContent(
-      filter: { page: { eq: "Index" }, node_locale: { eq: $language } }
+      filter: { page: { eq: "Index" }, node_locale: { eq: $contentLanguage } }
     ) {
       nodes {
         page
@@ -198,7 +208,7 @@ export const query = graphql`
     }
     allContentfulServices(
       filter: {
-        node_locale: { eq: $language }
+        node_locale: { eq: $contentLanguage }
         page: {
           url: {
             nin: ["/event-rentals/", "/birthday-celebrations/", "/floral-art/"]
@@ -234,7 +244,7 @@ export const query = graphql`
       }
     }
     allContentfulCardWithImage(
-      filter: { page: { eq: "Index" }, node_locale: { eq: $language } }
+      filter: { page: { eq: "Index" }, node_locale: { eq: $contentLanguage } }
     ) {
       nodes {
         title
@@ -257,4 +267,3 @@ export const query = graphql`
     }
   }
 `;
-

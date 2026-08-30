@@ -5,15 +5,18 @@ const asAbsoluteUrl = (siteUrl, path) => {
 };
 
 const asLocalizedPackagePath = (proposalPackage, language) => {
-  const languagePrefix = language === "es" ? "/es" : "";
+  const languagePrefix =
+    language === "es" ? "/es" : language === "pt" ? "/pt" : "";
   const slug = proposalPackage.packagePage?.urlSlug?.trim();
 
   if (slug) return `${languagePrefix}/packages/${slug}/`;
 
   const path = proposalPackage.link;
-  if (language !== "es" || !path || /^https?:\/\//i.test(path)) return path;
-  if (path.startsWith("/es/")) return path;
-  return path.startsWith("/") ? `/es${path}` : `/es/${path}`;
+  if (!languagePrefix || !path || /^https?:\/\//i.test(path)) return path;
+  if (path.startsWith(`${languagePrefix}/`)) return path;
+  return path.startsWith("/")
+    ? `${languagePrefix}${path}`
+    : `${languagePrefix}/${path}`;
 };
 
 const buildOrganization = ({
@@ -38,9 +41,11 @@ const buildOrganization = ({
     telephone,
     sameAs,
     description:
-      language === "es"
-        ? "Empresa dominicana de planificación de eventos ubicada en Punta Cana, dirigida por la wedding planner Grecia Mejía, con más de 10 años de experiencia y más de 1,800 propuestas de matrimonio realizadas. Los clientes comienzan por WhatsApp, teléfono o el formulario."
-        : "Dominican event-planning company based in Punta Cana, led by wedding planner Grecia Mejía, with more than 10 years of experience and more than 1,800 marriage proposals created. Clients begin through WhatsApp, phone or the inquiry form.",
+      language === "pt"
+        ? "Empresa dominicana de planejamento de eventos em Punta Cana, dirigida pela wedding planner Grecia Mejía, com mais de 10 anos de experiência e mais de 1.800 pedidos de casamento realizados. Os clientes podem começar pelo WhatsApp, telefone ou formulário."
+        : language === "es"
+          ? "Empresa dominicana de planificación de eventos ubicada en Punta Cana, dirigida por la wedding planner Grecia Mejía, con más de 10 años de experiencia y más de 1,800 propuestas de matrimonio realizadas. Los clientes comienzan por WhatsApp, teléfono o el formulario."
+          : "Dominican event-planning company based in Punta Cana, led by wedding planner Grecia Mejía, with more than 10 years of experience and more than 1,800 marriage proposals created. Clients begin through WhatsApp, phone or the inquiry form.",
     location: {
       "@type": "Place",
       name: "Punta Cana, Dominican Republic",
@@ -53,9 +58,11 @@ const buildOrganization = ({
       "@type": "Person",
       name: directorName || "Grecia Mejía",
       jobTitle:
-        language === "es"
-          ? "Wedding planner y directora de la empresa"
-          : "Wedding Planner and Company Director",
+        language === "pt"
+          ? "Wedding planner e diretora da empresa"
+          : language === "es"
+            ? "Wedding planner y directora de la empresa"
+            : "Wedding Planner and Company Director",
       worksFor: { "@id": organizationId },
     },
     contactPoint: telephone
@@ -63,7 +70,7 @@ const buildOrganization = ({
           "@type": "ContactPoint",
           telephone,
           contactType: "customer service",
-          availableLanguage: ["English", "Spanish"],
+          availableLanguage: ["English", "Spanish", "Portuguese"],
         }
       : undefined,
   };
@@ -75,7 +82,7 @@ const buildWebsite = ({ rootUrl, websiteId, organizationId, companyName }) => ({
   url: rootUrl,
   name: companyName || "Sertuin Events",
   publisher: { "@id": organizationId },
-  inLanguage: ["en-US", "es"],
+  inLanguage: ["en-US", "es", "pt-BR"],
 });
 
 const buildImageObjects = ({ images, pageUrl, language, packageName }) => {
@@ -91,9 +98,11 @@ const buildImageObjects = ({ images, pageUrl, language, packageName }) => {
       seen.add(contentUrl);
 
       const fallback =
-        language === "es"
-          ? `${packageName}: montaje de propuesta de matrimonio en Uvero Alto, Punta Cana`
-          : `${packageName}: marriage proposal setup in Uvero Alto, Punta Cana`;
+        language === "pt"
+          ? `${packageName}: montagem de pedido de casamento em Uvero Alto, Punta Cana`
+          : language === "es"
+            ? `${packageName}: montaje de propuesta de matrimonio en Uvero Alto, Punta Cana`
+            : `${packageName}: marriage proposal setup in Uvero Alto, Punta Cana`;
 
       return {
         "@type": "ImageObject",
@@ -102,7 +111,7 @@ const buildImageObjects = ({ images, pageUrl, language, packageName }) => {
         url: contentUrl,
         name: image?.title || fallback,
         caption: image?.description || image?.title || fallback,
-        inLanguage: language,
+        inLanguage: language === "pt" ? "pt-BR" : language,
         representativeOfPage: seen.size === 1,
       };
     })
@@ -126,7 +135,9 @@ export const buildProposalSchema = ({
   faqs = [],
 }) => {
   const rootUrl = siteUrl.replace(/\/$/, "");
-  const languagePrefix = language === "es" ? "/es" : "";
+  const languagePrefix =
+    language === "es" ? "/es" : language === "pt" ? "/pt" : "";
+  const schemaLanguage = language === "pt" ? "pt-BR" : language;
   const organizationId = `${rootUrl}/#organization`;
   const websiteId = `${rootUrl}/#website`;
   const webpageId = `${pageUrl}#webpage`;
@@ -185,7 +196,7 @@ export const buildProposalSchema = ({
       url: pageUrl,
       name: title,
       description,
-      inLanguage: language,
+      inLanguage: schemaLanguage,
       isPartOf: { "@id": websiteId },
       mainEntity: { "@id": serviceId },
       breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
@@ -200,9 +211,11 @@ export const buildProposalSchema = ({
       "@type": "Service",
       "@id": serviceId,
       name:
-        language === "es"
-          ? "Planificación de propuestas de matrimonio en Punta Cana"
-          : "Marriage Proposal Planning in Punta Cana",
+        language === "pt"
+          ? "Planejamento de pedidos de casamento em Punta Cana"
+          : language === "es"
+            ? "Planificación de propuestas de matrimonio en Punta Cana"
+            : "Marriage Proposal Planning in Punta Cana",
       description,
       url: pageUrl,
       provider: { "@id": organizationId },
@@ -217,9 +230,11 @@ export const buildProposalSchema = ({
       "@type": "OfferCatalog",
       "@id": offerCatalogId,
       name:
-        language === "es"
-          ? "Paquetes de propuestas de Sertuin Events"
-          : "Sertuin Events proposal packages",
+        language === "pt"
+          ? "Pacotes de pedido de casamento da Sertuin Events"
+          : language === "es"
+            ? "Paquetes de propuestas de Sertuin Events"
+            : "Sertuin Events proposal packages",
       numberOfItems: offerItems.length,
       itemListOrder: "https://schema.org/ItemListOrderAscending",
       itemListElement: offerItems,
@@ -231,13 +246,23 @@ export const buildProposalSchema = ({
         {
           "@type": "ListItem",
           position: 1,
-          name: language === "es" ? "Inicio" : "Home",
+          name:
+            language === "pt"
+              ? "Início"
+              : language === "es"
+                ? "Inicio"
+                : "Home",
           item: `${rootUrl}${languagePrefix}/`,
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: language === "es" ? "Propuestas" : "Proposals",
+          name:
+            language === "pt"
+              ? "Pedidos de casamento"
+              : language === "es"
+                ? "Propuestas"
+                : "Proposals",
           item: pageUrl,
         },
       ],
@@ -249,7 +274,7 @@ export const buildProposalSchema = ({
       "@type": "FAQPage",
       "@id": `${pageUrl}#faq`,
       url: pageUrl,
-      inLanguage: language,
+      inLanguage: schemaLanguage,
       mainEntity: faqEntities,
     });
   }
@@ -275,9 +300,12 @@ export const buildProposalPackageSchema = ({
   telephone,
   instagram,
   googleMapsUrl,
+  faqs = [],
 }) => {
   const rootUrl = siteUrl.replace(/\/$/, "");
-  const languagePrefix = language === "es" ? "/es" : "";
+  const languagePrefix =
+    language === "es" ? "/es" : language === "pt" ? "/pt" : "";
+  const schemaLanguage = language === "pt" ? "pt-BR" : language;
   const organizationId = `${rootUrl}/#organization`;
   const websiteId = `${rootUrl}/#website`;
   const proposalWebpageId = `${proposalPageUrl}#webpage`;
@@ -295,6 +323,16 @@ export const buildProposalPackageSchema = ({
   const imageReferences = imageObjects.map((image) => ({
     "@id": image["@id"],
   }));
+  const faqEntities = faqs
+    .filter((faq) => faq?.title && faq?.content?.content)
+    .map((faq) => ({
+      "@type": "Question",
+      name: faq.title,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.content.content,
+      },
+    }));
 
   return {
     "@context": "https://schema.org",
@@ -316,10 +354,12 @@ export const buildProposalPackageSchema = ({
         "@id": proposalWebpageId,
         url: proposalPageUrl,
         name:
-          language === "es"
-            ? "Paquetes de propuestas de matrimonio en Punta Cana"
-            : "Marriage proposal packages in Punta Cana",
-        inLanguage: language,
+          language === "pt"
+            ? "Pacotes de pedido de casamento em Punta Cana"
+            : language === "es"
+              ? "Paquetes de propuestas de matrimonio en Punta Cana"
+              : "Marriage proposal packages in Punta Cana",
+        inLanguage: schemaLanguage,
         isPartOf: { "@id": websiteId },
         mainEntity: { "@id": proposalServiceId },
       },
@@ -329,7 +369,7 @@ export const buildProposalPackageSchema = ({
         url: pageUrl,
         name: packageName,
         description,
-        inLanguage: language,
+        inLanguage: schemaLanguage,
         isPartOf: { "@id": proposalWebpageId },
         mainEntity: { "@id": serviceId },
         breadcrumb: { "@id": breadcrumbId },
@@ -342,13 +382,17 @@ export const buildProposalPackageSchema = ({
         description,
         url: pageUrl,
         serviceType:
-          language === "es"
-            ? "Paquete de propuesta de matrimonio en Punta Cana"
-            : "Punta Cana marriage proposal package",
+          language === "pt"
+            ? "Pacote de pedido de casamento em Punta Cana"
+            : language === "es"
+              ? "Paquete de propuesta de matrimonio en Punta Cana"
+              : "Punta Cana marriage proposal package",
         category:
-          language === "es"
-            ? "Propuestas de matrimonio en Punta Cana"
-            : "Marriage proposals in Punta Cana",
+          language === "pt"
+            ? "Pedidos de casamento em Punta Cana"
+            : language === "es"
+              ? "Propuestas de matrimonio en Punta Cana"
+              : "Marriage proposals in Punta Cana",
         provider: { "@id": organizationId },
         areaServed: [
           { "@type": "Place", name: "Punta Cana, Dominican Republic" },
@@ -370,6 +414,17 @@ export const buildProposalPackageSchema = ({
         itemOffered: { "@id": serviceId },
       },
       ...imageObjects,
+      ...(faqEntities.length
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${pageUrl}#faq`,
+              url: pageUrl,
+              inLanguage: schemaLanguage,
+              mainEntity: faqEntities,
+            },
+          ]
+        : []),
       {
         "@type": "BreadcrumbList",
         "@id": breadcrumbId,
@@ -377,16 +432,23 @@ export const buildProposalPackageSchema = ({
           {
             "@type": "ListItem",
             position: 1,
-            name: language === "es" ? "Inicio" : "Home",
+            name:
+              language === "pt"
+                ? "Início"
+                : language === "es"
+                  ? "Inicio"
+                  : "Home",
             item: `${rootUrl}${languagePrefix}/`,
           },
           {
             "@type": "ListItem",
             position: 2,
             name:
-              language === "es"
-                ? "Propuestas de matrimonio"
-                : "Marriage proposals",
+              language === "pt"
+                ? "Pedidos de casamento"
+                : language === "es"
+                  ? "Propuestas de matrimonio"
+                  : "Marriage proposals",
             item: proposalPageUrl,
           },
           {

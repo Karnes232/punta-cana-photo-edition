@@ -41,12 +41,17 @@ const PackageForm = ({
     proposalDetails?.dinnerIncluded || dinnerIsSelected,
   );
   const isSpanish = language === "es";
-  const proposalFormTitle = isSpanish
-    ? "Solicita tu propuesta"
-    : "Request your proposal";
-  const proposalSubmitLabel = isSpanish
-    ? "Enviar solicitud de propuesta"
-    : "Send proposal request";
+  const isPortuguese = language === "pt";
+  const proposalFormTitle = isPortuguese
+    ? "Solicite sua proposta"
+    : isSpanish
+      ? "Solicita tu propuesta"
+      : "Request your proposal";
+  const proposalSubmitLabel = isPortuguese
+    ? "Enviar solicitação de proposta"
+    : isSpanish
+      ? "Enviar solicitud de propuesta"
+      : "Send proposal request";
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -76,9 +81,11 @@ const PackageForm = ({
     .map((item) => `${item.addition} - $${item.price}`)
     .join(", ");
   const chooseLater =
-    language === "es"
-      ? "Elegir después con el coordinador"
-      : "Choose later with coordinator";
+    language === "pt"
+      ? "Escolher depois com o coordenador"
+      : language === "es"
+        ? "Elegir después con el coordinador"
+        : "Choose later with coordinator";
   const menuValue = (guest, section) =>
     getMenuItemLabel(
       section,
@@ -93,16 +100,24 @@ const PackageForm = ({
     ) || chooseLater;
   const wineChoice =
     dinnerSelection.wine === "red"
-      ? language === "es"
-        ? "Vino tinto"
-        : "Red wine"
+      ? language === "pt"
+        ? "Vinho tinto"
+        : language === "es"
+          ? "Vino tinto"
+          : "Red wine"
       : dinnerSelection.wine === "white"
-        ? language === "es"
-          ? "Vino blanco"
-          : "White wine"
+        ? language === "pt"
+          ? "Vinho branco"
+          : language === "es"
+            ? "Vino blanco"
+            : "White wine"
         : chooseLater;
   const thankYouPath =
-    language === "es" ? "/es/contact/thankyou/" : "/contact/thankyou/";
+    language === "pt"
+      ? "/pt/contact/thankyou/"
+      : language === "es"
+        ? "/es/contact/thankyou/"
+        : "/contact/thankyou/";
   return (
     <>
       <section

@@ -106,6 +106,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     query MyQuery {
       allContentfulGeneralLayout {
         nodes {
+          node_locale
           companyName
           facebook
           instagram
@@ -131,18 +132,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
   const localeMapping = {
-    "en-US": { path: "", urlCode: "en-US" },
-    es: { path: "es", urlCode: "es" },
-  };
-
-  const localeMap = {
-    "en-US": "en",
-    es: "es",
-    // Add more languages as needed
+    "en-US": { path: "", urlCode: "en-US", contentLanguage: "en-US" },
+    es: { path: "es", urlCode: "es", contentLanguage: "es" },
+    pt: { path: "pt", urlCode: "pt", contentLanguage: "en-US" },
   };
 
   const packageTemplate = path.resolve(`src/template/package.js`);
   const blogTemplate = path.resolve(`src/template/blog.js`);
+  const generalLayouts = queryResults.data.allContentfulGeneralLayout.nodes;
+  const layoutFor = (language) =>
+    generalLayouts.find((node) => node.node_locale === language) ||
+    generalLayouts.find((node) => node.node_locale === "en-US") ||
+    generalLayouts[0];
 
   queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
     const slug = node.slug?.trim();
@@ -157,11 +158,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         id: node.id,
         language: node.node_locale, // Pass the language to the template
+        contentLanguage: node.node_locale,
         blog: node,
-        layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
+        layout: layoutFor(node.node_locale),
       },
       // defer: true,
     });
+
+    if (node.node_locale === "en-US") {
+      createPage({
+        path: `/pt/blog/${slug}`,
+        component: blogTemplate,
+        context: {
+          id: node.id,
+          language: "pt",
+          contentLanguage: "en-US",
+          blog: node,
+          layout: layoutFor("en-US"),
+        },
+      });
+    }
   });
 
   queryResults.data.allContentfulPackagePageContent.nodes.forEach((node) => {
@@ -176,10 +192,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         id: node.id,
         language: node.node_locale,
-        layout: queryResults.data.allContentfulGeneralLayout.nodes[0],
+        contentLanguage: node.node_locale,
+        layout: layoutFor(node.node_locale),
         package: node,
       },
     });
+
+    if (node.node_locale === "en-US") {
+      createPage({
+        path: `/pt/packages/${node.urlSlug?.trim()}`,
+        component: packageTemplate,
+        context: {
+          id: node.id,
+          language: "pt",
+          contentLanguage: "en-US",
+          layout: layoutFor("en-US"),
+          package: node,
+        },
+      });
+    }
   });
 
   try {
@@ -225,34 +256,50 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   Object.entries(localeMapping).forEach(
-    ([contentfulCode, { path: urlPath, urlCode }]) => {
+    ([pageLanguage, { path: urlPath, urlCode, contentLanguage }]) => {
       // Create index page
       const indexPath = urlPath === "" ? "/" : `/${urlPath}`;
       createPage({
         path: indexPath,
         component: path.resolve("./src/pages/index.js"),
         context: {
-          language: contentfulCode,
+          language: pageLanguage,
+          contentLanguage,
           urlLanguage: urlCode,
         },
       });
 
-      const adminPath = urlPath === "" ? "/admin" : `/${urlPath}/admin`;
-      createPage({
-        path: adminPath,
-        component: path.resolve("./src/pages/admin/index.js"),
-        context: {
-          language: contentfulCode,
-          urlLanguage: urlCode,
-        },
-      });
+      if (pageLanguage !== "pt") {
+        const adminPath = urlPath === "" ? "/admin" : `/${urlPath}/admin`;
+        createPage({
+          path: adminPath,
+          component: path.resolve("./src/pages/admin/index.js"),
+          context: {
+            language: pageLanguage,
+            contentLanguage,
+            urlLanguage: urlCode,
+          },
+        });
+      }
 
       const contactPath = urlPath === "" ? "/contact" : `/${urlPath}/contact`;
       createPage({
         path: contactPath,
         component: path.resolve("./src/pages/contact/index.js"),
         context: {
-          language: contentfulCode,
+          language: pageLanguage,
+          contentLanguage,
+          urlLanguage: urlCode,
+        },
+      });
+
+      const thankYouPath = `${contactPath}/thankyou`;
+      createPage({
+        path: thankYouPath,
+        component: path.resolve("./src/pages/contact/thankyou.js"),
+        context: {
+          language: pageLanguage,
+          contentLanguage,
           urlLanguage: urlCode,
         },
       });
@@ -263,7 +310,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: proposalPath,
         component: path.resolve("./src/pages/proposal/index.js"),
         context: {
-          language: contentfulCode,
+          language: pageLanguage,
+          contentLanguage,
           urlLanguage: urlCode,
         },
       });
@@ -278,7 +326,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           "./src/pages/punta-cana-elopement-packages/index.js",
         ),
         context: {
-          language: contentfulCode,
+          language: pageLanguage,
+          contentLanguage,
           urlLanguage: urlCode,
         },
       });
@@ -293,7 +342,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           "./src/pages/puntacana-wedding-planner/index.js",
         ),
         context: {
-          language: contentfulCode,
+          language: pageLanguage,
+          contentLanguage,
           urlLanguage: urlCode,
         },
       });
@@ -304,7 +354,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: eventPlannerPath,
         component: path.resolve("./src/pages/event-planner/index.js"),
         context: {
-          language: contentfulCode,
+          language: pageLanguage,
+          contentLanguage,
           urlLanguage: urlCode,
         },
       });
@@ -319,7 +370,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           "./src/pages/gender-reveal-punta-cana/index.js",
         ),
         context: {
-          language: contentfulCode,
+          language: pageLanguage,
+          contentLanguage,
           urlLanguage: urlCode,
         },
       });
@@ -329,7 +381,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: blogPath,
         component: path.resolve("./src/pages/blog/index.js"),
         context: {
-          language: contentfulCode,
+          language: pageLanguage,
+          contentLanguage,
           urlLanguage: urlCode,
         },
       });

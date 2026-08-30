@@ -1,3 +1,5 @@
+import { portugueseCorporateEventContent } from "./portugueseCoreContent";
+
 const englishContent = {
   eyebrow: "Corporate Events in Punta Cana",
   primaryCta: "Request an Event Proposal",
@@ -691,6 +693,7 @@ const mergeContent = (base, override) => {
 };
 
 export const getCorporateEventContent = (language, rawConfig) => {
+  if (language === "pt") return portugueseCorporateEventContent;
   const base = language === "es" ? spanishContent : englishContent;
   return mergeContent(base, parseContentfulConfig(rawConfig));
 };
@@ -698,4 +701,5 @@ export const getCorporateEventContent = (language, rawConfig) => {
 export const corporateEventFallbacks = {
   "en-US": englishContent,
   es: spanishContent,
+  pt: portugueseCorporateEventContent,
 };

@@ -3,33 +3,70 @@ import React from "react";
 import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
+import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import RichText from "../../components/RichTextComponents/RichText";
 import Form from "../../components/ContactForm/Form";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
 import { useI18next } from "gatsby-plugin-react-i18next";
+import {
+  getLanguageConfig,
+  localizedUrl,
+  normalizeLanguage,
+} from "../../utils/siteLocales";
+
+const translateRichText = (field, translations) => {
+  if (!field?.raw) return field;
+  try {
+    const document = JSON.parse(field.raw);
+    let index = 0;
+    const visit = (node) => {
+      if (node?.nodeType === "text" && node.value.trim()) {
+        node.value = translations[index] || node.value;
+        index += 1;
+      }
+      if (Array.isArray(node?.content)) node.content.forEach(visit);
+    };
+    visit(document);
+    return { ...field, raw: JSON.stringify(document) };
+  } catch {
+    return field;
+  }
+};
 
 const Index = ({ data }) => {
+  const { language } = useI18next();
+  const sourcePage = data.allContentfulPageContent.nodes[0];
+  const page =
+    language === "pt"
+      ? {
+          ...sourcePage,
+          heroHeading: "Fale Conosco",
+          heroHeading2: "Vamos Planejar seu Evento em Punta Cana",
+          paragraph1: translateRichText(sourcePage.paragraph1, [
+            "Estamos aqui para entender o que você precisa",
+            "Queremos conhecer seus planos e oferecer o apoio certo. Preencha o formulário abaixo e nossa equipe entrará em contato para conversar sobre seu evento em Punta Cana.",
+          ]),
+          paragraph2: translateRichText(sourcePage.paragraph2, [
+            "Conte-nos sobre seu evento em Punta Cana. Fale com nossa equipe pelo WhatsApp +1 829 522 2900 ou pelo e-mail info@sertuinevents.com. Ajudaremos você a planejar a experiência adequada.",
+          ]),
+        }
+      : sourcePage;
   return (
     <Layout
       generalInfo={data.allContentfulGeneralLayout.nodes[0]}
       overlayHeader
     >
-      <HeroSwiper
-        heroInfo={data.allContentfulPageContent.nodes[0]}
-        overlayHeader
-      />
-      <RichText context={data?.allContentfulPageContent?.nodes[0].paragraph1} />
+      <HeroSwiper heroInfo={page} overlayHeader language={language} />
+      <RichText context={page.paragraph1} />
       <div className="flex flex-col lg:flex-row lg:mx-10 xl:mx-auto max-w-5xl">
         <div className="basis-1/2 mx-5 lg:mx-0">
           <Form />
         </div>
         <div className="basis-1/2">
-          <RichText
-            context={data?.allContentfulPageContent?.nodes[0].paragraph2}
-          />
+          <RichText context={page.paragraph2} />
         </div>
       </div>
-      <GoogleMap />
+      <GoogleMap language={language} />
     </Layout>
   );
 };
@@ -37,10 +74,14 @@ const Index = ({ data }) => {
 export default Index;
 
 export const Head = ({ pageContext, data }) => {
-  const { language } = useI18next();
+  const { language: hookLanguage } = useI18next();
+  const language = normalizeLanguage(pageContext.language || hookLanguage);
+  const isPortuguese = language === "pt";
+  const languageConfig = getLanguageConfig(language);
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/contact/`;
+  const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const siteUrl = localizedUrl(rootUrl, "/contact/", language);
   const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
 
   let JsonSchema = {};
@@ -50,38 +91,49 @@ export const Head = ({ pageContext, data }) => {
   return (
     <>
       <Seo
-        title={title}
-        description={description.description}
-        keywords={keywords.join(", ")}
+        title={
+          isPortuguese
+            ? "Contato Sertuin Events | Planejamento de Eventos em Punta Cana"
+            : title
+        }
+        description={
+          isPortuguese
+            ? "Conte-nos sobre seu evento em Punta Cana e solicite uma proposta personalizada para casamentos, celebrações, pedidos e eventos corporativos."
+            : description.description
+        }
+        keywords={(isPortuguese
+          ? [
+              "contato planejador de eventos Punta Cana",
+              "cotação evento Punta Cana",
+              "Sertuin Events contato",
+            ]
+          : keywords
+        ).join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
-        schemaMarkup={JsonSchema}
-        language={
-          pageContext.language === "en-US" ? "en" : pageContext.language
+        schemaMarkup={
+          isPortuguese
+            ? {
+                "@context": "https://schema.org",
+                "@type": "ContactPage",
+                name: "Contato Sertuin Events",
+                url: siteUrl,
+                inLanguage: "pt-BR",
+                about: { "@id": `${rootUrl}/#organization` },
+              }
+            : JsonSchema
         }
+        language={languageConfig.htmlLang}
+        locale={languageConfig.ogLocale}
       />
       <link rel="canonical" href={siteUrl} />
-      <link
-        rel="alternate"
-        hrefLang="en"
-        href={`${data.site.siteMetadata.siteUrl}/contact/`}
-      />
-      <link
-        rel="alternate"
-        hrefLang="es"
-        href={`${data.site.siteMetadata.siteUrl}/es/contact/`}
-      />
-      <link
-        rel="alternate"
-        hrefLang="x-default"
-        href={`${data.site.siteMetadata.siteUrl}/contact/`}
-      />
+      <LocalizedAlternates rootUrl={rootUrl} path="/contact/" />
     </>
   );
 };
 
 export const query = graphql`
-  query MyQuery($language: String!) {
+  query MyQuery($contentLanguage: String = "en-US") {
     locales: allLocale {
       edges {
         node {
@@ -107,7 +159,7 @@ export const query = graphql`
       }
     }
     allContentfulSeo(
-      filter: { page: { eq: "Contact" }, node_locale: { eq: $language } }
+      filter: { page: { eq: "Contact" }, node_locale: { eq: $contentLanguage } }
     ) {
       nodes {
         title
@@ -128,7 +180,7 @@ export const query = graphql`
       }
     }
     allContentfulPageContent(
-      filter: { page: { eq: "Contact" }, node_locale: { eq: $language } }
+      filter: { page: { eq: "Contact" }, node_locale: { eq: $contentLanguage } }
     ) {
       nodes {
         page

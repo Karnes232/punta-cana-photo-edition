@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
+import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import GenderRevealExperience from "../../components/GenderReveal/GenderRevealExperience";
 import {
   getGenderRevealContent,
@@ -9,6 +10,11 @@ import {
   normalizeGenderRevealFaqs,
 } from "../../content/genderRevealContent";
 import { buildGenderRevealSchema } from "../../utils/genderRevealSeo";
+import {
+  getLanguageConfig,
+  localizedUrl,
+  normalizeLanguage,
+} from "../../utils/siteLocales";
 
 const GenderRevealPage = ({ data, pageContext }) => {
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
@@ -29,44 +35,59 @@ const GenderRevealPage = ({ data, pageContext }) => {
 export default GenderRevealPage;
 
 export const Head = ({ pageContext, data }) => {
-  const language = pageContext.language;
+  const language = normalizeLanguage(pageContext.language);
   const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
+  const languageConfig = getLanguageConfig(language);
   const content = getGenderRevealContent(language);
   const seo = data.allContentfulSeo.nodes[0];
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
-  const pageUrl = `${rootUrl}${isSpanish ? "/es" : ""}/gender-reveal-punta-cana/`;
-  const fallbackTitle = isSpanish
-    ? "Revelación de Género en Punta Cana | Evento a Medida"
-    : "Gender Reveal in Punta Cana | Custom Planning";
-  const fallbackDescription = isSpanish
-    ? "Planificamos tu revelación de género en Punta Cana en hotel, villa, playa o locación elegida. Cuéntanos tu idea y recibe una cotización personalizada."
-    : "Plan your Punta Cana gender reveal at a hotel, villa, beach or selected venue. No preset packages—share your idea and receive a custom quote.";
+  const pageUrl = localizedUrl(rootUrl, "/gender-reveal-punta-cana/", language);
+  const fallbackTitle = isPortuguese
+    ? "Chá Revelação em Punta Cana | Planejamento Personalizado"
+    : isSpanish
+      ? "Revelación de Género en Punta Cana | Evento a Medida"
+      : "Gender Reveal in Punta Cana | Custom Planning";
+  const fallbackDescription = isPortuguese
+    ? "Planejamos seu chá revelação em Punta Cana em hotel, villa, praia ou local escolhido. Compartilhe sua ideia e receba uma cotação personalizada."
+    : isSpanish
+      ? "Planificamos tu revelación de género en Punta Cana en hotel, villa, playa o locación elegida. Cuéntanos tu idea y recibe una cotización personalizada."
+      : "Plan your Punta Cana gender reveal at a hotel, villa, beach or selected venue. No preset packages—share your idea and receive a custom quote.";
   const title =
-    !isSpanish && isCurrentGenderRevealCopy(seo?.title)
+    !isSpanish && !isPortuguese && isCurrentGenderRevealCopy(seo?.title)
       ? seo.title
       : fallbackTitle;
   const description =
-    !isSpanish && isCurrentGenderRevealCopy(seo?.description?.description)
+    !isSpanish &&
+    !isPortuguese &&
+    isCurrentGenderRevealCopy(seo?.description?.description)
       ? seo.description.description
       : fallbackDescription;
   const image = `${rootUrl}/images/punta-cana-gender-reveal-planning.webp`;
   const keywords = (seo?.keywords || []).filter((keyword) =>
     isCurrentGenderRevealCopy(keyword),
   );
-  const fallbackKeywords = isSpanish
+  const fallbackKeywords = isPortuguese
     ? [
-        "revelación de género Punta Cana",
-        "organización de revelación de género Punta Cana",
-        "revelación de género en villa Punta Cana",
-        "revelación de género en hotel Punta Cana",
+        "chá revelação Punta Cana",
+        "organização de chá revelação Punta Cana",
+        "chá revelação em villa Punta Cana",
+        "chá revelação em hotel Punta Cana",
       ]
-    : [
-        "gender reveal Punta Cana",
-        "Punta Cana gender reveal planner",
-        "custom gender reveal Punta Cana",
-        "villa gender reveal Punta Cana",
-        "hotel gender reveal Punta Cana",
-      ];
+    : isSpanish
+      ? [
+          "revelación de género Punta Cana",
+          "organización de revelación de género Punta Cana",
+          "revelación de género en villa Punta Cana",
+          "revelación de género en hotel Punta Cana",
+        ]
+      : [
+          "gender reveal Punta Cana",
+          "Punta Cana gender reveal planner",
+          "custom gender reveal Punta Cana",
+          "villa gender reveal Punta Cana",
+          "hotel gender reveal Punta Cana",
+        ];
   const faqs = normalizeGenderRevealFaqs(
     data.allContentfulFaqsComponent.nodes,
     language,
@@ -85,46 +106,37 @@ export const Head = ({ pageContext, data }) => {
       <Seo
         title={title}
         description={description}
-        keywords={(!isSpanish && keywords.length > 0
+        keywords={(!isSpanish && !isPortuguese && keywords.length > 0
           ? keywords
           : fallbackKeywords
         ).join(", ")}
         image={image}
         imageAlt={
-          isSpanish
-            ? "Revelación de género personalizada en una playa de Punta Cana"
-            : "Custom gender reveal celebration on a Punta Cana beach"
+          isPortuguese
+            ? "Chá revelação personalizado em uma praia de Punta Cana"
+            : isSpanish
+              ? "Revelación de género personalizada en una playa de Punta Cana"
+              : "Custom gender reveal celebration on a Punta Cana beach"
         }
         url={pageUrl}
         schemaMarkup={schemaMarkup}
-        language={isSpanish ? "es" : "en"}
+        language={languageConfig.htmlLang}
         siteName="Sertuin Events"
-        locale={isSpanish ? "es_DO" : "en_US"}
+        locale={languageConfig.ogLocale}
         alternateLocale={isSpanish ? "en_US" : "es_DO"}
         twitterCard="summary_large_image"
       />
       <link rel="canonical" href={pageUrl} />
-      <link
-        rel="alternate"
-        hrefLang="en"
-        href={`${rootUrl}/gender-reveal-punta-cana/`}
-      />
-      <link
-        rel="alternate"
-        hrefLang="es"
-        href={`${rootUrl}/es/gender-reveal-punta-cana/`}
-      />
-      <link
-        rel="alternate"
-        hrefLang="x-default"
-        href={`${rootUrl}/gender-reveal-punta-cana/`}
+      <LocalizedAlternates
+        rootUrl={rootUrl}
+        path="/gender-reveal-punta-cana/"
       />
     </>
   );
 };
 
 export const query = graphql`
-  query GenderRevealPage($language: String!) {
+  query GenderRevealPage($contentLanguage: String = "en-US") {
     locales: allLocale {
       edges {
         node {
@@ -139,7 +151,9 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
+    allContentfulGeneralLayout(
+      filter: { node_locale: { eq: $contentLanguage } }
+    ) {
       nodes {
         companyName
         email
@@ -151,7 +165,10 @@ export const query = graphql`
       }
     }
     allContentfulSeo(
-      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Gender Reveal" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         title
@@ -162,7 +179,10 @@ export const query = graphql`
       }
     }
     allContentfulPageContent(
-      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Gender Reveal" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         page
@@ -188,7 +208,10 @@ export const query = graphql`
       }
     }
     allContentfulPhotoGallery(
-      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Gender Reveal" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         page
@@ -210,7 +233,10 @@ export const query = graphql`
       }
     }
     allContentfulCardWithImage(
-      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Gender Reveal" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         title
@@ -219,7 +245,10 @@ export const query = graphql`
       }
     }
     allContentfulFaqsComponent(
-      filter: { page: { eq: "Gender Reveal" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Gender Reveal" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         title

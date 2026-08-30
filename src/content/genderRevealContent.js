@@ -1,3 +1,5 @@
+import { portugueseGenderRevealContent } from "./portugueseCoreContent";
+
 const english = {
   eyebrow: "Custom gender reveal planning in Punta Cana",
   heroTitle: "Punta Cana Gender Reveal Planning",
@@ -273,7 +275,12 @@ export const isCurrentGenderRevealCopy = (value) =>
   Boolean(value) && !legacyPattern.test(String(value));
 
 export const normalizeGenderRevealFaqs = (nodes, language) => {
-  const fallback = language === "es" ? spanish.faqs : english.faqs;
+  const fallback =
+    language === "es"
+      ? spanish.faqs
+      : language === "pt"
+        ? portugueseGenderRevealContent.faqs
+        : english.faqs;
   const localize = (value) => {
     if (language !== "es" || typeof value !== "string") return value;
     return value
@@ -296,7 +303,7 @@ export const normalizeGenderRevealFaqs = (nodes, language) => {
         !/\$\s*\d|fixed package|paquete fijo/i.test(`${question} ${answer}`),
     );
 
-  if (!isCurrentSet) return fallback;
+  if (language === "pt" || !isCurrentSet) return fallback;
 
   const managedQuestions = new Set(
     candidates.map(({ question }) => question.toLocaleLowerCase()),
@@ -311,4 +318,8 @@ export const normalizeGenderRevealFaqs = (nodes, language) => {
 };
 
 export const getGenderRevealContent = (language) =>
-  language === "es" ? spanish : english;
+  language === "es"
+    ? spanish
+    : language === "pt"
+      ? portugueseGenderRevealContent
+      : english;

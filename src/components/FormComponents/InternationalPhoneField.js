@@ -4,6 +4,7 @@ import PhoneInput, {
   parsePhoneNumber,
 } from "react-phone-number-input";
 import esLabels from "react-phone-number-input/locale/es.json";
+import ptLabels from "react-phone-number-input/locale/pt.json";
 import "react-phone-number-input/style.css";
 
 const COPY = {
@@ -11,6 +12,10 @@ const COPY = {
     placeholder: "Selecciona el país e ingresa el número",
     error:
       "Selecciona el país de procedencia e ingresa un número de teléfono válido.",
+  },
+  pt: {
+    placeholder: "Selecione o país e digite o número",
+    error: "Selecione o país de origem e digite um telefone válido.",
   },
   en: {
     placeholder: "Select the country and enter the number",
@@ -39,7 +44,8 @@ const InternationalPhoneField = ({
   required = true,
 }) => {
   const isSpanish = language === "es";
-  const copy = isSpanish ? COPY.es : COPY.en;
+  const isPortuguese = language === "pt";
+  const copy = isPortuguese ? COPY.pt : isSpanish ? COPY.es : COPY.en;
   const inputRef = useRef(null);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [touched, setTouched] = useState(false);
@@ -78,7 +84,7 @@ const InternationalPhoneField = ({
         onInvalid={handleInvalid}
         placeholder={placeholder || copy.placeholder}
         autoComplete="tel"
-        labels={isSpanish ? esLabels : undefined}
+        labels={isPortuguese ? ptLabels : isSpanish ? esLabels : undefined}
         className={className}
         numberInputProps={{
           className: inputClassName,

@@ -36,7 +36,7 @@ const Footer = ({ generalInfo }) => {
       </div>
       <div className="flex flex-col md:flex-row justify-between space-y-10 md:space-y-0 md:mt-5 md:w-full md:mx-auto md:px-10">
         <LanguageSwitcher currentLanguage={language} />
-        <SocialMedia generalInfo={generalInfo} />
+        <SocialMedia generalInfo={generalInfo} language={language} />
       </div>
       <Copyright companyName={generalInfo.companyName} language={language} />
       <Signature />

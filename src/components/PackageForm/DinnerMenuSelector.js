@@ -57,6 +57,30 @@ const copy = {
     close: "Cerrar menú de cena",
     saved: "La selección del menú se añadió a esta solicitud",
   },
+  pt: {
+    title: "Escolha o menu do jantar",
+    intro:
+      "Cada pessoa pode escolher uma entrada, um prato principal e uma sobremesa. A seleção é opcional durante a reserva e pode ser concluída ou alterada com o coordenador até 48 horas antes da experiência.",
+    open: "Ver e escolher o menu do jantar",
+    included: "Menu de três tempos para duas pessoas",
+    includedText:
+      "Inclui água, uma garrafa de vinho espumante de 750 ml e uma garrafa adicional de vinho tinto ou branco de 750 ml.",
+    guest: "Pessoa",
+    starter: "Entrada",
+    main: "Prato principal",
+    dessert: "Sobremesa",
+    chooseLater: "Escolher depois com o coordenador",
+    wine: "Vinho adicional",
+    redWine: "Vinho tinto",
+    whiteWine: "Vinho branco",
+    restrictions: "Alergias ou restrições alimentares",
+    restrictionsPlaceholder:
+      "Informe qual pessoa possui a restrição e descreva-a.",
+    dietKey: "V = vegetariano · Ve = vegano",
+    save: "Salvar escolhas do menu",
+    close: "Fechar menu do jantar",
+    saved: "As escolhas do menu foram adicionadas a esta solicitação",
+  },
 };
 
 const emptySelection = {
@@ -117,7 +141,8 @@ const MenuList = ({ language, labels }) => (
 
 const DinnerMenuSelector = ({ language, value, onChange }) => {
   const [open, setOpen] = useState(false);
-  const labels = copy[language === "es" ? "es" : "en"];
+  const labels =
+    copy[language === "pt" ? "pt" : language === "es" ? "es" : "en"];
   const selection = value || emptySelection;
   const hasSelection = Boolean(
     selection.guest1?.starter ||

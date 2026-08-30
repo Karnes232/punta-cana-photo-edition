@@ -129,7 +129,11 @@ const validatePackage = ({ language, prefix, hub, expectedPackage }) => {
     html,
     new RegExp(
       `<h3[^>]*package-booking-heading[^>]*>\\s*${
-        language === "es" ? "Solicita tu propuesta" : "Request your proposal"
+        language === "pt-BR"
+          ? "Solicite sua proposta"
+          : language === "es"
+            ? "Solicita tu propuesta"
+            : "Request your proposal"
       }\\s*</h3>`,
     ),
   );
@@ -137,9 +141,11 @@ const validatePackage = ({ language, prefix, hub, expectedPackage }) => {
     html,
     new RegExp(
       `<button[^>]*type=["']submit["'][^>]*>\\s*${
-        language === "es"
-          ? "Enviar solicitud de propuesta"
-          : "Send proposal request"
+        language === "pt-BR"
+          ? "Enviar solicitação de proposta"
+          : language === "es"
+            ? "Enviar solicitud de propuesta"
+            : "Send proposal request"
       }\\s*</button>`,
     ),
   );
@@ -162,6 +168,7 @@ const readXmlFiles = (directory) =>
 const locales = [
   { language: "en-US", prefix: "" },
   { language: "es", prefix: "/es" },
+  { language: "pt-BR", prefix: "/pt" },
 ];
 
 for (const locale of locales) {
@@ -184,5 +191,5 @@ for (const { prefix } of locales) {
 assert.doesNotMatch(sitemapXml, /ocean-of-love/i);
 
 console.log(
-  `Validated ${expectedPackages.length} proposal offers in English and Spanish, their package schemas, breadcrumbs, images and sitemap entries.`,
+  `Validated ${expectedPackages.length} proposal offers in English, Spanish and Portuguese, their package schemas, breadcrumbs, images and sitemap entries.`,
 );

@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 // connections) and this iframe lands well inside that, so it would still load
 // eagerly. Mounting it on intersection makes the deferral deterministic;
 // loading="lazy" stays as a second line of defence.
-const GoogleMap = () => {
+const GoogleMap = ({ language = "en-US" }) => {
   const containerRef = useRef(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
@@ -48,8 +48,14 @@ const GoogleMap = () => {
           height="100%"
           loading="lazy"
           scrolling="no"
-          title="Map of Punta Cana, Dominican Republic"
-          src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Punta%20Cana+()&amp;t=h&amp;z=11&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+          title={
+            language === "pt"
+              ? "Mapa de Punta Cana, República Dominicana"
+              : language === "es"
+                ? "Mapa de Punta Cana, República Dominicana"
+                : "Map of Punta Cana, Dominican Republic"
+          }
+          src={`https://maps.google.com/maps?width=100%25&height=600&hl=${language === "pt" ? "pt-BR" : language === "es" ? "es" : "en"}&q=Punta%20Cana+()&t=h&z=11&ie=UTF8&iwloc=B&output=embed`}
           className="border-0"
         ></iframe>
       ) : (

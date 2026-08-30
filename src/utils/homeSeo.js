@@ -17,6 +17,7 @@ export const buildHomeSchema = ({
   imageUrl,
 }) => {
   const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
   const telephone = "+1-829-522-2900";
   const email = generalInfo?.email || "info@sertuinevents.com";
   const legalName = generalInfo?.legalName || "SERTUIN SRL";
@@ -40,9 +41,11 @@ export const buildHomeSchema = ({
         name: "Sertuin Events",
         legalName,
         url: "https://sertuinevents.com/",
-        description: isSpanish
-          ? "Planificación, diseño, coordinación y gestión integral de eventos en Punta Cana."
-          : "Full-service event planning, design, coordination and management in Punta Cana.",
+        description: isPortuguese
+          ? "Planejamento, design, coordenação, produção e gestão completa de eventos em Punta Cana."
+          : isSpanish
+            ? "Planificación, diseño, coordinación y gestión integral de eventos en Punta Cana."
+            : "Full-service event planning, design, coordination and management in Punta Cana.",
         logo: {
           "@type": "ImageObject",
           url: logoUrl,
@@ -80,7 +83,7 @@ export const buildHomeSchema = ({
           contactType: "event planning inquiries",
           telephone,
           email,
-          availableLanguage: ["English", "Spanish"],
+          availableLanguage: ["English", "Spanish", "Portuguese"],
           areaServed: "DO",
           hoursAvailable,
         },
@@ -93,17 +96,21 @@ export const buildHomeSchema = ({
         publisher: {
           "@id": "https://sertuinevents.com/#organization",
         },
-        inLanguage: ["en", "es"],
+        inLanguage: ["en", "es", "pt-BR"],
       },
       {
         "@type": "Service",
         "@id": `${pageUrl}#event-planning-service`,
-        name: isSpanish
-          ? "Planificación y gestión integral de eventos en Punta Cana"
-          : "Full-service event planning and management in Punta Cana",
-        serviceType: isSpanish
-          ? "Planificación, diseño, coordinación, producción y gestión de eventos"
-          : "Event planning, design, coordination, production and management",
+        name: isPortuguese
+          ? "Planejamento e gestão completa de eventos em Punta Cana"
+          : isSpanish
+            ? "Planificación y gestión integral de eventos en Punta Cana"
+            : "Full-service event planning and management in Punta Cana",
+        serviceType: isPortuguese
+          ? "Planejamento, design, coordenação, produção e gestão de eventos"
+          : isSpanish
+            ? "Planificación, diseño, coordinación, producción y gestión de eventos"
+            : "Event planning, design, coordination, production and management",
         description: pageDescription,
         provider: {
           "@id": "https://sertuinevents.com/#organization",
@@ -120,9 +127,11 @@ export const buildHomeSchema = ({
         ],
         audience: {
           "@type": "Audience",
-          audienceType: isSpanish
-            ? "Empresas, parejas y clientes que organizan celebraciones privadas"
-            : "Companies, couples and private celebration clients",
+          audienceType: isPortuguese
+            ? "Empresas, casais e clientes que organizam celebrações privadas"
+            : isSpanish
+              ? "Empresas, parejas y clientes que organizan celebraciones privadas"
+              : "Companies, couples and private celebration clients",
         },
         hoursAvailable,
       },
@@ -132,9 +141,11 @@ export const buildHomeSchema = ({
         url: pageUrl,
         name:
           pageTitle ||
-          (isSpanish
-            ? "Planificación de Eventos en Punta Cana | Sertuin Events"
-            : "Punta Cana Event Planner & Event Management | Sertuin Events"),
+          (isPortuguese
+            ? "Planejamento de Eventos em Punta Cana | Sertuin Events"
+            : isSpanish
+              ? "Planificación de Eventos en Punta Cana | Sertuin Events"
+              : "Punta Cana Event Planner & Event Management | Sertuin Events"),
         description: pageDescription,
         isPartOf: {
           "@id": "https://sertuinevents.com/#website",
@@ -151,7 +162,7 @@ export const buildHomeSchema = ({
               url: imageUrl,
             }
           : undefined,
-        inLanguage: isSpanish ? "es" : "en",
+        inLanguage: isPortuguese ? "pt-BR" : isSpanish ? "es" : "en",
       },
     ],
   };

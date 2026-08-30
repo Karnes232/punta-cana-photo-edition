@@ -4,6 +4,7 @@ import MoreInfo from "./MoreInfo";
 import OptionSelect from "./OptionSelect";
 import { Trans, useTranslation } from "gatsby-plugin-react-i18next";
 import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
+import { localizedPath } from "../../utils/siteLocales";
 const Form = () => {
   const { t, i18n } = useTranslation();
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ const Form = () => {
       <form
         name="contact"
         method="POST"
-        action={`${i18n.language === "es" ? "/es" : ""}/contact/thankyou/?name=${encodeURIComponent(name)}`}
+        action={`${localizedPath("/contact/thankyou/", i18n.language)}?name=${encodeURIComponent(name)}`}
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         id="contact"
@@ -23,7 +24,7 @@ const Form = () => {
         <input type="hidden" name="source" value="Contact page" />
         <p className="hidden">
           <label>
-            Do not fill this out: <input name="bot-field" />
+            <Trans>Do not fill this out</Trans>: <input name="bot-field" />
           </label>
         </p>
         <ContactInfo name={name} setName={setName} />

@@ -4,7 +4,8 @@ import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
 import { Trans } from "gatsby-plugin-react-i18next";
 import { withSizes } from "../../utils/imageSizes";
-import { localizeSpanishProposalUrl } from "../../utils/localizedLinks";
+import { localizeProposalUrl } from "../../utils/localizedLinks";
+import { localizedPath } from "../../utils/siteLocales";
 import { getImageSeo } from "../../utils/imageSeo";
 
 // The card is w-11/12 on mobile and a fixed w-[20rem] (320px) from md up.
@@ -46,10 +47,9 @@ const PackageCard = ({ photoPackage, language }) => {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
-  const languagePrefix = language === "es" ? "/es" : "";
   const packageLink = photoPackage.packagePage
-    ? `${languagePrefix}/packages/${photoPackage.packagePage?.urlSlug}/`
-    : localizeSpanishProposalUrl(photoPackage.link, language);
+    ? localizedPath(`/packages/${photoPackage.packagePage?.urlSlug}/`, language)
+    : localizeProposalUrl(photoPackage.link, language);
 
   return (
     <>
