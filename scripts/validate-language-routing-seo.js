@@ -124,6 +124,10 @@ for (const frenchPage of [
     /hreflang=["']fr-FR["'][^>]+href=["']https:\/\/sertuinevents\.com\/fr\//i,
   );
 }
+assert.doesNotMatch(
+  visibleText(frenchHome),
+  /\b(?:We listen|We organize|We take responsibility|Planning an event is not simply)\b/i,
+);
 
 for (const [homePath, prefix] of [
   ["index.html", ""],

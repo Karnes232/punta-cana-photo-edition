@@ -18,6 +18,9 @@ import PhoneInput, {
   isPossiblePhoneNumber,
   parsePhoneNumber,
 } from "react-phone-number-input";
+import esPhoneLabels from "react-phone-number-input/locale/es.json";
+import frPhoneLabels from "react-phone-number-input/locale/fr.json";
+import ptPhoneLabels from "react-phone-number-input/locale/pt.json";
 import "react-phone-number-input/style.css";
 import { getHomeContent } from "../../content/homeContent";
 import { localizedPath as buildLocalizedPath } from "../../utils/siteLocales";
@@ -503,6 +506,15 @@ const HomeContactForm = ({ content, language }) => {
           {content.phone}
           <PhoneInput
             international
+            labels={
+              language === "pt"
+                ? ptPhoneLabels
+                : language === "fr"
+                  ? frPhoneLabels
+                  : language === "es"
+                    ? esPhoneLabels
+                    : undefined
+            }
             name="telephone"
             value={phone}
             onChange={(value) => {
@@ -819,6 +831,7 @@ const HomeExperience = ({
             </p>
           </div>
           {language !== "pt" &&
+          language !== "fr" &&
           page?.paragraph2?.raw &&
           !structuredProcessSteps ? (
             <div className="mt-12 border border-white/15 bg-white p-8 text-black md:p-12">
@@ -876,7 +889,7 @@ const HomeExperience = ({
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight text-black md:text-5xl">
               {managedText(featureCard?.title, content.commitmentTitle)}
             </h2>
-            {language !== "pt" && page?.paragraph3?.raw ? (
+            {language !== "pt" && language !== "fr" && page?.paragraph3?.raw ? (
               <RichTextBlock context={page.paragraph3} />
             ) : (
               <p className="mt-7 font-montserrat text-base leading-8 text-gray-700 md:text-lg">

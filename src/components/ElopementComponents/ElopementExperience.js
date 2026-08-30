@@ -3,6 +3,9 @@ import PhoneInput, {
   isPossiblePhoneNumber,
   parsePhoneNumber,
 } from "react-phone-number-input";
+import esPhoneLabels from "react-phone-number-input/locale/es.json";
+import frPhoneLabels from "react-phone-number-input/locale/fr.json";
+import ptPhoneLabels from "react-phone-number-input/locale/pt.json";
 import "react-phone-number-input/style.css";
 import {
   ArrowRight,
@@ -1152,7 +1155,14 @@ const ElopementForm = ({
       />
       <p className="hidden">
         <label>
-          Do not fill this out: <input name="bot-field" />
+          {language === "pt"
+            ? "Não preencha este campo:"
+            : language === "fr"
+              ? "Ne remplissez pas ce champ :"
+              : language === "es"
+                ? "No completes este campo:"
+                : "Do not fill this out:"}
+          <input name="bot-field" />
         </label>
       </p>
 
@@ -1198,6 +1208,15 @@ const ElopementForm = ({
           <span>{copy.form.whatsapp}</span>
           <PhoneInput
             international
+            labels={
+              language === "pt"
+                ? ptPhoneLabels
+                : language === "fr"
+                  ? frPhoneLabels
+                  : language === "es"
+                    ? esPhoneLabels
+                    : undefined
+            }
             name="whatsapp"
             value={phone}
             onChange={(value) => {
