@@ -279,7 +279,7 @@ export const Head = ({ pageContext, data }) => {
   );
 };
 export const query = graphql`
-  query MyQuery($language: String!, $contentLanguage: String!) {
+  query MyQuery($contentLanguage: String!) {
     locales: allLocale {
       edges {
         node {

@@ -113,7 +113,7 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query IndexPageQuery($language: String!, $contentLanguage: String!) {
+  query IndexPageQuery($contentLanguage: String!) {
     locales: allLocale {
       edges {
         node {

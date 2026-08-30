@@ -204,11 +204,7 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query UniversalBlogPost(
-    $id: String
-    $language: String!
-    $contentLanguage: String!
-  ) {
+  query UniversalBlogPost($id: String, $contentLanguage: String!) {
     locales: allLocale {
       edges {
         node {
