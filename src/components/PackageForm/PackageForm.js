@@ -42,16 +42,21 @@ const PackageForm = ({
   );
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const proposalFormTitle = isPortuguese
     ? "Solicite sua proposta"
-    : isSpanish
-      ? "Solicita tu propuesta"
-      : "Request your proposal";
+    : isFrench
+      ? "Demandez votre proposition"
+      : isSpanish
+        ? "Solicita tu propuesta"
+        : "Request your proposal";
   const proposalSubmitLabel = isPortuguese
     ? "Enviar solicitação de proposta"
-    : isSpanish
-      ? "Enviar solicitud de propuesta"
-      : "Send proposal request";
+    : isFrench
+      ? "Envoyer la demande de proposition"
+      : isSpanish
+        ? "Enviar solicitud de propuesta"
+        : "Send proposal request";
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -83,9 +88,11 @@ const PackageForm = ({
   const chooseLater =
     language === "pt"
       ? "Escolher depois com o coordenador"
-      : language === "es"
-        ? "Elegir después con el coordinador"
-        : "Choose later with coordinator";
+      : language === "fr"
+        ? "Choisir plus tard avec la coordinatrice"
+        : language === "es"
+          ? "Elegir después con el coordinador"
+          : "Choose later with coordinator";
   const menuValue = (guest, section) =>
     getMenuItemLabel(
       section,
@@ -102,22 +109,28 @@ const PackageForm = ({
     dinnerSelection.wine === "red"
       ? language === "pt"
         ? "Vinho tinto"
-        : language === "es"
-          ? "Vino tinto"
-          : "Red wine"
+        : language === "fr"
+          ? "Vin rouge"
+          : language === "es"
+            ? "Vino tinto"
+            : "Red wine"
       : dinnerSelection.wine === "white"
         ? language === "pt"
           ? "Vinho branco"
-          : language === "es"
-            ? "Vino blanco"
-            : "White wine"
+          : language === "fr"
+            ? "Vin blanc"
+            : language === "es"
+              ? "Vino blanco"
+              : "White wine"
         : chooseLater;
   const thankYouPath =
     language === "pt"
       ? "/pt/contact/thankyou/"
-      : language === "es"
-        ? "/es/contact/thankyou/"
-        : "/contact/thankyou/";
+      : language === "fr"
+        ? "/fr/contact/thankyou/"
+        : language === "es"
+          ? "/es/contact/thankyou/"
+          : "/contact/thankyou/";
   return (
     <>
       <section

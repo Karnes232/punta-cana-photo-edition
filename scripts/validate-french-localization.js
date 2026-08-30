@@ -41,11 +41,9 @@ const loadSourceModule = (modulePath) => {
 };
 
 const { publishedBlogSlugs } = require("../src/data/publishedBlogSlugs");
-const { portugueseBlogContent } = loadSourceModule(
-  "src/data/portugueseBlogContent.js",
-);
-const { portugueseProposalPackageContent } = loadSourceModule(
-  "src/data/portugueseProposalPackageContent.js",
+const { frenchBlogContent } = loadSourceModule("src/data/frenchBlogContent.js");
+const { frenchProposalPackageContent } = loadSourceModule(
+  "src/data/frenchProposalPackageContent.js",
 );
 const { proposalPackageDetails } = loadSourceModule(
   "src/data/proposalPackageDetails.js",
@@ -55,42 +53,50 @@ const { SITE_LANGUAGES, localizedPath } = loadSourceModule(
 );
 
 assert.deepEqual(SITE_LANGUAGES, ["en-US", "es", "pt", "fr"]);
-assert.equal(localizedPath("/proposal/", "pt"), "/pt/proposal/");
+assert.equal(localizedPath("/proposal/", "fr"), "/fr/proposal/");
 
 const publishedSlugs = [...publishedBlogSlugs].sort();
-const translatedSlugs = Object.keys(portugueseBlogContent).sort();
 assert.deepEqual(
-  translatedSlugs,
+  Object.keys(frenchBlogContent).sort(),
   publishedSlugs,
-  "Every published article must have exactly one Portuguese translation",
+  "Every published article must have exactly one French translation",
 );
 
-for (const [slug, article] of Object.entries(portugueseBlogContent)) {
-  assert.ok(article.title?.trim(), `${slug}: missing Portuguese title`);
+for (const [slug, article] of Object.entries(frenchBlogContent)) {
+  const seoTitle = article.seoTitle || article.title;
+  assert.ok(article.title?.trim(), `${slug}: missing French title`);
   assert.ok(
     article.description?.trim(),
-    `${slug}: missing Portuguese meta description`,
+    `${slug}: missing French meta description`,
   );
   assert.ok(
     article.directAnswer?.trim(),
-    `${slug}: missing Portuguese direct answer`,
+    `${slug}: missing French direct answer`,
   );
   assert.ok(
     article.sections?.length >= 2,
-    `${slug}: Portuguese article body is incomplete`,
+    `${slug}: French article body is incomplete`,
+  );
+  assert.ok(
+    seoTitle.length <= 65,
+    `${slug}: French SEO title exceeds 65 characters`,
+  );
+  assert.ok(
+    article.description.length >= 110 && article.description.length <= 165,
+    `${slug}: French meta description must contain 110–165 characters`,
   );
 }
 
 const packageIds = proposalPackageDetails.map((item) => item.id).sort();
 assert.deepEqual(
-  Object.keys(portugueseProposalPackageContent).sort(),
+  Object.keys(frenchProposalPackageContent).sort(),
   packageIds,
-  "Every live proposal package must have Portuguese content",
+  "Every live proposal package must have French content",
 );
-for (const [id, content] of Object.entries(portugueseProposalPackageContent)) {
-  assert.ok(content.summary?.trim(), `${id}: missing Portuguese summary`);
-  assert.ok(content.setup?.length, `${id}: missing Portuguese inclusions`);
-  assert.ok(content.exclusions?.length, `${id}: missing Portuguese exclusions`);
+for (const [id, content] of Object.entries(frenchProposalPackageContent)) {
+  assert.ok(content.summary?.trim(), `${id}: missing French summary`);
+  assert.ok(content.setup?.length, `${id}: missing French inclusions`);
+  assert.ok(content.exclusions?.length, `${id}: missing French exclusions`);
 }
 
 const englishLocale = JSON.parse(
@@ -99,13 +105,13 @@ const englishLocale = JSON.parse(
     "utf8",
   ),
 );
-const portugueseLocale = JSON.parse(
-  fs.readFileSync(path.join(projectRoot, "src/locales/pt/index.json"), "utf8"),
+const frenchLocale = JSON.parse(
+  fs.readFileSync(path.join(projectRoot, "src/locales/fr/index.json"), "utf8"),
 );
 assert.deepEqual(
-  Object.keys(portugueseLocale).sort(),
+  Object.keys(frenchLocale).sort(),
   Object.keys(englishLocale).sort(),
-  "Portuguese global UI translations must cover every English key",
+  "French global UI translations must cover every English key",
 );
 
 const packageSlugs = new Map([
@@ -122,28 +128,28 @@ const packageSlugs = new Map([
   ["eternal-passion", "eternal-passion"],
 ]);
 const corePaths = [
-  "/pt/",
-  "/pt/contact/",
-  "/pt/event-planner/",
-  "/pt/gender-reveal-punta-cana/",
-  "/pt/proposal/",
-  "/pt/punta-cana-elopement-packages/",
-  "/pt/puntacana-wedding-planner/",
-  "/pt/blog/",
+  "/fr/",
+  "/fr/contact/",
+  "/fr/event-planner/",
+  "/fr/gender-reveal-punta-cana/",
+  "/fr/proposal/",
+  "/fr/punta-cana-elopement-packages/",
+  "/fr/puntacana-wedding-planner/",
+  "/fr/blog/",
 ];
-const expectedPortuguesePaths = [
+const expectedFrenchPaths = [
   ...corePaths,
-  ...publishedSlugs.map((slug) => `/pt/blog/${slug}/`),
-  ...packageIds.map((id) => `/pt/packages/${packageSlugs.get(id)}/`),
+  ...publishedSlugs.map((slug) => `/fr/blog/${slug}/`),
+  ...packageIds.map((id) => `/fr/packages/${packageSlugs.get(id)}/`),
 ];
-assert.equal(expectedPortuguesePaths.length, 34);
-assert.equal(new Set(expectedPortuguesePaths).size, 34);
+assert.equal(expectedFrenchPaths.length, 34);
+assert.equal(new Set(expectedFrenchPaths).size, 34);
 
 const gatsbyNodeSource = fs.readFileSync(
   path.join(projectRoot, "gatsby-node.js"),
   "utf8",
 );
-assert.match(gatsbyNodeSource, /pt:\s*\{\s*path:\s*["']pt["']/);
+assert.match(gatsbyNodeSource, /fr:\s*\{\s*path:\s*["']fr["']/);
 assert.match(gatsbyNodeSource, /\["pt",\s*"fr"\]\.forEach/);
 assert.match(
   gatsbyNodeSource,
@@ -155,5 +161,5 @@ assert.match(
 );
 
 console.log(
-  `Validated ${expectedPortuguesePaths.length} Portuguese sitemap routes: ${publishedSlugs.length} articles, ${packageIds.length} proposal packages, the blog index and 7 core pages.`,
+  `Validated ${expectedFrenchPaths.length} French sitemap routes: ${publishedSlugs.length} articles, ${packageIds.length} proposal packages, the blog index and 7 core pages.`,
 );

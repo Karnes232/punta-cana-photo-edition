@@ -1,4 +1,5 @@
 import { portugueseProposalPackageContent } from "./portugueseProposalPackageContent";
+import { frenchProposalPackageContent } from "./frenchProposalPackageContent";
 
 const normalize = (value = "") =>
   String(value)
@@ -506,10 +507,16 @@ export const getProposalPackageDetails = (
 
   return {
     ...item,
+    name:
+      language === "fr" && item.id === "romantic-dinner-marriage-proposal"
+        ? "Dîner Romantique et Demande en Mariage"
+        : item.name,
     content:
       language === "pt"
         ? portugueseProposalPackageContent[item.id]
-        : item.copy[language === "es" ? "es" : "en"],
+        : language === "fr"
+          ? frenchProposalPackageContent[item.id]
+          : item.copy[language === "es" ? "es" : "en"],
   };
 };
 

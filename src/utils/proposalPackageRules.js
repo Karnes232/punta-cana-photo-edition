@@ -14,6 +14,7 @@ const ADD_ON_TYPES = [
     en: "Professional video with drone",
     es: "Video profesional con dron",
     pt: "Vídeo profissional com drone",
+    fr: "Vidéo professionnelle avec drone",
     patterns: [
       /videograph/,
       /videograf/,
@@ -32,6 +33,7 @@ const ADD_ON_TYPES = [
     en: "Live violinist",
     es: "Violinista en vivo",
     pt: "Violinista ao vivo",
+    fr: "Violoniste en direct",
     patterns: [/violin/],
   },
   {
@@ -40,6 +42,7 @@ const ADD_ON_TYPES = [
     en: "Live saxophonist",
     es: "Saxofonista en vivo",
     pt: "Saxofonista ao vivo",
+    fr: "Saxophoniste en direct",
     patterns: [/sax/],
   },
   {
@@ -48,6 +51,7 @@ const ADD_ON_TYPES = [
     en: "Romantic dinner for two",
     es: "Cena romántica para dos",
     pt: "Jantar romântico para dois",
+    fr: "Dîner romantique pour deux",
     patterns: [/dinner/, /cena/],
   },
   {
@@ -56,6 +60,7 @@ const ADD_ON_TYPES = [
     en: "Two cold-spark machines",
     es: "Dos máquinas de chispas frías",
     pt: "Duas máquinas de faíscas frias",
+    fr: "Deux machines à étincelles froides",
     patterns: [/cold.?spark/, /chispa.*fria/],
   },
 ];
@@ -136,6 +141,7 @@ export const getProposalAdditions = (packageInformation, language) => {
 
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const included = includedCategories(packageInformation);
   const details = getProposalPackageDetails(packageInformation, language);
   const unavailable = new Set(included);
@@ -160,9 +166,11 @@ export const getProposalAdditions = (packageInformation, language) => {
       addition: type
         ? isPortuguese
           ? type.pt
-          : isSpanish
-            ? type.es
-            : type.en
+          : isFrench
+            ? type.fr
+            : isSpanish
+              ? type.es
+              : type.en
         : addition.addition,
       price: type ? type.price : addition.price,
     });
@@ -172,7 +180,13 @@ export const getProposalAdditions = (packageInformation, language) => {
     if (seen.has(type.key) || unavailable.has(type.key)) return;
     reconciled.push({
       id: `proposal-addon-${type.key}`,
-      addition: isPortuguese ? type.pt : isSpanish ? type.es : type.en,
+      addition: isPortuguese
+        ? type.pt
+        : isFrench
+          ? type.fr
+          : isSpanish
+            ? type.es
+            : type.en,
       price: type.price,
     });
   });

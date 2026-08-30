@@ -31,9 +31,11 @@ const Copyright = ({ companyName, language }) => {
           <p className="tracking-wider cursor-pointer text-slate-400">
             {language === "pt"
               ? "Todos os direitos reservados"
-              : language === "es"
-                ? "Todos los derechos reservados"
-                : "All content Copyright"}{" "}
+              : language === "fr"
+                ? "Tous droits réservés"
+                : language === "es"
+                  ? "Todos los derechos reservados"
+                  : "All content Copyright"}{" "}
             &copy; {date} {companyName}
           </p>
         </Link>
@@ -48,16 +50,20 @@ const Copyright = ({ companyName, language }) => {
       <p className="text-slate-400 flex flex-col md:flex-row items-center gap-2 lg:flex-1 lg:justify-start  mt-5 lg:mt-0">
         {language === "pt"
           ? "Desenvolvido por"
-          : language === "es"
-            ? "Desarrollado por"
-            : "Built by"}
+          : language === "fr"
+            ? "Développé par"
+            : language === "es"
+              ? "Desarrollado por"
+              : "Built by"}
         <a
           href={
             language === "pt"
               ? "https://www.dr-webstudio.com/en"
-              : language === "es"
-                ? "https://www.dr-webstudio.com/es"
-                : "https://www.dr-webstudio.com/en"
+              : language === "fr"
+                ? "https://www.dr-webstudio.com/en"
+                : language === "es"
+                  ? "https://www.dr-webstudio.com/es"
+                  : "https://www.dr-webstudio.com/en"
           }
           className="flex items-center gap-1 hover:text-orange-500 cursor-pointer"
           target="_blank"
@@ -79,9 +85,11 @@ const Copyright = ({ companyName, language }) => {
         <span className="hidden lg:inline"> —</span>
         {language === "pt"
           ? "Desenvolvimento web na República Dominicana"
-          : language === "es"
-            ? "Desarrollo Web en República Dominicana"
-            : "Web Development in the Dominican Republic"}
+          : language === "fr"
+            ? "Développement web en République dominicaine"
+            : language === "es"
+              ? "Desarrollo Web en República Dominicana"
+              : "Web Development in the Dominican Republic"}
       </p>
     </div>
   );

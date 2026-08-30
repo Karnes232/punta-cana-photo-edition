@@ -33,6 +33,8 @@ const privatePaths = [
   "/es/admin/*",
   "/pt/admin",
   "/pt/admin/*",
+  "/fr/admin",
+  "/fr/admin/*",
   "/**/admin",
   "/**/admin/*",
 ];
@@ -63,9 +65,9 @@ const seoLastModified = new Map(
     "/puntacana-wedding-planner/",
     "/punta-cana-elopement-packages/",
   ].flatMap((pagePath) =>
-    ["", "/es", "/pt"].map((prefix) => [
+    ["", "/es", "/pt", "/fr"].map((prefix) => [
       pagePath === "/" ? `${prefix}/` || "/" : `${prefix}${pagePath}`,
-      prefix === "/pt" ? "2026-08-30" : "2026-08-29",
+      prefix === "/pt" || prefix === "/fr" ? "2026-08-30" : "2026-08-29",
     ]),
   ),
 );
@@ -75,13 +77,13 @@ const seoLastModified = new Map(
 // one accidentally.
 const isRetiredOrUnapprovedContentPath = (value) => {
   const normalized = `/${String(value || "")}`.replace(/\/{2,}/g, "/");
-  const blogMatch = normalized.match(/^\/(?:(?:es|pt)\/)?blog\/([^/]+)\/?$/);
+  const blogMatch = normalized.match(/^\/(?:(?:es|pt|fr)\/)?blog\/([^/]+)\/?$/);
   if (blogMatch && !publishedBlogSlugs.has(blogMatch[1].toLowerCase())) {
     return true;
   }
 
   const packageMatch = normalized.match(
-    /^\/(?:(?:es|pt)\/)?packages\/([^/]+)\/?$/,
+    /^\/(?:(?:es|pt|fr)\/)?packages\/([^/]+)\/?$/,
   );
   return Boolean(
     packageMatch && retiredPackageSlugs.has(packageMatch[1].toLowerCase()),
@@ -141,13 +143,15 @@ module.exports = {
                 (privatePath) =>
                   page.path === privatePath ||
                   page.path === `/es${privatePath}` ||
-                  page.path === `/pt${privatePath}`,
+                  page.path === `/pt${privatePath}` ||
+                  page.path === `/fr${privatePath}`,
               ) &&
               !retiredPublicPaths.some(
                 (retiredPath) =>
                   page.path === retiredPath ||
                   page.path === `/es${retiredPath}` ||
-                  page.path === `/pt${retiredPath}`,
+                  page.path === `/pt${retiredPath}` ||
+                  page.path === `/fr${retiredPath}`,
               ),
           );
         },
@@ -231,7 +235,7 @@ module.exports = {
       resolve: "gatsby-plugin-react-i18next",
       options: {
         localeJsonSourceName: `locale`,
-        languages: ["en-US", "es", "pt"],
+        languages: ["en-US", "es", "pt", "fr"],
         defaultLanguage: "en-US",
         // Keep every language tied to its explicit URL. Automatic browser-
         // language redirects can turn an English URL into /es/ after a visitor
@@ -295,12 +299,12 @@ module.exports = {
           {
             matchPath: "/:lang?/admin/:uid",
             getLanguageFromPath: true,
-            excludeLanguages: ["pt"],
+            excludeLanguages: ["pt", "fr"],
           },
           {
             matchPath: "/:lang?/admin",
             getLanguageFromPath: true,
-            excludeLanguages: ["pt"],
+            excludeLanguages: ["pt", "fr"],
           },
           {
             matchPath: "/:lang?/",

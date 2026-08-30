@@ -20,6 +20,11 @@ const LocalizedAlternates = ({ rootUrl, path }) => (
     />
     <link
       rel="alternate"
+      hrefLang="fr-FR"
+      href={localizedUrl(rootUrl, path, "fr")}
+    />
+    <link
+      rel="alternate"
       hrefLang="x-default"
       href={localizedUrl(rootUrl, path, "en-US")}
     />

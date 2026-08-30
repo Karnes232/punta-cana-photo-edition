@@ -1,4 +1,5 @@
 import { portugueseCorporateEventContent } from "./portugueseCoreContent";
+import { frenchCorporateEventContent } from "./frenchCoreContent";
 
 const englishContent = {
   eyebrow: "Corporate Events in Punta Cana",
@@ -694,6 +695,7 @@ const mergeContent = (base, override) => {
 
 export const getCorporateEventContent = (language, rawConfig) => {
   if (language === "pt") return portugueseCorporateEventContent;
+  if (language === "fr") return frenchCorporateEventContent;
   const base = language === "es" ? spanishContent : englishContent;
   return mergeContent(base, parseContentfulConfig(rawConfig));
 };
@@ -702,4 +704,5 @@ export const corporateEventFallbacks = {
   "en-US": englishContent,
   es: spanishContent,
   pt: portugueseCorporateEventContent,
+  fr: frenchCorporateEventContent,
 };

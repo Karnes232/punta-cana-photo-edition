@@ -31,6 +31,7 @@ export const Head = ({ data, pageContext }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const language = normalizeLanguage(pageContext.language);
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const pageUrl = localizedUrl(
     rootUrl,
@@ -39,20 +40,26 @@ export const Head = ({ data, pageContext }) => {
   );
   const title = isPortuguese
     ? "Elopement em Punta Cana | Pacotes a Partir de US$ 999"
-    : language === "es"
-      ? "Boda Íntima en Punta Cana | Paquetes Desde US$999"
-      : "Punta Cana Elopement Packages | Sertuin Events";
+    : isFrench
+      ? "Elopement à Punta Cana | Forfaits Dès 999 USD"
+      : language === "es"
+        ? "Boda Íntima en Punta Cana | Paquetes Desde US$999"
+        : "Punta Cana Elopement Packages | Sertuin Events";
   const description = isPortuguese
     ? "Pacotes de elopement em Punta Cana a partir de US$ 999: praia ou catamarã privativo, transporte, fotos da cerimônia e decoração à escolha."
-    : language === "es"
-      ? "Paquetes para una boda íntima en Punta Cana desde US$999: playa o catamarán privado, transporte, fotografías de la ceremonia y decoración a elegir."
-      : "Punta Cana elopement packages from US$999. Private beach or catamaran, transportation for up to 10 people, ceremony photo coverage and selectable décor.";
+    : isFrench
+      ? "Forfaits elopement à Punta Cana dès 999 USD : plage ou catamaran privé, transport, reportage photo de la cérémonie et décoration au choix."
+      : language === "es"
+        ? "Paquetes para una boda íntima en Punta Cana desde US$999: playa o catamarán privado, transporte, fotografías de la ceremonia y decoración a elegir."
+        : "Punta Cana elopement packages from US$999. Private beach or catamaran, transportation for up to 10 people, ceremony photo coverage and selectable décor.";
   const absoluteImage = `${rootUrl}${heroImage}`;
   const imageAlt = isPortuguese
     ? "Decoração tropical para elopement em uma praia de Punta Cana"
-    : language === "es"
-      ? "Decoración tropical para una boda íntima en una playa de Punta Cana"
-      : "Tropical décor for a Punta Cana beach elopement wedding";
+    : isFrench
+      ? "Décoration tropicale pour un elopement sur une plage de Punta Cana"
+      : language === "es"
+        ? "Decoración tropical para una boda íntima en una playa de Punta Cana"
+        : "Tropical décor for a Punta Cana beach elopement wedding";
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
   const schemaMarkup = buildElopementSchema({
     siteUrl: rootUrl,

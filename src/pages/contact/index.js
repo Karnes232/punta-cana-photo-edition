@@ -50,7 +50,20 @@ const Index = ({ data }) => {
             "Conte-nos sobre seu evento em Punta Cana. Fale com nossa equipe pelo WhatsApp +1 829 522 2900 ou pelo e-mail info@sertuinevents.com. Ajudaremos você a planejar a experiência adequada.",
           ]),
         }
-      : sourcePage;
+      : language === "fr"
+        ? {
+            ...sourcePage,
+            heroHeading: "Contactez-nous",
+            heroHeading2: "Organisons Votre Événement à Punta Cana",
+            paragraph1: translateRichText(sourcePage.paragraph1, [
+              "Nous sommes là pour comprendre vos besoins",
+              "Parlez-nous de votre projet afin que nous puissions vous proposer le bon accompagnement. Remplissez le formulaire et notre équipe vous contactera pour discuter de votre événement à Punta Cana.",
+            ]),
+            paragraph2: translateRichText(sourcePage.paragraph2, [
+              "Parlez-nous de votre événement à Punta Cana. Contactez notre équipe sur WhatsApp au +1 829 522 2900 ou par e-mail à info@sertuinevents.com. Nous vous aiderons à construire l’expérience adaptée.",
+            ]),
+          }
+        : sourcePage;
   return (
     <Layout
       generalInfo={data.allContentfulGeneralLayout.nodes[0]}
@@ -77,6 +90,7 @@ export const Head = ({ pageContext, data }) => {
   const { language: hookLanguage } = useI18next();
   const language = normalizeLanguage(pageContext.language || hookLanguage);
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const { title, description, images, keywords } =
     data.allContentfulSeo.nodes[0];
@@ -94,12 +108,16 @@ export const Head = ({ pageContext, data }) => {
         title={
           isPortuguese
             ? "Contato Sertuin Events | Planejamento de Eventos em Punta Cana"
-            : title
+            : isFrench
+              ? "Contacter Sertuin Events | Événements à Punta Cana"
+              : title
         }
         description={
           isPortuguese
             ? "Conte-nos sobre seu evento em Punta Cana e solicite uma proposta personalizada para casamentos, celebrações, pedidos e eventos corporativos."
-            : description.description
+            : isFrench
+              ? "Parlez-nous de votre événement à Punta Cana et demandez une proposition personnalisée pour mariage, célébration, demande ou événement d’entreprise."
+              : description.description
         }
         keywords={(isPortuguese
           ? [
@@ -107,7 +125,13 @@ export const Head = ({ pageContext, data }) => {
               "cotação evento Punta Cana",
               "Sertuin Events contato",
             ]
-          : keywords
+          : isFrench
+            ? [
+                "contacter organisateur événement Punta Cana",
+                "devis événement Punta Cana",
+                "contact Sertuin Events",
+              ]
+            : keywords
         ).join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
@@ -121,7 +145,16 @@ export const Head = ({ pageContext, data }) => {
                 inLanguage: "pt-BR",
                 about: { "@id": `${rootUrl}/#organization` },
               }
-            : JsonSchema
+            : isFrench
+              ? {
+                  "@context": "https://schema.org",
+                  "@type": "ContactPage",
+                  name: "Contacter Sertuin Events",
+                  url: siteUrl,
+                  inLanguage: "fr-FR",
+                  about: { "@id": `${rootUrl}/#organization` },
+                }
+              : JsonSchema
         }
         language={languageConfig.htmlLang}
         locale={languageConfig.ogLocale}

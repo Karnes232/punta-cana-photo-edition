@@ -36,6 +36,7 @@ const withoutYear = (text = "") =>
 const getConciseProposalInclusions = (details, language) => {
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const labels = isPortuguese
     ? {
         transportation: "Transporte privativo para o casal",
@@ -47,27 +48,38 @@ const getConciseProposalInclusions = (details, language) => {
         dinnerDrinks: "Espumante e vinho tinto ou branco",
         violin: "Violinista ao vivo por 45 minutos",
       }
-    : isSpanish
+    : isFrench
       ? {
-          transportation: "Transporte privado para la pareja",
-          photography: "Más de 70 fotografías editadas",
-          bouquetWine: "Bouquet natural y vino espumante",
-          duration: "De 90 a 120 minutos en la playa",
-          charcuterie: "Charcutería para dos",
-          dinner: "Cena privada de tres tiempos para dos",
-          dinnerDrinks: "Vino espumante y vino tinto o blanco",
-          violin: "Violinista en vivo durante 45 minutos",
+          transportation: "Transport privé pour le couple",
+          photography: "Plus de 70 photos retouchées",
+          bouquetWine: "Bouquet naturel et vin pétillant",
+          duration: "90 à 120 minutes sur la plage",
+          charcuterie: "Planche apéritive pour deux",
+          dinner: "Dîner privé en trois services pour deux",
+          dinnerDrinks: "Vin pétillant et vin rouge ou blanc",
+          violin: "Violoniste en direct pendant 45 minutes",
         }
-      : {
-          transportation: "Private transportation for the couple",
-          photography: "More than 70 edited photographs",
-          bouquetWine: "Natural bouquet and sparkling wine",
-          duration: "90 to 120 minutes on the beach",
-          charcuterie: "Charcuterie for two",
-          dinner: "Private three-course dinner for two",
-          dinnerDrinks: "Sparkling wine plus red or white wine",
-          violin: "Live violinist for 45 minutes",
-        };
+      : isSpanish
+        ? {
+            transportation: "Transporte privado para la pareja",
+            photography: "Más de 70 fotografías editadas",
+            bouquetWine: "Bouquet natural y vino espumante",
+            duration: "De 90 a 120 minutos en la playa",
+            charcuterie: "Charcutería para dos",
+            dinner: "Cena privada de tres tiempos para dos",
+            dinnerDrinks: "Vino espumante y vino tinto o blanco",
+            violin: "Violinista en vivo durante 45 minutos",
+          }
+        : {
+            transportation: "Private transportation for the couple",
+            photography: "More than 70 edited photographs",
+            bouquetWine: "Natural bouquet and sparkling wine",
+            duration: "90 to 120 minutes on the beach",
+            charcuterie: "Charcuterie for two",
+            dinner: "Private three-course dinner for two",
+            dinnerDrinks: "Sparkling wine plus red or white wine",
+            violin: "Live violinist for 45 minutes",
+          };
 
   if (details.dinnerIncluded) {
     return [
@@ -123,7 +135,11 @@ const withoutRetiredProposalPackages = (packages = [], language = "en-US") =>
       return details
         ? {
             ...proposalPackage,
-            title: details.name,
+            title:
+              language === "fr" &&
+              details.id === "romantic-dinner-marriage-proposal"
+                ? "Dîner Romantique et Demande en Mariage"
+                : details.name,
             price: details.price,
             included: getConciseProposalInclusions(details, language),
           }
@@ -150,11 +166,15 @@ const Index = ({ data, pageContext }) => {
     heroHeading:
       language === "pt"
         ? "Pedidos de Casamento em Punta Cana"
-        : withoutYear(pageContent.heroHeading),
+        : language === "fr"
+          ? "Demandes en Mariage à Punta Cana"
+          : withoutYear(pageContent.heroHeading),
     heroHeading2:
       language === "pt"
         ? "Pacotes românticos completos em praia privativa, com transporte, decoração, fotografia e coordenação local."
-        : pageContent.heroHeading2,
+        : language === "fr"
+          ? "Forfaits romantiques complets sur plage privée, avec transport, décoration, photographie et coordination locale."
+          : pageContent.heroHeading2,
   };
 
   return (
@@ -165,7 +185,9 @@ const Index = ({ data, pageContext }) => {
         title={
           language === "pt"
             ? proposalCopy.packagesFallbackTitle
-            : pageContent.sectionTitle || proposalCopy.packagesFallbackTitle
+            : language === "fr"
+              ? "Forfaits de Demande en Mariage à Punta Cana"
+              : pageContent.sectionTitle || proposalCopy.packagesFallbackTitle
         }
         photoPackages={proposalPackages}
         language={language}
@@ -193,9 +215,11 @@ const Index = ({ data, pageContext }) => {
         title={
           language === "pt"
             ? "Perguntas frequentes"
-            : language === "es"
-              ? "Preguntas frecuentes"
-              : "Frequently Asked Questions"
+            : language === "fr"
+              ? "Questions fréquentes"
+              : language === "es"
+                ? "Preguntas frecuentes"
+                : "Frequently Asked Questions"
         }
       />
     </Layout>
@@ -213,15 +237,20 @@ export const Head = ({ pageContext, data }) => {
   } = data.allContentfulSeo.nodes[0];
   const language = normalizeLanguage(pageContext.language);
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const title = isPortuguese
     ? "Pedido de Casamento em Punta Cana | Pacotes Românticos"
-    : withoutYear(contentfulTitle);
+    : isFrench
+      ? "Demande en Mariage à Punta Cana | Forfaits Romantiques"
+      : withoutYear(contentfulTitle);
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const siteUrl = localizedUrl(rootUrl, "/proposal/", language);
   const seoDescription = isPortuguese
     ? "Pacotes de pedido de casamento em Punta Cana com praia privativa, transporte, decoração romântica, fotografia profissional e coordenação local."
-    : description.description;
+    : isFrench
+      ? "Forfaits de demande en mariage à Punta Cana avec plage privée, transport, décoration romantique, photographie professionnelle et coordination locale."
+      : description.description;
   const seoImage = images?.file?.url
     ? `${images.file.url.startsWith("//") ? "https:" : ""}${images.file.url}`
     : undefined;
@@ -265,7 +294,14 @@ export const Head = ({ pageContext, data }) => {
               "pedido romântico em Punta Cana",
               "pedido na praia Punta Cana",
             ]
-          : keywords
+          : isFrench
+            ? [
+                "demande en mariage Punta Cana",
+                "forfait demande en mariage Punta Cana",
+                "demande romantique Punta Cana",
+                "demande sur la plage Punta Cana",
+              ]
+            : keywords
         ).join(", ")}
         image={seoImage}
         url={siteUrl}

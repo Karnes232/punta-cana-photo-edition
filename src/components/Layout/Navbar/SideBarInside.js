@@ -22,9 +22,11 @@ const SideBarInside = ({ footer, setToggled }) => {
           <p className={footer ? "hamburgerSmall" : "hamburger"}>
             {language === "pt"
               ? "Início"
-              : language === "es"
-                ? "Inicio"
-                : "Home"}
+              : language === "fr"
+                ? "Accueil"
+                : language === "es"
+                  ? "Inicio"
+                  : "Home"}
           </p>
         </MenuItem>
         <RomanticEvents footer={footer} setToggled={setToggled} />

@@ -1,4 +1,5 @@
 import { portugueseWeddingPlannerContent } from "./portugueseCoreContent";
+import { frenchWeddingPlannerContent } from "./frenchCoreContent";
 
 const english = {
   eyebrow: "Destination weddings in Punta Cana",
@@ -324,12 +325,13 @@ const parseManagedContent = (raw) => {
 export const getWeddingPlannerContent = (language, managedRaw) => {
   if (language === "es") return spanish;
   if (language === "pt") return portugueseWeddingPlannerContent;
+  if (language === "fr") return frenchWeddingPlannerContent;
   return mergeManagedContent(english, parseManagedContent(managedRaw));
 };
 
 export const normalizeWeddingFaqs = (nodes, language) => {
   const fallback = getWeddingPlannerContent(language).faqs;
-  if (language === "pt") return fallback;
+  if (language === "pt" || language === "fr") return fallback;
   const localize = (value) =>
     language === "es"
       ? String(value || "")
@@ -423,8 +425,68 @@ export const localizePortugueseWeddingPackage = (
   return item;
 };
 
+export const localizeFrenchWeddingPackage = (
+  item,
+  fallbackSouthAsian = frenchWeddingPlannerContent.packages.fallbackSouthAsian,
+) => {
+  if (!item?.title) return item;
+  const key = item.title.toLowerCase();
+  if (/south asian|indian|sikh/.test(key)) {
+    return { ...item, ...fallbackSouthAsian };
+  }
+  if (/coordinator|coordination/.test(key) && !/full/.test(key)) {
+    return {
+      ...item,
+      title: "Coordination du Jour J",
+      description:
+        "Coordination exclusive du mariage, avec vérification du lieu, des prestataires et du planning à partir de la réservation ; répétition non incluse.",
+      includedItems: [
+        "Vérification du lieu et des prestataires dès la réservation",
+        "Planning final et confirmations du mariage",
+        "Coordination sur place pendant les heures nécessaires",
+        "Communication opérationnelle avec le couple et les prestataires",
+        "Jour du mariage uniquement ; répétition non incluse",
+      ],
+    };
+  }
+  if (/venue|vendor|design/.test(key) && !/full/.test(key)) {
+    return {
+      ...item,
+      title: "Recherche de Lieu et de Prestataires",
+      description:
+        "Cinq options adaptées de lieux et de prestataires disponibles, généralement présentées sous une semaine ouvrée.",
+      includedItems: [
+        "Cinq options de lieux adaptées",
+        "Prestataires disponibles dans chaque catégorie nécessaire",
+        "Devis et comparaisons pratiques",
+        "Présentation généralement sous une semaine ouvrée",
+        "Conseils pour le choix final du couple",
+      ],
+    };
+  }
+  if (/full|complete/.test(key)) {
+    return {
+      ...item,
+      title: "Organisation Complète du Mariage",
+      description:
+        "Forfait fixe de 2 500 USD pour l’organisation et la coordination complètes ; les coûts de production sont séparés.",
+      includedItems: [
+        "Recherche et négociation du lieu",
+        "Concept, moodboard, plans et rendus",
+        "Budget de travail et planning principal",
+        "Réunions illimitées selon les besoins",
+        "Assistance d’organisation 24 h/24",
+        "Coordination des prestataires ; le couple valide et règle",
+        "Coordination du jour J pendant les heures nécessaires",
+      ],
+    };
+  }
+  return item;
+};
+
 export const weddingPlannerFallbacks = {
   "en-US": english,
   es: spanish,
   pt: portugueseWeddingPlannerContent,
+  fr: frenchWeddingPlannerContent,
 };

@@ -206,6 +206,101 @@ const copy = {
       "El acceso sobre arena no se recomienda para movilidad reducida, aunque el equipo brindará asistencia durante toda la experiencia. Se puede permanecer en la orilla; no se recomienda bañarse durante el evento.",
     ],
   },
+  fr: {
+    breadcrumbLabel: "Navigation du forfait",
+    breadcrumbHome: "Accueil",
+    breadcrumbProposals: "Forfaits de demande en mariage",
+    eyebrow: "Ce que vous réservez exactement",
+    basePrice: "Prix de base",
+    priceNote: "Acompte de 200 USD puis solde en espèces après l’expérience",
+    quickTitle: "Les essentiels inclus",
+    setupDetailsLabel: "Voir l’installation et les inclusions spécifiques",
+    completeInfoLabel: "Voir la logistique, les paiements et les conditions",
+    specialTitle: "Particulièrement inclus dans ce forfait",
+    setupTitle: "L’installation",
+    setupIntro:
+      "Le décor photographié et chaque élément mentionné ci-dessous font partie du forfait standard. De petites variations de placement sont possibles sans réduire le volume visuel promis.",
+    commonTitle: "Inclus dans le prix publié",
+    commonIntro:
+      "Ces services sont inclus dans tous les forfaits de demande sur la plage, sauf mention expresse contraire.",
+    exclusionsTitle: "Non inclus dans le forfait de base",
+    charcuterieTitle: "Planche apéritive pour deux incluse",
+    charcuterieText:
+      "Une planche à partager avec charcuterie, fromages et fruits de saison, fruits à coque et olives. Les ingrédients peuvent varier selon la saison tout en maintenant une quantité équivalente. Les adaptations végétariennes, allergies et régimes sont gratuites sur demande préalable. Piques et serviettes sont incluses ; assiettes et couverts ne le sont pas.",
+    charcuterieShort: "Une planche apéritive saisonnière à partager pour deux.",
+    dinnerTitle: "Dîner privé en trois services pour deux inclus",
+    dinnerText:
+      "Chaque convive choisit une entrée, un plat et un dessert. Le dîner comprend de l’eau, une bouteille de vin pétillant de 750 ml et une bouteille supplémentaire de vin rouge ou blanc de 750 ml. Un chef professionnel le prépare sur place et un serveur dédié le sert après la demande et les premières photos. Les choix peuvent être modifiés jusqu’à 48 heures avant l’expérience.",
+    dinnerShort:
+      "Un dîner privé en trois services entièrement servi pour deux.",
+    violinTitle: "Violon en direct inclus",
+    violinText:
+      "Une prestation amplifiée de 45 minutes accompagne l’arrivée, la révélation et la demande. Les morceaux spéciaux doivent être demandés au moins deux semaines à l’avance.",
+    violinShort:
+      "Une prestation amplifiée de violon en direct pendant 45 minutes.",
+    importantTitle: "Conditions importantes de réservation",
+    importantIntro:
+      "Des règles opérationnelles et de paiement claires protègent le timing, l’intimité et la qualité de votre expérience.",
+    bookLabel: "Choisir les options et demander la date",
+    common: [
+      [
+        CarFront,
+        "Transport privé pour le couple",
+        "Prise en charge aller-retour pour deux depuis tout hôtel, Airbnb ou villa à Cap Cana, Punta Cana Resort, El Cortecito, Bávaro, Verón, Macao ou Uvero Alto. Miches fait l’objet d’un devis séparé.",
+      ],
+      [
+        Clock3,
+        "90 à 120 minutes sur la plage",
+        "L’expérience dure au maximum deux heures sur la plage ; le temps de transport n’est pas déduit de cette durée.",
+      ],
+      [
+        MapPin,
+        "Plage privée peu fréquentée",
+        "L’installation est réservée au couple sur notre plage d’Uvero Alto, près d’Excellence Punta Cana. Des toilettes proches disposent d’eau courante, lavabo, WC et miroir.",
+      ],
+      [
+        Camera,
+        "Plus de 70 photos professionnelles",
+        "Les JPG haute résolution corrigés professionnellement sont livrés sous 48 heures par lien Google Drive permanent. Les fichiers RAW sont gratuits sur demande.",
+      ],
+      [
+        Smartphone,
+        "Vidéo verticale immédiate au téléphone",
+        "Une vidéo verticale de 3 à 5 minutes de la révélation, de la bague et de la célébration est incluse sauf demande contraire. Les photos et la vidéo du téléphone sont généralement partagées avant le départ.",
+      ],
+      [
+        Flower2,
+        "Bouquet naturel de saison",
+        "Le bouquet inclus utilise les fleurs fraîches de saison disponibles à la date. Un bouquet de fleuriste composé de fleurs précises ou inspiré d’un modèle fait l’objet d’un devis séparé.",
+      ],
+      [
+        GlassWater,
+        "Vin pétillant et service",
+        "Une bouteille fraîche de 750 ml, deux flûtes et le service sont inclus. Une alternative sans alcool est disponible sur demande.",
+      ],
+      [
+        Music2,
+        "Votre musique préférée",
+        "Votre chanson ou playlist peut être diffusée pendant toute l’expérience. Envoyez-la avec le contrat ou un à deux jours avant la date.",
+      ],
+      [
+        UsersRound,
+        "Équipe dédiée sur place",
+        "Une coordinatrice guide le scénario, l’arrivée les yeux bandés, le placement et la révélation pendant que l’équipe opérationnelle surveille chaque détail.",
+      ],
+    ],
+    conditions: [
+      "Un acompte de 200 USD et le contrat signé réservent la date. L’acompte est entièrement déduit du prix du forfait et ne supporte ni taxe ni frais de paiement électronique.",
+      "Le solde est réglé après l’expérience, avant le trajet retour. Le tarif publié suppose un paiement en espèces en USD, DOP ou GBP.",
+      "Un règlement électronique du solde ajoute 18 % d’ITBIS et 10 % de frais de traitement, calculés uniquement sur le solde restant.",
+      "Le couple doit être prêt 10 minutes avant la prise en charge. Chaque minute de retard du client est déduite du temps sur la plage ; le chauffeur attend 30 minutes au maximum.",
+      "Le véhicule accueille 10 personnes. Le couple est inclus et chaque passager supplémentaire paie 20 USD pour le transport uniquement, jusqu’à huit accompagnants.",
+      "La météo est surveillée avant l’installation. Le plan B couvert inclus conserve la décoration et les services ; une autre date peut aussi être organisée. Si l’entreprise annule, tout montant payé est remboursé sous une semaine.",
+      "L’acompte n’est pas remboursable en cas d’annulation du client. Un changement de date le conserve selon les disponibilités ; un préavis de deux semaines est recommandé.",
+      "La zone d’installation est réservée au couple, mais les 60 premiers mètres du littoral restent publics selon la loi dominicaine. La plage est généralement très calme et l’équipe protège activement votre intimité.",
+      "L’accès sur le sable est déconseillé aux personnes à mobilité réduite, même si l’équipe peut les assister. Rester au bord de l’eau est autorisé ; se baigner pendant l’événement est déconseillé.",
+    ],
+  },
   pt: {
     breadcrumbLabel: "Navegação do pacote",
     breadcrumbHome: "Início",
@@ -314,13 +409,23 @@ const DetailIcon = ({ icon: Icon }) => (
 const ProposalPackageDetails = ({ details, language }) => {
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
-  const content = copy[isPortuguese ? "pt" : isSpanish ? "es" : "en"];
-  const homePath = isPortuguese ? "/pt/" : isSpanish ? "/es/" : "/";
+  const isFrench = language === "fr";
+  const content =
+    copy[isPortuguese ? "pt" : isFrench ? "fr" : isSpanish ? "es" : "en"];
+  const homePath = isPortuguese
+    ? "/pt/"
+    : isFrench
+      ? "/fr/"
+      : isSpanish
+        ? "/es/"
+        : "/";
   const proposalPath = isPortuguese
     ? "/pt/proposal/"
-    : isSpanish
-      ? "/es/proposal/"
-      : "/proposal/";
+    : isFrench
+      ? "/fr/proposal/"
+      : isSpanish
+        ? "/es/proposal/"
+        : "/proposal/";
 
   if (!details) return null;
 

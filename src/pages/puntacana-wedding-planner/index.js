@@ -6,6 +6,7 @@ import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import WeddingPlannerExperience from "../../components/WeddingPlanner/WeddingPlannerExperience";
 import {
   getWeddingPlannerContent,
+  localizeFrenchWeddingPackage,
   localizePortugueseWeddingPackage,
   normalizeWeddingFaqs,
 } from "../../content/weddingPlannerContent";
@@ -38,6 +39,7 @@ export const Head = ({ pageContext, data }) => {
   const language = normalizeLanguage(pageContext.language);
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const content = getWeddingPlannerContent(language);
   const seo = data.allContentfulSeo.nodes[0];
@@ -52,16 +54,20 @@ export const Head = ({ pageContext, data }) => {
   // English query "wedding planner punta cana" than the English URL.
   const title = isPortuguese
     ? "Wedding Planner em Punta Cana | Planejamento Completo"
-    : isSpanish
-      ? "Planificación de Bodas en Punta Cana | Servicio Completo"
-      : seo?.title ||
-        "Punta Cana Wedding Planner | Full Planning & Coordination";
+    : isFrench
+      ? "Wedding Planner à Punta Cana | Organisation Complète"
+      : isSpanish
+        ? "Planificación de Bodas en Punta Cana | Servicio Completo"
+        : seo?.title ||
+          "Punta Cana Wedding Planner | Full Planning & Coordination";
   const description = isPortuguese
     ? "Planejamento de casamentos de destino em Punta Cana com pacotes claros, assistência 24 horas e experiência multicultural e sul-asiática."
-    : isSpanish
-      ? "Planificamos bodas de destino en Punta Cana con paquetes claros, asistencia 24/7 y experiencia en celebraciones multiculturales y del sur de Asia."
-      : seo?.description?.description ||
-        "Punta Cana wedding planning with clear packages, 24/7 support, and expertise in destination, multicultural and South Asian weddings.";
+    : isFrench
+      ? "Organisation de mariages de destination à Punta Cana avec forfaits clairs, assistance 24 h/24 et expertise multiculturelle et sud-asiatique."
+      : isSpanish
+        ? "Planificamos bodas de destino en Punta Cana con paquetes claros, asistencia 24/7 y experiencia en celebraciones multiculturales y del sur de Asia."
+        : seo?.description?.description ||
+          "Punta Cana wedding planning with clear packages, 24/7 support, and expertise in destination, multicultural and South Asian weddings.";
   const image = seo?.images?.file?.url
     ? `${seo.images.file.url.startsWith("//") ? "https:" : ""}${seo.images.file.url}`
     : undefined;
@@ -71,7 +77,12 @@ export const Head = ({ pageContext, data }) => {
           item,
           content.packages.fallbackSouthAsian,
         )
-      : item,
+      : isFrench
+        ? localizeFrenchWeddingPackage(
+            item,
+            content.packages.fallbackSouthAsian,
+          )
+        : item,
   );
   const hasSouthAsian = cmsPackages.some((item) =>
     /south asian|sudeste asi[aá]tico|indian|sikh/i.test(item?.title || ""),
@@ -105,15 +116,24 @@ export const Head = ({ pageContext, data }) => {
               "casamento de destino Punta Cana",
               "casamento sul-asiático Punta Cana",
             ]
-          : seo?.keywords || []
+          : isFrench
+            ? [
+                "wedding planner Punta Cana",
+                "organisation mariage Punta Cana",
+                "mariage de destination Punta Cana",
+                "mariage sud-asiatique Punta Cana",
+              ]
+            : seo?.keywords || []
         ).join(", ")}
         image={image}
         imageAlt={
           isPortuguese
             ? "Casamento de destino planejado pela Sertuin Events em Punta Cana"
-            : isSpanish
-              ? "Boda de destino organizada por Sertuin Events en Punta Cana"
-              : "Destination wedding planned by Sertuin Events in Punta Cana"
+            : isFrench
+              ? "Mariage de destination organisé par Sertuin Events à Punta Cana"
+              : isSpanish
+                ? "Boda de destino organizada por Sertuin Events en Punta Cana"
+                : "Destination wedding planned by Sertuin Events in Punta Cana"
         }
         url={pageUrl}
         schemaMarkup={schemaMarkup}

@@ -44,7 +44,13 @@ const Logo = ({ overlay = false }) => {
           to={localizedPath("/", language)}
           className="no-underline"
           aria-label={
-            language === "pt" ? "Início" : language === "es" ? "Inicio" : "Home"
+            language === "pt"
+              ? "Início"
+              : language === "fr"
+                ? "Accueil"
+                : language === "es"
+                  ? "Inicio"
+                  : "Home"
           }
         >
           <div className="cursor-pointer flex items-center w-20 md:w-20">

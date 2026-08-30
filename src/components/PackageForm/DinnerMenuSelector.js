@@ -81,6 +81,30 @@ const copy = {
     close: "Fechar menu do jantar",
     saved: "As escolhas do menu foram adicionadas a esta solicitação",
   },
+  fr: {
+    title: "Choisissez votre menu",
+    intro:
+      "Chaque convive peut choisir indépendamment une entrée, un plat et un dessert. Le choix est facultatif lors de la réservation et peut être complété ou modifié avec votre coordinatrice jusqu’à 48 heures avant l’expérience.",
+    open: "Voir et choisir le menu du dîner",
+    included: "Menu en trois services pour deux",
+    includedText:
+      "Comprend de l’eau, une bouteille de vin pétillant de 750 ml et une bouteille supplémentaire de vin rouge ou blanc de 750 ml.",
+    guest: "Personne",
+    starter: "Entrée",
+    main: "Plat principal",
+    dessert: "Dessert",
+    chooseLater: "Choisir plus tard avec la coordinatrice",
+    wine: "Vin supplémentaire",
+    redWine: "Vin rouge",
+    whiteWine: "Vin blanc",
+    restrictions: "Allergies ou restrictions alimentaires",
+    restrictionsPlaceholder:
+      "Indiquez la personne concernée et décrivez la restriction.",
+    dietKey: "V = végétarien · Ve = végétalien",
+    save: "Enregistrer les choix du menu",
+    close: "Fermer le menu du dîner",
+    saved: "Les choix du menu ont été ajoutés à cette demande",
+  },
 };
 
 const emptySelection = {
@@ -142,7 +166,15 @@ const MenuList = ({ language, labels }) => (
 const DinnerMenuSelector = ({ language, value, onChange }) => {
   const [open, setOpen] = useState(false);
   const labels =
-    copy[language === "pt" ? "pt" : language === "es" ? "es" : "en"];
+    copy[
+      language === "pt"
+        ? "pt"
+        : language === "fr"
+          ? "fr"
+          : language === "es"
+            ? "es"
+            : "en"
+    ];
   const selection = value || emptySelection;
   const hasSelection = Boolean(
     selection.guest1?.starter ||

@@ -4,6 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import { getPortugueseBlogContent } from "../../data/portugueseBlogContent";
+import { getFrenchBlogContent } from "../../data/frenchBlogContent";
 import {
   getLanguageConfig,
   localizedPath,
@@ -17,6 +18,7 @@ const BlogIndex = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const posts = (data.allContentfulBlogPost.nodes || []).filter(({ slug }) =>
     isPublishedBlogSlug(slug),
   );
@@ -31,16 +33,20 @@ const BlogIndex = ({ data, pageContext }) => {
           <h1 className="mt-4 font-crimson text-5xl leading-tight md:text-7xl">
             {isPortuguese
               ? "Blog de eventos em Punta Cana"
-              : isSpanish
-                ? "Blog de eventos en Punta Cana"
-                : "Punta Cana Event Blog"}
+              : isFrench
+                ? "Blog des événements à Punta Cana"
+                : isSpanish
+                  ? "Blog de eventos en Punta Cana"
+                  : "Punta Cana Event Blog"}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl font-montserrat text-base leading-8 text-slate-600 md:text-lg">
             {isPortuguese
               ? "Guias claros para planejar casamentos, pedidos de casamento, elopements, eventos corporativos e celebrações em Punta Cana."
-              : isSpanish
-                ? "Guías claras para planificar bodas, propuestas, elopements, eventos corporativos y celebraciones en Punta Cana."
-                : "Clear guides for planning weddings, proposals, elopements, corporate events and celebrations in Punta Cana."}
+              : isFrench
+                ? "Des guides clairs pour organiser mariages, demandes en mariage, elopements, événements d’entreprise et célébrations à Punta Cana."
+                : isSpanish
+                  ? "Guías claras para planificar bodas, propuestas, elopements, eventos corporativos y celebraciones en Punta Cana."
+                  : "Clear guides for planning weddings, proposals, elopements, corporate events and celebrations in Punta Cana."}
           </p>
         </header>
 
@@ -50,9 +56,11 @@ const BlogIndex = ({ data, pageContext }) => {
             aria-label={
               isPortuguese
                 ? "Artigos do blog"
-                : isSpanish
-                  ? "Artículos del blog"
-                  : "Blog articles"
+                : isFrench
+                  ? "Articles du blog"
+                  : isSpanish
+                    ? "Artículos del blog"
+                    : "Blog articles"
             }
           >
             {posts.map((post) => {
@@ -61,8 +69,12 @@ const BlogIndex = ({ data, pageContext }) => {
               const portuguese = isPortuguese
                 ? getPortugueseBlogContent(slug)
                 : null;
-              const title = portuguese?.title || post.title;
-              const description = portuguese?.description || post.description;
+              const french = isFrench ? getFrenchBlogContent(slug) : null;
+              const title = portuguese?.title || french?.title || post.title;
+              const description =
+                portuguese?.description ||
+                french?.description ||
+                post.description;
               const postPath = localizedPath(`/blog/${slug}/`, language);
 
               return (
@@ -80,7 +92,9 @@ const BlogIndex = ({ data, pageContext }) => {
                       alt={
                         isPortuguese
                           ? `${title} — evento em Punta Cana`
-                          : image.altText
+                          : isFrench
+                            ? `${title} — événement à Punta Cana`
+                            : image.altText
                       }
                       loading="lazy"
                       decoding="async"
@@ -102,9 +116,11 @@ const BlogIndex = ({ data, pageContext }) => {
                     >
                       {isPortuguese
                         ? "Ler artigo"
-                        : isSpanish
-                          ? "Leer artículo"
-                          : "Read article"}{" "}
+                        : isFrench
+                          ? "Lire l’article"
+                          : isSpanish
+                            ? "Leer artículo"
+                            : "Read article"}{" "}
                       →
                     </Link>
                   </div>
@@ -116,9 +132,11 @@ const BlogIndex = ({ data, pageContext }) => {
           <p className="mx-auto mt-16 max-w-2xl border border-slate-200 p-8 text-center font-montserrat text-slate-600">
             {isPortuguese
               ? "Estamos preparando novos guias. Volte em breve."
-              : isSpanish
-                ? "Estamos preparando nuevas guías. Vuelve pronto."
-                : "We are preparing new guides. Please check back soon."}
+              : isFrench
+                ? "Nous préparons de nouveaux guides. Revenez bientôt."
+                : isSpanish
+                  ? "Estamos preparando nuevas guías. Vuelve pronto."
+                  : "We are preparing new guides. Please check back soon."}
           </p>
         )}
       </main>
@@ -132,6 +150,7 @@ export const Head = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const baseUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const pageUrl = localizedUrl(baseUrl, "/blog/", language);
@@ -140,14 +159,18 @@ export const Head = ({ data, pageContext }) => {
   );
   const title = isPortuguese
     ? "Blog de Eventos em Punta Cana | Sertuin Events"
-    : isSpanish
-      ? "Blog de Eventos en Punta Cana | Sertuin Events"
-      : "Punta Cana Event Planning Blog | Sertuin Events";
+    : isFrench
+      ? "Blog des Événements à Punta Cana | Sertuin Events"
+      : isSpanish
+        ? "Blog de Eventos en Punta Cana | Sertuin Events"
+        : "Punta Cana Event Planning Blog | Sertuin Events";
   const description = isPortuguese
     ? "Guias para planejar casamentos, pedidos de casamento, elopements, eventos corporativos e celebrações em Punta Cana."
-    : isSpanish
-      ? "Guías para planificar bodas, propuestas, elopements, eventos corporativos y celebraciones en Punta Cana."
-      : "Guides for planning weddings, proposals, elopements, corporate events and celebrations in Punta Cana.";
+    : isFrench
+      ? "Guides pour organiser mariages, demandes en mariage, elopements, événements d’entreprise et célébrations à Punta Cana."
+      : isSpanish
+        ? "Guías para planificar bodas, propuestas, elopements, eventos corporativos y celebraciones en Punta Cana."
+        : "Guides for planning weddings, proposals, elopements, corporate events and celebrations in Punta Cana.";
   const organization = {
     "@type": "Organization",
     name: "Sertuin Events",
@@ -159,12 +182,18 @@ export const Head = ({ data, pageContext }) => {
       const portuguese = isPortuguese
         ? getPortugueseBlogContent(post.slug)
         : null;
+      const french = isFrench ? getFrenchBlogContent(post.slug) : null;
 
       return {
         "@type": "BlogPosting",
-        headline: portuguese?.title || post.title,
-        ...(portuguese?.description || post.description
-          ? { description: portuguese?.description || post.description }
+        headline: portuguese?.title || french?.title || post.title,
+        ...(portuguese?.description || french?.description || post.description
+          ? {
+              description:
+                portuguese?.description ||
+                french?.description ||
+                post.description,
+            }
           : {}),
         url: localizedUrl(baseUrl, `/blog/${post.slug}/`, language),
         inLanguage: languageConfig.htmlLang,

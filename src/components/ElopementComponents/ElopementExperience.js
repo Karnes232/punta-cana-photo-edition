@@ -33,6 +33,10 @@ import {
   portugueseElopementContent,
   portugueseElopementFaqs,
 } from "../../content/portugueseCoreContent";
+import {
+  frenchElopementContent,
+  frenchElopementFaqs,
+} from "../../content/frenchCoreContent";
 import { localizedPath } from "../../utils/siteLocales";
 import pampas from "../../images/elopement/pampas.webp";
 import pampas2 from "../../images/elopement/pampas2.webp";
@@ -643,10 +647,13 @@ export const getElopementCopy = (language = "en-US") =>
     ? localizeSpanishElopementTerms(COPY.es)
     : language === "pt"
       ? portugueseElopementContent
-      : COPY["en-US"];
+      : language === "fr"
+        ? frenchElopementContent
+        : COPY["en-US"];
 
 export const buildElopementFaqs = (language = "en-US") => {
   if (language === "pt") return portugueseElopementFaqs;
+  if (language === "fr") return frenchElopementFaqs;
   const es = language === "es";
 
   const questions = es
@@ -857,9 +864,11 @@ const DecorCard = ({
           alt={
             language === "pt"
               ? `${name}, decoração para elopement em Punta Cana pela Sertuin Events`
-              : language === "es"
-                ? `${name} para una boda íntima en Punta Cana por Sertuin Events`
-                : `${name} Punta Cana elopement décor by Sertuin Events`
+              : language === "fr"
+                ? `${name}, décoration d’elopement à Punta Cana par Sertuin Events`
+                : language === "es"
+                  ? `${name} para una boda íntima en Punta Cana por Sertuin Events`
+                  : `${name} Punta Cana elopement décor by Sertuin Events`
           }
           loading="lazy"
           width="1600"
@@ -873,7 +882,9 @@ const DecorCard = ({
             aria-label={
               language === "pt"
                 ? `Foto anterior de ${name}`
-                : `Previous ${name} photo`
+                : language === "fr"
+                  ? `Photo précédente de ${name}`
+                  : `Previous ${name} photo`
             }
             className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
           >
@@ -888,7 +899,9 @@ const DecorCard = ({
             aria-label={
               language === "pt"
                 ? `Próxima foto de ${name}`
-                : `Next ${name} photo`
+                : language === "fr"
+                  ? `Photo suivante de ${name}`
+                  : `Next ${name} photo`
             }
             className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
           >
@@ -1324,9 +1337,11 @@ const ElopementExperience = ({ language = "en-US" }) => {
           alt={
             language === "pt"
               ? "Casal recém-casado sob um arco floral com pampas em uma praia de Punta Cana"
-              : language === "es"
-                ? localizeSpanishElopementTerms(ELOPEMENT_GALLERY[0].es)
-                : ELOPEMENT_GALLERY[0].en
+              : language === "fr"
+                ? "Couple de jeunes mariés sous une arche florale ornée de pampas sur une plage de Punta Cana"
+                : language === "es"
+                  ? localizeSpanishElopementTerms(ELOPEMENT_GALLERY[0].es)
+                  : ELOPEMENT_GALLERY[0].en
           }
           loading="eager"
           fetchPriority="high"
@@ -1616,9 +1631,11 @@ const ElopementExperience = ({ language = "en-US" }) => {
                 alt={
                   language === "pt"
                     ? `${copy.heroTitle} — ${copy.decorNames[decorationId] || "cerimônia na praia"}`
-                    : language === "es"
-                      ? localizeSpanishElopementTerms(image.es)
-                      : image.en
+                    : language === "fr"
+                      ? `${copy.heroTitle} — ${copy.decorNames[decorationId] || "cérémonie sur la plage"}`
+                      : language === "es"
+                        ? localizeSpanishElopementTerms(image.es)
+                        : image.en
                 }
                 loading="lazy"
                 decoding="async"

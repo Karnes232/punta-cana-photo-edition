@@ -19,11 +19,14 @@ export const buildElopementSchema = ({
   const faqs = buildElopementFaqs(language);
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const description = isPortuguese
     ? "Pacotes de elopement em Punta Cana com praia ou catamarã privativo, transporte para até 10 pessoas, fotografia, buquê e decoração à escolha."
-    : isSpanish
-      ? "Paquetes para bodas íntimas en Punta Cana con playa o catamarán privado, transporte para hasta 10 personas, cobertura fotográfica, ramo y decoración a elegir."
-      : "Punta Cana elopement packages with a private beach or catamaran, transportation for up to 10 people, ceremony photo coverage, bouquet and selectable décor.";
+    : isFrench
+      ? "Forfaits elopement à Punta Cana avec plage ou catamaran privé, transport jusqu’à 10 personnes, photographie, bouquet et décoration au choix."
+      : isSpanish
+        ? "Paquetes para bodas íntimas en Punta Cana con playa o catamarán privado, transporte para hasta 10 personas, cobertura fotográfica, ramo y decoración a elegir."
+        : "Punta Cana elopement packages with a private beach or catamaran, transportation for up to 10 people, ceremony photo coverage, bouquet and selectable décor.";
 
   return {
     "@context": "https://schema.org",
@@ -50,7 +53,7 @@ export const buildElopementSchema = ({
               telephone,
               contactType: "customer service",
               areaServed: "DO",
-              availableLanguage: ["English", "Spanish"],
+              availableLanguage: ["English", "Spanish", "Portuguese", "French"],
             }
           : undefined,
         sameAs: instagram ? [instagram] : undefined,
@@ -61,7 +64,13 @@ export const buildElopementSchema = ({
         url: pageUrl,
         name: copy.heroTitle,
         description,
-        inLanguage: isSpanish ? "es" : isPortuguese ? "pt-BR" : "en",
+        inLanguage: isSpanish
+          ? "es"
+          : isPortuguese
+            ? "pt-BR"
+            : isFrench
+              ? "fr-FR"
+              : "en",
         primaryImageOfPage: image
           ? {
               "@type": "ImageObject",
@@ -78,7 +87,7 @@ export const buildElopementSchema = ({
         "@id": `${siteUrl}/#website`,
         url: siteUrl,
         name: "Sertuin Events",
-        inLanguage: ["en", "es", "pt-BR"],
+        inLanguage: ["en", "es", "pt-BR", "fr-FR"],
         publisher: { "@id": `${siteUrl}/#organization` },
       },
       {
@@ -88,12 +97,20 @@ export const buildElopementSchema = ({
         description,
         serviceType: isPortuguese
           ? "Planejamento de elopement"
-          : isSpanish
-            ? "Planificación de bodas íntimas"
-            : "Elopement wedding planning",
+          : isFrench
+            ? "Organisation d’elopement"
+            : isSpanish
+              ? "Planificación de bodas íntimas"
+              : "Elopement wedding planning",
         url: pageUrl,
         image,
-        inLanguage: isSpanish ? "es" : isPortuguese ? "pt-BR" : "en",
+        inLanguage: isSpanish
+          ? "es"
+          : isPortuguese
+            ? "pt-BR"
+            : isFrench
+              ? "fr-FR"
+              : "en",
         provider: { "@id": `${siteUrl}/#organization` },
         areaServed: {
           "@type": "City",
@@ -112,14 +129,18 @@ export const buildElopementSchema = ({
               experience.id === "beach"
                 ? isPortuguese
                   ? "Elopement em praia privativa"
-                  : isSpanish
-                    ? "Boda íntima en playa privada"
-                    : "Private beach elopement"
+                  : isFrench
+                    ? "Elopement sur plage privée"
+                    : isSpanish
+                      ? "Boda íntima en playa privada"
+                      : "Private beach elopement"
                 : isPortuguese
                   ? "Elopement em catamarã privativo"
-                  : isSpanish
-                    ? "Boda íntima en catamarán privado"
-                    : "Private catamaran elopement",
+                  : isFrench
+                    ? "Elopement en catamaran privé"
+                    : isSpanish
+                      ? "Boda íntima en catamarán privado"
+                      : "Private catamaran elopement",
             price: experience.price,
             priceCurrency: "USD",
             availability: "https://schema.org/LimitedAvailability",
@@ -133,9 +154,11 @@ export const buildElopementSchema = ({
                     maxValue: 10,
                     unitText: isPortuguese
                       ? "pessoas"
-                      : isSpanish
-                        ? "personas"
-                        : "people",
+                      : isFrench
+                        ? "personnes"
+                        : isSpanish
+                          ? "personas"
+                          : "people",
                   }
                 : undefined,
           })),
@@ -145,9 +168,11 @@ export const buildElopementSchema = ({
             description: copy.decorDescriptions[decoration.id],
             category: isPortuguese
               ? "Decoração para elopement"
-              : isSpanish
-                ? "Decoración para boda íntima"
-                : "Elopement wedding décor",
+              : isFrench
+                ? "Décoration d’elopement"
+                : isSpanish
+                  ? "Decoración para boda íntima"
+                  : "Elopement wedding décor",
             price: decoration.price,
             priceCurrency: "USD",
             availability: "https://schema.org/LimitedAvailability",
@@ -160,9 +185,11 @@ export const buildElopementSchema = ({
             description: copy.legalText,
             category: isPortuguese
               ? "Serviço adicional de casamento civil"
-              : isSpanish
-                ? "Servicio adicional de boda legal"
-                : "Legal wedding upgrade",
+              : isFrench
+                ? "Option de mariage civil légal"
+                : isSpanish
+                  ? "Servicio adicional de boda legal"
+                  : "Legal wedding upgrade",
             price: LEGAL_UPGRADE_PRICE,
             priceCurrency: "USD",
             availability: "https://schema.org/LimitedAvailability",
@@ -183,9 +210,11 @@ export const buildElopementSchema = ({
               "@type": "WebPage",
               "@id": isPortuguese
                 ? `${siteUrl}/pt/`
-                : isSpanish
-                  ? `${siteUrl}/es/`
-                  : `${siteUrl}/`,
+                : isFrench
+                  ? `${siteUrl}/fr/`
+                  : isSpanish
+                    ? `${siteUrl}/es/`
+                    : `${siteUrl}/`,
               name: copy.breadcrumbHome,
             },
           },

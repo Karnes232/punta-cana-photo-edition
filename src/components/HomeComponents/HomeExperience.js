@@ -185,64 +185,84 @@ const ServiceCard = ({ service, language }) => {
   const title = isGenderReveal
     ? language === "pt"
       ? "Chá Revelação"
-      : language === "es"
-        ? "Revelación de género"
-        : "Gender Reveal"
+      : language === "fr"
+        ? "Gender Reveal"
+        : language === "es"
+          ? "Revelación de género"
+          : "Gender Reveal"
     : isWedding
       ? language === "pt"
         ? "Planejamento de Casamentos"
-        : language === "es"
-          ? "Planificación de bodas"
-          : "Wedding Planning"
+        : language === "fr"
+          ? "Organisation de Mariages"
+          : language === "es"
+            ? "Planificación de bodas"
+            : "Wedding Planning"
       : isElopement
         ? language === "pt"
           ? "Pacotes de Elopement"
-          : language === "es"
-            ? "Bodas íntimas"
-            : "Elopement Packages"
+          : language === "fr"
+            ? "Forfaits Elopement"
+            : language === "es"
+              ? "Bodas íntimas"
+              : "Elopement Packages"
         : isCorporate
           ? language === "pt"
             ? "Eventos Corporativos"
-            : language === "es"
-              ? "Eventos corporativos"
-              : "Corporate Events"
+            : language === "fr"
+              ? "Événements d’Entreprise"
+              : language === "es"
+                ? "Eventos corporativos"
+                : "Corporate Events"
           : isProposal
             ? language === "pt"
               ? "Pedidos de Casamento"
-              : language === "es"
-                ? "Propuestas de matrimonio"
-                : "Marriage Proposals"
+              : language === "fr"
+                ? "Demandes en Mariage"
+                : language === "es"
+                  ? "Propuestas de matrimonio"
+                  : "Marriage Proposals"
             : service.typeOfService;
   const description = isGenderReveal
     ? language === "pt"
       ? "Design, coordenação e execução de um chá revelação personalizado no local escolhido em Punta Cana."
-      : language === "es"
-        ? "Diseño, coordinación y ejecución de una revelación personalizada en la locación que elijas en Punta Cana."
-        : "Design, coordination and execution of a custom reveal at your chosen Punta Cana location."
+      : language === "fr"
+        ? "Design, coordination et réalisation d’une gender reveal personnalisée dans le lieu de votre choix à Punta Cana."
+        : language === "es"
+          ? "Diseño, coordinación y ejecución de una revelación personalizada en la locación que elijas en Punta Cana."
+          : "Design, coordination and execution of a custom reveal at your chosen Punta Cana location."
     : isWedding
       ? language === "pt"
         ? "Planejamento completo, fornecedores e coordenação local para seu casamento de destino em Punta Cana."
-        : language === "es"
-          ? "Planificación integral, proveedores y coordinación local para tu boda de destino en Punta Cana."
-          : "Full planning, vendor management and local coordination for your destination wedding in Punta Cana."
+        : language === "fr"
+          ? "Organisation complète, gestion des prestataires et coordination locale de votre mariage de destination à Punta Cana."
+          : language === "es"
+            ? "Planificación integral, proveedores y coordinación local para tu boda de destino en Punta Cana."
+            : "Full planning, vendor management and local coordination for your destination wedding in Punta Cana."
       : isElopement
         ? language === "pt"
           ? "Pacotes de elopement em praia ou catamarã privativo, com planejamento local em Punta Cana."
-          : language === "es"
-            ? "Paquetes para bodas íntimas en playa o catamarán privado, con planificación local en Punta Cana."
-            : "Private beach and catamaran elopement packages with local planning in Punta Cana."
+          : language === "fr"
+            ? "Forfaits elopement sur plage privée ou catamaran, avec organisation locale à Punta Cana."
+            : language === "es"
+              ? "Paquetes para bodas íntimas en playa o catamarán privado, con planificación local en Punta Cana."
+              : "Private beach and catamaran elopement packages with local planning in Punta Cana."
         : isCorporate
           ? language === "pt"
             ? "Planejamento, produção, fornecedores, logística e gestão no local para eventos corporativos em Punta Cana."
-            : language === "es"
-              ? "Planificación, producción, proveedores, logística y gestión en sitio para eventos corporativos en Punta Cana."
-              : "Planning, production, vendors, logistics and on-site management for corporate events in Punta Cana."
+            : language === "fr"
+              ? "Organisation, production, prestataires, logistique et gestion sur place pour les événements d’entreprise à Punta Cana."
+              : language === "es"
+                ? "Planificación, producción, proveedores, logística y gestión en sitio para eventos corporativos en Punta Cana."
+                : "Planning, production, vendors, logistics and on-site management for corporate events in Punta Cana."
           : isProposal
             ? language === "pt"
               ? "Pacotes completos de pedido de casamento em Punta Cana, com decoração, fotografia e coordenação local."
-              : language === "es"
-                ? "Paquetes completos de propuestas de matrimonio en Punta Cana con decoración, fotografía y coordinación local."
-                : "Complete Punta Cana marriage proposal packages with décor, photography and local coordination."
+              : language === "fr"
+                ? "Forfaits complets de demande en mariage à Punta Cana, avec décoration, photographie et coordination locale."
+                : language === "es"
+                  ? "Paquetes completos de propuestas de matrimonio en Punta Cana con decoración, fotografía y coordinación local."
+                  : "Complete Punta Cana marriage proposal packages with décor, photography and local coordination."
             : service.cardDescription;
 
   if (!image || !url) return null;
@@ -255,9 +275,11 @@ const ServiceCard = ({ service, language }) => {
           alt={
             language === "pt"
               ? `${title} organizado pela Sertuin Events em Punta Cana`
-              : language === "es"
-                ? `${title} organizado por Sertuin Events en Punta Cana`
-                : `${title} planned by Sertuin Events in Punta Cana`
+              : language === "fr"
+                ? `${title} organisé par Sertuin Events à Punta Cana`
+                : language === "es"
+                  ? `${title} organizado por Sertuin Events en Punta Cana`
+                  : `${title} planned by Sertuin Events in Punta Cana`
           }
           className="h-full w-full"
           imgClassName="object-cover"
@@ -278,9 +300,11 @@ const ServiceCard = ({ service, language }) => {
         >
           {language === "pt"
             ? "Ver serviço"
-            : language === "es"
-              ? "Ver servicio"
-              : "Explore service"}
+            : language === "fr"
+              ? "Voir le service"
+              : language === "es"
+                ? "Ver servicio"
+                : "Explore service"}
           <ArrowRight aria-hidden="true" size={16} />
         </Link>
       </div>
@@ -305,29 +329,41 @@ const HomeContactForm = ({ content, language }) => {
             "Sua solicitação foi enviada. Entraremos em contato em breve.",
           error: "Não foi possível enviar. Tente novamente.",
         }
-      : language === "es"
+      : language === "fr"
         ? {
-            phoneCountry: "Seleccionar país del teléfono",
+            phoneCountry: "Sélectionnez le pays du téléphone",
             phoneError:
-              "Ingresa un número de teléfono válido con su código de país.",
+              "Saisissez un numéro de téléphone valide avec l’indicatif du pays.",
             emailError:
-              "Ingresa un correo electrónico válido con un dominio activo.",
-            sending: "Enviando...",
-            successTitle: "Solicitud recibida",
-            success:
-              "Tu solicitud fue enviada correctamente. Te contactaremos muy pronto.",
-            error: "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
+              "Saisissez une adresse e-mail valide avec un domaine actif.",
+            sending: "Envoi...",
+            successTitle: "Demande reçue",
+            success: "Merci. Votre demande a bien été envoyée.",
+            error: "Impossible d’envoyer la demande. Veuillez réessayer.",
           }
-        : {
-            phoneCountry: "Select phone country",
-            phoneError: "Enter a valid phone number with its country code.",
-            emailError: "Enter a valid email address with an active domain.",
-            sending: "Sending...",
-            successTitle: "Request received",
-            success:
-              "Your request was sent successfully. We will contact you shortly.",
-            error: "We could not send your request. Please try again.",
-          };
+        : language === "es"
+          ? {
+              phoneCountry: "Seleccionar país del teléfono",
+              phoneError:
+                "Ingresa un número de teléfono válido con su código de país.",
+              emailError:
+                "Ingresa un correo electrónico válido con un dominio activo.",
+              sending: "Enviando...",
+              successTitle: "Solicitud recibida",
+              success:
+                "Tu solicitud fue enviada correctamente. Te contactaremos muy pronto.",
+              error: "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
+            }
+          : {
+              phoneCountry: "Select phone country",
+              phoneError: "Enter a valid phone number with its country code.",
+              emailError: "Enter a valid email address with an active domain.",
+              sending: "Sending...",
+              successTitle: "Request received",
+              success:
+                "Your request was sent successfully. We will contact you shortly.",
+              error: "We could not send your request. Please try again.",
+            };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -434,9 +470,11 @@ const HomeContactForm = ({ content, language }) => {
         <label>
           {language === "pt"
             ? "Não preencha este campo:"
-            : language === "es"
-              ? "No completes este campo:"
-              : "Do not fill this out:"}{" "}
+            : language === "fr"
+              ? "Ne remplissez pas ce champ :"
+              : language === "es"
+                ? "No completes este campo:"
+                : "Do not fill this out:"}{" "}
           <input name="bot-field" />
         </label>
       </p>
@@ -557,7 +595,7 @@ const HomeExperience = ({
   const content = getHomeContent(language);
   const managedText = (value, fallback) => {
     if (!value) return fallback;
-    if (language === "pt") return fallback;
+    if (language === "pt" || language === "fr") return fallback;
     if (
       language === "es" &&
       /\belopements?\b|\bwedding (?:planner|planning)\b|\bgender\s*reveal\b/i.test(
@@ -579,9 +617,11 @@ const HomeExperience = ({
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneDigits}&text=${encodeURIComponent(
     language === "pt"
       ? "Olá, quero informações para planejar um evento em Punta Cana."
-      : language === "es"
-        ? "Hola, quiero información para planificar un evento en Punta Cana."
-        : "Hello, I would like information about planning an event in Punta Cana.",
+      : language === "fr"
+        ? "Bonjour, je souhaite obtenir des informations pour organiser un événement à Punta Cana."
+        : language === "es"
+          ? "Hola, quiero información para planificar un evento en Punta Cana."
+          : "Hello, I would like information about planning an event in Punta Cana.",
   )}`;
   const orderedServices = [...(services || [])]
     .filter(
@@ -606,7 +646,9 @@ const HomeExperience = ({
       );
     });
   const structuredProcessSteps =
-    language === "pt" ? null : getStructuredProcessSteps(page?.paragraph2);
+    language === "pt" || language === "fr"
+      ? null
+      : getStructuredProcessSteps(page?.paragraph2);
   const eventsSectionId = "events-we-plan";
   const contactSectionId = "start-your-event";
   const primaryCtaUrl = page?.primaryCtaUrl || content.primaryCtaUrl;
@@ -622,9 +664,11 @@ const HomeExperience = ({
               alt={
                 language === "pt"
                   ? "Evento de destino planejado pela Sertuin Events em Punta Cana"
-                  : language === "es"
-                    ? "Evento de destino planificado por Sertuin Events en Punta Cana"
-                    : "Destination event planned by Sertuin Events in Punta Cana"
+                  : language === "fr"
+                    ? "Événement de destination organisé par Sertuin Events à Punta Cana"
+                    : language === "es"
+                      ? "Evento de destino planificado por Sertuin Events en Punta Cana"
+                      : "Destination event planned by Sertuin Events in Punta Cana"
               }
               loading="eager"
               fetchPriority="high"
@@ -671,19 +715,25 @@ const HomeExperience = ({
             managedText(page?.contactEyebrow, content.availability),
             language === "pt"
               ? "Um único ponto de contato"
-              : language === "es"
-                ? "Un solo punto de contacto"
-                : "One point of contact",
+              : language === "fr"
+                ? "Un interlocuteur unique"
+                : language === "es"
+                  ? "Un solo punto de contacto"
+                  : "One point of contact",
             language === "pt"
               ? "Coordenação local em Punta Cana"
-              : language === "es"
-                ? "Coordinación local en Punta Cana"
-                : "Local coordination in Punta Cana",
+              : language === "fr"
+                ? "Coordination locale à Punta Cana"
+                : language === "es"
+                  ? "Coordinación local en Punta Cana"
+                  : "Local coordination in Punta Cana",
             language === "pt"
               ? "Gestão completa no local"
-              : language === "es"
-                ? "Gestión completa en sitio"
-                : "Complete on-site management",
+              : language === "fr"
+                ? "Gestion complète sur place"
+                : language === "es"
+                  ? "Gestión completa en sitio"
+                  : "Complete on-site management",
           ].map((item, index) => (
             <div
               key={item}
@@ -745,7 +795,9 @@ const HomeExperience = ({
           </div>
           <div>
             <RichTextBlock
-              context={language === "pt" ? null : page?.paragraph1}
+              context={
+                language === "pt" || language === "fr" ? null : page?.paragraph1
+              }
               fallbackParagraphs={content.whatParagraphs}
               fallbackItems={content.whatItems}
             />
@@ -802,7 +854,9 @@ const HomeExperience = ({
                   alt={
                     (language === "pt"
                       ? "Sertuin Events gerenciando um evento em Punta Cana"
-                      : featureCard?.image?.title) ||
+                      : language === "fr"
+                        ? "Sertuin Events gérant un événement à Punta Cana"
+                        : featureCard?.image?.title) ||
                     "Sertuin Events managing an event in Punta Cana"
                   }
                   className="h-full w-full"

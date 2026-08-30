@@ -122,7 +122,9 @@ const CaseStudyGallery = ({ images, client, language }) => {
       aria-label={
         language === "pt"
           ? `Galeria do evento corporativo ${client}`
-          : `${client} event gallery`
+          : language === "fr"
+            ? `Galerie de l’événement d’entreprise ${client}`
+            : `${client} event gallery`
       }
     >
       {visibleImages.map((asset, index) => (
@@ -132,7 +134,9 @@ const CaseStudyGallery = ({ images, client, language }) => {
           alt={
             language === "pt"
               ? `Evento corporativo ${client} em Punta Cana ${index + 1}`
-              : `${client} corporate event in Punta Cana ${index + 1}`
+              : language === "fr"
+                ? `Événement d’entreprise ${client} à Punta Cana ${index + 1}`
+                : `${client} corporate event in Punta Cana ${index + 1}`
           }
           className={`w-full rounded-sm ${
             index === 0
@@ -151,6 +155,7 @@ const ProposalForm = ({ copy, language }) => {
   const [phone, setPhone] = useState("");
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const labels = isPortuguese
     ? {
         name: "Nome e sobrenome",
@@ -166,35 +171,50 @@ const ProposalForm = ({ copy, language }) => {
         privacy:
           "Ao enviar, você autoriza a Sertuin Events a entrar em contato sobre esta solicitação.",
       }
-    : isSpanish
+    : isFrench
       ? {
-          name: "Nombre y apellido",
-          company: "Empresa",
-          email: "Correo corporativo",
-          phone: "Teléfono / WhatsApp",
-          date: "Fecha o fecha aproximada",
-          guests: "Cantidad estimada de invitados",
-          venue: "Hotel o sede, si ya lo sabe",
-          details: "Cuéntenos sobre su evento",
-          budget: "Presupuesto estimado",
-          select: "Seleccione un rango",
+          name: "Nom complet",
+          company: "Entreprise",
+          email: "E-mail professionnel",
+          phone: "Téléphone / WhatsApp",
+          date: "Date ou date approximative",
+          guests: "Nombre estimé d’invités",
+          venue: "Hôtel ou lieu, si vous le connaissez",
+          details: "Parlez-nous de votre événement",
+          budget: "Budget estimé",
+          select: "Sélectionnez une fourchette",
           privacy:
-            "Al enviar este formulario, autoriza a Sertuin Events a contactarle sobre esta solicitud.",
+            "En envoyant ce formulaire, vous autorisez Sertuin Events à vous contacter au sujet de cette demande.",
         }
-      : {
-          name: "Full name",
-          company: "Company",
-          email: "Work email",
-          phone: "Phone / WhatsApp",
-          date: "Date or approximate date",
-          guests: "Estimated guest count",
-          venue: "Hotel or venue, if known",
-          details: "Tell us about your event",
-          budget: "Estimated budget",
-          select: "Select a range",
-          privacy:
-            "By submitting, you authorize Sertuin Events to contact you about this inquiry.",
-        };
+      : isSpanish
+        ? {
+            name: "Nombre y apellido",
+            company: "Empresa",
+            email: "Correo corporativo",
+            phone: "Teléfono / WhatsApp",
+            date: "Fecha o fecha aproximada",
+            guests: "Cantidad estimada de invitados",
+            venue: "Hotel o sede, si ya lo sabe",
+            details: "Cuéntenos sobre su evento",
+            budget: "Presupuesto estimado",
+            select: "Seleccione un rango",
+            privacy:
+              "Al enviar este formulario, autoriza a Sertuin Events a contactarle sobre esta solicitud.",
+          }
+        : {
+            name: "Full name",
+            company: "Company",
+            email: "Work email",
+            phone: "Phone / WhatsApp",
+            date: "Date or approximate date",
+            guests: "Estimated guest count",
+            venue: "Hotel or venue, if known",
+            details: "Tell us about your event",
+            budget: "Estimated budget",
+            select: "Select a range",
+            privacy:
+              "By submitting, you authorize Sertuin Events to contact you about this inquiry.",
+          };
 
   const inputClass =
     "mt-2 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 font-montserrat text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-amber-700 focus:ring-2 focus:ring-amber-100";
@@ -221,9 +241,11 @@ const ProposalForm = ({ copy, language }) => {
         <label>
           {isPortuguese
             ? "Não preencha este campo:"
-            : isSpanish
-              ? "No completes este campo:"
-              : "Do not fill this out:"}{" "}
+            : isFrench
+              ? "Ne remplissez pas ce champ :"
+              : isSpanish
+                ? "No completes este campo:"
+                : "Do not fill this out:"}{" "}
           <input name="bot-field" />
         </label>
       </p>
@@ -280,9 +302,11 @@ const ProposalForm = ({ copy, language }) => {
             placeholder={
               isPortuguese
                 ? "Ex.: outubro de 2027"
-                : isSpanish
-                  ? "Ej. octubre de 2027"
-                  : "e.g. October 2027"
+                : isFrench
+                  ? "Ex. : octobre 2027"
+                  : isSpanish
+                    ? "Ej. octubre de 2027"
+                    : "e.g. October 2027"
             }
             required
           />
@@ -327,9 +351,11 @@ const ProposalForm = ({ copy, language }) => {
             <option value="To be defined">
               {isPortuguese
                 ? "A definir"
-                : isSpanish
-                  ? "Por definir"
-                  : "To be defined"}
+                : isFrench
+                  ? "À définir"
+                  : isSpanish
+                    ? "Por definir"
+                    : "To be defined"}
             </option>
           </select>
         </label>
@@ -358,6 +384,7 @@ const CorporateEventPlanner = ({
 }) => {
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const content = useMemo(
     () => getCorporateEventContent(language, page?.paragraph3?.raw),
     [language, page?.paragraph3?.raw],
@@ -369,17 +396,21 @@ const CorporateEventPlanner = ({
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${telephone}&text=${encodeURIComponent(
     isPortuguese
       ? "Olá, gostaria de conversar sobre um evento corporativo em Punta Cana."
-      : isSpanish
-        ? "Hola, me gustaría hablar sobre un evento corporativo en Punta Cana."
-        : "Hello, I would like to discuss a corporate event in Punta Cana.",
+      : isFrench
+        ? "Bonjour, je souhaite discuter d’un événement d’entreprise à Punta Cana."
+        : isSpanish
+          ? "Hola, me gustaría hablar sobre un evento corporativo en Punta Cana."
+          : "Hello, I would like to discuss a corporate event in Punta Cana.",
   )}`;
   const servicesLine =
-    (isPortuguese ? null : page?.sectionTitle) ||
+    (isPortuguese || isFrench ? null : page?.sectionTitle) ||
     (isPortuguese
       ? "Planejamento · Fornecedores · Equipe · Catering · Logística · Produção · Gestão no local"
-      : isSpanish
-        ? "Planificación · Proveedores · Personal · Catering · Logística · Producción · Gestión en sitio"
-        : "Planning · Vendors · Staffing · Catering · Logistics · Production · On-Site Management");
+      : isFrench
+        ? "Organisation · Prestataires · Personnel · Restauration · Logistique · Production · Gestion sur place"
+        : isSpanish
+          ? "Planificación · Proveedores · Personal · Catering · Logística · Producción · Gestión en sitio"
+          : "Planning · Vendors · Staffing · Catering · Logistics · Production · On-Site Management");
 
   return (
     <main className="overflow-hidden bg-[#f7f5f0] text-slate-950">
@@ -390,7 +421,9 @@ const CorporateEventPlanner = ({
             alt={
               isPortuguese
                 ? "Produção e gestão de evento corporativo no local em Punta Cana"
-                : "Corporate event production and on-site management in Punta Cana"
+                : isFrench
+                  ? "Production et gestion d’un événement d’entreprise sur place à Punta Cana"
+                  : "Corporate event production and on-site management in Punta Cana"
             }
             className="h-full w-full"
             loading="eager"
@@ -405,20 +438,24 @@ const CorporateEventPlanner = ({
               {content.eyebrow}
             </p>
             <h1 className="max-w-5xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-[4rem]">
-              {(isPortuguese ? null : page?.heroHeading) ||
+              {(isPortuguese || isFrench ? null : page?.heroHeading) ||
                 (isPortuguese
                   ? "Planejamento e Gestão de Eventos Corporativos em Punta Cana"
-                  : isSpanish
-                    ? "Planificación y gestión de eventos corporativos en Punta Cana"
-                    : "Corporate Event Planner & Management in Punta Cana")}
+                  : isFrench
+                    ? "Organisation et Gestion d’Événements d’Entreprise à Punta Cana"
+                    : isSpanish
+                      ? "Planificación y gestión de eventos corporativos en Punta Cana"
+                      : "Corporate Event Planner & Management in Punta Cana")}
             </h1>
             <p className="mt-7 max-w-2xl font-montserrat text-lg leading-8 text-slate-100 md:text-xl">
-              {(isPortuguese ? null : page?.heroHeading2) ||
+              {(isPortuguese || isFrench ? null : page?.heroHeading2) ||
                 (isPortuguese
                   ? "Uma equipe local para planejar, coordenar e gerenciar seu evento corporativo do início ao fim."
-                  : isSpanish
-                    ? "Un equipo local para planificar, coordinar y gestionar su evento corporativo de principio a fin."
-                    : "One local team to plan, coordinate and manage your corporate event from start to finish.")}
+                  : isFrench
+                    ? "Une équipe locale pour organiser, coordonner et gérer votre événement d’entreprise du début à la fin."
+                    : isSpanish
+                      ? "Un equipo local para planificar, coordinar y gestionar su evento corporativo de principio a fin."
+                      : "One local team to plan, coordinate and manage your corporate event from start to finish.")}
             </p>
             <p className="mt-5 max-w-3xl font-montserrat text-sm font-medium leading-7 text-amber-100 md:text-base">
               {servicesLine}
@@ -624,7 +661,9 @@ const CorporateEventPlanner = ({
               alt={
                 isPortuguese
                   ? "Gestão de evento corporativo no local em Punta Cana"
-                  : "On-site corporate event management in Punta Cana"
+                  : isFrench
+                    ? "Gestion sur place d’un événement d’entreprise à Punta Cana"
+                    : "On-site corporate event management in Punta Cana"
               }
               className="h-[480px] w-full md:h-[620px]"
             />

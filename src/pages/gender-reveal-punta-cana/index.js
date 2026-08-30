@@ -38,6 +38,7 @@ export const Head = ({ pageContext, data }) => {
   const language = normalizeLanguage(pageContext.language);
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const content = getGenderRevealContent(language);
   const seo = data.allContentfulSeo.nodes[0];
@@ -45,21 +46,29 @@ export const Head = ({ pageContext, data }) => {
   const pageUrl = localizedUrl(rootUrl, "/gender-reveal-punta-cana/", language);
   const fallbackTitle = isPortuguese
     ? "Chá Revelação em Punta Cana | Planejamento Personalizado"
-    : isSpanish
-      ? "Revelación de Género en Punta Cana | Evento a Medida"
-      : "Gender Reveal in Punta Cana | Custom Planning";
+    : isFrench
+      ? "Gender Reveal à Punta Cana | Organisation Sur Mesure"
+      : isSpanish
+        ? "Revelación de Género en Punta Cana | Evento a Medida"
+        : "Gender Reveal in Punta Cana | Custom Planning";
   const fallbackDescription = isPortuguese
     ? "Planejamos seu chá revelação em Punta Cana em hotel, villa, praia ou local escolhido. Compartilhe sua ideia e receba uma cotação personalizada."
-    : isSpanish
-      ? "Planificamos tu revelación de género en Punta Cana en hotel, villa, playa o locación elegida. Cuéntanos tu idea y recibe una cotización personalizada."
-      : "Plan your Punta Cana gender reveal at a hotel, villa, beach or selected venue. No preset packages—share your idea and receive a custom quote.";
+    : isFrench
+      ? "Nous organisons votre gender reveal à Punta Cana dans un hôtel, une villa, sur une plage ou dans le lieu choisi. Partagez votre idée et recevez un devis."
+      : isSpanish
+        ? "Planificamos tu revelación de género en Punta Cana en hotel, villa, playa o locación elegida. Cuéntanos tu idea y recibe una cotización personalizada."
+        : "Plan your Punta Cana gender reveal at a hotel, villa, beach or selected venue. No preset packages—share your idea and receive a custom quote.";
   const title =
-    !isSpanish && !isPortuguese && isCurrentGenderRevealCopy(seo?.title)
+    !isSpanish &&
+    !isPortuguese &&
+    !isFrench &&
+    isCurrentGenderRevealCopy(seo?.title)
       ? seo.title
       : fallbackTitle;
   const description =
     !isSpanish &&
     !isPortuguese &&
+    !isFrench &&
     isCurrentGenderRevealCopy(seo?.description?.description)
       ? seo.description.description
       : fallbackDescription;
@@ -74,20 +83,27 @@ export const Head = ({ pageContext, data }) => {
         "chá revelação em villa Punta Cana",
         "chá revelação em hotel Punta Cana",
       ]
-    : isSpanish
+    : isFrench
       ? [
-          "revelación de género Punta Cana",
-          "organización de revelación de género Punta Cana",
-          "revelación de género en villa Punta Cana",
-          "revelación de género en hotel Punta Cana",
-        ]
-      : [
           "gender reveal Punta Cana",
-          "Punta Cana gender reveal planner",
-          "custom gender reveal Punta Cana",
-          "villa gender reveal Punta Cana",
-          "hotel gender reveal Punta Cana",
-        ];
+          "organisation gender reveal Punta Cana",
+          "gender reveal villa Punta Cana",
+          "gender reveal hôtel Punta Cana",
+        ]
+      : isSpanish
+        ? [
+            "revelación de género Punta Cana",
+            "organización de revelación de género Punta Cana",
+            "revelación de género en villa Punta Cana",
+            "revelación de género en hotel Punta Cana",
+          ]
+        : [
+            "gender reveal Punta Cana",
+            "Punta Cana gender reveal planner",
+            "custom gender reveal Punta Cana",
+            "villa gender reveal Punta Cana",
+            "hotel gender reveal Punta Cana",
+          ];
   const faqs = normalizeGenderRevealFaqs(
     data.allContentfulFaqsComponent.nodes,
     language,
@@ -106,7 +122,10 @@ export const Head = ({ pageContext, data }) => {
       <Seo
         title={title}
         description={description}
-        keywords={(!isSpanish && !isPortuguese && keywords.length > 0
+        keywords={(!isSpanish &&
+        !isPortuguese &&
+        !isFrench &&
+        keywords.length > 0
           ? keywords
           : fallbackKeywords
         ).join(", ")}
@@ -114,9 +133,11 @@ export const Head = ({ pageContext, data }) => {
         imageAlt={
           isPortuguese
             ? "Chá revelação personalizado em uma praia de Punta Cana"
-            : isSpanish
-              ? "Revelación de género personalizada en una playa de Punta Cana"
-              : "Custom gender reveal celebration on a Punta Cana beach"
+            : isFrench
+              ? "Gender reveal personnalisée sur une plage de Punta Cana"
+              : isSpanish
+                ? "Revelación de género personalizada en una playa de Punta Cana"
+                : "Custom gender reveal celebration on a Punta Cana beach"
         }
         url={pageUrl}
         schemaMarkup={schemaMarkup}

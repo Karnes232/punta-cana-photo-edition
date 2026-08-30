@@ -22,6 +22,11 @@ const expectedPackages = [
   ["eternal-passion", "Eternal Passion", 1799],
 ];
 
+const localizedPackageName = (language, slug, fallbackName) =>
+  language === "fr-FR" && slug === "romantic-dinner-marriage-proposal"
+    ? "Dîner Romantique et Demande en Mariage"
+    : fallbackName;
+
 const routeFile = (route) =>
   path.join(publicDir, route.replace(/^\//, ""), "index.html");
 
@@ -85,7 +90,7 @@ const validateHub = ({ language, prefix }) => {
 
     assert.equal(offer["@id"], `${packageUrl}#offer`);
     assert.equal(offer.url, packageUrl);
-    assert.equal(offer.name, name);
+    assert.equal(offer.name, localizedPackageName(language, slug, name));
     assert.equal(Number(offer.price), price);
     assert.equal(offer.priceCurrency, "USD");
     assert.equal(offer.itemOffered["@id"], `${packageUrl}#service`);
@@ -98,6 +103,7 @@ const validateHub = ({ language, prefix }) => {
 
 const validatePackage = ({ language, prefix, hub, expectedPackage }) => {
   const [slug, name, price] = expectedPackage;
+  const expectedName = localizedPackageName(language, slug, name);
   const route = `${prefix}/packages/${slug}/`.replace(/^\/\//, "/");
   const pageUrl = `${rootUrl}${route}`;
   const { html, graph } = graphFromRoute(route);
@@ -107,7 +113,7 @@ const validatePackage = ({ language, prefix, hub, expectedPackage }) => {
   const breadcrumb = findNode(graph, "BreadcrumbList", `${pageUrl}#breadcrumb`);
   const images = graph.filter((node) => hasType(node, "ImageObject"));
 
-  assert.equal(webpage.name, name);
+  assert.equal(webpage.name, expectedName);
   assert.equal(webpage.inLanguage, language);
   assert.equal(webpage.isPartOf["@id"], `${hub.pageUrl}#webpage`);
   assert.equal(webpage.mainEntity["@id"], service["@id"]);
@@ -131,9 +137,11 @@ const validatePackage = ({ language, prefix, hub, expectedPackage }) => {
       `<h3[^>]*package-booking-heading[^>]*>\\s*${
         language === "pt-BR"
           ? "Solicite sua proposta"
-          : language === "es"
-            ? "Solicita tu propuesta"
-            : "Request your proposal"
+          : language === "fr-FR"
+            ? "Demandez votre proposition"
+            : language === "es"
+              ? "Solicita tu propuesta"
+              : "Request your proposal"
       }\\s*</h3>`,
     ),
   );
@@ -143,9 +151,11 @@ const validatePackage = ({ language, prefix, hub, expectedPackage }) => {
       `<button[^>]*type=["']submit["'][^>]*>\\s*${
         language === "pt-BR"
           ? "Enviar solicitação de proposta"
-          : language === "es"
-            ? "Enviar solicitud de propuesta"
-            : "Send proposal request"
+          : language === "fr-FR"
+            ? "Envoyer la demande"
+            : language === "es"
+              ? "Enviar solicitud de propuesta"
+              : "Send proposal request"
       }\\s*</button>`,
     ),
   );
@@ -169,6 +179,7 @@ const locales = [
   { language: "en-US", prefix: "" },
   { language: "es", prefix: "/es" },
   { language: "pt-BR", prefix: "/pt" },
+  { language: "fr-FR", prefix: "/fr" },
 ];
 
 for (const locale of locales) {
@@ -191,5 +202,5 @@ for (const { prefix } of locales) {
 assert.doesNotMatch(sitemapXml, /ocean-of-love/i);
 
 console.log(
-  `Validated ${expectedPackages.length} proposal offers in English, Spanish and Portuguese, their package schemas, breadcrumbs, images and sitemap entries.`,
+  `Validated ${expectedPackages.length} proposal offers in English, Spanish, Portuguese and French, their package schemas, breadcrumbs, images and sitemap entries.`,
 );
