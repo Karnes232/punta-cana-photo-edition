@@ -95,7 +95,6 @@ const Blog = ({ pageContext, data }) => {
   const post = normalizePost(
     portuguese ? { ...rawPost, ...portuguese } : rawPost,
   );
-  const seoTitle = portuguese?.seoTitle || post.title;
   if (portuguese && post.helpCustomLinkEnabled) {
     post.helpCustomLinkText = "Saiba mais";
   }
@@ -144,6 +143,7 @@ export const Head = ({ pageContext, data }) => {
   const post = normalizePost(
     portuguese ? { ...rawPost, ...portuguese } : rawPost,
   );
+  const seoTitle = portuguese?.seoTitle || post.title;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const articlePath = `/blog/${post.slug.trim()}/`;
   const siteUrl = localizedUrl(rootUrl, articlePath, language);
