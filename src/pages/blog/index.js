@@ -148,6 +148,41 @@ export const Head = ({ data, pageContext }) => {
     : isSpanish
       ? "Guías para planificar bodas, propuestas, elopements, eventos corporativos y celebraciones en Punta Cana."
       : "Guides for planning weddings, proposals, elopements, corporate events and celebrations in Punta Cana.";
+  const organization = {
+    "@type": "Organization",
+    name: "Sertuin Events",
+    url: baseUrl,
+  };
+  const blogPosts = data.allContentfulBlogPost.nodes
+    .filter(({ slug }) => isPublishedBlogSlug(slug))
+    .map((post) => {
+      const portuguese = isPortuguese
+        ? getPortugueseBlogContent(post.slug)
+        : null;
+
+      return {
+        "@type": "BlogPosting",
+        headline: portuguese?.title || post.title,
+        ...(portuguese?.description || post.description
+          ? { description: portuguese?.description || post.description }
+          : {}),
+        url: localizedUrl(baseUrl, `/blog/${post.slug}/`, language),
+        inLanguage: languageConfig.htmlLang,
+        author: organization,
+        publisher: organization,
+      };
+    });
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${pageUrl}#blog`,
+    url: pageUrl,
+    name: title,
+    description,
+    inLanguage: languageConfig.htmlLang,
+    publisher: organization,
+    blogPost: blogPosts,
+  };
 
   return (
     <>
@@ -161,6 +196,7 @@ export const Head = ({ data, pageContext }) => {
       />
       <link rel="canonical" href={pageUrl} />
       <LocalizedAlternates rootUrl={baseUrl} path="/blog/" />
+      <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
       {!hasPosts && <meta name="robots" content="noindex, follow" />}
     </>
   );
