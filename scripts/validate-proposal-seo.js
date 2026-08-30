@@ -152,7 +152,7 @@ const validatePackage = ({ language, prefix, hub, expectedPackage }) => {
         language === "pt-BR"
           ? "Enviar solicitação de proposta"
           : language === "fr-FR"
-            ? "Envoyer la demande"
+            ? "Envoyer la demande de proposition"
             : language === "es"
               ? "Enviar solicitud de propuesta"
               : "Send proposal request"
