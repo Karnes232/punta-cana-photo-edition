@@ -129,6 +129,29 @@ assert.doesNotMatch(
   /\b(?:We listen|We organize|We take responsibility|Planning an event is not simply)\b/i,
 );
 
+const southAsianHeadingPattern =
+  /south[\s-]*asian|sur\s+de\s+asia|sudeste[\s-]*asi[aá]tic[oa]s?|sud[\s-]*asiati(?:que|ques)|sul[\s-]*asi[aá]tic[oa]s?|indian|sikh/i;
+const countSouthAsianPackageHeadings = (html) =>
+  [...html.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/gi)]
+    .map((match) => visibleText(match[1]))
+    .filter((heading) => southAsianHeadingPattern.test(heading)).length;
+
+assert.equal(
+  countSouthAsianPackageHeadings(spanishWedding),
+  1,
+  "Spanish wedding planning must show one South Asian package card",
+);
+assert.equal(
+  countSouthAsianPackageHeadings(portugueseWedding),
+  1,
+  "Portuguese wedding planning must show one South Asian package card",
+);
+assert.equal(
+  countSouthAsianPackageHeadings(frenchWedding),
+  1,
+  "French wedding planning must show one South Asian package card",
+);
+
 for (const [homePath, prefix] of [
   ["index.html", ""],
   [path.join("es", "index.html"), "/es"],

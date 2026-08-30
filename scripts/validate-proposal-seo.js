@@ -78,6 +78,12 @@ const validateHub = ({ language, prefix }) => {
   const service = findNode(graph, "Service", `${pageUrl}#service`);
   const catalog = findNode(graph, "OfferCatalog", `${pageUrl}#offer-catalog`);
 
+  assert.doesNotMatch(
+    html,
+    /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i,
+    `${route} must remain indexable`,
+  );
+
   assert.equal(webpage.mainEntity["@id"], service["@id"]);
   assert.equal(service.hasOfferCatalog["@id"], catalog["@id"]);
   assert.equal(catalog.numberOfItems, expectedPackages.length);
@@ -112,6 +118,12 @@ const validatePackage = ({ language, prefix, hub, expectedPackage }) => {
   const offer = findNode(graph, "Offer", `${pageUrl}#offer`);
   const breadcrumb = findNode(graph, "BreadcrumbList", `${pageUrl}#breadcrumb`);
   const images = graph.filter((node) => hasType(node, "ImageObject"));
+
+  assert.match(
+    html,
+    /<meta[^>]+name=["']robots["'][^>]+content=["']noindex, follow["']/i,
+    `${route} must be noindex, follow`,
+  );
 
   assert.equal(webpage.name, expectedName);
   assert.equal(webpage.inLanguage, language);
@@ -196,11 +208,11 @@ for (const { prefix } of locales) {
 
   expectedPackages.forEach(([slug]) => {
     const packageUrl = `${rootUrl}${prefix}/packages/${slug}/`;
-    assert.match(sitemapXml, new RegExp(`<loc>${packageUrl}</loc>`));
+    assert.doesNotMatch(sitemapXml, new RegExp(`<loc>${packageUrl}</loc>`));
   });
 }
 assert.doesNotMatch(sitemapXml, /ocean-of-love/i);
 
 console.log(
-  `Validated ${expectedPackages.length} proposal offers in English, Spanish, Portuguese and French, their package schemas, breadcrumbs, images and sitemap entries.`,
+  `Validated ${expectedPackages.length} proposal offers in English, Spanish, Portuguese and French, their noindex directives, package schemas, breadcrumbs, images and sitemap exclusion.`,
 );

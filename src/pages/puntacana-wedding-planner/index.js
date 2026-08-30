@@ -5,6 +5,7 @@ import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import WeddingPlannerExperience from "../../components/WeddingPlanner/WeddingPlannerExperience";
 import {
+  ensureSingleSouthAsianWeddingPackage,
   getWeddingPlannerContent,
   localizeFrenchWeddingPackage,
   localizePortugueseWeddingPackage,
@@ -84,12 +85,10 @@ export const Head = ({ pageContext, data }) => {
           )
         : item,
   );
-  const hasSouthAsian = cmsPackages.some((item) =>
-    /south asian|sudeste asi[aá]tico|indian|sikh/i.test(item?.title || ""),
+  const packages = ensureSingleSouthAsianWeddingPackage(
+    cmsPackages,
+    content.packages.fallbackSouthAsian,
   );
-  const packages = hasSouthAsian
-    ? cmsPackages
-    : [...cmsPackages, content.packages.fallbackSouthAsian];
   const faqs = normalizeWeddingFaqs(
     data.allContentfulFaqsComponent.nodes,
     language,

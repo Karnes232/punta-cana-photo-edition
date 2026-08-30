@@ -354,6 +354,7 @@ export const Head = ({ pageContext, data }) => {
       <Seo
         title={resolvedSeoTitle}
         description={resolvedDescription}
+        robots="noindex, follow"
         keywords={(isPortuguese
           ? [
               `${proposalDetails?.name || "pacote"} Punta Cana`,

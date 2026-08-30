@@ -484,6 +484,33 @@ export const localizeFrenchWeddingPackage = (
   return item;
 };
 
+const southAsianWeddingPackagePattern =
+  /south[\s-]*asian|sur\s+de\s+asia|sudeste[\s-]*asi[aá]tic[oa]s?|sud[\s-]*asiati(?:que|ques)|sul[\s-]*asi[aá]tic[oa]s?|indian|sikh/i;
+
+export const isSouthAsianWeddingPackage = (item) =>
+  southAsianWeddingPackagePattern.test(item?.title || "");
+
+// Contentful already contains the South Asian package. The translated titles
+// were not recognized by the former English/Spanish-only pattern, so the
+// localized fallback was appended as a duplicate. Keep the first real package
+// and add the fallback only when no localized or CMS version exists.
+export const ensureSingleSouthAsianWeddingPackage = (
+  packageList,
+  fallbackSouthAsian,
+) => {
+  let foundSouthAsianPackage = false;
+  const deduplicated = (packageList || []).filter((item) => {
+    if (!isSouthAsianWeddingPackage(item)) return true;
+    if (foundSouthAsianPackage) return false;
+    foundSouthAsianPackage = true;
+    return true;
+  });
+
+  return foundSouthAsianPackage || !fallbackSouthAsian
+    ? deduplicated
+    : [...deduplicated, fallbackSouthAsian];
+};
+
 export const weddingPlannerFallbacks = {
   "en-US": english,
   es: spanish,

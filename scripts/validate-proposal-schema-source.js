@@ -200,6 +200,17 @@ assert.doesNotMatch(
   /one of the 11 (marriage )?proposal packages/i,
 );
 
+const packageTemplateSource = fs.readFileSync(
+  path.resolve(__dirname, "..", "src/template/package.js"),
+  "utf8",
+);
+const gatsbyConfigSource = fs.readFileSync(
+  path.resolve(__dirname, "..", "gatsby-config.js"),
+  "utf8",
+);
+assert.match(packageTemplateSource, /robots="noindex, follow"/);
+assert.match(gatsbyConfigSource, /!isPackageDetailPath\(page\.path\)/);
+
 console.log(
-  "Validated the 11 shared proposal offers in four languages, localized URLs, package relationships, prices, breadcrumbs and image references at source level.",
+  "Validated the 11 shared proposal offers in four languages, localized URLs, noindex policy, package relationships, prices, breadcrumbs and image references at source level.",
 );

@@ -90,6 +90,14 @@ const isRetiredOrUnapprovedContentPath = (value) => {
   );
 };
 
+// Package detail pages remain available to visitors and are linked from the
+// proposal hub, but they are intentionally noindex so they do not compete with
+// the main proposal page. Noindex URLs must not be advertised in the sitemap.
+const isPackageDetailPath = (value) =>
+  /^\/(?:(?:es|pt|fr)\/)?packages\/[^/]+\/?$/.test(
+    `/${String(value || "")}`.replace(/\/{2,}/g, "/"),
+  );
+
 module.exports = {
   siteMetadata: {
     title: `Sertuin Events`,
@@ -138,6 +146,7 @@ module.exports = {
             (page) =>
               !page.path.includes("admin") &&
               !page.path.includes("/contact/thankyou/") &&
+              !isPackageDetailPath(page.path) &&
               !isRetiredOrUnapprovedContentPath(page.path) &&
               !nonIndexablePaths.some(
                 (privatePath) =>

@@ -155,5 +155,5 @@ assert.match(
 );
 
 console.log(
-  `Validated ${expectedPortuguesePaths.length} Portuguese sitemap routes: ${publishedSlugs.length} articles, ${packageIds.length} proposal packages, the blog index and 7 core pages.`,
+  `Validated ${expectedPortuguesePaths.length} Portuguese routes: ${publishedSlugs.length} articles, ${packageIds.length} noindex proposal packages, the blog index and 7 core pages.`,
 );

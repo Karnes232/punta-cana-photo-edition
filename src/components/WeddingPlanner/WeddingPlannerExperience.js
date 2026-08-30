@@ -23,6 +23,7 @@ import {
   Users,
 } from "lucide-react";
 import {
+  ensureSingleSouthAsianWeddingPackage,
   getWeddingPlannerContent,
   localizeFrenchWeddingPackage,
   localizePortugueseWeddingPackage,
@@ -473,12 +474,10 @@ const WeddingPlannerExperience = ({
               )
             : item,
     );
-    const hasSouthAsian = cmsPackages.some((item) =>
-      /south asian|sudeste asi[aá]tico|indian|sikh/i.test(item?.title || ""),
+    return ensureSingleSouthAsianWeddingPackage(
+      cmsPackages,
+      content.packages.fallbackSouthAsian,
     );
-    return hasSouthAsian
-      ? cmsPackages
-      : [...cmsPackages, content.packages.fallbackSouthAsian];
   }, [
     packages,
     content.packages.fallbackSouthAsian,
