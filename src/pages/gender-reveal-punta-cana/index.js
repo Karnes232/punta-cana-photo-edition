@@ -136,7 +136,7 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query GenderRevealPage($contentLanguage: String!) {
+  query GenderRevealPage($contentLanguage: String = "en-US") {
     locales: allLocale {
       edges {
         node {

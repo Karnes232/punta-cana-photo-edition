@@ -175,7 +175,7 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query CorporateEventPlannerPage($contentLanguage: String!) {
+  query CorporateEventPlannerPage($contentLanguage: String = "en-US") {
     locales: allLocale {
       edges {
         node {

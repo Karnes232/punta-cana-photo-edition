@@ -167,7 +167,7 @@ export const Head = ({ data, pageContext }) => {
 };
 
 export const query = graphql`
-  query BlogIndexQuery($contentLanguage: String!) {
+  query BlogIndexQuery($contentLanguage: String = "en-US") {
     locales: allLocale {
       edges {
         node {
