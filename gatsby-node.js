@@ -269,16 +269,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
-      const adminPath = urlPath === "" ? "/admin" : `/${urlPath}/admin`;
-      createPage({
-        path: adminPath,
-        component: path.resolve("./src/pages/admin/index.js"),
-        context: {
-          language: pageLanguage,
-          contentLanguage,
-          urlLanguage: urlCode,
-        },
-      });
+      if (pageLanguage !== "pt") {
+        const adminPath = urlPath === "" ? "/admin" : `/${urlPath}/admin`;
+        createPage({
+          path: adminPath,
+          component: path.resolve("./src/pages/admin/index.js"),
+          context: {
+            language: pageLanguage,
+            contentLanguage,
+            urlLanguage: urlCode,
+          },
+        });
+      }
 
       const contactPath = urlPath === "" ? "/contact" : `/${urlPath}/contact`;
       createPage({

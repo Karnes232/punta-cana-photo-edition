@@ -288,8 +288,14 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/admin/:uid",
+            getLanguageFromPath: true,
+            excludeLanguages: ["pt"],
+          },
+          {
             matchPath: "/:lang?/admin",
             getLanguageFromPath: true,
+            excludeLanguages: ["pt"],
           },
           {
             matchPath: "/:lang?/",
