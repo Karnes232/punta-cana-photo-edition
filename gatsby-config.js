@@ -135,6 +135,7 @@ module.exports = {
           return allPages.filter(
             (page) =>
               !page.path.includes("admin") &&
+              !page.path.includes("/contact/thankyou/") &&
               !isRetiredOrUnapprovedContentPath(page.path) &&
               !nonIndexablePaths.some(
                 (privatePath) =>
@@ -281,6 +282,10 @@ module.exports = {
           },
           {
             matchPath: "/:lang?/gender-reveal-punta-cana",
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: "/:lang?/contact/thankyou",
             getLanguageFromPath: true,
           },
           {
