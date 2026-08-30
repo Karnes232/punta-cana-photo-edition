@@ -1,7 +1,7 @@
 const SITE_ORIGIN = "https://sertuinevents.com";
 const SITE_HOSTNAMES = new Set(["sertuinevents.com", "www.sertuinevents.com"]);
 
-const hasSpanishProposalDestination = (pathname) =>
+const hasLocalizedProposalDestination = (pathname) =>
   /^\/proposal\/?$/i.test(pathname) || /^\/packages(?:\/|$)/i.test(pathname);
 
 const parseUrl = (value) => {
@@ -23,8 +23,10 @@ export const isExternalSiteUrl = (value) => {
  * contains a few historic absolute English URLs, so localization must also be
  * applied when rich text is rendered instead of relying only on navigation.
  */
-export const localizeSpanishProposalUrl = (value, language) => {
-  if (language !== "es" || typeof value !== "string") return value;
+export const localizeProposalUrl = (value, language) => {
+  const languagePrefix =
+    language === "es" ? "es" : language === "pt" ? "pt" : "";
+  if (!languagePrefix || typeof value !== "string") return value;
 
   const candidate = value.trim();
   const isAbsolute = /^https?:\/\//i.test(candidate);
@@ -36,12 +38,15 @@ export const localizeSpanishProposalUrl = (value, language) => {
   if (isAbsolute && !SITE_HOSTNAMES.has(url.hostname.toLowerCase())) {
     return value;
   }
-  if (/^\/es(?:\/|$)/i.test(url.pathname)) return value;
-  if (!hasSpanishProposalDestination(url.pathname)) return value;
+  if (/^\/(?:es|pt)(?:\/|$)/i.test(url.pathname)) return value;
+  if (!hasLocalizedProposalDestination(url.pathname)) return value;
 
-  url.pathname = `/es${url.pathname}`;
+  url.pathname = `/${languagePrefix}${url.pathname}`;
   if (isAbsolute) {
     return `${url.protocol}//${url.host}${url.pathname}${url.search}${url.hash}`;
   }
   return `${url.pathname}${url.search}${url.hash}`;
 };
+
+// Kept as an API alias while callers migrate to the language-neutral name.
+export const localizeSpanishProposalUrl = localizeProposalUrl;

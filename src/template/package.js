@@ -8,6 +8,7 @@ import VideoPlayer from "../components/VideoComponent/VideoPlayer";
 import Faqs from "../components/FaqsComponent/Faqs";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
+import LocalizedAlternates from "../components/Layout/LocalizedAlternates";
 import PackageForm from "../components/PackageForm/PackageForm";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { reconcilePackageSchemaPrices } from "../utils/reconcilePackageSchema";
@@ -20,6 +21,11 @@ import ProposalPackageDetails from "../components/ProposalComponents/ProposalPac
 import ContentfulResponsiveImage from "../components/ContentfulResponsiveImage";
 import { buildProposalPackageSchema } from "../utils/proposalSeo";
 import { GOOGLE_MAPS_URL } from "../components/ProposalComponents/ProposalExperience";
+import {
+  getLanguageConfig,
+  localizedUrl,
+  normalizeLanguage,
+} from "../utils/siteLocales";
 const PackagePage = ({ pageContext, data }) => {
   const { t } = useTranslation();
   const node = data.allContentfulPackagePageContent.nodes[0];
@@ -28,6 +34,10 @@ const PackagePage = ({ pageContext, data }) => {
     ? {
         ...node,
         heroHeading: proposalDetails.name,
+        heroHeading2:
+          pageContext.language === "pt"
+            ? proposalDetails.content.summary
+            : node.heroHeading2,
         packages: node.packages?.length
           ? [
               {
@@ -221,9 +231,12 @@ export default PackagePage;
 
 export const Head = ({ pageContext, data }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
-  const language = pageContext.language;
+  const language = normalizeLanguage(pageContext.language);
+  const isPortuguese = language === "pt";
+  const languageConfig = getLanguageConfig(language);
   const slug = data.allContentfulPackagePageContent.nodes[0].urlSlug;
-  const siteUrl = `${rootUrl}${language === "es" ? "/es" : ""}/packages/${slug}/`;
+  const packagePath = `/packages/${slug}/`;
+  const siteUrl = localizedUrl(rootUrl, packagePath, language);
   const { seoTitle, seoDescription, seoImage, seoKeywords } =
     data.allContentfulPackagePageContent.nodes[0];
   const seoImageUrl = seoImage?.file?.url
@@ -233,9 +246,11 @@ export const Head = ({ pageContext, data }) => {
   const node = data?.allContentfulPackagePageContent?.nodes[0];
   const proposalDetails = getProposalPackageDetails(node, language);
   const resolvedSeoTitle = proposalDetails
-    ? language === "es"
-      ? `${proposalDetails.name} | Propuesta de matrimonio en Punta Cana | Sertuin Events`
-      : `${proposalDetails.name} | Punta Cana Marriage Proposal | Sertuin Events`
+    ? isPortuguese
+      ? `${proposalDetails.name} | Pedido de Casamento em Punta Cana | Sertuin`
+      : language === "es"
+        ? `${proposalDetails.name} | Propuesta de matrimonio en Punta Cana | Sertuin Events`
+        : `${proposalDetails.name} | Punta Cana Marriage Proposal | Sertuin Events`
     : seoTitle;
   const nodeWithCanonicalPrice = proposalDetails
     ? {
@@ -254,13 +269,16 @@ export const Head = ({ pageContext, data }) => {
   const schema = node?.schema?.internal?.content;
   const resolvedDescription =
     proposalDetails?.content.summary || seoDescription?.seoDescription;
+  const localizedFaqs = proposalDetails
+    ? buildProposalPackageFaqs({ language, details: proposalDetails })
+    : localizePackageFaqs(node.faqs, language);
 
   // The schema blob and the page price are maintained separately in Contentful
   // and have drifted apart before. The page price wins; every correction is
   // logged so the drift is visible in the build output.
   let JsonSchema = {};
   if (proposalDetails) {
-    const proposalPageUrl = `${rootUrl}${language === "es" ? "/es" : ""}/proposal/`;
+    const proposalPageUrl = localizedUrl(rootUrl, "/proposal/", language);
     const instagramUrl = /^https?:\/\//i.test(
       pageContext.layout?.instagram || "",
     )
@@ -293,6 +311,7 @@ export const Head = ({ pageContext, data }) => {
       telephone: pageContext.layout?.telephone,
       instagram: instagramUrl,
       googleMapsUrl: GOOGLE_MAPS_URL,
+      faqs: localizedFaqs,
     });
   } else if (schema) {
     try {
@@ -326,34 +345,29 @@ export const Head = ({ pageContext, data }) => {
       <Seo
         title={resolvedSeoTitle}
         description={resolvedDescription}
-        keywords={seoKeywords?.join(", ")}
+        keywords={(isPortuguese
+          ? [
+              `${proposalDetails?.name || "pacote"} Punta Cana`,
+              "pedido de casamento Punta Cana",
+              "pacote romântico Punta Cana",
+              "pedido de casamento na praia",
+            ]
+          : seoKeywords || []
+        ).join(", ")}
         image={seoImageUrl}
         url={siteUrl}
         schemaMarkup={JsonSchema}
-        language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
+        language={languageConfig.htmlLang}
+        locale={languageConfig.ogLocale}
       />
       <link rel="canonical" href={siteUrl} />
-      <link
-        rel="alternate"
-        hrefLang="en"
-        href={`${rootUrl}/packages/${slug}/`}
-      />
-      <link
-        rel="alternate"
-        hrefLang="es"
-        href={`${rootUrl}/es/packages/${slug}/`}
-      />
-      <link
-        rel="alternate"
-        hrefLang="x-default"
-        href={`${rootUrl}/packages/${slug}/`}
-      />
+      <LocalizedAlternates rootUrl={rootUrl} path={packagePath} />
     </>
   );
 };
 
 export const query = graphql`
-  query MyQuery($id: String, $language: String!) {
+  query MyQuery($id: String, $language: String!, $contentLanguage: String!) {
     locales: allLocale {
       edges {
         node {
@@ -369,7 +383,7 @@ export const query = graphql`
       }
     }
     allContentfulPackagePageContent(
-      filter: { id: { eq: $id }, node_locale: { eq: $language } }
+      filter: { id: { eq: $id }, node_locale: { eq: $contentLanguage } }
     ) {
       nodes {
         id

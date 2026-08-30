@@ -1,3 +1,5 @@
+import { portugueseProposalPackageContent } from "./portugueseProposalPackageContent";
+
 const normalize = (value = "") =>
   String(value)
     .normalize("NFD")
@@ -504,7 +506,10 @@ export const getProposalPackageDetails = (
 
   return {
     ...item,
-    content: item.copy[language === "es" ? "es" : "en"],
+    content:
+      language === "pt"
+        ? portugueseProposalPackageContent[item.id]
+        : item.copy[language === "es" ? "es" : "en"],
   };
 };
 

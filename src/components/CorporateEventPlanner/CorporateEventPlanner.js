@@ -22,6 +22,7 @@ import {
 import { getCorporateEventContent } from "../../content/corporateEventContent";
 import { passVisitorName } from "../../utils/thankYouName";
 import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
+import { localizedPath } from "../../utils/siteLocales";
 
 const serviceIcons = [
   ClipboardCheck,
@@ -112,19 +113,27 @@ const EventImage = ({ asset, alt, className = "", loading = "lazy" }) => {
   return null;
 };
 
-const CaseStudyGallery = ({ images, client }) => {
+const CaseStudyGallery = ({ images, client, language }) => {
   const visibleImages = (images || []).slice(0, 5);
   if (!visibleImages.length) return null;
   return (
     <div
       className="grid grid-cols-2 gap-2 md:gap-3"
-      aria-label={`${client} event gallery`}
+      aria-label={
+        language === "pt"
+          ? `Galeria do evento corporativo ${client}`
+          : `${client} event gallery`
+      }
     >
       {visibleImages.map((asset, index) => (
         <EventImage
           key={`${client}-${index}`}
           asset={asset}
-          alt={`${client} corporate event in Punta Cana ${index + 1}`}
+          alt={
+            language === "pt"
+              ? `Evento corporativo ${client} em Punta Cana ${index + 1}`
+              : `${client} corporate event in Punta Cana ${index + 1}`
+          }
           className={`w-full rounded-sm ${
             index === 0
               ? "col-span-2 h-64 md:h-80"
@@ -138,37 +147,54 @@ const CaseStudyGallery = ({ images, client }) => {
   );
 };
 
-const ProposalForm = ({ copy, isSpanish }) => {
+const ProposalForm = ({ copy, language }) => {
   const [phone, setPhone] = useState("");
-  const labels = isSpanish
+  const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
+  const labels = isPortuguese
     ? {
-        name: "Nombre y apellido",
+        name: "Nome e sobrenome",
         company: "Empresa",
-        email: "Correo corporativo",
-        phone: "Teléfono / WhatsApp",
-        date: "Fecha o fecha aproximada",
-        guests: "Cantidad estimada de invitados",
-        venue: "Hotel o sede, si ya lo sabe",
-        details: "Cuéntenos sobre su evento",
-        budget: "Presupuesto estimado",
-        select: "Seleccione un rango",
+        email: "E-mail corporativo",
+        phone: "Telefone / WhatsApp",
+        date: "Data ou data aproximada",
+        guests: "Número estimado de convidados",
+        venue: "Hotel ou venue, se já souber",
+        details: "Conte-nos sobre seu evento",
+        budget: "Orçamento estimado",
+        select: "Selecione uma faixa",
         privacy:
-          "Al enviar este formulario, autoriza a Sertuin Events a contactarle sobre esta solicitud.",
+          "Ao enviar, você autoriza a Sertuin Events a entrar em contato sobre esta solicitação.",
       }
-    : {
-        name: "Full name",
-        company: "Company",
-        email: "Work email",
-        phone: "Phone / WhatsApp",
-        date: "Date or approximate date",
-        guests: "Estimated guest count",
-        venue: "Hotel or venue, if known",
-        details: "Tell us about your event",
-        budget: "Estimated budget",
-        select: "Select a range",
-        privacy:
-          "By submitting, you authorize Sertuin Events to contact you about this inquiry.",
-      };
+    : isSpanish
+      ? {
+          name: "Nombre y apellido",
+          company: "Empresa",
+          email: "Correo corporativo",
+          phone: "Teléfono / WhatsApp",
+          date: "Fecha o fecha aproximada",
+          guests: "Cantidad estimada de invitados",
+          venue: "Hotel o sede, si ya lo sabe",
+          details: "Cuéntenos sobre su evento",
+          budget: "Presupuesto estimado",
+          select: "Seleccione un rango",
+          privacy:
+            "Al enviar este formulario, autoriza a Sertuin Events a contactarle sobre esta solicitud.",
+        }
+      : {
+          name: "Full name",
+          company: "Company",
+          email: "Work email",
+          phone: "Phone / WhatsApp",
+          date: "Date or approximate date",
+          guests: "Estimated guest count",
+          venue: "Hotel or venue, if known",
+          details: "Tell us about your event",
+          budget: "Estimated budget",
+          select: "Select a range",
+          privacy:
+            "By submitting, you authorize Sertuin Events to contact you about this inquiry.",
+        };
 
   const inputClass =
     "mt-2 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 font-montserrat text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-amber-700 focus:ring-2 focus:ring-amber-100";
@@ -179,7 +205,7 @@ const ProposalForm = ({ copy, isSpanish }) => {
       name="corporate-event-planner"
       method="POST"
       onSubmit={passVisitorName()}
-      action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
+      action={localizedPath("/contact/thankyou/", language)}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="rounded-sm bg-white p-6 shadow-2xl shadow-slate-950/15 md:p-10"
@@ -193,7 +219,12 @@ const ProposalForm = ({ copy, isSpanish }) => {
       />
       <p className="hidden">
         <label>
-          Do not fill this out: <input name="bot-field" />
+          {isPortuguese
+            ? "Não preencha este campo:"
+            : isSpanish
+              ? "No completes este campo:"
+              : "Do not fill this out:"}{" "}
+          <input name="bot-field" />
         </label>
       </p>
 
@@ -236,7 +267,7 @@ const ProposalForm = ({ copy, isSpanish }) => {
             id="corporate-event-phone"
             value={phone}
             onChange={setPhone}
-            language={isSpanish ? "es" : "en-US"}
+            language={language}
             required
           />
         </label>
@@ -247,7 +278,11 @@ const ProposalForm = ({ copy, isSpanish }) => {
             type="text"
             name="event-date"
             placeholder={
-              isSpanish ? "Ej. octubre de 2027" : "e.g. October 2027"
+              isPortuguese
+                ? "Ex.: outubro de 2027"
+                : isSpanish
+                  ? "Ej. octubre de 2027"
+                  : "e.g. October 2027"
             }
             required
           />
@@ -290,7 +325,11 @@ const ProposalForm = ({ copy, isSpanish }) => {
             <option value="USD 60,000–100,000">USD 60,000–100,000</option>
             <option value="USD 100,000+">USD 100,000+</option>
             <option value="To be defined">
-              {isSpanish ? "Por definir" : "To be defined"}
+              {isPortuguese
+                ? "A definir"
+                : isSpanish
+                  ? "Por definir"
+                  : "To be defined"}
             </option>
           </select>
         </label>
@@ -318,6 +357,7 @@ const CorporateEventPlanner = ({
   language,
 }) => {
   const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
   const content = useMemo(
     () => getCorporateEventContent(language, page?.paragraph3?.raw),
     [language, page?.paragraph3?.raw],
@@ -327,15 +367,19 @@ const CorporateEventPlanner = ({
   const mideaImages = gallery?.images || [];
   const telephone = (generalInfo?.telephone || "").replace(/\D/g, "");
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${telephone}&text=${encodeURIComponent(
-    isSpanish
-      ? "Hola, me gustaría hablar sobre un evento corporativo en Punta Cana."
-      : "Hello, I would like to discuss a corporate event in Punta Cana.",
+    isPortuguese
+      ? "Olá, gostaria de conversar sobre um evento corporativo em Punta Cana."
+      : isSpanish
+        ? "Hola, me gustaría hablar sobre un evento corporativo en Punta Cana."
+        : "Hello, I would like to discuss a corporate event in Punta Cana.",
   )}`;
   const servicesLine =
-    page?.sectionTitle ||
-    (isSpanish
-      ? "Planificación · Proveedores · Personal · Catering · Logística · Producción · Gestión en sitio"
-      : "Planning · Vendors · Staffing · Catering · Logistics · Production · On-Site Management");
+    (isPortuguese ? null : page?.sectionTitle) ||
+    (isPortuguese
+      ? "Planejamento · Fornecedores · Equipe · Catering · Logística · Produção · Gestão no local"
+      : isSpanish
+        ? "Planificación · Proveedores · Personal · Catering · Logística · Producción · Gestión en sitio"
+        : "Planning · Vendors · Staffing · Catering · Logistics · Production · On-Site Management");
 
   return (
     <main className="overflow-hidden bg-[#f7f5f0] text-slate-950">
@@ -343,7 +387,11 @@ const CorporateEventPlanner = ({
         <div className="absolute inset-0 overflow-hidden">
           <EventImage
             asset={heroImage}
-            alt="Corporate event production and on-site management in Punta Cana"
+            alt={
+              isPortuguese
+                ? "Produção e gestão de evento corporativo no local em Punta Cana"
+                : "Corporate event production and on-site management in Punta Cana"
+            }
             className="h-full w-full"
             loading="eager"
           />
@@ -357,16 +405,20 @@ const CorporateEventPlanner = ({
               {content.eyebrow}
             </p>
             <h1 className="max-w-5xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-[4rem]">
-              {page?.heroHeading ||
-                (isSpanish
-                  ? "Planificación y gestión de eventos corporativos en Punta Cana"
-                  : "Corporate Event Planner & Management in Punta Cana")}
+              {(isPortuguese ? null : page?.heroHeading) ||
+                (isPortuguese
+                  ? "Planejamento e Gestão de Eventos Corporativos em Punta Cana"
+                  : isSpanish
+                    ? "Planificación y gestión de eventos corporativos en Punta Cana"
+                    : "Corporate Event Planner & Management in Punta Cana")}
             </h1>
             <p className="mt-7 max-w-2xl font-montserrat text-lg leading-8 text-slate-100 md:text-xl">
-              {page?.heroHeading2 ||
-                (isSpanish
-                  ? "Un equipo local para planificar, coordinar y gestionar su evento corporativo de principio a fin."
-                  : "One local team to plan, coordinate and manage your corporate event from start to finish.")}
+              {(isPortuguese ? null : page?.heroHeading2) ||
+                (isPortuguese
+                  ? "Uma equipe local para planejar, coordenar e gerenciar seu evento corporativo do início ao fim."
+                  : isSpanish
+                    ? "Un equipo local para planificar, coordinar y gestionar su evento corporativo de principio a fin."
+                    : "One local team to plan, coordinate and manage your corporate event from start to finish.")}
             </p>
             <p className="mt-5 max-w-3xl font-montserrat text-sm font-medium leading-7 text-amber-100 md:text-base">
               {servicesLine}
@@ -569,7 +621,11 @@ const CorporateEventPlanner = ({
           <div className="relative">
             <EventImage
               asset={organonImages[0] || heroImage}
-              alt="On-site corporate event management in Punta Cana"
+              alt={
+                isPortuguese
+                  ? "Gestão de evento corporativo no local em Punta Cana"
+                  : "On-site corporate event management in Punta Cana"
+              }
               className="h-[480px] w-full md:h-[620px]"
             />
             <div className="absolute bottom-0 right-0 max-w-xs bg-slate-950 p-6 text-white md:p-8">
@@ -625,7 +681,11 @@ const CorporateEventPlanner = ({
                   className="grid gap-10 lg:grid-cols-2 lg:items-center"
                 >
                   <div className={index % 2 ? "lg:order-2" : ""}>
-                    <CaseStudyGallery images={images} client={study.client} />
+                    <CaseStudyGallery
+                      images={images}
+                      client={study.client}
+                      language={language}
+                    />
                   </div>
                   <div
                     className={index % 2 ? "lg:order-1 lg:pr-12" : "lg:pl-12"}
@@ -806,7 +866,7 @@ const CorporateEventPlanner = ({
           <ProposalForm
             copy={content.form}
             whatsappUrl={whatsappUrl}
-            isSpanish={isSpanish}
+            language={language}
           />
         </div>
       </section>

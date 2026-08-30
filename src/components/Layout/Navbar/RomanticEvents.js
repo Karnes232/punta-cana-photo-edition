@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import { MenuItem, SubMenu } from "react-pro-sidebar";
 import { Trans, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import { localizedPath } from "../../../utils/siteLocales";
 
 // react-pro-sidebar renders a SubMenu's toggle as a bare <a> with no href, which
 // Lighthouse reports as an uncrawlable link. It is a disclosure control rather than
@@ -9,7 +10,7 @@ import { Trans, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 const RomanticEvents = ({ footer, setToggled }) => {
   const { t } = useTranslation();
   const { language } = useI18next();
-  const localize = (path) => `${language === "es" ? "/es" : ""}${path}`;
+  const localize = (path) => localizedPath(path, language);
   const [open, setOpen] = useState(false);
 
   // SubMenu toggles on Enter keyup because its default <a tabindex="0"> is not

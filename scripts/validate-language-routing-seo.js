@@ -24,6 +24,10 @@ const spanishWedding = page("es/puntacana-wedding-planner");
 const spanishGenderReveal = page("es/gender-reveal-punta-cana");
 const spanishElopement = page("es/punta-cana-elopement-packages");
 const spanishHome = page("es");
+const portugueseWedding = page("pt/puntacana-wedding-planner");
+const portugueseGenderReveal = page("pt/gender-reveal-punta-cana");
+const portugueseElopement = page("pt/punta-cana-elopement-packages");
+const portugueseHome = page("pt");
 const gatsbyConfig = fs.readFileSync(
   path.join(sourceRoot, "gatsby-config.js"),
   "utf8",
@@ -67,9 +71,35 @@ for (const spanishPage of [
 }
 assert.doesNotMatch(visibleText(spanishHome), /\belopements?\b/i);
 
+assert.match(
+  portugueseWedding,
+  /<title[^>]*>Wedding Planner em Punta Cana \| Planejamento Completo<\/title>/i,
+);
+assert.match(
+  portugueseGenderReveal,
+  /<title[^>]*>Chá Revelação em Punta Cana \| Planejamento Personalizado<\/title>/i,
+);
+assert.match(
+  portugueseElopement,
+  /<title[^>]*>Elopement em Punta Cana \| Pacotes a Partir de US\$\s?999<\/title>/i,
+);
+for (const portuguesePage of [
+  portugueseHome,
+  portugueseWedding,
+  portugueseGenderReveal,
+  portugueseElopement,
+]) {
+  assert.match(portuguesePage, /<html[^>]+lang=["']pt-BR["']/i);
+  assert.match(
+    portuguesePage,
+    /hreflang=["']pt-BR["'][^>]+href=["']https:\/\/sertuinevents\.com\/pt\//i,
+  );
+}
+
 for (const [homePath, prefix] of [
   ["index.html", ""],
   [path.join("es", "index.html"), "/es"],
+  [path.join("pt", "index.html"), "/pt"],
 ]) {
   const home = read(homePath);
   assert.match(
@@ -106,6 +136,21 @@ for (const url of [
   );
 }
 
+for (const url of [
+  "https://sertuinevents.com/pt/",
+  "https://sertuinevents.com/pt/gender-reveal-punta-cana/",
+  "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+  "https://sertuinevents.com/pt/punta-cana-elopement-packages/",
+]) {
+  const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  assert.match(
+    sitemap,
+    new RegExp(
+      `<loc>${escapedUrl}</loc>[\\s\\S]*?<lastmod>2026-08-30(?:T00:00:00\\.000Z)?</lastmod>`,
+    ),
+  );
+}
+
 console.log(
-  "Validated Spanish-language separation, Home service links and accurate sitemap modification dates.",
+  "Validated Spanish and Portuguese language separation, Home service links, hreflang and accurate sitemap modification dates.",
 );

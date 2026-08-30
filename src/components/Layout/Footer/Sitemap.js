@@ -3,10 +3,11 @@ import React from "react";
 import PopOverComponent from "./PopOverComponent";
 import PopOverComponentHover from "./PopOverComponentHover";
 import { Trans, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import { localizedPath } from "../../../utils/siteLocales";
 const Sitemap = () => {
   const { t } = useTranslation();
   const { language } = useI18next();
-  const localize = (path) => `${language === "es" ? "/es" : ""}${path}`;
+  const localize = (path) => localizedPath(path, language);
   const RomanticEventLinks = [
     {
       name: t("Marriage Proposals"),
@@ -28,11 +29,8 @@ const Sitemap = () => {
 
   return (
     <div className="flex flex-row space-x-4">
-      <Link
-        to={language === "es" ? "/es/" : "/"}
-        className="navLinks no-underline"
-      >
-        {language === "es" ? "Inicio" : "Home"}
+      <Link to={localizedPath("/", language)} className="navLinks no-underline">
+        {language === "pt" ? "Início" : language === "es" ? "Inicio" : "Home"}
       </Link>
       <div className="2xl:hidden">
         <PopOverComponent
@@ -61,4 +59,3 @@ const Sitemap = () => {
 };
 
 export default Sitemap;
-

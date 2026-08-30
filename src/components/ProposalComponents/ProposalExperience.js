@@ -1,4 +1,5 @@
 import React from "react";
+import { localizedPath } from "../../utils/siteLocales";
 import { Link } from "gatsby";
 import {
   CalendarCheck2,
@@ -274,6 +275,123 @@ const copy = {
     reviewLink: "Escribir una reseña",
     instagramLink: "Ver @sertuinevents",
   },
+  pt: {
+    overviewEyebrow: "Uma experiência completa com preços claros",
+    overviewTitle: "Pacotes Completos de Pedido de Casamento em Punta Cana",
+    overviewParagraphs: [
+      "Nossos pacotes padrão são criados para a praia privativa da Sertuin Events em Uvero Alto. Também coordenamos pedidos em villa, resort, iate ou outro local aprovado quando o cliente obtém o acesso e o venue autoriza a montagem. Todo pacote inclui transporte de ida e volta para o casal em Punta Cana, decoração escolhida, buquê, bebida para celebrar, fotografia profissional, vídeo vertical de 3 a 5 minutos pelo celular e sua música preferida.",
+      "Escolha o pacote que representa sua visão, reserve a data com um depósito de US$ 200 e deixe nossa equipe coordenar chegada, horário e revelação enquanto você se concentra na pessoa amada.",
+    ],
+    packagesFallbackTitle:
+      "Pacotes e Preços de Pedido de Casamento em Punta Cana",
+    inclusionsEyebrow: "Incluído em todos os pacotes",
+    inclusionsTitle: "Tudo o que É Essencial Já Está Incluído",
+    inclusionsIntro:
+      "O preço publicado cobre os serviços necessários para coordenar, criar e documentar o pedido padrão em nossa praia privativa. Outros locais podem cobrar acesso ou fornecedores externos.",
+    inclusions: [
+      [
+        MapPin,
+        "Praia Privativa Recomendada",
+        "Os pacotes padrão utilizam nossa praia privativa em Uvero Alto. Villas, resorts, iates e outros locais aprovados recebem cotação conforme permissões.",
+      ],
+      [
+        CarFront,
+        "Transporte Privativo",
+        "Transporte de ida e volta para o casal desde qualquer hotel ou hospedagem em Punta Cana. Cada acompanhante adicional custa US$ 20, até oito convidados.",
+      ],
+      [
+        Flower2,
+        "Decoração Romântica Escolhida",
+        "A decoração correspondente ao pacote é preparada completamente antes da chegada.",
+      ],
+      [
+        Camera,
+        "Fotografia Profissional",
+        "Receba mais de 70 fotografias editadas em alta resolução em até 48 horas por um link permanente do Google Drive.",
+      ],
+      [
+        Smartphone,
+        "Vídeo do Pedido",
+        "Gravamos o momento do pedido pelo celular sem custo adicional, mesmo sem vídeo profissional.",
+      ],
+      [
+        Music2,
+        "Música e Celebração",
+        "Sua música preferida toca em nosso sistema de som e uma bebida para celebrar está incluída.",
+      ],
+      [
+        UserRoundCheck,
+        "Coordenador Dedicado",
+        "O coordenador no local gerencia chegada, horário, música e revelação.",
+      ],
+    ],
+    upgradesTitle: "Formas Opcionais de Personalizar a Experiência",
+    upgradesIntro:
+      "O pacote já inclui tudo o que é essencial. Estes adicionais podem ser contratados conforme sua visão e disponibilidade.",
+    upgrades: [
+      [Video, "Vídeo profissional e drone — US$ 399"],
+      [Music2, "Violinista ao vivo — US$ 399"],
+      [Music2, "Saxofonista ao vivo — US$ 399"],
+      [UtensilsCrossed, "Jantar privativo para dois — US$ 299"],
+      [Sparkles, "Faíscas frias — US$ 150 por par"],
+      [Flower2, "Flores personalizadas — preço conforme o design"],
+    ],
+    momentsEyebrow: "Experiências reais da Sertuin Events",
+    momentsTitle: "Pedidos de Casamento Reais em Punta Cana",
+    momentsIntro:
+      "Conheça decorações e celebrações reais criadas por nossa equipe em Punta Cana.",
+    bookingEyebrow: "Simples e seguro",
+    bookingTitle: "Como Reservar seu Pedido de Casamento em Punta Cana",
+    bookingIntro:
+      "A reserva é simples e segura, e você não precisa pagar o valor total antecipadamente.",
+    bookingSteps: [
+      [
+        CalendarCheck2,
+        "Escolha o pacote e a data",
+        "Envie o pacote, a data, o hotel ou hospedagem e solicitações iniciais de personalização.",
+      ],
+      [
+        ShieldCheck,
+        "Confirme a disponibilidade",
+        "Nossa equipe confirma o local, o transporte e os serviços do pacote escolhido.",
+      ],
+      [
+        FileText,
+        "Assine o contrato e reserve a data",
+        "Enviamos um contrato escrito e um link seguro do PayPal. O depósito de US$ 200 reserva a data e é descontado do total.",
+      ],
+      [
+        PartyPopper,
+        "Coordenamos cada detalhe",
+        "Depois da confirmação, coordenamos transporte, música, personalização, chegada e revelação. O saldo é pago conforme o contrato.",
+      ],
+    ],
+    contactLabel: "Consultar disponibilidade",
+    trustEyebrow: "Liderança local e experiência comprovada",
+    trustTitle:
+      "Uma Empresa Dominicana Liderada pela Wedding Planner Grecia Mejía",
+    trustIntro:
+      "A Sertuin SRL é uma empresa dominicana registrada e baseada em Punta Cana. Grecia Mejía lidera a empresa e as experiências de pedido, com uma equipe que coordena cada chegada, montagem e revelação.",
+    companyTitle: "Sertuin Events em Números",
+    experienceFacts: [
+      "Mais de 10 anos de experiência",
+      "Mais de 1.800 pedidos de casamento realizados",
+      "Baseada em Punta Cana, República Dominicana",
+      "Planejamento em inglês e espanhol",
+    ],
+    appointmentNote:
+      "Comece pelo WhatsApp, telefone ou formulário. Depois coordenamos diretamente os próximos passos.",
+    portfolioText:
+      "Veja trabalhos recentes e históricos em nosso portfólio oficial no Instagram.",
+    reviewsTitle: "O que os Clientes Dizem no Google",
+    reviewsIntro:
+      "Trechos curtos de avaliações publicadas no Perfil da Empresa no Google. Acesse a fonte para ler cada avaliação completa.",
+    fiveStarsLabel: "5 de 5 estrelas",
+    reviewSource: "Avaliação no Google Maps",
+    mapsLink: "Ver no Google Maps",
+    reviewLink: "Escrever uma avaliação",
+    instagramLink: "Ver @sertuinevents",
+  },
 };
 
 const formatPrice = (price) =>
@@ -286,6 +404,7 @@ const formatPrice = (price) =>
 
 export const buildProposalFaqs = ({ language, packages = [] }) => {
   const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
   const prices = packages
     .map((proposalPackage) => Number(proposalPackage.price))
     .filter((price) => Number.isFinite(price));
@@ -294,87 +413,128 @@ export const buildProposalFaqs = ({ language, packages = [] }) => {
   const priceRange =
     minimumPrice && maximumPrice
       ? `${minimumPrice}–${maximumPrice} USD`
-      : isSpanish
-        ? "los precios publicados en esta página"
-        : "the prices published on this page";
+      : isPortuguese
+        ? "os preços publicados nesta página"
+        : isSpanish
+          ? "los precios publicados en esta página"
+          : "the prices published on this page";
 
-  const faqItems = isSpanish
+  const faqItems = isPortuguese
     ? [
         [
-          "¿Cuánto cuesta una propuesta de matrimonio en Punta Cana?",
-          `Los paquetes disponibles actualmente van de ${priceRange}, según la experiencia seleccionada. El precio de cada tarjeta corresponde al paquete publicado y los servicios opcionales solo se agregan cuando los solicitas.`,
+          "Quanto custa um pedido de casamento em Punta Cana?",
+          `Os pacotes disponíveis variam de ${priceRange}, conforme a experiência. Cada cartão mostra o preço publicado e os serviços opcionais só são adicionados quando solicitados.`,
         ],
         [
-          "¿Qué incluye un paquete de propuesta de matrimonio en Punta Cana?",
-          "Cada paquete incluye transporte privado ida y vuelta para la pareja desde cualquier hotel o alojamiento de Punta Cana, la decoración seleccionada, bouquet, bebida para celebrar, fotografía profesional, tu canción preferida, video vertical de la propuesta grabado con un teléfono y coordinación en el lugar. Cada acompañante adicional paga US$20 por transporte y las locaciones externas se cotizan según acceso y permisos.",
+          "O que um pacote de pedido de casamento inclui?",
+          "Todo pacote inclui transporte privativo para o casal em Punta Cana, decoração escolhida, buquê, bebida para celebrar, fotografia profissional, música preferida, vídeo vertical pelo celular e coordenação no local. Cada acompanhante adicional custa US$ 20 para transporte; locais externos são cotados conforme acesso e permissões.",
         ],
         [
-          "¿Cómo reservo mi propuesta con Sertuin Events?",
-          "Elige el paquete, la fecha y el alojamiento. Después de confirmar disponibilidad, enviamos un acuerdo de servicio escrito y un enlace seguro de PayPal. Un depósito de US$200 reserva la fecha, se descuenta del total y el saldo se paga después de la experiencia según el acuerdo.",
+          "Como reservar meu pedido com a Sertuin Events?",
+          "Escolha pacote, data e hospedagem. Após confirmar disponibilidade, enviamos contrato e link seguro do PayPal. O depósito de US$ 200 reserva a data e é descontado do total.",
         ],
         [
-          "¿Dónde se realizan las propuestas?",
-          "La opción estándar y recomendada es nuestra playa privada de Uvero Alto. También podemos trabajar en una villa, resort, yate u otra locación aprobada cuando el cliente obtiene el acceso y el lugar autoriza el montaje; esos cargos externos se cotizan aparte.",
+          "Onde os pedidos são realizados?",
+          "A opção padrão é nossa praia privativa em Uvero Alto. Também trabalhamos em villa, resort, iate ou outro local aprovado quando o cliente obtém acesso e o venue autoriza a montagem.",
         ],
         [
-          "¿El transporte está incluido desde cualquier zona de Punta Cana?",
-          "Sí. El precio publicado incluye transporte privado ida y vuelta para la pareja desde cualquier hotel o alojamiento de Punta Cana. Cada acompañante adicional paga US$20 por transporte, con un máximo de ocho acompañantes en la van.",
+          "O transporte está incluído em toda Punta Cana?",
+          "Sim. O preço inclui transporte privativo de ida e volta para o casal desde qualquer hotel ou hospedagem em Punta Cana. Cada acompanhante adicional custa US$ 20, até oito pessoas.",
         ],
         [
-          "¿Cuántas fotografías recibiremos y cuándo se entregan?",
-          "Recibirás más de 70 fotografías profesionales, editadas y en alta resolución dentro de las 48 horas posteriores a la experiencia mediante un enlace permanente de Google Drive.",
+          "Quantas fotografias receberemos e quando?",
+          "Você recebe mais de 70 fotografias profissionais editadas em alta resolução em até 48 horas por um link permanente do Google Drive.",
         ],
         [
-          "¿Se graba el momento de la propuesta?",
-          "Sí. Grabamos la propuesta con un teléfono sin costo adicional, aunque no agregues videografía profesional.",
+          "O momento do pedido é gravado?",
+          "Sim. Gravamos o pedido pelo celular sem custo adicional, mesmo quando o vídeo profissional não é contratado.",
         ],
         [
-          "¿Podemos elegir la música y personalizar la decoración?",
-          "Sí. Coordinamos tu canción preferida y las personalizaciones solicitadas antes de la experiencia. La decoración incluida corresponde al paquete elegido y también puedes solicitar flores personalizadas u otras mejoras opcionales.",
+          "Podemos escolher a música e personalizar a decoração?",
+          "Sim. Coordenamos a música preferida e as personalizações solicitadas. A decoração incluída corresponde ao pacote, e flores personalizadas e outros adicionais podem ser solicitados.",
         ],
         [
-          "¿Puedo agregar video profesional, dron u otros servicios?",
-          "Sí. Según disponibilidad, puedes agregar video profesional con dron por US$399, violinista por US$399, saxofonista por US$399, cena privada para dos por US$299 y flores personalizadas. Las chispas frías cuestan US$150 el par. Un servicio que ya esté incluido en el paquete elegido no se ofrece nuevamente como adicional.",
+          "Posso adicionar vídeo, drone ou música ao vivo?",
+          "Sim. Conforme disponibilidade, há vídeo profissional com drone, violinista, saxofonista, jantar privativo, faíscas frias e flores personalizadas. Um serviço já incluído no pacote não é cobrado novamente.",
         ],
       ]
-    : [
-        [
-          "How much does a marriage proposal in Punta Cana cost?",
-          `The packages currently available range from ${priceRange}, depending on the experience selected. Each card shows the published package price, and optional services are added only when requested.`,
-        ],
-        [
-          "What does a Punta Cana proposal package include?",
-          "Every package includes private round-trip transportation for the couple from any hotel or accommodation in Punta Cana, the selected romantic setup, bouquet, a celebratory beverage, professional photography, your preferred song, a vertical phone recording of the proposal and on-site coordination. Each additional companion costs US$20 for transportation, and external locations are quoted according to access and permits.",
-        ],
-        [
-          "How do I reserve my proposal with Sertuin Events?",
-          "Choose your package, preferred date and accommodation. After availability is confirmed, we send a written service agreement and a secure PayPal link. A US$200 deposit reserves the date, is deducted from the total and the remaining balance is paid after the experience according to the agreement.",
-        ],
-        [
-          "Where do the proposals take place?",
-          "Our standard and recommended option is the Sertuin Events private beach in Uvero Alto. We can also work at a villa, resort, yacht or another approved location when the client obtains access and the venue permits the setup; external venue charges are quoted separately.",
-        ],
-        [
-          "Is transportation included from every area of Punta Cana?",
-          "Yes. The published price includes private round-trip transportation for the couple from any hotel or accommodation throughout Punta Cana. Each additional companion costs US$20 for transportation, with a maximum of eight companions in the van.",
-        ],
-        [
-          "How many photographs will we receive and when are they delivered?",
-          "You will receive more than 70 professionally edited, high-resolution photographs within 48 hours after the experience through a permanent Google Drive link.",
-        ],
-        [
-          "Is the proposal moment recorded?",
-          "Yes. We record the actual proposal on a phone at no additional cost, even when professional videography is not added.",
-        ],
-        [
-          "Can we choose the music and personalize the setup?",
-          "Yes. We coordinate your preferred song and requested personalization before the experience. The setup included is based on the package selected, and custom flowers or other optional enhancements can also be requested.",
-        ],
-        [
-          "Can I add professional video, drone coverage or other services?",
-          "Yes. Depending on availability, you can add professional video with drone coverage for US$399, a violinist for US$399, a saxophonist for US$399, a private dinner for two for US$299 and custom flowers. Cold sparks cost US$150 per pair. A service already included in the selected package is not offered again as an add-on.",
-        ],
-      ];
+    : isSpanish
+      ? [
+          [
+            "¿Cuánto cuesta una propuesta de matrimonio en Punta Cana?",
+            `Los paquetes disponibles actualmente van de ${priceRange}, según la experiencia seleccionada. El precio de cada tarjeta corresponde al paquete publicado y los servicios opcionales solo se agregan cuando los solicitas.`,
+          ],
+          [
+            "¿Qué incluye un paquete de propuesta de matrimonio en Punta Cana?",
+            "Cada paquete incluye transporte privado ida y vuelta para la pareja desde cualquier hotel o alojamiento de Punta Cana, la decoración seleccionada, bouquet, bebida para celebrar, fotografía profesional, tu canción preferida, video vertical de la propuesta grabado con un teléfono y coordinación en el lugar. Cada acompañante adicional paga US$20 por transporte y las locaciones externas se cotizan según acceso y permisos.",
+          ],
+          [
+            "¿Cómo reservo mi propuesta con Sertuin Events?",
+            "Elige el paquete, la fecha y el alojamiento. Después de confirmar disponibilidad, enviamos un acuerdo de servicio escrito y un enlace seguro de PayPal. Un depósito de US$200 reserva la fecha, se descuenta del total y el saldo se paga después de la experiencia según el acuerdo.",
+          ],
+          [
+            "¿Dónde se realizan las propuestas?",
+            "La opción estándar y recomendada es nuestra playa privada de Uvero Alto. También podemos trabajar en una villa, resort, yate u otra locación aprobada cuando el cliente obtiene el acceso y el lugar autoriza el montaje; esos cargos externos se cotizan aparte.",
+          ],
+          [
+            "¿El transporte está incluido desde cualquier zona de Punta Cana?",
+            "Sí. El precio publicado incluye transporte privado ida y vuelta para la pareja desde cualquier hotel o alojamiento de Punta Cana. Cada acompañante adicional paga US$20 por transporte, con un máximo de ocho acompañantes en la van.",
+          ],
+          [
+            "¿Cuántas fotografías recibiremos y cuándo se entregan?",
+            "Recibirás más de 70 fotografías profesionales, editadas y en alta resolución dentro de las 48 horas posteriores a la experiencia mediante un enlace permanente de Google Drive.",
+          ],
+          [
+            "¿Se graba el momento de la propuesta?",
+            "Sí. Grabamos la propuesta con un teléfono sin costo adicional, aunque no agregues videografía profesional.",
+          ],
+          [
+            "¿Podemos elegir la música y personalizar la decoración?",
+            "Sí. Coordinamos tu canción preferida y las personalizaciones solicitadas antes de la experiencia. La decoración incluida corresponde al paquete elegido y también puedes solicitar flores personalizadas u otras mejoras opcionales.",
+          ],
+          [
+            "¿Puedo agregar video profesional, dron u otros servicios?",
+            "Sí. Según disponibilidad, puedes agregar video profesional con dron por US$399, violinista por US$399, saxofonista por US$399, cena privada para dos por US$299 y flores personalizadas. Las chispas frías cuestan US$150 el par. Un servicio que ya esté incluido en el paquete elegido no se ofrece nuevamente como adicional.",
+          ],
+        ]
+      : [
+          [
+            "How much does a marriage proposal in Punta Cana cost?",
+            `The packages currently available range from ${priceRange}, depending on the experience selected. Each card shows the published package price, and optional services are added only when requested.`,
+          ],
+          [
+            "What does a Punta Cana proposal package include?",
+            "Every package includes private round-trip transportation for the couple from any hotel or accommodation in Punta Cana, the selected romantic setup, bouquet, a celebratory beverage, professional photography, your preferred song, a vertical phone recording of the proposal and on-site coordination. Each additional companion costs US$20 for transportation, and external locations are quoted according to access and permits.",
+          ],
+          [
+            "How do I reserve my proposal with Sertuin Events?",
+            "Choose your package, preferred date and accommodation. After availability is confirmed, we send a written service agreement and a secure PayPal link. A US$200 deposit reserves the date, is deducted from the total and the remaining balance is paid after the experience according to the agreement.",
+          ],
+          [
+            "Where do the proposals take place?",
+            "Our standard and recommended option is the Sertuin Events private beach in Uvero Alto. We can also work at a villa, resort, yacht or another approved location when the client obtains access and the venue permits the setup; external venue charges are quoted separately.",
+          ],
+          [
+            "Is transportation included from every area of Punta Cana?",
+            "Yes. The published price includes private round-trip transportation for the couple from any hotel or accommodation throughout Punta Cana. Each additional companion costs US$20 for transportation, with a maximum of eight companions in the van.",
+          ],
+          [
+            "How many photographs will we receive and when are they delivered?",
+            "You will receive more than 70 professionally edited, high-resolution photographs within 48 hours after the experience through a permanent Google Drive link.",
+          ],
+          [
+            "Is the proposal moment recorded?",
+            "Yes. We record the actual proposal on a phone at no additional cost, even when professional videography is not added.",
+          ],
+          [
+            "Can we choose the music and personalize the setup?",
+            "Yes. We coordinate your preferred song and requested personalization before the experience. The setup included is based on the package selected, and custom flowers or other optional enhancements can also be requested.",
+          ],
+          [
+            "Can I add professional video, drone coverage or other services?",
+            "Yes. Depending on availability, you can add professional video with drone coverage for US$399, a violinist for US$399, a saxophonist for US$399, a private dinner for two for US$299 and custom flowers. Cold sparks cost US$150 per pair. A service already included in the selected package is not offered again as an add-on.",
+          ],
+        ];
 
   return faqItems.map(([title, content]) => ({
     title,
@@ -382,7 +542,8 @@ export const buildProposalFaqs = ({ language, packages = [] }) => {
   }));
 };
 
-const getCopy = (language) => copy[language === "es" ? "es" : "en-US"];
+const getCopy = (language) =>
+  copy[language === "es" ? "es" : language === "pt" ? "pt" : "en-US"];
 
 const Eyebrow = ({ children }) => (
   <p className="font-crimson uppercase tracking-[0.22em] text-xs md:text-sm text-gray-500">
@@ -519,7 +680,7 @@ export const ProposalMomentsHeading = ({ language }) => {
 
 export const ProposalBookingProcess = ({ language }) => {
   const content = getCopy(language);
-  const contactPath = language === "es" ? "/es/contact/" : "/contact/";
+  const contactPath = localizedPath("/contact/", language);
 
   return (
     <section

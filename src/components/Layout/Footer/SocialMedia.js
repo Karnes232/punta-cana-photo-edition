@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-const SocialMedia = ({ generalInfo }) => {
+const SocialMedia = ({ generalInfo, language }) => {
   return (
     <div className="flex flex-row space-x-5 md:space-x-7 py-4 text-slate-400">
       {generalInfo.facebook && (
@@ -40,7 +40,13 @@ const SocialMedia = ({ generalInfo }) => {
         <a
           href={`tel:${generalInfo.telephone}`}
           target="_blank"
-          aria-label="Call us"
+          aria-label={
+            language === "pt"
+              ? "Ligar para nós"
+              : language === "es"
+                ? "Llámanos"
+                : "Call us"
+          }
           rel="noreferrer"
         >
           <FaPhone className="text-xl md:text-3xl" />

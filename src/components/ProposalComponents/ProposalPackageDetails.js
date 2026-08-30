@@ -206,6 +206,101 @@ const copy = {
       "El acceso sobre arena no se recomienda para movilidad reducida, aunque el equipo brindará asistencia durante toda la experiencia. Se puede permanecer en la orilla; no se recomienda bañarse durante el evento.",
     ],
   },
+  pt: {
+    breadcrumbLabel: "Navegação do pacote",
+    breadcrumbHome: "Início",
+    breadcrumbProposals: "Pacotes de pedido de casamento",
+    eyebrow: "Exatamente o que você está reservando",
+    basePrice: "Preço base",
+    priceNote:
+      "Depósito de US$ 200 e saldo restante em dinheiro depois da experiência",
+    quickTitle: "Itens essenciais incluídos",
+    setupDetailsLabel: "Ver montagem e inclusões específicas",
+    completeInfoLabel: "Ver logística, pagamentos e políticas",
+    specialTitle: "Incluído especialmente neste pacote",
+    setupTitle: "A montagem",
+    setupIntro:
+      "O design fotografado e cada item abaixo fazem parte do pacote padrão. Pequenas variações de posição podem ocorrer sem reduzir o volume visual prometido.",
+    commonTitle: "Incluído no preço publicado",
+    commonIntro:
+      "Estes serviços estão incluídos em todos os pacotes de pedido na praia, salvo indicação expressa.",
+    exclusionsTitle: "Não incluído no pacote base",
+    charcuterieTitle: "Tábua de frios para dois incluída",
+    charcuterieText:
+      "Uma tábua compartilhada com embutidos, queijos e frutas sazonais, castanhas e azeitonas. Os ingredientes podem variar mantendo quantidade equivalente. Adaptações vegetarianas, para alergias ou restrições alimentares são gratuitas quando solicitadas com antecedência. Inclui palitos e guardanapos; não inclui pratos nem talheres.",
+    charcuterieShort: "Tábua sazonal de frios para duas pessoas.",
+    dinnerTitle: "Jantar privativo de três tempos para dois incluído",
+    dinnerText:
+      "Cada pessoa escolhe uma entrada, um prato principal e uma sobremesa. Inclui água, uma garrafa de espumante de 750 ml e outra de vinho tinto ou branco. Um chef prepara o jantar na propriedade e um garçom exclusivo serve depois do pedido e das primeiras fotos. O menu pode ser alterado até 48 horas antes.",
+    dinnerShort:
+      "Jantar privativo de três tempos com serviço completo para dois.",
+    violinTitle: "Violino ao vivo incluído",
+    violinText:
+      "Uma apresentação amplificada de 45 minutos acompanha chegada, revelação e pedido. Músicas especiais devem ser solicitadas com duas semanas de antecedência.",
+    violinShort: "Apresentação amplificada de violino ao vivo por 45 minutos.",
+    importantTitle: "Condições importantes da reserva",
+    importantIntro:
+      "Regras claras de operação e pagamento protegem tempo, privacidade e qualidade.",
+    bookLabel: "Escolher adicionais e solicitar a data",
+    common: [
+      [
+        CarFront,
+        "Transporte privativo para o casal",
+        "Transporte de ida e volta para duas pessoas desde hotel, Airbnb ou villa em Cap Cana, Punta Cana Resort, El Cortecito, Bávaro, Verón, Macao ou Uvero Alto. Miches recebe cotação separada.",
+      ],
+      [
+        Clock3,
+        "De 90 a 120 minutos na praia",
+        "A experiência dura no máximo duas horas na praia; o transporte não é descontado desse período.",
+      ],
+      [
+        MapPin,
+        "Praia privativa de baixo movimento",
+        "A montagem é reservada para o casal em nossa praia de Uvero Alto, perto do Excellence Punta Cana. Há banheiro próximo com água, pia, vaso sanitário e espelho.",
+      ],
+      [
+        Camera,
+        "Mais de 70 fotografias profissionais",
+        "Arquivos JPG em alta resolução são entregues em até 48 horas por um link permanente do Google Drive. Arquivos RAW são gratuitos mediante solicitação.",
+      ],
+      [
+        Smartphone,
+        "Vídeo vertical imediato pelo celular",
+        "Uma gravação vertical de 3 a 5 minutos da revelação, aliança e celebração está incluída, salvo solicitação contrária.",
+      ],
+      [
+        Flower2,
+        "Buquê natural sazonal",
+        "O buquê usa flores naturais disponíveis na data. Um buquê com flores específicas ou design de referência recebe cotação separada.",
+      ],
+      [
+        GlassWater,
+        "Vinho espumante e serviço",
+        "Inclui uma garrafa gelada de 750 ml, duas taças e serviço. Há substituto sem álcool sob solicitação.",
+      ],
+      [
+        Music2,
+        "Sua música preferida",
+        "A música ou playlist pode tocar durante toda a experiência. Envie com o contrato ou um a dois dias antes.",
+      ],
+      [
+        UsersRound,
+        "Equipe dedicada no local",
+        "Uma coordenadora orienta a história de cobertura, chegada vendada, posição e revelação enquanto a equipe monitora os detalhes.",
+      ],
+    ],
+    conditions: [
+      "O depósito de US$ 200 e o contrato assinado reservam a data. O valor é integralmente descontado do pacote e não tem imposto ou taxa eletrônica.",
+      "O saldo é pago depois da experiência, antes do retorno. O preço publicado considera pagamento em dinheiro em USD, DOP ou GBP.",
+      "Pagamento eletrônico do saldo acrescenta 18% de ITBIS e 10% de processamento, calculados apenas sobre o saldo.",
+      "O casal deve estar pronto 10 minutos antes. Cada minuto de atraso do cliente é descontado do tempo na praia; o motorista espera no máximo 30 minutos.",
+      "A van comporta 10 pessoas. O casal está incluído e cada passageiro adicional paga US$ 20 somente pelo transporte, até oito acompanhantes.",
+      "Monitoramos o clima antes da montagem. O Plano B coberto preserva decoração e serviços; outra data também pode ser organizada. Se a empresa cancelar, todo valor pago é devolvido em até uma semana.",
+      "O depósito não é reembolsável se o cliente cancelar. Uma mudança de data o preserva quando houver disponibilidade; recomendamos duas semanas de antecedência.",
+      "A área da montagem é reservada ao casal, mas os primeiros 60 metros de litoral são públicos pela lei dominicana. A praia costuma ser tranquila e a equipe protege a privacidade.",
+      "O acesso pela areia não é recomendado para mobilidade reduzida, embora a equipe ofereça assistência. Permanecer à beira-mar é permitido; nadar durante o evento não é recomendado.",
+    ],
+  },
 };
 
 const DetailIcon = ({ icon: Icon }) => (
@@ -218,9 +313,14 @@ const DetailIcon = ({ icon: Icon }) => (
 
 const ProposalPackageDetails = ({ details, language }) => {
   const isSpanish = language === "es";
-  const content = copy[isSpanish ? "es" : "en"];
-  const homePath = isSpanish ? "/es/" : "/";
-  const proposalPath = isSpanish ? "/es/proposal/" : "/proposal/";
+  const isPortuguese = language === "pt";
+  const content = copy[isPortuguese ? "pt" : isSpanish ? "es" : "en"];
+  const homePath = isPortuguese ? "/pt/" : isSpanish ? "/es/" : "/";
+  const proposalPath = isPortuguese
+    ? "/pt/proposal/"
+    : isSpanish
+      ? "/es/proposal/"
+      : "/proposal/";
 
   if (!details) return null;
 

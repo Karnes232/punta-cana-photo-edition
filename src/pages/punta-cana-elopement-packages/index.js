@@ -4,13 +4,19 @@ import { graphql } from "gatsby";
 import ElopementExperience from "../../components/ElopementComponents/ElopementExperience";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
+import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import { buildElopementSchema } from "../../utils/elopementSeo";
+import {
+  getLanguageConfig,
+  localizedUrl,
+  normalizeLanguage,
+} from "../../utils/siteLocales";
 
 const heroImage =
   "/images/elopement-gallery/beach-elopement-couple-pampas-arch-1600.webp";
 
 const Index = ({ data, pageContext }) => {
-  const language = pageContext.language === "es" ? "es" : "en-US";
+  const language = normalizeLanguage(pageContext.language);
 
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
@@ -23,22 +29,28 @@ export default Index;
 
 export const Head = ({ data, pageContext }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
-  const language = pageContext.language === "es" ? "es" : "en-US";
-  const languagePrefix = language === "es" ? "/es" : "";
-  const pageUrl = `${rootUrl}${languagePrefix}/punta-cana-elopement-packages/`;
-  const englishUrl = `${rootUrl}/punta-cana-elopement-packages/`;
-  const spanishUrl = `${rootUrl}/es/punta-cana-elopement-packages/`;
-  const title =
-    language === "es"
+  const language = normalizeLanguage(pageContext.language);
+  const isPortuguese = language === "pt";
+  const languageConfig = getLanguageConfig(language);
+  const pageUrl = localizedUrl(
+    rootUrl,
+    "/punta-cana-elopement-packages/",
+    language,
+  );
+  const title = isPortuguese
+    ? "Elopement em Punta Cana | Pacotes a Partir de US$ 999"
+    : language === "es"
       ? "Boda Íntima en Punta Cana | Paquetes Desde US$999"
       : "Punta Cana Elopement Packages | Sertuin Events";
-  const description =
-    language === "es"
+  const description = isPortuguese
+    ? "Pacotes de elopement em Punta Cana a partir de US$ 999: praia ou catamarã privativo, transporte, fotos da cerimônia e decoração à escolha."
+    : language === "es"
       ? "Paquetes para una boda íntima en Punta Cana desde US$999: playa o catamarán privado, transporte, fotografías de la ceremonia y decoración a elegir."
       : "Punta Cana elopement packages from US$999. Private beach or catamaran, transportation for up to 10 people, ceremony photo coverage and selectable décor.";
   const absoluteImage = `${rootUrl}${heroImage}`;
-  const imageAlt =
-    language === "es"
+  const imageAlt = isPortuguese
+    ? "Decoração tropical para elopement em uma praia de Punta Cana"
+    : language === "es"
       ? "Decoración tropical para una boda íntima en una playa de Punta Cana"
       : "Tropical décor for a Punta Cana beach elopement wedding";
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
@@ -61,17 +73,18 @@ export const Head = ({ data, pageContext }) => {
         imageAlt={imageAlt}
         url={pageUrl}
         schemaMarkup={schemaMarkup}
-        language={language === "es" ? "es" : "en"}
+        language={languageConfig.htmlLang}
         robots="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
         twitterCard="summary_large_image"
         siteName="Sertuin Events"
-        locale={language === "es" ? "es_DO" : "en_US"}
+        locale={languageConfig.ogLocale}
         alternateLocale={language === "es" ? "en_US" : "es_DO"}
       />
       <link rel="canonical" href={pageUrl} />
-      <link rel="alternate" hrefLang="en" href={englishUrl} />
-      <link rel="alternate" hrefLang="es" href={spanishUrl} />
-      <link rel="alternate" hrefLang="x-default" href={englishUrl} />
+      <LocalizedAlternates
+        rootUrl={rootUrl}
+        path="/punta-cana-elopement-packages/"
+      />
     </>
   );
 };

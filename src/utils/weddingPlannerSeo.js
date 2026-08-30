@@ -8,6 +8,7 @@ export const buildWeddingPlannerSchema = ({
   faqs,
 }) => {
   const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
   const organizationId = "https://sertuinevents.com/#organization";
   const serviceId = `${pageUrl}#service`;
   const normalizedPackages = (packages || []).filter(
@@ -36,7 +37,7 @@ export const buildWeddingPlannerSchema = ({
           contactType: "customer service",
           telephone: "+18295222900",
           email: "info@sertuinevents.com",
-          availableLanguage: ["English", "Spanish"],
+          availableLanguage: ["English", "Spanish", "Portuguese"],
           hoursAvailable: [
             {
               "@type": "OpeningHoursSpecification",
@@ -59,48 +60,69 @@ export const buildWeddingPlannerSchema = ({
         "@type": "Person",
         "@id": `${pageUrl}#grecia-mejia`,
         name: "Grecia Mejía",
-        jobTitle: isSpanish
-          ? "Planificadora de bodas principal"
-          : "Lead Wedding Planner",
+        jobTitle: isPortuguese
+          ? "Wedding planner principal"
+          : isSpanish
+            ? "Planificadora de bodas principal"
+            : "Lead Wedding Planner",
         worksFor: { "@id": organizationId },
-        description: isSpanish
-          ? "Planificadora de bodas en Punta Cana con 10 años de experiencia en bodas de destino, multiculturales y del sur de Asia."
-          : "Punta Cana wedding planner with 10 years of experience in destination, multicultural and South Asian weddings.",
-        knowsAbout: isSpanish
+        description: isPortuguese
+          ? "Wedding planner em Punta Cana com 10 anos de experiência em casamentos de destino, multiculturais e sul-asiáticos."
+          : isSpanish
+            ? "Planificadora de bodas en Punta Cana con 10 años de experiencia en bodas de destino, multiculturales y del sur de Asia."
+            : "Punta Cana wedding planner with 10 years of experience in destination, multicultural and South Asian weddings.",
+        knowsAbout: isPortuguese
           ? [
-              "Planificación de bodas de destino",
-              "Bodas del sur de Asia",
-              "Bodas multiculturales",
-              "Locaciones para bodas en Punta Cana",
-              "Coordinación de proveedores para bodas",
+              "Planejamento de casamentos de destino",
+              "Casamentos sul-asiáticos",
+              "Casamentos multiculturais",
+              "Venues para casamento em Punta Cana",
+              "Coordenação de fornecedores para casamento",
             ]
-          : [
-              "Destination wedding planning",
-              "South Asian weddings",
-              "Multicultural weddings",
-              "Punta Cana wedding venues",
-              "Wedding vendor coordination",
-            ],
+          : isSpanish
+            ? [
+                "Planificación de bodas de destino",
+                "Bodas del sur de Asia",
+                "Bodas multiculturales",
+                "Locaciones para bodas en Punta Cana",
+                "Coordinación de proveedores para bodas",
+              ]
+            : [
+                "Destination wedding planning",
+                "South Asian weddings",
+                "Multicultural weddings",
+                "Punta Cana wedding venues",
+                "Wedding vendor coordination",
+              ],
       },
       {
         "@type": "Service",
         "@id": serviceId,
-        name: isSpanish
-          ? "Planificación de bodas en Punta Cana"
-          : "Punta Cana Wedding Planning",
-        serviceType: isSpanish
+        name: isPortuguese
+          ? "Planejamento de casamentos em Punta Cana"
+          : isSpanish
+            ? "Planificación de bodas en Punta Cana"
+            : "Punta Cana Wedding Planning",
+        serviceType: isPortuguese
           ? [
-              "Planificación de bodas de destino",
-              "Planificación de bodas del sur de Asia",
-              "Planificación de bodas multiculturales",
-              "Coordinación del día de la boda",
+              "Planejamento de casamento de destino",
+              "Planejamento de casamento sul-asiático",
+              "Planejamento de casamento multicultural",
+              "Coordenação do dia do casamento",
             ]
-          : [
-              "Destination wedding planning",
-              "South Asian wedding planning",
-              "Multicultural wedding planning",
-              "Wedding day coordination",
-            ],
+          : isSpanish
+            ? [
+                "Planificación de bodas de destino",
+                "Planificación de bodas del sur de Asia",
+                "Planificación de bodas multiculturales",
+                "Coordinación del día de la boda",
+              ]
+            : [
+                "Destination wedding planning",
+                "South Asian wedding planning",
+                "Multicultural wedding planning",
+                "Wedding day coordination",
+              ],
         url: pageUrl,
         description,
         image,
@@ -112,9 +134,11 @@ export const buildWeddingPlannerSchema = ({
         provider: { "@id": organizationId },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: isSpanish
-            ? "Paquetes de planificación de bodas"
-            : "Wedding planning packages",
+          name: isPortuguese
+            ? "Pacotes de planejamento de casamento"
+            : isSpanish
+              ? "Paquetes de planificación de bodas"
+              : "Wedding planning packages",
           itemListElement: normalizedPackages.map((item) => ({
             "@type": "Offer",
             name: item.title,
@@ -135,7 +159,7 @@ export const buildWeddingPlannerSchema = ({
         url: pageUrl,
         name: title,
         description,
-        inLanguage: isSpanish ? "es-DO" : "en-US",
+        inLanguage: isSpanish ? "es-DO" : isPortuguese ? "pt-BR" : "en-US",
         about: { "@id": serviceId },
         primaryImageOfPage: image
           ? { "@type": "ImageObject", url: image }
@@ -156,17 +180,21 @@ export const buildWeddingPlannerSchema = ({
           {
             "@type": "ListItem",
             position: 1,
-            name: isSpanish ? "Inicio" : "Home",
-            item: isSpanish
-              ? "https://sertuinevents.com/es/"
-              : "https://sertuinevents.com/",
+            name: isPortuguese ? "Início" : isSpanish ? "Inicio" : "Home",
+            item: isPortuguese
+              ? "https://sertuinevents.com/pt/"
+              : isSpanish
+                ? "https://sertuinevents.com/es/"
+                : "https://sertuinevents.com/",
           },
           {
             "@type": "ListItem",
             position: 2,
-            name: isSpanish
-              ? "Planificación de Bodas en Punta Cana"
-              : "Punta Cana Wedding Planner",
+            name: isPortuguese
+              ? "Wedding Planner em Punta Cana"
+              : isSpanish
+                ? "Planificación de Bodas en Punta Cana"
+                : "Punta Cana Wedding Planner",
             item: pageUrl,
           },
         ],

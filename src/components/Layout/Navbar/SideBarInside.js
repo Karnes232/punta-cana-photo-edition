@@ -3,23 +3,28 @@ import React from "react";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import RomanticEvents from "./RomanticEvents";
 import { Trans, useI18next } from "gatsby-plugin-react-i18next";
+import { localizedPath } from "../../../utils/siteLocales";
 const SideBarInside = ({ footer, setToggled }) => {
   const { language } = useI18next();
-  const localize = (path) => `${language === "es" ? "/es" : ""}${path}`;
+  const localize = (path) => localizedPath(path, language);
   return (
     <>
       <Menu className="ml-0 h-full flex flex-col justify-center items-center overflow-hidden">
         <MenuItem
           component={
             <Link
-              to={language === "es" ? "/es/" : "/"}
+              to={localizedPath("/", language)}
               className={footer ? "hamburgerSmall" : "hamburger"}
               onClick={footer ? undefined : () => setToggled(false)}
             />
           }
         >
           <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            {language === "es" ? "Inicio" : "Home"}
+            {language === "pt"
+              ? "Início"
+              : language === "es"
+                ? "Inicio"
+                : "Home"}
           </p>
         </MenuItem>
         <RomanticEvents footer={footer} setToggled={setToggled} />

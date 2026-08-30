@@ -29,6 +29,11 @@ import garden from "../../images/elopement/garden.webp";
 import garden2 from "../../images/elopement/garden2.webp";
 import huppa from "../../images/elopement/huppa.webp";
 import huppa2 from "../../images/elopement/huppa2.webp";
+import {
+  portugueseElopementContent,
+  portugueseElopementFaqs,
+} from "../../content/portugueseCoreContent";
+import { localizedPath } from "../../utils/siteLocales";
 import pampas from "../../images/elopement/pampas.webp";
 import pampas2 from "../../images/elopement/pampas2.webp";
 import red from "../../images/elopement/red.webp";
@@ -634,9 +639,14 @@ const localizeSpanishElopementTerms = (value) => {
 };
 
 export const getElopementCopy = (language = "en-US") =>
-  language === "es" ? localizeSpanishElopementTerms(COPY.es) : COPY["en-US"];
+  language === "es"
+    ? localizeSpanishElopementTerms(COPY.es)
+    : language === "pt"
+      ? portugueseElopementContent
+      : COPY["en-US"];
 
 export const buildElopementFaqs = (language = "en-US") => {
+  if (language === "pt") return portugueseElopementFaqs;
   const es = language === "es";
 
   const questions = es
@@ -820,7 +830,7 @@ const DecorCard = ({
   active,
   disabled,
   onSelect,
-  isSpanish,
+  language,
 }) => {
   const [photo, setPhoto] = useState(0);
   const name = copy.decorNames[decoration.id];
@@ -845,9 +855,11 @@ const DecorCard = ({
         <img
           src={decoration.images[photo]}
           alt={
-            isSpanish
-              ? `${name} para una boda íntima en Punta Cana por Sertuin Events`
-              : `${name} Punta Cana elopement décor by Sertuin Events`
+            language === "pt"
+              ? `${name}, decoração para elopement em Punta Cana pela Sertuin Events`
+              : language === "es"
+                ? `${name} para una boda íntima en Punta Cana por Sertuin Events`
+                : `${name} Punta Cana elopement décor by Sertuin Events`
           }
           loading="lazy"
           width="1600"
@@ -858,7 +870,11 @@ const DecorCard = ({
           <button
             type="button"
             onClick={() => changePhoto(-1)}
-            aria-label={`Previous ${name} photo`}
+            aria-label={
+              language === "pt"
+                ? `Foto anterior de ${name}`
+                : `Previous ${name} photo`
+            }
             className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
           >
             <ChevronLeft size={18} />
@@ -869,7 +885,11 @@ const DecorCard = ({
           <button
             type="button"
             onClick={() => changePhoto(1)}
-            aria-label={`Next ${name} photo`}
+            aria-label={
+              language === "pt"
+                ? `Próxima foto de ${name}`
+                : `Next ${name} photo`
+            }
             className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
           >
             <ChevronRight size={18} />
@@ -1089,7 +1109,7 @@ const ElopementForm = ({
     <form
       name="elopement-request"
       method="POST"
-      action="/contact/thankyou/"
+      action={localizedPath("/contact/thankyou/", language)}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
@@ -1302,9 +1322,11 @@ const ElopementExperience = ({ language = "en-US" }) => {
           srcSet={`${gallerySource("beach-elopement-couple-pampas-arch", 480)} 480w, ${gallerySource("beach-elopement-couple-pampas-arch", 960)} 960w, ${gallerySource("beach-elopement-couple-pampas-arch", 1600)} 1600w, ${gallerySource("beach-elopement-couple-pampas-arch", 2400)} 2400w`}
           sizes="100vw"
           alt={
-            language === "es"
-              ? localizeSpanishElopementTerms(ELOPEMENT_GALLERY[0].es)
-              : ELOPEMENT_GALLERY[0].en
+            language === "pt"
+              ? "Casal recém-casado sob um arco floral com pampas em uma praia de Punta Cana"
+              : language === "es"
+                ? localizeSpanishElopementTerms(ELOPEMENT_GALLERY[0].es)
+                : ELOPEMENT_GALLERY[0].en
           }
           loading="eager"
           fetchPriority="high"
@@ -1406,7 +1428,7 @@ const ElopementExperience = ({ language = "en-US" }) => {
                 active={decorationId === item.id}
                 disabled={experienceId === "catamaran" && !item.catamaran}
                 onSelect={() => setDecorationId(item.id)}
-                isSpanish={language === "es"}
+                language={language}
               />
             ))}
           </div>
@@ -1592,9 +1614,11 @@ const ElopementExperience = ({ language = "en-US" }) => {
                 srcSet={`${gallerySource(image.slug, 480)} 480w, ${gallerySource(image.slug, 960)} 960w, ${gallerySource(image.slug, 1600)} 1600w`}
                 sizes="(min-width: 1024px) 280px, (min-width: 768px) 33vw, 50vw"
                 alt={
-                  language === "es"
-                    ? localizeSpanishElopementTerms(image.es)
-                    : image.en
+                  language === "pt"
+                    ? `${copy.heroTitle} — ${copy.decorNames[decorationId] || "cerimônia na praia"}`
+                    : language === "es"
+                      ? localizeSpanishElopementTerms(image.es)
+                      : image.en
                 }
                 loading="lazy"
                 decoding="async"

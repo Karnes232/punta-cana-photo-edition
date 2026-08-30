@@ -2,10 +2,18 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import BlogBody from "../components/BlogComponents/BlogBody";
+import PortugueseBlogBody from "../components/BlogComponents/PortugueseBlogBody";
 import BlogGallery from "../components/BlogComponents/BlogGallery";
 import LazySocialEmbeds from "../components/BlogComponents/LazySocialEmbeds";
 import Seo from "../components/Layout/seo";
-import { localizeSpanishProposalUrl } from "../utils/localizedLinks";
+import LocalizedAlternates from "../components/Layout/LocalizedAlternates";
+import { localizeProposalUrl } from "../utils/localizedLinks";
+import { getPortugueseBlogContent } from "../data/portugueseBlogContent";
+import {
+  getLanguageConfig,
+  localizedUrl,
+  normalizeLanguage,
+} from "../utils/siteLocales";
 
 const safeUrl = (value) => {
   if (typeof value !== "string") return "";
@@ -24,10 +32,7 @@ const normalizePost = (post) => ({
 });
 
 const BlogCta = ({ post, language }) => {
-  const url = localizeSpanishProposalUrl(
-    safeUrl(post.primaryCtaButtonUrl),
-    language,
-  );
+  const url = localizeProposalUrl(safeUrl(post.primaryCtaButtonUrl), language);
   if (
     !post.primaryCtaTitle &&
     !post.primaryCtaText &&
@@ -57,7 +62,7 @@ const BlogHelp = ({ post, language }) => {
     ? String(post.helpEmailAddress || "").trim()
     : "";
   const customUrl = post.helpCustomLinkEnabled
-    ? localizeSpanishProposalUrl(safeUrl(post.helpCustomLinkUrl), language)
+    ? localizeProposalUrl(safeUrl(post.helpCustomLinkUrl), language)
     : "";
   const hasLinks =
     whatsappUrl || email || (customUrl && post.helpCustomLinkText);
@@ -84,8 +89,15 @@ const BlogHelp = ({ post, language }) => {
 const Blog = ({ pageContext, data }) => {
   const rawPost = data?.allContentfulBlogPost?.nodes?.[0];
   if (!rawPost) return null;
-  const post = normalizePost(rawPost);
-  const language = pageContext.language === "es" ? "es" : "en-US";
+  const language = normalizeLanguage(pageContext.language);
+  const portuguese =
+    language === "pt" ? getPortugueseBlogContent(rawPost.slug) : null;
+  const post = normalizePost(
+    portuguese ? { ...rawPost, ...portuguese } : rawPost,
+  );
+  if (portuguese && post.helpCustomLinkEnabled) {
+    post.helpCustomLinkText = "Saiba mais";
+  }
 
   return (
     <Layout generalInfo={pageContext.layout}>
@@ -98,8 +110,16 @@ const Blog = ({ pageContext, data }) => {
             )}
           </header>
           <BlogCta post={post} language={language} />
-          <BlogGallery images={post.galleryImages || []} />
-          <BlogBody context={post.articleContent} language={language} />
+          <BlogGallery
+            images={post.galleryImages || []}
+            language={language}
+            articleTitle={post.title}
+          />
+          {portuguese ? (
+            <PortugueseBlogBody article={portuguese} />
+          ) : (
+            <BlogBody context={post.articleContent} language={language} />
+          )}
           <LazySocialEmbeds
             embeds={post.socialEmbeds}
             language={pageContext.language}
@@ -116,16 +136,22 @@ export default Blog;
 export const Head = ({ pageContext, data }) => {
   const rawPost = data?.allContentfulBlogPost?.nodes?.[0];
   if (!rawPost) return null;
-  const post = normalizePost(rawPost);
-
-  const language = pageContext.language === "en-US" ? "en" : "es";
+  const language = normalizeLanguage(pageContext.language);
+  const languageConfig = getLanguageConfig(language);
+  const portuguese =
+    language === "pt" ? getPortugueseBlogContent(rawPost.slug) : null;
+  const post = normalizePost(
+    portuguese ? { ...rawPost, ...portuguese } : rawPost,
+  );
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
-  const englishUrl = `${rootUrl}/blog/${post.slug.trim()}/`;
-  const spanishUrl = `${rootUrl}/es/blog/${post.slug.trim()}/`;
-  const siteUrl = language === "en" ? englishUrl : spanishUrl;
+  const articlePath = `/blog/${post.slug.trim()}/`;
+  const siteUrl = localizedUrl(rootUrl, articlePath, language);
   const socialImage = post.galleryImages?.[0]?.image;
   const imageUrl = socialImage?.url;
-  const imageAlt = post.galleryImages?.[0]?.altText || "";
+  const imageAlt =
+    language === "pt"
+      ? `${post.title} em Punta Cana`
+      : post.galleryImages?.[0]?.altText || "";
 
   let customSchema;
   try {
@@ -136,23 +162,26 @@ export const Head = ({ pageContext, data }) => {
     customSchema = null;
   }
 
-  const schemaMarkup = customSchema || {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description || post.directAnswer,
-    mainEntityOfPage: siteUrl,
-    inLanguage: language,
-    ...(imageUrl ? { image: imageUrl } : {}),
-    ...(post.publishedDate ? { datePublished: post.publishedDate } : {}),
-    ...(post.updatedAt ? { dateModified: post.updatedAt } : {}),
-    author: { "@type": "Organization", name: "SERTUIN SRL" },
-    publisher: {
-      "@type": "Organization",
-      name: "SERTUIN SRL",
-      url: data.site.siteMetadata.siteUrl,
-    },
-  };
+  const schemaMarkup =
+    language === "pt" || !customSchema
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.description || post.directAnswer,
+          mainEntityOfPage: siteUrl,
+          inLanguage: languageConfig.htmlLang,
+          ...(imageUrl ? { image: imageUrl } : {}),
+          ...(post.publishedDate ? { datePublished: post.publishedDate } : {}),
+          ...(post.updatedAt ? { dateModified: post.updatedAt } : {}),
+          author: { "@type": "Organization", name: "SERTUIN SRL" },
+          publisher: {
+            "@type": "Organization",
+            name: "SERTUIN SRL",
+            url: data.site.siteMetadata.siteUrl,
+          },
+        }
+      : customSchema;
 
   return (
     <>
@@ -163,21 +192,23 @@ export const Head = ({ pageContext, data }) => {
         imageAlt={imageAlt}
         url={siteUrl}
         schemaMarkup={schemaMarkup}
-        language={language}
+        language={languageConfig.htmlLang}
         siteName="Sertuin Events"
-        locale={language === "en" ? "en_US" : "es_DO"}
+        locale={languageConfig.ogLocale}
         twitterCard={imageUrl ? "summary_large_image" : "summary"}
       />
       <link rel="canonical" href={siteUrl} />
-      <link rel="alternate" hrefLang="en" href={englishUrl} />
-      <link rel="alternate" hrefLang="es" href={spanishUrl} />
-      <link rel="alternate" hrefLang="x-default" href={englishUrl} />
+      <LocalizedAlternates rootUrl={rootUrl} path={articlePath} />
     </>
   );
 };
 
 export const query = graphql`
-  query UniversalBlogPost($id: String, $language: String!) {
+  query UniversalBlogPost(
+    $id: String
+    $language: String!
+    $contentLanguage: String!
+  ) {
     locales: allLocale {
       edges {
         node {
@@ -193,7 +224,7 @@ export const query = graphql`
       }
     }
     allContentfulBlogPost(
-      filter: { id: { eq: $id }, node_locale: { eq: $language } }
+      filter: { id: { eq: $id }, node_locale: { eq: $contentLanguage } }
     ) {
       nodes {
         id

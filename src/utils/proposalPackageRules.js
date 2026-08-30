@@ -13,6 +13,7 @@ const ADD_ON_TYPES = [
     price: 399,
     en: "Professional video with drone",
     es: "Video profesional con dron",
+    pt: "Vídeo profissional com drone",
     patterns: [
       /videograph/,
       /videograf/,
@@ -30,6 +31,7 @@ const ADD_ON_TYPES = [
     price: 399,
     en: "Live violinist",
     es: "Violinista en vivo",
+    pt: "Violinista ao vivo",
     patterns: [/violin/],
   },
   {
@@ -37,6 +39,7 @@ const ADD_ON_TYPES = [
     price: 399,
     en: "Live saxophonist",
     es: "Saxofonista en vivo",
+    pt: "Saxofonista ao vivo",
     patterns: [/sax/],
   },
   {
@@ -44,6 +47,7 @@ const ADD_ON_TYPES = [
     price: 299,
     en: "Romantic dinner for two",
     es: "Cena romántica para dos",
+    pt: "Jantar romântico para dois",
     patterns: [/dinner/, /cena/],
   },
   {
@@ -51,6 +55,7 @@ const ADD_ON_TYPES = [
     price: 150,
     en: "Two cold-spark machines",
     es: "Dos máquinas de chispas frías",
+    pt: "Duas máquinas de faíscas frias",
     patterns: [/cold.?spark/, /chispa.*fria/],
   },
 ];
@@ -130,6 +135,7 @@ export const getProposalAdditions = (packageInformation, language) => {
   if (!isProposalPackage(packageInformation)) return source;
 
   const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
   const included = includedCategories(packageInformation);
   const details = getProposalPackageDetails(packageInformation, language);
   const unavailable = new Set(included);
@@ -151,7 +157,13 @@ export const getProposalAdditions = (packageInformation, language) => {
     reconciled.push({
       ...addition,
       id: addition.id || `proposal-addon-${type?.key || index}`,
-      addition: type ? (isSpanish ? type.es : type.en) : addition.addition,
+      addition: type
+        ? isPortuguese
+          ? type.pt
+          : isSpanish
+            ? type.es
+            : type.en
+        : addition.addition,
       price: type ? type.price : addition.price,
     });
   });
@@ -160,7 +172,7 @@ export const getProposalAdditions = (packageInformation, language) => {
     if (seen.has(type.key) || unavailable.has(type.key)) return;
     reconciled.push({
       id: `proposal-addon-${type.key}`,
-      addition: isSpanish ? type.es : type.en,
+      addition: isPortuguese ? type.pt : isSpanish ? type.es : type.en,
       price: type.price,
     });
   });

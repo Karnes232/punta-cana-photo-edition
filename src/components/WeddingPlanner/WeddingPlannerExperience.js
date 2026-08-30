@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import {
   getWeddingPlannerContent,
+  localizePortugueseWeddingPackage,
   normalizeWeddingFaqs,
 } from "../../content/weddingPlannerContent";
 
@@ -164,39 +165,54 @@ const PackageCard = ({ item, copy, onSelect, icon: Icon }) => {
 
 const InquiryForm = ({
   copy,
-  isSpanish,
+  language,
   packages,
   selectedPackage,
   onPackageChange,
 }) => {
+  const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
   const [phone, setPhone] = useState("");
   const inputClass =
     "mt-2 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 font-montserrat text-base text-slate-950 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-100";
-  const labels = isSpanish
+  const labels = isPortuguese
     ? {
-        package: "Paquete de interés",
-        name: "Nombre y apellido",
-        email: "Correo electrónico",
-        phone: "Teléfono / WhatsApp",
-        country: "País de residencia",
-        date: "Fecha o mes aproximado",
-        guests: "Cantidad estimada de invitados",
-        venue: "Venue o resort, si ya lo saben",
-        details: "Cuéntennos sobre su boda, cultura y prioridades",
-        choose: "Seleccione un paquete",
+        package: "Pacote de interesse",
+        name: "Nome completo",
+        email: "E-mail",
+        phone: "Telefone / WhatsApp",
+        country: "País de residência",
+        date: "Data ou mês aproximado",
+        guests: "Número estimado de convidados",
+        venue: "Venue ou resort, se já souberem",
+        details: "Conte-nos sobre o casamento, a cultura e as prioridades",
+        choose: "Selecione um pacote",
       }
-    : {
-        package: "Package of interest",
-        name: "Full name",
-        email: "Email address",
-        phone: "Phone / WhatsApp",
-        country: "Country of residence",
-        date: "Date or approximate month",
-        guests: "Estimated guest count",
-        venue: "Venue or resort, if known",
-        details: "Tell us about your wedding, culture and priorities",
-        choose: "Select a package",
-      };
+    : isSpanish
+      ? {
+          package: "Paquete de interés",
+          name: "Nombre y apellido",
+          email: "Correo electrónico",
+          phone: "Teléfono / WhatsApp",
+          country: "País de residencia",
+          date: "Fecha o mes aproximado",
+          guests: "Cantidad estimada de invitados",
+          venue: "Venue o resort, si ya lo saben",
+          details: "Cuéntennos sobre su boda, cultura y prioridades",
+          choose: "Seleccione un paquete",
+        }
+      : {
+          package: "Package of interest",
+          name: "Full name",
+          email: "Email address",
+          phone: "Phone / WhatsApp",
+          country: "Country of residence",
+          date: "Date or approximate month",
+          guests: "Estimated guest count",
+          venue: "Venue or resort, if known",
+          details: "Tell us about your wedding, culture and priorities",
+          choose: "Select a package",
+        };
 
   return (
     <form
@@ -204,7 +220,13 @@ const InquiryForm = ({
       name="wedding-planner"
       method="POST"
       onSubmit={passVisitorName()}
-      action={isSpanish ? "/es/contact/thankyou/" : "/contact/thankyou/"}
+      action={
+        isPortuguese
+          ? "/pt/contact/thankyou/"
+          : isSpanish
+            ? "/es/contact/thankyou/"
+            : "/contact/thankyou/"
+      }
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="bg-white p-6 shadow-2xl shadow-slate-950/15 md:p-10"
@@ -222,7 +244,12 @@ const InquiryForm = ({
       />
       <p className="hidden">
         <label>
-          Do not fill this out: <input name="bot-field" />
+          {isPortuguese
+            ? "Não preencha este campo:"
+            : isSpanish
+              ? "No completes este campo:"
+              : "Do not fill this out:"}{" "}
+          <input name="bot-field" />
         </label>
       </p>
       <div className="grid gap-5 md:grid-cols-2">
@@ -274,7 +301,7 @@ const InquiryForm = ({
             id="wedding-inquiry-phone"
             value={phone}
             onChange={setPhone}
-            language={isSpanish ? "es" : "en-US"}
+            language={language}
             required
           />
         </label>
@@ -295,7 +322,11 @@ const InquiryForm = ({
             type="text"
             name="wedding-date"
             placeholder={
-              isSpanish ? "Ej. noviembre de 2027" : "e.g. November 2027"
+              isPortuguese
+                ? "Ex.: novembro de 2027"
+                : isSpanish
+                  ? "Ej. noviembre de 2027"
+                  : "e.g. November 2027"
             }
             required
           />
@@ -347,9 +378,12 @@ const WeddingPlannerExperience = ({
   language,
 }) => {
   const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
   const content = getWeddingPlannerContent(language, page?.paragraph3?.raw);
+  const ptAlt = (english, portuguese) => (isPortuguese ? portuguese : english);
   const localizedPageText = (value, fallback) => {
     if (!value) return fallback;
+    if (isPortuguese) return fallback;
     return isSpanish && /\bwedding\b|\bvenue\b/i.test(value) ? fallback : value;
   };
   const localizeSpanishTerm = (value) => {
@@ -394,14 +428,21 @@ const WeddingPlannerExperience = ({
   const greciaCarouselImages = greciaGalleryImages.slice(1);
   const packageList = useMemo(() => {
     const cmsPackages = (packages || []).filter(Boolean).map((item) =>
-      isSpanish
-        ? {
-            ...item,
-            title: localizeSpanishTerm(item.title),
-            description: localizeSpanishTerm(item.description),
-            includedItems: (item.includedItems || []).map(localizeSpanishTerm),
-          }
-        : item,
+      isPortuguese
+        ? localizePortugueseWeddingPackage(
+            item,
+            content.packages.fallbackSouthAsian,
+          )
+        : isSpanish
+          ? {
+              ...item,
+              title: localizeSpanishTerm(item.title),
+              description: localizeSpanishTerm(item.description),
+              includedItems: (item.includedItems || []).map(
+                localizeSpanishTerm,
+              ),
+            }
+          : item,
     );
     const hasSouthAsian = cmsPackages.some((item) =>
       /south asian|sudeste asi[aá]tico|indian|sikh/i.test(item?.title || ""),
@@ -409,13 +450,15 @@ const WeddingPlannerExperience = ({
     return hasSouthAsian
       ? cmsPackages
       : [...cmsPackages, content.packages.fallbackSouthAsian];
-  }, [packages, content.packages.fallbackSouthAsian, isSpanish]);
+  }, [packages, content.packages.fallbackSouthAsian, isSpanish, isPortuguese]);
   const faqList = normalizeWeddingFaqs(faqs, language);
   const telephone = (generalInfo?.telephone || "8295222900").replace(/\D/g, "");
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${telephone}&text=${encodeURIComponent(
-    isSpanish
-      ? "Hola, me gustaría planificar mi boda en Punta Cana."
-      : "Hello, I would like to plan my wedding in Punta Cana.",
+    isPortuguese
+      ? "Olá, gostaria de planejar meu casamento em Punta Cana."
+      : isSpanish
+        ? "Hola, me gustaría planificar mi boda en Punta Cana."
+        : "Hello, I would like to plan my wedding in Punta Cana.",
   )}`;
 
   const selectPackage = (title) => {
@@ -443,7 +486,10 @@ const WeddingPlannerExperience = ({
         <div className="absolute inset-0 overflow-hidden">
           <ContentfulImage
             asset={heroImage}
-            alt="Destination wedding ceremony in Punta Cana planned by Sertuin Events"
+            alt={ptAlt(
+              "Destination wedding ceremony in Punta Cana planned by Sertuin Events",
+              "Cerimônia de casamento de destino em Punta Cana planejada pela Sertuin Events",
+            )}
             className="h-full w-full"
             loading="eager"
           />
@@ -525,13 +571,19 @@ const WeddingPlannerExperience = ({
               {editorialImages[0] ? (
                 <ContentfulImage
                   asset={editorialImages[0]}
-                  alt="Grecia Mejía arranging a beachfront wedding table in Punta Cana"
+                  alt={ptAlt(
+                    "Grecia Mejía arranging a beachfront wedding table in Punta Cana",
+                    "Grecia Mejía organizando uma mesa de casamento à beira-mar em Punta Cana",
+                  )}
                   className="h-72 w-full"
                 />
               ) : (
                 <StaticImage
                   src="../../images/wedding-planner/grecia-table-design.webp"
-                  alt="Grecia Mejía arranging a beachfront wedding table in Punta Cana"
+                  alt={ptAlt(
+                    "Grecia Mejía arranging a beachfront wedding table in Punta Cana",
+                    "Grecia Mejía organizando uma mesa de casamento à beira-mar em Punta Cana",
+                  )}
                   className="h-72 w-full"
                   imgStyle={{ objectFit: "cover" }}
                   placeholder="blurred"
@@ -540,13 +592,19 @@ const WeddingPlannerExperience = ({
               {editorialImages[1] ? (
                 <ContentfulImage
                   asset={editorialImages[1]}
-                  alt="Grecia Mejía overseeing a wedding setup at a Punta Cana resort"
+                  alt={ptAlt(
+                    "Grecia Mejía overseeing a wedding setup at a Punta Cana resort",
+                    "Grecia Mejía supervisionando a montagem de um casamento em resort de Punta Cana",
+                  )}
                   className="mt-8 h-72 w-full"
                 />
               ) : (
                 <StaticImage
                   src="../../images/wedding-planner/grecia-wedding-setup.webp"
-                  alt="Grecia Mejía overseeing a wedding setup at a Punta Cana resort"
+                  alt={ptAlt(
+                    "Grecia Mejía overseeing a wedding setup at a Punta Cana resort",
+                    "Grecia Mejía supervisionando a montagem de um casamento em resort de Punta Cana",
+                  )}
                   className="mt-8 h-72 w-full"
                   imgStyle={{ objectFit: "cover" }}
                   placeholder="blurred"
@@ -565,19 +623,25 @@ const WeddingPlannerExperience = ({
           <div className="mx-auto max-w-7xl">
             <SectionHeading
               eyebrow={
-                isSpanish
-                  ? "Bodas reales, detalles reales"
-                  : "Real weddings, real details"
+                isPortuguese
+                  ? "Casamentos reais, detalhes reais"
+                  : isSpanish
+                    ? "Bodas reales, detalles reales"
+                    : "Real weddings, real details"
               }
               title={
-                isSpanish
-                  ? "Bodas que hemos ayudado a hacer realidad"
-                  : "Weddings we have helped bring to life"
+                isPortuguese
+                  ? "Casamentos que ajudamos a transformar em realidade"
+                  : isSpanish
+                    ? "Bodas que hemos ayudado a hacer realidad"
+                    : "Weddings we have helped bring to life"
               }
               body={
-                isSpanish
-                  ? "Una selección del trabajo actual de Sertuin Events en Punta Cana."
-                  : "A selection of Sertuin Events’ current wedding work in Punta Cana."
+                isPortuguese
+                  ? "Uma seleção do trabalho atual da Sertuin Events em Punta Cana."
+                  : isSpanish
+                    ? "Una selección del trabajo actual de Sertuin Events en Punta Cana."
+                    : "A selection of Sertuin Events’ current wedding work in Punta Cana."
               }
             />
             <div className="-mx-6 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 [scrollbar-width:none] md:-mx-10 md:px-10 lg:-mx-12 lg:px-12 [&::-webkit-scrollbar]:hidden">
@@ -588,6 +652,11 @@ const WeddingPlannerExperience = ({
                 >
                   <ContentfulImage
                     asset={asset}
+                    alt={
+                      isPortuguese
+                        ? `Casamento de destino planejado em Punta Cana — imagem ${index + 1}`
+                        : undefined
+                    }
                     className="h-[500px] w-full transition duration-700 group-hover:scale-[1.02]"
                   />
                 </figure>
@@ -676,13 +745,19 @@ const WeddingPlannerExperience = ({
             {editorialImages[2] ? (
               <ContentfulImage
                 asset={editorialImages[2]}
-                alt="South Asian couple meeting wedding planner Grecia Mejía in Punta Cana"
+                alt={ptAlt(
+                  "South Asian couple meeting wedding planner Grecia Mejía in Punta Cana",
+                  "Casal sul-asiático reunido com a wedding planner Grecia Mejía em Punta Cana",
+                )}
                 className="col-span-2 h-80 w-full md:h-[480px]"
               />
             ) : (
               <StaticImage
                 src="../../images/wedding-planner/south-asian-couple-with-grecia.webp"
-                alt="South Asian couple meeting wedding planner Grecia Mejía in Punta Cana"
+                alt={ptAlt(
+                  "South Asian couple meeting wedding planner Grecia Mejía in Punta Cana",
+                  "Casal sul-asiático reunido com a wedding planner Grecia Mejía em Punta Cana",
+                )}
                 className="col-span-2 h-80 w-full md:h-[480px]"
                 imgStyle={{ objectFit: "cover" }}
                 placeholder="blurred"
@@ -691,13 +766,19 @@ const WeddingPlannerExperience = ({
             {editorialImages[3] ? (
               <ContentfulImage
                 asset={editorialImages[3]}
-                alt="Grecia Mejía planning wedding logistics at a Punta Cana resort"
+                alt={ptAlt(
+                  "Grecia Mejía planning wedding logistics at a Punta Cana resort",
+                  "Grecia Mejía planejando a logística de um casamento em resort de Punta Cana",
+                )}
                 className="h-56 w-full"
               />
             ) : (
               <StaticImage
                 src="../../images/wedding-planner/grecia-planning-at-resort.webp"
-                alt="Grecia Mejía planning wedding logistics at a Punta Cana resort"
+                alt={ptAlt(
+                  "Grecia Mejía planning wedding logistics at a Punta Cana resort",
+                  "Grecia Mejía planejando a logística de um casamento em resort de Punta Cana",
+                )}
                 className="h-56 w-full"
                 imgStyle={{ objectFit: "cover" }}
                 placeholder="blurred"
@@ -706,13 +787,19 @@ const WeddingPlannerExperience = ({
             {editorialImages[4] ? (
               <ContentfulImage
                 asset={editorialImages[4]}
-                alt="Grecia Mejía supporting a bride on her Punta Cana wedding day"
+                alt={ptAlt(
+                  "Grecia Mejía supporting a bride on her Punta Cana wedding day",
+                  "Grecia Mejía apoiando uma noiva no dia do casamento em Punta Cana",
+                )}
                 className="h-56 w-full"
               />
             ) : (
               <StaticImage
                 src="../../images/wedding-planner/grecia-supporting-bride.webp"
-                alt="Grecia Mejía supporting a bride on her Punta Cana wedding day"
+                alt={ptAlt(
+                  "Grecia Mejía supporting a bride on her Punta Cana wedding day",
+                  "Grecia Mejía apoiando uma noiva no dia do casamento em Punta Cana",
+                )}
                 className="h-56 w-full"
                 imgStyle={{ objectFit: "cover" }}
                 placeholder="blurred"
@@ -797,7 +884,10 @@ const WeddingPlannerExperience = ({
           ) : (
             <StaticImage
               src="../../images/wedding-planner/grecia-supporting-bride.webp"
-              alt="Wedding planner Grecia Mejía with a bride in Punta Cana"
+              alt={ptAlt(
+                "Wedding planner Grecia Mejía with a bride in Punta Cana",
+                "Wedding planner Grecia Mejía com uma noiva em Punta Cana",
+              )}
               className="h-[520px] w-full"
               imgStyle={{ objectFit: "cover", objectPosition: "center" }}
               placeholder="blurred"
@@ -851,7 +941,13 @@ const WeddingPlannerExperience = ({
                     type="button"
                     onClick={() => scrollGreciaCarousel(-1)}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-amber-300 hover:text-amber-300"
-                    aria-label={isSpanish ? "Foto anterior" : "Previous photo"}
+                    aria-label={
+                      isPortuguese
+                        ? "Foto anterior"
+                        : isSpanish
+                          ? "Foto anterior"
+                          : "Previous photo"
+                    }
                   >
                     <ChevronLeft size={21} aria-hidden="true" />
                   </button>
@@ -859,7 +955,13 @@ const WeddingPlannerExperience = ({
                     type="button"
                     onClick={() => scrollGreciaCarousel(1)}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-amber-300 hover:text-amber-300"
-                    aria-label={isSpanish ? "Foto siguiente" : "Next photo"}
+                    aria-label={
+                      isPortuguese
+                        ? "Próxima foto"
+                        : isSpanish
+                          ? "Foto siguiente"
+                          : "Next photo"
+                    }
                   >
                     <ChevronRight size={21} aria-hidden="true" />
                   </button>
@@ -871,9 +973,11 @@ const WeddingPlannerExperience = ({
               role="region"
               aria-roledescription="carousel"
               aria-label={
-                isSpanish
-                  ? "Grecia con parejas y novias"
-                  : "Grecia with couples and brides"
+                isPortuguese
+                  ? "Grecia com casais e noivas"
+                  : isSpanish
+                    ? "Grecia con parejas y novias"
+                    : "Grecia with couples and brides"
               }
               tabIndex="0"
               className="-mx-6 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-6 pb-4 [scrollbar-width:none] md:-mx-10 md:px-10 lg:-mx-12 lg:px-12 [&::-webkit-scrollbar]:hidden"
@@ -883,7 +987,15 @@ const WeddingPlannerExperience = ({
                   key={`${asset?.title || "grecia"}-${index}`}
                   className="w-[82vw] max-w-[460px] flex-none snap-center overflow-hidden bg-slate-900"
                 >
-                  <ContentfulImage asset={asset} className="h-[390px] w-full" />
+                  <ContentfulImage
+                    asset={asset}
+                    alt={
+                      isPortuguese
+                        ? `Grecia Mejía com casais e noivas — imagem ${index + 1}`
+                        : undefined
+                    }
+                    className="h-[390px] w-full"
+                  />
                 </figure>
               ))}
             </div>
@@ -938,7 +1050,7 @@ const WeddingPlannerExperience = ({
           </div>
           <InquiryForm
             copy={content.form}
-            isSpanish={isSpanish}
+            language={language}
             packages={packageList}
             selectedPackage={selectedPackage}
             onPackageChange={setSelectedPackage}

@@ -31,6 +31,8 @@ const privatePaths = [
   "/admin/*",
   "/es/admin",
   "/es/admin/*",
+  "/pt/admin",
+  "/pt/admin/*",
   "/**/admin",
   "/**/admin/*",
 ];
@@ -60,10 +62,12 @@ const seoLastModified = new Map(
     "/gender-reveal-punta-cana/",
     "/puntacana-wedding-planner/",
     "/punta-cana-elopement-packages/",
-  ].flatMap((pagePath) => [
-    [pagePath, "2026-08-29"],
-    [pagePath === "/" ? "/es/" : `/es${pagePath}`, "2026-08-29"],
-  ]),
+  ].flatMap((pagePath) =>
+    ["", "/es", "/pt"].map((prefix) => [
+      pagePath === "/" ? `${prefix}/` || "/" : `${prefix}${pagePath}`,
+      prefix === "/pt" ? "2026-08-30" : "2026-08-29",
+    ]),
+  ),
 );
 
 // Sitemap defence in depth: page creation already blocks these routes, but the
@@ -71,12 +75,14 @@ const seoLastModified = new Map(
 // one accidentally.
 const isRetiredOrUnapprovedContentPath = (value) => {
   const normalized = `/${String(value || "")}`.replace(/\/{2,}/g, "/");
-  const blogMatch = normalized.match(/^\/(?:es\/)?blog\/([^/]+)\/?$/);
+  const blogMatch = normalized.match(/^\/(?:(?:es|pt)\/)?blog\/([^/]+)\/?$/);
   if (blogMatch && !publishedBlogSlugs.has(blogMatch[1].toLowerCase())) {
     return true;
   }
 
-  const packageMatch = normalized.match(/^\/(?:es\/)?packages\/([^/]+)\/?$/);
+  const packageMatch = normalized.match(
+    /^\/(?:(?:es|pt)\/)?packages\/([^/]+)\/?$/,
+  );
   return Boolean(
     packageMatch && retiredPackageSlugs.has(packageMatch[1].toLowerCase()),
   );
@@ -133,12 +139,14 @@ module.exports = {
               !nonIndexablePaths.some(
                 (privatePath) =>
                   page.path === privatePath ||
-                  page.path === `/es${privatePath}`,
+                  page.path === `/es${privatePath}` ||
+                  page.path === `/pt${privatePath}`,
               ) &&
               !retiredPublicPaths.some(
                 (retiredPath) =>
                   page.path === retiredPath ||
-                  page.path === `/es${retiredPath}`,
+                  page.path === `/es${retiredPath}` ||
+                  page.path === `/pt${retiredPath}`,
               ),
           );
         },
@@ -222,7 +230,7 @@ module.exports = {
       resolve: "gatsby-plugin-react-i18next",
       options: {
         localeJsonSourceName: `locale`,
-        languages: ["en-US", "es"],
+        languages: ["en-US", "es", "pt"],
         defaultLanguage: "en-US",
         // Keep every language tied to its explicit URL. Automatic browser-
         // language redirects can turn an English URL into /es/ after a visitor

@@ -4,8 +4,17 @@ const path = require("node:path");
 const { transformFileSync } = require("@babel/core");
 const presetEnv = require("@babel/preset-env");
 
-const loadSourceModule = (relativePath) => {
-  const filename = path.resolve(__dirname, "..", relativePath);
+const sourceModuleCache = new Map();
+const loadSourceModule = (modulePath) => {
+  const requestedPath = path.isAbsolute(modulePath)
+    ? modulePath
+    : path.resolve(__dirname, "..", modulePath);
+  const filename = path.extname(requestedPath)
+    ? requestedPath
+    : `${requestedPath}.js`;
+  if (sourceModuleCache.has(filename)) {
+    return sourceModuleCache.get(filename).exports;
+  }
   const transformed = transformFileSync(filename, {
     filename,
     presets: [
@@ -14,13 +23,18 @@ const loadSourceModule = (relativePath) => {
     sourceType: "module",
   });
   const module = { exports: {} };
+  sourceModuleCache.set(filename, module);
+  const localRequire = (request) =>
+    request.startsWith(".")
+      ? loadSourceModule(path.resolve(path.dirname(filename), request))
+      : require(request);
   const execute = new Function(
     "require",
     "module",
     "exports",
     transformed.code,
   );
-  execute(require, module, module.exports);
+  execute(localRequire, module, module.exports);
   return module.exports;
 };
 
@@ -29,6 +43,9 @@ const { buildProposalPackageSchema, buildProposalSchema } = loadSourceModule(
 );
 const { proposalPackageDetails } = loadSourceModule(
   "src/data/proposalPackageDetails.js",
+);
+const { portugueseProposalPackageContent } = loadSourceModule(
+  "src/data/portugueseProposalPackageContent.js",
 );
 
 const rootUrl = "https://sertuinevents.com";
@@ -77,6 +94,7 @@ const packageCards = proposalPackageDetails.map((item) => ({
 for (const { language, prefix } of [
   { language: "en-US", prefix: "" },
   { language: "es", prefix: "/es" },
+  { language: "pt", prefix: "/pt" },
 ]) {
   const proposalPageUrl = `${rootUrl}${prefix}/proposal/`;
   const hubSchema = buildProposalSchema({
@@ -111,12 +129,21 @@ for (const { language, prefix } of [
       proposalPageUrl,
       language,
       packageName: item.name,
-      description: item.copy[language === "es" ? "es" : "en"].summary,
+      description:
+        language === "pt"
+          ? portugueseProposalPackageContent[item.id].summary
+          : item.copy[language === "es" ? "es" : "en"].summary,
       price: item.price,
       images: [
         {
           url: `https://images.example.com/${item.id}.webp`,
           title: item.name,
+        },
+      ],
+      faqs: [
+        {
+          title: "How does booking work?",
+          content: { content: "Choose a package and request a date." },
         },
       ],
     });
@@ -133,6 +160,7 @@ for (const { language, prefix } of [
     const breadcrumb = packageGraph.find(
       (node) => node["@type"] === "BreadcrumbList",
     );
+    const faqPage = packageGraph.find((node) => node["@type"] === "FAQPage");
 
     assert.equal(webpage.isPartOf["@id"], `${proposalPageUrl}#webpage`);
     assert.equal(webpage.mainEntity["@id"], service["@id"]);
@@ -144,6 +172,8 @@ for (const { language, prefix } of [
     assert.equal(breadcrumb.itemListElement[1].item, proposalPageUrl);
     assert.equal(breadcrumb.itemListElement[2].item, pageUrl);
     assert.equal(service.image.length, 1);
+    assert.equal(faqPage.inLanguage, language === "pt" ? "pt-BR" : language);
+    assert.equal(faqPage.mainEntity.length, 1);
   });
 }
 

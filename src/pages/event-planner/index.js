@@ -2,8 +2,14 @@ import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
+import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import CorporateEventPlanner from "../../components/CorporateEventPlanner/CorporateEventPlanner";
 import { getCorporateEventContent } from "../../content/corporateEventContent";
+import {
+  getLanguageConfig,
+  localizedUrl,
+  normalizeLanguage,
+} from "../../utils/siteLocales";
 
 const EventPlannerPage = ({ data, pageContext }) => {
   const generalInfo = data.allContentfulGeneralLayout.nodes[0];
@@ -27,24 +33,29 @@ const EventPlannerPage = ({ data, pageContext }) => {
 export default EventPlannerPage;
 
 export const Head = ({ pageContext, data }) => {
-  const isSpanish = pageContext.language === "es";
+  const language = normalizeLanguage(pageContext.language);
+  const isSpanish = language === "es";
+  const isPortuguese = language === "pt";
+  const languageConfig = getLanguageConfig(language);
   const seo = data.allContentfulSeo.nodes[0];
   const page = data.allContentfulPageContent.nodes[0];
-  const content = getCorporateEventContent(
-    pageContext.language,
-    page?.paragraph3?.raw,
-  );
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${isSpanish ? "/es" : ""}/event-planner/`;
+  const content = getCorporateEventContent(language, page?.paragraph3?.raw);
+  const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const siteUrl = localizedUrl(rootUrl, "/event-planner/", language);
   const title =
-    seo?.title ||
-    (isSpanish
-      ? "Planificador de eventos corporativos Punta Cana | Sertuin Events"
-      : "Corporate Event Planner Punta Cana | Sertuin Events");
+    (isPortuguese ? null : seo?.title) ||
+    (isPortuguese
+      ? "Planejamento de Eventos Corporativos em Punta Cana | Sertuin"
+      : isSpanish
+        ? "Planificador de eventos corporativos Punta Cana | Sertuin Events"
+        : "Corporate Event Planner Punta Cana | Sertuin Events");
   const description =
-    seo?.description?.description ||
-    (isSpanish
-      ? "Planificación y gestión de eventos corporativos en Punta Cana. Coordinamos proveedores, personal, catering, logística, producción y ejecución en sitio."
-      : "Corporate event planning and management in Punta Cana. Sertuin coordinates vendors, staffing, catering, logistics, production and on-site execution.");
+    (isPortuguese ? null : seo?.description?.description) ||
+    (isPortuguese
+      ? "Planejamento e gestão de eventos corporativos em Punta Cana: venues, fornecedores, equipe, catering, transporte, produção e execução local."
+      : isSpanish
+        ? "Planificación y gestión de eventos corporativos en Punta Cana. Coordinamos proveedores, personal, catering, logística, producción y ejecución en sitio."
+        : "Corporate event planning and management in Punta Cana. Sertuin coordinates vendors, staffing, catering, logistics, production and on-site execution.");
   const image = seo?.images?.file?.url
     ? `https:${seo.images.file.url}`
     : undefined;
@@ -54,14 +65,19 @@ export const Head = ({ pageContext, data }) => {
       {
         "@type": "Service",
         "@id": `${siteUrl}#service`,
-        name: isSpanish
-          ? "Planificación y gestión de eventos corporativos en Punta Cana"
-          : "Corporate Event Planning and Management in Punta Cana",
-        serviceType: isSpanish
-          ? "Gestión de eventos corporativos"
-          : "Corporate event management",
+        name: isPortuguese
+          ? "Planejamento e gestão de eventos corporativos em Punta Cana"
+          : isSpanish
+            ? "Planificación y gestión de eventos corporativos en Punta Cana"
+            : "Corporate Event Planning and Management in Punta Cana",
+        serviceType: isPortuguese
+          ? "Gestão de eventos corporativos"
+          : isSpanish
+            ? "Gestión de eventos corporativos"
+            : "Corporate event management",
         url: siteUrl,
         description,
+        inLanguage: isPortuguese ? "pt-BR" : isSpanish ? "es-DO" : "en-US",
         image,
         areaServed: [
           { "@type": "City", name: "Punta Cana" },
@@ -77,9 +93,11 @@ export const Head = ({ pageContext, data }) => {
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: isSpanish
-            ? "Servicios de gestión de eventos"
-            : "Corporate event management services",
+          name: isPortuguese
+            ? "Serviços de gestão de eventos"
+            : isSpanish
+              ? "Servicios de gestión de eventos"
+              : "Corporate event management services",
           itemListElement: content.services.map((service) => ({
             "@type": "Offer",
             itemOffered: { "@type": "Service", name: service.title },
@@ -89,6 +107,7 @@ export const Head = ({ pageContext, data }) => {
       {
         "@type": "FAQPage",
         "@id": `${siteUrl}#faq`,
+        inLanguage: isPortuguese ? "pt-BR" : isSpanish ? "es-DO" : "en-US",
         mainEntity: content.faqs.map((faq) => ({
           "@type": "Question",
           name: faq.question,
@@ -101,17 +120,17 @@ export const Head = ({ pageContext, data }) => {
           {
             "@type": "ListItem",
             position: 1,
-            name: isSpanish ? "Inicio" : "Home",
-            item: isSpanish
-              ? "https://sertuinevents.com/es/"
-              : "https://sertuinevents.com/",
+            name: isPortuguese ? "Início" : isSpanish ? "Inicio" : "Home",
+            item: localizedUrl(rootUrl, "/", language),
           },
           {
             "@type": "ListItem",
             position: 2,
-            name: isSpanish
+            name: isPortuguese
               ? "Eventos corporativos"
-              : "Corporate Event Planner",
+              : isSpanish
+                ? "Eventos corporativos"
+                : "Corporate Event Planner",
             item: siteUrl,
           },
         ],
@@ -124,43 +143,42 @@ export const Head = ({ pageContext, data }) => {
       <Seo
         title={title}
         description={description}
-        keywords={(seo?.keywords || []).join(", ")}
+        keywords={(isPortuguese
+          ? [
+              "eventos corporativos Punta Cana",
+              "planejamento de eventos corporativos Punta Cana",
+              "produção de eventos Punta Cana",
+              "gestão de eventos empresariais República Dominicana",
+            ]
+          : seo?.keywords || []
+        ).join(", ")}
         image={image}
         imageAlt={
-          isSpanish
-            ? "Gestión de eventos corporativos de Sertuin Events en Punta Cana"
-            : "Sertuin Events corporate event management in Punta Cana"
+          isPortuguese
+            ? "Gestão de evento corporativo da Sertuin Events em Punta Cana"
+            : isSpanish
+              ? "Gestión de eventos corporativos de Sertuin Events en Punta Cana"
+              : "Sertuin Events corporate event management in Punta Cana"
         }
         url={siteUrl}
         schemaMarkup={schemaMarkup}
-        language={isSpanish ? "es" : "en"}
+        language={languageConfig.htmlLang}
         siteName="Sertuin Events"
-        locale={isSpanish ? "es_DO" : "en_US"}
+        locale={languageConfig.ogLocale}
         alternateLocale={isSpanish ? "en_US" : "es_DO"}
         twitterCard="summary_large_image"
       />
       <link rel="canonical" href={siteUrl} />
-      <link
-        rel="alternate"
-        hrefLang="en"
-        href="https://sertuinevents.com/event-planner/"
-      />
-      <link
-        rel="alternate"
-        hrefLang="es"
-        href="https://sertuinevents.com/es/event-planner/"
-      />
-      <link
-        rel="alternate"
-        hrefLang="x-default"
-        href="https://sertuinevents.com/event-planner/"
-      />
+      <LocalizedAlternates rootUrl={rootUrl} path="/event-planner/" />
     </>
   );
 };
 
 export const query = graphql`
-  query CorporateEventPlannerPage($language: String!) {
+  query CorporateEventPlannerPage(
+    $language: String!
+    $contentLanguage: String!
+  ) {
     locales: allLocale {
       edges {
         node {
@@ -175,7 +193,9 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
+    allContentfulGeneralLayout(
+      filter: { node_locale: { eq: $contentLanguage } }
+    ) {
       nodes {
         companyName
         email
@@ -187,7 +207,10 @@ export const query = graphql`
       }
     }
     allContentfulSeo(
-      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Event-Planner" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         title
@@ -203,7 +226,10 @@ export const query = graphql`
       }
     }
     allContentfulPageContent(
-      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Event-Planner" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         page
@@ -228,7 +254,10 @@ export const query = graphql`
       }
     }
     allContentfulPhotoGallery(
-      filter: { page: { eq: "Event-Planner" }, node_locale: { eq: $language } }
+      filter: {
+        page: { eq: "Event-Planner" }
+        node_locale: { eq: $contentLanguage }
+      }
     ) {
       nodes {
         title

@@ -3,7 +3,11 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 const imageUrl = (url, width) => `${url}?w=${width}&fm=webp&q=78&fit=fill`;
 
-const BlogGallery = ({ images = [] }) => {
+const BlogGallery = ({
+  images = [],
+  language = "en-US",
+  articleTitle = "",
+}) => {
   const trackRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState(null);
@@ -36,8 +40,15 @@ const BlogGallery = ({ images = [] }) => {
 
   const expanded = expandedIndex === null ? null : images[expandedIndex]?.image;
 
+  const isPortuguese = language === "pt";
+  const galleryLabel = isPortuguese ? "Galeria de imagens" : "Image gallery";
+  const imageAlt = (item, index) =>
+    isPortuguese
+      ? `${articleTitle || "Evento em Punta Cana"} — imagem ${index + 1}`
+      : item.altText || "";
+
   return (
-    <section className="blog-gallery" aria-label="Image gallery">
+    <section className="blog-gallery" aria-label={galleryLabel}>
       <div className="blog-gallery__frame">
         <div
           className="blog-gallery__track"
@@ -53,7 +64,11 @@ const BlogGallery = ({ images = [] }) => {
                   type="button"
                   className="blog-gallery__expand"
                   onClick={() => setExpandedIndex(index)}
-                  aria-label={`View image ${index + 1} of ${images.length}`}
+                  aria-label={
+                    isPortuguese
+                      ? `Ver imagem ${index + 1} de ${images.length}`
+                      : `View image ${index + 1} of ${images.length}`
+                  }
                 >
                   <img
                     src={imageUrl(image.url, 960)}
@@ -61,12 +76,16 @@ const BlogGallery = ({ images = [] }) => {
                     sizes="(min-width: 1024px) 960px, 100vw"
                     width={image.width}
                     height={image.height}
-                    alt={item.altText || ""}
+                    alt={imageAlt(item, index)}
                     loading="lazy"
                     decoding="async"
                   />
                 </button>
-                {item.caption && <figcaption>{item.caption}</figcaption>}
+                {isPortuguese ? (
+                  <figcaption>{`${articleTitle} — imagem ${index + 1}`}</figcaption>
+                ) : (
+                  item.caption && <figcaption>{item.caption}</figcaption>
+                )}
               </figure>
             );
           })}
@@ -78,7 +97,7 @@ const BlogGallery = ({ images = [] }) => {
               className="blog-gallery__arrow blog-gallery__arrow--previous"
               onClick={() => goTo(activeIndex - 1)}
               disabled={activeIndex === 0}
-              aria-label="Previous image"
+              aria-label={isPortuguese ? "Imagem anterior" : "Previous image"}
             >
               <ChevronLeft aria-hidden="true" />
             </button>
@@ -87,7 +106,7 @@ const BlogGallery = ({ images = [] }) => {
               className="blog-gallery__arrow blog-gallery__arrow--next"
               onClick={() => goTo(activeIndex + 1)}
               disabled={activeIndex === images.length - 1}
-              aria-label="Next image"
+              aria-label={isPortuguese ? "Próxima imagem" : "Next image"}
             >
               <ChevronRight aria-hidden="true" />
             </button>
@@ -95,14 +114,17 @@ const BlogGallery = ({ images = [] }) => {
         )}
       </div>
       {images.length > 1 && (
-        <div className="blog-gallery__dots" aria-label="Choose an image">
+        <div
+          className="blog-gallery__dots"
+          aria-label={isPortuguese ? "Escolher uma imagem" : "Choose an image"}
+        >
           {images.map((item, index) => (
             <button
               type="button"
               key={item.contentful_id}
               className={index === activeIndex ? "is-active" : ""}
               onClick={() => goTo(index)}
-              aria-label={`Image ${index + 1}`}
+              aria-label={`${isPortuguese ? "Imagem" : "Image"} ${index + 1}`}
               aria-current={index === activeIndex ? "true" : undefined}
             />
           ))}
@@ -113,19 +135,21 @@ const BlogGallery = ({ images = [] }) => {
           className="blog-gallery__dialog"
           role="dialog"
           aria-modal="true"
-          aria-label="Expanded image"
+          aria-label={isPortuguese ? "Imagem ampliada" : "Expanded image"}
           onClick={() => setExpandedIndex(null)}
         >
           <button
             type="button"
             onClick={() => setExpandedIndex(null)}
-            aria-label="Close expanded image"
+            aria-label={
+              isPortuguese ? "Fechar imagem ampliada" : "Close expanded image"
+            }
           >
             <X aria-hidden="true" />
           </button>
           <img
             src={imageUrl(expanded.url, 1800)}
-            alt={images[expandedIndex]?.altText || ""}
+            alt={imageAlt(images[expandedIndex], expandedIndex)}
             width={expanded.width}
             height={expanded.height}
             onClick={(event) => event.stopPropagation()}

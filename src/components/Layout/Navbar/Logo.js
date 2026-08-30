@@ -3,6 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import { withSizes } from "../../../utils/imageSizes";
+import { localizedPath } from "../../../utils/siteLocales";
 
 // Rendered at w-20 (80px), or w-32 (128px) from md up. Without this the
 // derived sizes claims 256px, which makes high-DPR devices fetch the 512px
@@ -40,9 +41,11 @@ const Logo = ({ overlay = false }) => {
         }`}
       >
         <Link
-          to={language === "es" ? "/es/" : "/"}
+          to={localizedPath("/", language)}
           className="no-underline"
-          aria-label={language === "es" ? "Inicio" : "Home"}
+          aria-label={
+            language === "pt" ? "Início" : language === "es" ? "Inicio" : "Home"
+          }
         >
           <div className="cursor-pointer flex items-center w-20 md:w-20">
             <GatsbyImage

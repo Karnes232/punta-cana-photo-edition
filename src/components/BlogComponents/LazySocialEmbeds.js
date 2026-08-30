@@ -57,6 +57,7 @@ const LazyEmbed = ({ embed, language }) => {
     [embed?.platform, embed?.url],
   );
   const spanish = language === "es";
+  const portuguese = language === "pt";
   if (!sourceUrl) return null;
 
   return (
@@ -64,7 +65,11 @@ const LazyEmbed = ({ embed, language }) => {
       {loaded && embedUrl ? (
         <iframe
           src={embedUrl}
-          title={`${embed.platform || "Social"} embed`}
+          title={
+            language === "pt"
+              ? `Publicação do ${embed.platform || "canal social"}`
+              : `${embed.platform || "Social"} embed`
+          }
           loading="lazy"
           allow="encrypted-media; picture-in-picture; fullscreen"
           referrerPolicy="strict-origin-when-cross-origin"
@@ -73,12 +78,20 @@ const LazyEmbed = ({ embed, language }) => {
       ) : (
         <button type="button" onClick={() => setLoaded(true)}>
           <Play aria-hidden="true" />
-          {spanish ? "Ver publicación" : "View post"}
+          {portuguese
+            ? "Ver publicação"
+            : spanish
+              ? "Ver publicación"
+              : "View post"}
         </button>
       )}
       {loaded && !embedUrl && (
         <a href={sourceUrl.href} target="_blank" rel="noopener noreferrer">
-          {spanish ? "Abrir publicación" : "Open post"}
+          {portuguese
+            ? "Abrir publicação"
+            : spanish
+              ? "Abrir publicación"
+              : "Open post"}
           <ExternalLink aria-hidden="true" />
         </a>
       )}
@@ -89,7 +102,10 @@ const LazyEmbed = ({ embed, language }) => {
 const LazySocialEmbeds = ({ embeds = [], language }) => {
   if (!embeds?.length) return null;
   return (
-    <section className="social-embeds" aria-label="Social media">
+    <section
+      className="social-embeds"
+      aria-label={language === "pt" ? "Redes sociais" : "Social media"}
+    >
       {embeds.map((embed) => (
         <LazyEmbed
           key={embed.contentful_id || embed.url}
