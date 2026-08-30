@@ -59,18 +59,29 @@ export const Head = ({ data }) => {
   const { language } = useI18next();
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
-  const languagePrefix = isPortuguese ? "/pt" : isSpanish ? "/es" : "";
+  const isFrench = language === "fr";
+  const languagePrefix = isPortuguese
+    ? "/pt"
+    : isFrench
+      ? "/fr"
+      : isSpanish
+        ? "/es"
+        : "";
   const contactUrl = `${data.site.siteMetadata.siteUrl}${languagePrefix}/contact/`;
   const title = isPortuguese
     ? "Obrigado por entrar em contato | Sertuin Events"
-    : isSpanish
-      ? "Gracias por contactarnos | Sertuin Events"
-      : "Thank You for Contacting Us | Sertuin Events";
+    : isFrench
+      ? "Merci de nous avoir contactés | Sertuin Events"
+      : isSpanish
+        ? "Gracias por contactarnos | Sertuin Events"
+        : "Thank You for Contacting Us | Sertuin Events";
   const description = isPortuguese
     ? "Recebemos sua solicitação de evento. A equipe da Sertuin Events entrará em contato em breve."
-    : isSpanish
-      ? "Recibimos tu solicitud de evento. El equipo de Sertuin Events se pondrá en contacto contigo muy pronto."
-      : "We received your event inquiry. The Sertuin Events team will contact you shortly.";
+    : isFrench
+      ? "Nous avons bien reçu votre demande d’événement. L’équipe Sertuin Events vous contactera très prochainement."
+      : isSpanish
+        ? "Recibimos tu solicitud de evento. El equipo de Sertuin Events se pondrá en contacto contigo muy pronto."
+        : "We received your event inquiry. The Sertuin Events team will contact you shortly.";
 
   return (
     <>
@@ -78,7 +89,9 @@ export const Head = ({ data }) => {
         title={title}
         description={description}
         url={contactUrl}
-        language={isPortuguese ? "pt-BR" : isSpanish ? "es" : "en"}
+        language={
+          isPortuguese ? "pt-BR" : isFrench ? "fr-FR" : isSpanish ? "es" : "en"
+        }
         robots="noindex, follow"
       />
       <link rel="canonical" href={contactUrl} />

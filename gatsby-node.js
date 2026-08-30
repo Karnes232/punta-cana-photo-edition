@@ -135,6 +135,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     "en-US": { path: "", urlCode: "en-US", contentLanguage: "en-US" },
     es: { path: "es", urlCode: "es", contentLanguage: "es" },
     pt: { path: "pt", urlCode: "pt", contentLanguage: "en-US" },
+    fr: { path: "fr", urlCode: "fr", contentLanguage: "en-US" },
   };
 
   const packageTemplate = path.resolve(`src/template/package.js`);
@@ -166,17 +167,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
 
     if (node.node_locale === "en-US") {
-      createPage({
-        path: `/pt/blog/${slug}`,
-        component: blogTemplate,
-        context: {
-          id: node.id,
-          language: "pt",
-          contentLanguage: "en-US",
-          blog: node,
-          layout: layoutFor("en-US"),
-        },
-      });
+      ["pt", "fr"].forEach((derivedLanguage) =>
+        createPage({
+          path: `/${derivedLanguage}/blog/${slug}`,
+          component: blogTemplate,
+          context: {
+            id: node.id,
+            language: derivedLanguage,
+            contentLanguage: "en-US",
+            blog: node,
+            layout: layoutFor("en-US"),
+          },
+        }),
+      );
     }
   });
 
@@ -199,17 +202,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
 
     if (node.node_locale === "en-US") {
-      createPage({
-        path: `/pt/packages/${node.urlSlug?.trim()}`,
-        component: packageTemplate,
-        context: {
-          id: node.id,
-          language: "pt",
-          contentLanguage: "en-US",
-          layout: layoutFor("en-US"),
-          package: node,
-        },
-      });
+      ["pt", "fr"].forEach((derivedLanguage) =>
+        createPage({
+          path: `/${derivedLanguage}/packages/${node.urlSlug?.trim()}`,
+          component: packageTemplate,
+          context: {
+            id: node.id,
+            language: derivedLanguage,
+            contentLanguage: "en-US",
+            layout: layoutFor("en-US"),
+            package: node,
+          },
+        }),
+      );
     }
   });
 
@@ -269,7 +274,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
-      if (pageLanguage !== "pt") {
+      if (pageLanguage === "en-US" || pageLanguage === "es") {
         const adminPath = urlPath === "" ? "/admin" : `/${urlPath}/admin`;
         createPage({
           path: adminPath,

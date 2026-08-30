@@ -3,12 +3,14 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import BlogBody from "../components/BlogComponents/BlogBody";
 import PortugueseBlogBody from "../components/BlogComponents/PortugueseBlogBody";
+import FrenchBlogBody from "../components/BlogComponents/FrenchBlogBody";
 import BlogGallery from "../components/BlogComponents/BlogGallery";
 import LazySocialEmbeds from "../components/BlogComponents/LazySocialEmbeds";
 import Seo from "../components/Layout/seo";
 import LocalizedAlternates from "../components/Layout/LocalizedAlternates";
 import { localizeProposalUrl } from "../utils/localizedLinks";
 import { getPortugueseBlogContent } from "../data/portugueseBlogContent";
+import { getFrenchBlogContent } from "../data/frenchBlogContent";
 import {
   getLanguageConfig,
   localizedUrl,
@@ -92,11 +94,19 @@ const Blog = ({ pageContext, data }) => {
   const language = normalizeLanguage(pageContext.language);
   const portuguese =
     language === "pt" ? getPortugueseBlogContent(rawPost.slug) : null;
+  const french = language === "fr" ? getFrenchBlogContent(rawPost.slug) : null;
   const post = normalizePost(
-    portuguese ? { ...rawPost, ...portuguese } : rawPost,
+    portuguese
+      ? { ...rawPost, ...portuguese }
+      : french
+        ? { ...rawPost, ...french }
+        : rawPost,
   );
   if (portuguese && post.helpCustomLinkEnabled) {
     post.helpCustomLinkText = "Saiba mais";
+  }
+  if (french && post.helpCustomLinkEnabled) {
+    post.helpCustomLinkText = "En savoir plus";
   }
 
   return (
@@ -117,6 +127,8 @@ const Blog = ({ pageContext, data }) => {
           />
           {portuguese ? (
             <PortugueseBlogBody article={portuguese} />
+          ) : french ? (
+            <FrenchBlogBody article={french} />
           ) : (
             <BlogBody context={post.articleContent} language={language} />
           )}
@@ -140,10 +152,15 @@ export const Head = ({ pageContext, data }) => {
   const languageConfig = getLanguageConfig(language);
   const portuguese =
     language === "pt" ? getPortugueseBlogContent(rawPost.slug) : null;
+  const french = language === "fr" ? getFrenchBlogContent(rawPost.slug) : null;
   const post = normalizePost(
-    portuguese ? { ...rawPost, ...portuguese } : rawPost,
+    portuguese
+      ? { ...rawPost, ...portuguese }
+      : french
+        ? { ...rawPost, ...french }
+        : rawPost,
   );
-  const seoTitle = portuguese?.seoTitle || post.title;
+  const seoTitle = portuguese?.seoTitle || french?.seoTitle || post.title;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const articlePath = `/blog/${post.slug.trim()}/`;
   const siteUrl = localizedUrl(rootUrl, articlePath, language);
@@ -152,7 +169,9 @@ export const Head = ({ pageContext, data }) => {
   const imageAlt =
     language === "pt"
       ? `${post.title} em Punta Cana`
-      : post.galleryImages?.[0]?.altText || "";
+      : language === "fr"
+        ? `${post.title} à Punta Cana`
+        : post.galleryImages?.[0]?.altText || "";
 
   let customSchema;
   try {
@@ -164,7 +183,7 @@ export const Head = ({ pageContext, data }) => {
   }
 
   const schemaMarkup =
-    language === "pt" || !customSchema
+    language === "pt" || language === "fr" || !customSchema
       ? {
           "@context": "https://schema.org",
           "@type": "BlogPosting",

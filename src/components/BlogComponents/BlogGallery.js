@@ -41,10 +41,17 @@ const BlogGallery = ({
   const expanded = expandedIndex === null ? null : images[expandedIndex]?.image;
 
   const isPortuguese = language === "pt";
-  const galleryLabel = isPortuguese ? "Galeria de imagens" : "Image gallery";
+  const isFrench = language === "fr";
+  const localized = (portuguese, french, english) =>
+    isPortuguese ? portuguese : isFrench ? french : english;
+  const galleryLabel = localized(
+    "Galeria de imagens",
+    "Galerie d’images",
+    "Image gallery",
+  );
   const imageAlt = (item, index) =>
-    isPortuguese
-      ? `${articleTitle || "Evento em Punta Cana"} — imagem ${index + 1}`
+    isPortuguese || isFrench
+      ? `${articleTitle || localized("Evento em Punta Cana", "Événement à Punta Cana", "Punta Cana event")} — ${localized("imagem", "image", "image")} ${index + 1}`
       : item.altText || "";
 
   return (
@@ -64,11 +71,7 @@ const BlogGallery = ({
                   type="button"
                   className="blog-gallery__expand"
                   onClick={() => setExpandedIndex(index)}
-                  aria-label={
-                    isPortuguese
-                      ? `Ver imagem ${index + 1} de ${images.length}`
-                      : `View image ${index + 1} of ${images.length}`
-                  }
+                  aria-label={`${localized("Ver imagem", "Voir l’image", "View image")} ${index + 1} ${localized("de", "sur", "of")} ${images.length}`}
                 >
                   <img
                     src={imageUrl(image.url, 960)}
@@ -81,8 +84,8 @@ const BlogGallery = ({
                     decoding="async"
                   />
                 </button>
-                {isPortuguese ? (
-                  <figcaption>{`${articleTitle} — imagem ${index + 1}`}</figcaption>
+                {isPortuguese || isFrench ? (
+                  <figcaption>{`${articleTitle} — ${localized("imagem", "image", "image")} ${index + 1}`}</figcaption>
                 ) : (
                   item.caption && <figcaption>{item.caption}</figcaption>
                 )}
@@ -97,7 +100,11 @@ const BlogGallery = ({
               className="blog-gallery__arrow blog-gallery__arrow--previous"
               onClick={() => goTo(activeIndex - 1)}
               disabled={activeIndex === 0}
-              aria-label={isPortuguese ? "Imagem anterior" : "Previous image"}
+              aria-label={localized(
+                "Imagem anterior",
+                "Image précédente",
+                "Previous image",
+              )}
             >
               <ChevronLeft aria-hidden="true" />
             </button>
@@ -106,7 +113,11 @@ const BlogGallery = ({
               className="blog-gallery__arrow blog-gallery__arrow--next"
               onClick={() => goTo(activeIndex + 1)}
               disabled={activeIndex === images.length - 1}
-              aria-label={isPortuguese ? "Próxima imagem" : "Next image"}
+              aria-label={localized(
+                "Próxima imagem",
+                "Image suivante",
+                "Next image",
+              )}
             >
               <ChevronRight aria-hidden="true" />
             </button>
@@ -116,7 +127,11 @@ const BlogGallery = ({
       {images.length > 1 && (
         <div
           className="blog-gallery__dots"
-          aria-label={isPortuguese ? "Escolher uma imagem" : "Choose an image"}
+          aria-label={localized(
+            "Escolher uma imagem",
+            "Choisir une image",
+            "Choose an image",
+          )}
         >
           {images.map((item, index) => (
             <button
@@ -124,7 +139,7 @@ const BlogGallery = ({
               key={item.contentful_id}
               className={index === activeIndex ? "is-active" : ""}
               onClick={() => goTo(index)}
-              aria-label={`${isPortuguese ? "Imagem" : "Image"} ${index + 1}`}
+              aria-label={`${localized("Imagem", "Image", "Image")} ${index + 1}`}
               aria-current={index === activeIndex ? "true" : undefined}
             />
           ))}
@@ -135,15 +150,21 @@ const BlogGallery = ({
           className="blog-gallery__dialog"
           role="dialog"
           aria-modal="true"
-          aria-label={isPortuguese ? "Imagem ampliada" : "Expanded image"}
+          aria-label={localized(
+            "Imagem ampliada",
+            "Image agrandie",
+            "Expanded image",
+          )}
           onClick={() => setExpandedIndex(null)}
         >
           <button
             type="button"
             onClick={() => setExpandedIndex(null)}
-            aria-label={
-              isPortuguese ? "Fechar imagem ampliada" : "Close expanded image"
-            }
+            aria-label={localized(
+              "Fechar imagem ampliada",
+              "Fermer l’image agrandie",
+              "Close expanded image",
+            )}
           >
             <X aria-hidden="true" />
           </button>

@@ -43,9 +43,11 @@ const SocialMedia = ({ generalInfo, language }) => {
           aria-label={
             language === "pt"
               ? "Ligar para nós"
-              : language === "es"
-                ? "Llámanos"
-                : "Call us"
+              : language === "fr"
+                ? "Nous appeler"
+                : language === "es"
+                  ? "Llámanos"
+                  : "Call us"
           }
           rel="noreferrer"
         >

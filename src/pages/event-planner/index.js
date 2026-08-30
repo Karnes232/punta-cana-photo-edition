@@ -36,6 +36,7 @@ export const Head = ({ pageContext, data }) => {
   const language = normalizeLanguage(pageContext.language);
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const seo = data.allContentfulSeo.nodes[0];
   const page = data.allContentfulPageContent.nodes[0];
@@ -43,19 +44,23 @@ export const Head = ({ pageContext, data }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const siteUrl = localizedUrl(rootUrl, "/event-planner/", language);
   const title =
-    (isPortuguese ? null : seo?.title) ||
+    (isPortuguese || isFrench ? null : seo?.title) ||
     (isPortuguese
       ? "Planejamento de Eventos Corporativos em Punta Cana | Sertuin"
-      : isSpanish
-        ? "Planificador de eventos corporativos Punta Cana | Sertuin Events"
-        : "Corporate Event Planner Punta Cana | Sertuin Events");
+      : isFrench
+        ? "Organisation d’Événements d’Entreprise à Punta Cana"
+        : isSpanish
+          ? "Planificador de eventos corporativos Punta Cana | Sertuin Events"
+          : "Corporate Event Planner Punta Cana | Sertuin Events");
   const description =
-    (isPortuguese ? null : seo?.description?.description) ||
+    (isPortuguese || isFrench ? null : seo?.description?.description) ||
     (isPortuguese
       ? "Planejamento e gestão de eventos corporativos em Punta Cana: venues, fornecedores, equipe, catering, transporte, produção e execução local."
-      : isSpanish
-        ? "Planificación y gestión de eventos corporativos en Punta Cana. Coordinamos proveedores, personal, catering, logística, producción y ejecución en sitio."
-        : "Corporate event planning and management in Punta Cana. Sertuin coordinates vendors, staffing, catering, logistics, production and on-site execution.");
+      : isFrench
+        ? "Organisation et gestion d’événements d’entreprise à Punta Cana : lieux, prestataires, personnel, restauration, transport, production et exécution locale."
+        : isSpanish
+          ? "Planificación y gestión de eventos corporativos en Punta Cana. Coordinamos proveedores, personal, catering, logística, producción y ejecución en sitio."
+          : "Corporate event planning and management in Punta Cana. Sertuin coordinates vendors, staffing, catering, logistics, production and on-site execution.");
   const image = seo?.images?.file?.url
     ? `https:${seo.images.file.url}`
     : undefined;
@@ -67,17 +72,27 @@ export const Head = ({ pageContext, data }) => {
         "@id": `${siteUrl}#service`,
         name: isPortuguese
           ? "Planejamento e gestão de eventos corporativos em Punta Cana"
-          : isSpanish
-            ? "Planificación y gestión de eventos corporativos en Punta Cana"
-            : "Corporate Event Planning and Management in Punta Cana",
+          : isFrench
+            ? "Organisation et gestion d’événements d’entreprise à Punta Cana"
+            : isSpanish
+              ? "Planificación y gestión de eventos corporativos en Punta Cana"
+              : "Corporate Event Planning and Management in Punta Cana",
         serviceType: isPortuguese
           ? "Gestão de eventos corporativos"
-          : isSpanish
-            ? "Gestión de eventos corporativos"
-            : "Corporate event management",
+          : isFrench
+            ? "Gestion d’événements d’entreprise"
+            : isSpanish
+              ? "Gestión de eventos corporativos"
+              : "Corporate event management",
         url: siteUrl,
         description,
-        inLanguage: isPortuguese ? "pt-BR" : isSpanish ? "es-DO" : "en-US",
+        inLanguage: isPortuguese
+          ? "pt-BR"
+          : isFrench
+            ? "fr-FR"
+            : isSpanish
+              ? "es-DO"
+              : "en-US",
         image,
         areaServed: [
           { "@type": "City", name: "Punta Cana" },
@@ -95,9 +110,11 @@ export const Head = ({ pageContext, data }) => {
           "@type": "OfferCatalog",
           name: isPortuguese
             ? "Serviços de gestão de eventos"
-            : isSpanish
-              ? "Servicios de gestión de eventos"
-              : "Corporate event management services",
+            : isFrench
+              ? "Services de gestion d’événements"
+              : isSpanish
+                ? "Servicios de gestión de eventos"
+                : "Corporate event management services",
           itemListElement: content.services.map((service) => ({
             "@type": "Offer",
             itemOffered: { "@type": "Service", name: service.title },
@@ -107,7 +124,13 @@ export const Head = ({ pageContext, data }) => {
       {
         "@type": "FAQPage",
         "@id": `${siteUrl}#faq`,
-        inLanguage: isPortuguese ? "pt-BR" : isSpanish ? "es-DO" : "en-US",
+        inLanguage: isPortuguese
+          ? "pt-BR"
+          : isFrench
+            ? "fr-FR"
+            : isSpanish
+              ? "es-DO"
+              : "en-US",
         mainEntity: content.faqs.map((faq) => ({
           "@type": "Question",
           name: faq.question,
@@ -120,7 +143,13 @@ export const Head = ({ pageContext, data }) => {
           {
             "@type": "ListItem",
             position: 1,
-            name: isPortuguese ? "Início" : isSpanish ? "Inicio" : "Home",
+            name: isPortuguese
+              ? "Início"
+              : isFrench
+                ? "Accueil"
+                : isSpanish
+                  ? "Inicio"
+                  : "Home",
             item: localizedUrl(rootUrl, "/", language),
           },
           {
@@ -128,9 +157,11 @@ export const Head = ({ pageContext, data }) => {
             position: 2,
             name: isPortuguese
               ? "Eventos corporativos"
-              : isSpanish
-                ? "Eventos corporativos"
-                : "Corporate Event Planner",
+              : isFrench
+                ? "Événements d’entreprise"
+                : isSpanish
+                  ? "Eventos corporativos"
+                  : "Corporate Event Planner",
             item: siteUrl,
           },
         ],
@@ -150,15 +181,24 @@ export const Head = ({ pageContext, data }) => {
               "produção de eventos Punta Cana",
               "gestão de eventos empresariais República Dominicana",
             ]
-          : seo?.keywords || []
+          : isFrench
+            ? [
+                "événement entreprise Punta Cana",
+                "organisation événement entreprise Punta Cana",
+                "production événementielle Punta Cana",
+                "gestion événement République dominicaine",
+              ]
+            : seo?.keywords || []
         ).join(", ")}
         image={image}
         imageAlt={
           isPortuguese
             ? "Gestão de evento corporativo da Sertuin Events em Punta Cana"
-            : isSpanish
-              ? "Gestión de eventos corporativos de Sertuin Events en Punta Cana"
-              : "Sertuin Events corporate event management in Punta Cana"
+            : isFrench
+              ? "Gestion d’un événement d’entreprise par Sertuin Events à Punta Cana"
+              : isSpanish
+                ? "Gestión de eventos corporativos de Sertuin Events en Punta Cana"
+                : "Sertuin Events corporate event management in Punta Cana"
         }
         url={siteUrl}
         schemaMarkup={schemaMarkup}

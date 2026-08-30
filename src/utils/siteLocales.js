@@ -1,4 +1,4 @@
-export const SITE_LANGUAGES = ["en-US", "es", "pt"];
+export const SITE_LANGUAGES = ["en-US", "es", "pt", "fr"];
 
 export const LANGUAGE_CONFIG = {
   "en-US": {
@@ -25,6 +25,14 @@ export const LANGUAGE_CONFIG = {
     label: "Português",
     flag: "🇧🇷",
   },
+  fr: {
+    prefix: "/fr",
+    htmlLang: "fr-FR",
+    hrefLang: "fr-FR",
+    ogLocale: "fr_FR",
+    label: "Français",
+    flag: "🇫🇷",
+  },
 };
 
 export const normalizeLanguage = (language) =>
@@ -49,5 +57,6 @@ export const localizedUrl = (rootUrl, path, language) =>
 export const languageKey = (language) => {
   if (language === "es") return "es";
   if (language === "pt") return "pt";
+  if (language === "fr") return "fr";
   return "en";
 };

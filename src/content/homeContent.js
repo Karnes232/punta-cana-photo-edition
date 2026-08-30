@@ -254,7 +254,98 @@ export const homeContent = {
     availability:
       "Disponíveis 24 horas por dia, 7 dias por semana, o ano inteiro.",
   },
+  fr: {
+    ...shared,
+    eyebrow: "Organisation et gestion d’événements à Punta Cana",
+    heroHeading:
+      "Organisation Complète d’Événements à Punta Cana — Votre Événement, Notre Responsabilité",
+    heroIntro:
+      "Nous concevons, organisons, coordonnons et gérons événements d’entreprise, mariages de destination, elopements, demandes en mariage et célébrations privées, de la première idée à l’exécution sur place.",
+    primaryCta: "Parlez-nous de Votre Événement",
+    primaryCtaUrl: "#start-your-event",
+    secondaryCta: "Découvrir les Types d’Événements",
+    secondaryCtaUrl: "#events-we-plan",
+    eventsEyebrow: "Les événements que nous organisons",
+    eventsTitle: "Qu’Organisez-vous à Punta Cana ?",
+    eventsIntro:
+      "Choisissez l’événement qui correspond à votre projet. Chaque page présente l’expérience, notre rôle et la façon de commencer.",
+    whatEyebrow: "Une responsabilité coordonnée",
+    whatTitle:
+      "Tout ce Dont Votre Événement a Besoin, Géré par une Équipe Locale",
+    whatParagraphs: [
+      "Sertuin Events organise le concept, le budget et le planning ; coordonne les lieux et prestataires de confiance ; développe le design, la décoration et la direction florale ; gère les locations, la restauration, le transport, le personnel et la logistique de production ; puis dirige l’événement sur place.",
+      "Vous gardez un interlocuteur unique et un plan coordonné tandis que nous assumons la responsabilité de chaque élément.",
+    ],
+    whatItems: [
+      "Concept, organisation et budget",
+      "Lieux et coordination des prestataires",
+      "Design, décoration et art floral",
+      "Locations et logistique de production",
+      "Restauration, transport et personnel",
+      "Installation et gestion sur place",
+    ],
+    processEyebrow: "Notre méthode",
+    processTitle: "Nous Écoutons. Nous Organisons. Nous Assumons.",
+    processIntro:
+      "Notre travail ne s’arrête pas au plan écrit. Nous restons engagés jusqu’à la réalisation de l’événement.",
+    process: [
+      {
+        number: "01",
+        title: "Nous écoutons",
+        body: "Nous comprenons l’objectif de votre événement, vos priorités et ce que vous souhaitez faire vivre à vos invités.",
+      },
+      {
+        number: "02",
+        title: "Nous organisons",
+        body: "Nous transformons les idées en décisions, budget réaliste, prestataires fiables, responsabilités claires et planning coordonné.",
+      },
+      {
+        number: "03",
+        title: "Nous assumons la responsabilité",
+        body: "Nous anticipons, coordonnons et restons présents pendant l’exécution afin que vous ne gériez jamais l’événement seul.",
+      },
+    ],
+    commitmentEyebrow: "L’engagement Sertuin",
+    commitmentTitle:
+      "Quand Vous Nous Confiez Votre Événement, Nous le Faisons Nôtre",
+    commitmentBody:
+      "Organiser un événement ne consiste pas seulement à accomplir une liste de tâches. C’est accepter la responsabilité d’un moment important pour quelqu’un d’autre. Nous traitons chaque décision avec soin, attention et la volonté de faire tout ce qui relève de notre responsabilité pour que l’événement réussisse.",
+    contactEyebrow: "Disponibles 24 h/24, toute l’année",
+    contactTitle: "Parlez-nous de Votre Projet",
+    contactBody:
+      "Écrivez-nous sur WhatsApp, appelez-nous ou remplissez le formulaire. Nous étudierons les informations et organiserons directement avec vous les prochaines étapes.",
+    whatsapp: "Écrire sur WhatsApp",
+    call: "Appeler Sertuin",
+    email: "Envoyer un e-mail",
+    formTitle: "Demander des Informations",
+    name: "Nom",
+    emailLabel: "E-mail",
+    phone: "Téléphone ou WhatsApp",
+    eventType: "Type d’événement",
+    selectEvent: "Sélectionnez un événement",
+    eventOptions: [
+      "Événement d’entreprise",
+      "Mariage de destination",
+      "Elopement",
+      "Demande en mariage",
+      "Célébration privée",
+      "Gender reveal",
+      "Autre événement",
+    ],
+    date: "Date souhaitée",
+    details: "Parlez-nous de votre événement",
+    submit: "Envoyer la Demande",
+    availability: "Disponibles 24 heures sur 24, 7 jours sur 7, toute l’année.",
+  },
 };
 
 export const getHomeContent = (language) =>
-  homeContent[language === "es" ? "es" : language === "pt" ? "pt" : "en-US"];
+  homeContent[
+    language === "es"
+      ? "es"
+      : language === "pt"
+        ? "pt"
+        : language === "fr"
+          ? "fr"
+          : "en-US"
+  ];

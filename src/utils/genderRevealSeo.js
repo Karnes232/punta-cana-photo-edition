@@ -10,12 +10,15 @@ export const buildGenderRevealSchema = ({
 }) => {
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
-  const homeUrl = `https://sertuinevents.com${isSpanish ? "/es/" : isPortuguese ? "/pt/" : "/"}`;
+  const isFrench = language === "fr";
+  const homeUrl = `https://sertuinevents.com${isSpanish ? "/es/" : isPortuguese ? "/pt/" : isFrench ? "/fr/" : "/"}`;
   const serviceName = isPortuguese
     ? "Planejamento de chá revelação em Punta Cana"
-    : isSpanish
-      ? "Planificación de revelaciones de género en Punta Cana"
-      : "Punta Cana gender reveal planning";
+    : isFrench
+      ? "Organisation de gender reveal à Punta Cana"
+      : isSpanish
+        ? "Planificación de revelaciones de género en Punta Cana"
+        : "Punta Cana gender reveal planning";
 
   return {
     "@context": "https://schema.org",
@@ -37,13 +40,13 @@ export const buildGenderRevealSchema = ({
           "@type": "Place",
           name: "Punta Cana, Dominican Republic",
         },
-        knowsLanguage: ["English", "Spanish"],
+        knowsLanguage: ["English", "Spanish", "Portuguese", "French"],
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "customer service",
           telephone: "+1-829-522-2900",
           email: "info@sertuinevents.com",
-          availableLanguage: ["English", "Spanish"],
+          availableLanguage: ["English", "Spanish", "Portuguese", "French"],
         },
         openingHoursSpecification: {
           "@type": "OpeningHoursSpecification",
@@ -71,7 +74,13 @@ export const buildGenderRevealSchema = ({
         url: pageUrl,
         name: title,
         description,
-        inLanguage: isSpanish ? "es-DO" : isPortuguese ? "pt-BR" : "en-US",
+        inLanguage: isSpanish
+          ? "es-DO"
+          : isPortuguese
+            ? "pt-BR"
+            : isFrench
+              ? "fr-FR"
+              : "en-US",
         about: { "@id": `${pageUrl}#service` },
         primaryImageOfPage: image
           ? { "@type": "ImageObject", url: image }
@@ -95,9 +104,11 @@ export const buildGenderRevealSchema = ({
           "@type": "Audience",
           audienceType: isPortuguese
             ? "Famílias que planejam um chá revelação"
-            : isSpanish
-              ? "Familias que planifican una revelación de género"
-              : "Families planning a gender reveal",
+            : isFrench
+              ? "Familles qui organisent une gender reveal"
+              : isSpanish
+                ? "Familias que planifican una revelación de género"
+                : "Families planning a gender reveal",
         },
         availableChannel: {
           "@type": "ServiceChannel",
@@ -105,7 +116,7 @@ export const buildGenderRevealSchema = ({
             "@type": "ContactPoint",
             telephone: "+1-829-522-2900",
             email: "info@sertuinevents.com",
-            availableLanguage: ["English", "Spanish"],
+            availableLanguage: ["English", "Spanish", "Portuguese", "French"],
           },
         },
       },
@@ -116,7 +127,13 @@ export const buildGenderRevealSchema = ({
           {
             "@type": "ListItem",
             position: 1,
-            name: isPortuguese ? "Início" : isSpanish ? "Inicio" : "Home",
+            name: isPortuguese
+              ? "Início"
+              : isFrench
+                ? "Accueil"
+                : isSpanish
+                  ? "Inicio"
+                  : "Home",
             item: homeUrl,
           },
           {

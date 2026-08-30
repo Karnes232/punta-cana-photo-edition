@@ -61,14 +61,18 @@ const ExpandableMessengerButton = ({ messengerLink, telephone, language }) => {
           isExpanded
             ? language === "pt"
               ? "Fechar menu"
-              : language === "es"
-                ? "Cerrar menú"
-                : "Close menu"
+              : language === "fr"
+                ? "Fermer le menu"
+                : language === "es"
+                  ? "Cerrar menú"
+                  : "Close menu"
             : language === "pt"
               ? "Abrir menu de contato"
-              : language === "es"
-                ? "Abrir menú de contacto"
-                : "Open contact menu"
+              : language === "fr"
+                ? "Ouvrir le menu de contact"
+                : language === "es"
+                  ? "Abrir menú de contacto"
+                  : "Open contact menu"
         }
       >
         {isExpanded ? (

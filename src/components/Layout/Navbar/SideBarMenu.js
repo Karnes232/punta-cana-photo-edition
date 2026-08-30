@@ -23,9 +23,11 @@ const SideBarMenu = ({ toggled, setToggled }) => {
                 aria-label={
                   language === "pt"
                     ? "Fechar menu"
-                    : language === "es"
-                      ? "Cerrar menú"
-                      : "Close menu"
+                    : language === "fr"
+                      ? "Fermer le menu"
+                      : language === "es"
+                        ? "Cerrar menú"
+                        : "Close menu"
                 }
                 className="p-2 text-2xl text-gray-500"
                 onClick={() => setToggled(false)}

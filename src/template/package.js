@@ -37,7 +37,9 @@ const PackagePage = ({ pageContext, data }) => {
         heroHeading2:
           pageContext.language === "pt"
             ? proposalDetails.content.summary
-            : node.heroHeading2,
+            : pageContext.language === "fr"
+              ? proposalDetails.content.summary
+              : node.heroHeading2,
         packages: node.packages?.length
           ? [
               {
@@ -233,6 +235,7 @@ export const Head = ({ pageContext, data }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const language = normalizeLanguage(pageContext.language);
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const slug = data.allContentfulPackagePageContent.nodes[0].urlSlug;
   const packagePath = `/packages/${slug}/`;
@@ -250,9 +253,13 @@ export const Head = ({ pageContext, data }) => {
       ? proposalDetails.id === "romantic-dinner-marriage-proposal"
         ? "Jantar Romântico e Pedido de Casamento em Punta Cana"
         : `${proposalDetails.name} | Pedido de Casamento em Punta Cana | Sertuin`
-      : language === "es"
-        ? `${proposalDetails.name} | Propuesta de matrimonio en Punta Cana | Sertuin Events`
-        : `${proposalDetails.name} | Punta Cana Marriage Proposal | Sertuin Events`
+      : isFrench
+        ? proposalDetails.id === "romantic-dinner-marriage-proposal"
+          ? "Dîner Romantique et Demande en Mariage à Punta Cana"
+          : `${proposalDetails.name} | Demande en Mariage à Punta Cana | Sertuin`
+        : language === "es"
+          ? `${proposalDetails.name} | Propuesta de matrimonio en Punta Cana | Sertuin Events`
+          : `${proposalDetails.name} | Punta Cana Marriage Proposal | Sertuin Events`
     : seoTitle;
   const nodeWithCanonicalPrice = proposalDetails
     ? {
@@ -347,6 +354,7 @@ export const Head = ({ pageContext, data }) => {
       <Seo
         title={resolvedSeoTitle}
         description={resolvedDescription}
+        robots="noindex, follow"
         keywords={(isPortuguese
           ? [
               `${proposalDetails?.name || "pacote"} Punta Cana`,
@@ -354,7 +362,14 @@ export const Head = ({ pageContext, data }) => {
               "pacote romântico Punta Cana",
               "pedido de casamento na praia",
             ]
-          : seoKeywords || []
+          : isFrench
+            ? [
+                `${proposalDetails?.name || "forfait"} Punta Cana`,
+                "demande en mariage Punta Cana",
+                "forfait romantique Punta Cana",
+                "demande en mariage sur la plage",
+              ]
+            : seoKeywords || []
         ).join(", ")}
         image={seoImageUrl}
         url={siteUrl}

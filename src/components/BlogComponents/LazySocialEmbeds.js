@@ -58,6 +58,7 @@ const LazyEmbed = ({ embed, language }) => {
   );
   const spanish = language === "es";
   const portuguese = language === "pt";
+  const french = language === "fr";
   if (!sourceUrl) return null;
 
   return (
@@ -66,9 +67,11 @@ const LazyEmbed = ({ embed, language }) => {
         <iframe
           src={embedUrl}
           title={
-            language === "pt"
+            portuguese
               ? `Publicação do ${embed.platform || "canal social"}`
-              : `${embed.platform || "Social"} embed`
+              : french
+                ? `Publication ${embed.platform || "sur les réseaux sociaux"}`
+                : `${embed.platform || "Social"} embed`
           }
           loading="lazy"
           allow="encrypted-media; picture-in-picture; fullscreen"
@@ -80,18 +83,22 @@ const LazyEmbed = ({ embed, language }) => {
           <Play aria-hidden="true" />
           {portuguese
             ? "Ver publicação"
-            : spanish
-              ? "Ver publicación"
-              : "View post"}
+            : french
+              ? "Voir la publication"
+              : spanish
+                ? "Ver publicación"
+                : "View post"}
         </button>
       )}
       {loaded && !embedUrl && (
         <a href={sourceUrl.href} target="_blank" rel="noopener noreferrer">
           {portuguese
             ? "Abrir publicação"
-            : spanish
-              ? "Abrir publicación"
-              : "Open post"}
+            : french
+              ? "Ouvrir la publication"
+              : spanish
+                ? "Abrir publicación"
+                : "Open post"}
           <ExternalLink aria-hidden="true" />
         </a>
       )}
@@ -104,7 +111,13 @@ const LazySocialEmbeds = ({ embeds = [], language }) => {
   return (
     <section
       className="social-embeds"
-      aria-label={language === "pt" ? "Redes sociais" : "Social media"}
+      aria-label={
+        language === "pt"
+          ? "Redes sociais"
+          : language === "fr"
+            ? "Réseaux sociaux"
+            : "Social media"
+      }
     >
       {embeds.map((embed) => (
         <LazyEmbed

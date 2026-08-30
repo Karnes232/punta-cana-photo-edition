@@ -37,6 +37,7 @@ export const Head = ({ pageContext, data }) => {
   const language = normalizeLanguage(pageContext.language);
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
+  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const copy = getHomeContent(language);
   const seo = data.allContentfulSeo.nodes[0];
@@ -49,19 +50,23 @@ export const Head = ({ pageContext, data }) => {
       ? `https:${data.allContentfulPageContent.nodes[0].heroImageList[0].file.url}`
       : undefined;
   const title =
-    (isPortuguese ? null : seo?.title) ||
+    (isPortuguese || isFrench ? null : seo?.title) ||
     (isPortuguese
       ? "Planejamento de Eventos em Punta Cana | Sertuin Events"
-      : isSpanish
-        ? "Planificación Integral de Eventos en Punta Cana | Sertuin Events"
-        : "Punta Cana Event Planner & Event Management | Sertuin Events");
+      : isFrench
+        ? "Organisation d’Événements à Punta Cana | Sertuin Events"
+        : isSpanish
+          ? "Planificación Integral de Eventos en Punta Cana | Sertuin Events"
+          : "Punta Cana Event Planner & Event Management | Sertuin Events");
   const description =
-    (isPortuguese ? null : seo?.description?.description) ||
+    (isPortuguese || isFrench ? null : seo?.description?.description) ||
     (isPortuguese
       ? "Planejamento completo de eventos em Punta Cana para empresas, casamentos de destino, pedidos de casamento e celebrações, do conceito à execução."
-      : isSpanish
-        ? "Planificación y gestión integral de eventos en Punta Cana para empresas, bodas de destino y celebraciones privadas, desde el concepto hasta la ejecución."
-        : "Full-service event planning in Punta Cana for corporate events, destination weddings and private celebrations, from concept through on-site execution.");
+      : isFrench
+        ? "Organisation complète d’événements à Punta Cana : entreprises, mariages, demandes en mariage et célébrations, du concept à l’exécution sur place."
+        : isSpanish
+          ? "Planificación y gestión integral de eventos en Punta Cana para empresas, bodas de destino y celebraciones privadas, desde el concepto hasta la ejecución."
+          : "Full-service event planning in Punta Cana for corporate events, destination weddings and private celebrations, from concept through on-site execution.");
   const schemaMarkup = buildHomeSchema({
     generalInfo,
     language,
@@ -84,15 +89,25 @@ export const Head = ({ pageContext, data }) => {
               "pedido de casamento Punta Cana",
               "eventos corporativos Punta Cana",
             ]
-          : seo?.keywords || []
+          : isFrench
+            ? [
+                "organisation événements Punta Cana",
+                "organisateur événement Punta Cana",
+                "wedding planner Punta Cana",
+                "demande en mariage Punta Cana",
+                "événement entreprise Punta Cana",
+              ]
+            : seo?.keywords || []
         ).join(", ")}
         image={imageUrl}
         imageAlt={
           isPortuguese
             ? "Evento planejado pela Sertuin Events em Punta Cana"
-            : isSpanish
-              ? "Evento planificado por Sertuin Events en Punta Cana"
-              : "Event planned by Sertuin Events in Punta Cana"
+            : isFrench
+              ? "Événement organisé par Sertuin Events à Punta Cana"
+              : isSpanish
+                ? "Evento planificado por Sertuin Events en Punta Cana"
+                : "Event planned by Sertuin Events in Punta Cana"
         }
         url={pageUrl}
         schemaMarkup={schemaMarkup}

@@ -7,13 +7,51 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./swiper.css";
 
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { A11y, Autoplay, Pagination, Navigation } from "swiper/modules";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { withSizes } from "../../utils/imageSizes";
 import { getImageSeo } from "../../utils/imageSeo";
 import ContentfulResponsiveImage from "../ContentfulResponsiveImage";
 
 const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
+  const carouselLabels = {
+    en: {
+      containerMessage: "Proposal package photo gallery",
+      firstSlideMessage: "This is the first photo",
+      lastSlideMessage: "This is the last photo",
+      nextSlideMessage: "Next photo",
+      paginationBulletMessage: "Go to photo {{index}}",
+      prevSlideMessage: "Previous photo",
+      slideLabelMessage: "Photo {{index}} of {{slidesLength}}",
+    },
+    es: {
+      containerMessage: "Galería de fotos del paquete de propuesta",
+      firstSlideMessage: "Esta es la primera foto",
+      lastSlideMessage: "Esta es la última foto",
+      nextSlideMessage: "Foto siguiente",
+      paginationBulletMessage: "Ir a la foto {{index}}",
+      prevSlideMessage: "Foto anterior",
+      slideLabelMessage: "Foto {{index}} de {{slidesLength}}",
+    },
+    pt: {
+      containerMessage: "Galeria de fotos do pacote de pedido",
+      firstSlideMessage: "Esta é a primeira foto",
+      lastSlideMessage: "Esta é a última foto",
+      nextSlideMessage: "Próxima foto",
+      paginationBulletMessage: "Ir para a foto {{index}}",
+      prevSlideMessage: "Foto anterior",
+      slideLabelMessage: "Foto {{index}} de {{slidesLength}}",
+    },
+    fr: {
+      containerMessage: "Galerie de photos du forfait de demande en mariage",
+      firstSlideMessage: "Ceci est la première photo",
+      lastSlideMessage: "Ceci est la dernière photo",
+      nextSlideMessage: "Photo suivante",
+      paginationBulletMessage: "Aller à la photo {{index}}",
+      prevSlideMessage: "Photo précédente",
+      slideLabelMessage: "Photo {{index}} sur {{slidesLength}}",
+    },
+  }[language.split("-")[0]];
   let photoListEdited = [];
   let HeroStyles = {
     backgroundImage:
@@ -65,7 +103,8 @@ const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
             disableOnInteraction: false,
           }}
           navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
+          a11y={carouselLabels}
+          modules={[A11y, Autoplay, Pagination, Navigation]}
           pagination={{
             type: "fraction",
           }}

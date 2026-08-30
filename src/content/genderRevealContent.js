@@ -1,4 +1,5 @@
 import { portugueseGenderRevealContent } from "./portugueseCoreContent";
+import { frenchGenderRevealContent } from "./frenchCoreContent";
 
 const english = {
   eyebrow: "Custom gender reveal planning in Punta Cana",
@@ -280,7 +281,9 @@ export const normalizeGenderRevealFaqs = (nodes, language) => {
       ? spanish.faqs
       : language === "pt"
         ? portugueseGenderRevealContent.faqs
-        : english.faqs;
+        : language === "fr"
+          ? frenchGenderRevealContent.faqs
+          : english.faqs;
   const localize = (value) => {
     if (language !== "es" || typeof value !== "string") return value;
     return value
@@ -303,7 +306,7 @@ export const normalizeGenderRevealFaqs = (nodes, language) => {
         !/\$\s*\d|fixed package|paquete fijo/i.test(`${question} ${answer}`),
     );
 
-  if (language === "pt" || !isCurrentSet) return fallback;
+  if (language === "pt" || language === "fr" || !isCurrentSet) return fallback;
 
   const managedQuestions = new Set(
     candidates.map(({ question }) => question.toLocaleLowerCase()),
@@ -322,4 +325,6 @@ export const getGenderRevealContent = (language) =>
     ? spanish
     : language === "pt"
       ? portugueseGenderRevealContent
-      : english;
+      : language === "fr"
+        ? frenchGenderRevealContent
+        : english;

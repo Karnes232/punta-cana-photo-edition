@@ -54,7 +54,7 @@ const { SITE_LANGUAGES, localizedPath } = loadSourceModule(
   "src/utils/siteLocales.js",
 );
 
-assert.deepEqual(SITE_LANGUAGES, ["en-US", "es", "pt"]);
+assert.deepEqual(SITE_LANGUAGES, ["en-US", "es", "pt", "fr"]);
 assert.equal(localizedPath("/proposal/", "pt"), "/pt/proposal/");
 
 const publishedSlugs = [...publishedBlogSlugs].sort();
@@ -144,9 +144,16 @@ const gatsbyNodeSource = fs.readFileSync(
   "utf8",
 );
 assert.match(gatsbyNodeSource, /pt:\s*\{\s*path:\s*["']pt["']/);
-assert.match(gatsbyNodeSource, /path:\s*`\/pt\/blog\/\$\{slug\}`/);
-assert.match(gatsbyNodeSource, /path:\s*`\/pt\/packages\/\$\{node\.urlSlug/);
+assert.match(gatsbyNodeSource, /\["pt",\s*"fr"\]\.forEach/);
+assert.match(
+  gatsbyNodeSource,
+  /path:\s*`\/\$\{derivedLanguage\}\/blog\/\$\{slug\}`/,
+);
+assert.match(
+  gatsbyNodeSource,
+  /path:\s*`\/\$\{derivedLanguage\}\/packages\/\$\{node\.urlSlug/,
+);
 
 console.log(
-  `Validated ${expectedPortuguesePaths.length} Portuguese sitemap routes: ${publishedSlugs.length} articles, ${packageIds.length} proposal packages, the blog index and 7 core pages.`,
+  `Validated ${expectedPortuguesePaths.length} Portuguese routes: ${publishedSlugs.length} articles, ${packageIds.length} noindex proposal packages, the blog index and 7 core pages.`,
 );

@@ -28,6 +28,10 @@ const portugueseWedding = page("pt/puntacana-wedding-planner");
 const portugueseGenderReveal = page("pt/gender-reveal-punta-cana");
 const portugueseElopement = page("pt/punta-cana-elopement-packages");
 const portugueseHome = page("pt");
+const frenchWedding = page("fr/puntacana-wedding-planner");
+const frenchGenderReveal = page("fr/gender-reveal-punta-cana");
+const frenchElopement = page("fr/punta-cana-elopement-packages");
+const frenchHome = page("fr");
 const gatsbyConfig = fs.readFileSync(
   path.join(sourceRoot, "gatsby-config.js"),
   "utf8",
@@ -96,10 +100,67 @@ for (const portuguesePage of [
   );
 }
 
+assert.match(
+  frenchWedding,
+  /<title[^>]*>Wedding Planner à Punta Cana \| Organisation Complète<\/title>/i,
+);
+assert.match(
+  frenchGenderReveal,
+  /<title[^>]*>Gender Reveal à Punta Cana \| Organisation Sur Mesure<\/title>/i,
+);
+assert.match(
+  frenchElopement,
+  /<title[^>]*>Elopement à Punta Cana \| Forfaits Dès 999 USD<\/title>/i,
+);
+for (const frenchPage of [
+  frenchHome,
+  frenchWedding,
+  frenchGenderReveal,
+  frenchElopement,
+]) {
+  assert.match(frenchPage, /<html[^>]+lang=["']fr-FR["']/i);
+  assert.match(
+    frenchPage,
+    /hreflang=["']fr-FR["'][^>]+href=["']https:\/\/sertuinevents\.com\/fr\//i,
+  );
+}
+assert.doesNotMatch(
+  visibleText(frenchHome),
+  /\b(?:We listen|We organize|We take responsibility|Planning an event is not simply)\b/i,
+);
+
+const southAsianHeadingPattern =
+  /south[\s-]*asian|sur\s+de\s+asia|sudeste[\s-]*asi[aá]tic[oa]s?|sud[\s-]*asiati(?:que|ques)|sul[\s-]*asi[aá]tic[oa]s?|indian|sikh/i;
+const countSouthAsianPackageHeadings = (html) =>
+  [
+    ...html.matchAll(
+      /<h3\b[^>]*data-wedding-package-title[^>]*>([\s\S]*?)<\/h3>/gi,
+    ),
+  ]
+    .map((match) => visibleText(match[1]))
+    .filter((heading) => southAsianHeadingPattern.test(heading)).length;
+
+assert.equal(
+  countSouthAsianPackageHeadings(spanishWedding),
+  1,
+  "Spanish wedding planning must show one South Asian package card",
+);
+assert.equal(
+  countSouthAsianPackageHeadings(portugueseWedding),
+  1,
+  "Portuguese wedding planning must show one South Asian package card",
+);
+assert.equal(
+  countSouthAsianPackageHeadings(frenchWedding),
+  1,
+  "French wedding planning must show one South Asian package card",
+);
+
 for (const [homePath, prefix] of [
   ["index.html", ""],
   [path.join("es", "index.html"), "/es"],
   [path.join("pt", "index.html"), "/pt"],
+  [path.join("fr", "index.html"), "/fr"],
 ]) {
   const home = read(homePath);
   assert.match(
@@ -137,6 +198,21 @@ for (const url of [
 }
 
 for (const url of [
+  "https://sertuinevents.com/fr/",
+  "https://sertuinevents.com/fr/gender-reveal-punta-cana/",
+  "https://sertuinevents.com/fr/puntacana-wedding-planner/",
+  "https://sertuinevents.com/fr/punta-cana-elopement-packages/",
+]) {
+  const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  assert.match(
+    sitemap,
+    new RegExp(
+      `<loc>${escapedUrl}</loc>[\\s\\S]*?<lastmod>2026-08-30(?:T00:00:00\\.000Z)?</lastmod>`,
+    ),
+  );
+}
+
+for (const url of [
   "https://sertuinevents.com/pt/",
   "https://sertuinevents.com/pt/gender-reveal-punta-cana/",
   "https://sertuinevents.com/pt/puntacana-wedding-planner/",
@@ -152,5 +228,5 @@ for (const url of [
 }
 
 console.log(
-  "Validated Spanish and Portuguese language separation, Home service links, hreflang and accurate sitemap modification dates.",
+  "Validated Spanish, Portuguese and French language separation, Home service links, hreflang and accurate sitemap modification dates.",
 );

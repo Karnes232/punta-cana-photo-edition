@@ -47,6 +47,9 @@ const { proposalPackageDetails } = loadSourceModule(
 const { portugueseProposalPackageContent } = loadSourceModule(
   "src/data/portugueseProposalPackageContent.js",
 );
+const { frenchProposalPackageContent } = loadSourceModule(
+  "src/data/frenchProposalPackageContent.js",
+);
 
 const rootUrl = "https://sertuinevents.com";
 const expectedPrices = new Map([
@@ -95,6 +98,7 @@ for (const { language, prefix } of [
   { language: "en-US", prefix: "" },
   { language: "es", prefix: "/es" },
   { language: "pt", prefix: "/pt" },
+  { language: "fr", prefix: "/fr" },
 ]) {
   const proposalPageUrl = `${rootUrl}${prefix}/proposal/`;
   const hubSchema = buildProposalSchema({
@@ -132,7 +136,9 @@ for (const { language, prefix } of [
       description:
         language === "pt"
           ? portugueseProposalPackageContent[item.id].summary
-          : item.copy[language === "es" ? "es" : "en"].summary,
+          : language === "fr"
+            ? frenchProposalPackageContent[item.id].summary
+            : item.copy[language === "es" ? "es" : "en"].summary,
       price: item.price,
       images: [
         {
@@ -172,7 +178,10 @@ for (const { language, prefix } of [
     assert.equal(breadcrumb.itemListElement[1].item, proposalPageUrl);
     assert.equal(breadcrumb.itemListElement[2].item, pageUrl);
     assert.equal(service.image.length, 1);
-    assert.equal(faqPage.inLanguage, language === "pt" ? "pt-BR" : language);
+    assert.equal(
+      faqPage.inLanguage,
+      language === "pt" ? "pt-BR" : language === "fr" ? "fr-FR" : language,
+    );
     assert.equal(faqPage.mainEntity.length, 1);
   });
 }
@@ -191,6 +200,17 @@ assert.doesNotMatch(
   /one of the 11 (marriage )?proposal packages/i,
 );
 
+const packageTemplateSource = fs.readFileSync(
+  path.resolve(__dirname, "..", "src/template/package.js"),
+  "utf8",
+);
+const gatsbyConfigSource = fs.readFileSync(
+  path.resolve(__dirname, "..", "gatsby-config.js"),
+  "utf8",
+);
+assert.match(packageTemplateSource, /robots="noindex, follow"/);
+assert.match(gatsbyConfigSource, /!isPackageDetailPath\(page\.path\)/);
+
 console.log(
-  "Validated the 11 shared proposal offers, localized URLs, package relationships, prices, breadcrumbs and image references at source level.",
+  "Validated the 11 shared proposal offers in four languages, localized URLs, noindex policy, package relationships, prices, breadcrumbs and image references at source level.",
 );

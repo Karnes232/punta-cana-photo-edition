@@ -6,7 +6,13 @@ const asAbsoluteUrl = (siteUrl, path) => {
 
 const asLocalizedPackagePath = (proposalPackage, language) => {
   const languagePrefix =
-    language === "es" ? "/es" : language === "pt" ? "/pt" : "";
+    language === "es"
+      ? "/es"
+      : language === "pt"
+        ? "/pt"
+        : language === "fr"
+          ? "/fr"
+          : "";
   const slug = proposalPackage.packagePage?.urlSlug?.trim();
 
   if (slug) return `${languagePrefix}/packages/${slug}/`;
@@ -43,9 +49,11 @@ const buildOrganization = ({
     description:
       language === "pt"
         ? "Empresa dominicana de planejamento de eventos em Punta Cana, dirigida pela wedding planner Grecia Mejía, com mais de 10 anos de experiência e mais de 1.800 pedidos de casamento realizados. Os clientes podem começar pelo WhatsApp, telefone ou formulário."
-        : language === "es"
-          ? "Empresa dominicana de planificación de eventos ubicada en Punta Cana, dirigida por la wedding planner Grecia Mejía, con más de 10 años de experiencia y más de 1,800 propuestas de matrimonio realizadas. Los clientes comienzan por WhatsApp, teléfono o el formulario."
-          : "Dominican event-planning company based in Punta Cana, led by wedding planner Grecia Mejía, with more than 10 years of experience and more than 1,800 marriage proposals created. Clients begin through WhatsApp, phone or the inquiry form.",
+        : language === "fr"
+          ? "Entreprise dominicaine d’organisation d’événements basée à Punta Cana, dirigée par la wedding planner Grecia Mejía, avec plus de 10 ans d’expérience et plus de 1 800 demandes en mariage réalisées. Les clients peuvent commencer sur WhatsApp, par téléphone ou avec le formulaire."
+          : language === "es"
+            ? "Empresa dominicana de planificación de eventos ubicada en Punta Cana, dirigida por la wedding planner Grecia Mejía, con más de 10 años de experiencia y más de 1,800 propuestas de matrimonio realizadas. Los clientes comienzan por WhatsApp, teléfono o el formulario."
+            : "Dominican event-planning company based in Punta Cana, led by wedding planner Grecia Mejía, with more than 10 years of experience and more than 1,800 marriage proposals created. Clients begin through WhatsApp, phone or the inquiry form.",
     location: {
       "@type": "Place",
       name: "Punta Cana, Dominican Republic",
@@ -60,9 +68,11 @@ const buildOrganization = ({
       jobTitle:
         language === "pt"
           ? "Wedding planner e diretora da empresa"
-          : language === "es"
-            ? "Wedding planner y directora de la empresa"
-            : "Wedding Planner and Company Director",
+          : language === "fr"
+            ? "Wedding planner et directrice de l’entreprise"
+            : language === "es"
+              ? "Wedding planner y directora de la empresa"
+              : "Wedding Planner and Company Director",
       worksFor: { "@id": organizationId },
     },
     contactPoint: telephone
@@ -70,7 +80,7 @@ const buildOrganization = ({
           "@type": "ContactPoint",
           telephone,
           contactType: "customer service",
-          availableLanguage: ["English", "Spanish", "Portuguese"],
+          availableLanguage: ["English", "Spanish", "Portuguese", "French"],
         }
       : undefined,
   };
@@ -82,7 +92,7 @@ const buildWebsite = ({ rootUrl, websiteId, organizationId, companyName }) => ({
   url: rootUrl,
   name: companyName || "Sertuin Events",
   publisher: { "@id": organizationId },
-  inLanguage: ["en-US", "es", "pt-BR"],
+  inLanguage: ["en-US", "es", "pt-BR", "fr-FR"],
 });
 
 const buildImageObjects = ({ images, pageUrl, language, packageName }) => {
@@ -100,9 +110,11 @@ const buildImageObjects = ({ images, pageUrl, language, packageName }) => {
       const fallback =
         language === "pt"
           ? `${packageName}: montagem de pedido de casamento em Uvero Alto, Punta Cana`
-          : language === "es"
-            ? `${packageName}: montaje de propuesta de matrimonio en Uvero Alto, Punta Cana`
-            : `${packageName}: marriage proposal setup in Uvero Alto, Punta Cana`;
+          : language === "fr"
+            ? `${packageName} : installation de demande en mariage à Uvero Alto, Punta Cana`
+            : language === "es"
+              ? `${packageName}: montaje de propuesta de matrimonio en Uvero Alto, Punta Cana`
+              : `${packageName}: marriage proposal setup in Uvero Alto, Punta Cana`;
 
       return {
         "@type": "ImageObject",
@@ -111,7 +123,8 @@ const buildImageObjects = ({ images, pageUrl, language, packageName }) => {
         url: contentUrl,
         name: image?.title || fallback,
         caption: image?.description || image?.title || fallback,
-        inLanguage: language === "pt" ? "pt-BR" : language,
+        inLanguage:
+          language === "pt" ? "pt-BR" : language === "fr" ? "fr-FR" : language,
         representativeOfPage: seen.size === 1,
       };
     })
@@ -136,8 +149,15 @@ export const buildProposalSchema = ({
 }) => {
   const rootUrl = siteUrl.replace(/\/$/, "");
   const languagePrefix =
-    language === "es" ? "/es" : language === "pt" ? "/pt" : "";
-  const schemaLanguage = language === "pt" ? "pt-BR" : language;
+    language === "es"
+      ? "/es"
+      : language === "pt"
+        ? "/pt"
+        : language === "fr"
+          ? "/fr"
+          : "";
+  const schemaLanguage =
+    language === "pt" ? "pt-BR" : language === "fr" ? "fr-FR" : language;
   const organizationId = `${rootUrl}/#organization`;
   const websiteId = `${rootUrl}/#website`;
   const webpageId = `${pageUrl}#webpage`;
@@ -213,9 +233,11 @@ export const buildProposalSchema = ({
       name:
         language === "pt"
           ? "Planejamento de pedidos de casamento em Punta Cana"
-          : language === "es"
-            ? "Planificación de propuestas de matrimonio en Punta Cana"
-            : "Marriage Proposal Planning in Punta Cana",
+          : language === "fr"
+            ? "Organisation de demandes en mariage à Punta Cana"
+            : language === "es"
+              ? "Planificación de propuestas de matrimonio en Punta Cana"
+              : "Marriage Proposal Planning in Punta Cana",
       description,
       url: pageUrl,
       provider: { "@id": organizationId },
@@ -232,9 +254,11 @@ export const buildProposalSchema = ({
       name:
         language === "pt"
           ? "Pacotes de pedido de casamento da Sertuin Events"
-          : language === "es"
-            ? "Paquetes de propuestas de Sertuin Events"
-            : "Sertuin Events proposal packages",
+          : language === "fr"
+            ? "Forfaits de demande en mariage de Sertuin Events"
+            : language === "es"
+              ? "Paquetes de propuestas de Sertuin Events"
+              : "Sertuin Events proposal packages",
       numberOfItems: offerItems.length,
       itemListOrder: "https://schema.org/ItemListOrderAscending",
       itemListElement: offerItems,
@@ -249,9 +273,11 @@ export const buildProposalSchema = ({
           name:
             language === "pt"
               ? "Início"
-              : language === "es"
-                ? "Inicio"
-                : "Home",
+              : language === "fr"
+                ? "Accueil"
+                : language === "es"
+                  ? "Inicio"
+                  : "Home",
           item: `${rootUrl}${languagePrefix}/`,
         },
         {
@@ -260,9 +286,11 @@ export const buildProposalSchema = ({
           name:
             language === "pt"
               ? "Pedidos de casamento"
-              : language === "es"
-                ? "Propuestas"
-                : "Proposals",
+              : language === "fr"
+                ? "Demandes en mariage"
+                : language === "es"
+                  ? "Propuestas"
+                  : "Proposals",
           item: pageUrl,
         },
       ],
@@ -304,8 +332,15 @@ export const buildProposalPackageSchema = ({
 }) => {
   const rootUrl = siteUrl.replace(/\/$/, "");
   const languagePrefix =
-    language === "es" ? "/es" : language === "pt" ? "/pt" : "";
-  const schemaLanguage = language === "pt" ? "pt-BR" : language;
+    language === "es"
+      ? "/es"
+      : language === "pt"
+        ? "/pt"
+        : language === "fr"
+          ? "/fr"
+          : "";
+  const schemaLanguage =
+    language === "pt" ? "pt-BR" : language === "fr" ? "fr-FR" : language;
   const organizationId = `${rootUrl}/#organization`;
   const websiteId = `${rootUrl}/#website`;
   const proposalWebpageId = `${proposalPageUrl}#webpage`;
@@ -356,9 +391,11 @@ export const buildProposalPackageSchema = ({
         name:
           language === "pt"
             ? "Pacotes de pedido de casamento em Punta Cana"
-            : language === "es"
-              ? "Paquetes de propuestas de matrimonio en Punta Cana"
-              : "Marriage proposal packages in Punta Cana",
+            : language === "fr"
+              ? "Forfaits de demande en mariage à Punta Cana"
+              : language === "es"
+                ? "Paquetes de propuestas de matrimonio en Punta Cana"
+                : "Marriage proposal packages in Punta Cana",
         inLanguage: schemaLanguage,
         isPartOf: { "@id": websiteId },
         mainEntity: { "@id": proposalServiceId },
@@ -384,15 +421,19 @@ export const buildProposalPackageSchema = ({
         serviceType:
           language === "pt"
             ? "Pacote de pedido de casamento em Punta Cana"
-            : language === "es"
-              ? "Paquete de propuesta de matrimonio en Punta Cana"
-              : "Punta Cana marriage proposal package",
+            : language === "fr"
+              ? "Forfait de demande en mariage à Punta Cana"
+              : language === "es"
+                ? "Paquete de propuesta de matrimonio en Punta Cana"
+                : "Punta Cana marriage proposal package",
         category:
           language === "pt"
             ? "Pedidos de casamento em Punta Cana"
-            : language === "es"
-              ? "Propuestas de matrimonio en Punta Cana"
-              : "Marriage proposals in Punta Cana",
+            : language === "fr"
+              ? "Demandes en mariage à Punta Cana"
+              : language === "es"
+                ? "Propuestas de matrimonio en Punta Cana"
+                : "Marriage proposals in Punta Cana",
         provider: { "@id": organizationId },
         areaServed: [
           { "@type": "Place", name: "Punta Cana, Dominican Republic" },
@@ -435,9 +476,11 @@ export const buildProposalPackageSchema = ({
             name:
               language === "pt"
                 ? "Início"
-                : language === "es"
-                  ? "Inicio"
-                  : "Home",
+                : language === "fr"
+                  ? "Accueil"
+                  : language === "es"
+                    ? "Inicio"
+                    : "Home",
             item: `${rootUrl}${languagePrefix}/`,
           },
           {
@@ -446,9 +489,11 @@ export const buildProposalPackageSchema = ({
             name:
               language === "pt"
                 ? "Pedidos de casamento"
-                : language === "es"
-                  ? "Propuestas de matrimonio"
-                  : "Marriage proposals",
+                : language === "fr"
+                  ? "Demandes en mariage"
+                  : language === "es"
+                    ? "Propuestas de matrimonio"
+                    : "Marriage proposals",
             item: proposalPageUrl,
           },
           {
