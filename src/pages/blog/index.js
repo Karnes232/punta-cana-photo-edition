@@ -5,6 +5,7 @@ import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import { getPortugueseBlogContent } from "../../data/portugueseBlogContent";
 import { getFrenchBlogContent } from "../../data/frenchBlogContent";
+import { getFeaturedProposalGuide } from "../../data/featuredProposalGuide";
 import {
   getLanguageConfig,
   localizedPath,
@@ -70,8 +71,14 @@ const BlogIndex = ({ data, pageContext }) => {
                 ? getPortugueseBlogContent(slug)
                 : null;
               const french = isFrench ? getFrenchBlogContent(slug) : null;
-              const title = portuguese?.title || french?.title || post.title;
+              const featured = getFeaturedProposalGuide(slug, language);
+              const title =
+                featured?.title ||
+                portuguese?.title ||
+                french?.title ||
+                post.title;
               const description =
+                featured?.description ||
                 portuguese?.description ||
                 french?.description ||
                 post.description;
@@ -90,11 +97,13 @@ const BlogIndex = ({ data, pageContext }) => {
                       width={image.image.width}
                       height={image.image.height}
                       alt={
-                        isPortuguese
-                          ? `${title} — evento em Punta Cana`
-                          : isFrench
-                            ? `${title} — événement à Punta Cana`
-                            : image.altText
+                        featured?.galleryAltTexts?.[0]
+                          ? featured.galleryAltTexts[0]
+                          : isPortuguese
+                            ? `${title} — evento em Punta Cana`
+                            : isFrench
+                              ? `${title} — événement à Punta Cana`
+                              : image.altText
                       }
                       loading="lazy"
                       decoding="async"
@@ -183,13 +192,19 @@ export const Head = ({ data, pageContext }) => {
         ? getPortugueseBlogContent(post.slug)
         : null;
       const french = isFrench ? getFrenchBlogContent(post.slug) : null;
+      const featured = getFeaturedProposalGuide(post.slug, language);
 
       return {
         "@type": "BlogPosting",
-        headline: portuguese?.title || french?.title || post.title,
-        ...(portuguese?.description || french?.description || post.description
+        headline:
+          featured?.title || portuguese?.title || french?.title || post.title,
+        ...(featured?.description ||
+        portuguese?.description ||
+        french?.description ||
+        post.description
           ? {
               description:
+                featured?.description ||
                 portuguese?.description ||
                 french?.description ||
                 post.description,

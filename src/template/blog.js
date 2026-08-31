@@ -4,6 +4,7 @@ import Layout from "../components/Layout/Layout";
 import BlogBody from "../components/BlogComponents/BlogBody";
 import PortugueseBlogBody from "../components/BlogComponents/PortugueseBlogBody";
 import FrenchBlogBody from "../components/BlogComponents/FrenchBlogBody";
+import StructuredBlogBody from "../components/BlogComponents/StructuredBlogBody";
 import BlogGallery from "../components/BlogComponents/BlogGallery";
 import LazySocialEmbeds from "../components/BlogComponents/LazySocialEmbeds";
 import Seo from "../components/Layout/seo";
@@ -11,6 +12,7 @@ import LocalizedAlternates from "../components/Layout/LocalizedAlternates";
 import { localizeProposalUrl } from "../utils/localizedLinks";
 import { getPortugueseBlogContent } from "../data/portugueseBlogContent";
 import { getFrenchBlogContent } from "../data/frenchBlogContent";
+import { getFeaturedProposalGuide } from "../data/featuredProposalGuide";
 import {
   getLanguageConfig,
   localizedUrl,
@@ -92,16 +94,27 @@ const Blog = ({ pageContext, data }) => {
   const rawPost = data?.allContentfulBlogPost?.nodes?.[0];
   if (!rawPost) return null;
   const language = normalizeLanguage(pageContext.language);
+  const featured = getFeaturedProposalGuide(rawPost.slug, language);
   const portuguese =
-    language === "pt" ? getPortugueseBlogContent(rawPost.slug) : null;
-  const french = language === "fr" ? getFrenchBlogContent(rawPost.slug) : null;
+    language === "pt" && !featured
+      ? getPortugueseBlogContent(rawPost.slug)
+      : null;
+  const french =
+    language === "fr" && !featured ? getFrenchBlogContent(rawPost.slug) : null;
   const post = normalizePost(
-    portuguese
-      ? { ...rawPost, ...portuguese }
-      : french
-        ? { ...rawPost, ...french }
-        : rawPost,
+    featured
+      ? { ...rawPost, ...featured }
+      : portuguese
+        ? { ...rawPost, ...portuguese }
+        : french
+          ? { ...rawPost, ...french }
+          : rawPost,
   );
+  const galleryImages = (post.galleryImages || []).map((item, index) => ({
+    ...item,
+    altText: featured?.galleryAltTexts?.[index] || item.altText,
+    caption: featured?.galleryCaptions?.[index] || item.caption,
+  }));
   if (portuguese && post.helpCustomLinkEnabled) {
     post.helpCustomLinkText = "Saiba mais";
   }
@@ -121,11 +134,13 @@ const Blog = ({ pageContext, data }) => {
           </header>
           <BlogCta post={post} language={language} />
           <BlogGallery
-            images={post.galleryImages || []}
+            images={galleryImages}
             language={language}
             articleTitle={post.title}
           />
-          {portuguese ? (
+          {featured ? (
+            <StructuredBlogBody article={featured} language={language} />
+          ) : portuguese ? (
             <PortugueseBlogBody article={portuguese} />
           ) : french ? (
             <FrenchBlogBody article={french} />
@@ -150,24 +165,35 @@ export const Head = ({ pageContext, data }) => {
   if (!rawPost) return null;
   const language = normalizeLanguage(pageContext.language);
   const languageConfig = getLanguageConfig(language);
+  const featured = getFeaturedProposalGuide(rawPost.slug, language);
   const portuguese =
-    language === "pt" ? getPortugueseBlogContent(rawPost.slug) : null;
-  const french = language === "fr" ? getFrenchBlogContent(rawPost.slug) : null;
+    language === "pt" && !featured
+      ? getPortugueseBlogContent(rawPost.slug)
+      : null;
+  const french =
+    language === "fr" && !featured ? getFrenchBlogContent(rawPost.slug) : null;
   const post = normalizePost(
-    portuguese
-      ? { ...rawPost, ...portuguese }
-      : french
-        ? { ...rawPost, ...french }
-        : rawPost,
+    featured
+      ? { ...rawPost, ...featured }
+      : portuguese
+        ? { ...rawPost, ...portuguese }
+        : french
+          ? { ...rawPost, ...french }
+          : rawPost,
   );
-  const seoTitle = portuguese?.seoTitle || french?.seoTitle || post.title;
+  const seoTitle =
+    featured?.seoTitle ||
+    portuguese?.seoTitle ||
+    french?.seoTitle ||
+    post.title;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const articlePath = `/blog/${post.slug.trim()}/`;
   const siteUrl = localizedUrl(rootUrl, articlePath, language);
   const socialImage = post.galleryImages?.[0]?.image;
   const imageUrl = socialImage?.url;
-  const imageAlt =
-    language === "pt"
+  const imageAlt = featured?.galleryAltTexts?.[0]
+    ? featured.galleryAltTexts[0]
+    : language === "pt"
       ? `${post.title} em Punta Cana`
       : language === "fr"
         ? `${post.title} à Punta Cana`
@@ -182,25 +208,42 @@ export const Head = ({ pageContext, data }) => {
     customSchema = null;
   }
 
-  const schemaMarkup =
-    language === "pt" || language === "fr" || !customSchema
-      ? {
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          description: post.description || post.directAnswer,
-          mainEntityOfPage: siteUrl,
-          inLanguage: languageConfig.htmlLang,
-          ...(imageUrl ? { image: imageUrl } : {}),
-          ...(post.publishedDate ? { datePublished: post.publishedDate } : {}),
-          ...(post.updatedAt ? { dateModified: post.updatedAt } : {}),
-          author: { "@type": "Organization", name: "SERTUIN SRL" },
-          publisher: {
-            "@type": "Organization",
-            name: "SERTUIN SRL",
-            url: data.site.siteMetadata.siteUrl,
+  const articleSchema = {
+    "@type": "BlogPosting",
+    "@id": `${siteUrl}#article`,
+    headline: post.title,
+    description: post.description || post.directAnswer,
+    mainEntityOfPage: siteUrl,
+    inLanguage: languageConfig.htmlLang,
+    ...(imageUrl ? { image: imageUrl } : {}),
+    ...(post.publishedDate ? { datePublished: post.publishedDate } : {}),
+    ...(post.updatedAt ? { dateModified: post.updatedAt } : {}),
+    author: { "@type": "Organization", name: "Sertuin Events" },
+    publisher: {
+      "@type": "Organization",
+      name: "SERTUIN SRL",
+      url: data.site.siteMetadata.siteUrl,
+    },
+  };
+  const schemaMarkup = featured?.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@graph": [
+          articleSchema,
+          {
+            "@type": "FAQPage",
+            "@id": `${siteUrl}#faq`,
+            inLanguage: languageConfig.htmlLang,
+            mainEntity: featured.faqs.map(([question, answer]) => ({
+              "@type": "Question",
+              name: question,
+              acceptedAnswer: { "@type": "Answer", text: answer },
+            })),
           },
-        }
+        ],
+      }
+    : language === "pt" || language === "fr" || !customSchema
+      ? { "@context": "https://schema.org", ...articleSchema }
       : customSchema;
 
   return (
