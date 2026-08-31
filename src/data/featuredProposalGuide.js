@@ -1,3 +1,5 @@
+import { getRemainingProposalGuide } from "./remainingProposalGuides.js";
+
 const guideSlug = "how-to-prepare-for-a-marriage-proposal-in-punta-cana";
 
 const shared = {
@@ -654,8 +656,11 @@ const normalizeGuideLanguage = (language) => {
 };
 
 export const getFeaturedProposalGuide = (slug, language) => {
-  if (String(slug || "").trim() !== guideSlug) return null;
-  return guides[normalizeGuideLanguage(language)];
+  const normalizedSlug = String(slug || "").trim();
+  if (normalizedSlug === guideSlug) {
+    return guides[normalizeGuideLanguage(language)];
+  }
+  return getRemainingProposalGuide(normalizedSlug, language);
 };
 
 export { guideSlug };

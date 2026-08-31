@@ -42,6 +42,17 @@ const StructuredBlogBody = ({ article, language }) => {
             </ul>
           )}
           {section.note && <blockquote>{section.note}</blockquote>}
+          {section.sources?.length > 0 && (
+            <ul className="blog-sources blog-official-sources">
+              {section.sources.map(([label, url]) => (
+                <li key={url}>
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
       ))}
       {article.faqs?.length > 0 && (
