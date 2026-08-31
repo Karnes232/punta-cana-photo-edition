@@ -50,9 +50,10 @@ const BlogGallery = ({
     "Image gallery",
   );
   const imageAlt = (item, index) =>
-    isPortuguese || isFrench
+    item.localizedAltText ||
+    (isPortuguese || isFrench
       ? `${articleTitle || localized("Evento em Punta Cana", "Événement à Punta Cana", "Punta Cana event")} — ${localized("imagem", "image", "image")} ${index + 1}`
-      : item.altText || "";
+      : item.altText || "");
 
   return (
     <section className="blog-gallery" aria-label={galleryLabel}>
@@ -84,7 +85,9 @@ const BlogGallery = ({
                     decoding="async"
                   />
                 </button>
-                {isPortuguese || isFrench ? (
+                {item.localizedCaption ? (
+                  <figcaption>{item.localizedCaption}</figcaption>
+                ) : isPortuguese || isFrench ? (
                   <figcaption>{`${articleTitle} — ${localized("imagem", "image", "image")} ${index + 1}`}</figcaption>
                 ) : (
                   item.caption && <figcaption>{item.caption}</figcaption>

@@ -113,6 +113,8 @@ const Blog = ({ pageContext, data }) => {
   const galleryImages = (post.galleryImages || []).map((item, index) => ({
     ...item,
     altText: featured?.galleryAltTexts?.[index] || item.altText,
+    localizedAltText: featured?.galleryAltTexts?.[index] || "",
+    localizedCaption: featured?.galleryCaptions?.[index] || "",
     caption: featured?.galleryCaptions?.[index] || item.caption,
   }));
   if (portuguese && post.helpCustomLinkEnabled) {
