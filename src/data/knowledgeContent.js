@@ -1,6 +1,3 @@
-import { getFeaturedProposalGuide } from "./featuredProposalGuide";
-import { getPortugueseBlogContent } from "./portugueseBlogContent";
-import { getFrenchBlogContent } from "./frenchBlogContent";
 import articles from "./knowledgeArticles.json";
 import { normalizeLanguage } from "../utils/siteLocales";
 
@@ -40,19 +37,5 @@ export const getKnowledgeArticle = (slug, language) => {
   const lang = normalizeLanguage(language);
   const article = articles[normalized]?.[lang];
   if (!article) return null;
-  // Keep the existing, localized conversion blocks and their original roles.
-  // All other editorial fields come from the reviewed knowledge article.
-  const original =
-    getFeaturedProposalGuide(normalized, lang) ||
-    (lang === "pt"
-      ? getPortugueseBlogContent(normalized)
-      : lang === "fr"
-        ? getFrenchBlogContent(normalized)
-        : null);
-  const conversion = Object.fromEntries(
-    Object.entries(original || {}).filter(
-      ([key]) => key.startsWith("primaryCta") || key.startsWith("help"),
-    ),
-  );
-  return { ...substitute(article, lang), ...conversion };
+  return substitute(article, lang);
 };
