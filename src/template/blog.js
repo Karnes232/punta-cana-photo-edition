@@ -1,4 +1,14 @@
 import React from "react";
+import { getKnowledgeArticle } from "../data/knowledgeContent";
+import { getKnowledgeMedia } from "../data/knowledgeMedia";
+import {
+  KnowledgeBreadcrumbs,
+  KnowledgeToc,
+  KnowledgeRelated,
+  breadcrumbSchema,
+} from "../components/BlogComponents/KnowledgeNavigation";
+import "../styles/knowledge-center.css";
+const { findNode } = require("../data/knowledgeGraph");
 import { graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import BlogBody from "../components/BlogComponents/BlogBody";
@@ -94,7 +104,9 @@ const Blog = ({ pageContext, data }) => {
   const rawPost = data?.allContentfulBlogPost?.nodes?.[0];
   if (!rawPost) return null;
   const language = normalizeLanguage(pageContext.language);
-  const featured = getFeaturedProposalGuide(rawPost.slug, language);
+  const featured =
+    getKnowledgeArticle(rawPost.slug, language) ||
+    getFeaturedProposalGuide(rawPost.slug, language);
   const portuguese =
     language === "pt" && !featured
       ? getPortugueseBlogContent(rawPost.slug)
@@ -110,7 +122,10 @@ const Blog = ({ pageContext, data }) => {
           ? { ...rawPost, ...french }
           : rawPost,
   );
-  const galleryImages = (post.galleryImages || []).map((item, index) => ({
+  const articleMedia = getKnowledgeMedia(post.slug, language);
+  const galleryImages = (
+    findNode(post.slug)?.cluster === "proposals" ? post.galleryImages || [] : []
+  ).map((item, index) => ({
     ...item,
     altText: featured?.galleryAltTexts?.[index] || item.altText,
     localizedAltText: featured?.galleryAltTexts?.[index] || "",
@@ -128,13 +143,34 @@ const Blog = ({ pageContext, data }) => {
     <Layout generalInfo={pageContext.layout}>
       <main className="universal-blog">
         <article>
+          <KnowledgeBreadcrumbs slug={post.slug} language={language} />
           <header className="universal-blog__header">
             <h1>{post.title}</h1>
+            {featured && (
+              <div className="knowledge-byline">
+                <strong>{featured.author}</strong>
+                {featured.authorRole && <span>{featured.authorRole}</span>}
+                <span>{featured.reviewNote}</span>
+              </div>
+            )}
             {post.directAnswer && (
               <p className="universal-blog__answer">{post.directAnswer}</p>
             )}
           </header>
           <BlogCta post={post} language={language} />
+          {featured && <KnowledgeToc article={featured} language={language} />}
+          {articleMedia && (
+            <figure className="knowledge-article-image">
+              <img
+                src={articleMedia.url}
+                alt={articleMedia.alt}
+                width={articleMedia.width}
+                height={articleMedia.height}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          )}
           <BlogGallery
             images={galleryImages}
             language={language}
@@ -153,6 +189,7 @@ const Blog = ({ pageContext, data }) => {
             embeds={post.socialEmbeds}
             language={pageContext.language}
           />
+          <KnowledgeRelated slug={post.slug} language={language} />
           <BlogHelp post={post} language={language} />
         </article>
       </main>
@@ -167,7 +204,9 @@ export const Head = ({ pageContext, data }) => {
   if (!rawPost) return null;
   const language = normalizeLanguage(pageContext.language);
   const languageConfig = getLanguageConfig(language);
-  const featured = getFeaturedProposalGuide(rawPost.slug, language);
+  const featured =
+    getKnowledgeArticle(rawPost.slug, language) ||
+    getFeaturedProposalGuide(rawPost.slug, language);
   const portuguese =
     language === "pt" && !featured
       ? getPortugueseBlogContent(rawPost.slug)
@@ -191,24 +230,22 @@ export const Head = ({ pageContext, data }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const articlePath = `/blog/${post.slug.trim()}/`;
   const siteUrl = localizedUrl(rootUrl, articlePath, language);
-  const socialImage = post.galleryImages?.[0]?.image;
-  const imageUrl = socialImage?.url;
-  const imageAlt = featured?.galleryAltTexts?.[0]
-    ? featured.galleryAltTexts[0]
-    : language === "pt"
-      ? `${post.title} em Punta Cana`
-      : language === "fr"
-        ? `${post.title} à Punta Cana`
-        : post.galleryImages?.[0]?.altText || "";
-
-  let customSchema;
-  try {
-    customSchema = post.schema?.internal?.content
-      ? JSON.parse(post.schema.internal.content)
+  const socialImage =
+    findNode(post.slug)?.cluster === "proposals"
+      ? post.galleryImages?.[0]?.image
       : null;
-  } catch {
-    customSchema = null;
-  }
+  const knowledgeMedia = getKnowledgeMedia(post.slug, language);
+  const imageSource = socialImage?.url || knowledgeMedia?.url;
+  const imageUrl = imageSource ? new URL(imageSource, rootUrl).href : undefined;
+  const imageAlt =
+    knowledgeMedia?.alt ||
+    (featured?.galleryAltTexts?.[0]
+      ? featured.galleryAltTexts[0]
+      : language === "pt"
+        ? `${post.title} em Punta Cana`
+        : language === "fr"
+          ? `${post.title} à Punta Cana`
+          : post.galleryImages?.[0]?.altText || "");
 
   const articleSchema = {
     "@type": "BlogPosting",
@@ -220,33 +257,37 @@ export const Head = ({ pageContext, data }) => {
     ...(imageUrl ? { image: imageUrl } : {}),
     ...(post.publishedDate ? { datePublished: post.publishedDate } : {}),
     ...(post.updatedAt ? { dateModified: post.updatedAt } : {}),
-    author: { "@type": "Organization", name: "Sertuin Events" },
+    author: {
+      "@type": featured?.authorType || "Organization",
+      name: featured?.author || "Sertuin Events",
+    },
     publisher: {
       "@type": "Organization",
       name: "SERTUIN SRL",
       url: data.site.siteMetadata.siteUrl,
     },
   };
-  const schemaMarkup = featured?.faqs?.length
-    ? {
-        "@context": "https://schema.org",
-        "@graph": [
-          articleSchema,
-          {
-            "@type": "FAQPage",
-            "@id": `${siteUrl}#faq`,
-            inLanguage: languageConfig.htmlLang,
-            mainEntity: featured.faqs.map(([question, answer]) => ({
-              "@type": "Question",
-              name: question,
-              acceptedAnswer: { "@type": "Answer", text: answer },
-            })),
-          },
-        ],
-      }
-    : language === "pt" || language === "fr" || !customSchema
-      ? { "@context": "https://schema.org", ...articleSchema }
-      : customSchema;
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@graph": [
+      articleSchema,
+      breadcrumbSchema(post.slug, language, rootUrl),
+      ...(featured?.faqs?.length
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": siteUrl + "#faq",
+              inLanguage: languageConfig.htmlLang,
+              mainEntity: featured.faqs.map(([question, answer]) => ({
+                "@type": "Question",
+                name: question,
+                acceptedAnswer: { "@type": "Answer", text: answer },
+              })),
+            },
+          ]
+        : []),
+    ].filter(Boolean),
+  };
 
   return (
     <>
@@ -256,13 +297,18 @@ export const Head = ({ pageContext, data }) => {
         image={imageUrl}
         imageAlt={imageAlt}
         url={siteUrl}
-        schemaMarkup={schemaMarkup}
         language={languageConfig.htmlLang}
         siteName="Sertuin Events"
         locale={languageConfig.ogLocale}
         twitterCard={imageUrl ? "summary_large_image" : "summary"}
       />
       <link rel="canonical" href={siteUrl} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaMarkup).replace(/</g, "\\u003c"),
+        }}
+      />
       <LocalizedAlternates rootUrl={rootUrl} path={articlePath} />
     </>
   );

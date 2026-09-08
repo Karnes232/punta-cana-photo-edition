@@ -14,12 +14,8 @@ const StructuredBlogBody = ({ article, language }) => {
 
   return (
     <section className="blog-article-content" lang={htmlLanguage}>
-      {article.author && <p className="blog-byline">{article.author}</p>}
-      {article.reviewNote && (
-        <p className="blog-review-note">{article.reviewNote}</p>
-      )}
       {article.sections.map((section) => (
-        <section key={section.heading}>
+        <section key={section.id || section.heading} id={section.id}>
           <h2>{section.heading}</h2>
           {section.intro && <p>{section.intro}</p>}
           {section.paragraphs?.map((paragraph) => (

@@ -1,247 +1,91 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
-import { getPortugueseBlogContent } from "../../data/portugueseBlogContent";
-import { getFrenchBlogContent } from "../../data/frenchBlogContent";
-import { getFeaturedProposalGuide } from "../../data/featuredProposalGuide";
+import KnowledgeCenter, {
+  centerCopy,
+} from "../../components/BlogComponents/KnowledgeCenter";
+import { getKnowledgeArticle } from "../../data/knowledgeContent";
 import {
   getLanguageConfig,
-  localizedPath,
   localizedUrl,
   normalizeLanguage,
 } from "../../utils/siteLocales";
-
+import "../../styles/knowledge-center.css";
+const { nodes, languageIndex } = require("../../data/knowledgeGraph");
 const { isPublishedBlogSlug } = require("../../data/publishedBlogSlugs");
 
 const BlogIndex = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
-  const posts = (data.allContentfulBlogPost.nodes || []).filter(({ slug }) =>
-    isPublishedBlogSlug(slug),
-  );
-
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
-      <main className="bg-white px-5 py-24 text-[#03061a] md:px-10 md:py-32">
-        <header className="mx-auto max-w-3xl text-center">
-          <p className="font-montserrat text-xs uppercase tracking-[0.28em] text-[#a95f13]">
-            Sertuin Events
-          </p>
-          <h1 className="mt-4 font-crimson text-5xl leading-tight md:text-7xl">
-            {isPortuguese
-              ? "Blog de eventos em Punta Cana"
-              : isFrench
-                ? "Blog des événements à Punta Cana"
-                : isSpanish
-                  ? "Blog de eventos en Punta Cana"
-                  : "Punta Cana Event Blog"}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl font-montserrat text-base leading-8 text-slate-600 md:text-lg">
-            {isPortuguese
-              ? "Guias claros para planejar casamentos, pedidos de casamento, elopements, eventos corporativos e celebrações em Punta Cana."
-              : isFrench
-                ? "Des guides clairs pour organiser mariages, demandes en mariage, elopements, événements d’entreprise et célébrations à Punta Cana."
-                : isSpanish
-                  ? "Guías claras para planificar bodas, propuestas, elopements, eventos corporativos y celebraciones en Punta Cana."
-                  : "Clear guides for planning weddings, proposals, elopements, corporate events and celebrations in Punta Cana."}
-          </p>
-        </header>
-
-        {posts.length > 0 ? (
-          <section
-            className="mx-auto mt-16 grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-3"
-            aria-label={
-              isPortuguese
-                ? "Artigos do blog"
-                : isFrench
-                  ? "Articles du blog"
-                  : isSpanish
-                    ? "Artículos del blog"
-                    : "Blog articles"
-            }
-          >
-            {posts.map((post) => {
-              const slug = post.slug.trim();
-              const image = post.galleryImages?.[0];
-              const portuguese = isPortuguese
-                ? getPortugueseBlogContent(slug)
-                : null;
-              const french = isFrench ? getFrenchBlogContent(slug) : null;
-              const featured = getFeaturedProposalGuide(slug, language);
-              const title =
-                featured?.title ||
-                portuguese?.title ||
-                french?.title ||
-                post.title;
-              const description =
-                featured?.description ||
-                portuguese?.description ||
-                french?.description ||
-                post.description;
-              const postPath = localizedPath(`/blog/${slug}/`, language);
-
-              return (
-                <article
-                  key={`${post.id}-${post.node_locale}`}
-                  className="overflow-hidden border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  {image?.image?.url && image.altText && (
-                    <img
-                      src={`${image.image.url}?w=900&fm=webp&q=72`}
-                      srcSet={`${image.image.url}?w=480&fm=webp&q=72 480w, ${image.image.url}?w=900&fm=webp&q=72 900w`}
-                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                      width={image.image.width}
-                      height={image.image.height}
-                      alt={
-                        featured?.galleryAltTexts?.[0]
-                          ? featured.galleryAltTexts[0]
-                          : isPortuguese
-                            ? `${title} — evento em Punta Cana`
-                            : isFrench
-                              ? `${title} — événement à Punta Cana`
-                              : image.altText
-                      }
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-[4/3] w-full object-cover"
-                    />
-                  )}
-                  <div className="p-7">
-                    <h2 className="font-crimson text-3xl leading-tight">
-                      <Link to={postPath}>{title}</Link>
-                    </h2>
-                    {description && (
-                      <p className="mt-4 font-montserrat text-sm leading-7 text-slate-600">
-                        {description}
-                      </p>
-                    )}
-                    <Link
-                      to={postPath}
-                      className="mt-6 inline-block font-montserrat text-xs font-semibold uppercase tracking-[0.2em] text-[#a95f13]"
-                    >
-                      {isPortuguese
-                        ? "Ler artigo"
-                        : isFrench
-                          ? "Lire l’article"
-                          : isSpanish
-                            ? "Leer artículo"
-                            : "Read article"}{" "}
-                      →
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </section>
-        ) : (
-          <p className="mx-auto mt-16 max-w-2xl border border-slate-200 p-8 text-center font-montserrat text-slate-600">
-            {isPortuguese
-              ? "Estamos preparando novos guias. Volte em breve."
-              : isFrench
-                ? "Nous préparons de nouveaux guides. Revenez bientôt."
-                : isSpanish
-                  ? "Estamos preparando nuevas guías. Vuelve pronto."
-                  : "We are preparing new guides. Please check back soon."}
-          </p>
-        )}
-      </main>
+      <KnowledgeCenter
+        language={language}
+        availableSlugs={data.allContentfulBlogPost.nodes
+          .filter(({ slug }) => isPublishedBlogSlug(slug))
+          .map((p) => p.slug.trim())}
+      />
     </Layout>
   );
 };
-
 export default BlogIndex;
-
 export const Head = ({ data, pageContext }) => {
-  const language = normalizeLanguage(pageContext.language);
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
-  const languageConfig = getLanguageConfig(language);
-  const baseUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
-  const pageUrl = localizedUrl(baseUrl, "/blog/", language);
-  const hasPosts = data.allContentfulBlogPost.nodes.some(({ slug }) =>
-    isPublishedBlogSlug(slug),
+  const language = normalizeLanguage(pageContext.language),
+    i = languageIndex(language);
+  const config = getLanguageConfig(language),
+    rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const url = localizedUrl(rootUrl, "/blog/", language);
+  const active = new Set(
+    data.allContentfulBlogPost.nodes
+      .filter(({ slug }) => isPublishedBlogSlug(slug))
+      .map((p) => p.slug.trim()),
   );
-  const title = isPortuguese
-    ? "Blog de Eventos em Punta Cana | Sertuin Events"
-    : isFrench
-      ? "Blog des Événements à Punta Cana | Sertuin Events"
-      : isSpanish
-        ? "Blog de Eventos en Punta Cana | Sertuin Events"
-        : "Punta Cana Event Planning Blog | Sertuin Events";
-  const description = isPortuguese
-    ? "Guias para planejar casamentos, pedidos de casamento, elopements, eventos corporativos e celebrações em Punta Cana."
-    : isFrench
-      ? "Guides pour organiser mariages, demandes en mariage, elopements, événements d’entreprise et célébrations à Punta Cana."
-      : isSpanish
-        ? "Guías para planificar bodas, propuestas, elopements, eventos corporativos y celebraciones en Punta Cana."
-        : "Guides for planning weddings, proposals, elopements, corporate events and celebrations in Punta Cana.";
-  const organization = {
-    "@type": "Organization",
-    name: "Sertuin Events",
-    url: baseUrl,
-  };
-  const blogPosts = data.allContentfulBlogPost.nodes
-    .filter(({ slug }) => isPublishedBlogSlug(slug))
-    .map((post) => {
-      const portuguese = isPortuguese
-        ? getPortugueseBlogContent(post.slug)
-        : null;
-      const french = isFrench ? getFrenchBlogContent(post.slug) : null;
-      const featured = getFeaturedProposalGuide(post.slug, language);
-
-      return {
-        "@type": "BlogPosting",
-        headline:
-          featured?.title || portuguese?.title || french?.title || post.title,
-        ...(featured?.description ||
-        portuguese?.description ||
-        french?.description ||
-        post.description
-          ? {
-              description:
-                featured?.description ||
-                portuguese?.description ||
-                french?.description ||
-                post.description,
-            }
-          : {}),
-        url: localizedUrl(baseUrl, `/blog/${post.slug}/`, language),
-        inLanguage: languageConfig.htmlLang,
-        author: organization,
-        publisher: organization,
-      };
-    });
-  const blogSchema = {
+  const title = [
+    "Punta Cana Event Planning Guides | Sertuin Events",
+    "Guías de eventos en Punta Cana | Sertuin Events",
+    "Guias de eventos em Punta Cana | Sertuin Events",
+    "Guides d’événements à Punta Cana | Sertuin Events",
+  ][i];
+  const schema = {
     "@context": "https://schema.org",
-    "@type": "Blog",
-    "@id": `${pageUrl}#blog`,
-    url: pageUrl,
+    "@type": "CollectionPage",
+    "@id": url,
+    url,
     name: title,
-    description,
-    inLanguage: languageConfig.htmlLang,
-    publisher: organization,
-    blogPost: blogPosts,
+    description: centerCopy.intro[i],
+    inLanguage: config.htmlLang,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: nodes
+        .filter((n) => active.has(n.slug))
+        .map((n, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: getKnowledgeArticle(n.slug, language).title,
+          url: localizedUrl(rootUrl, "/blog/" + n.slug + "/", language),
+        })),
+    },
   };
-
   return (
     <>
       <Seo
         title={title}
-        description={description}
-        url={pageUrl}
-        language={languageConfig.htmlLang}
+        description={centerCopy.intro[i]}
+        url={url}
+        language={config.htmlLang}
         siteName="Sertuin Events"
-        locale={languageConfig.ogLocale}
+        locale={config.ogLocale}
       />
-      <link rel="canonical" href={pageUrl} />
-      <LocalizedAlternates rootUrl={baseUrl} path="/blog/" />
-      <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
-      {!hasPosts && <meta name="robots" content="noindex, follow" />}
+      <link rel="canonical" href={url} />
+      <LocalizedAlternates rootUrl={rootUrl} path="/blog/" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+        }}
+      />
+      {!active.size && <meta name="robots" content="noindex, follow" />}
     </>
   );
 };

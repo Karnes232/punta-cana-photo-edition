@@ -42,8 +42,27 @@ const BlogGallery = ({
 
   const isPortuguese = language === "pt";
   const isFrench = language === "fr";
+  const spanishLabels = {
+    "Image gallery": "Galería de imágenes",
+    "View image": "Ver imagen",
+    of: "de",
+    image: "imagen",
+    Image: "Imagen",
+    "Previous image": "Imagen anterior",
+    "Next image": "Imagen siguiente",
+    "Choose an image": "Elegir imagen",
+    "Expanded image": "Imagen ampliada",
+    "Close expanded image": "Cerrar imagen ampliada",
+    "Punta Cana event": "Evento en Punta Cana",
+  };
   const localized = (portuguese, french, english) =>
-    isPortuguese ? portuguese : isFrench ? french : english;
+    isPortuguese
+      ? portuguese
+      : isFrench
+        ? french
+        : language === "es"
+          ? spanishLabels[english] || english
+          : english;
   const galleryLabel = localized(
     "Galeria de imagens",
     "Galerie d’images",
