@@ -1,0 +1,424 @@
+.knowledge-center {
+  background: var(--primary-bg-color);
+  color: #111827;
+}
+.knowledge-center__hero {
+  max-width: 1240px;
+  margin: auto;
+  padding: 100px 40px 64px;
+}
+.knowledge-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font:
+    600 11px/1.8 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  color: #4b5563;
+}
+.knowledge-center h1 {
+  max-width: 920px;
+  font:
+    400 clamp(44px, 6vw, 82px) / 1.06 "Crimson Pro Variable",
+    "Crimson Pro",
+    "Crimson Pro Variable",
+    "Crimson Pro",
+    Georgia,
+    serif;
+  letter-spacing: -0.03em;
+  margin: 22px 0;
+}
+.knowledge-center__intro {
+  max-width: 650px;
+  font:
+    400 17px/1.8 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  color: #4b5563;
+}
+.knowledge-jumps {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+.knowledge-jumps a {
+  border: 1px solid var(--secondary-color);
+  padding: 11px 17px;
+  border-radius: 2px;
+  font:
+    500 12px/1.5 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  color: #111827;
+}
+.knowledge-jumps a:hover,
+.knowledge-jumps a:focus-visible {
+  background: #03071a;
+  color: white;
+}
+.knowledge-center__body {
+  max-width: 1240px;
+  margin: auto;
+  padding: 0 40px 80px;
+}
+.knowledge-cluster {
+  padding: 48px 0;
+  border-top: 1px solid var(--secondary-color);
+  scroll-margin-top: 100px;
+}
+.knowledge-cluster > header {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.knowledge-cluster h2,
+.knowledge-intimate h2,
+.knowledge-topics > h2 {
+  font:
+    400 clamp(28px, 3vw, 42px) / 1.15 "Crimson Pro Variable",
+    "Crimson Pro",
+    "Crimson Pro Variable",
+    "Crimson Pro",
+    Georgia,
+    serif;
+  margin: 0;
+}
+.knowledge-cluster > header > a,
+.knowledge-intimate > a {
+  font:
+    600 12px/1.6 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.knowledge-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+.knowledge-cards article {
+  background: #fff;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--secondary-color);
+  border-top: 3px solid var(--primary-color);
+}
+.knowledge-card-number {
+  font:
+    italic 24px "Crimson Pro Variable",
+    "Crimson Pro",
+    Georgia,
+    serif;
+  color: #4b5563;
+  margin: 0 0 18px;
+}
+.knowledge-cards h3 {
+  font:
+    400 28px/1.17 "Crimson Pro Variable",
+    "Crimson Pro",
+    "Crimson Pro Variable",
+    "Crimson Pro",
+    Georgia,
+    serif;
+  margin: 0 0 18px;
+}
+.knowledge-cards h3 a:hover {
+  text-decoration: underline;
+}
+.knowledge-cards article > p:not(.knowledge-card-number) {
+  font:
+    400 13px/1.9 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  color: #4b5563;
+  margin-bottom: 24px;
+}
+.knowledge-read {
+  margin-top: auto;
+  font:
+    600 12px/1.6 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  color: #111827;
+}
+.knowledge-intimate {
+  background: #03071a;
+  color: #fff;
+  padding: 36px;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0 60px;
+  scroll-margin-top: 100px;
+}
+.knowledge-intimate .knowledge-eyebrow {
+  color: #e4c05c;
+}
+.knowledge-intimate p:not(.knowledge-eyebrow) {
+  max-width: 700px;
+  font:
+    400 14px/1.9 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  margin: 18px 0 0;
+}
+.knowledge-intimate > a {
+  min-width: 180px;
+}
+.knowledge-topics > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 34px;
+  margin-top: 30px;
+}
+.knowledge-topics h3 {
+  font:
+    400 25px/1.2 "Crimson Pro Variable",
+    "Crimson Pro",
+    Georgia,
+    serif;
+}
+.knowledge-topics ul {
+  list-style: none;
+  padding: 0;
+}
+.knowledge-topics li {
+  font:
+    400 13px/1.8 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  margin: 15px 0;
+}
+.knowledge-topics a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.knowledge-center a:focus-visible,
+.knowledge-breadcrumbs a:focus-visible,
+.knowledge-toc a:focus-visible,
+.knowledge-related a:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 5px;
+}
+.knowledge-breadcrumbs {
+  max-width: 960px;
+  margin: 0 auto 32px;
+  font:
+    400 12px/1.6 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  color: #4b5563;
+}
+.knowledge-breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+.knowledge-breadcrumbs li + li:before {
+  content: "/";
+  margin-right: 8px;
+  color: #6b7280;
+}
+.knowledge-breadcrumbs a {
+  text-decoration: underline;
+}
+.knowledge-byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font:
+    400 12px/1.8 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  margin: 22px 0;
+  color: #4b5563;
+}
+.knowledge-byline strong {
+  font-weight: 600;
+}
+.knowledge-toc {
+  border: 1px solid var(--secondary-color);
+  background: var(--secondary-bg-color);
+  padding: 26px 30px;
+  margin: 32px 0;
+}
+.knowledge-toc h2 {
+  font:
+    400 25px/1.2 "Crimson Pro Variable",
+    "Crimson Pro",
+    Georgia,
+    serif;
+  margin: 0 0 15px;
+}
+.knowledge-toc ol {
+  columns: 2;
+  gap: 32px;
+  margin: 0;
+  padding-left: 20px;
+}
+.knowledge-toc li {
+  break-inside: avoid;
+  font:
+    400 13px/1.7 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  margin: 0 0 10px;
+}
+.knowledge-toc a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.blog-article-content section[id] {
+  scroll-margin-top: 110px;
+}
+.knowledge-related {
+  border-top: 1px solid var(--secondary-color);
+  padding-top: 32px;
+  margin: 45px 0;
+}
+.knowledge-related h2 {
+  font:
+    400 34px/1.2 "Crimson Pro Variable",
+    "Crimson Pro",
+    Georgia,
+    serif;
+}
+.knowledge-related > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+.knowledge-related > div > a {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--secondary-color);
+  padding: 22px;
+}
+.knowledge-related span {
+  font:
+    500 10px/1.6 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  text-transform: uppercase;
+  color: #4b5563;
+  letter-spacing: 0.08em;
+}
+.knowledge-related strong {
+  font:
+    400 24px/1.2 "Crimson Pro Variable",
+    "Crimson Pro",
+    Georgia,
+    serif;
+}
+.knowledge-related small {
+  font:
+    400 12px/1.7 "Montserrat Variable",
+    Montserrat,
+    Arial,
+    sans-serif;
+  color: #4b5563;
+}
+.universal-blog .blog-article-content p {
+  max-width: 78ch;
+}
+.knowledge-center a,
+.knowledge-related a {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 760px) {
+  .knowledge-center__hero {
+    padding: 66px 22px 40px;
+  }
+  .knowledge-center__body {
+    padding: 0 22px 50px;
+  }
+  .knowledge-cards {
+    grid-template-columns: 1fr;
+  }
+  .knowledge-cluster > header {
+    grid-template-columns: 26px 1fr;
+  }
+  .knowledge-cluster > header > a {
+    grid-column: 2;
+  }
+  .knowledge-topics > div {
+    grid-template-columns: 1fr;
+  }
+  .knowledge-intimate {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 26px;
+  }
+  .knowledge-related > div {
+    grid-template-columns: 1fr;
+  }
+  .knowledge-toc ol {
+    columns: 1;
+  }
+  .knowledge-toc {
+    padding: 22px;
+  }
+  .knowledge-center h1 {
+    font-size: 46px;
+  }
+  .knowledge-center__intro {
+    font-size: 15px;
+  }
+  .knowledge-cluster {
+    padding: 32px 0;
+  }
+}
+.knowledge-article-image {
+  margin: 32px 0;
+}
+.knowledge-article-image img {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+.knowledge-breadcrumbs li[aria-current] {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* Extend the existing site typography and article column; keep its CTA styling. */
+.universal-blog :is(h1, h2, h3, h4) {
+  font-family: "Crimson Pro Variable", "Crimson Pro", Georgia, serif;
+}
+.universal-blog :is(p, li, a, .knowledge-byline) {
+  font-family: "Montserrat Variable", Montserrat, Arial, sans-serif;
+}
+.knowledge-breadcrumbs,
+.knowledge-toc,
+.knowledge-related,
+.knowledge-article-image {
+  width: min(100%, 56rem);
+  margin-inline: auto;
+}
+.knowledge-toc {
+  border-left: 3px solid var(--primary-color);
+}

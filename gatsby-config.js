@@ -4,6 +4,7 @@
 require("dotenv").config();
 
 const { publishedBlogSlugs } = require("./src/data/publishedBlogSlugs");
+const knowledgeArticles = require("./src/data/knowledgeArticles.json");
 const { retiredPackageSlugs } = require("./src/data/retiredPackageSlugs");
 
 const publicCrawlers = [
@@ -71,6 +72,21 @@ const seoLastModified = new Map(
     ]),
   ),
 );
+
+// Use the reviewed content date, never the build clock, for editorial URLs.
+for (const [slug, versions] of Object.entries(knowledgeArticles)) {
+  for (const [language, article] of Object.entries(versions)) {
+    const prefix = language === "en-US" ? "" : `/${language}`;
+    seoLastModified.set(`${prefix}/blog/${slug}/`, article.reviewedAt);
+    const indexPath = `${prefix}/blog/`;
+    if (
+      !seoLastModified.has(indexPath) ||
+      seoLastModified.get(indexPath) < article.reviewedAt
+    ) {
+      seoLastModified.set(indexPath, article.reviewedAt);
+    }
+  }
+}
 
 // Sitemap defence in depth: page creation already blocks these routes, but the
 // sitemap must also remain clean if another plugin or future template creates
