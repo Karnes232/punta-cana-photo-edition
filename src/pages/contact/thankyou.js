@@ -1,146 +1,75 @@
-import { graphql } from "gatsby";
-import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout/Layout";
-import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
-import Seo from "../../components/Layout/seo";
-import { useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import { graphql, Link } from 'gatsby';
+import React, { useEffect, useState } from 'react';
+import { ArrowRight, Check, MessageCircle } from 'lucide-react';
+import Layout from '../../components/Layout/Layout';
+import Seo from '../../components/Layout/seo';
+import { useI18next } from 'gatsby-plugin-react-i18next';
+import { getLanguageConfig, localizedPath, localizedUrl, normalizeLanguage } from '../../utils/siteLocales';
+import { thankYouContent } from '../../content/thankYouContent';
+import * as styles from './thankyou.module.css';
 
-const ThankYou = ({ data }) => {
-  const { t } = useTranslation();
-  const { language } = useI18next();
-  const [name, setName] = useState("");
+const ThankYou = ({ data, pageContext }) => {
+  const { language: hookLanguage } = useI18next();
+  const language = normalizeLanguage(pageContext?.language || hookLanguage);
+  const copy = thankYouContent[language];
+  const [name, setName] = useState('');
   useEffect(() => {
     try {
-      setName(sessionStorage.getItem("sertuin-thankyou-name") || "");
-      sessionStorage.removeItem("sertuin-thankyou-name");
-    } catch { /* Optional greeting. */ }
+      setName((sessionStorage.getItem('sertuin-thankyou-name') || '').trim().slice(0, 100));
+      sessionStorage.removeItem('sertuin-thankyou-name');
+    } catch { /* The optional greeting never blocks the confirmation. */ }
   }, []);
   return (
-    <Layout
-      generalInfo={data.allContentfulGeneralLayout.nodes[0]}
-      overlayHeader
-    >
-      <HeroSwiper
-        heroInfo={data.allContentfulGeneralLayout.nodes[0]}
-        overlayHeader
-        language={language}
-      />
-      <main className="">
-        <div className="flex flex-col items-center justify-center max-w-xs xl:max-w-sm mx-auto min-h-[50vh]">
-          <div className="">
-            <div className="flex flex-col justify-center items-center text-slate-600 ">
-              <div className="text-2xl xl:text-4xl font-serif text-center mt-6">
-                {t("Thank you")}
-                {name ? ` ${name}` : ""}.{" "}
-                {t("our team will reach out to you shortly!")}
-              </div>
-
-              <div className="text-center text-sm xl:text-base mt-2 xl:mt-6">
-                {t("Please feel free to")}{" "}
-                <a
-                  href={`mailto:${data.allContentfulGeneralLayout.nodes[0].email}`}
-                  aria-label="Gmail"
-                  rel="noreferrer"
-                  className="underline"
-                >
-                  {t("contact us")}
-                </a>{" "}
-                {t("with any questions or concerns.")}
-              </div>
+    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]} overlayHeader>
+      <main className={styles.page}>
+        <section className={styles.card} aria-labelledby="thankyou-heading">
+          <div className={styles.check} aria-hidden="true"><Check size={30} strokeWidth={1.4} /></div>
+          <p className={styles.eyebrow}>{copy.eyebrow}</p>
+          <h1 id="thankyou-heading">{name ? `${copy.greeting} ${name}.` : copy.title}</h1>
+          <p className={styles.intro}>{copy.intro}</p>
+          <div className={styles.next}>
+            <h2>{copy.next}</h2>
+            <div className={styles.steps}>
+              {copy.steps.map(([title, text], index) => <div key={title}>
+                <span className={styles.number}>0{index + 1}</span>
+                <h3>{title}</h3><p>{text}</p>
+              </div>)}
             </div>
           </div>
-        </div>
+          <div className={styles.actions}>
+            <Link to={localizedPath('/blog/', language)} className={styles.primary}>{copy.guides}<ArrowRight size={18} aria-hidden="true" /></Link>
+            <Link to={localizedPath('/', language)} className={styles.secondary}>{copy.home}</Link>
+          </div>
+        </section>
+        <aside className={styles.more}>
+          <p>{copy.extra}</p>
+          <a href="https://wa.me/18295222900"><MessageCircle size={18} aria-hidden="true" />{copy.whatsapp}</a>
+          <a className={styles.email} href="mailto:info@sertuinevents.com">{copy.email}</a>
+        </aside>
       </main>
     </Layout>
   );
 };
-
 export default ThankYou;
 
-export const Head = ({ data }) => {
-  const { language } = useI18next();
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
-  const languagePrefix = isPortuguese
-    ? "/pt"
-    : isFrench
-      ? "/fr"
-      : isSpanish
-        ? "/es"
-        : "";
-  const contactUrl = `${data.site.siteMetadata.siteUrl}${languagePrefix}/contact/`;
-  const title = isPortuguese
-    ? "Obrigado por entrar em contato | Sertuin Events"
-    : isFrench
-      ? "Merci de nous avoir contactés | Sertuin Events"
-      : isSpanish
-        ? "Gracias por contactarnos | Sertuin Events"
-        : "Thank You for Contacting Us | Sertuin Events";
-  const description = isPortuguese
-    ? "Recebemos sua solicitação de evento. A equipe da Sertuin Events entrará em contato em breve."
-    : isFrench
-      ? "Nous avons bien reçu votre demande d’événement. L’équipe Sertuin Events vous contactera très prochainement."
-      : isSpanish
-        ? "Recibimos tu solicitud de evento. El equipo de Sertuin Events se pondrá en contacto contigo muy pronto."
-        : "We received your event inquiry. The Sertuin Events team will contact you shortly.";
-
-  return (
-    <>
-      <Seo
-        title={title}
-        description={description}
-        url={contactUrl}
-        language={
-          isPortuguese ? "pt-BR" : isFrench ? "fr-FR" : isSpanish ? "es" : "en"
-        }
-        robots="noindex, follow"
-      />
-      <link rel="canonical" href={contactUrl} />
-    </>
-  );
+export const Head = ({ data, pageContext }) => {
+  const { language: hookLanguage } = useI18next();
+  const language = normalizeLanguage(pageContext?.language || hookLanguage);
+  const copy = thankYouContent[language];
+  const contactUrl = localizedUrl(data.site.siteMetadata.siteUrl, '/contact/', language);
+  return <>
+    <Seo title={copy.metaTitle} description={copy.metaDescription} url={contactUrl}
+      language={getLanguageConfig(language).htmlLang} robots="noindex, follow" />
+    <link rel="canonical" href={contactUrl} />
+  </>;
 };
 
 export const query = graphql`
-  query MyQuery($contentLanguage: String = "en-US") {
-    locales: allLocale {
-      edges {
-        node {
-          ns
-          data
-          language
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        siteUrl
-      }
-    }
-    allContentfulGeneralLayout(
-      filter: { node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
-        companyName
-        facebook
-        email
-        instagram
-        messengerLink
-        x
-        telephone
-        heroImageList {
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-          title
-        }
-        fullSize
-        heroHeading
-      }
+  query ThankYouPage($contentLanguage: String = "en-US") {
+    locales: allLocale { edges { node { ns data language } } }
+    site { siteMetadata { siteUrl } }
+    allContentfulGeneralLayout(filter: { node_locale: { eq: $contentLanguage } }) {
+      nodes { companyName facebook email instagram messengerLink x telephone }
     }
   }
 `;
