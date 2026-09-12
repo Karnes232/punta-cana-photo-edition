@@ -108,6 +108,7 @@ const PackagePage = ({ pageContext, data }) => {
 
   return (
     <Layout generalInfo={pageContext.layout} overlayHeader>
+      <main>
       <HeroSwiper
         heroInfo={packageInformation}
         overlayHeader
@@ -225,6 +226,7 @@ const PackagePage = ({ pageContext, data }) => {
       ) : (
         <></>
       )}
+      </main>
     </Layout>
   );
 };
