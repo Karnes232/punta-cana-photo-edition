@@ -260,10 +260,13 @@ export const Head = ({ pageContext, data }) => {
     author: {
       "@type": featured?.authorType || "Organization",
       name: featured?.author || "Sertuin Events",
+      ...(featured?.authorType === "Person" && featured?.author?.includes("Grecia") ? { "@id": `${rootUrl}/puntacana-wedding-planner/#grecia-mejia`, url: `${rootUrl}/puntacana-wedding-planner/` } : featured?.authorType === "Organization" ? { "@id": `${rootUrl}/#organization`, url: rootUrl } : {}),
     },
     publisher: {
       "@type": "Organization",
-      name: "SERTUIN SRL",
+      "@id": `${rootUrl}/#organization`,
+      name: "Sertuin Events",
+      legalName: "SERTUIN SRL",
       url: data.site.siteMetadata.siteUrl,
     },
   };
@@ -293,6 +296,7 @@ export const Head = ({ pageContext, data }) => {
     <>
       <Seo
         title={seoTitle}
+        ogType="article"
         description={post.description || post.directAnswer}
         image={imageUrl}
         imageAlt={imageAlt}

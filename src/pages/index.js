@@ -248,8 +248,8 @@ export const query = graphql`
             height: 537
             formats: [AUTO, WEBP]
             placeholder: BLURRED
-            quality: 80
-            outputPixelDensities: [0.5, 1, 2]
+            quality: 72
+            outputPixelDensities: [0.5, 0.75, 1, 1.5, 2]
           )
           title
         }

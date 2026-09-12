@@ -1,3 +1,4 @@
+import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
 import { graphql } from "gatsby";
@@ -179,6 +180,7 @@ const Index = ({ data, pageContext }) => {
 
   return (
     <Layout generalInfo={generalInfo} overlayHeader>
+      <main>
       <HeroSwiper heroInfo={heroInfo} overlayHeader language={language} />
       <ProposalIntroduction language={language} />
       <OurPackages
@@ -222,6 +224,8 @@ const Index = ({ data, pageContext }) => {
                 : "Frequently Asked Questions"
         }
       />
+            <ServiceGuides cluster="proposals" language={language} />
+</main>
     </Layout>
   );
 };

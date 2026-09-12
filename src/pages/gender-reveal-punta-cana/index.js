@@ -1,3 +1,4 @@
+import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../../components/Layout/Layout";
@@ -28,6 +29,7 @@ const GenderRevealPage = ({ data, pageContext }) => {
         generalInfo={generalInfo}
         language={pageContext.language}
       />
+      <ServiceGuides cluster="reveals" language={pageContext.language} />
     </Layout>
   );
 };

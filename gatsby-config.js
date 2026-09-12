@@ -62,13 +62,16 @@ const nonIndexablePaths = [
 const seoLastModified = new Map(
   [
     "/",
+    "/proposal/",
+    "/contact/",
+    "/event-planner/",
     "/gender-reveal-punta-cana/",
     "/puntacana-wedding-planner/",
     "/punta-cana-elopement-packages/",
   ].flatMap((pagePath) =>
     ["", "/es", "/pt", "/fr"].map((prefix) => [
       pagePath === "/" ? `${prefix}/` || "/" : `${prefix}${pagePath}`,
-      prefix === "/pt" || prefix === "/fr" ? "2026-08-30" : "2026-08-29",
+      "2026-09-12",
     ]),
   ),
 );
@@ -235,7 +238,8 @@ module.exports = {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
         trackingIds: [
           // Google Analytics / GA
-          "G-1JE4933FBR",
+          "G-1JE4933FBR", // Preserve the existing destination during migration.
+          "G-QTDC0PBVYX", // Verified sertuinevents.com GA4 property.
           "AW-473253666", // Google Ads / Adwords / AW
           // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
         ],

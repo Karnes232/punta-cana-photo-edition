@@ -38,7 +38,7 @@ export const buildWeddingPlannerSchema = ({
           contactType: "customer service",
           telephone: "+18295222900",
           email: "info@sertuinevents.com",
-          availableLanguage: ["English", "Spanish", "Portuguese", "French"],
+          availableLanguage: ["English", "Spanish"],
           hoursAvailable: [
             {
               "@type": "OpeningHoursSpecification",

@@ -80,7 +80,7 @@ const buildOrganization = ({
           "@type": "ContactPoint",
           telephone,
           contactType: "customer service",
-          availableLanguage: ["English", "Spanish", "Portuguese", "French"],
+          availableLanguage: ["English", "Spanish"],
         }
       : undefined,
   };

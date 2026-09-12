@@ -71,6 +71,9 @@ export const Head = ({ data, pageContext }) => {
     <>
       <Seo
         title={title}
+        image="https://images.ctfassets.net/vpskymlp6aa0/2fMiHeTtnc0r5vQS2MJrZD/6979df7dbe044b55c8c340869fe8256a/EBS_5068-2.jpg"
+        imageAlt={["Wedding coordinated by our team in Punta Cana", "Boda coordinada por nuestro equipo en Punta Cana", "Casamento coordenado por nossa equipe em Punta Cana", "Mariage coordonné par notre équipe à Punta Cana"][i]}
+        twitterCard="summary_large_image"
         description={centerCopy.intro[i]}
         url={url}
         language={config.htmlLang}

@@ -1,3 +1,4 @@
+import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
 
@@ -21,6 +22,7 @@ const Index = ({ data, pageContext }) => {
   return (
     <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
       <ElopementExperience language={language} />
+      <ServiceGuides cluster="weddings" language={language} />
     </Layout>
   );
 };

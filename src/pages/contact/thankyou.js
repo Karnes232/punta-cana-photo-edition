@@ -10,8 +10,10 @@ const ThankYou = ({ data }) => {
   const { language } = useI18next();
   const [name, setName] = useState("");
   useEffect(() => {
-    const searchParams = new URLSearchParams(document.location.search);
-    setName(searchParams.get("name") || "");
+    try {
+      setName(sessionStorage.getItem("sertuin-thankyou-name") || "");
+      sessionStorage.removeItem("sertuin-thankyou-name");
+    } catch { /* Optional greeting. */ }
   }, []);
   return (
     <Layout

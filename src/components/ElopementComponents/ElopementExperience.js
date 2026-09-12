@@ -1,3 +1,4 @@
+import { recordConfirmedInquiry } from "../../utils/leadAnalytics";
 import React, { useMemo, useState } from "react";
 import PhoneInput, {
   isPossiblePhoneNumber,
@@ -414,8 +415,8 @@ const COPY = {
         "Complete the agreement and pay the non-refundable deposit through PayPal. It is credited to your total.",
       ],
       [
-        "Pay the balance on arrival",
-        "The remaining balance is paid in cash on the wedding day, at the beach or before boarding.",
+        "Pay the balance on the event day",
+        "For a beach elopement, pay the balance after the service, before boarding the return van or bus. For a catamaran or boat elopement, pay when boarding.",
       ],
     ],
     depositNotice:
@@ -609,8 +610,8 @@ const COPY = {
         "Completa el contrato y paga por PayPal el depósito no reembolsable. Se acredita al total.",
       ],
       [
-        "Paga el balance al llegar",
-        "El restante se paga en efectivo el día de la boda, al llegar a la playa o antes de abordar.",
+        "Paga el balance el día del evento",
+        "En la playa, paga el saldo después del servicio y antes de abordar la van o autobús de regreso. En catamarán o barco, paga al abordar.",
       ],
     ],
     depositNotice:
@@ -691,7 +692,7 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "¿Cómo se reserva? ¿Enviar el formulario confirma la fecha?",
-          "El formulario solamente envía una solicitud. La fecha queda reservada después de confirmar disponibilidad, completar el contrato y pagar el depósito de US$200 por PayPal. El balance se paga en efectivo el día del elopement, al llegar a la playa o antes de abordar.",
+          "El formulario solamente envía una solicitud. La fecha queda reservada después de confirmar disponibilidad, completar el contrato y pagar el depósito de US$200 por PayPal. En la playa, el balance se paga después del servicio y antes de abordar la van o autobús de regreso. En catamarán o barco, se paga al abordar.",
         ],
       ]
     : [
@@ -725,7 +726,7 @@ export const buildElopementFaqs = (language = "en-US") => {
         ],
         [
           "How do we reserve, and does submitting the form confirm the date?",
-          "The form only sends a request. The date is reserved after availability is confirmed, the agreement is completed and the US$200 deposit is paid through PayPal. The balance is paid in cash on the elopement day, upon arrival at the beach or before boarding.",
+          "The form only sends a request. The date is reserved after availability is confirmed, the agreement is completed and the US$200 deposit is paid through PayPal. For a beach elopement, the balance is paid after the service and before boarding the return van or bus. For a catamaran or boat, it is paid when boarding.",
         ],
       ];
 
@@ -1084,6 +1085,7 @@ const ElopementForm = ({
 
       form.reset();
       setPhone("");
+      recordConfirmedInquiry("elopement-request");
       setStatus("success");
     } catch (error) {
       setStatus("error");

@@ -28,7 +28,7 @@ const Copyright = ({ companyName, language }) => {
     <div className=" flex flex-col xl:flex-row justify-between xl:gap-10 py-4 w-full">
       <div className="flex flex-col gap-1">
         <Link to={localizedPath("/", language)}>
-          <p className="tracking-wider cursor-pointer text-slate-400">
+          <p className="tracking-wider cursor-pointer text-slate-600">
             {language === "pt"
               ? "Todos os direitos reservados"
               : language === "fr"
@@ -43,11 +43,11 @@ const Copyright = ({ companyName, language }) => {
       {/* Deliberately outside the Link: the registration number should not be
           a clickable link to the homepage. */}
       {legalName && rnc && (
-        <p className="tracking-wider text-slate-400">
+        <p className="tracking-wider text-slate-600">
           {legalName} &middot; RNC {rnc}
         </p>
       )}
-      <p className="text-slate-400 flex flex-col md:flex-row items-center gap-2 lg:flex-1 lg:justify-start  mt-5 lg:mt-0">
+      <p className="text-slate-600 flex flex-col md:flex-row items-center gap-2 lg:flex-1 lg:justify-start  mt-5 lg:mt-0">
         {language === "pt"
           ? "Desenvolvido por"
           : language === "fr"

@@ -8,6 +8,10 @@ import "./src/styles/global.css";
 import "./src/components/Layout/Navbar/header.css";
 import "./src/components/Layout/Footer/Footer.css";
 import "./src/components/ContactForm/contact.css";
+import { installInquiryAnalytics, consumeInquiryReceipt } from "./src/utils/leadAnalytics";
+
+export const onInitialClientRender = () => installInquiryAnalytics();
+export const onRouteUpdate = () => consumeInquiryReceipt();
 
 export const shouldUpdateScroll = ({
   routerProps: { location },

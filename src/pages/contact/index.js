@@ -69,6 +69,7 @@ const Index = ({ data }) => {
       generalInfo={data.allContentfulGeneralLayout.nodes[0]}
       overlayHeader
     >
+      <main>
       <HeroSwiper heroInfo={page} overlayHeader language={language} />
       <RichText context={page.paragraph1} />
       <div className="flex flex-col lg:flex-row lg:mx-10 xl:mx-auto max-w-5xl">
@@ -80,6 +81,7 @@ const Index = ({ data }) => {
         </div>
       </div>
       <GoogleMap language={language} />
+      </main>
     </Layout>
   );
 };
@@ -96,12 +98,6 @@ export const Head = ({ pageContext, data }) => {
     data.allContentfulSeo.nodes[0];
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const siteUrl = localizedUrl(rootUrl, "/contact/", language);
-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
-
-  let JsonSchema = {};
-  if (schema) {
-    JsonSchema = JSON.parse(schema);
-  }
   return (
     <>
       <Seo
@@ -135,27 +131,16 @@ export const Head = ({ pageContext, data }) => {
         ).join(", ")}
         image={`https:${images?.file?.url}`}
         url={siteUrl}
-        schemaMarkup={
-          isPortuguese
-            ? {
-                "@context": "https://schema.org",
-                "@type": "ContactPage",
-                name: "Contato Sertuin Events",
-                url: siteUrl,
-                inLanguage: "pt-BR",
-                about: { "@id": `${rootUrl}/#organization` },
-              }
-            : isFrench
-              ? {
-                  "@context": "https://schema.org",
-                  "@type": "ContactPage",
-                  name: "Contacter Sertuin Events",
-                  url: siteUrl,
-                  inLanguage: "fr-FR",
-                  about: { "@id": `${rootUrl}/#organization` },
-                }
-              : JsonSchema
-        }
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "@id": siteUrl + "#webpage",
+          name: { "en-US": "Contact Sertuin Events", es: "Contacta a Sertuin Events", pt: "Contato Sertuin Events", fr: "Contacter Sertuin Events" }[language],
+          url: siteUrl,
+          inLanguage: languageConfig.htmlLang,
+          about: { "@id": rootUrl + "/#organization" },
+          isPartOf: { "@id": rootUrl + "/#website" },
+        }}
         language={languageConfig.htmlLang}
         locale={languageConfig.ogLocale}
       />

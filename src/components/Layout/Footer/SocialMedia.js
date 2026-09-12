@@ -10,7 +10,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 const SocialMedia = ({ generalInfo, language }) => {
   return (
-    <div className="flex flex-row space-x-5 md:space-x-7 py-4 text-slate-400">
+    <div className="flex flex-row space-x-5 md:space-x-7 py-4 text-slate-600">
       {generalInfo.facebook && (
         <a
           href={generalInfo.facebook}

@@ -1,3 +1,4 @@
+import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../../components/Layout/Layout";
@@ -30,6 +31,7 @@ const WeddingPlannerPage = ({ data, pageContext }) => {
         generalInfo={generalInfo}
         language={pageContext.language}
       />
+      <ServiceGuides cluster="weddings" language={pageContext.language} />
     </Layout>
   );
 };
