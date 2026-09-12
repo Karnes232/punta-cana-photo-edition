@@ -44,7 +44,7 @@ assert.match(
 
 assert.match(
   spanishWedding,
-  /<title[^>]*>Organización de Bodas en Punta Cana \| Sertuin Events<\/title>/i,
+  /<title[^>]*>Organización de Bodas en Punta Cana \| Planificación Integral<\/title>/i,
 );
 assert.doesNotMatch(
   visibleText(spanishWedding),
@@ -77,7 +77,7 @@ assert.doesNotMatch(visibleText(spanishHome), /\belopements?\b/i);
 
 assert.match(
   portugueseWedding,
-  /<title[^>]*>Wedding Planner em Punta Cana \| Sertuin Events<\/title>/i,
+  /<title[^>]*>Wedding Planner em Punta Cana \| Planejamento e Coordenação<\/title>/i,
 );
 assert.match(
   portugueseGenderReveal,
@@ -102,7 +102,7 @@ for (const portuguesePage of [
 
 assert.match(
   frenchWedding,
-  /<title[^>]*>Wedding Planner à Punta Cana \| Sertuin Events<\/title>/i,
+  /<title[^>]*>Wedding Planner à Punta Cana \| Organisation et Coordination<\/title>/i,
 );
 assert.match(
   frenchGenderReveal,

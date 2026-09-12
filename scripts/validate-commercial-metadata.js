@@ -21,6 +21,7 @@ for (const [route, translations] of Object.entries(metadata)) {
     assert.ok(!titles.has(title), label + ': duplicate title'); titles.add(title);
     assert.ok(!descriptions.has(description), label + ': duplicate description'); descriptions.add(description);
     assert.doesNotMatch(description, /Sertuin (?:Events )?(?:coordinates|coordina|organizes|organiza)/i, label + ': third-person voice');
+    if (route !== '/' && route !== '/contact/') assert.doesNotMatch(title, /Sertuin/i, label + ': service titles prioritize the offer');
     if (route === '/') assert.doesNotMatch(title + ' ' + description, /wedding|boda|casamento|mariage/i, label + ': home has its own broad intent');
     if (process.argv.includes('--built')) {
       const prefix = language === 'en-US' ? '' : language;
