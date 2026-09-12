@@ -462,7 +462,7 @@ const CorporateEventPlanner = ({
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#proposal-form"
+                href="#corporate-event-form"
                 className="inline-flex items-center justify-center gap-2 rounded-sm bg-amber-600 px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-white no-underline transition hover:bg-amber-500"
               >
                 {content.primaryCta}

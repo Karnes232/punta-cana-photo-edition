@@ -23,6 +23,7 @@ function Seo({
   siteName,
   locale,
   alternateLocale,
+  ogType = "website",
 }) {
   // const { site } = useStaticQuery(graphql`
   //   query {
@@ -45,9 +46,9 @@ function Seo({
       {/* <meta key="fb-app-id" property="fb:app_id" content="632127816093742" />, */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={ogType} />
       <meta property="og:url" content={url} />
-      <meta property="og:image" content={image} />
+      {image && <meta property="og:image" content={image} />}
       {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
       {siteName && <meta property="og:site_name" content={siteName} />}
       {locale && <meta property="og:locale" content={locale} />}
@@ -57,7 +58,7 @@ function Seo({
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:url" content={url} />
-      <meta name="twitter:image" content={image} />
+      {image && <meta name="twitter:image" content={image} />}
       {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
       <meta name="twitter:description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
@@ -71,9 +72,7 @@ function Seo({
       />
       {children}
       {schemaMarkup && (
-        <script type="application/ld+json">
-          {JSON.stringify(schemaMarkup)}
-        </script>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup).replace(/</g, "\\u003c") }} />
       )}
     </>
   );

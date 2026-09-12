@@ -86,7 +86,7 @@ export const buildHomeSchema = ({
           contactType: "event planning inquiries",
           telephone,
           email,
-          availableLanguage: ["English", "Spanish", "Portuguese", "French"],
+          availableLanguage: ["English", "Spanish"],
           areaServed: "DO",
           hoursAvailable,
         },

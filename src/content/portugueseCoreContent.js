@@ -756,8 +756,8 @@ export const portugueseElopementContent = {
       "Conclua o contrato e pague pelo PayPal o depósito não reembolsável, creditado ao total.",
     ],
     [
-      "Pague o saldo na chegada",
-      "O saldo é pago em dinheiro no dia, ao chegar à praia ou antes do embarque.",
+      "Pague o saldo no dia do evento",
+      "Na praia, pague o saldo após o serviço e antes de embarcar na van ou no ônibus de retorno. No catamarã ou barco, pague no embarque.",
     ],
   ],
   depositNotice:

@@ -1,3 +1,4 @@
+import { passVisitorName } from "../../utils/thankYouName";
 import React, { useState } from "react";
 import ContactInfo from "./ContactInfo";
 import MoreInfo from "./MoreInfo";
@@ -13,8 +14,9 @@ const Form = () => {
     <>
       <form
         name="contact"
+        onSubmit={passVisitorName("name")}
         method="POST"
-        action={`${localizedPath("/contact/thankyou/", i18n.language)}?name=${encodeURIComponent(name)}`}
+        action={localizedPath("/contact/thankyou/", i18n.language)}
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         id="contact"

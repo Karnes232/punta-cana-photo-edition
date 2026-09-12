@@ -1,3 +1,4 @@
+import { recordConfirmedInquiry } from "../../utils/leadAnalytics";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Link } from "gatsby";
@@ -171,7 +172,7 @@ const getStructuredProcessSteps = (context) => {
 
 // The cards render in a sm:grid-cols-2 lg:grid-cols-4 grid, so they are about
 // 320px wide on desktop rather than the source width.
-const CARD_SIZES = "(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw";
+const CARD_SIZES = "(min-width: 1360px) 302px, (min-width: 1024px) calc((100vw - 152px) / 4), (min-width: 768px) calc((100vw - 104px) / 2), (min-width: 640px) calc((100vw - 72px) / 2), calc(100vw - 48px)";
 
 const ServiceCard = ({ service, language }) => {
   const image = withSizes(
@@ -421,6 +422,7 @@ const HomeContactForm = ({ content, language }) => {
 
       form.reset();
       setPhone("");
+      recordConfirmedInquiry("home-page");
       setStatus("success");
     } catch (error) {
       setStatus("error");
@@ -773,7 +775,7 @@ const HomeExperience = ({
       <section id={eventsSectionId} className="px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-primary-color">
+            <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-[#80651f]">
               {content.eventsEyebrow}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight text-black md:text-6xl">
@@ -798,7 +800,7 @@ const HomeExperience = ({
       <section className="bg-white px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
-            <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-primary-color">
+            <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-[#80651f]">
               {content.whatEyebrow}
             </p>
             <h2 className="mt-4 font-crimson text-4xl font-medium leading-tight text-black md:text-6xl">
@@ -880,7 +882,7 @@ const HomeExperience = ({
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
           </div>
           <div className="flex flex-col justify-center p-8 md:p-14 lg:p-16">
-            <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-primary-color">
+            <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.22em] text-[#80651f]">
               {managedText(
                 featureCard?.secondaryTitle,
                 content.commitmentEyebrow,

@@ -53,7 +53,7 @@ export const buildElopementSchema = ({
               telephone,
               contactType: "customer service",
               areaServed: "DO",
-              availableLanguage: ["English", "Spanish", "Portuguese", "French"],
+              availableLanguage: ["English", "Spanish"],
             }
           : undefined,
         sameAs: instagram ? [instagram] : undefined,

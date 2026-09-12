@@ -758,8 +758,8 @@ export const frenchElopementContent = {
       "Finalisez le contrat et versez par PayPal l’acompte non remboursable, déduit du total.",
     ],
     [
-      "Payez le solde à l’arrivée",
-      "Le solde est réglé en espèces le jour J, à l’arrivée sur la plage ou avant l’embarquement.",
+      "Réglez le solde le jour de l’événement",
+      "Sur la plage, réglez le solde après la prestation et avant de monter dans le véhicule de retour. Sur un catamaran ou un bateau, réglez-le à l’embarquement.",
     ],
   ],
   depositNotice:

@@ -19,7 +19,7 @@ const Footer = ({ generalInfo }) => {
             target="_blank"
             aria-label="Instagram"
             rel="noreferrer"
-            className="flex flex-row items-center justify-center space-x-2 text-gray-400"
+            className="flex flex-row items-center justify-center space-x-2 text-gray-600"
           >
             <FaInstagram className="text-2xl" />{" "}
             <p className="uppercase text-sm tracking-widest">@{instatag}</p>
