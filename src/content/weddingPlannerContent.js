@@ -339,6 +339,7 @@ export const normalizeWeddingFaqs = (nodes, language) => {
           .replace(/\bwedding planning\b/gi, "planificación de bodas")
           .replace(/\bvenues\b/gi, "locaciones")
           .replace(/\bvenue\b/gi, "locación")
+          .replace(/del sudeste asiático/gi, "del sur de Asia")
       : value || "";
   const cmsFaqs = (nodes || [])
     .map((item) => ({
@@ -357,7 +358,12 @@ export const normalizeWeddingFaqs = (nodes, language) => {
   const seen = new Set();
   return [...cmsFaqs, ...fallback]
     .filter((item) => {
-      const key = item.question.toLowerCase();
+      const question = item.question.toLowerCase();
+      const key = /deposit|depósito/.test(question)
+        ? "planning-deposit"
+        : /south asian|sur de asia|sudeste asiático/.test(question)
+          ? "south-asian-planning"
+          : question;
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
