@@ -91,20 +91,20 @@
   },
   "/contact/": {
     "en-US": {
-      "title": "Contact Sertuin Events | Request an Event Quote",
-      "description": "Tell us your event date, guest count and plans in Punta Cana. Contact our team by form, WhatsApp or email to discuss availability and request a tailored quote."
+      "title": "Contact Sertuin Events | Let’s Talk",
+      "description": "Have a question, an event idea or a collaboration in mind? Write to us. We’re here to listen and help you take the next step."
     },
     "es": {
-      "title": "Contacta a Sertuin Events | Cotiza tu Evento",
-      "description": "Cuéntanos la fecha, los invitados y tus planes en Punta Cana. Escríbenos por formulario, WhatsApp o email para consultar disponibilidad y cotizar tu evento."
+      "title": "Contacta a Sertuin Events | Hablemos",
+      "description": "¿Tienes una pregunta, una idea para un evento o una propuesta de colaboración? Escríbenos. Estamos aquí para escucharte y ayudarte a dar el siguiente paso."
     },
     "pt": {
-      "title": "Contato Sertuin Events | Solicite um Orçamento",
-      "description": "Conte-nos a data, o número de convidados e seus planos em Punta Cana. Fale conosco por formulário, WhatsApp ou email para consultar datas e pedir um orçamento."
+      "title": "Contato Sertuin Events | Vamos Conversar",
+      "description": "Tem uma pergunta, uma ideia para um evento ou uma proposta de parceria? Escreva para nós. Estamos aqui para ouvir você e ajudar no próximo passo."
     },
     "fr": {
-      "title": "Contactez Sertuin Events | Demandez un Devis",
-      "description": "Indiquez-nous la date, les invités et votre projet à Punta Cana. Écrivez-nous par formulaire, WhatsApp ou email pour connaître nos disponibilités et tarifs."
+      "title": "Contactez Sertuin Events | Parlons-en",
+      "description": "Une question, une idée d’événement ou une collaboration ? Écrivez-nous. Nous sommes à votre écoute pour vous aider à faire le prochain pas."
     }
   },
   "/packages/infinity-love-proposal/": {

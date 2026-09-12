@@ -2,91 +2,17 @@ import commercialMetadata from "../../data/commercialMetadata.json";
 import { graphql } from "gatsby";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
-import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
-import RichText from "../../components/RichTextComponents/RichText";
-import Form from "../../components/ContactForm/Form";
-import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import ContactExperience from "../../components/ContactForm/ContactExperience";
 import { useI18next } from "gatsby-plugin-react-i18next";
-import {
-  getLanguageConfig,
-  localizedUrl,
-  normalizeLanguage,
-} from "../../utils/siteLocales";
+import { getLanguageConfig, localizedUrl, normalizeLanguage } from "../../utils/siteLocales";
 
-const translateRichText = (field, translations) => {
-  if (!field?.raw) return field;
-  try {
-    const document = JSON.parse(field.raw);
-    let index = 0;
-    const visit = (node) => {
-      if (node?.nodeType === "text" && node.value.trim()) {
-        node.value = translations[index] || node.value;
-        index += 1;
-      }
-      if (Array.isArray(node?.content)) node.content.forEach(visit);
-    };
-    visit(document);
-    return { ...field, raw: JSON.stringify(document) };
-  } catch {
-    return field;
-  }
-};
-
-const Index = ({ data }) => {
-  const { language } = useI18next();
-  const sourcePage = data.allContentfulPageContent.nodes[0];
-  const page =
-    language === "pt"
-      ? {
-          ...sourcePage,
-          heroHeading: "Fale Conosco",
-          heroHeading2: "Vamos Planejar seu Evento em Punta Cana",
-          paragraph1: translateRichText(sourcePage.paragraph1, [
-            "Estamos aqui para entender o que você precisa",
-            "Queremos conhecer seus planos e oferecer o apoio certo. Preencha o formulário abaixo e nossa equipe entrará em contato para conversar sobre seu evento em Punta Cana.",
-          ]),
-          paragraph2: translateRichText(sourcePage.paragraph2, [
-            "Conte-nos sobre seu evento em Punta Cana. Fale com nossa equipe pelo WhatsApp +1 829 522 2900 ou pelo e-mail info@sertuinevents.com. Ajudaremos você a planejar a experiência adequada.",
-          ]),
-        }
-      : language === "fr"
-        ? {
-            ...sourcePage,
-            heroHeading: "Contactez-nous",
-            heroHeading2: "Organisons Votre Événement à Punta Cana",
-            paragraph1: translateRichText(sourcePage.paragraph1, [
-              "Nous sommes là pour comprendre vos besoins",
-              "Parlez-nous de votre projet afin que nous puissions vous proposer le bon accompagnement. Remplissez le formulaire et notre équipe vous contactera pour discuter de votre événement à Punta Cana.",
-            ]),
-            paragraph2: translateRichText(sourcePage.paragraph2, [
-              "Parlez-nous de votre événement à Punta Cana. Contactez notre équipe sur WhatsApp au +1 829 522 2900 ou par e-mail à info@sertuinevents.com. Nous vous aiderons à construire l’expérience adaptée.",
-            ]),
-          }
-        : sourcePage;
-  return (
-    <Layout
-      generalInfo={data.allContentfulGeneralLayout.nodes[0]}
-      overlayHeader
-    >
-      <main>
-      <HeroSwiper heroInfo={page} overlayHeader language={language} />
-      <RichText context={page.paragraph1} />
-      <div className="flex flex-col lg:flex-row lg:mx-10 xl:mx-auto max-w-5xl">
-        <div className="basis-1/2 mx-5 lg:mx-0">
-          <Form />
-        </div>
-        <div className="basis-1/2">
-          <RichText context={page.paragraph2} />
-        </div>
-      </div>
-      <GoogleMap language={language} />
-      </main>
-    </Layout>
-  );
-};
-
+const Index = ({ data, pageContext }) => (
+  <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]} overlayHeader>
+    <ContactExperience language={pageContext.language} />
+  </Layout>
+);
 export default Index;
 
 export const Head = ({ pageContext, data }) => {

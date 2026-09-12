@@ -1,0 +1,56 @@
+.page { background:#f7f5f0; color:#25231f; }
+.hero { background:radial-gradient(ellipse at 5% 15%,#302b20 0,transparent 55%),#151411; padding:170px 28px 80px; }
+.heroGrid { max-width:1200px; margin:auto; display:grid; grid-template-columns:1fr 1.12fr; gap:80px; align-items:start; }
+.introduction { padding-top:30px; color:#f9f7f1; }
+.eyebrow,.formEyebrow,.directLabel { font-family:'Montserrat Variable','Montserrat',sans-serif; font-size:10px; line-height:1.6; font-weight:600; letter-spacing:.19em; }
+.eyebrow { display:flex; align-items:center; gap:12px; color:#dcc48c; margin:0 0 24px; }
+.eyebrow span { width:28px; height:1px; background:#dcc48c; }
+.introduction h1 { font-size:clamp(48px,4.5vw,68px); font-weight:400; line-height:1.02; letter-spacing:-.025em; margin:0 0 28px; max-width:490px; }
+.intro { font-family:'Montserrat Variable','Montserrat',sans-serif; font-size:15px; line-height:1.9; color:#d8d3c9; max-width:455px; margin:0; }
+.welcome { color:#dcc48c; font-size:21px; font-style:italic; line-height:1.5; margin:24px 0 0; }
+.direct { margin-top:52px; max-width:455px; }
+.directLabel { color:#c5bdac; margin:0 0 15px; }
+.method { display:flex; align-items:center; gap:17px; padding:18px 0; border-top:1px solid #4b4539; color:#f9f7f1; text-decoration:none; }
+.method>svg:first-child { color:#dcc48c; flex-shrink:0; }
+.method>svg:last-child { margin-left:auto; color:#bdb4a3; flex-shrink:0; transition:transform .2s; }
+.method:hover>svg:last-child { transform:translate(3px,-3px); }
+.method strong { display:block; font-size:20px; font-weight:400; line-height:1.3; }
+.method small { display:block; font-family:'Montserrat Variable','Montserrat',sans-serif; font-size:12px; color:#c7c0b4; margin-top:4px; overflow-wrap:anywhere; }
+.formCard { background:#fffefa; padding:38px; border:1px solid #e7dfcf; border-radius:18px; box-shadow:0 24px 80px #0003; }
+.formEyebrow { color:#80651f; margin:0 0 12px; }
+.formCard h2 { font-size:38px; line-height:1.08; font-weight:400; letter-spacing:-.02em; margin:0 0 10px; }
+.formIntro { font-family:'Montserrat Variable','Montserrat',sans-serif; font-size:13px; line-height:1.7; color:#676157; margin:0 0 24px; }
+.formCard form { font-family:'Montserrat Variable','Montserrat',sans-serif; }
+.purposes { border:0; padding:0; margin:0 0 23px; min-width:0; }
+.purposes legend,.field>label { display:block; font-size:12px; font-weight:600; line-height:1.5; margin-bottom:9px; }
+.purposeGrid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.purpose { cursor:pointer; position:relative; min-width:0; }
+.purpose input { position:absolute; width:1px; height:1px; opacity:0; }
+.purpose span { display:flex; align-items:center; min-height:44px; height:100%; padding:10px 12px; font-size:11px; line-height:1.5; border:1px solid #dcd7ce; border-radius:8px; color:#5e584f; }
+.purpose input:checked+span { background:#f0e8d7; border-color:#92753c; color:#403112; }
+.purpose input:focus-visible+span { outline:3px solid #80651f; outline-offset:3px; }
+.fieldGrid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.field { margin-bottom:19px; min-width:0; }
+.field label span { color:#80651f; }
+.field label small { font-weight:400; color:#71695c; font-size:11px; }
+.field input,.field textarea { width:100%; border:1px solid #d5d0c7; background:#fff; color:#29251e; border-radius:8px; padding:13px 14px; font-family:inherit; font-size:14px; line-height:1.5; box-sizing:border-box; }
+.field input::placeholder,.field textarea::placeholder { color:#78736b; opacity:1; }
+.field textarea { resize:vertical; min-height:118px; }
+.field input:focus,.field textarea:focus { outline:2px solid #95783e; outline-offset:2px; border-color:#95783e; }
+.hint,.formNote { font-size:10px; line-height:1.7; color:#726b60; }
+.hint { margin:7px 0 0; }
+.submit { width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; border:1px solid #25231f; padding:16px 20px; border-radius:9px; background:#25231f; color:#fff; font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; transition:background .2s; }
+.submit:hover { background:#51442b; }
+.submit:focus-visible,.method:focus-visible { outline:3px solid #b79a5d; outline-offset:4px; }
+.formNote { margin:13px 0 0; }
+.next { padding:72px 28px 55px; max-width:1200px; margin:auto; }
+.next>h2 { font-size:clamp(34px,3.5vw,46px); font-weight:400; line-height:1.12; max-width:690px; margin:0 0 40px; }
+.steps { display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
+.steps>div { border-top:1px solid #d8cbae; padding-top:20px; }
+.stepNumber { font-family:'Montserrat Variable','Montserrat',sans-serif; font-size:11px; color:#80651f; }
+.steps h3 { font-size:26px; line-height:1.2; font-weight:400; margin:12px 0; }
+.steps p { font-family:'Montserrat Variable','Montserrat',sans-serif; font-size:13px; line-height:1.85; color:#686156; }
+.location { border-top:1px solid #e0d9cd; margin-top:48px; padding-top:24px; font-style:italic; font-size:21px; color:#756446; }
+@media(max-width:1050px) { .heroGrid { gap:35px; } .formCard { padding:28px; } .fieldGrid { grid-template-columns:1fr; gap:0; } }
+@media(max-width:760px) { .hero { padding:120px 20px 40px; } .heroGrid { grid-template-columns:1fr; gap:34px; max-width:550px; } .introduction { padding:5px 2px 0; } .introduction h1 { max-width:440px; font-size:50px; } .intro { font-size:14px; } .direct { margin-top:28px; } .method { padding:12px 0; } .method strong { font-size:18px; } .formCard { padding:28px 22px; border-radius:14px; } .formCard h2 { font-size:33px; } .field input,.field textarea { font-size:16px; } .next { padding:45px 24px 35px; max-width:550px; } .steps { grid-template-columns:1fr; gap:25px; } .next>h2 { margin-bottom:28px; } .steps h3 { margin:8px 0; } }
+@media(prefers-reduced-motion:reduce) { .method>svg:last-child,.submit { transition:none; } }
