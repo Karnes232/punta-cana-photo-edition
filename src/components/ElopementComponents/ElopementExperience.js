@@ -985,7 +985,9 @@ const Summary = ({ copy, experience, decoration, legal, customQuote }) => {
           </span>
         </div>
         <div className="flex items-start justify-between gap-4">
-          <span className="text-stone-300">{copy.legalLine}</span>
+          <span className="text-stone-300">
+            {legal ? copy.legalLine : copy.symbolic}
+          </span>
           <strong>{legal ? money(LEGAL_UPGRADE_PRICE) : copy.included}</strong>
         </div>
       </div>
