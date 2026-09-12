@@ -44,7 +44,7 @@ assert.match(
 
 assert.match(
   spanishWedding,
-  /<title[^>]*>Planificación de Bodas en Punta Cana \| Servicio Completo<\/title>/i,
+  /<title[^>]*>Organización de Bodas en Punta Cana \| Sertuin Events<\/title>/i,
 );
 assert.doesNotMatch(
   visibleText(spanishWedding),
@@ -77,15 +77,15 @@ assert.doesNotMatch(visibleText(spanishHome), /\belopements?\b/i);
 
 assert.match(
   portugueseWedding,
-  /<title[^>]*>Wedding Planner em Punta Cana \| Planejamento Completo<\/title>/i,
+  /<title[^>]*>Wedding Planner em Punta Cana \| Sertuin Events<\/title>/i,
 );
 assert.match(
   portugueseGenderReveal,
-  /<title[^>]*>Chá Revelação em Punta Cana \| Planejamento Personalizado<\/title>/i,
+  /<title[^>]*>Chá Revelação em Punta Cana \| Organização Sob Medida<\/title>/i,
 );
 assert.match(
   portugueseElopement,
-  /<title[^>]*>Elopement em Punta Cana \| Pacotes a Partir de US\$\s?999<\/title>/i,
+  /<title[^>]*>Casamento a Dois em Punta Cana \| A partir de US\$999<\/title>/i,
 );
 for (const portuguesePage of [
   portugueseHome,
@@ -102,7 +102,7 @@ for (const portuguesePage of [
 
 assert.match(
   frenchWedding,
-  /<title[^>]*>Wedding Planner à Punta Cana \| Organisation Complète<\/title>/i,
+  /<title[^>]*>Wedding Planner à Punta Cana \| Sertuin Events<\/title>/i,
 );
 assert.match(
   frenchGenderReveal,
@@ -110,7 +110,7 @@ assert.match(
 );
 assert.match(
   frenchElopement,
-  /<title[^>]*>Elopement à Punta Cana \| Forfaits Dès 999 USD<\/title>/i,
+  /<title[^>]*>Mariage Intimiste à Punta Cana \| Dès 999 USD<\/title>/i,
 );
 for (const frenchPage of [
   frenchHome,

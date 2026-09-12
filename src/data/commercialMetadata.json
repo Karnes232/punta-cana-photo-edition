@@ -1,0 +1,308 @@
+{
+  "/": {
+    "en-US": {
+      "title": "Sertuin Events | Event Planning in Punta Cana",
+      "description": "We organize events in Punta Cana, coordinating venues, suppliers and logistics. Explore our services and tell us what you want to celebrate."
+    },
+    "es": {
+      "title": "Sertuin Events | Organización de Eventos en Punta Cana",
+      "description": "Organizamos eventos en Punta Cana y coordinamos espacios, proveedores y logística. Conoce nuestros servicios y cuéntanos qué quieres celebrar."
+    },
+    "pt": {
+      "title": "Sertuin Events | Organização de Eventos em Punta Cana",
+      "description": "Organizamos eventos em Punta Cana e coordenamos espaços, fornecedores e logística. Conheça nossos serviços e conte-nos o que deseja celebrar."
+    },
+    "fr": {
+      "title": "Sertuin Events | Organisation d’Événements à Punta Cana",
+      "description": "Nous organisons vos événements à Punta Cana : lieux, prestataires et logistique. Découvrez nos services et parlez-nous de votre projet."
+    }
+  },
+  "/puntacana-wedding-planner/": {
+    "en-US": {
+      "title": "Wedding Planner in Punta Cana | Sertuin Events",
+      "description": "We plan your destination wedding in Punta Cana: venues, trusted vendors, budget, timeline and wedding-day coordination. Talk to our local team."
+    },
+    "es": {
+      "title": "Organización de Bodas en Punta Cana | Sertuin Events",
+      "description": "Planificamos tu boda en Punta Cana: elección del lugar, proveedores, presupuesto, cronograma y coordinación del gran día. Habla con nuestro equipo local."
+    },
+    "pt": {
+      "title": "Wedding Planner em Punta Cana | Sertuin Events",
+      "description": "Planejamos seu casamento em Punta Cana: escolha do local, fornecedores, orçamento, cronograma e coordenação no dia. Fale com nossa equipe local."
+    },
+    "fr": {
+      "title": "Wedding Planner à Punta Cana | Sertuin Events",
+      "description": "Nous organisons votre mariage à Punta Cana : choix du lieu, prestataires, budget, planning et coordination du jour J. Contactez notre équipe locale."
+    }
+  },
+  "/punta-cana-elopement-packages/": {
+    "en-US": {
+      "title": "Punta Cana Elopement Packages | From US$999",
+      "description": "We organize intimate weddings in Punta Cana, on the beach or a catamaran. Packages from US$999 include transport, ceremony photos and décor. Ask about dates."
+    },
+    "es": {
+      "title": "Boda Íntima en Punta Cana | Paquetes desde US$999",
+      "description": "Organizamos tu boda íntima en Punta Cana, en playa o catamarán. Paquetes desde US$999 con transporte, fotos de la ceremonia y decoración. Consulta fechas."
+    },
+    "pt": {
+      "title": "Casamento a Dois em Punta Cana | A partir de US$999",
+      "description": "Organizamos seu casamento íntimo em Punta Cana, na praia ou em catamarã. Pacotes desde US$999 com transporte, fotos da cerimônia e decoração. Consulte datas."
+    },
+    "fr": {
+      "title": "Mariage Intimiste à Punta Cana | Dès 999 USD",
+      "description": "Nous organisons votre mariage intimiste à Punta Cana, sur la plage ou en catamaran. Dès 999 USD avec transport, photos de cérémonie et décoration."
+    }
+  },
+  "/event-planner/": {
+    "en-US": {
+      "title": "Corporate Event Planner in Punta Cana | Sertuin Events",
+      "description": "We plan corporate events in Punta Cana: meetings, conferences and incentive trips. We coordinate venues, suppliers and on-site logistics. Request a quote."
+    },
+    "es": {
+      "title": "Eventos Corporativos en Punta Cana | Sertuin Events",
+      "description": "Organizamos reuniones, congresos y viajes de incentivo en Punta Cana. Coordinamos espacios, proveedores y logística durante el evento. Solicita cotización."
+    },
+    "pt": {
+      "title": "Eventos Corporativos em Punta Cana | Sertuin Events",
+      "description": "Organizamos reuniões, congressos e viagens de incentivo em Punta Cana. Coordenamos espaços, fornecedores e logística do evento. Solicite um orçamento."
+    },
+    "fr": {
+      "title": "Événements d’Entreprise à Punta Cana | Sertuin Events",
+      "description": "Nous organisons réunions, congrès et voyages de motivation à Punta Cana. Nous coordonnons lieux, prestataires et logistique sur place. Demandez un devis."
+    }
+  },
+  "/gender-reveal-punta-cana/": {
+    "en-US": {
+      "title": "Gender Reveal in Punta Cana | Custom Event Planning",
+      "description": "We plan your gender reveal in Punta Cana at a hotel, villa or beach, with décor and coordination tailored to your idea. Tell us your plans for a custom quote."
+    },
+    "es": {
+      "title": "Revelación de Género en Punta Cana | Evento a Medida",
+      "description": "Organizamos tu revelación de género en Punta Cana, en hotel, villa o playa, con decoración y coordinación a tu medida. Cuéntanos tu idea para cotizar."
+    },
+    "pt": {
+      "title": "Chá Revelação em Punta Cana | Organização Sob Medida",
+      "description": "Organizamos seu chá revelação em Punta Cana, em hotel, villa ou praia, com decoração e coordenação sob medida. Conte-nos sua ideia para receber um orçamento."
+    },
+    "fr": {
+      "title": "Gender Reveal à Punta Cana | Organisation Sur Mesure",
+      "description": "Nous organisons votre gender reveal à Punta Cana : hôtel, villa ou plage, décoration et coordination sur mesure. Parlez-nous de votre idée pour un devis."
+    }
+  },
+  "/contact/": {
+    "en-US": {
+      "title": "Contact Sertuin Events | Request an Event Quote",
+      "description": "Tell us your event date, guest count and plans in Punta Cana. Contact our team by form, WhatsApp or email to discuss availability and request a tailored quote."
+    },
+    "es": {
+      "title": "Contacta a Sertuin Events | Cotiza tu Evento",
+      "description": "Cuéntanos la fecha, los invitados y tus planes en Punta Cana. Escríbenos por formulario, WhatsApp o email para consultar disponibilidad y cotizar tu evento."
+    },
+    "pt": {
+      "title": "Contato Sertuin Events | Solicite um Orçamento",
+      "description": "Conte-nos a data, o número de convidados e seus planos em Punta Cana. Fale conosco por formulário, WhatsApp ou email para consultar datas e pedir um orçamento."
+    },
+    "fr": {
+      "title": "Contactez Sertuin Events | Demandez un Devis",
+      "description": "Indiquez-nous la date, les invités et votre projet à Punta Cana. Écrivez-nous par formulaire, WhatsApp ou email pour connaître nos disponibilités et tarifs."
+    }
+  },
+  "/packages/infinity-love-proposal/": {
+    "en-US": {
+      "title": "Infinity Love Proposal in Punta Cana | Bronze Floral Arch",
+      "description": "We create your Infinity Love proposal in Punta Cana with a bronze circular arch, seasonal flowers and a white aisle. Ask our team about availability."
+    },
+    "es": {
+      "title": "Infinity Love en Punta Cana | Propuesta con Arco Floral",
+      "description": "Organizamos tu propuesta Infinity Love en Punta Cana con arco circular bronce, flores de temporada y pasillo blanco. Consulta disponibilidad con nosotros."
+    },
+    "pt": {
+      "title": "Infinity Love em Punta Cana | Pedido com Arco Floral",
+      "description": "Organizamos seu pedido Infinity Love em Punta Cana com arco circular bronze, flores da estação e corredor branco. Consulte a disponibilidade conosco."
+    },
+    "fr": {
+      "title": "Infinity Love à Punta Cana | Demande avec Arche Fleurie",
+      "description": "Nous créons votre demande Infinity Love à Punta Cana avec arche ronde bronze, fleurs de saison et allée blanche. Contactez-nous pour choisir votre date."
+    }
+  },
+  "/packages/golden-whisper/": {
+    "en-US": {
+      "title": "Golden Whisper Proposal in Punta Cana | Pampas & Flowers",
+      "description": "We arrange your Golden Whisper proposal in Punta Cana with a gold ring, natural pampas and pink floral accents. Contact our team to check your date."
+    },
+    "es": {
+      "title": "Golden Whisper en Punta Cana | Propuesta con Pampas",
+      "description": "Creamos tu propuesta Golden Whisper en Punta Cana con aro dorado, pampas naturales y detalles florales rosados. Habla con nosotros para consultar tu fecha."
+    },
+    "pt": {
+      "title": "Golden Whisper em Punta Cana | Pedido com Pampas",
+      "description": "Criamos seu pedido Golden Whisper em Punta Cana com aro dourado, pampas naturais e detalhes florais rosados. Fale conosco para consultar sua data."
+    },
+    "fr": {
+      "title": "Golden Whisper à Punta Cana | Demande avec Pampas",
+      "description": "Nous préparons votre demande Golden Whisper à Punta Cana avec cercle doré, pampas naturelles et fleurs roses. Contactez-nous pour vérifier votre date."
+    }
+  },
+  "/packages/amour-essence/": {
+    "en-US": {
+      "title": "Amour Essence Proposal in Punta Cana | Red Floral Design",
+      "description": "We create your Amour Essence proposal in Punta Cana with sculptural wooden frames and a bold red-and-green setting. Ask our team about your date."
+    },
+    "es": {
+      "title": "Amour Essence en Punta Cana | Propuesta en Rojo y Verde",
+      "description": "Creamos tu propuesta Amour Essence en Punta Cana con estructuras de madera y un escenario rojo y verde. Consulta tu fecha y los detalles con nuestro equipo."
+    },
+    "pt": {
+      "title": "Amour Essence em Punta Cana | Pedido em Vermelho e Verde",
+      "description": "Criamos seu pedido Amour Essence em Punta Cana com estruturas de madeira e cenário vermelho e verde. Consulte sua data e os detalhes com nossa equipe."
+    },
+    "fr": {
+      "title": "Amour Essence à Punta Cana | Demande en Rouge et Vert",
+      "description": "Nous créons votre demande Amour Essence à Punta Cana avec structures en bois et décor rouge et vert. Contactez notre équipe pour discuter de votre date."
+    }
+  },
+  "/packages/amour-by-the-sea/": {
+    "en-US": {
+      "title": "Amour by the Sea in Punta Cana | Floral Heart Proposal",
+      "description": "We arrange your Amour by the Sea proposal in Punta Cana with a floral heart, gold pedestals and a white aisle. Contact us to plan your date by the sea."
+    },
+    "es": {
+      "title": "Amour by the Sea en Punta Cana | Propuesta con Corazón",
+      "description": "Organizamos tu propuesta Amour by the Sea en Punta Cana con corazón floral, pedestales dorados y pasillo blanco. Consúltanos para planificar tu fecha."
+    },
+    "pt": {
+      "title": "Amour by the Sea em Punta Cana | Pedido com Coração",
+      "description": "Organizamos seu pedido Amour by the Sea em Punta Cana com coração floral, pedestais dourados e corredor branco. Fale conosco para planejar sua data."
+    },
+    "fr": {
+      "title": "Amour by the Sea à Punta Cana | Demande avec Cœur Fleuri",
+      "description": "Nous organisons votre demande Amour by the Sea à Punta Cana avec cœur fleuri, socles dorés et allée blanche. Contactez-nous pour planifier votre date."
+    }
+  },
+  "/packages/coral-passion/": {
+    "en-US": {
+      "title": "Coral Passion Proposal in Punta Cana | Red-Lit Platform",
+      "description": "We stage your Coral Passion proposal in Punta Cana with a red-lit circular platform and four gold frames. Contact our team to check availability."
+    },
+    "es": {
+      "title": "Coral Passion en Punta Cana | Propuesta con Luz Roja",
+      "description": "Preparamos tu propuesta Coral Passion en Punta Cana con plataforma circular iluminada en rojo y cuatro marcos dorados. Consulta disponibilidad con nosotros."
+    },
+    "pt": {
+      "title": "Coral Passion em Punta Cana | Pedido com Luz Vermelha",
+      "description": "Preparamos seu pedido Coral Passion em Punta Cana com plataforma circular iluminada em vermelho e quatro molduras douradas. Consulte sua data conosco."
+    },
+    "fr": {
+      "title": "Coral Passion à Punta Cana | Demande avec Lumière Rouge",
+      "description": "Nous préparons votre demande Coral Passion à Punta Cana avec plateforme ronde éclairée en rouge et quatre cadres dorés. Demandez nos disponibilités."
+    }
+  },
+  "/packages/sign-of-love-proposal/": {
+    "en-US": {
+      "title": "Sign of Love in Punta Cana | MARRY ME Letters Proposal",
+      "description": "We arrange your Sign of Love proposal in Punta Cana with large illuminated MARRY ME letters and a red velvet aisle. Contact us to check your date."
+    },
+    "es": {
+      "title": "Sign of Love en Punta Cana | Propuesta con Letras MARRY ME",
+      "description": "Organizamos tu propuesta Sign of Love en Punta Cana con grandes letras MARRY ME iluminadas y pasillo de terciopelo rojo. Consulta tu fecha con nosotros."
+    },
+    "pt": {
+      "title": "Sign of Love em Punta Cana | Pedido com Letras MARRY ME",
+      "description": "Organizamos seu pedido Sign of Love em Punta Cana com letras MARRY ME iluminadas e corredor de veludo vermelho. Consulte sua data com nossa equipe."
+    },
+    "fr": {
+      "title": "Sign of Love à Punta Cana | Demande avec Lettres MARRY ME",
+      "description": "Nous organisons votre demande Sign of Love à Punta Cana avec lettres MARRY ME lumineuses et allée en velours rouge. Contactez-nous pour choisir votre date."
+    }
+  },
+  "/packages/white-serenity-proposal/": {
+    "en-US": {
+      "title": "White Serenity in Punta Cana | White Floral Beach Proposal",
+      "description": "We create your White Serenity proposal in Punta Cana with low white flowers arranged directly on the sand. Talk to our team to plan your beach proposal."
+    },
+    "es": {
+      "title": "White Serenity en Punta Cana | Propuesta con Flores Blancas",
+      "description": "Creamos tu propuesta White Serenity en Punta Cana con flores blancas colocadas directamente en la arena. Habla con nuestro equipo para planificar tu fecha."
+    },
+    "pt": {
+      "title": "White Serenity em Punta Cana | Pedido com Flores Brancas",
+      "description": "Criamos seu pedido White Serenity em Punta Cana com flores brancas dispostas diretamente na areia. Fale com nossa equipe para planejar sua data."
+    },
+    "fr": {
+      "title": "White Serenity à Punta Cana | Demande avec Fleurs Blanches",
+      "description": "Nous créons votre demande White Serenity à Punta Cana avec fleurs blanches disposées sur le sable. Contactez notre équipe pour planifier votre date."
+    }
+  },
+  "/packages/romantic-dinner-marriage-proposal/": {
+    "en-US": {
+      "title": "Romantic Dinner Proposal in Punta Cana | Private Gazebo",
+      "description": "We plan your dinner proposal in Punta Cana with a private palm-roof gazebo, floral décor and a three-course dinner. Contact us to check availability."
+    },
+    "es": {
+      "title": "Cena Romántica y Propuesta en Punta Cana | Gazebo Privado",
+      "description": "Organizamos tu propuesta en Punta Cana con gazebo privado de techo de palma, flores y cena de tres tiempos. Consulta disponibilidad con nuestro equipo."
+    },
+    "pt": {
+      "title": "Jantar e Pedido em Punta Cana | Gazebo Privativo",
+      "description": "Organizamos seu pedido em Punta Cana com gazebo privativo de teto de palha, flores e jantar em três etapas. Consulte a disponibilidade com nossa equipe."
+    },
+    "fr": {
+      "title": "Dîner et Demande en Mariage à Punta Cana | Gazebo Privé",
+      "description": "Nous organisons votre demande à Punta Cana avec gazebo privé au toit de palmes, fleurs et dîner en trois services. Contactez-nous pour choisir votre date."
+    }
+  },
+  "/packages/romantic-huppa-proposal/": {
+    "en-US": {
+      "title": "Romantic Hoopa in Punta Cana | Beach Canopy Proposal",
+      "description": "We prepare your Romantic Hoopa proposal in Punta Cana with a wooden canopy, voile curtains and warm lights on the beach. Ask us about your date."
+    },
+    "es": {
+      "title": "Romantic Hoopa en Punta Cana | Propuesta con Dosel",
+      "description": "Preparamos tu propuesta Romantic Hoopa en Punta Cana con dosel de madera, visillos y luces cálidas en la playa. Consulta tu fecha con nuestro equipo."
+    },
+    "pt": {
+      "title": "Romantic Hoopa em Punta Cana | Pedido com Dossel",
+      "description": "Preparamos seu pedido Romantic Hoopa em Punta Cana com dossel de madeira, cortinas de voil e luzes quentes na praia. Consulte sua data com nossa equipe."
+    },
+    "fr": {
+      "title": "Romantic Hoopa à Punta Cana | Demande sous un Dais",
+      "description": "Nous préparons votre demande Romantic Hoopa à Punta Cana avec dais en bois, voilages et lumières douces sur la plage. Contactez-nous pour choisir votre date."
+    }
+  },
+  "/packages/cozy-love/": {
+    "en-US": {
+      "title": "Cozy Love Proposal in Punta Cana | Dinner & Live Violin",
+      "description": "We organize your Cozy Love proposal in Punta Cana with a gold open gazebo, woven details, dinner and live violin. Talk to us about your preferred date."
+    },
+    "es": {
+      "title": "Cozy Love en Punta Cana | Propuesta con Cena y Violín",
+      "description": "Organizamos tu propuesta Cozy Love en Punta Cana con gazebo dorado abierto, detalles tejidos, cena y violín en vivo. Consúltanos por tu fecha preferida."
+    },
+    "pt": {
+      "title": "Cozy Love em Punta Cana | Pedido com Jantar e Violino",
+      "description": "Organizamos seu pedido Cozy Love em Punta Cana com gazebo dourado aberto, detalhes tramados, jantar e violino ao vivo. Consulte sua data conosco."
+    },
+    "fr": {
+      "title": "Cozy Love à Punta Cana | Demande avec Dîner et Violon",
+      "description": "Nous organisons votre demande Cozy Love à Punta Cana avec gazebo doré ouvert, détails tressés, dîner et violon en direct. Contactez-nous pour votre date."
+    }
+  },
+  "/packages/eternal-passion/": {
+    "en-US": {
+      "title": "Eternal Passion in Punta Cana | Floral Proposal & Violin",
+      "description": "We create your Eternal Passion proposal in Punta Cana with an asymmetrical red-and-white harp-shaped design and live violin. Ask us about availability."
+    },
+    "es": {
+      "title": "Eternal Passion en Punta Cana | Flores y Violín en Vivo",
+      "description": "Creamos tu propuesta Eternal Passion en Punta Cana con montaje asimétrico en forma de arpa, rojo y blanco, y violín en vivo. Consulta tu fecha con nosotros."
+    },
+    "pt": {
+      "title": "Eternal Passion em Punta Cana | Flores e Violino ao Vivo",
+      "description": "Criamos seu pedido Eternal Passion em Punta Cana com cenário assimétrico em forma de harpa, vermelho e branco, e violino ao vivo. Consulte sua data conosco."
+    },
+    "fr": {
+      "title": "Eternal Passion à Punta Cana | Fleurs et Violon en Direct",
+      "description": "Nous créons votre demande Eternal Passion à Punta Cana avec décor asymétrique en forme de harpe rouge et blanche et violon en direct. Contactez-nous."
+    }
+  }
+}

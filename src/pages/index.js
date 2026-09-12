@@ -1,3 +1,4 @@
+import commercialMetadata from "../data/commercialMetadata.json";
 import { graphql } from "gatsby";
 import React from "react";
 import { useI18next } from "gatsby-plugin-react-i18next";
@@ -49,24 +50,7 @@ export const Head = ({ pageContext, data }) => {
     : data.allContentfulPageContent.nodes[0]?.heroImageList?.[0]?.file?.url
       ? `https:${data.allContentfulPageContent.nodes[0].heroImageList[0].file.url}`
       : undefined;
-  const title =
-    (isPortuguese || isFrench ? null : seo?.title) ||
-    (isPortuguese
-      ? "Planejamento de Eventos em Punta Cana | Sertuin Events"
-      : isFrench
-        ? "Organisation d’Événements à Punta Cana | Sertuin Events"
-        : isSpanish
-          ? "Planificación Integral de Eventos en Punta Cana | Sertuin Events"
-          : "Punta Cana Event Planner & Event Management | Sertuin Events");
-  const description =
-    (isPortuguese || isFrench ? null : seo?.description?.description) ||
-    (isPortuguese
-      ? "Planejamento completo de eventos em Punta Cana para empresas, casamentos de destino, pedidos de casamento e celebrações, do conceito à execução."
-      : isFrench
-        ? "Organisation complète d’événements à Punta Cana : entreprises, mariages, demandes en mariage et célébrations, du concept à l’exécution sur place."
-        : isSpanish
-          ? "Planificación y gestión integral de eventos en Punta Cana para empresas, bodas de destino y celebraciones privadas, desde el concepto hasta la ejecución."
-          : "Full-service event planning in Punta Cana for corporate events, destination weddings and private celebrations, from concept through on-site execution.");
+  const { title, description } = commercialMetadata["/"][language];
   const schemaMarkup = buildHomeSchema({
     generalInfo,
     language,
