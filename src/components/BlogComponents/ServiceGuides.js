@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import { getKnowledgeArticle } from "../../data/knowledgeContent";
+import guideTitles from "../../data/knowledgeGuideTitles.json";
 import { localizedPath } from "../../utils/siteLocales";
 const { nodes, languageIndex } = require("../../data/knowledgeGraph");
 
@@ -18,7 +18,7 @@ export default function ServiceGuides({ cluster, language }) {
       <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 list-none">
         {guides.map((node) => <li key={node.id} className="border border-gray-200 border-t-2 border-t-primary-color p-5">
           <Link className="font-crimson text-2xl text-gray-900 underline underline-offset-4" to={localizedPath(`/blog/${node.slug}/`, language)}>
-            {language === "es" ? getKnowledgeArticle(node.slug, language).title.replace(/\bwedding planner\b/gi, "planificadora de bodas").replace(/\bwedding planning\b/gi, "planificación de bodas").replace(/\belopements?\b/gi, "bodas íntimas").replace(/\bgender reveal\b/gi, "revelación de género") : getKnowledgeArticle(node.slug, language).title}
+            {language === "es" ? guideTitles[node.slug][i].replace(/\bwedding planner\b/gi, "planificadora de bodas").replace(/\bwedding planning\b/gi, "planificación de bodas").replace(/\belopements?\b/gi, "bodas íntimas").replace(/\bgender reveal\b/gi, "revelación de género") : guideTitles[node.slug][i]}
           </Link>
         </li>)}
       </ul>
