@@ -1,3 +1,4 @@
+import commercialMetadata from "../../data/commercialMetadata.json";
 import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
@@ -45,24 +46,7 @@ export const Head = ({ pageContext, data }) => {
   const content = getCorporateEventContent(language, page?.paragraph3?.raw);
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const siteUrl = localizedUrl(rootUrl, "/event-planner/", language);
-  const title =
-    (isPortuguese || isFrench ? null : seo?.title) ||
-    (isPortuguese
-      ? "Planejamento de Eventos Corporativos em Punta Cana | Sertuin"
-      : isFrench
-        ? "Organisation d’Événements d’Entreprise à Punta Cana"
-        : isSpanish
-          ? "Planificador de eventos corporativos Punta Cana | Sertuin Events"
-          : "Corporate Event Planner Punta Cana | Sertuin Events");
-  const description =
-    (isPortuguese || isFrench ? null : seo?.description?.description) ||
-    (isPortuguese
-      ? "Planejamento e gestão de eventos corporativos em Punta Cana: venues, fornecedores, equipe, catering, transporte, produção e execução local."
-      : isFrench
-        ? "Organisation et gestion d’événements d’entreprise à Punta Cana : lieux, prestataires, personnel, restauration, transport, production et exécution locale."
-        : isSpanish
-          ? "Planificación y gestión de eventos corporativos en Punta Cana. Coordinamos proveedores, personal, catering, logística, producción y ejecución en sitio."
-          : "Corporate event planning and management in Punta Cana. Sertuin coordinates vendors, staffing, catering, logistics, production and on-site execution.");
+  const { title, description } = commercialMetadata["/event-planner/"][language];
   const image = seo?.images?.file?.url
     ? `https:${seo.images.file.url}`
     : undefined;

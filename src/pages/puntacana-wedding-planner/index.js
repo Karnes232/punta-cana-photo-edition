@@ -1,3 +1,4 @@
+import commercialMetadata from "../../data/commercialMetadata.json";
 import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
@@ -52,25 +53,7 @@ export const Head = ({ pageContext, data }) => {
     "/puntacana-wedding-planner/",
     language,
   );
-  // Keep the Spanish result linguistically distinct from the English page.
-  // Search Console showed the Spanish URL receiving more impressions for the
-  // English query "wedding planner punta cana" than the English URL.
-  const title = isPortuguese
-    ? "Wedding Planner em Punta Cana | Planejamento Completo"
-    : isFrench
-      ? "Wedding Planner à Punta Cana | Organisation Complète"
-      : isSpanish
-        ? "Planificación de Bodas en Punta Cana | Servicio Completo"
-        : seo?.title ||
-          "Punta Cana Wedding Planner | Full Planning & Coordination";
-  const description = isPortuguese
-    ? "Planejamento de casamentos de destino em Punta Cana com pacotes claros, assistência 24 horas e experiência multicultural e sul-asiática."
-    : isFrench
-      ? "Organisation de mariages de destination à Punta Cana avec forfaits clairs, assistance 24 h/24 et expertise multiculturelle et sud-asiatique."
-      : isSpanish
-        ? "Planificamos bodas de destino en Punta Cana con paquetes claros, asistencia 24/7 y experiencia en celebraciones multiculturales y del sur de Asia."
-        : seo?.description?.description ||
-          "Punta Cana wedding planning with clear packages, 24/7 support, and expertise in destination, multicultural and South Asian weddings.";
+  const { title, description } = commercialMetadata["/puntacana-wedding-planner/"][language];
   const image = seo?.images?.file?.url
     ? `${seo.images.file.url.startsWith("//") ? "https:" : ""}${seo.images.file.url}`
     : undefined;

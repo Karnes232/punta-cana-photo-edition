@@ -10,7 +10,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "node scripts/validate-retired-content.js && node scripts/validate-package-carousel-contract.js && node scripts/validate-proposal-schema-source.js && node scripts/validate-portuguese-localization.js && node scripts/validate-french-localization.js && gatsby build && node scripts/validate-language-routing-seo.js && node scripts/validate-proposal-seo.js",
+    "build": "node scripts/validate-commercial-metadata.js && node scripts/validate-retired-content.js && node scripts/validate-package-carousel-contract.js && node scripts/validate-proposal-schema-source.js && node scripts/validate-portuguese-localization.js && node scripts/validate-french-localization.js && gatsby build && node scripts/validate-language-routing-seo.js && node scripts/validate-proposal-seo.js && node scripts/validate-commercial-metadata.js --built",
     "validate:retired-content": "node scripts/validate-retired-content.js",
     "validate:package-carousel": "node scripts/validate-package-carousel-contract.js",
     "verify:retired-content:live": "node scripts/verify-redirects-live.mjs",

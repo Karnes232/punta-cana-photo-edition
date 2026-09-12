@@ -1,3 +1,4 @@
+import commercialMetadata from "../data/commercialMetadata.json";
 import React, { useState } from "react";
 import Layout from "../components/Layout/Layout";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
@@ -250,19 +251,8 @@ export const Head = ({ pageContext, data }) => {
 
   const node = data?.allContentfulPackagePageContent?.nodes[0];
   const proposalDetails = getProposalPackageDetails(node, language);
-  const resolvedSeoTitle = proposalDetails
-    ? isPortuguese
-      ? proposalDetails.id === "romantic-dinner-marriage-proposal"
-        ? "Jantar Romântico e Pedido de Casamento em Punta Cana"
-        : `${proposalDetails.name} | Pedido de Casamento em Punta Cana | Sertuin`
-      : isFrench
-        ? proposalDetails.id === "romantic-dinner-marriage-proposal"
-          ? "Dîner Romantique et Demande en Mariage à Punta Cana"
-          : `${proposalDetails.name} | Demande en Mariage à Punta Cana | Sertuin`
-        : language === "es"
-          ? `${proposalDetails.name} | Propuesta de matrimonio en Punta Cana | Sertuin Events`
-          : `${proposalDetails.name} | Punta Cana Marriage Proposal | Sertuin Events`
-    : seoTitle;
+  const metadata = commercialMetadata[packagePath]?.[language];
+  const resolvedSeoTitle = metadata?.title || seoTitle;
   const nodeWithCanonicalPrice = proposalDetails
     ? {
         ...node,
@@ -279,7 +269,7 @@ export const Head = ({ pageContext, data }) => {
     : node;
   const schema = node?.schema?.internal?.content;
   const resolvedDescription =
-    proposalDetails?.content.summary || seoDescription?.seoDescription;
+    metadata?.description || proposalDetails?.content.summary || seoDescription?.seoDescription;
   const localizedFaqs = proposalDetails
     ? buildProposalPackageFaqs({ language, details: proposalDetails })
     : localizePackageFaqs(node.faqs, language);

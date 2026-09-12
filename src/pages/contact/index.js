@@ -1,3 +1,4 @@
+import commercialMetadata from "../../data/commercialMetadata.json";
 import { graphql } from "gatsby";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
@@ -94,27 +95,16 @@ export const Head = ({ pageContext, data }) => {
   const isPortuguese = language === "pt";
   const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
-  const { title, description, images, keywords } =
+  const { images, keywords } =
     data.allContentfulSeo.nodes[0];
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const siteUrl = localizedUrl(rootUrl, "/contact/", language);
+  const { title, description } = commercialMetadata["/contact/"][language];
   return (
     <>
       <Seo
-        title={
-          isPortuguese
-            ? "Contato Sertuin Events | Planejamento de Eventos em Punta Cana"
-            : isFrench
-              ? "Contacter Sertuin Events | Événements à Punta Cana"
-              : title
-        }
-        description={
-          isPortuguese
-            ? "Conte-nos sobre seu evento em Punta Cana e solicite uma proposta personalizada para casamentos, celebrações, pedidos e eventos corporativos."
-            : isFrench
-              ? "Parlez-nous de votre événement à Punta Cana et demandez une proposition personnalisée pour mariage, célébration, demande ou événement d’entreprise."
-              : description.description
-        }
+        title={title}
+        description={description}
         keywords={(isPortuguese
           ? [
               "contato planejador de eventos Punta Cana",
@@ -135,7 +125,8 @@ export const Head = ({ pageContext, data }) => {
           "@context": "https://schema.org",
           "@type": "ContactPage",
           "@id": siteUrl + "#webpage",
-          name: { "en-US": "Contact Sertuin Events", es: "Contacta a Sertuin Events", pt: "Contato Sertuin Events", fr: "Contacter Sertuin Events" }[language],
+          name: title,
+          description,
           url: siteUrl,
           inLanguage: languageConfig.htmlLang,
           about: { "@id": rootUrl + "/#organization" },

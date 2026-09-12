@@ -1,3 +1,4 @@
+import commercialMetadata from "../../data/commercialMetadata.json";
 import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
@@ -46,34 +47,7 @@ export const Head = ({ pageContext, data }) => {
   const seo = data.allContentfulSeo.nodes[0];
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const pageUrl = localizedUrl(rootUrl, "/gender-reveal-punta-cana/", language);
-  const fallbackTitle = isPortuguese
-    ? "Chá Revelação em Punta Cana | Planejamento Personalizado"
-    : isFrench
-      ? "Gender Reveal à Punta Cana | Organisation Sur Mesure"
-      : isSpanish
-        ? "Revelación de Género en Punta Cana | Evento a Medida"
-        : "Gender Reveal in Punta Cana | Custom Planning";
-  const fallbackDescription = isPortuguese
-    ? "Planejamos seu chá revelação em Punta Cana em hotel, villa, praia ou local escolhido. Compartilhe sua ideia e receba uma cotação personalizada."
-    : isFrench
-      ? "Nous organisons votre gender reveal à Punta Cana dans un hôtel, une villa, sur une plage ou dans le lieu choisi. Partagez votre idée et recevez un devis."
-      : isSpanish
-        ? "Planificamos tu revelación de género en Punta Cana en hotel, villa, playa o locación elegida. Cuéntanos tu idea y recibe una cotización personalizada."
-        : "Plan your Punta Cana gender reveal at a hotel, villa, beach or selected venue. No preset packages—share your idea and receive a custom quote.";
-  const title =
-    !isSpanish &&
-    !isPortuguese &&
-    !isFrench &&
-    isCurrentGenderRevealCopy(seo?.title)
-      ? seo.title
-      : fallbackTitle;
-  const description =
-    !isSpanish &&
-    !isPortuguese &&
-    !isFrench &&
-    isCurrentGenderRevealCopy(seo?.description?.description)
-      ? seo.description.description
-      : fallbackDescription;
+  const { title, description } = commercialMetadata["/gender-reveal-punta-cana/"][language];
   const image = `${rootUrl}/images/punta-cana-gender-reveal-planning.webp`;
   const keywords = (seo?.keywords || []).filter((keyword) =>
     isCurrentGenderRevealCopy(keyword),
