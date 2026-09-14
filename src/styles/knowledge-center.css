@@ -397,7 +397,7 @@
   display: block;
   width: 100%;
   max-height: 520px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 3px;
 }
 .knowledge-breadcrumbs li[aria-current] {
