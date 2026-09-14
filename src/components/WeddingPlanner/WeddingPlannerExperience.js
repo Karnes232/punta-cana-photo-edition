@@ -1,4 +1,4 @@
-import { uxCopy, indianPhotos, IndianImage, WeddingGallery, WeddingFilms } from "./WeddingMedia";
+import { uxCopy, getIndianPhotos, IndianImage, WeddingGallery, WeddingFilms } from "./WeddingMedia";
 import React, { useMemo, useRef, useState } from "react";
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
 import { passVisitorName } from "../../utils/thankYouName";
@@ -427,6 +427,7 @@ const WeddingPlannerExperience = ({
       .replace(/\bonsite\b/gi, "presente");
   };
   const ux = uxCopy[language] || uxCopy["en-US"];
+  const indianPhotos = getIndianPhotos(language);
   const formRef = useRef(null);
   const greciaCarouselRef = useRef(null);
   const [selectedPackage, setSelectedPackage] = useState("");
@@ -578,7 +579,7 @@ const WeddingPlannerExperience = ({
 
       <nav className="wp-paths" aria-label={content.expertiseTitle}>
         <a className="wp-path" href="#western-weddings"><ContentfulImage asset={realWeddingImages[0] || heroImage} className="h-full w-full"/><div className="wp-path-copy"><strong>{ux.western}</strong><span>{ux.explore} ↗</span></div></a>
-        <a className="wp-path" href="#indian-weddings"><IndianImage asset={indianPhotos[4]} alt={ux.gallery}/><div className="wp-path-copy"><strong>{ux.indian}</strong><span>{ux.explore} ↗</span></div></a>
+        <a className="wp-path" href="#indian-weddings"><IndianImage asset={indianPhotos[1]} alt={ux.gallery}/><div className="wp-path-copy"><strong>{ux.indian}</strong><span>{ux.explore} ↗</span></div></a>
       </nav>
 
       {realWeddingImages.length > 0 && <section id="western-weddings" className="bg-white px-6 py-20 md:px-10 lg:px-12">
@@ -625,10 +626,10 @@ const WeddingPlannerExperience = ({
 
       <section id="indian-weddings" className="wp-indian">
         <div className="wp-indian-inner">
-          <div className="wp-indian-head"><div><p className="wp-kicker">{ux.indian}</p><h2>{ux.title}</h2><p>{ux.intro}</p></div><IndianImage asset={indianPhotos[4]} className="wp-indian-cover" alt={ux.gallery}/></div>
-          <h3>{ux.films}</h3><WeddingFilms copy={ux}/>
+          <div className="wp-indian-head"><div><p className="wp-kicker">{ux.indian}</p><h2>{ux.title}</h2><p>{ux.intro}</p></div><IndianImage asset={indianPhotos[1]} className="wp-indian-cover" alt={ux.gallery}/></div>
+          <div className="wp-film-row"><div><h3>{ux.films}</h3><p>{ux.indianText}</p><button type="button" className="wp-inquiry-cta" onClick={()=>selectPackage(content.packages.fallbackSouthAsian.title)}>{content.secondaryCta} ↗</button></div><WeddingFilms copy={ux}/></div>
           <h3>{ux.gallery}</h3>
-          <WeddingGallery images={indianPhotos} copy={ux} label={ux.gallery} renderImage={(asset,full)=>full?<img src={asset.url} alt={ux.gallery}/>:<IndianImage asset={asset} alt={ux.gallery}/>}/>
+          <WeddingGallery images={indianPhotos} copy={ux} label={ux.gallery} renderImage={(asset,full)=>full?<img src={asset.url} alt={asset.description} title={asset.description}/>:<IndianImage asset={asset} alt={ux.gallery}/>}/>
           <div className="wp-indian-offer"><div><h3>{content.southAsian.eyebrow}</h3><p>{content.southAsian.body}</p><p className="mt-6">{content.southAsian.note}</p></div>
             {packageList.filter(isSouthAsianWeddingPackage).map(item=><PackageCard key={item.title} item={item} copy={content.packages} onSelect={selectPackage} icon={Globe2}/>)}</div>
         </div>
