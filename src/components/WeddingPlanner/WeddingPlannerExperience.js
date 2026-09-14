@@ -1,3 +1,4 @@
+import { uxCopy, indianPhotos, IndianImage, WeddingGallery, WeddingFilms } from "./WeddingMedia";
 import React, { useMemo, useRef, useState } from "react";
 import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
 import { passVisitorName } from "../../utils/thankYouName";
@@ -24,6 +25,7 @@ import {
 } from "lucide-react";
 import {
   ensureSingleSouthAsianWeddingPackage,
+  isSouthAsianWeddingPackage,
   getWeddingPlannerContent,
   localizeFrenchWeddingPackage,
   localizePortugueseWeddingPackage,
@@ -287,6 +289,7 @@ const InquiryForm = ({
             required
           >
             <option value="">{labels.choose}</option>
+            <option value="Planning guidance">{(uxCopy[language] || uxCopy["en-US"]).undecided}</option>
             {packages.map((item) => (
               <option key={item.title} value={item.title}>
                 {item.title}
@@ -423,6 +426,7 @@ const WeddingPlannerExperience = ({
       .replace(/\bvenue\b/gi, "locación")
       .replace(/\bonsite\b/gi, "presente");
   };
+  const ux = uxCopy[language] || uxCopy["en-US"];
   const formRef = useRef(null);
   const greciaCarouselRef = useRef(null);
   const [selectedPackage, setSelectedPackage] = useState("");
@@ -520,7 +524,7 @@ const WeddingPlannerExperience = ({
   };
 
   return (
-    <main className="overflow-hidden bg-[#f7f5f0] text-slate-950">
+    <main className="wp-page overflow-hidden bg-[#f7f5f0] text-slate-950">
       <section className="relative min-h-[720px] bg-slate-950">
         <div className="absolute inset-0 overflow-hidden">
           <ContentfulImage
@@ -542,7 +546,7 @@ const WeddingPlannerExperience = ({
               {localizedPageText(page?.heroEyebrow, content.eyebrow)}
             </p>
             <h1 className="mt-5 max-w-4xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-7xl">
-              {localizedPageText(page?.heroHeading, content.heroTitle)}
+              {content.heroTitle}
             </h1>
             <p className="mt-7 max-w-2xl font-montserrat text-lg leading-8 text-slate-100 md:text-xl">
               {localizedPageText(page?.heroHeading2, content.heroText)}
@@ -572,185 +576,16 @@ const WeddingPlannerExperience = ({
         </div>
       </section>
 
-      <section className="border-b border-slate-200 bg-white">
-        <div className="mx-auto grid max-w-7xl divide-y divide-slate-200 px-6 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4 lg:px-12">
-          {content.trust.map((item, index) => {
-            const Icon = [Award, Clock3, Globe2, BadgeDollarSign][index];
-            return (
-              <div
-                key={item}
-                className="flex items-center gap-3 px-4 py-6 first:pl-0 last:pr-0"
-              >
-                <Icon
-                  className="shrink-0 text-amber-700"
-                  size={21}
-                  strokeWidth={1.8}
-                  aria-hidden="true"
-                />
-                <p className="font-montserrat text-sm font-semibold leading-5 text-slate-800">
-                  {item}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      <nav className="wp-paths" aria-label={content.expertiseTitle}>
+        <a className="wp-path" href="#western-weddings"><ContentfulImage asset={realWeddingImages[0] || heroImage} className="h-full w-full"/><div className="wp-path-copy"><strong>{ux.western}</strong><span>{ux.explore} ↗</span></div></a>
+        <a className="wp-path" href="#indian-weddings"><IndianImage asset={indianPhotos[4]} alt={ux.gallery}/><div className="wp-path-copy"><strong>{ux.indian}</strong><span>{ux.explore} ↗</span></div></a>
+      </nav>
 
-      <section className="px-6 py-20 md:px-10 md:py-28 lg:px-12">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <SectionHeading
-            eyebrow={content.introduction.eyebrow}
-            title={content.introduction.title}
-            align="left"
-          />
-          <div>
-            <p className="font-montserrat text-lg leading-8 text-slate-600">
-              {content.introduction.body}
-            </p>
-            <div className="mt-8 grid grid-cols-2 gap-3">
-              {editorialImages[0] ? (
-                <ContentfulImage
-                  asset={editorialImages[0]}
-                  alt={localizedAlt(
-                    "Grecia Mejía arranging a beachfront wedding table in Punta Cana",
-                    "Grecia Mejía organizando uma mesa de casamento à beira-mar em Punta Cana",
-                    "Grecia Mejía préparant une table de mariage face à la mer à Punta Cana",
-                  )}
-                  className="h-72 w-full"
-                />
-              ) : (
-                <StaticImage
-                  src="../../images/wedding-planner/grecia-table-design.webp"
-                  alt={localizedAlt(
-                    "Grecia Mejía arranging a beachfront wedding table in Punta Cana",
-                    "Grecia Mejía organizando uma mesa de casamento à beira-mar em Punta Cana",
-                    "Grecia Mejía préparant une table de mariage face à la mer à Punta Cana",
-                  )}
-                  className="h-72 w-full"
-                  imgStyle={{ objectFit: "cover" }}
-                  placeholder="blurred"
-                />
-              )}
-              {editorialImages[1] ? (
-                <ContentfulImage
-                  asset={editorialImages[1]}
-                  alt={localizedAlt(
-                    "Grecia Mejía overseeing a wedding setup at a Punta Cana resort",
-                    "Grecia Mejía supervisionando a montagem de um casamento em resort de Punta Cana",
-                    "Grecia Mejía supervisant l’installation d’un mariage dans un resort de Punta Cana",
-                  )}
-                  className="mt-8 h-72 w-full"
-                />
-              ) : (
-                <StaticImage
-                  src="../../images/wedding-planner/grecia-wedding-setup.webp"
-                  alt={localizedAlt(
-                    "Grecia Mejía overseeing a wedding setup at a Punta Cana resort",
-                    "Grecia Mejía supervisionando a montagem de um casamento em resort de Punta Cana",
-                    "Grecia Mejía supervisant l’installation d’un mariage dans un resort de Punta Cana",
-                  )}
-                  className="mt-8 h-72 w-full"
-                  imgStyle={{ objectFit: "cover" }}
-                  placeholder="blurred"
-                />
-              )}
-            </div>
-          </div>
+      {realWeddingImages.length > 0 && <section id="western-weddings" className="bg-white px-6 py-20 md:px-10 lg:px-12">
+        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={ux.western} title={ux.story} body={ux.westernText}/>
+          <WeddingGallery images={realWeddingImages.slice(0,8)} copy={ux} label={ux.western} renderImage={(asset,full)=><ContentfulImage asset={asset} className="h-full w-full" loading={full?'eager':'lazy'}/>}/>
         </div>
-      </section>
-
-      {realWeddingImages.length > 0 && (
-        <section
-          className="bg-white px-6 py-20 md:px-10 md:py-28 lg:px-12"
-          aria-labelledby="wedding-gallery-title"
-        >
-          <div className="mx-auto max-w-7xl">
-            <SectionHeading
-              eyebrow={
-                isPortuguese
-                  ? "Casamentos reais, detalhes reais"
-                  : isFrench
-                    ? "Vrais mariages, vrais détails"
-                    : isSpanish
-                      ? "Bodas reales, detalles reales"
-                      : "Real weddings, real details"
-              }
-              title={
-                isPortuguese
-                  ? "Casamentos que ajudamos a transformar em realidade"
-                  : isFrench
-                    ? "Des mariages que nous avons contribué à réaliser"
-                    : isSpanish
-                      ? "Bodas que hemos ayudado a hacer realidad"
-                      : "Weddings we have helped bring to life"
-              }
-              body={
-                isPortuguese
-                  ? "Uma seleção do trabalho atual da Sertuin Events em Punta Cana."
-                  : isFrench
-                    ? "Une sélection des réalisations récentes de Sertuin Events à Punta Cana."
-                    : isSpanish
-                      ? "Una selección del trabajo actual de Sertuin Events en Punta Cana."
-                      : "A selection of Sertuin Events’ current wedding work in Punta Cana."
-              }
-            />
-            <div className="-mx-6 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-6 [scrollbar-width:none] md:-mx-10 md:px-10 lg:-mx-12 lg:px-12 [&::-webkit-scrollbar]:hidden">
-              {realWeddingImages.slice(0, 9).map((asset, index) => (
-                <figure
-                  key={`${asset?.title || "wedding"}-${index}`}
-                  className="group w-[82vw] max-w-[430px] flex-none snap-center overflow-hidden bg-slate-100 shadow-sm"
-                >
-                  <ContentfulImage
-                    asset={asset}
-                    alt={
-                      isPortuguese
-                        ? `Casamento de destino planejado em Punta Cana — imagem ${index + 1}`
-                        : isFrench
-                          ? `Mariage de destination organisé à Punta Cana — image ${index + 1}`
-                          : undefined
-                    }
-                    className="h-[500px] w-full transition duration-700 group-hover:scale-[1.02]"
-                  />
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      <section className="bg-slate-950 px-6 py-20 md:px-10 md:py-28 lg:px-12">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            title={content.expertiseTitle}
-            body={content.expertiseIntro}
-            light
-          />
-          <div className="mt-14 grid gap-px overflow-hidden border border-white/15 bg-white/15 md:grid-cols-3">
-            {content.expertise.map((item, index) => {
-              const Icon = [Sparkles, HeartHandshake, Users][index];
-              return (
-                <article
-                  key={item.title}
-                  className="bg-slate-950 p-8 md:min-h-72 md:p-10"
-                >
-                  <Icon
-                    className="text-amber-400"
-                    size={30}
-                    strokeWidth={1.7}
-                    aria-hidden="true"
-                  />
-                  <h3 className="mt-7 font-crimson text-3xl font-medium text-white">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 font-montserrat text-sm leading-6 text-slate-300">
-                    {item.body}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      </section>}
 
       <section
         id="wedding-packages"
@@ -759,14 +594,11 @@ const WeddingPlannerExperience = ({
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow={content.packages.eyebrow}
-            title={localizedPageText(
-              page?.sectionTitle,
-              content.packages.title,
-            )}
+            title={ux.services}
             body={content.packages.intro}
           />
-          <div className="mt-14 grid gap-7 md:grid-cols-2 xl:grid-cols-4">
-            {packageList.map((item) => {
+          <div className="mt-14 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+            {packageList.filter(item => !isSouthAsianWeddingPackage(item)).map((item) => {
               const packageTitle = item?.title || "";
               const Icon = /south asian|sudeste asi[aá]tico|indian|sikh/i.test(
                 packageTitle,
@@ -791,104 +623,14 @@ const WeddingPlannerExperience = ({
         </div>
       </section>
 
-      <section className="bg-white px-6 py-20 md:px-10 md:py-28 lg:px-12">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="grid grid-cols-2 gap-3">
-            {editorialImages[2] ? (
-              <ContentfulImage
-                asset={editorialImages[2]}
-                alt={localizedAlt(
-                  "South Asian couple meeting wedding planner Grecia Mejía in Punta Cana",
-                  "Casal sul-asiático reunido com a wedding planner Grecia Mejía em Punta Cana",
-                  "Couple sud-asiatique rencontrant la wedding planner Grecia Mejía à Punta Cana",
-                )}
-                className="col-span-2 h-80 w-full md:h-[480px]"
-              />
-            ) : (
-              <StaticImage
-                src="../../images/wedding-planner/south-asian-couple-with-grecia.webp"
-                alt={localizedAlt(
-                  "South Asian couple meeting wedding planner Grecia Mejía in Punta Cana",
-                  "Casal sul-asiático reunido com a wedding planner Grecia Mejía em Punta Cana",
-                  "Couple sud-asiatique rencontrant la wedding planner Grecia Mejía à Punta Cana",
-                )}
-                className="col-span-2 h-80 w-full md:h-[480px]"
-                imgStyle={{ objectFit: "cover" }}
-                placeholder="blurred"
-              />
-            )}
-            {editorialImages[3] ? (
-              <ContentfulImage
-                asset={editorialImages[3]}
-                alt={localizedAlt(
-                  "Grecia Mejía planning wedding logistics at a Punta Cana resort",
-                  "Grecia Mejía planejando a logística de um casamento em resort de Punta Cana",
-                  "Grecia Mejía organisant la logistique d’un mariage dans un resort de Punta Cana",
-                )}
-                className="h-56 w-full"
-              />
-            ) : (
-              <StaticImage
-                src="../../images/wedding-planner/grecia-planning-at-resort.webp"
-                alt={localizedAlt(
-                  "Grecia Mejía planning wedding logistics at a Punta Cana resort",
-                  "Grecia Mejía planejando a logística de um casamento em resort de Punta Cana",
-                  "Grecia Mejía organisant la logistique d’un mariage dans un resort de Punta Cana",
-                )}
-                className="h-56 w-full"
-                imgStyle={{ objectFit: "cover" }}
-                placeholder="blurred"
-              />
-            )}
-            {editorialImages[4] ? (
-              <ContentfulImage
-                asset={editorialImages[4]}
-                alt={localizedAlt(
-                  "Grecia Mejía supporting a bride on her Punta Cana wedding day",
-                  "Grecia Mejía apoiando uma noiva no dia do casamento em Punta Cana",
-                  "Grecia Mejía accompagnant une mariée le jour de son mariage à Punta Cana",
-                )}
-                className="h-56 w-full"
-              />
-            ) : (
-              <StaticImage
-                src="../../images/wedding-planner/grecia-supporting-bride.webp"
-                alt={localizedAlt(
-                  "Grecia Mejía supporting a bride on her Punta Cana wedding day",
-                  "Grecia Mejía apoiando uma noiva no dia do casamento em Punta Cana",
-                  "Grecia Mejía accompagnant une mariée le jour de son mariage à Punta Cana",
-                )}
-                className="h-56 w-full"
-                imgStyle={{ objectFit: "cover" }}
-                placeholder="blurred"
-              />
-            )}
-          </div>
-          <div>
-            <SectionHeading
-              eyebrow={content.southAsian.eyebrow}
-              title={content.southAsian.title}
-              align="left"
-            />
-            <p className="mt-7 font-montserrat text-lg leading-8 text-slate-600">
-              {content.southAsian.body}
-            </p>
-            <div className="mt-8 border-l-4 border-amber-600 bg-[#f7f5f0] p-5">
-              <p className="font-montserrat text-sm font-semibold leading-6 text-slate-800">
-                {content.southAsian.note}
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() =>
-                selectPackage(content.packages.fallbackSouthAsian.title)
-              }
-              className="mt-8 inline-flex items-center gap-2 bg-slate-950 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white transition hover:bg-amber-700"
-            >
-              {content.packages.select}
-              <ArrowRight size={18} aria-hidden="true" />
-            </button>
-          </div>
+      <section id="indian-weddings" className="wp-indian">
+        <div className="wp-indian-inner">
+          <div className="wp-indian-head"><div><p className="wp-kicker">{ux.indian}</p><h2>{ux.title}</h2><p>{ux.intro}</p></div><IndianImage asset={indianPhotos[4]} className="wp-indian-cover" alt={ux.gallery}/></div>
+          <h3>{ux.films}</h3><WeddingFilms copy={ux}/>
+          <h3>{ux.gallery}</h3>
+          <WeddingGallery images={indianPhotos} copy={ux} label={ux.gallery} renderImage={(asset,full)=>full?<img src={asset.url} alt={ux.gallery}/>:<IndianImage asset={asset} alt={ux.gallery}/>}/>
+          <div className="wp-indian-offer"><div><h3>{content.southAsian.eyebrow}</h3><p>{content.southAsian.body}</p><p className="mt-6">{content.southAsian.note}</p></div>
+            {packageList.filter(isSouthAsianWeddingPackage).map(item=><PackageCard key={item.title} item={item} copy={content.packages} onSelect={selectPackage} icon={Globe2}/>)}</div>
         </div>
       </section>
 
@@ -960,10 +702,10 @@ const WeddingPlannerExperience = ({
               {content.grecia.title}
             </h2>
             <p className="mt-7 font-montserrat text-lg leading-8 text-slate-200">
-              {content.grecia.body}
+              {ux.teamText}
             </p>
             <p className="mt-5 font-montserrat text-base leading-7 text-slate-300">
-              {content.grecia.body2}
+              {content.introduction.title}
             </p>
             <div className="mt-8 flex items-center gap-3 text-amber-300">
               <ShieldCheck size={25} aria-hidden="true" />
