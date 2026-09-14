@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const { publishedBlogSlugs } = require("./src/data/publishedBlogSlugs");
 const knowledgeArticles = require("./src/data/knowledgeArticles.json");
+const knowledgeArticleMedia = require("./src/data/knowledgeArticleMedia.json");
 const { retiredPackageSlugs } = require("./src/data/retiredPackageSlugs");
 
 const publicCrawlers = [
@@ -80,7 +81,10 @@ const seoLastModified = new Map(
 for (const [slug, versions] of Object.entries(knowledgeArticles)) {
   for (const [language, article] of Object.entries(versions)) {
     const prefix = language === "en-US" ? "" : `/${language}`;
-    seoLastModified.set(`${prefix}/blog/${slug}/`, article.reviewedAt);
+    seoLastModified.set(
+      `${prefix}/blog/${slug}/`,
+      [article.reviewedAt, knowledgeArticleMedia[slug]?.updatedAt].filter(Boolean).sort().pop(),
+    );
     const indexPath = `${prefix}/blog/`;
     if (
       !seoLastModified.has(indexPath) ||

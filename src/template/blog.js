@@ -124,7 +124,7 @@ const Blog = ({ pageContext, data }) => {
   );
   const articleMedia = getKnowledgeMedia(post.slug, language);
   const galleryImages = (
-    findNode(post.slug)?.cluster === "proposals" ? post.galleryImages || [] : []
+    !articleMedia && findNode(post.slug)?.cluster === "proposals" ? post.galleryImages || [] : []
   ).map((item, index) => ({
     ...item,
     altText: featured?.galleryAltTexts?.[index] || item.altText,
@@ -163,12 +163,15 @@ const Blog = ({ pageContext, data }) => {
             <figure className="knowledge-article-image">
               <img
                 src={articleMedia.url}
+                srcSet={articleMedia.srcSet}
+                sizes="(min-width: 1024px) 960px, 100vw"
                 alt={articleMedia.alt}
                 width={articleMedia.width}
                 height={articleMedia.height}
                 loading="lazy"
                 decoding="async"
               />
+              {articleMedia.credit && <figcaption>{articleMedia.credit}</figcaption>}
             </figure>
           )}
           <BlogGallery
@@ -235,7 +238,7 @@ export const Head = ({ pageContext, data }) => {
       ? post.galleryImages?.[0]?.image
       : null;
   const knowledgeMedia = getKnowledgeMedia(post.slug, language);
-  const imageSource = socialImage?.url || knowledgeMedia?.url;
+  const imageSource = knowledgeMedia?.url || socialImage?.url;
   const imageUrl = imageSource ? new URL(imageSource, rootUrl).href : undefined;
   const imageAlt =
     knowledgeMedia?.alt ||
@@ -256,7 +259,9 @@ export const Head = ({ pageContext, data }) => {
     inLanguage: languageConfig.htmlLang,
     ...(imageUrl ? { image: imageUrl } : {}),
     ...(post.publishedDate ? { datePublished: post.publishedDate } : {}),
-    ...(post.updatedAt ? { dateModified: post.updatedAt } : {}),
+    ...((post.updatedAt || knowledgeMedia?.updatedAt) ? {
+      dateModified: [post.updatedAt, knowledgeMedia?.updatedAt].filter(Boolean).sort().pop(),
+    } : {}),
     author: {
       "@type": featured?.authorType || "Organization",
       name: featured?.author || "Sertuin Events",
@@ -305,6 +310,7 @@ export const Head = ({ pageContext, data }) => {
         siteName="Sertuin Events"
         locale={languageConfig.ogLocale}
         twitterCard={imageUrl ? "summary_large_image" : "summary"}
+        robots="index, follow, max-image-preview:large"
       />
       <link rel="canonical" href={siteUrl} />
       <script
