@@ -11,6 +11,9 @@
   # 22+: Sanity Studio (studio/) requires Node >= 22.12.
   NODE_VERSION = "22"
   NODE_OPTIONS = "--max_old_space_size=4096"
+  # The Contentful space ID appears in every public image URL (images.ctfassets.net/<id>/...),
+  # so it isn't a secret; the access tokens stay covered by secrets scanning.
+  SECRETS_SCAN_OMIT_KEYS = "CONTENTFUL_SPACE_ID"
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"
