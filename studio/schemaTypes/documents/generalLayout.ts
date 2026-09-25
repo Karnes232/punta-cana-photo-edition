@@ -28,18 +28,9 @@ export const generalLayout = defineType({
     defineField({
       name: "logo",
       title: "Logo",
-      type: "image",
+      type: "imageWithAlt",
       group: "branding",
       description: "PNG or SVG with a transparent background.",
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Alternative text",
-          type: "string",
-          description: "Read by screen readers in every language, e.g. \"Sertuin Events logo\".",
-          validation: (rule) => rule.required(),
-        }),
-      ],
       validation: (rule) => rule.required(),
     }),
     defineField({

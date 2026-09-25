@@ -23,9 +23,9 @@ export const buildHomeSchema = ({
   const email = generalInfo?.email || "info@sertuinevents.com";
   const legalName = generalInfo?.legalName || "SERTUIN SRL";
   const taxId = (generalInfo?.rnc || "132199652").replace(/\D/g, "");
-  const logoUrl = generalInfo?.logo?.file?.url
-    ? `https:${generalInfo.logo.file.url}`
-    : "https://sertuinevents.com/icons/icon-512x512.png";
+  const logoUrl =
+    generalInfo?.logo?.asset?.url ||
+    "https://sertuinevents.com/icons/icon-512x512.png";
   const hoursAvailable = {
     "@type": "OpeningHoursSpecification",
     dayOfWeek: DAYS.map((day) => `https://schema.org/${day}`),

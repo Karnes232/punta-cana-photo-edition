@@ -137,6 +137,16 @@ module.exports = {
         // downloadLocal: true,
       },
     },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        // Same defaults as studio/env.ts. The dataset is public, so published
+        // content needs no token.
+        projectId: process.env.SANITY_PROJECT_ID || "mj6f2710",
+        dataset: process.env.SANITY_DATASET || "production",
+        watchMode: process.env.NODE_ENV === "development",
+      },
+    },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",

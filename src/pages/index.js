@@ -16,7 +16,7 @@ import {
 
 const IndexPage = ({ data }) => {
   const { language } = useI18next();
-  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const generalInfo = data.sanityGeneralLayout;
   const page = data.allContentfulPageContent.nodes[0];
 
   return (
@@ -42,7 +42,7 @@ export const Head = ({ pageContext, data }) => {
   const languageConfig = getLanguageConfig(language);
   const copy = getHomeContent(language);
   const seo = data.allContentfulSeo.nodes[0];
-  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const generalInfo = data.sanityGeneralLayout;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const pageUrl = localizedUrl(rootUrl, "/", language);
   const imageUrl = seo?.images?.file?.url
@@ -127,24 +127,20 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout(
-      filter: { node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
-        companyName
-        legalName
-        rnc
-        email
-        facebook
-        instagram
-        x
-        telephone
-        messengerLink
-        availability
-        logo {
-          file {
-            url
-          }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      legalName
+      rnc
+      email
+      facebook
+      instagram
+      x
+      telephone
+      messengerLink
+      logo {
+        alt
+        asset {
+          url
         }
       }
     }
