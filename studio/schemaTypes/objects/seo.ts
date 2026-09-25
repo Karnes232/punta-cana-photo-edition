@@ -1,20 +1,5 @@
 import { defineField, defineType } from "sanity"
 
-import { requiredEnglish } from "./localized"
-
-type Localized = Partial<Record<string, string>> | undefined
-
-// Warns (doesn't block publishing) when any language runs past what search
-// results usually show.
-const maxLengthWarning = (max: number) => (value: Localized) => {
-  const tooLong = Object.entries(value ?? {}).filter(
-    ([key, text]) => !key.startsWith("_") && typeof text === "string" && text.length > max,
-  )
-  return tooLong.length
-    ? `Over ${max} characters (${tooLong.map(([key]) => key).join(", ")}); search results may cut it off`
-    : true
-}
-
 export const seo = defineType({
   name: "seo",
   title: "SEO",
@@ -23,26 +8,35 @@ export const seo = defineType({
     defineField({
       name: "title",
       title: "Search title",
-      type: "localizedString",
+      type: "string",
       description: "Shown as the link in search results and on the browser tab. About 60 characters.",
-      validation: (rule) => [requiredEnglish(rule), rule.custom(maxLengthWarning(60)).warning()],
+      validation: (rule) => [
+        rule.required(),
+        rule.max(60).warning("Over 60 characters; search results may cut it off"),
+      ],
     }),
     defineField({
       name: "description",
       title: "Search description",
-      type: "localizedText",
+      type: "text",
+      rows: 3,
       description: "The summary under the link in search results. About 160 characters.",
-      validation: (rule) => [requiredEnglish(rule), rule.custom(maxLengthWarning(160)).warning()],
+      validation: (rule) => [
+        rule.required(),
+        rule.max(160).warning("Over 160 characters; search results may cut it off"),
+      ],
     }),
     defineField({
       name: "keywords",
       title: "Keywords",
-      type: "localizedStringList",
+      type: "array",
+      of: [{ type: "string" }],
+      options: { layout: "tags" },
     }),
     defineField({
       name: "image",
       title: "Share image",
-      type: "localizedImage",
+      type: "imageWithAlt",
       description: "Shown when the page is shared on social media or messaging apps. 1200×630 works best.",
     }),
   ],

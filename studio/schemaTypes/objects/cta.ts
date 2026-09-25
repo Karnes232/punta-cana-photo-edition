@@ -1,7 +1,5 @@
 import { defineField, defineType } from "sanity"
 
-import { requiredEnglish } from "./localized"
-
 // A section on the same page (#start-your-event) or a page on this site
 // (/proposal/). The site adds the language prefix itself.
 export const SITE_LINK = /^(#[a-z0-9-]+|\/[a-z0-9/-]*)$/
@@ -14,8 +12,8 @@ export const cta = defineType({
     defineField({
       name: "label",
       title: "Label",
-      type: "localizedString",
-      validation: requiredEnglish,
+      type: "string",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "url",
@@ -27,6 +25,6 @@ export const cta = defineType({
     }),
   ],
   preview: {
-    select: { title: "label.en", subtitle: "url" },
+    select: { title: "label", subtitle: "url" },
   },
 })

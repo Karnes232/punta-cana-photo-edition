@@ -1,7 +1,5 @@
 import { defineField, defineType } from "sanity"
 
-import { requiredEnglish } from "./localized"
-
 // One card in the home page's "What are you planning" grid.
 export const eventCard = defineType({
   name: "eventCard",
@@ -11,20 +9,21 @@ export const eventCard = defineType({
     defineField({
       name: "title",
       title: "Title",
-      type: "localizedString",
-      validation: requiredEnglish,
+      type: "string",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "description",
       title: "Description",
-      type: "localizedText",
+      type: "text",
+      rows: 3,
       description: "One or two sentences.",
-      validation: requiredEnglish,
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "image",
       title: "Image",
-      type: "localizedImage",
+      type: "imageWithAlt",
       description: "Portrait photos work best; the card crops to about 6:7.",
       validation: (rule) => rule.required(),
     }),
@@ -38,6 +37,6 @@ export const eventCard = defineType({
     }),
   ],
   preview: {
-    select: { title: "title.en", subtitle: "link", media: "image" },
+    select: { title: "title", subtitle: "link", media: "image" },
   },
 })

@@ -1,10 +1,11 @@
 import { HomeIcon } from "@sanity/icons/Home"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { requiredEnglish } from "../objects/localized"
+import { languages } from "../shared/languages"
 
-// Every visible section of the home page, in page order, in all four
-// languages. A singleton: structure.ts always opens the "homePage" document.
+// Every visible section of the home page, in page order. There is one Home
+// Page document per language (document-internationalization): English is
+// "homePage-en", and the others are created from its Translations menu.
 // Phone and email come from General Layout; the contact form's text stays in
 // the repo (src/content/homeContent.js).
 
@@ -18,9 +19,10 @@ const text = (
     name,
     title,
     group,
-    type: options.long ? "localizedText" : "localizedString",
+    type: options.long ? "text" : "string",
+    ...(options.long ? { rows: 3 } : {}),
     description: options.description,
-    validation: options.required ? requiredEnglish : undefined,
+    validation: options.required ? (rule) => rule.required() : undefined,
   })
 
 export const homePage = defineType({
@@ -39,10 +41,13 @@ export const homePage = defineType({
     { name: "seo", title: "SEO" },
   ],
   fields: [
+    // Set by the document-internationalization plugin.
+    defineField({ name: "language", type: "string", readOnly: true, hidden: true }),
+
     defineField({
       name: "heroImage",
       title: "Hero image",
-      type: "localizedImage",
+      type: "imageWithAlt",
       group: "hero",
       description: "Full-width background photo. Landscape, at least 2200px wide.",
       validation: (rule) => rule.required(),
@@ -62,7 +67,7 @@ export const homePage = defineType({
       type: "array",
       group: "highlights",
       description: "The other items in the strip under the hero.",
-      of: [defineArrayMember({ type: "localizedString" })],
+      of: [defineArrayMember({ type: "string" })],
       validation: (rule) => rule.max(3),
     }),
 
@@ -88,7 +93,7 @@ export const homePage = defineType({
       title: "Paragraphs",
       type: "array",
       group: "what",
-      of: [defineArrayMember({ type: "localizedText" })],
+      of: [defineArrayMember({ type: "text", rows: 4 })],
     }),
     defineField({
       name: "whatItems",
@@ -96,7 +101,7 @@ export const homePage = defineType({
       type: "array",
       group: "what",
       description: "Short items shown with a check mark.",
-      of: [defineArrayMember({ type: "localizedString" })],
+      of: [defineArrayMember({ type: "string" })],
     }),
 
     text("processEyebrow", "Eyebrow", "process"),
@@ -115,7 +120,7 @@ export const homePage = defineType({
     defineField({
       name: "commitmentImage",
       title: "Image",
-      type: "localizedImage",
+      type: "imageWithAlt",
       group: "commitment",
     }),
     text("commitmentEyebrow", "Eyebrow", "commitment"),
@@ -137,6 +142,10 @@ export const homePage = defineType({
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
   ],
   preview: {
-    prepare: () => ({ title: "Home Page", subtitle: "sertuinevents.com/" }),
+    select: { language: "language" },
+    prepare: ({ language }) => ({
+      title: "Home Page",
+      subtitle: languages.find((item) => item.id === language)?.title ?? language,
+    }),
   },
 })

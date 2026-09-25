@@ -7,12 +7,13 @@ export const imageWithAlt = defineType({
   name: "imageWithAlt",
   title: "Image",
   type: "image",
+  options: { hotspot: true },
   fields: [
     defineField({
       name: "alt",
       title: "Alternative text",
       type: "string",
-      description: "Read by screen readers in every language, e.g. \"Sertuin Events logo\".",
+      description: "Describe the image for screen readers and search engines.",
       validation: (rule) => rule.required(),
     }),
   ],

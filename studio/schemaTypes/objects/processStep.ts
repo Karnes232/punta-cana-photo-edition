@@ -1,7 +1,5 @@
 import { defineField, defineType } from "sanity"
 
-import { requiredEnglish } from "./localized"
-
 // One step of "How we work". The page numbers the steps 01, 02, 03 by position.
 export const processStep = defineType({
   name: "processStep",
@@ -11,17 +9,18 @@ export const processStep = defineType({
     defineField({
       name: "title",
       title: "Title",
-      type: "localizedString",
-      validation: requiredEnglish,
+      type: "string",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "body",
       title: "Text",
-      type: "localizedText",
-      validation: requiredEnglish,
+      type: "text",
+      rows: 3,
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {
-    select: { title: "title.en", subtitle: "body.en" },
+    select: { title: "title", subtitle: "body" },
   },
 })
