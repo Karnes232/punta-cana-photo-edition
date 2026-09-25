@@ -89,6 +89,48 @@ export const homeContent = {
     details: "Tell us about your event",
     submit: "Send Event Request",
     availability: "Available 24 hours a day, 7 days a week, all year.",
+    heroImageAlt: "Destination event planned by Sertuin Events in Punta Cana",
+    trustItems: [
+      "One point of contact",
+      "Local coordination in Punta Cana",
+      "Complete on-site management",
+    ],
+    exploreService: "Explore service",
+    serviceImageAltSuffix: "planned by Sertuin Events in Punta Cana",
+    serviceCards: {
+      "/event-planner/": {
+        title: "Corporate Events",
+        description: "Planning, production, vendors, logistics and on-site management for corporate events in Punta Cana.",
+      },
+      "/puntacana-wedding-planner/": {
+        title: "Wedding Planning",
+        description: "Full planning, vendor management and local coordination for your destination wedding in Punta Cana.",
+      },
+      "/punta-cana-elopement-packages/": {
+        title: "Elopement Packages",
+        description: "Private beach and catamaran elopement packages with local planning in Punta Cana.",
+      },
+      "/proposal/": {
+        title: "Marriage Proposals",
+        description: "Complete Punta Cana marriage proposal packages with décor, photography and local coordination.",
+      },
+      "/gender-reveal-punta-cana/": {
+        title: "Gender Reveal",
+        description: "Design, coordination and execution of a custom reveal at your chosen Punta Cana location.",
+      },
+    },
+    whatsappMessage: "Hello, I would like information about planning an event in Punta Cana.",
+    featureImageAlt: "Sertuin Events managing an event in Punta Cana",
+    honeypotLabel: "Do not fill this out:",
+    formMessages: {
+      phoneCountry: "Select phone country",
+      phoneError: "Enter a valid phone number with its country code.",
+      emailError: "Enter a valid email address with an active domain.",
+      sending: "Sending...",
+      successTitle: "Request received",
+      success: "Your request was sent successfully. We will contact you shortly.",
+      error: "We could not send your request. Please try again.",
+    },
   },
   es: {
     ...shared,
@@ -171,6 +213,48 @@ export const homeContent = {
     submit: "Enviar Solicitud",
     availability:
       "Disponibles las 24 horas, los 7 días de la semana, todo el año.",
+    heroImageAlt: "Evento de destino planificado por Sertuin Events en Punta Cana",
+    trustItems: [
+      "Un solo punto de contacto",
+      "Coordinación local en Punta Cana",
+      "Gestión completa en sitio",
+    ],
+    exploreService: "Ver servicio",
+    serviceImageAltSuffix: "organizado por Sertuin Events en Punta Cana",
+    serviceCards: {
+      "/event-planner/": {
+        title: "Eventos corporativos",
+        description: "Planificación, producción, proveedores, logística y gestión en sitio para eventos corporativos en Punta Cana.",
+      },
+      "/puntacana-wedding-planner/": {
+        title: "Planificación de bodas",
+        description: "Planificación integral, proveedores y coordinación local para tu boda de destino en Punta Cana.",
+      },
+      "/punta-cana-elopement-packages/": {
+        title: "Bodas íntimas",
+        description: "Paquetes para bodas íntimas en playa o catamarán privado, con planificación local en Punta Cana.",
+      },
+      "/proposal/": {
+        title: "Propuestas de matrimonio",
+        description: "Paquetes completos de propuestas de matrimonio en Punta Cana con decoración, fotografía y coordinación local.",
+      },
+      "/gender-reveal-punta-cana/": {
+        title: "Revelación de género",
+        description: "Diseño, coordinación y ejecución de una revelación personalizada en la locación que elijas en Punta Cana.",
+      },
+    },
+    whatsappMessage: "Hola, quiero información para planificar un evento en Punta Cana.",
+    featureImageAlt: "Sertuin Events gestionando un evento en Punta Cana",
+    honeypotLabel: "No completes este campo:",
+    formMessages: {
+      phoneCountry: "Seleccionar país del teléfono",
+      phoneError: "Ingresa un número de teléfono válido con su código de país.",
+      emailError: "Ingresa un correo electrónico válido con un dominio activo.",
+      sending: "Enviando...",
+      successTitle: "Solicitud recibida",
+      success: "Tu solicitud fue enviada correctamente. Te contactaremos muy pronto.",
+      error: "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
+    },
   },
   pt: {
     ...shared,
@@ -253,6 +337,48 @@ export const homeContent = {
     submit: "Enviar Solicitação",
     availability:
       "Disponíveis 24 horas por dia, 7 dias por semana, o ano inteiro.",
+    heroImageAlt: "Evento de destino planejado pela Sertuin Events em Punta Cana",
+    trustItems: [
+      "Um único ponto de contato",
+      "Coordenação local em Punta Cana",
+      "Gestão completa no local",
+    ],
+    exploreService: "Ver serviço",
+    serviceImageAltSuffix: "organizado pela Sertuin Events em Punta Cana",
+    serviceCards: {
+      "/event-planner/": {
+        title: "Eventos Corporativos",
+        description: "Planejamento, produção, fornecedores, logística e gestão no local para eventos corporativos em Punta Cana.",
+      },
+      "/puntacana-wedding-planner/": {
+        title: "Planejamento de Casamentos",
+        description: "Planejamento completo, fornecedores e coordenação local para seu casamento de destino em Punta Cana.",
+      },
+      "/punta-cana-elopement-packages/": {
+        title: "Pacotes de Elopement",
+        description: "Pacotes de elopement em praia ou catamarã privativo, com planejamento local em Punta Cana.",
+      },
+      "/proposal/": {
+        title: "Pedidos de Casamento",
+        description: "Pacotes completos de pedido de casamento em Punta Cana, com decoração, fotografia e coordenação local.",
+      },
+      "/gender-reveal-punta-cana/": {
+        title: "Chá Revelação",
+        description: "Design, coordenação e execução de um chá revelação personalizado no local escolhido em Punta Cana.",
+      },
+    },
+    whatsappMessage: "Olá, quero informações para planejar um evento em Punta Cana.",
+    featureImageAlt: "Sertuin Events gerenciando um evento em Punta Cana",
+    honeypotLabel: "Não preencha este campo:",
+    formMessages: {
+      phoneCountry: "Selecionar país do telefone",
+      phoneError: "Digite um telefone válido com o código do país.",
+      emailError: "Digite um e-mail válido com domínio ativo.",
+      sending: "Enviando...",
+      successTitle: "Solicitação recebida",
+      success: "Sua solicitação foi enviada. Entraremos em contato em breve.",
+      error: "Não foi possível enviar. Tente novamente.",
+    },
   },
   fr: {
     ...shared,
@@ -336,6 +462,48 @@ export const homeContent = {
     details: "Parlez-nous de votre événement",
     submit: "Envoyer la Demande",
     availability: "Disponibles 24 heures sur 24, 7 jours sur 7, toute l’année.",
+    heroImageAlt: "Événement de destination organisé par Sertuin Events à Punta Cana",
+    trustItems: [
+      "Un interlocuteur unique",
+      "Coordination locale à Punta Cana",
+      "Gestion complète sur place",
+    ],
+    exploreService: "Voir le service",
+    serviceImageAltSuffix: "organisé par Sertuin Events à Punta Cana",
+    serviceCards: {
+      "/event-planner/": {
+        title: "Événements d’Entreprise",
+        description: "Organisation, production, prestataires, logistique et gestion sur place pour les événements d’entreprise à Punta Cana.",
+      },
+      "/puntacana-wedding-planner/": {
+        title: "Organisation de Mariages",
+        description: "Organisation complète, gestion des prestataires et coordination locale de votre mariage de destination à Punta Cana.",
+      },
+      "/punta-cana-elopement-packages/": {
+        title: "Forfaits Elopement",
+        description: "Forfaits elopement sur plage privée ou catamaran, avec organisation locale à Punta Cana.",
+      },
+      "/proposal/": {
+        title: "Demandes en Mariage",
+        description: "Forfaits complets de demande en mariage à Punta Cana, avec décoration, photographie et coordination locale.",
+      },
+      "/gender-reveal-punta-cana/": {
+        title: "Gender Reveal",
+        description: "Design, coordination et réalisation d’une gender reveal personnalisée dans le lieu de votre choix à Punta Cana.",
+      },
+    },
+    whatsappMessage: "Bonjour, je souhaite obtenir des informations pour organiser un événement à Punta Cana.",
+    featureImageAlt: "Sertuin Events gérant un événement à Punta Cana",
+    honeypotLabel: "Ne remplissez pas ce champ :",
+    formMessages: {
+      phoneCountry: "Sélectionnez le pays du téléphone",
+      phoneError: "Saisissez un numéro de téléphone valide avec l’indicatif du pays.",
+      emailError: "Saisissez une adresse e-mail valide avec un domaine actif.",
+      sending: "Envoi...",
+      successTitle: "Demande reçue",
+      success: "Merci. Votre demande a bien été envoyée.",
+      error: "Impossible d’envoyer la demande. Veuillez réessayer.",
+    },
   },
 };
 
