@@ -119,8 +119,8 @@ const styles = StyleSheet.create({
 
 const ContractPDF = ({ formData, companyInfo, language }) => {
   const currentDate = format(new Date(), "MMMM d, yyyy");
-  const companyStamp = companyInfo.companyStamp.url;
-  const signature = companyInfo.signature.url;
+  const companyStamp = companyInfo.companyStamp?.asset?.url;
+  const signature = companyInfo.signature?.asset?.url;
   // Calculate subtotal, taxes and total
   const subtotal = formData.selectedItems.reduce((sum, item) => {
     const originalPrice = parseFloat(item.price) * parseInt(item.quantity);

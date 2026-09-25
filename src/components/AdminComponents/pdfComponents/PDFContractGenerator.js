@@ -141,8 +141,8 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
     : "[DATE]";
   const eventStartTime = formData.eventStartTime;
   const eventEndTime = formData.eventEndTime;
-  const companyStamp = companyInfo.companyStamp.url;
-  const signature = companyInfo.signature.url;
+  const companyStamp = companyInfo.companyStamp?.asset?.url;
+  const signature = companyInfo.signature?.asset?.url;
 
   return (
     <Document>

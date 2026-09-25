@@ -8,7 +8,7 @@ import Seo from "../../components/Layout/seo";
 const Index = ({ data, pageContext }) => {
   return (
     <Layout
-      generalInfo={data.allContentfulGeneralLayout.nodes[0]}
+      generalInfo={data.sanityGeneralLayout}
       overlayHeader
     >
       <HeroSwiper
@@ -64,15 +64,19 @@ export const query = graphql`
         }
       }
     }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      facebook
+      email
+      instagram
+      x
+      telephone
+      messengerLink
+    }
+    # The hero still lives on Contentful's generalLayout; it isn't part of the
+    # Sanity General Layout and moves with this page's own schema.
     allContentfulGeneralLayout {
       nodes {
-        companyName
-        facebook
-        email
-        instagram
-        x
-        telephone
-        messengerLink
         heroImageList {
           gatsbyImage(
             layout: CONSTRAINED

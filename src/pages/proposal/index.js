@@ -150,7 +150,7 @@ const withoutRetiredProposalPackages = (packages = [], language = "en-US") =>
 
 const Index = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
-  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const generalInfo = data.sanityGeneralLayout;
   const pageContent = data.allContentfulPageContent.nodes[0];
   const carousel = data.allContentfulSwiperCarousel.nodes[0];
   const proposalCopy = getProposalCopy(language);
@@ -258,7 +258,7 @@ export const Head = ({ pageContext, data }) => {
   const seoImage = images?.file?.url
     ? `${images.file.url.startsWith("//") ? "https:" : ""}${images.file.url}`
     : undefined;
-  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const generalInfo = data.sanityGeneralLayout;
   const proposalPackages = withoutRetiredProposalPackages(
     data.allContentfulPackages.nodes,
     language,
@@ -334,15 +334,13 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout {
-      nodes {
-        companyName
-        facebook
-        instagram
-        x
-        telephone
-        messengerLink
-      }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      facebook
+      instagram
+      x
+      telephone
+      messengerLink
     }
     allContentfulSeo(
       filter: {

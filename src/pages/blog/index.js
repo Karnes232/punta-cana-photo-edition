@@ -19,7 +19,7 @@ const { isPublishedBlogSlug } = require("../../data/publishedBlogSlugs");
 const BlogIndex = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+    <Layout generalInfo={data.sanityGeneralLayout}>
       <KnowledgeCenter
         language={language}
         availableSlugs={data.allContentfulBlogPost.nodes
@@ -109,17 +109,13 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout(
-      filter: { node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
-        companyName
-        facebook
-        instagram
-        x
-        telephone
-        messengerLink
-      }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      facebook
+      instagram
+      x
+      telephone
+      messengerLink
     }
     allContentfulBlogPost(
       filter: { node_locale: { eq: $contentLanguage } }

@@ -20,7 +20,7 @@ const ThankYou = ({ data, pageContext }) => {
     } catch { /* The optional greeting never blocks the confirmation. */ }
   }, []);
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]} overlayHeader>
+    <Layout generalInfo={data.sanityGeneralLayout} overlayHeader>
       <main className={styles.page}>
         <section className={styles.card} aria-labelledby="thankyou-heading">
           <div className={styles.check} aria-hidden="true"><Check size={30} strokeWidth={1.4} /></div>
@@ -65,11 +65,9 @@ export const Head = ({ data, pageContext }) => {
 };
 
 export const query = graphql`
-  query ThankYouPage($contentLanguage: String = "en-US") {
+  query ThankYouPage {
     locales: allLocale { edges { node { ns data language } } }
     site { siteMetadata { siteUrl } }
-    allContentfulGeneralLayout(filter: { node_locale: { eq: $contentLanguage } }) {
-      nodes { companyName facebook email instagram messengerLink x telephone }
-    }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) { companyName facebook email instagram messengerLink x telephone }
   }
 `;

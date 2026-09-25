@@ -9,7 +9,7 @@ import { useI18next } from "gatsby-plugin-react-i18next";
 import { getLanguageConfig, localizedUrl, normalizeLanguage } from "../../utils/siteLocales";
 
 const Index = ({ data, pageContext }) => (
-  <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]} overlayHeader>
+  <Layout generalInfo={data.sanityGeneralLayout} overlayHeader>
     <ContactExperience language={pageContext.language} />
   </Layout>
 );
@@ -83,15 +83,13 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout {
-      nodes {
-        companyName
-        facebook
-        instagram
-        x
-        telephone
-        messengerLink
-      }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      facebook
+      instagram
+      x
+      telephone
+      messengerLink
     }
     allContentfulSeo(
       filter: { page: { eq: "Contact" }, node_locale: { eq: $contentLanguage } }

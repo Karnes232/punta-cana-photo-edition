@@ -21,7 +21,7 @@ const Index = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
 
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+    <Layout generalInfo={data.sanityGeneralLayout}>
       <ElopementExperience language={language} />
       <ServiceGuides cluster="weddings" language={language} />
     </Layout>
@@ -50,7 +50,7 @@ export const Head = ({ data, pageContext }) => {
       : language === "es"
         ? "Decoración tropical para una boda íntima en una playa de Punta Cana"
         : "Tropical décor for a Punta Cana beach elopement wedding";
-  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const generalInfo = data.sanityGeneralLayout;
   const schemaMarkup = buildElopementSchema({
     siteUrl: rootUrl,
     pageUrl,
@@ -102,15 +102,13 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout {
-      nodes {
-        companyName
-        facebook
-        instagram
-        x
-        telephone
-        messengerLink
-      }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      facebook
+      instagram
+      x
+      telephone
+      messengerLink
     }
   }
 `;

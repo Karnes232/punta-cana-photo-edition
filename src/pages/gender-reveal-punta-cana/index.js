@@ -19,7 +19,7 @@ import {
 } from "../../utils/siteLocales";
 
 const GenderRevealPage = ({ data, pageContext }) => {
-  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const generalInfo = data.sanityGeneralLayout;
   return (
     <Layout generalInfo={generalInfo} overlayHeader>
       <GenderRevealExperience
@@ -148,18 +148,14 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout(
-      filter: { node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
-        companyName
-        email
-        facebook
-        instagram
-        messengerLink
-        telephone
-        x
-      }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      email
+      facebook
+      instagram
+      messengerLink
+      telephone
+      x
     }
     allContentfulSeo(
       filter: {

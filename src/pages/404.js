@@ -8,7 +8,7 @@ const NotFoundPage = ({ data, location }) => {
   const isFrench = location?.pathname?.startsWith("/fr/");
 
   return (
-    <Layout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+    <Layout generalInfo={data.sanityGeneralLayout}>
       <main className="flex min-h-[72vh] items-center bg-secondary-bg-color px-6 py-24 md:px-10">
         <div className="mx-auto w-full max-w-4xl border-l-4 border-primary-color bg-white p-8 shadow-xl md:p-14">
           <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.25em] text-primary-color">
@@ -105,16 +105,14 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout {
-      nodes {
-        companyName
-        facebook
-        email
-        instagram
-        messengerLink
-        x
-        telephone
-      }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      facebook
+      email
+      instagram
+      messengerLink
+      x
+      telephone
     }
   }
 `;

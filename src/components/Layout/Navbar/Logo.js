@@ -13,26 +13,20 @@ const Logo = ({ overlay = false }) => {
   const { language } = useI18next();
   const data = useStaticQuery(graphql`
     query HeaderQuery {
-      allContentfulGeneralLayout {
-        nodes {
-          logo {
-            title
-            # Rendered at w-20 (80px) / md:w-32 (128px); 256 covers 2x DPR.
-            gatsbyImage(
-              width: 256
-              formats: WEBP
-              placeholder: BLURRED
-              quality: 65
-            )
+      sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+        logo {
+          alt
+          # Rendered at w-20 (80px) / md:w-32 (128px); 256 covers 2x DPR.
+          # No formats option: Sanity's CDN picks WebP/AVIF per browser.
+          asset {
+            gatsbyImageData(width: 256, placeholder: BLURRED)
           }
         }
       }
     }
   `);
-  const image = withSizes(
-    getImage(data.allContentfulGeneralLayout.nodes[0].logo.gatsbyImage),
-    LOGO_SIZES,
-  );
+  const logo = data.sanityGeneralLayout?.logo;
+  const image = withSizes(getImage(logo?.asset?.gatsbyImageData), LOGO_SIZES);
   return (
     <>
       <div
@@ -56,7 +50,7 @@ const Logo = ({ overlay = false }) => {
           <div className="cursor-pointer flex items-center w-20 md:w-20">
             <GatsbyImage
               image={image}
-              alt={data.allContentfulGeneralLayout.nodes[0].logo.title}
+              alt={logo?.alt}
               className="w-20 md:w-32"
             />
           </div>

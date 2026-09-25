@@ -27,14 +27,14 @@ const Index = ({ data }) => {
   }, []);
 
   return (
-    <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+    <AdminLayout generalInfo={data.sanityGeneralLayout}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <div className="flex flex-col items-center bg-gray-100 p-8 lg:pt-24 -mt-5 md:-mt-10 lg:-mt-20">
         {adminUser ? (
           <PackageContractForm
             packages={data.allContentfulPackages.nodes}
             additions={data.allContentfulPackageAdditions.nodes}
-            companyInfo={data.allContentfulGeneralLayout.nodes[0]}
+            companyInfo={data.sanityGeneralLayout}
           />
         ) : (
           <div className="text-center text-2xl font-bold min-h-[25vh] flex flex-col justify-center items-center">
@@ -95,23 +95,21 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout(filter: { node_locale: { eq: $language } }) {
-      nodes {
-        companyName
-        facebook
-        instagram
-        x
-        telephone
-        messengerLink
-        rnc
-        email
-        address
-        companyStamp {
-          url
-        }
-        signature {
-          url
-        }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      facebook
+      instagram
+      x
+      telephone
+      messengerLink
+      rnc
+      email
+      address
+      companyStamp {
+        asset { url }
+      }
+      signature {
+        asset { url }
       }
     }
     allContentfulSeo(

@@ -39,7 +39,7 @@ const Index = ({ data }) => {
     }
   };
   return (
-    <AdminLayout generalInfo={data.allContentfulGeneralLayout.nodes[0]}>
+    <AdminLayout generalInfo={data.sanityGeneralLayout}>
       <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
       <button
         className="flex justify-center items-center px-5 py-2 gap-4 border rounded-lg w-full max-w-4xl mx-auto"
@@ -99,15 +99,13 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout {
-      nodes {
-        companyName
-        facebook
-        instagram
-        x
-        messengerLink
-        telephone
-      }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      facebook
+      instagram
+      x
+      messengerLink
+      telephone
     }
     allContentfulSeo(
       filter: { page: { eq: "Admin" }, node_locale: { eq: $language } }

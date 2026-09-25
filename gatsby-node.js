@@ -104,16 +104,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const queryResults = await graphql(`
     query MyQuery {
-      allContentfulGeneralLayout {
-        nodes {
-          node_locale
-          companyName
-          facebook
-          instagram
-          x
-          telephone
-          messengerLink
-        }
+      sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+        companyName
+        facebook
+        instagram
+        x
+        telephone
+        messengerLink
       }
       allContentfulPackagePageContent {
         nodes {
@@ -140,11 +137,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const packageTemplate = path.resolve(`src/template/package.js`);
   const blogTemplate = path.resolve(`src/template/blog.js`);
-  const generalLayouts = queryResults.data.allContentfulGeneralLayout.nodes;
-  const layoutFor = (language) =>
-    generalLayouts.find((node) => node.node_locale === language) ||
-    generalLayouts.find((node) => node.node_locale === "en-US") ||
-    generalLayouts[0];
+  // One language-neutral document, shared by every blog and package page.
+  const layout = queryResults.data.sanityGeneralLayout;
 
   queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
     const slug = node.slug?.trim();
@@ -161,7 +155,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         language: node.node_locale, // Pass the language to the template
         contentLanguage: node.node_locale,
         blog: node,
-        layout: layoutFor(node.node_locale),
+        layout,
       },
       // defer: true,
     });
@@ -176,7 +170,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             language: derivedLanguage,
             contentLanguage: "en-US",
             blog: node,
-            layout: layoutFor("en-US"),
+            layout,
           },
         }),
       );
@@ -196,7 +190,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         id: node.id,
         language: node.node_locale,
         contentLanguage: node.node_locale,
-        layout: layoutFor(node.node_locale),
+        layout,
         package: node,
       },
     });
@@ -210,7 +204,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id: node.id,
             language: derivedLanguage,
             contentLanguage: "en-US",
-            layout: layoutFor("en-US"),
+            layout,
             package: node,
           },
         }),
@@ -221,9 +215,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   try {
     const { data } = await graphql(`
       query {
-        allContentfulGeneralLayout {
-          nodes {
-            favIcon {
+        sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+          favIcon {
+            asset {
               url
             }
           }
@@ -231,7 +225,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `);
 
-    const faviconUrl = data?.allContentfulGeneralLayout?.nodes[0]?.favIcon?.url;
+    const faviconUrl = data?.sanityGeneralLayout?.favIcon?.asset?.url;
     if (faviconUrl) {
       const response = await fetch(`${faviconUrl}`);
       const buffer = await response.buffer();
@@ -253,7 +247,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         );
       } else {
         fs.writeFileSync(filePath, buffer);
-        reporter.success("Successfully downloaded favicon from Contentful");
+        reporter.success("Successfully downloaded favicon from Sanity");
       }
     }
   } catch (error) {

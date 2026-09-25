@@ -14,7 +14,7 @@ import {
 } from "../../utils/siteLocales";
 
 const EventPlannerPage = ({ data, pageContext }) => {
-  const generalInfo = data.allContentfulGeneralLayout.nodes[0];
+  const generalInfo = data.sanityGeneralLayout;
   const page = data.allContentfulPageContent.nodes[0];
   const gallery = data.allContentfulPhotoGallery.nodes[0];
   const carousel = data.allContentfulSwiperCarousel.nodes[0];
@@ -90,7 +90,7 @@ export const Head = ({ pageContext, data }) => {
           name: "Sertuin Events",
           url: "https://sertuinevents.com/",
           email: "info@sertuinevents.com",
-          telephone: data.allContentfulGeneralLayout.nodes[0]?.telephone,
+          telephone: data.sanityGeneralLayout?.telephone,
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
@@ -216,18 +216,14 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulGeneralLayout(
-      filter: { node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
-        companyName
-        email
-        facebook
-        instagram
-        messengerLink
-        telephone
-        x
-      }
+    sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+      companyName
+      email
+      facebook
+      instagram
+      messengerLink
+      telephone
+      x
     }
     allContentfulSeo(
       filter: {
