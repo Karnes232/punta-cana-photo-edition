@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import loadable from "@loadable/component";
 import { HiBars3 } from "react-icons/hi2";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 const SideBarMenu = loadable(() => import("./SideBarMenu"));
 const HamburgerMenu = ({ overlay = false }) => {
+  const { t } = useTranslation();
   const [toggled, setToggled] = useState(false);
   return (
     <>
@@ -11,7 +13,7 @@ const HamburgerMenu = ({ overlay = false }) => {
         <div className="flex p-3">
           <div>
             <button
-              aria-label="Menu"
+              aria-label={t("Menu")}
               className={`sb-button rounded-full p-2 transition ${
                 overlay
                   ? "border border-white/40 bg-slate-950/35 shadow-lg backdrop-blur-sm hover:bg-slate-950/60"
