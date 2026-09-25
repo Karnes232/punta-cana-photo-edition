@@ -1,8 +1,10 @@
 import { Link, useStaticQuery, graphql } from "gatsby";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { localizedPath } from "../../../utils/siteLocales";
 
 const Copyright = ({ companyName, language }) => {
+  const { t } = useTranslation();
   const [date, setDate] = useState(new Date().getFullYear());
   // useEffect(() => {
   //   setDate(new Date().getFullYear());
@@ -27,13 +29,7 @@ const Copyright = ({ companyName, language }) => {
       <div className="flex flex-col gap-1">
         <Link to={localizedPath("/", language)}>
           <p className="tracking-wider cursor-pointer text-slate-600">
-            {language === "pt"
-              ? "Todos os direitos reservados"
-              : language === "fr"
-                ? "Tous droits réservés"
-                : language === "es"
-                  ? "Todos los derechos reservados"
-                  : "All content Copyright"}{" "}
+            {t("All content Copyright")}{" "}
             &copy; {date} {companyName}
           </p>
         </Link>
@@ -46,23 +42,10 @@ const Copyright = ({ companyName, language }) => {
         </p>
       )}
       <p className="text-slate-600 flex flex-col md:flex-row items-center gap-2 lg:flex-1 lg:justify-start  mt-5 lg:mt-0">
-        {language === "pt"
-          ? "Desenvolvido por"
-          : language === "fr"
-            ? "Développé par"
-            : language === "es"
-              ? "Desarrollado por"
-              : "Built by"}
+        {t("Built by")}
+        {/* DR Web Studio's site has only English and Spanish. */}
         <a
-          href={
-            language === "pt"
-              ? "https://www.dr-webstudio.com/en"
-              : language === "fr"
-                ? "https://www.dr-webstudio.com/en"
-                : language === "es"
-                  ? "https://www.dr-webstudio.com/es"
-                  : "https://www.dr-webstudio.com/en"
-          }
+          href={`https://www.dr-webstudio.com/${language === "es" ? "es" : "en"}`}
           className="flex items-center gap-1 hover:text-orange-500 cursor-pointer"
           target="_blank"
           rel="noreferrer"
@@ -81,13 +64,7 @@ const Copyright = ({ companyName, language }) => {
           DR Web Studio
         </a>
         <span className="hidden lg:inline"> —</span>
-        {language === "pt"
-          ? "Desenvolvimento web na República Dominicana"
-          : language === "fr"
-            ? "Développement web en République dominicaine"
-            : language === "es"
-              ? "Desarrollo Web en República Dominicana"
-              : "Web Development in the Dominican Republic"}
+        {t("Web Development in the Dominican Republic")}
       </p>
     </div>
   );

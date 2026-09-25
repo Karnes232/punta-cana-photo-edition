@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { FaFacebookMessenger } from "react-icons/fa6";
 import { FaWhatsapp, FaComments } from "react-icons/fa";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
-const ExpandableMessengerButton = ({ messengerLink, telephone, language }) => {
+const ExpandableMessengerButton = ({ messengerLink, telephone }) => {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpanded = () => {
@@ -57,23 +59,7 @@ const ExpandableMessengerButton = ({ messengerLink, telephone, language }) => {
             ? "bg-gray-600 text-white transform rotate-45"
             : "bg-blue-600 text-white hover:bg-blue-700"
         }`}
-        aria-label={
-          isExpanded
-            ? language === "pt"
-              ? "Fechar menu"
-              : language === "fr"
-                ? "Fermer le menu"
-                : language === "es"
-                  ? "Cerrar menú"
-                  : "Close menu"
-            : language === "pt"
-              ? "Abrir menu de contato"
-              : language === "fr"
-                ? "Ouvrir le menu de contact"
-                : language === "es"
-                  ? "Abrir menú de contacto"
-                  : "Open contact menu"
-        }
+        aria-label={isExpanded ? t("Close menu") : t("Open contact menu")}
       >
         {isExpanded ? (
           <div className="text-2xl font-light">×</div>

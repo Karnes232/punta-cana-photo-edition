@@ -3,10 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import ExpandableMessengerButton from "../FloatingButtonComponents/ExpandableMessengerButton";
-import { useI18next } from "gatsby-plugin-react-i18next";
 
 const Layout = ({ children, generalInfo, overlayHeader = false }) => {
-  const { language } = useI18next();
   const data = useStaticQuery(graphql`
     query {
       sanityGeneralLayout(_id: { eq: "generalLayout" }) {
@@ -24,7 +22,6 @@ const Layout = ({ children, generalInfo, overlayHeader = false }) => {
       <ExpandableMessengerButton
         messengerLink={messengerLink}
         telephone={telephone}
-        language={language}
       />
       {children}
       <Footer generalInfo={generalInfo} />

@@ -7,8 +7,10 @@ import {
   FaPhone,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 
-const SocialMedia = ({ generalInfo, language }) => {
+const SocialMedia = ({ generalInfo }) => {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-row space-x-5 md:space-x-7 py-4 text-slate-600">
       {generalInfo.facebook && (
@@ -40,15 +42,7 @@ const SocialMedia = ({ generalInfo, language }) => {
         <a
           href={`tel:${generalInfo.telephone}`}
           target="_blank"
-          aria-label={
-            language === "pt"
-              ? "Ligar para nós"
-              : language === "fr"
-                ? "Nous appeler"
-                : language === "es"
-                  ? "Llámanos"
-                  : "Call us"
-          }
+          aria-label={t("Call us")}
           rel="noreferrer"
         >
           <FaPhone className="text-xl md:text-3xl" />

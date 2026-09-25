@@ -4,7 +4,7 @@ import { Sidebar } from "react-pro-sidebar";
 import SideBarInside from "./SideBarInside";
 import { useI18next } from "gatsby-plugin-react-i18next";
 const SideBarMenu = ({ toggled, setToggled }) => {
-  const { language } = useI18next();
+  const { t } = useI18next();
   return (
     <>
       <Sidebar
@@ -20,15 +20,7 @@ const SideBarMenu = ({ toggled, setToggled }) => {
             <div className="fixed top-5 right-5">
               <button
                 type="button"
-                aria-label={
-                  language === "pt"
-                    ? "Fechar menu"
-                    : language === "fr"
-                      ? "Fermer le menu"
-                      : language === "es"
-                        ? "Cerrar menú"
-                        : "Close menu"
-                }
+                aria-label={t("Close menu")}
                 className="p-2 text-2xl text-gray-500"
                 onClick={() => setToggled(false)}
               >
