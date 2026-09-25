@@ -1,5 +1,6 @@
 [build]
-  command = "npm run build"
+  # The Studio is built after Gatsby, since gatsby build empties public/.
+  command = "npm run build && npm run build:studio-into-site"
   publish = "public"
   functions = "functions"
 
@@ -7,7 +8,8 @@
   node_bundler = "esbuild"
 
 [build.environment]
-  NODE_VERSION = "20"
+  # 22+: Sanity Studio (studio/) requires Node >= 22.12.
+  NODE_VERSION = "22"
   NODE_OPTIONS = "--max_old_space_size=4096"
 
 [[plugins]]
@@ -57,3 +59,18 @@
   from = "/sitemap.xml"
   to = "/sitemap-index.xml"
   status = 301
+
+# Sanity Studio, built into public/studio by build:studio-into-site.
+# No `force` on the fallback, so real files under /studio/static/ are served as-is
+# and only Studio routes such as /studio/structure/... fall through to its index.html.
+# /studio itself is served from public/studio/index.html; no slash redirect, because
+# Netlify matches /studio and /studio/ as the same path and would loop.
+[[redirects]]
+  from = "/studio/*"
+  to = "/studio/index.html"
+  status = 200
+
+[[headers]]
+  for = "/studio/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
