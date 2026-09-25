@@ -35,12 +35,9 @@ export const generalLayout = defineType({
         defineField({
           name: "alt",
           title: "Alternative text",
-          type: "localizedString",
-          description: "Read by screen readers, e.g. \"Sertuin Events logo\".",
-          validation: (rule) =>
-            rule.custom((alt?: { en?: string }) =>
-              alt?.en?.trim() ? true : "Add the English alternative text",
-            ),
+          type: "string",
+          description: "Read by screen readers in every language, e.g. \"Sertuin Events logo\".",
+          validation: (rule) => rule.required(),
         }),
       ],
       validation: (rule) => rule.required(),
