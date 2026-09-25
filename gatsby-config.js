@@ -347,6 +347,15 @@ module.exports = {
       },
     },
   ],
+  // Dev only: forwards /studio to the Sanity Studio dev server (npm run studio).
+  proxy: [{ prefix: "/studio", url: "http://localhost:3333" }],
+  // Dev only: the proxy matches /studio/* only, so send bare /studio to /studio/.
+  developMiddleware: app => {
+    app.use((req, res, next) => {
+      if (req.path === "/studio") return res.redirect(302, "/studio/" + req.originalUrl.slice(7))
+      next()
+    })
+  },
   flags: {
     DEV_SSR: false,
     PRESERVE_FILE_DOWNLOAD_CACHE: true,

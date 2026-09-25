@@ -1,0 +1,26 @@
+{
+  "name": "sertuin-studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sanity Studio for sertuinevents.com",
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "start": "sanity start"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "dependencies": {
+    "@sanity/vision": "^6.16.0",
+    "react": "^19.2.2",
+    "react-dom": "^19.2.2",
+    "sanity": "^6.16.0",
+    "styled-components": "^6.1.15"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "typescript": "^5.9.0"
+  }
+}

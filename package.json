@@ -21,6 +21,8 @@
     "validate:language-routing-seo": "node scripts/validate-language-routing-seo.js",
     "serve": "gatsby serve",
     "netlify:dev": "netlify dev",
+    "studio": "npm --prefix studio run dev",
+    "studio:build": "npm --prefix studio run build",
     "contentful:blog-architecture": "node scripts/contentful/apply-blog-architecture.js",
     "clean": "gatsby clean",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,css}\"",

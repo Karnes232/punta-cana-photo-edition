@@ -79,3 +79,14 @@ node_modules
 # Contentful safety backups written before each deletion round (2026-08-24).
 # Kept locally so a deleted model or entry can be reconstructed; not repo content.
 contentful-backup-*.json
+
+# Sanity Studio build output (studio/ has its own package.json: React 19, Node >= 22.12)
+studio/dist
+studio/.sanity
+studio/tsconfig.tsbuildinfo
+
+Screenshot from 2026-08-25 18-00-07.png
+contentful-unused-assets-2026-08-26.csv
+contentful-unused-assets-2026-08-26.html
+sertuin-developer-actions.pdf
+sertuin-owner-actions.pdf
