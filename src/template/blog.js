@@ -8,7 +8,6 @@ import {
   breadcrumbSchema,
 } from "../components/BlogComponents/KnowledgeNavigation";
 import "../styles/knowledge-center.css";
-const { findNode } = require("../data/knowledgeGraph");
 import { graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import BlogBody from "../components/BlogComponents/BlogBody";
@@ -28,6 +27,7 @@ import {
   localizedUrl,
   normalizeLanguage,
 } from "../utils/siteLocales";
+const { findNode } = require("../data/knowledgeGraph");
 
 const safeUrl = (value) => {
   if (typeof value !== "string") return "";
