@@ -77,13 +77,6 @@ export const generalLayout = defineType({
       description: "e.g. https://m.me/sertuinevents",
       validation: (rule) => rule.uri({ scheme: ["http", "https"] }),
     }),
-    defineField({
-      name: "availability",
-      title: "Availability",
-      type: "localizedString",
-      group: "contact",
-      description: "e.g. \"24 hours a day, 7 days a week, all year\".",
-    }),
 
     ...[
       { name: "instagram", title: "Instagram" },
