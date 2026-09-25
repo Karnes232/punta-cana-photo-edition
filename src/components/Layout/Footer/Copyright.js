@@ -14,15 +14,13 @@ const Copyright = ({ companyName, language }) => {
   // existing pattern in Layout.js.
   const data = useStaticQuery(graphql`
     query {
-      allContentfulGeneralLayout {
-        nodes {
-          legalName
-          rnc
-        }
+      sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+        legalName
+        rnc
       }
     }
   `);
-  const { legalName, rnc } = data.allContentfulGeneralLayout.nodes[0] ?? {};
+  const { legalName, rnc } = data.sanityGeneralLayout ?? {};
 
   return (
     <div className=" flex flex-col xl:flex-row justify-between xl:gap-10 py-4 w-full">

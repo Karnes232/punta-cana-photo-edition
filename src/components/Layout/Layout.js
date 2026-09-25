@@ -9,16 +9,14 @@ const Layout = ({ children, generalInfo, overlayHeader = false }) => {
   const { language } = useI18next();
   const data = useStaticQuery(graphql`
     query {
-      allContentfulGeneralLayout {
-        nodes {
-          messengerLink
-          telephone
-        }
+      sanityGeneralLayout(_id: { eq: "generalLayout" }) {
+        messengerLink
+        telephone
       }
     }
   `);
 
-  const { messengerLink, telephone } = data.allContentfulGeneralLayout.nodes[0];
+  const { messengerLink, telephone } = data.sanityGeneralLayout ?? {};
 
   return (
     <div className="min-h-screen font-crimson flex flex-col justify-between bg-primary-bg-color">
