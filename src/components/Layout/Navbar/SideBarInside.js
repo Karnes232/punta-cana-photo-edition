@@ -5,7 +5,7 @@ import RomanticEvents from "./RomanticEvents";
 import { Trans, useI18next } from "gatsby-plugin-react-i18next";
 import { localizedPath } from "../../../utils/siteLocales";
 const SideBarInside = ({ footer, setToggled }) => {
-  const { language } = useI18next();
+  const { language, t } = useI18next();
   const localize = (path) => localizedPath(path, language);
   return (
     <>
@@ -20,13 +20,7 @@ const SideBarInside = ({ footer, setToggled }) => {
           }
         >
           <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            {language === "pt"
-              ? "Início"
-              : language === "fr"
-                ? "Accueil"
-                : language === "es"
-                  ? "Inicio"
-                  : "Home"}
+            {t("Home")}
           </p>
         </MenuItem>
         <RomanticEvents footer={footer} setToggled={setToggled} />

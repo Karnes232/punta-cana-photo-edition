@@ -30,13 +30,7 @@ const Sitemap = () => {
   return (
     <div className="flex flex-row space-x-4">
       <Link to={localizedPath("/", language)} className="navLinks no-underline">
-        {language === "pt"
-          ? "Início"
-          : language === "fr"
-            ? "Accueil"
-            : language === "es"
-              ? "Inicio"
-              : "Home"}
+        {t("Home")}
       </Link>
       <div className="2xl:hidden">
         <PopOverComponent

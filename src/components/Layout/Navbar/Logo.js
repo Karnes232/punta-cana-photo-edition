@@ -10,7 +10,7 @@ import { localizedPath } from "../../../utils/siteLocales";
 // candidate for an 80px slot.
 const LOGO_SIZES = "(min-width: 768px) 128px, 80px";
 const Logo = ({ overlay = false }) => {
-  const { language } = useI18next();
+  const { language, t } = useI18next();
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       sanityGeneralLayout(_id: { eq: "generalLayout" }) {
@@ -37,15 +37,7 @@ const Logo = ({ overlay = false }) => {
         <Link
           to={localizedPath("/", language)}
           className="no-underline"
-          aria-label={
-            language === "pt"
-              ? "Início"
-              : language === "fr"
-                ? "Accueil"
-                : language === "es"
-                  ? "Inicio"
-                  : "Home"
-          }
+          aria-label={t("Home")}
         >
           <div className="cursor-pointer flex items-center w-20 md:w-20">
             <GatsbyImage
