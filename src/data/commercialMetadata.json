@@ -1,22 +1,4 @@
 {
-  "/": {
-    "en-US": {
-      "title": "Sertuin Events | Event Planning in Punta Cana",
-      "description": "We organize events in Punta Cana, coordinating venues, suppliers and logistics. Explore our services and tell us what you want to celebrate."
-    },
-    "es": {
-      "title": "Sertuin Events | Organización de Eventos en Punta Cana",
-      "description": "Organizamos eventos en Punta Cana y coordinamos espacios, proveedores y logística. Conoce nuestros servicios y cuéntanos qué quieres celebrar."
-    },
-    "pt": {
-      "title": "Sertuin Events | Organização de Eventos em Punta Cana",
-      "description": "Organizamos eventos em Punta Cana e coordenamos espaços, fornecedores e logística. Conheça nossos serviços e conte-nos o que deseja celebrar."
-    },
-    "fr": {
-      "title": "Sertuin Events | Organisation d’Événements à Punta Cana",
-      "description": "Nous organisons vos événements à Punta Cana : lieux, prestataires et logistique. Découvrez nos services et parlez-nous de votre projet."
-    }
-  },
   "/puntacana-wedding-planner/": {
     "en-US": {
       "title": "Wedding Planner in Punta Cana | Planning & Coordination",

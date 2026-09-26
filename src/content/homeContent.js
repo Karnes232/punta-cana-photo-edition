@@ -1,75 +1,7 @@
-const shared = {
-  serviceOrder: [
-    "/event-planner/",
-    "/puntacana-wedding-planner/",
-    "/punta-cana-elopement-packages/",
-    "/proposal/",
-    "/gender-reveal-punta-cana/",
-  ],
-};
-
+// Copy for the home page contact form, which stays in the repo. The rest of the
+// home page is edited in Sanity (one Home Page document per language).
 export const homeContent = {
   "en-US": {
-    ...shared,
-    eyebrow: "Event planning and management in Punta Cana",
-    heroHeading:
-      "Full-Service Event Planning in Punta Cana — Your Event, Our Responsibility",
-    heroIntro:
-      "We plan, design, coordinate and manage corporate events, destination weddings, elopements, marriage proposals and private celebrations—from the first idea to on-site execution.",
-    primaryCta: "Tell Us About Your Event",
-    primaryCtaUrl: "#start-your-event",
-    secondaryCta: "Explore Event Types",
-    secondaryCtaUrl: "#events-we-plan",
-    eventsEyebrow: "Events we plan",
-    eventsTitle: "What Are You Planning in Punta Cana?",
-    eventsIntro:
-      "Choose the event that best matches your plans. Each service page explains the experience, what we manage and how to begin.",
-    whatEyebrow: "One coordinated responsibility",
-    whatTitle: "Everything Your Event Needs, Managed by One Local Team",
-    whatParagraphs: [
-      "Sertuin Events plans the concept, budget and timeline; coordinates venues and trusted suppliers; develops the design, décor and floral direction; organizes rentals, catering, transportation, staffing and production logistics; and manages the event on site.",
-      "You keep one point of contact and one coordinated plan while we take responsibility for every moving part.",
-    ],
-    whatItems: [
-      "Concept, planning and budget",
-      "Venues and supplier coordination",
-      "Design, décor and floral art",
-      "Rentals and production logistics",
-      "Catering, transport and staffing",
-      "Setup and on-site management",
-    ],
-    processEyebrow: "How we work",
-    processTitle: "We Listen. We Organize. We Take Responsibility.",
-    processIntro:
-      "Our work is not complete when the plan is written. We stay involved until the event is delivered.",
-    process: [
-      {
-        number: "01",
-        title: "We listen",
-        body: "We understand the purpose of your event, what matters most and what you want your guests to feel.",
-      },
-      {
-        number: "02",
-        title: "We organize",
-        body: "We turn ideas into decisions, a realistic budget, reliable suppliers, clear responsibilities and a coordinated timeline.",
-      },
-      {
-        number: "03",
-        title: "We take responsibility",
-        body: "We anticipate, coordinate and stay present through execution so you are never left managing the event alone.",
-      },
-    ],
-    commitmentEyebrow: "The Sertuin commitment",
-    commitmentTitle: "When You Trust Us With Your Event, We Make It Our Own",
-    commitmentBody:
-      "Planning an event is not simply completing a list of tasks. It is accepting responsibility for a moment that matters to someone else. We care for every decision with dedication, attention and the commitment to do everything within our responsibility to make the event go right.",
-    contactEyebrow: "Available 24/7, all year",
-    contactTitle: "Tell Us What You Are Planning",
-    contactBody:
-      "Message us on WhatsApp, call or complete the form. We will review the information and coordinate the next steps directly with you.",
-    whatsapp: "Message on WhatsApp",
-    call: "Call Sertuin",
-    email: "Email Sertuin",
     formTitle: "Request Event Information",
     name: "Name",
     emailLabel: "Email",
@@ -88,40 +20,6 @@ export const homeContent = {
     date: "Preferred date",
     details: "Tell us about your event",
     submit: "Send Event Request",
-    availability: "Available 24 hours a day, 7 days a week, all year.",
-    heroImageAlt: "Destination event planned by Sertuin Events in Punta Cana",
-    trustItems: [
-      "One point of contact",
-      "Local coordination in Punta Cana",
-      "Complete on-site management",
-    ],
-    exploreService: "Explore service",
-    serviceImageAltSuffix: "planned by Sertuin Events in Punta Cana",
-    serviceCards: {
-      "/event-planner/": {
-        title: "Corporate Events",
-        description: "Planning, production, vendors, logistics and on-site management for corporate events in Punta Cana.",
-      },
-      "/puntacana-wedding-planner/": {
-        title: "Wedding Planning",
-        description: "Full planning, vendor management and local coordination for your destination wedding in Punta Cana.",
-      },
-      "/punta-cana-elopement-packages/": {
-        title: "Elopement Packages",
-        description: "Private beach and catamaran elopement packages with local planning in Punta Cana.",
-      },
-      "/proposal/": {
-        title: "Marriage Proposals",
-        description: "Complete Punta Cana marriage proposal packages with décor, photography and local coordination.",
-      },
-      "/gender-reveal-punta-cana/": {
-        title: "Gender Reveal",
-        description: "Design, coordination and execution of a custom reveal at your chosen Punta Cana location.",
-      },
-    },
-    whatsappMessage: "Hello, I would like information about planning an event in Punta Cana.",
-    featureImageAlt: "Sertuin Events managing an event in Punta Cana",
-    honeypotLabel: "Do not fill this out:",
     formMessages: {
       phoneCountry: "Select phone country",
       phoneError: "Enter a valid phone number with its country code.",
@@ -131,68 +29,9 @@ export const homeContent = {
       success: "Your request was sent successfully. We will contact you shortly.",
       error: "We could not send your request. Please try again.",
     },
+    honeypotLabel: "Do not fill this out:",
   },
   es: {
-    ...shared,
-    eyebrow: "Planificación y gestión de eventos en Punta Cana",
-    heroHeading:
-      "Planificación Integral de Eventos en Punta Cana — Tu Evento, Nuestra Responsabilidad",
-    heroIntro:
-      "Planificamos, diseñamos, coordinamos y gestionamos eventos corporativos, bodas de destino, bodas íntimas, propuestas de matrimonio y celebraciones privadas, desde la primera idea hasta la ejecución en sitio.",
-    primaryCta: "Cuéntanos Sobre Tu Evento",
-    primaryCtaUrl: "#start-your-event",
-    secondaryCta: "Explorar Tipos de Eventos",
-    secondaryCtaUrl: "#events-we-plan",
-    eventsEyebrow: "Eventos que planificamos",
-    eventsTitle: "¿Qué Estás Planificando en Punta Cana?",
-    eventsIntro:
-      "Elige el evento que mejor representa tus planes. Cada página explica la experiencia, lo que gestionamos y cómo comenzar.",
-    whatEyebrow: "Una sola responsabilidad coordinada",
-    whatTitle: "Todo lo que tu Evento Necesita, Gestionado por un Equipo Local",
-    whatParagraphs: [
-      "Sertuin Events planifica el concepto, el presupuesto y el cronograma; coordina locaciones y proveedores confiables; desarrolla el diseño, la decoración y la dirección floral; organiza alquileres, catering, transporte, personal y logística de producción; y gestiona el evento en sitio.",
-      "Tú mantienes un solo punto de contacto y un plan coordinado mientras nosotros asumimos la responsabilidad de cada parte.",
-    ],
-    whatItems: [
-      "Concepto, planificación y presupuesto",
-      "Locaciones y coordinación de proveedores",
-      "Diseño, decoración y arte floral",
-      "Alquileres y logística de producción",
-      "Catering, transporte y personal",
-      "Montaje y gestión en sitio",
-    ],
-    processEyebrow: "Cómo trabajamos",
-    processTitle: "Escuchamos. Organizamos. Nos Responsabilizamos.",
-    processIntro:
-      "Nuestro trabajo no termina cuando el plan está escrito. Permanecemos involucrados hasta entregar el evento.",
-    process: [
-      {
-        number: "01",
-        title: "Escuchamos",
-        body: "Comprendemos el propósito del evento, lo que más importa y lo que quieres que sientan tus invitados.",
-      },
-      {
-        number: "02",
-        title: "Organizamos",
-        body: "Convertimos las ideas en decisiones, un presupuesto realista, proveedores confiables, responsabilidades claras y un cronograma coordinado.",
-      },
-      {
-        number: "03",
-        title: "Nos responsabilizamos",
-        body: "Anticipamos, coordinamos y permanecemos presentes durante la ejecución para que nunca tengas que gestionar el evento solo.",
-      },
-    ],
-    commitmentEyebrow: "El compromiso Sertuin",
-    commitmentTitle: "Cuando nos Confías tu Evento, lo Hacemos Nuestro",
-    commitmentBody:
-      "Planificar un evento no es simplemente completar una lista de tareas. Es aceptar la responsabilidad de un momento importante para otra persona. Cuidamos cada decisión con dedicación, atención y el compromiso de hacer todo lo que está bajo nuestra responsabilidad para que el evento salga bien.",
-    contactEyebrow: "Disponibles 24/7, todo el año",
-    contactTitle: "Cuéntanos Qué Estás Planificando",
-    contactBody:
-      "Escríbenos por WhatsApp, llámanos o completa el formulario. Revisaremos la información y coordinaremos directamente contigo los próximos pasos.",
-    whatsapp: "Escribir por WhatsApp",
-    call: "Llamar a Sertuin",
-    email: "Enviar un correo",
     formTitle: "Solicitar Información del Evento",
     name: "Nombre",
     emailLabel: "Correo electrónico",
@@ -211,41 +50,6 @@ export const homeContent = {
     date: "Fecha preferida",
     details: "Cuéntanos sobre tu evento",
     submit: "Enviar Solicitud",
-    availability:
-      "Disponibles las 24 horas, los 7 días de la semana, todo el año.",
-    heroImageAlt: "Evento de destino planificado por Sertuin Events en Punta Cana",
-    trustItems: [
-      "Un solo punto de contacto",
-      "Coordinación local en Punta Cana",
-      "Gestión completa en sitio",
-    ],
-    exploreService: "Ver servicio",
-    serviceImageAltSuffix: "organizado por Sertuin Events en Punta Cana",
-    serviceCards: {
-      "/event-planner/": {
-        title: "Eventos corporativos",
-        description: "Planificación, producción, proveedores, logística y gestión en sitio para eventos corporativos en Punta Cana.",
-      },
-      "/puntacana-wedding-planner/": {
-        title: "Planificación de bodas",
-        description: "Planificación integral, proveedores y coordinación local para tu boda de destino en Punta Cana.",
-      },
-      "/punta-cana-elopement-packages/": {
-        title: "Bodas íntimas",
-        description: "Paquetes para bodas íntimas en playa o catamarán privado, con planificación local en Punta Cana.",
-      },
-      "/proposal/": {
-        title: "Propuestas de matrimonio",
-        description: "Paquetes completos de propuestas de matrimonio en Punta Cana con decoración, fotografía y coordinación local.",
-      },
-      "/gender-reveal-punta-cana/": {
-        title: "Revelación de género",
-        description: "Diseño, coordinación y ejecución de una revelación personalizada en la locación que elijas en Punta Cana.",
-      },
-    },
-    whatsappMessage: "Hola, quiero información para planificar un evento en Punta Cana.",
-    featureImageAlt: "Sertuin Events gestionando un evento en Punta Cana",
-    honeypotLabel: "No completes este campo:",
     formMessages: {
       phoneCountry: "Seleccionar país del teléfono",
       phoneError: "Ingresa un número de teléfono válido con su código de país.",
@@ -255,68 +59,9 @@ export const homeContent = {
       success: "Tu solicitud fue enviada correctamente. Te contactaremos muy pronto.",
       error: "No pudimos enviar tu solicitud. Inténtalo nuevamente.",
     },
+    honeypotLabel: "No completes este campo:",
   },
   pt: {
-    ...shared,
-    eyebrow: "Planejamento e gestão de eventos em Punta Cana",
-    heroHeading:
-      "Planejamento Completo de Eventos em Punta Cana — Seu Evento, Nossa Responsabilidade",
-    heroIntro:
-      "Planejamos, desenhamos, coordenamos e gerenciamos eventos corporativos, casamentos de destino, elopements, pedidos de casamento e celebrações privadas, da primeira ideia à execução no local.",
-    primaryCta: "Conte-nos Sobre Seu Evento",
-    primaryCtaUrl: "#start-your-event",
-    secondaryCta: "Explorar Tipos de Eventos",
-    secondaryCtaUrl: "#events-we-plan",
-    eventsEyebrow: "Eventos que planejamos",
-    eventsTitle: "O que Você Está Planejando em Punta Cana?",
-    eventsIntro:
-      "Escolha o evento que melhor corresponde aos seus planos. Cada página explica a experiência, o que gerenciamos e como começar.",
-    whatEyebrow: "Uma responsabilidade coordenada",
-    whatTitle: "Tudo o que Seu Evento Precisa, Gerenciado por uma Equipe Local",
-    whatParagraphs: [
-      "A Sertuin Events planeja conceito, orçamento e cronograma; coordena venues e fornecedores confiáveis; desenvolve design, decoração e direção floral; organiza locações, catering, transporte, equipe e logística de produção; e gerencia o evento no local.",
-      "Você mantém um único ponto de contato e um plano coordenado enquanto assumimos a responsabilidade por cada parte do evento.",
-    ],
-    whatItems: [
-      "Conceito, planejamento e orçamento",
-      "Venues e coordenação de fornecedores",
-      "Design, decoração e arte floral",
-      "Locações e logística de produção",
-      "Catering, transporte e equipe",
-      "Montagem e gestão no local",
-    ],
-    processEyebrow: "Como trabalhamos",
-    processTitle: "Ouvimos. Organizamos. Assumimos a Responsabilidade.",
-    processIntro:
-      "Nosso trabalho não termina quando o plano está escrito. Permanecemos envolvidos até a entrega do evento.",
-    process: [
-      {
-        number: "01",
-        title: "Ouvimos",
-        body: "Entendemos o objetivo do evento, o que mais importa e o que você deseja que os convidados sintam.",
-      },
-      {
-        number: "02",
-        title: "Organizamos",
-        body: "Transformamos ideias em decisões, orçamento realista, fornecedores confiáveis, responsabilidades claras e cronograma coordenado.",
-      },
-      {
-        number: "03",
-        title: "Assumimos a responsabilidade",
-        body: "Antecipamos, coordenamos e permanecemos presentes durante a execução para que você nunca precise gerenciar o evento sozinho.",
-      },
-    ],
-    commitmentEyebrow: "O compromisso Sertuin",
-    commitmentTitle: "Quando Você Confia Seu Evento a Nós, Ele se Torna Nosso",
-    commitmentBody:
-      "Planejar um evento não é apenas concluir tarefas. É aceitar a responsabilidade por um momento importante para outra pessoa. Cuidamos de cada decisão com dedicação, atenção e o compromisso de fazer tudo o que está sob nossa responsabilidade para que o evento dê certo.",
-    contactEyebrow: "Disponíveis 24 horas, o ano inteiro",
-    contactTitle: "Conte-nos o que Você Está Planejando",
-    contactBody:
-      "Envie uma mensagem pelo WhatsApp, ligue ou preencha o formulário. Analisaremos as informações e coordenaremos diretamente com você os próximos passos.",
-    whatsapp: "Falar pelo WhatsApp",
-    call: "Ligar para a Sertuin",
-    email: "Enviar um e-mail",
     formTitle: "Solicitar Informações do Evento",
     name: "Nome",
     emailLabel: "E-mail",
@@ -335,41 +80,6 @@ export const homeContent = {
     date: "Data preferida",
     details: "Conte-nos sobre seu evento",
     submit: "Enviar Solicitação",
-    availability:
-      "Disponíveis 24 horas por dia, 7 dias por semana, o ano inteiro.",
-    heroImageAlt: "Evento de destino planejado pela Sertuin Events em Punta Cana",
-    trustItems: [
-      "Um único ponto de contato",
-      "Coordenação local em Punta Cana",
-      "Gestão completa no local",
-    ],
-    exploreService: "Ver serviço",
-    serviceImageAltSuffix: "organizado pela Sertuin Events em Punta Cana",
-    serviceCards: {
-      "/event-planner/": {
-        title: "Eventos Corporativos",
-        description: "Planejamento, produção, fornecedores, logística e gestão no local para eventos corporativos em Punta Cana.",
-      },
-      "/puntacana-wedding-planner/": {
-        title: "Planejamento de Casamentos",
-        description: "Planejamento completo, fornecedores e coordenação local para seu casamento de destino em Punta Cana.",
-      },
-      "/punta-cana-elopement-packages/": {
-        title: "Pacotes de Elopement",
-        description: "Pacotes de elopement em praia ou catamarã privativo, com planejamento local em Punta Cana.",
-      },
-      "/proposal/": {
-        title: "Pedidos de Casamento",
-        description: "Pacotes completos de pedido de casamento em Punta Cana, com decoração, fotografia e coordenação local.",
-      },
-      "/gender-reveal-punta-cana/": {
-        title: "Chá Revelação",
-        description: "Design, coordenação e execução de um chá revelação personalizado no local escolhido em Punta Cana.",
-      },
-    },
-    whatsappMessage: "Olá, quero informações para planejar um evento em Punta Cana.",
-    featureImageAlt: "Sertuin Events gerenciando um evento em Punta Cana",
-    honeypotLabel: "Não preencha este campo:",
     formMessages: {
       phoneCountry: "Selecionar país do telefone",
       phoneError: "Digite um telefone válido com o código do país.",
@@ -379,70 +89,9 @@ export const homeContent = {
       success: "Sua solicitação foi enviada. Entraremos em contato em breve.",
       error: "Não foi possível enviar. Tente novamente.",
     },
+    honeypotLabel: "Não preencha este campo:",
   },
   fr: {
-    ...shared,
-    eyebrow: "Organisation et gestion d’événements à Punta Cana",
-    heroHeading:
-      "Organisation Complète d’Événements à Punta Cana — Votre Événement, Notre Responsabilité",
-    heroIntro:
-      "Nous concevons, organisons, coordonnons et gérons événements d’entreprise, mariages de destination, elopements, demandes en mariage et célébrations privées, de la première idée à l’exécution sur place.",
-    primaryCta: "Parlez-nous de Votre Événement",
-    primaryCtaUrl: "#start-your-event",
-    secondaryCta: "Découvrir les Types d’Événements",
-    secondaryCtaUrl: "#events-we-plan",
-    eventsEyebrow: "Les événements que nous organisons",
-    eventsTitle: "Qu’Organisez-vous à Punta Cana ?",
-    eventsIntro:
-      "Choisissez l’événement qui correspond à votre projet. Chaque page présente l’expérience, notre rôle et la façon de commencer.",
-    whatEyebrow: "Une responsabilité coordonnée",
-    whatTitle:
-      "Tout ce Dont Votre Événement a Besoin, Géré par une Équipe Locale",
-    whatParagraphs: [
-      "Sertuin Events organise le concept, le budget et le planning ; coordonne les lieux et prestataires de confiance ; développe le design, la décoration et la direction florale ; gère les locations, la restauration, le transport, le personnel et la logistique de production ; puis dirige l’événement sur place.",
-      "Vous gardez un interlocuteur unique et un plan coordonné tandis que nous assumons la responsabilité de chaque élément.",
-    ],
-    whatItems: [
-      "Concept, organisation et budget",
-      "Lieux et coordination des prestataires",
-      "Design, décoration et art floral",
-      "Locations et logistique de production",
-      "Restauration, transport et personnel",
-      "Installation et gestion sur place",
-    ],
-    processEyebrow: "Notre méthode",
-    processTitle: "Nous Écoutons. Nous Organisons. Nous Assumons.",
-    processIntro:
-      "Notre travail ne s’arrête pas au plan écrit. Nous restons engagés jusqu’à la réalisation de l’événement.",
-    process: [
-      {
-        number: "01",
-        title: "Nous écoutons",
-        body: "Nous comprenons l’objectif de votre événement, vos priorités et ce que vous souhaitez faire vivre à vos invités.",
-      },
-      {
-        number: "02",
-        title: "Nous organisons",
-        body: "Nous transformons les idées en décisions, budget réaliste, prestataires fiables, responsabilités claires et planning coordonné.",
-      },
-      {
-        number: "03",
-        title: "Nous assumons la responsabilité",
-        body: "Nous anticipons, coordonnons et restons présents pendant l’exécution afin que vous ne gériez jamais l’événement seul.",
-      },
-    ],
-    commitmentEyebrow: "L’engagement Sertuin",
-    commitmentTitle:
-      "Quand Vous Nous Confiez Votre Événement, Nous le Faisons Nôtre",
-    commitmentBody:
-      "Organiser un événement ne consiste pas seulement à accomplir une liste de tâches. C’est accepter la responsabilité d’un moment important pour quelqu’un d’autre. Nous traitons chaque décision avec soin, attention et la volonté de faire tout ce qui relève de notre responsabilité pour que l’événement réussisse.",
-    contactEyebrow: "Disponibles 24 h/24, toute l’année",
-    contactTitle: "Parlez-nous de Votre Projet",
-    contactBody:
-      "Écrivez-nous sur WhatsApp, appelez-nous ou remplissez le formulaire. Nous étudierons les informations et organiserons directement avec vous les prochaines étapes.",
-    whatsapp: "Écrire sur WhatsApp",
-    call: "Appeler Sertuin",
-    email: "Envoyer un e-mail",
     formTitle: "Demander des Informations",
     name: "Nom",
     emailLabel: "E-mail",
@@ -461,40 +110,6 @@ export const homeContent = {
     date: "Date souhaitée",
     details: "Parlez-nous de votre événement",
     submit: "Envoyer la Demande",
-    availability: "Disponibles 24 heures sur 24, 7 jours sur 7, toute l’année.",
-    heroImageAlt: "Événement de destination organisé par Sertuin Events à Punta Cana",
-    trustItems: [
-      "Un interlocuteur unique",
-      "Coordination locale à Punta Cana",
-      "Gestion complète sur place",
-    ],
-    exploreService: "Voir le service",
-    serviceImageAltSuffix: "organisé par Sertuin Events à Punta Cana",
-    serviceCards: {
-      "/event-planner/": {
-        title: "Événements d’Entreprise",
-        description: "Organisation, production, prestataires, logistique et gestion sur place pour les événements d’entreprise à Punta Cana.",
-      },
-      "/puntacana-wedding-planner/": {
-        title: "Organisation de Mariages",
-        description: "Organisation complète, gestion des prestataires et coordination locale de votre mariage de destination à Punta Cana.",
-      },
-      "/punta-cana-elopement-packages/": {
-        title: "Forfaits Elopement",
-        description: "Forfaits elopement sur plage privée ou catamaran, avec organisation locale à Punta Cana.",
-      },
-      "/proposal/": {
-        title: "Demandes en Mariage",
-        description: "Forfaits complets de demande en mariage à Punta Cana, avec décoration, photographie et coordination locale.",
-      },
-      "/gender-reveal-punta-cana/": {
-        title: "Gender Reveal",
-        description: "Design, coordination et réalisation d’une gender reveal personnalisée dans le lieu de votre choix à Punta Cana.",
-      },
-    },
-    whatsappMessage: "Bonjour, je souhaite obtenir des informations pour organiser un événement à Punta Cana.",
-    featureImageAlt: "Sertuin Events gérant un événement à Punta Cana",
-    honeypotLabel: "Ne remplissez pas ce champ :",
     formMessages: {
       phoneCountry: "Sélectionnez le pays du téléphone",
       phoneError: "Saisissez un numéro de téléphone valide avec l’indicatif du pays.",
@@ -504,6 +119,7 @@ export const homeContent = {
       success: "Merci. Votre demande a bien été envoyée.",
       error: "Impossible d’envoyer la demande. Veuillez réessayer.",
     },
+    honeypotLabel: "Ne remplissez pas ce champ :",
   },
 };
 

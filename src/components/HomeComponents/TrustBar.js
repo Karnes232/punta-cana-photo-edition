@@ -1,12 +1,12 @@
 import { Check, Clock3 } from "lucide-react";
 import React from "react";
 
-// The strip under the hero: availability first (clock icon), then the three
-// fixed promises (check icons).
-const TrustBar = ({ availability, items }) => (
+// The strip under the hero: availability first (clock icon), then the
+// highlights (check icons).
+const TrustBar = ({ availability, items = [] }) => (
   <section className="border-b border-gray-200 bg-white">
     <div className="mx-auto grid max-w-7xl gap-px bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
-      {[availability, ...items].map((item, index) => {
+      {[availability, ...items].filter(Boolean).map((item, index) => {
         const Icon = index === 0 ? Clock3 : Check;
         return (
           <div

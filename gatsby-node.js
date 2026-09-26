@@ -265,6 +265,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           language: pageLanguage,
           contentLanguage,
           urlLanguage: urlCode,
+          // Sanity's per-language documents use "en" for English.
+          sanityLanguage: pageLanguage === "en-US" ? "en" : pageLanguage,
         },
       });
 
