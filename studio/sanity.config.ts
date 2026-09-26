@@ -42,7 +42,26 @@ export default defineConfig({
     }),
     visionTool({ defaultApiVersion: apiVersion }),
   ],
-  schema: { types: schemaTypes },
+  schema: {
+    types: schemaTypes,
+    // Opened from a Blog Guide's language entries (structure.ts).
+    templates: (templates) => [
+      ...templates,
+      {
+        id: "blogPost-for-guide",
+        title: "Blog Post",
+        schemaType: "blogPost",
+        parameters: [
+          { name: "guideId", type: "string" },
+          { name: "language", type: "string" },
+        ],
+        value: ({ guideId, language }: { guideId: string; language: string }) => ({
+          language,
+          guide: { _type: "reference", _ref: guideId.replace(/^drafts\./, "") },
+        }),
+      },
+    ],
+  },
   document: {
     newDocumentOptions: (templates) =>
       templates.filter(({ templateId }) => !templateType(templateId)),
