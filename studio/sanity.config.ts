@@ -16,6 +16,7 @@ export const translatedTypes = [
   "thankYouPage",
   "notFoundPage",
   "shareExperiencePage",
+  "eventPlannerPage",
 ]
 
 // Singletons can be edited and published, but not duplicated or deleted.

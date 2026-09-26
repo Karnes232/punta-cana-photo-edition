@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactPlayer from "react-player/lazy";
 import {
@@ -19,30 +19,28 @@ import {
   Utensils,
   WalletCards,
 } from "lucide-react";
-import { getCorporateEventContent } from "../../content/corporateEventContent";
+import {
+  BUDGET_VALUES,
+  eventPlannerFormContent,
+} from "../../content/eventPlannerFormContent";
 import { passVisitorName } from "../../utils/thankYouName";
 import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
 import { localizedPath } from "../../utils/siteLocales";
 
-const serviceIcons = [
-  ClipboardCheck,
-  BadgeCheck,
-  Users,
-  Utensils,
-  Headphones,
-  Hotel,
-  Truck,
-  ShieldCheck,
-];
-
-const whyIcons = [
-  MapPin,
-  BadgeCheck,
-  Users,
-  MessageCircle,
-  ClipboardCheck,
-  WalletCards,
-];
+// Card icons by the name chosen in Sanity (studio/schemaTypes/objects/iconCard.ts).
+const cardIcons = {
+  "badge-check": BadgeCheck,
+  "clipboard-check": ClipboardCheck,
+  headphones: Headphones,
+  hotel: Hotel,
+  "map-pin": MapPin,
+  "message-circle": MessageCircle,
+  "shield-check": ShieldCheck,
+  truck: Truck,
+  users: Users,
+  utensils: Utensils,
+  "wallet-cards": WalletCards,
+};
 
 const SectionHeader = ({
   eyebrow,
@@ -80,37 +78,27 @@ const SectionHeader = ({
   </div>
 );
 
-const EventImage = ({ asset, alt, className = "", loading = "lazy" }) => {
-  const image = getImage(asset?.gatsbyImage);
-  if (image) {
-    return (
-      <GatsbyImage
-        image={image}
-        alt={alt || asset?.title || "Corporate event in Punta Cana"}
-        className={className}
-        imgStyle={{ objectFit: "cover" }}
-        loading={loading}
-        fetchPriority={loading === "eager" ? "high" : "auto"}
-      />
-    );
-  }
-  if (asset?.url) {
-    return (
-      <img
-        src={`${asset.url}?w=1400&fm=webp&q=78`}
-        srcSet={`${asset.url}?w=480&fm=webp&q=76 480w, ${asset.url}?w=960&fm=webp&q=76 960w, ${asset.url}?w=1400&fm=webp&q=76 1400w`}
-        sizes="100vw"
-        width={asset.width || 1600}
-        height={asset.height || 1067}
-        alt={alt || asset?.title || "Corporate event in Punta Cana"}
-        className={`${className} object-cover`}
-        loading={loading}
-        fetchPriority={loading === "eager" ? "high" : "auto"}
-        decoding="async"
-      />
-    );
-  }
-  return null;
+// An imageWithAlt from Sanity.
+const EventImage = ({ image, className = "", loading = "lazy" }) => {
+  const data = getImage(image?.asset?.gatsbyImageData);
+  if (!data) return null;
+  return (
+    <GatsbyImage
+      image={data}
+      alt={image.alt || ""}
+      className={className}
+      imgStyle={{ objectFit: "cover" }}
+      loading={loading}
+      fetchPriority={loading === "eager" ? "high" : "auto"}
+    />
+  );
+};
+
+const galleryLabel = {
+  "en-US": (client) => `${client} event gallery`,
+  es: (client) => `Galería del evento corporativo ${client}`,
+  pt: (client) => `Galeria do evento corporativo ${client}`,
+  fr: (client) => `Galerie de l’événement d’entreprise ${client}`,
 };
 
 const CaseStudyGallery = ({ images, client, language }) => {
@@ -119,25 +107,12 @@ const CaseStudyGallery = ({ images, client, language }) => {
   return (
     <div
       className="grid grid-cols-2 gap-2 md:gap-3"
-      aria-label={
-        language === "pt"
-          ? `Galeria do evento corporativo ${client}`
-          : language === "fr"
-            ? `Galerie de l’événement d’entreprise ${client}`
-            : `${client} event gallery`
-      }
+      aria-label={(galleryLabel[language] || galleryLabel["en-US"])(client)}
     >
-      {visibleImages.map((asset, index) => (
+      {visibleImages.map((image, index) => (
         <EventImage
-          key={`${client}-${index}`}
-          asset={asset}
-          alt={
-            language === "pt"
-              ? `Evento corporativo ${client} em Punta Cana ${index + 1}`
-              : language === "fr"
-                ? `Événement d’entreprise ${client} à Punta Cana ${index + 1}`
-                : `${client} corporate event in Punta Cana ${index + 1}`
-          }
+          key={image._key}
+          image={image}
           className={`w-full rounded-sm ${
             index === 0
               ? "col-span-2 h-64 md:h-80"
@@ -151,70 +126,10 @@ const CaseStudyGallery = ({ images, client, language }) => {
   );
 };
 
-const ProposalForm = ({ copy, language }) => {
+const ProposalForm = ({ submitLabel, language }) => {
   const [phone, setPhone] = useState("");
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
-  const labels = isPortuguese
-    ? {
-        name: "Nome e sobrenome",
-        company: "Empresa",
-        email: "E-mail corporativo",
-        phone: "Telefone / WhatsApp",
-        date: "Data ou data aproximada",
-        guests: "Número estimado de convidados",
-        venue: "Hotel ou venue, se já souber",
-        details: "Conte-nos sobre seu evento",
-        budget: "Orçamento estimado",
-        select: "Selecione uma faixa",
-        privacy:
-          "Ao enviar, você autoriza a Sertuin Events a entrar em contato sobre esta solicitação.",
-      }
-    : isFrench
-      ? {
-          name: "Nom complet",
-          company: "Entreprise",
-          email: "E-mail professionnel",
-          phone: "Téléphone / WhatsApp",
-          date: "Date ou date approximative",
-          guests: "Nombre estimé d’invités",
-          venue: "Hôtel ou lieu, si vous le connaissez",
-          details: "Parlez-nous de votre événement",
-          budget: "Budget estimé",
-          select: "Sélectionnez une fourchette",
-          privacy:
-            "En envoyant ce formulaire, vous autorisez Sertuin Events à vous contacter au sujet de cette demande.",
-        }
-      : isSpanish
-        ? {
-            name: "Nombre y apellido",
-            company: "Empresa",
-            email: "Correo corporativo",
-            phone: "Teléfono / WhatsApp",
-            date: "Fecha o fecha aproximada",
-            guests: "Cantidad estimada de invitados",
-            venue: "Hotel o sede, si ya lo sabe",
-            details: "Cuéntenos sobre su evento",
-            budget: "Presupuesto estimado",
-            select: "Seleccione un rango",
-            privacy:
-              "Al enviar este formulario, autoriza a Sertuin Events a contactarle sobre esta solicitud.",
-          }
-        : {
-            name: "Full name",
-            company: "Company",
-            email: "Work email",
-            phone: "Phone / WhatsApp",
-            date: "Date or approximate date",
-            guests: "Estimated guest count",
-            venue: "Hotel or venue, if known",
-            details: "Tell us about your event",
-            budget: "Estimated budget",
-            select: "Select a range",
-            privacy:
-              "By submitting, you authorize Sertuin Events to contact you about this inquiry.",
-          };
+  const labels =
+    eventPlannerFormContent[language] || eventPlannerFormContent["en-US"];
 
   const inputClass =
     "mt-2 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 font-montserrat text-base text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-amber-700 focus:ring-2 focus:ring-amber-100";
@@ -239,13 +154,7 @@ const ProposalForm = ({ copy, language }) => {
       />
       <p className="hidden">
         <label>
-          {isPortuguese
-            ? "Não preencha este campo:"
-            : isFrench
-              ? "Ne remplissez pas ce champ :"
-              : isSpanish
-                ? "No completes este campo:"
-                : "Do not fill this out:"}{" "}
+          {labels.honeypot}{" "}
           <input name="bot-field" />
         </label>
       </p>
@@ -299,15 +208,7 @@ const ProposalForm = ({ copy, language }) => {
             className={inputClass}
             type="text"
             name="event-date"
-            placeholder={
-              isPortuguese
-                ? "Ex.: outubro de 2027"
-                : isFrench
-                  ? "Ex. : octobre 2027"
-                  : isSpanish
-                    ? "Ej. octubre de 2027"
-                    : "e.g. October 2027"
-            }
+            placeholder={labels.datePlaceholder}
             required
           />
         </label>
@@ -343,20 +244,11 @@ const ProposalForm = ({ copy, language }) => {
             required
           >
             <option value="">{labels.select}</option>
-            <option value="Under USD 15,000">Under USD 15,000</option>
-            <option value="USD 15,000–30,000">USD 15,000–30,000</option>
-            <option value="USD 30,000–60,000">USD 30,000–60,000</option>
-            <option value="USD 60,000–100,000">USD 60,000–100,000</option>
-            <option value="USD 100,000+">USD 100,000+</option>
-            <option value="To be defined">
-              {isPortuguese
-                ? "A definir"
-                : isFrench
-                  ? "À définir"
-                  : isSpanish
-                    ? "Por definir"
-                    : "To be defined"}
-            </option>
+            {BUDGET_VALUES.map((value, index) => (
+              <option key={value} value={value}>
+                {labels.budgetOptions[index]}
+              </option>
+            ))}
           </select>
         </label>
       </div>
@@ -365,7 +257,7 @@ const ProposalForm = ({ copy, language }) => {
         type="submit"
         className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-sm bg-slate-950 px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-amber-700"
       >
-        {copy.submit}
+        {submitLabel}
         <ArrowRight size={18} aria-hidden="true" />
       </button>
       <p className="mt-4 text-center font-montserrat text-xs leading-5 text-slate-500">
@@ -375,56 +267,18 @@ const ProposalForm = ({ copy, language }) => {
   );
 };
 
-const CorporateEventPlanner = ({
-  page,
-  gallery,
-  carousel,
-  generalInfo,
-  language,
-}) => {
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
-  const content = useMemo(
-    () => getCorporateEventContent(language, page?.paragraph3?.raw),
-    [language, page?.paragraph3?.raw],
-  );
-  const heroImage = page?.heroImageList?.[0];
-  const organonImages = carousel?.images || [];
-  const mideaImages = gallery?.images || [];
+const CorporateEventPlanner = ({ page, generalInfo, language }) => {
   const telephone = (generalInfo?.telephone || "").replace(/\D/g, "");
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${telephone}&text=${encodeURIComponent(
-    isPortuguese
-      ? "Olá, gostaria de conversar sobre um evento corporativo em Punta Cana."
-      : isFrench
-        ? "Bonjour, je souhaite discuter d’un événement d’entreprise à Punta Cana."
-        : isSpanish
-          ? "Hola, me gustaría hablar sobre un evento corporativo en Punta Cana."
-          : "Hello, I would like to discuss a corporate event in Punta Cana.",
+    page.whatsappMessage || "",
   )}`;
-  const servicesLine =
-    (isPortuguese || isFrench ? null : page?.sectionTitle) ||
-    (isPortuguese
-      ? "Planejamento · Fornecedores · Equipe · Catering · Logística · Produção · Gestão no local"
-      : isFrench
-        ? "Organisation · Prestataires · Personnel · Restauration · Logistique · Production · Gestion sur place"
-        : isSpanish
-          ? "Planificación · Proveedores · Personal · Catering · Logística · Producción · Gestión en sitio"
-          : "Planning · Vendors · Staffing · Catering · Logistics · Production · On-Site Management");
 
   return (
     <main className="overflow-hidden bg-[#f7f5f0] text-slate-950">
       <section className="relative min-h-[680px] bg-slate-950 md:min-h-[700px] lg:min-h-[720px]">
         <div className="absolute inset-0 overflow-hidden">
           <EventImage
-            asset={heroImage}
-            alt={
-              isPortuguese
-                ? "Produção e gestão de evento corporativo no local em Punta Cana"
-                : isFrench
-                  ? "Production et gestion d’un événement d’entreprise sur place à Punta Cana"
-                  : "Corporate event production and on-site management in Punta Cana"
-            }
+            image={page.heroImage}
             className="h-full w-full"
             loading="eager"
           />
@@ -435,37 +289,23 @@ const CorporateEventPlanner = ({
         <div className="relative mx-auto flex min-h-[680px] max-w-7xl items-start px-6 pb-16 pt-36 md:min-h-[700px] md:items-center md:px-10 md:py-20 lg:min-h-[720px] lg:px-12">
           <div className="max-w-5xl">
             <p className="mb-5 font-montserrat text-xs font-semibold uppercase tracking-[0.26em] text-amber-300 md:text-sm">
-              {content.eyebrow}
+              {page.eyebrow}
             </p>
             <h1 className="max-w-5xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-[4rem]">
-              {(isPortuguese || isFrench ? null : page?.heroHeading) ||
-                (isPortuguese
-                  ? "Planejamento e Gestão de Eventos Corporativos em Punta Cana"
-                  : isFrench
-                    ? "Organisation et Gestion d’Événements d’Entreprise à Punta Cana"
-                    : isSpanish
-                      ? "Planificación y gestión de eventos corporativos en Punta Cana"
-                      : "Corporate Event Planner & Management in Punta Cana")}
+              {page.heroHeading}
             </h1>
             <p className="mt-7 max-w-2xl font-montserrat text-lg leading-8 text-slate-100 md:text-xl">
-              {(isPortuguese || isFrench ? null : page?.heroHeading2) ||
-                (isPortuguese
-                  ? "Uma equipe local para planejar, coordenar e gerenciar seu evento corporativo do início ao fim."
-                  : isFrench
-                    ? "Une équipe locale pour organiser, coordonner et gérer votre événement d’entreprise du début à la fin."
-                    : isSpanish
-                      ? "Un equipo local para planificar, coordinar y gestionar su evento corporativo de principio a fin."
-                      : "One local team to plan, coordinate and manage your corporate event from start to finish.")}
+              {page.heroSubheading}
             </p>
             <p className="mt-5 max-w-3xl font-montserrat text-sm font-medium leading-7 text-amber-100 md:text-base">
-              {servicesLine}
+              {page.servicesLine}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#corporate-event-form"
                 className="inline-flex items-center justify-center gap-2 rounded-sm bg-amber-600 px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-white no-underline transition hover:bg-amber-500"
               >
-                {content.primaryCta}
+                {page.primaryCtaLabel}
                 <ArrowRight size={18} aria-hidden="true" />
               </a>
               <a
@@ -475,7 +315,7 @@ const CorporateEventPlanner = ({
                 className="inline-flex items-center justify-center gap-2 rounded-sm border border-white/60 bg-white/5 px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-white no-underline backdrop-blur-sm transition hover:bg-white hover:text-slate-950"
               >
                 <MessageCircle size={18} aria-hidden="true" />
-                {content.secondaryCta}
+                {page.whatsappCtaLabel}
               </a>
             </div>
           </div>
@@ -484,7 +324,7 @@ const CorporateEventPlanner = ({
 
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto grid max-w-7xl divide-y divide-slate-200 px-6 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4 lg:px-12">
-          {content.trustItems.map((item, index) => (
+          {(page.trustItems || []).map((item) => (
             <div
               key={item}
               className="flex items-center gap-3 px-4 py-6 first:pl-0 last:pr-0"
@@ -506,12 +346,12 @@ const CorporateEventPlanner = ({
       <section className="px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
           <SectionHeader
-            eyebrow={content.eyebrow}
-            title={content.introduction.title}
+            eyebrow={page.eyebrow}
+            title={page.introTitle}
             align="left"
           />
           <p className="max-w-2xl font-montserrat text-lg leading-8 text-slate-600">
-            {content.introduction.body}
+            {page.introBody}
           </p>
         </div>
       </section>
@@ -519,13 +359,13 @@ const CorporateEventPlanner = ({
       <section className="bg-white px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            title={content.workModesTitle}
-            intro={content.workModesIntro}
+            title={page.workModesTitle}
+            intro={page.workModesIntro}
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
-            {content.workModes.map((mode, index) => (
+            {(page.workModes || []).map((mode, index) => (
               <article
-                key={mode.title}
+                key={mode._key}
                 className="group relative overflow-hidden border border-slate-200 bg-[#f7f5f0] p-8 md:p-10"
               >
                 <span className="font-montserrat text-xs font-bold tracking-[0.2em] text-amber-700">
@@ -550,16 +390,16 @@ const CorporateEventPlanner = ({
       <section className="bg-slate-950 px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            title={content.servicesTitle}
-            intro={content.servicesIntro}
+            title={page.servicesTitle}
+            intro={page.servicesIntro}
             light
           />
           <div className="mt-14 grid gap-px overflow-hidden border border-white/15 bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
-            {content.services.map((service, index) => {
-              const Icon = serviceIcons[index % serviceIcons.length];
+            {(page.services || []).map((service) => {
+              const Icon = cardIcons[service.icon] || Check;
               return (
                 <article
-                  key={service.title}
+                  key={service._key}
                   className="bg-slate-950 p-7 transition hover:bg-slate-900 md:min-h-64 md:p-8"
                 >
                   <Icon
@@ -584,13 +424,13 @@ const CorporateEventPlanner = ({
       <section className="px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            title={content.processTitle}
-            intro={content.processIntro}
+            title={page.processTitle}
+            intro={page.processIntro}
           />
           <ol className="relative mt-14 grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
-            {content.process.map((step, index) => (
+            {(page.processSteps || []).map((step, index) => (
               <li
-                key={step.title}
+                key={step._key}
                 className="relative border-t border-slate-300 pt-8"
               >
                 <span className="absolute -top-4 left-0 flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 font-montserrat text-xs font-bold text-white">
@@ -600,7 +440,7 @@ const CorporateEventPlanner = ({
                   {step.title}
                 </h3>
                 <p className="mt-3 font-montserrat text-sm leading-6 text-slate-600">
-                  {step.description}
+                  {step.body}
                 </p>
               </li>
             ))}
@@ -612,16 +452,16 @@ const CorporateEventPlanner = ({
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <p className="font-montserrat text-xs font-bold uppercase tracking-[0.24em] text-slate-950/70">
-              {content.budget.eyebrow}
+              {page.budgetEyebrow}
             </p>
             <h2 className="mt-3 font-crimson text-4xl font-medium leading-tight text-slate-950 md:text-6xl">
-              {content.budget.title}
+              {page.budgetTitle}
             </h2>
             <p className="mt-6 max-w-2xl font-montserrat text-base leading-7 text-slate-900/80">
-              {content.budget.body}
+              {page.budgetBody}
             </p>
             <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-              {content.budget.points.map((point) => (
+              {(page.budgetPoints || []).map((point) => (
                 <li
                   key={point}
                   className="flex gap-3 font-montserrat text-sm font-semibold leading-6 text-slate-950"
@@ -644,10 +484,10 @@ const CorporateEventPlanner = ({
               aria-hidden="true"
             />
             <h3 className="mt-6 font-crimson text-3xl font-medium text-slate-950">
-              {content.budget.changeTitle}
+              {page.budgetChangeTitle}
             </h3>
             <p className="mt-4 font-montserrat text-sm leading-7 text-slate-600">
-              {content.budget.changeBody}
+              {page.budgetChangeBody}
             </p>
           </aside>
         </div>
@@ -657,14 +497,7 @@ const CorporateEventPlanner = ({
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:items-center">
           <div className="relative">
             <EventImage
-              asset={organonImages[0] || heroImage}
-              alt={
-                isPortuguese
-                  ? "Gestão de evento corporativo no local em Punta Cana"
-                  : isFrench
-                    ? "Gestion sur place d’un événement d’entreprise à Punta Cana"
-                    : "On-site corporate event management in Punta Cana"
-              }
+              image={page.onsiteImage}
               className="h-[480px] w-full md:h-[620px]"
             />
             <div className="absolute bottom-0 right-0 max-w-xs bg-slate-950 p-6 text-white md:p-8">
@@ -674,21 +507,21 @@ const CorporateEventPlanner = ({
                 aria-hidden="true"
               />
               <p className="mt-4 font-montserrat text-sm font-semibold leading-6">
-                {content.onsite.points[0]}
+                {page.onsitePoints?.[0]}
               </p>
             </div>
           </div>
           <div className="lg:pl-10">
             <SectionHeader
-              eyebrow={content.onsite.eyebrow}
-              title={content.onsite.title}
+              eyebrow={page.onsiteEyebrow}
+              title={page.onsiteTitle}
               align="left"
             />
             <p className="mt-6 font-montserrat text-base leading-8 text-slate-600">
-              {content.onsite.body}
+              {page.onsiteBody}
             </p>
             <ul className="mt-7 space-y-4">
-              {content.onsite.points.map((point) => (
+              {(page.onsitePoints || []).map((point) => (
                 <li
                   key={point}
                   className="flex items-center gap-3 font-montserrat text-sm font-semibold text-slate-800"
@@ -707,21 +540,19 @@ const CorporateEventPlanner = ({
       <section className="bg-[#f7f5f0] px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            title={content.experienceTitle}
-            intro={content.experienceIntro}
+            title={page.caseStudiesTitle}
+            intro={page.caseStudiesIntro}
           />
           <div className="mt-16 space-y-24">
-            {content.caseStudies.map((study, index) => {
-              const images =
-                study.key === "organon" ? organonImages : mideaImages;
+            {(page.caseStudies || []).map((study, index) => {
               return (
                 <article
-                  key={study.key}
+                  key={study._key}
                   className="grid gap-10 lg:grid-cols-2 lg:items-center"
                 >
                   <div className={index % 2 ? "lg:order-2" : ""}>
                     <CaseStudyGallery
-                      images={images}
+                      images={study.images}
                       client={study.client}
                       language={language}
                     />
@@ -736,7 +567,7 @@ const CorporateEventPlanner = ({
                       {study.title}
                     </h3>
                     <ul className="mt-6 flex flex-wrap gap-2">
-                      {study.facts.map((fact) => (
+                      {(study.facts || []).map((fact) => (
                         <li
                           key={fact}
                           className="border border-slate-300 bg-white px-3 py-2 font-montserrat text-xs font-semibold text-slate-700"
@@ -748,10 +579,10 @@ const CorporateEventPlanner = ({
                     <p className="mt-6 font-montserrat text-base leading-8 text-slate-600">
                       {study.description}
                     </p>
-                    {study.key === "organon" && page?.videoUrl && (
+                    {study.videoUrl && (
                       <div className="mt-8 aspect-video overflow-hidden bg-slate-950">
                         <ReactPlayer
-                          url={page.videoUrl}
+                          url={study.videoUrl}
                           controls
                           width="100%"
                           height="100%"
@@ -770,12 +601,12 @@ const CorporateEventPlanner = ({
 
       <section className="bg-white px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto max-w-7xl">
-          <SectionHeader title={content.whyTitle} />
+          <SectionHeader title={page.whyTitle} />
           <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-            {content.whyItems.map((item, index) => {
-              const Icon = whyIcons[index % whyIcons.length];
+            {(page.whyItems || []).map((item) => {
+              const Icon = cardIcons[item.icon] || Check;
               return (
-                <article key={item.title} className="flex gap-5">
+                <article key={item._key} className="flex gap-5">
                   <Icon
                     className="mt-1 shrink-0 text-amber-700"
                     size={25}
@@ -799,9 +630,9 @@ const CorporateEventPlanner = ({
 
       <section className="bg-slate-950 px-6 py-20 md:px-10 md:py-24 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
-          <SectionHeader title={content.eventTypesTitle} align="left" light />
+          <SectionHeader title={page.eventTypesTitle} align="left" light />
           <ul className="grid gap-px overflow-hidden border border-white/15 bg-white/15 sm:grid-cols-2 md:grid-cols-3">
-            {content.eventTypes.map((type) => (
+            {(page.eventTypes || []).map((type) => (
               <li
                 key={type}
                 className="flex items-center gap-3 bg-slate-950 px-4 py-5 font-montserrat text-sm font-semibold leading-5 text-slate-100"
@@ -821,8 +652,8 @@ const CorporateEventPlanner = ({
       <section className="px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <SectionHeader
-            eyebrow={content.venueStrategy.eyebrow}
-            title={content.venueStrategy.title}
+            eyebrow={page.venueEyebrow}
+            title={page.venueTitle}
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
             <article className="border border-slate-200 bg-white p-8 md:p-10">
@@ -833,10 +664,10 @@ const CorporateEventPlanner = ({
                 aria-hidden="true"
               />
               <h3 className="mt-6 font-crimson text-3xl font-medium text-slate-950">
-                {content.venueStrategy.resortTitle}
+                {page.resortTitle}
               </h3>
               <p className="mt-4 font-montserrat text-base leading-7 text-slate-600">
-                {content.venueStrategy.resortBody}
+                {page.resortBody}
               </p>
             </article>
             <article className="border border-slate-200 bg-white p-8 md:p-10">
@@ -847,25 +678,25 @@ const CorporateEventPlanner = ({
                 aria-hidden="true"
               />
               <h3 className="mt-6 font-crimson text-3xl font-medium text-slate-950">
-                {content.venueStrategy.independentTitle}
+                {page.independentTitle}
               </h3>
               <p className="mt-4 font-montserrat text-base leading-7 text-slate-600">
-                {content.venueStrategy.independentBody}
+                {page.independentBody}
               </p>
             </article>
           </div>
           <p className="mx-auto mt-8 max-w-4xl text-center font-montserrat text-base font-semibold leading-7 text-slate-800">
-            {content.venueStrategy.closing}
+            {page.venueClosing}
           </p>
         </div>
       </section>
 
       <section className="bg-white px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto max-w-4xl">
-          <SectionHeader title={content.faqTitle} />
+          <SectionHeader title={page.faqTitle} />
           <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
-            {content.faqs.map((faq) => (
-              <details key={faq.question} className="group py-5">
+            {(page.faqs || []).map((faq) => (
+              <details key={faq._key} className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-crimson text-xl font-medium text-slate-950 md:text-2xl">
                   {faq.question}
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-300 font-montserrat text-xl font-light transition group-open:rotate-45 group-open:bg-slate-950 group-open:text-white">
@@ -885,12 +716,12 @@ const CorporateEventPlanner = ({
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
           <div className="lg:sticky lg:top-28">
             <SectionHeader
-              eyebrow={content.form.eyebrow}
-              title={content.form.title}
+              eyebrow={page.formEyebrow}
+              title={page.formTitle}
               align="left"
             />
             <p className="mt-6 font-montserrat text-base leading-8 text-slate-900/80">
-              {content.form.intro}
+              {page.formIntro}
             </p>
             <a
               href={whatsappUrl}
@@ -899,14 +730,10 @@ const CorporateEventPlanner = ({
               className="mt-8 inline-flex items-center gap-3 font-montserrat text-sm font-bold uppercase tracking-[0.12em] text-slate-950 underline decoration-slate-950/30 underline-offset-8"
             >
               <MessageCircle size={20} aria-hidden="true" />
-              {content.secondaryCta}
+              {page.whatsappCtaLabel}
             </a>
           </div>
-          <ProposalForm
-            copy={content.form}
-            whatsappUrl={whatsappUrl}
-            language={language}
-          />
+          <ProposalForm submitLabel={page.formSubmitLabel} language={language} />
         </div>
       </section>
     </main>

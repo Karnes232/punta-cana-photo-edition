@@ -7,10 +7,11 @@ const languages = ['en-US', 'es', 'pt', 'fr'];
 const titles = new Set(), descriptions = new Set();
 const decode = value => value.replace(/&#(?:x([0-9a-f]+)|(\d+));/gi, (_, hex, dec) => String.fromCodePoint(parseInt(hex || dec, hex ? 16 : 10)))
   .replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-// The home and contact pages' titles and descriptions are edited in Sanity (SEO tab).
-assert.equal(Object.keys(metadata).length, 15, 'Four service pages and eleven package pages');
+// The home, contact and event planner pages' titles and descriptions are edited in Sanity (SEO tab).
+assert.equal(Object.keys(metadata).length, 14, 'Three service pages and eleven package pages');
 assert.equal(metadata['/'], undefined, 'Home page SEO lives in Sanity');
 assert.equal(metadata['/contact/'], undefined, 'Contact page SEO lives in Sanity');
+assert.equal(metadata['/event-planner/'], undefined, 'Event planner page SEO lives in Sanity');
 assert.equal(metadata['/proposal/'], undefined, 'Proposal landing pages are excluded');
 for (const [route, translations] of Object.entries(metadata)) {
   assert.deepEqual(Object.keys(translations), languages, route + ': all languages required');

@@ -1,4 +1,3 @@
-import commercialMetadata from "../../data/commercialMetadata.json";
 import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
@@ -6,25 +5,24 @@ import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import CorporateEventPlanner from "../../components/CorporateEventPlanner/CorporateEventPlanner";
-import { getCorporateEventContent } from "../../content/corporateEventContent";
 import {
   getLanguageConfig,
   localizedUrl,
   normalizeLanguage,
 } from "../../utils/siteLocales";
 
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
+
+// Copy, photos and SEO come from this language's Event Planner Page document
+// in Sanity; phone and email from General Layout.
 const EventPlannerPage = ({ data, pageContext }) => {
   const generalInfo = data.sanityGeneralLayout;
-  const page = data.allContentfulPageContent.nodes[0];
-  const gallery = data.allContentfulPhotoGallery.nodes[0];
-  const carousel = data.allContentfulSwiperCarousel.nodes[0];
 
   return (
     <Layout generalInfo={generalInfo} overlayHeader>
       <CorporateEventPlanner
-        page={page}
-        gallery={gallery}
-        carousel={carousel}
+        page={data.sanityEventPlannerPage || {}}
         generalInfo={generalInfo}
         language={pageContext.language}
       />
@@ -41,15 +39,13 @@ export const Head = ({ pageContext, data }) => {
   const isPortuguese = language === "pt";
   const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
-  const seo = data.allContentfulSeo.nodes[0];
-  const page = data.allContentfulPageContent.nodes[0];
-  const content = getCorporateEventContent(language, page?.paragraph3?.raw);
+  const page = data.sanityEventPlannerPage || {};
+  const seo = page.seo;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const siteUrl = localizedUrl(rootUrl, "/event-planner/", language);
-  const { title, description } = commercialMetadata["/event-planner/"][language];
-  const image = seo?.images?.file?.url
-    ? `https:${seo.images.file.url}`
-    : undefined;
+  const title = seo?.title;
+  const description = seo?.description;
+  const image = shareImageUrl(seo?.image?.asset?.url);
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@graph": [
@@ -101,7 +97,7 @@ export const Head = ({ pageContext, data }) => {
               : isSpanish
                 ? "Servicios de gestión de eventos"
                 : "Corporate event management services",
-          itemListElement: content.services.map((service) => ({
+          itemListElement: (page.services || []).map((service) => ({
             "@type": "Offer",
             itemOffered: { "@type": "Service", name: service.title },
           })),
@@ -117,7 +113,7 @@ export const Head = ({ pageContext, data }) => {
             : isSpanish
               ? "es-DO"
               : "en-US",
-        mainEntity: content.faqs.map((faq) => ({
+        mainEntity: (page.faqs || []).map((faq) => ({
           "@type": "Question",
           name: faq.question,
           acceptedAnswer: { "@type": "Answer", text: faq.answer },
@@ -160,32 +156,9 @@ export const Head = ({ pageContext, data }) => {
       <Seo
         title={title}
         description={description}
-        keywords={(isPortuguese
-          ? [
-              "eventos corporativos Punta Cana",
-              "planejamento de eventos corporativos Punta Cana",
-              "produção de eventos Punta Cana",
-              "gestão de eventos empresariais República Dominicana",
-            ]
-          : isFrench
-            ? [
-                "événement entreprise Punta Cana",
-                "organisation événement entreprise Punta Cana",
-                "production événementielle Punta Cana",
-                "gestion événement République dominicaine",
-              ]
-            : seo?.keywords || []
-        ).join(", ")}
+        keywords={(seo?.keywords || []).join(", ")}
         image={image}
-        imageAlt={
-          isPortuguese
-            ? "Gestão de evento corporativo da Sertuin Events em Punta Cana"
-            : isFrench
-              ? "Gestion d’un événement d’entreprise par Sertuin Events à Punta Cana"
-              : isSpanish
-                ? "Gestión de eventos corporativos de Sertuin Events en Punta Cana"
-                : "Sertuin Events corporate event management in Punta Cana"
-        }
+        imageAlt={seo?.image?.alt}
         url={siteUrl}
         schemaMarkup={schemaMarkup}
         language={languageConfig.htmlLang}
@@ -201,7 +174,7 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query CorporateEventPlannerPage($contentLanguage: String = "en-US") {
+  query CorporateEventPlannerPage($sanityLanguage: String = "en") {
     locales: allLocale {
       edges {
         node {
@@ -225,89 +198,114 @@ export const query = graphql`
       telephone
       x
     }
-    allContentfulSeo(
-      filter: {
-        page: { eq: "Event-Planner" }
-        node_locale: { eq: $contentLanguage }
+    sanityEventPlannerPage(language: { eq: $sanityLanguage }) {
+      heroImage {
+        alt
+        asset {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+        }
       }
-    ) {
-      nodes {
+      eyebrow
+      heroHeading
+      heroSubheading
+      servicesLine
+      primaryCtaLabel
+      whatsappCtaLabel
+      whatsappMessage
+      trustItems
+      introTitle
+      introBody
+      workModesTitle
+      workModesIntro
+      workModes {
+        _key
         title
-        keywords
+        description
+        bestFor
+      }
+      servicesTitle
+      servicesIntro
+      services {
+        _key
+        icon
+        title
+        description
+      }
+      processTitle
+      processIntro
+      processSteps {
+        _key
+        title
+        body
+      }
+      budgetEyebrow
+      budgetTitle
+      budgetBody
+      budgetPoints
+      budgetChangeTitle
+      budgetChangeBody
+      onsiteImage {
+        alt
+        asset {
+          gatsbyImageData(width: 1000, placeholder: BLURRED)
+        }
+      }
+      onsiteEyebrow
+      onsiteTitle
+      onsiteBody
+      onsitePoints
+      caseStudiesTitle
+      caseStudiesIntro
+      caseStudies {
+        _key
+        client
+        title
+        facts
+        description
+        videoUrl
         images {
-          file {
-            url
+          _key
+          alt
+          asset {
+            gatsbyImageData(width: 1000, placeholder: BLURRED)
           }
         }
-        description {
-          description
-        }
       }
-    }
-    allContentfulPageContent(
-      filter: {
-        page: { eq: "Event-Planner" }
-        node_locale: { eq: $contentLanguage }
-      }
-    ) {
-      nodes {
-        page
-        heroImageList {
-          gatsbyImage(
-            layout: FULL_WIDTH
-            width: 1800
-            placeholder: BLURRED
-            formats: [AUTO, WEBP]
-            quality: 82
-          )
-          title
-        }
-        heroHeading
-        heroHeading2
-        sectionTitle
-        sectionTitle2
-        videoUrl
-        paragraph3 {
-          raw
-        }
-      }
-    }
-    allContentfulPhotoGallery(
-      filter: {
-        page: { eq: "Event-Planner" }
-        node_locale: { eq: $contentLanguage }
-      }
-    ) {
-      nodes {
+      whyTitle
+      whyItems {
+        _key
+        icon
         title
-        images {
-          url
-          width
-          height
-          title
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1000
-            placeholder: BLURRED
-            formats: [AUTO, WEBP]
-            quality: 78
-          )
-        }
+        description
       }
-    }
-    allContentfulSwiperCarousel(filter: { page: { eq: "Event-Planner" } }) {
-      nodes {
-        page
-        images {
-          url
-          title
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1000
-            placeholder: BLURRED
-            formats: [AUTO, WEBP]
-            quality: 78
-          )
+      eventTypesTitle
+      eventTypes
+      venueEyebrow
+      venueTitle
+      resortTitle
+      resortBody
+      independentTitle
+      independentBody
+      venueClosing
+      faqTitle
+      faqs {
+        _key
+        question
+        answer
+      }
+      formEyebrow
+      formTitle
+      formIntro
+      formSubmitLabel
+      seo {
+        title
+        description
+        keywords
+        image {
+          alt
+          asset {
+            url
+          }
         }
       }
     }
