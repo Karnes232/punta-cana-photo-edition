@@ -1,3 +1,4 @@
+import { blogPage } from "./documents/blogPage"
 import { contactPage } from "./documents/contactPage"
 import { eventPlannerPage } from "./documents/eventPlannerPage"
 import { generalLayout } from "./documents/generalLayout"
@@ -24,6 +25,7 @@ export const schemaTypes = [
   notFoundPage,
   shareExperiencePage,
   eventPlannerPage,
+  blogPage,
   // Objects
   caseStudy,
   cta,

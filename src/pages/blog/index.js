@@ -3,9 +3,7 @@ import { graphql } from "gatsby";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
-import KnowledgeCenter, {
-  centerCopy,
-} from "../../components/BlogComponents/KnowledgeCenter";
+import KnowledgeCenter from "../../components/BlogComponents/KnowledgeCenter";
 import { getKnowledgeArticle } from "../../data/knowledgeContent";
 import {
   getLanguageConfig,
@@ -13,14 +11,18 @@ import {
   normalizeLanguage,
 } from "../../utils/siteLocales";
 import "../../styles/knowledge-center.css";
-const { nodes, languageIndex } = require("../../data/knowledgeGraph");
+const { nodes } = require("../../data/knowledgeGraph");
 const { isPublishedBlogSlug } = require("../../data/publishedBlogSlugs");
+
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
 
 const BlogIndex = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
   return (
     <Layout generalInfo={data.sanityGeneralLayout}>
       <KnowledgeCenter
+        copy={data.sanityBlogPage || {}}
         language={language}
         availableSlugs={data.allContentfulBlogPost.nodes
           .filter(({ slug }) => isPublishedBlogSlug(slug))
@@ -31,8 +33,8 @@ const BlogIndex = ({ data, pageContext }) => {
 };
 export default BlogIndex;
 export const Head = ({ data, pageContext }) => {
-  const language = normalizeLanguage(pageContext.language),
-    i = languageIndex(language);
+  const language = normalizeLanguage(pageContext.language);
+  const seo = data.sanityBlogPage?.seo;
   const config = getLanguageConfig(language),
     rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const url = localizedUrl(rootUrl, "/blog/", language);
@@ -41,19 +43,13 @@ export const Head = ({ data, pageContext }) => {
       .filter(({ slug }) => isPublishedBlogSlug(slug))
       .map((p) => p.slug.trim()),
   );
-  const title = [
-    "Punta Cana Event Planning Guides | Sertuin Events",
-    "Guías de eventos en Punta Cana | Sertuin Events",
-    "Guias de eventos em Punta Cana | Sertuin Events",
-    "Guides d’événements à Punta Cana | Sertuin Events",
-  ][i];
   const schema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "@id": url,
     url,
-    name: title,
-    description: centerCopy.intro[i],
+    name: seo?.title,
+    description: seo?.description,
     inLanguage: config.htmlLang,
     mainEntity: {
       "@type": "ItemList",
@@ -70,11 +66,12 @@ export const Head = ({ data, pageContext }) => {
   return (
     <>
       <Seo
-        title={title}
-        image="https://images.ctfassets.net/vpskymlp6aa0/2fMiHeTtnc0r5vQS2MJrZD/6979df7dbe044b55c8c340869fe8256a/EBS_5068-2.jpg"
-        imageAlt={["Wedding coordinated by our team in Punta Cana", "Boda coordinada por nuestro equipo en Punta Cana", "Casamento coordenado por nossa equipe em Punta Cana", "Mariage coordonné par notre équipe à Punta Cana"][i]}
+        title={seo?.title}
+        description={seo?.description}
+        keywords={(seo?.keywords || []).join(", ")}
+        image={shareImageUrl(seo?.image?.asset?.url)}
+        imageAlt={seo?.image?.alt}
         twitterCard="summary_large_image"
-        description={centerCopy.intro[i]}
         url={url}
         language={config.htmlLang}
         siteName="Sertuin Events"
@@ -94,7 +91,10 @@ export const Head = ({ data, pageContext }) => {
 };
 
 export const query = graphql`
-  query BlogIndexQuery($contentLanguage: String = "en-US") {
+  query BlogIndexQuery(
+    $contentLanguage: String = "en-US"
+    $sanityLanguage: String = "en"
+  ) {
     locales: allLocale {
       edges {
         node {
@@ -117,23 +117,34 @@ export const query = graphql`
       telephone
       messengerLink
     }
-    allContentfulBlogPost(
-      filter: { node_locale: { eq: $contentLanguage } }
-      sort: { updatedAt: DESC }
-    ) {
+    # Which guides exist; their copy comes from the repo until the articles move.
+    allContentfulBlogPost(filter: { node_locale: { eq: $contentLanguage } }) {
       nodes {
-        id
-        node_locale
-        title
         slug
+      }
+    }
+    sanityBlogPage(language: { eq: $sanityLanguage }) {
+      eyebrow
+      title
+      intro
+      topicsTitle
+      readLabel
+      serviceLabel
+      intimateEyebrow
+      intimateTitle
+      intimateText
+      intimateLink {
+        label
+        url
+      }
+      seo {
+        title
         description
-        updatedAt
-        galleryImages {
-          altText
-          image {
+        keywords
+        image {
+          alt
+          asset {
             url
-            width
-            height
           }
         }
       }
