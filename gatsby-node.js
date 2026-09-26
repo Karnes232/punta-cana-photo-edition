@@ -58,6 +58,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     query MyQuery {
       sanityGeneralLayout(_id: { eq: "generalLayout" }) {
         companyName
+        legalName
         facebook
         instagram
         x
@@ -348,7 +349,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: path.resolve("./src/pages/blog/index.js"),
         context: {
           language: pageLanguage,
-          contentLanguage,
           urlLanguage: urlCode,
           sanityLanguage: pageLanguage === "en-US" ? "en" : pageLanguage,
         },

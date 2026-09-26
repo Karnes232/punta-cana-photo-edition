@@ -1,37 +1,16 @@
 import React from "react";
 import { localizedPath } from "../../utils/siteLocales";
-import {
-  guideSlug,
-  languageIndex,
-  localized,
-  sectionId,
-} from "../../utils/blogGuides";
+import { guideSlug, localized, sectionId } from "../../utils/blogGuides";
 
-// Page chrome, not content: the same wording on every guide.
-const labels = {
-  home: ["Home", "Inicio", "Início", "Accueil"],
-  center: [
-    "Event planning guides",
-    "Guías para planificar eventos",
-    "Guias de planejamento",
-    "Guides d’organisation",
-  ],
-  next: [
-    "Continue planning",
-    "Continúa planificando",
-    "Continue planejando",
-    "Poursuivre la préparation",
-  ],
-  toc: ["In this guide", "En esta guía", "Neste guia", "Dans ce guide"],
-};
+// `labels` is this language's Blog Page document in Sanity: homeLabel,
+// libraryLabel, breadcrumbLabel, tocLabel and nextLabel.
 
 // Home › Guides › the guide's event type › the guide.
-const trail = ({ title, guide, language }) => {
-  const i = languageIndex(language);
+const trail = ({ title, guide, labels, language }) => {
   const category = guide.category;
   return [
-    [labels.home[i], localizedPath("/", language)],
-    [labels.center[i], localizedPath("/blog/", language)],
+    [labels.homeLabel, localizedPath("/", language)],
+    [labels.libraryLabel, localizedPath("/blog/", language)],
     [
       localized(category?.label, language),
       `${localizedPath("/blog/", language)}#${category?.key}`,
@@ -40,10 +19,10 @@ const trail = ({ title, guide, language }) => {
   ];
 };
 
-export const KnowledgeBreadcrumbs = ({ title, guide, language }) => {
-  const links = trail({ title, guide, language });
+export const KnowledgeBreadcrumbs = ({ title, guide, labels, language }) => {
+  const links = trail({ title, guide, labels, language });
   return (
-    <nav className="knowledge-breadcrumbs" aria-label="Breadcrumb">
+    <nav className="knowledge-breadcrumbs" aria-label={labels.breadcrumbLabel}>
       <ol>
         {links.slice(0, 3).map(([name, url]) => (
           <li key={url}>
@@ -56,12 +35,9 @@ export const KnowledgeBreadcrumbs = ({ title, guide, language }) => {
   );
 };
 
-export const KnowledgeToc = ({ sections, language }) => (
-  <nav
-    className="knowledge-toc"
-    aria-label={labels.toc[languageIndex(language)]}
-  >
-    <h2>{labels.toc[languageIndex(language)]}</h2>
+export const KnowledgeToc = ({ sections, labels }) => (
+  <nav className="knowledge-toc" aria-label={labels.tocLabel}>
+    <h2>{labels.tocLabel}</h2>
     <ol>
       {sections.map((section, index) => (
         <li key={sectionId(index)}>
@@ -74,7 +50,7 @@ export const KnowledgeToc = ({ sections, language }) => (
 
 // The guide's related guides, its suggested next one first. `texts` maps a
 // guide's id to its text in this language.
-export const KnowledgeRelated = ({ guide, texts, language }) => {
+export const KnowledgeRelated = ({ guide, texts, labels, language }) => {
   const related = (guide.related || []).filter((item) => texts[item._id]);
   const nextId = guide.next?._id;
   const ordered = [
@@ -84,7 +60,7 @@ export const KnowledgeRelated = ({ guide, texts, language }) => {
   if (!ordered.length) return null;
   return (
     <nav className="knowledge-related" aria-labelledby="continue-planning">
-      <h2 id="continue-planning">{labels.next[languageIndex(language)]}</h2>
+      <h2 id="continue-planning">{labels.nextLabel}</h2>
       <div>
         {ordered.map((item) => {
           const text = texts[item._id];
@@ -104,9 +80,9 @@ export const KnowledgeRelated = ({ guide, texts, language }) => {
   );
 };
 
-export const breadcrumbSchema = ({ title, guide, language, rootUrl }) => ({
+export const breadcrumbSchema = ({ title, guide, labels, language, rootUrl }) => ({
   "@type": "BreadcrumbList",
-  itemListElement: trail({ title, guide, language }).map(
+  itemListElement: trail({ title, guide, labels, language }).map(
     ([name, url], index) => ({
       "@type": "ListItem",
       position: index + 1,

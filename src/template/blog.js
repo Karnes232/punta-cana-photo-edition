@@ -70,6 +70,7 @@ const Blog = ({ pageContext, data }) => {
   const guide = post?.guide;
   if (!guide) return null;
   const language = normalizeLanguage(pageContext.language);
+  const labels = data.sanityBlogPage || {};
   const photo = guide.heroImage?.asset;
   const photoSize = photo?.metadata?.dimensions;
 
@@ -80,6 +81,7 @@ const Blog = ({ pageContext, data }) => {
           <KnowledgeBreadcrumbs
             title={post.title}
             guide={guide}
+            labels={labels}
             language={language}
           />
           <header className="universal-blog__header">
@@ -94,7 +96,7 @@ const Blog = ({ pageContext, data }) => {
             )}
           </header>
           <BlogCta post={post} language={language} />
-          <KnowledgeToc sections={post.sections || []} language={language} />
+          <KnowledgeToc sections={post.sections || []} labels={labels} />
           {photo?.url && (
             <figure className="knowledge-article-image">
               <img
@@ -116,6 +118,7 @@ const Blog = ({ pageContext, data }) => {
           <KnowledgeRelated
             guide={guide}
             texts={textsByGuide(data)}
+            labels={labels}
             language={language}
           />
           <BlogHelp post={post} telephone={pageContext.layout?.telephone} />
@@ -139,6 +142,7 @@ export const Head = ({ pageContext, data }) => {
   const photoUrl = guide.heroImage?.asset?.url;
   const imageUrl = shareImageUrl(photoUrl);
   const description = post.description || post.directAnswer;
+  const company = pageContext.layout || {};
 
   const articleSchema = {
     "@type": "BlogPosting",
@@ -164,8 +168,10 @@ export const Head = ({ pageContext, data }) => {
     publisher: {
       "@type": "Organization",
       "@id": `${rootUrl}/#organization`,
+      // The same organization name as every other page's structured data;
+      // General Layout stores the brand in capitals.
       name: "Sertuin Events",
-      legalName: "SERTUIN SRL",
+      legalName: company.legalName || "SERTUIN SRL",
       url: data.site.siteMetadata.siteUrl,
     },
   };
@@ -173,7 +179,13 @@ export const Head = ({ pageContext, data }) => {
     "@context": "https://schema.org",
     "@graph": [
       articleSchema,
-      breadcrumbSchema({ title: post.title, guide, language, rootUrl }),
+      breadcrumbSchema({
+        title: post.title,
+        guide,
+        labels: data.sanityBlogPage || {},
+        language,
+        rootUrl,
+      }),
       ...(post.faqs?.length
         ? [
             {
@@ -318,6 +330,13 @@ export const query = graphql`
           _id
         }
       }
+    }
+    sanityBlogPage(language: { eq: $sanityLanguage }) {
+      homeLabel
+      libraryLabel
+      breadcrumbLabel
+      tocLabel
+      nextLabel
     }
     allSanityBlogPost(filter: { language: { eq: $sanityLanguage } }) {
       nodes {

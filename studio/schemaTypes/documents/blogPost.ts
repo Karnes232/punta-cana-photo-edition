@@ -54,6 +54,9 @@ export const blogPost = defineType({
       rows: 4,
       description: "The highlighted answer under the title.",
     }),
+    text("serviceTitle", "Title on service pages", "intro", {
+      description: "Optional. Used instead of the title in the guide list on the service pages, e.g. to avoid English terms there.",
+    }),
     text("heroAlt", "Photo alt text", "intro", {
       required: true,
       description: "Describe the guide's photo (set in Guide settings) for screen readers and search engines.",

@@ -7,10 +7,6 @@ import { languageKey } from "./siteLocales";
 export const localized = (label, language) =>
   label?.[languageKey(language)] || label?.en || "";
 
-// Position of the page language in four-item label arrays (en, es, pt, fr).
-export const languageIndex = (language) =>
-  ["en", "es", "pt", "fr"].indexOf(languageKey(language));
-
 export const guideSlug = (guide) => guide?.slug?.current;
 
 // Guides in library order: by event type, then by their order within it.
