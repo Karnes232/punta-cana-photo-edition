@@ -5,7 +5,6 @@ import {
   KnowledgeRelated,
   breadcrumbSchema,
 } from "../components/BlogComponents/KnowledgeNavigation";
-import "../styles/knowledge-center.css";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import StructuredBlogBody from "../components/BlogComponents/StructuredBlogBody";
@@ -22,6 +21,14 @@ import {
 // Share images are cropped by Sanity's CDN to the size social networks expect.
 const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
 
+// Shared class strings. Values match the page's original design exactly, so
+// most are arbitrary values rather than the nearest Tailwind scale step.
+const column = "mx-auto w-[min(100%,56rem)]";
+const box = `${column} border-l-[3px] border-l-primary-color bg-[#f7f6f3] p-[clamp(1.5rem,4vw,2.5rem)]`;
+const boxTitle = "mb-3 mt-0 font-crimson text-[length:clamp(1.7rem,4vw,2.35rem)] font-medium";
+const boxText = "mb-5 mt-0 font-montserrat leading-[1.7] text-[#4b5563]";
+const boxButton = "inline-flex min-h-[2.75rem] items-center justify-center bg-[#03071a] px-5 py-3 font-montserrat text-[0.78rem] font-semibold tracking-[0.08em] text-white no-underline";
+
 // A guide's page: its text in this language (Blog Post) and the shared parts
 // (Blog Guide: address, photo, event type, related guides), both from Sanity.
 const BlogCta = ({ post, language }) => {
@@ -32,10 +39,18 @@ const BlogCta = ({ post, language }) => {
   }
 
   return (
-    <section className="blog-cta" aria-labelledby="blog-primary-cta">
-      {post.ctaTitle && <h2 id="blog-primary-cta">{post.ctaTitle}</h2>}
-      {post.ctaText && <p>{post.ctaText}</p>}
-      {label && url && <a href={url}>{label}</a>}
+    <section className={`${box} mt-10`} aria-labelledby="blog-primary-cta">
+      {post.ctaTitle && (
+        <h2 id="blog-primary-cta" className={boxTitle}>
+          {post.ctaTitle}
+        </h2>
+      )}
+      {post.ctaText && <p className={boxText}>{post.ctaText}</p>}
+      {label && url && (
+        <a href={url} className={boxButton}>
+          {label}
+        </a>
+      )}
     </section>
   );
 };
@@ -47,12 +62,18 @@ const BlogHelp = ({ post, telephone }) => {
   if (!post.helpTitle && !post.helpText && !whatsappUrl) return null;
 
   return (
-    <aside className="blog-help" aria-labelledby="blog-help-title">
-      {post.helpTitle && <h2 id="blog-help-title">{post.helpTitle}</h2>}
-      {post.helpText && <p>{post.helpText}</p>}
+    <aside className={`${box} mt-16`} aria-labelledby="blog-help-title">
+      {post.helpTitle && (
+        <h2 id="blog-help-title" className={boxTitle}>
+          {post.helpTitle}
+        </h2>
+      )}
+      {post.helpText && <p className={boxText}>{post.helpText}</p>}
       {whatsappUrl && (
-        <div className="blog-help__links">
-          <a href={whatsappUrl}>WhatsApp</a>
+        <div className="flex flex-wrap gap-3">
+          <a href={whatsappUrl} className={boxButton}>
+            WhatsApp
+          </a>
         </div>
       )}
     </aside>
@@ -76,7 +97,7 @@ const Blog = ({ pageContext, data }) => {
 
   return (
     <Layout generalInfo={pageContext.layout}>
-      <main className="universal-blog">
+      <main className="mx-auto w-[min(100%_-_2rem,72rem)] py-[clamp(3rem,7vw,6rem)] text-[#111827]">
         <article>
           <KnowledgeBreadcrumbs
             title={post.title}
@@ -84,21 +105,25 @@ const Blog = ({ pageContext, data }) => {
             labels={labels}
             language={language}
           />
-          <header className="universal-blog__header">
-            <h1>{post.title}</h1>
-            <div className="knowledge-byline">
-              <strong>{post.authorName}</strong>
+          <header className={column}>
+            <h1 className="m-0 max-w-[22ch] font-crimson text-[length:clamp(2.5rem,7vw,5rem)] font-medium leading-[0.98]">
+              {post.title}
+            </h1>
+            <div className="my-[22px] flex flex-wrap gap-x-[18px] gap-y-[6px] font-montserrat text-[12px] leading-[1.8] text-[#4b5563]">
+              <strong className="font-semibold">{post.authorName}</strong>
               {post.authorRole && <span>{post.authorRole}</span>}
               <span>{post.reviewNote}</span>
             </div>
             {post.directAnswer && (
-              <p className="universal-blog__answer">{post.directAnswer}</p>
+              <p className="mt-6 max-w-[48rem] font-montserrat text-[length:clamp(1.05rem,2vw,1.3rem)] leading-[1.75] text-[#4b5563]">
+                {post.directAnswer}
+              </p>
             )}
           </header>
           <BlogCta post={post} language={language} />
           <KnowledgeToc sections={post.sections || []} labels={labels} />
           {photo?.url && (
-            <figure className="knowledge-article-image">
+            <figure className={`${column} my-8`}>
               <img
                 src={photo.url}
                 srcSet={`${photo.url}?w=640 640w, ${photo.url} ${photoSize.width}w`}
@@ -108,6 +133,7 @@ const Blog = ({ pageContext, data }) => {
                 height={photoSize.height}
                 loading="lazy"
                 decoding="async"
+                className="block max-h-[520px] w-full rounded-[3px] object-contain"
               />
               {guide.imageCredit && (
                 <figcaption>{guide.imageCredit}</figcaption>

@@ -10,7 +10,6 @@ import {
   localizedUrl,
   normalizeLanguage,
 } from "../../utils/siteLocales";
-import "../../styles/knowledge-center.css";
 
 // Share images are cropped by Sanity's CDN to the size social networks expect.
 const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
