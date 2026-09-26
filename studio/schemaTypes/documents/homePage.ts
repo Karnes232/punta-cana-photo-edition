@@ -1,29 +1,13 @@
 import { HomeIcon } from "@sanity/icons/Home"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languages } from "../shared/languages"
+import { languageField, languagePreview, text } from "../fields"
 
 // Every visible section of the home page, in page order. There is one Home
 // Page document per language (document-internationalization): English is
 // "homePage-en", and the others are created from its Translations menu.
 // Phone and email come from General Layout; the contact form's text stays in
 // the repo (src/content/homeContent.js).
-
-const text = (
-  name: string,
-  title: string,
-  group: string,
-  options: { long?: boolean; required?: boolean; description?: string } = {},
-) =>
-  defineField({
-    name,
-    title,
-    group,
-    type: options.long ? "text" : "string",
-    ...(options.long ? { rows: 3 } : {}),
-    description: options.description,
-    validation: options.required ? (rule) => rule.required() : undefined,
-  })
 
 export const homePage = defineType({
   name: "homePage",
@@ -41,8 +25,7 @@ export const homePage = defineType({
     { name: "seo", title: "SEO" },
   ],
   fields: [
-    // Set by the document-internationalization plugin.
-    defineField({ name: "language", type: "string", readOnly: true, hidden: true }),
+    languageField,
 
     defineField({
       name: "heroImage",
@@ -141,11 +124,5 @@ export const homePage = defineType({
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
   ],
-  preview: {
-    select: { language: "language" },
-    prepare: ({ language }) => ({
-      title: "Home Page",
-      subtitle: languages.find((item) => item.id === language)?.title ?? language,
-    }),
-  },
+  preview: languagePreview("Home Page"),
 })

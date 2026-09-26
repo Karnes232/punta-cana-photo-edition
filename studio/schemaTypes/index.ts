@@ -1,5 +1,7 @@
+import { contactPage } from "./documents/contactPage"
 import { generalLayout } from "./documents/generalLayout"
 import { homePage } from "./documents/homePage"
+import { notFoundPage } from "./documents/notFoundPage"
 import { cta } from "./objects/cta"
 import { eventCard } from "./objects/eventCard"
 import { imageWithAlt } from "./objects/imageWithAlt"
@@ -10,6 +12,8 @@ export const schemaTypes = [
   // Documents
   generalLayout,
   homePage,
+  contactPage,
+  notFoundPage,
   // Objects
   cta,
   eventCard,

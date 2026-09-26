@@ -1,10 +1,17 @@
 import { CogIcon } from "@sanity/icons/Cog"
+import { EnvelopeIcon } from "@sanity/icons/Envelope"
 import { HomeIcon } from "@sanity/icons/Home"
+import { WarningOutlineIcon } from "@sanity/icons/WarningOutline"
 import type { StructureResolver } from "sanity/structure"
 
-// Types opened by a fixed ID rather than listed: one document, or (homePage) one
-// per language. sanity.config.ts drops their delete/duplicate actions.
-export const singletonTypes = new Set(["generalLayout", "homePage"])
+// Types opened by a fixed ID rather than listed: one document (generalLayout), or
+// one per language for the pages. sanity.config.ts drops their delete/duplicate actions.
+export const singletonTypes = new Set([
+  "generalLayout",
+  "homePage",
+  "contactPage",
+  "notFoundPage",
+])
 
 // Hidden from the content list and the "new document" menu: the singletons, the tags
 // and folders sanity-plugin-media manages in its own Media tool, and the records
@@ -43,6 +50,8 @@ export const structure: StructureResolver = (S) => {
     .items([
       singleton("generalLayout", "General Layout", CogIcon),
       translatedPage("homePage", "Home Page", HomeIcon),
+      translatedPage("contactPage", "Contact Page", EnvelopeIcon),
+      translatedPage("notFoundPage", "404 Page", WarningOutlineIcon),
       S.divider(),
       ...S.documentTypeListItems().filter((item) => !hiddenTypes.has(item.getId() ?? "")),
     ])
