@@ -306,6 +306,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         },
       });
 
+      // Noindex page whose link is sent to clients; the sitemap excludes every
+      // language version (nonIndexablePaths in gatsby-config.js).
+      const shareExperiencePath =
+        urlPath === ""
+          ? "/share-your-experience"
+          : `/${urlPath}/share-your-experience`;
+      createPage({
+        path: shareExperiencePath,
+        component: path.resolve("./src/pages/share-your-experience/index.js"),
+        context: {
+          language: pageLanguage,
+          urlLanguage: urlCode,
+          sanityLanguage: pageLanguage === "en-US" ? "en" : pageLanguage,
+        },
+      });
+
       const proposalPath =
         urlPath === "" ? "/proposal" : `/${urlPath}/proposal`;
       createPage({

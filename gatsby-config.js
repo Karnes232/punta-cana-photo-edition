@@ -336,6 +336,10 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/share-your-experience",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/contact",
             getLanguageFromPath: true,
           },

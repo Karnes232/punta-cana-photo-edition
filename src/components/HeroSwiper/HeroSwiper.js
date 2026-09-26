@@ -17,12 +17,16 @@ const HeroSwiper = ({
 }) => {
   let photoListEdited = [];
   heroInfo?.heroImageList?.forEach((e, index) => {
-    const seo = getImageSeo(e, {
-      language,
-      subject: heroInfo.heroHeading,
-      context: "hero",
-      index,
-    });
+    // Images from Sanity arrive with an edited alt text; Contentful images get
+    // one generated from their title and the page heading.
+    const seo = e.alt
+      ? { alt: e.alt, title: e.alt }
+      : getImageSeo(e, {
+          language,
+          subject: heroInfo.heroHeading,
+          context: "hero",
+          index,
+        });
     let image = {
       ...seo,
       asset: e,

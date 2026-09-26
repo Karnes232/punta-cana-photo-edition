@@ -4,18 +4,40 @@ import Layout from "../../components/Layout/Layout";
 import HeroSwiper from "../../components/HeroSwiper/HeroSwiper";
 import TestimonialForm from "../../components/TestimonialForm/TestimonialForm";
 import Seo from "../../components/Layout/seo";
+import {
+  getLanguageConfig,
+  localizedUrl,
+  normalizeLanguage,
+} from "../../utils/siteLocales";
+
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
+
+// HeroSwiper is shared with pages that still read Contentful, so the Sanity
+// slideshow is handed over in the shape it expects, with each photo's edited
+// alt text. No heading over the photos: the form title is the page's heading.
+const toHeroInfo = (page) => ({
+  fullSize: Boolean(page?.fullScreen),
+  heroImageList: (page?.heroImages || []).map((image) => ({
+    gatsbyImage: image.asset?.gatsbyImageData,
+    alt: image.alt,
+  })),
+});
 
 const Index = ({ data, pageContext }) => {
+  const page = data.sanityShareExperiencePage;
   return (
-    <Layout
-      generalInfo={data.sanityGeneralLayout}
-      overlayHeader
-    >
+    <Layout generalInfo={data.sanityGeneralLayout} overlayHeader>
       <HeroSwiper
-        heroInfo={data.allContentfulGeneralLayout.nodes[0]}
+        heroInfo={toHeroInfo(page)}
+        language={pageContext.language}
         overlayHeader
       />
-      <TestimonialForm language={pageContext.language} />
+      <TestimonialForm
+        language={pageContext.language}
+        title={page?.formTitle}
+        intro={page?.formIntro}
+      />
     </Layout>
   );
 };
@@ -23,19 +45,23 @@ const Index = ({ data, pageContext }) => {
 export default Index;
 
 export const Head = ({ pageContext, data }) => {
-  const { title, description, images, keywords } =
-    data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${pageContext.language !== "en-US" ? `/${pageContext.language}` : ""}/share-your-experience/`;
+  const language = normalizeLanguage(pageContext.language);
+  const languageConfig = getLanguageConfig(language);
+  const seo = data.sanityShareExperiencePage?.seo;
+  const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
+  const siteUrl = localizedUrl(rootUrl, "/share-your-experience/", language);
 
   return (
     <>
       <Seo
-        title={title}
-        description={description.description}
-        keywords={keywords.join(", ")}
-        image={`https:${images.file.url}`}
+        title={seo?.title}
+        description={seo?.description}
+        keywords={(seo?.keywords || []).join(", ")}
+        image={shareImageUrl(seo?.image?.asset?.url)}
+        imageAlt={seo?.image?.alt}
         url={siteUrl}
-        // schemaMarkup={schema}
+        language={languageConfig.htmlLang}
+        locale={languageConfig.ogLocale}
       />
       <link rel="canonical" href={siteUrl} />
       <meta name="robots" content="noindex,nofollow" />
@@ -44,24 +70,20 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query MyQuery {
+  query ShareExperiencePageQuery($sanityLanguage: String = "en") {
+    # The navbar and footer translate their labels through i18next.
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
-      }
-    }
-    allContentfulSeo(filter: { page: { eq: "Share Your Experience" } }) {
-      nodes {
-        title
-        keywords
-        images {
-          file {
-            url
-          }
-        }
-        description {
-          description
-        }
       }
     }
     sanityGeneralLayout(_id: { eq: "generalLayout" }) {
@@ -73,22 +95,26 @@ export const query = graphql`
       telephone
       messengerLink
     }
-    # The hero still lives on Contentful's generalLayout; it isn't part of the
-    # Sanity General Layout and moves with this page's own schema.
-    allContentfulGeneralLayout {
-      nodes {
-        heroImageList {
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-          title
+    sanityShareExperiencePage(language: { eq: $sanityLanguage }) {
+      fullScreen
+      formTitle
+      formIntro
+      heroImages {
+        alt
+        asset {
+          gatsbyImageData(width: 1200, placeholder: NONE)
         }
-        fullSize
-        heroHeading
+      }
+      seo {
+        title
+        description
+        keywords
+        image {
+          alt
+          asset {
+            url
+          }
+        }
       }
     }
   }

@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import { passVisitorName } from "../../utils/thankYouName";
 import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
+import {
+  SERVICE_VALUES,
+  shareExperienceContent,
+} from "../../content/shareExperienceContent";
+import { localizedPath, normalizeLanguage } from "../../utils/siteLocales";
 
-const TestimonialForm = ({ language = "en-US" }) => {
+// The title and intro come from the Share Your Experience document in Sanity;
+// the field labels from shareExperienceContent.js.
+const TestimonialForm = ({ language = "en-US", title, intro }) => {
   const [phone, setPhone] = useState("");
+  const locale = normalizeLanguage(language);
+  const copy = shareExperienceContent[locale];
   const inputClass =
     "mt-2 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 font-montserrat text-base text-slate-950 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-100";
 
@@ -11,17 +20,16 @@ const TestimonialForm = ({ language = "en-US" }) => {
     <section className="mx-auto w-full max-w-3xl px-6 py-16 md:py-24">
       <div className="border border-slate-200 bg-white p-6 shadow-sm md:p-10">
         <h1 className="font-crimson text-4xl font-medium text-slate-950 md:text-5xl">
-          Tell Us About Your Experience
+          {title}
         </h1>
         <p className="mt-4 font-montserrat text-base leading-7 text-slate-600">
-          Thank you for choosing Sertuin Events. Share your experience with our
-          team; your feedback helps us continue improving every celebration.
+          {intro}
         </p>
         <form
           name="testimonial"
           method="POST"
           onSubmit={passVisitorName("names")}
-          action="/contact/thankyou/"
+          action={localizedPath("/contact/thankyou/", locale)}
           data-netlify="true"
           data-netlify-honeypot="bot-field"
           encType="multipart/form-data"
@@ -36,11 +44,11 @@ const TestimonialForm = ({ language = "en-US" }) => {
           />
           <p className="hidden">
             <label>
-              Do not fill this out: <input name="bot-field" />
+              {copy.honeypotLabel} <input name="bot-field" />
             </label>
           </p>
           <label className="block font-montserrat text-sm font-semibold text-slate-800">
-            Names *
+            {copy.names} *
             <input
               className={inputClass}
               type="text"
@@ -50,7 +58,7 @@ const TestimonialForm = ({ language = "en-US" }) => {
             />
           </label>
           <label className="block font-montserrat text-sm font-semibold text-slate-800">
-            Email *
+            {copy.email} *
             <input
               className={inputClass}
               type="email"
@@ -60,7 +68,7 @@ const TestimonialForm = ({ language = "en-US" }) => {
             />
           </label>
           <label className="block font-montserrat text-sm font-semibold text-slate-800">
-            Phone / WhatsApp *
+            {copy.phone} *
             <InternationalPhoneField
               id="testimonial-phone"
               name="phone"
@@ -72,27 +80,23 @@ const TestimonialForm = ({ language = "en-US" }) => {
             />
           </label>
           <label className="block font-montserrat text-sm font-semibold text-slate-800">
-            Service *
+            {copy.service} *
             <select
               className={inputClass}
               name="service"
               defaultValue=""
               required
             >
-              <option value="">Select a service</option>
-              <option value="Marriage Proposal Experience">
-                Marriage Proposal Experience
-              </option>
-              <option value="Elopement or Vow Renewal">
-                Elopement or Vow Renewal
-              </option>
-              <option value="Wedding Planning">Wedding Planning</option>
-              <option value="Gender Reveal">Gender Reveal</option>
-              <option value="Corporate Event">Corporate Event</option>
+              <option value="">{copy.selectService}</option>
+              {SERVICE_VALUES.map((value, index) => (
+                <option value={value} key={value}>
+                  {copy.services[index]}
+                </option>
+              ))}
             </select>
           </label>
           <label className="block font-montserrat text-sm font-semibold text-slate-800">
-            Your experience *
+            {copy.experience} *
             <textarea
               className={`${inputClass} min-h-40 resize-y`}
               name="testimonial"
@@ -100,7 +104,7 @@ const TestimonialForm = ({ language = "en-US" }) => {
             />
           </label>
           <label className="block font-montserrat text-sm font-semibold text-slate-800">
-            Optional photo
+            {copy.photo}
             <input
               className={inputClass}
               type="file"
@@ -112,7 +116,7 @@ const TestimonialForm = ({ language = "en-US" }) => {
             type="submit"
             className="inline-flex w-full items-center justify-center bg-slate-950 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white transition hover:bg-amber-700"
           >
-            Submit testimonial
+            {copy.submit}
           </button>
         </form>
       </div>
