@@ -10,6 +10,7 @@ import {
   localizedUrl,
   normalizeLanguage,
 } from "../../utils/siteLocales";
+import { buildEventPlannerSchema } from "../../utils/eventPlannerSeo";
 
 // Share images are cropped by Sanity's CDN to the size social networks expect.
 const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
@@ -35,127 +36,28 @@ export default EventPlannerPage;
 
 export const Head = ({ pageContext, data }) => {
   const language = normalizeLanguage(pageContext.language);
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const page = data.sanityEventPlannerPage || {};
   const seo = page.seo;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const siteUrl = localizedUrl(rootUrl, "/event-planner/", language);
-  const title = seo?.title;
-  const description = seo?.description;
   const image = shareImageUrl(seo?.image?.asset?.url);
-  const schemaMarkup = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Service",
-        "@id": `${siteUrl}#service`,
-        name: isPortuguese
-          ? "Planejamento e gestão de eventos corporativos em Punta Cana"
-          : isFrench
-            ? "Organisation et gestion d’événements d’entreprise à Punta Cana"
-            : isSpanish
-              ? "Planificación y gestión de eventos corporativos en Punta Cana"
-              : "Corporate Event Planning and Management in Punta Cana",
-        serviceType: isPortuguese
-          ? "Gestão de eventos corporativos"
-          : isFrench
-            ? "Gestion d’événements d’entreprise"
-            : isSpanish
-              ? "Gestión de eventos corporativos"
-              : "Corporate event management",
-        url: siteUrl,
-        description,
-        inLanguage: isPortuguese
-          ? "pt-BR"
-          : isFrench
-            ? "fr-FR"
-            : isSpanish
-              ? "es-DO"
-              : "en-US",
-        image,
-        areaServed: [
-          { "@type": "City", name: "Punta Cana" },
-          { "@type": "Country", name: "Dominican Republic" },
-        ],
-        provider: {
-          "@type": "Organization",
-          "@id": "https://sertuinevents.com/#organization",
-          name: "Sertuin Events",
-          url: "https://sertuinevents.com/",
-          email: "info@sertuinevents.com",
-          telephone: data.sanityGeneralLayout?.telephone,
-        },
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: isPortuguese
-            ? "Serviços de gestão de eventos"
-            : isFrench
-              ? "Services de gestion d’événements"
-              : isSpanish
-                ? "Servicios de gestión de eventos"
-                : "Corporate event management services",
-          itemListElement: (page.services || []).map((service) => ({
-            "@type": "Offer",
-            itemOffered: { "@type": "Service", name: service.title },
-          })),
-        },
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${siteUrl}#faq`,
-        inLanguage: isPortuguese
-          ? "pt-BR"
-          : isFrench
-            ? "fr-FR"
-            : isSpanish
-              ? "es-DO"
-              : "en-US",
-        mainEntity: (page.faqs || []).map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: { "@type": "Answer", text: faq.answer },
-        })),
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: isPortuguese
-              ? "Início"
-              : isFrench
-                ? "Accueil"
-                : isSpanish
-                  ? "Inicio"
-                  : "Home",
-            item: localizedUrl(rootUrl, "/", language),
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: isPortuguese
-              ? "Eventos corporativos"
-              : isFrench
-                ? "Événements d’entreprise"
-                : isSpanish
-                  ? "Eventos corporativos"
-                  : "Corporate Event Planner",
-            item: siteUrl,
-          },
-        ],
-      },
-    ],
-  };
+  const schemaMarkup = buildEventPlannerSchema({
+    pageUrl: siteUrl,
+    homeUrl: localizedUrl(rootUrl, "/", language),
+    language,
+    description: seo?.description,
+    image,
+    generalInfo: data.sanityGeneralLayout,
+    services: page.services,
+    faqs: page.faqs,
+  });
 
   return (
     <>
       <Seo
-        title={title}
-        description={description}
+        title={seo?.title}
+        description={seo?.description}
         keywords={(seo?.keywords || []).join(", ")}
         image={image}
         imageAlt={seo?.image?.alt}
@@ -164,7 +66,7 @@ export const Head = ({ pageContext, data }) => {
         language={languageConfig.htmlLang}
         siteName="Sertuin Events"
         locale={languageConfig.ogLocale}
-        alternateLocale={isSpanish ? "en_US" : "es_DO"}
+        alternateLocale={language === "es" ? "en_US" : "es_DO"}
         twitterCard="summary_large_image"
       />
       <link rel="canonical" href={siteUrl} />
