@@ -3,6 +3,7 @@ import { generalLayout } from "./documents/generalLayout"
 import { homePage } from "./documents/homePage"
 import { notFoundPage } from "./documents/notFoundPage"
 import { shareExperiencePage } from "./documents/shareExperiencePage"
+import { thankYouPage } from "./documents/thankYouPage"
 import { cta } from "./objects/cta"
 import { eventCard } from "./objects/eventCard"
 import { imageWithAlt } from "./objects/imageWithAlt"
@@ -14,6 +15,7 @@ export const schemaTypes = [
   generalLayout,
   homePage,
   contactPage,
+  thankYouPage,
   notFoundPage,
   shareExperiencePage,
   // Objects

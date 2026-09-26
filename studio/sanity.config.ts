@@ -13,6 +13,7 @@ import { hiddenTypes, singletonTypes, structure } from "./structure"
 export const translatedTypes = [
   "homePage",
   "contactPage",
+  "thankYouPage",
   "notFoundPage",
   "shareExperiencePage",
 ]

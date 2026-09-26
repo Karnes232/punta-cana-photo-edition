@@ -1,3 +1,4 @@
+import { CheckmarkCircleIcon } from "@sanity/icons/CheckmarkCircle"
 import { CogIcon } from "@sanity/icons/Cog"
 import { CommentIcon } from "@sanity/icons/Comment"
 import { EnvelopeIcon } from "@sanity/icons/Envelope"
@@ -11,6 +12,7 @@ export const singletonTypes = new Set([
   "generalLayout",
   "homePage",
   "contactPage",
+  "thankYouPage",
   "notFoundPage",
   "shareExperiencePage",
 ])
@@ -53,6 +55,7 @@ export const structure: StructureResolver = (S) => {
       singleton("generalLayout", "General Layout", CogIcon),
       translatedPage("homePage", "Home Page", HomeIcon),
       translatedPage("contactPage", "Contact Page", EnvelopeIcon),
+      translatedPage("thankYouPage", "Thank-You Page", CheckmarkCircleIcon),
       translatedPage("shareExperiencePage", "Share Your Experience", CommentIcon),
       translatedPage("notFoundPage", "404 Page", WarningOutlineIcon),
       S.divider(),
