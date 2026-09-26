@@ -1,4 +1,3 @@
-import commercialMetadata from "../../data/commercialMetadata.json";
 import { graphql } from "gatsby";
 import React from "react";
 import Layout from "../../components/Layout/Layout";
@@ -8,9 +7,16 @@ import ContactExperience from "../../components/ContactForm/ContactExperience";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import { getLanguageConfig, localizedUrl, normalizeLanguage } from "../../utils/siteLocales";
 
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
+
 const Index = ({ data, pageContext }) => (
   <Layout generalInfo={data.sanityGeneralLayout} overlayHeader>
-    <ContactExperience language={pageContext.language} />
+    <ContactExperience
+      page={data.sanityContactPage}
+      generalInfo={data.sanityGeneralLayout}
+      language={pageContext.language}
+    />
   </Layout>
 );
 export default Index;
@@ -18,34 +24,20 @@ export default Index;
 export const Head = ({ pageContext, data }) => {
   const { language: hookLanguage } = useI18next();
   const language = normalizeLanguage(pageContext.language || hookLanguage);
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
-  const { images, keywords } =
-    data.allContentfulSeo.nodes[0];
+  const seo = data.sanityContactPage?.seo;
+  const title = seo?.title;
+  const description = seo?.description;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const siteUrl = localizedUrl(rootUrl, "/contact/", language);
-  const { title, description } = commercialMetadata["/contact/"][language];
   return (
     <>
       <Seo
         title={title}
         description={description}
-        keywords={(isPortuguese
-          ? [
-              "contato planejador de eventos Punta Cana",
-              "cotação evento Punta Cana",
-              "Sertuin Events contato",
-            ]
-          : isFrench
-            ? [
-                "contacter organisateur événement Punta Cana",
-                "devis événement Punta Cana",
-                "contact Sertuin Events",
-              ]
-            : keywords
-        ).join(", ")}
-        image={`https:${images?.file?.url}`}
+        keywords={(seo?.keywords || []).join(", ")}
+        image={shareImageUrl(seo?.image?.asset?.url)}
+        imageAlt={seo?.image?.alt}
         url={siteUrl}
         schemaMarkup={{
           "@context": "https://schema.org",
@@ -68,7 +60,7 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query MyQuery($contentLanguage: String = "en-US") {
+  query ContactPageQuery($sanityLanguage: String = "en") {
     locales: allLocale {
       edges {
         node {
@@ -85,57 +77,42 @@ export const query = graphql`
     }
     sanityGeneralLayout(_id: { eq: "generalLayout" }) {
       companyName
+      email
       facebook
       instagram
       x
       telephone
       messengerLink
     }
-    allContentfulSeo(
-      filter: { page: { eq: "Contact" }, node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
+    sanityContactPage(language: { eq: $sanityLanguage }) {
+      heroEyebrow
+      heroTitle
+      heroIntro
+      welcome
+      directLabel
+      whatsappLabel
+      emailLabel
+      phoneLabel
+      formEyebrow
+      formTitle
+      formIntro
+      nextEyebrow
+      nextTitle
+      nextSteps {
+        _key
         title
+        body
+      }
+      location
+      seo {
+        title
+        description
         keywords
-        images {
-          file {
+        image {
+          alt
+          asset {
             url
           }
-        }
-        description {
-          description
-        }
-        schema {
-          internal {
-            content
-          }
-        }
-      }
-    }
-    allContentfulPageContent(
-      filter: { page: { eq: "Contact" }, node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
-        page
-        heroImageList {
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 65
-          )
-          title
-        }
-        fullSize
-        heroHeading
-        heroHeading2
-        sectionTitle
-        paragraph1 {
-          raw
-        }
-        paragraph2 {
-          raw
         }
       }
     }

@@ -7,25 +7,38 @@ import * as styles from './contactExperience.module.css';
 
 const purposes = ['QUESTION', 'EVENT', 'COLLABORATION', 'OTHER'];
 
-export default function ContactExperience({ language }) {
+// "18295222900" -> "+1 829 522 2900" (North American numbers); other lengths
+// are shown as +digits.
+const displayPhone = (digits) =>
+  digits.length === 11 && digits.startsWith('1')
+    ? `+1 ${digits.slice(1, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}`
+    : `+${digits}`;
+
+// Page text comes from this language's Contact Page document in Sanity; the
+// form's fields from the repo (contactContent.js); phone and email from
+// General Layout.
+export default function ContactExperience({ page, generalInfo, language }) {
   const locale = normalizeLanguage(language);
   const copy = contactContent[locale];
+  if (!page) return null;
+  const phone = (generalInfo?.telephone || '18295222900').replace(/\D/g, '');
+  const email = generalInfo?.email || 'info@sertuinevents.com';
   const methods = [
-    { href: 'https://wa.me/18295222900', label: copy.whatsapp, detail: '+1 829 522 2900', Icon: MessageCircle },
-    { href: 'mailto:info@sertuinevents.com', label: copy.emailLink, detail: 'info@sertuinevents.com', Icon: Mail },
-    { href: 'tel:+18295222900', label: copy.phoneLink, detail: '+1 829 522 2900', Icon: Phone },
+    { href: `https://wa.me/${phone}`, label: page.whatsappLabel, detail: displayPhone(phone), Icon: MessageCircle },
+    { href: `mailto:${email}`, label: page.emailLabel, detail: email, Icon: Mail },
+    { href: `tel:+${phone}`, label: page.phoneLabel, detail: displayPhone(phone), Icon: Phone },
   ];
   return (
     <main className={styles.page}>
       <section className={styles.hero} aria-labelledby="contact-heading">
         <div className={styles.heroGrid}>
           <div className={styles.introduction}>
-            <p className={styles.eyebrow}><span aria-hidden="true" />{copy.eyebrow}</p>
-            <h1 id="contact-heading">{copy.title}</h1>
-            <p className={styles.intro}>{copy.intro}</p>
-            <p className={styles.welcome}>{copy.welcome}</p>
+            <p className={styles.eyebrow}><span aria-hidden="true" />{page.heroEyebrow}</p>
+            <h1 id="contact-heading">{page.heroTitle}</h1>
+            <p className={styles.intro}>{page.heroIntro}</p>
+            <p className={styles.welcome}>{page.welcome}</p>
             <div className={styles.direct}>
-              <p className={styles.directLabel}>{copy.direct}</p>
+              <p className={styles.directLabel}>{page.directLabel}</p>
               {methods.map(({ href, label, detail, Icon }) => (
                 <a href={href} className={styles.method} key={href}>
                   <Icon size={21} strokeWidth={1.5} aria-hidden="true" />
@@ -36,9 +49,9 @@ export default function ContactExperience({ language }) {
             </div>
           </div>
           <div className={styles.formCard}>
-            <p className={styles.formEyebrow}>{copy.formEyebrow}</p>
-            <h2 id="contact-form-heading">{copy.formTitle}</h2>
-            <p className={styles.formIntro}>{copy.formIntro}</p>
+            <p className={styles.formEyebrow}>{page.formEyebrow}</p>
+            <h2 id="contact-form-heading">{page.formTitle}</h2>
+            <p className={styles.formIntro}>{page.formIntro}</p>
             <form name="contact" id="contact" method="POST"
               action={localizedPath('/contact/thankyou/', locale)}
               onSubmit={passVisitorName('name')} data-netlify="true"
@@ -80,12 +93,12 @@ export default function ContactExperience({ language }) {
         </div>
       </section>
       <section className={styles.next} aria-labelledby="contact-next-heading">
-        <p className={styles.formEyebrow}>{copy.nextEyebrow}</p>
-        <h2 id="contact-next-heading">{copy.nextTitle}</h2>
-        <div className={styles.steps}>{copy.steps.map(([title, text], index) => <div key={title}>
-          <span className={styles.stepNumber}>0{index + 1}</span><h3>{title}</h3><p>{text}</p>
+        <p className={styles.formEyebrow}>{page.nextEyebrow}</p>
+        <h2 id="contact-next-heading">{page.nextTitle}</h2>
+        <div className={styles.steps}>{(page.nextSteps || []).map(({ _key, title, body }, index) => <div key={_key}>
+          <span className={styles.stepNumber}>0{index + 1}</span><h3>{title}</h3><p>{body}</p>
         </div>)}</div>
-        <p className={styles.location}>{copy.location}</p>
+        <p className={styles.location}>{page.location}</p>
       </section>
     </main>
   );

@@ -291,6 +291,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           language: pageLanguage,
           contentLanguage,
           urlLanguage: urlCode,
+          sanityLanguage: pageLanguage === "en-US" ? "en" : pageLanguage,
         },
       });
 

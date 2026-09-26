@@ -2,10 +2,30 @@ import { graphql, Link } from "gatsby";
 import * as React from "react";
 import Layout from "../components/Layout/Layout";
 
+// One 404 page serves every missing URL, so the language comes from the path
+// (/es/…, /pt/…, /fr/…) rather than the page context. All four Sanity 404
+// documents are small, so the page loads them all and picks one.
+const LANGUAGES = {
+  es: { home: "/es/", htmlLang: "es" },
+  pt: { home: "/pt/", htmlLang: "pt-BR" },
+  fr: { home: "/fr/", htmlLang: "fr-FR" },
+  en: { home: "/", htmlLang: "en" },
+};
+
+const languageFromPath = (pathname = "") =>
+  ["es", "pt", "fr"].find((code) => pathname.startsWith(`/${code}/`)) || "en";
+
+const pageFor = (data, language) => {
+  const pages = data.allSanityNotFoundPage.nodes;
+  return (
+    pages.find((page) => page.language === language) ||
+    pages.find((page) => page.language === "en")
+  );
+};
+
 const NotFoundPage = ({ data, location }) => {
-  const isSpanish = location?.pathname?.startsWith("/es/");
-  const isPortuguese = location?.pathname?.startsWith("/pt/");
-  const isFrench = location?.pathname?.startsWith("/fr/");
+  const language = languageFromPath(location?.pathname);
+  const page = pageFor(data, language);
 
   return (
     <Layout generalInfo={data.sanityGeneralLayout}>
@@ -15,42 +35,16 @@ const NotFoundPage = ({ data, location }) => {
             404
           </p>
           <h1 className="mt-4 font-crimson text-5xl font-medium leading-tight text-black md:text-7xl">
-            {isPortuguese
-              ? "Página não encontrada"
-              : isFrench
-                ? "Page introuvable"
-                : isSpanish
-                  ? "Página no encontrada"
-                  : "Page not found"}
+            {page?.heading}
           </h1>
           <p className="mt-6 max-w-2xl font-montserrat text-base leading-8 text-gray-700 md:text-lg">
-            {isPortuguese
-              ? "A página que você procura não está mais disponível ou foi movida. Volte ao início para conhecer nossos serviços atuais."
-              : isFrench
-                ? "La page recherchée n’est plus disponible ou a été déplacée. Revenez à l’accueil pour découvrir nos services actuels."
-                : isSpanish
-                  ? "La página que buscas ya no está disponible o fue trasladada. Puedes regresar al inicio para explorar nuestros servicios actuales."
-                  : "The page you are looking for is no longer available or has moved. Return home to explore our current services."}
+            {page?.body}
           </p>
           <Link
-            to={
-              isPortuguese
-                ? "/pt/"
-                : isFrench
-                  ? "/fr/"
-                  : isSpanish
-                    ? "/es/"
-                    : "/"
-            }
+            to={LANGUAGES[language].home}
             className="mt-8 inline-flex bg-black px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.14em] text-white no-underline transition hover:bg-primary-color hover:text-black"
           >
-            {isPortuguese
-              ? "Voltar ao início"
-              : isFrench
-                ? "Retour à l’accueil"
-                : isSpanish
-                  ? "Volver al inicio"
-                  : "Return home"}
+            {page?.buttonLabel}
           </Link>
         </div>
       </main>
@@ -60,46 +54,32 @@ const NotFoundPage = ({ data, location }) => {
 
 export default NotFoundPage;
 
-export const Head = ({ location }) => {
-  const isSpanish = location?.pathname?.startsWith("/es/");
-  const isPortuguese = location?.pathname?.startsWith("/pt/");
-  const isFrench = location?.pathname?.startsWith("/fr/");
+export const Head = ({ data, location }) => {
+  const language = languageFromPath(location?.pathname);
+  const page = pageFor(data, language);
 
   return (
     <>
-      <html
-        lang={
-          isPortuguese ? "pt-BR" : isFrench ? "fr-FR" : isSpanish ? "es" : "en"
-        }
-      />
-      <title>
-        {isPortuguese
-          ? "Página não encontrada | Sertuin Events"
-          : isFrench
-            ? "Page introuvable | Sertuin Events"
-            : isSpanish
-              ? "Página no encontrada | Sertuin Events"
-              : "Page Not Found | Sertuin Events"}
-      </title>
-      <meta
-        name="description"
-        content={
-          isPortuguese
-            ? "A página solicitada não está disponível. Conheça os serviços atuais da Sertuin Events em Punta Cana."
-            : isFrench
-              ? "La page demandée n’est pas disponible. Découvrez les services actuels de Sertuin Events à Punta Cana."
-              : isSpanish
-                ? "La página solicitada no está disponible. Consulta los servicios actuales de Sertuin Events en Punta Cana."
-                : "The requested page is unavailable. Explore current Sertuin Events services in Punta Cana."
-        }
-      />
+      <html lang={LANGUAGES[language].htmlLang} />
+      <title>{page?.seoTitle}</title>
+      <meta name="description" content={page?.seoDescription} />
       <meta name="robots" content="noindex,follow" />
     </>
   );
 };
 
 export const query = graphql`
-  query MyQuery {
+  query NotFoundPageQuery {
+    # The navbar and footer translate their labels through i18next.
+    locales: allLocale {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
     site {
       siteMetadata {
         siteUrl
@@ -113,6 +93,16 @@ export const query = graphql`
       messengerLink
       x
       telephone
+    }
+    allSanityNotFoundPage {
+      nodes {
+        language
+        heading
+        body
+        buttonLabel
+        seoTitle
+        seoDescription
+      }
     }
   }
 `;

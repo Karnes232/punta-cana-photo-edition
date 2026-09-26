@@ -7,9 +7,10 @@ const languages = ['en-US', 'es', 'pt', 'fr'];
 const titles = new Set(), descriptions = new Set();
 const decode = value => value.replace(/&#(?:x([0-9a-f]+)|(\d+));/gi, (_, hex, dec) => String.fromCodePoint(parseInt(hex || dec, hex ? 16 : 10)))
   .replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-// The home page's title and description are edited in Sanity (Home Page > SEO).
-assert.equal(Object.keys(metadata).length, 16, 'Five main pages and eleven package pages');
+// The home and contact pages' titles and descriptions are edited in Sanity (SEO tab).
+assert.equal(Object.keys(metadata).length, 15, 'Four service pages and eleven package pages');
 assert.equal(metadata['/'], undefined, 'Home page SEO lives in Sanity');
+assert.equal(metadata['/contact/'], undefined, 'Contact page SEO lives in Sanity');
 assert.equal(metadata['/proposal/'], undefined, 'Proposal landing pages are excluded');
 for (const [route, translations] of Object.entries(metadata)) {
   assert.deepEqual(Object.keys(translations), languages, route + ': all languages required');
@@ -23,7 +24,7 @@ for (const [route, translations] of Object.entries(metadata)) {
     assert.ok(!titles.has(title), label + ': duplicate title'); titles.add(title);
     assert.ok(!descriptions.has(description), label + ': duplicate description'); descriptions.add(description);
     assert.doesNotMatch(description, /Sertuin (?:Events )?(?:coordinates|coordina|organizes|organiza)/i, label + ': third-person voice');
-    if (route !== '/contact/') assert.doesNotMatch(title, /Sertuin/i, label + ': service titles prioritize the offer');
+    assert.doesNotMatch(title, /Sertuin/i, label + ': service titles prioritize the offer');
     if (process.argv.includes('--built')) {
       const prefix = language === 'en-US' ? '' : language;
       const html = fs.readFileSync(path.join(root, 'public', prefix, route, 'index.html'), 'utf8');
@@ -42,4 +43,4 @@ for (const [route, translations] of Object.entries(metadata)) {
   }
 }
 assert.match(metadata['/puntacana-wedding-planner/']['en-US'].title, /^Wedding Planner in Punta Cana\b/);
-console.log('Commercial metadata: 64 unique localized pairs within 60/160; proposal excluded' + (process.argv.includes('--built') ? '; built HTML verified.' : '.'));
+console.log('Commercial metadata: 60 unique localized pairs within 60/160; proposal excluded' + (process.argv.includes('--built') ? '; built HTML verified.' : '.'));
