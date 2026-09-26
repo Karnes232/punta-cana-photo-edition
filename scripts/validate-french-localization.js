@@ -40,8 +40,6 @@ const loadSourceModule = (modulePath) => {
   return module.exports;
 };
 
-const { publishedBlogSlugs } = require("../src/data/publishedBlogSlugs");
-const { frenchBlogContent } = loadSourceModule("src/data/frenchBlogContent.js");
 const { frenchProposalPackageContent } = loadSourceModule(
   "src/data/frenchProposalPackageContent.js",
 );
@@ -82,38 +80,6 @@ assert.equal(
   1,
   "Wedding planning must expose exactly one South Asian package",
 );
-
-const publishedSlugs = [...publishedBlogSlugs].sort();
-assert.deepEqual(
-  Object.keys(frenchBlogContent).sort(),
-  publishedSlugs,
-  "Every published article must have exactly one French translation",
-);
-
-for (const [slug, article] of Object.entries(frenchBlogContent)) {
-  const seoTitle = article.seoTitle || article.title;
-  assert.ok(article.title?.trim(), `${slug}: missing French title`);
-  assert.ok(
-    article.description?.trim(),
-    `${slug}: missing French meta description`,
-  );
-  assert.ok(
-    article.directAnswer?.trim(),
-    `${slug}: missing French direct answer`,
-  );
-  assert.ok(
-    article.sections?.length >= 2,
-    `${slug}: French article body is incomplete`,
-  );
-  assert.ok(
-    seoTitle.length <= 65,
-    `${slug}: French SEO title exceeds 65 characters`,
-  );
-  assert.ok(
-    article.description.length >= 110 && article.description.length <= 165,
-    `${slug}: French meta description must contain 110–165 characters`,
-  );
-}
 
 const packageIds = proposalPackageDetails.map((item) => item.id).sort();
 assert.deepEqual(
@@ -167,11 +133,10 @@ const corePaths = [
 ];
 const expectedFrenchPaths = [
   ...corePaths,
-  ...publishedSlugs.map((slug) => `/fr/blog/${slug}/`),
   ...packageIds.map((id) => `/fr/packages/${packageSlugs.get(id)}/`),
 ];
-assert.equal(expectedFrenchPaths.length, 34);
-assert.equal(new Set(expectedFrenchPaths).size, 34);
+assert.equal(expectedFrenchPaths.length, 19);
+assert.equal(new Set(expectedFrenchPaths).size, 19);
 
 const gatsbyNodeSource = fs.readFileSync(
   path.join(projectRoot, "gatsby-node.js"),
@@ -181,13 +146,9 @@ assert.match(gatsbyNodeSource, /fr:\s*\{\s*path:\s*["']fr["']/);
 assert.match(gatsbyNodeSource, /\["pt",\s*"fr"\]\.forEach/);
 assert.match(
   gatsbyNodeSource,
-  /path:\s*`\/\$\{derivedLanguage\}\/blog\/\$\{slug\}`/,
-);
-assert.match(
-  gatsbyNodeSource,
   /path:\s*`\/\$\{derivedLanguage\}\/packages\/\$\{node\.urlSlug/,
 );
 
 console.log(
-  `Validated ${expectedFrenchPaths.length} French routes: ${publishedSlugs.length} articles, ${packageIds.length} noindex proposal packages, the blog index and 7 core pages.`,
+  `Validated ${expectedFrenchPaths.length} French routes: ${packageIds.length} noindex proposal packages, the blog index and 7 core pages (guide pages come from Sanity; see validate-knowledge-graph.js).`,
 );

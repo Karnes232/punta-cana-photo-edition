@@ -1,15 +1,13 @@
 import React from "react";
 import { localizedPath } from "../../utils/siteLocales";
-import { getKnowledgeArticle } from "../../data/knowledgeContent";
-const {
-  nodes,
-  clusters,
-  label,
+import {
+  guideSlug,
   languageIndex,
-  findNode,
-  relatedNodes,
-} = require("../../data/knowledgeGraph");
+  localized,
+  sectionId,
+} from "../../utils/blogGuides";
 
+// Page chrome, not content: the same wording on every guide.
 const labels = {
   home: ["Home", "Inicio", "Início", "Accueil"],
   center: [
@@ -26,73 +24,78 @@ const labels = {
   ],
   toc: ["In this guide", "En esta guía", "Neste guia", "Dans ce guide"],
 };
-export const KnowledgeBreadcrumbs = ({ slug, language }) => {
-  const node = findNode(slug);
-  if (!node) return null;
-  const cluster = clusters.find((c) => c.id === node.cluster),
-    i = languageIndex(language);
+
+// Home › Guides › the guide's event type › the guide.
+const trail = ({ title, guide, language }) => {
+  const i = languageIndex(language);
+  const category = guide.category;
+  return [
+    [labels.home[i], localizedPath("/", language)],
+    [labels.center[i], localizedPath("/blog/", language)],
+    [
+      localized(category?.label, language),
+      `${localizedPath("/blog/", language)}#${category?.key}`,
+    ],
+    [title, localizedPath(`/blog/${guideSlug(guide)}/`, language)],
+  ];
+};
+
+export const KnowledgeBreadcrumbs = ({ title, guide, language }) => {
+  const links = trail({ title, guide, language });
   return (
     <nav className="knowledge-breadcrumbs" aria-label="Breadcrumb">
       <ol>
-        <li>
-          <a href={localizedPath("/", language)}>{labels.home[i]}</a>
-        </li>
-        <li>
-          <a href={localizedPath("/blog/", language)}>{labels.center[i]}</a>
-        </li>
-        <li>
-          <a href={`${localizedPath("/blog/", language)}#${cluster.id}`}>
-            {label(cluster, language)}
-          </a>
-        </li>
-        <li aria-current="page">
-          {getKnowledgeArticle(slug, language)?.title}
-        </li>
+        {links.slice(0, 3).map(([name, url]) => (
+          <li key={url}>
+            <a href={url}>{name}</a>
+          </li>
+        ))}
+        <li aria-current="page">{title}</li>
       </ol>
     </nav>
   );
 };
-export const KnowledgeToc = ({ article, language }) => (
+
+export const KnowledgeToc = ({ sections, language }) => (
   <nav
     className="knowledge-toc"
     aria-label={labels.toc[languageIndex(language)]}
   >
     <h2>{labels.toc[languageIndex(language)]}</h2>
     <ol>
-      {article.sections.map((s) => (
-        <li key={s.id}>
-          <a href={`#${s.id}`}>{s.heading}</a>
+      {sections.map((section, index) => (
+        <li key={sectionId(index)}>
+          <a href={`#${sectionId(index)}`}>{section.heading}</a>
         </li>
       ))}
     </ol>
   </nav>
 );
-export const KnowledgeRelated = ({ slug, language }) => {
-  const node = findNode(slug);
-  if (!node) return null;
-  const related = relatedNodes(node);
-  const ordered = node.next
-    ? [
-        ...related.filter((n) => n.id === node.next),
-        ...related.filter((n) => n.id !== node.next),
-      ]
-    : related;
+
+// The guide's related guides, its suggested next one first. `texts` maps a
+// guide's id to its text in this language.
+export const KnowledgeRelated = ({ guide, texts, language }) => {
+  const related = (guide.related || []).filter((item) => texts[item._id]);
+  const nextId = guide.next?._id;
+  const ordered = [
+    ...related.filter((item) => item._id === nextId),
+    ...related.filter((item) => item._id !== nextId),
+  ];
+  if (!ordered.length) return null;
   return (
     <nav className="knowledge-related" aria-labelledby="continue-planning">
       <h2 id="continue-planning">{labels.next[languageIndex(language)]}</h2>
       <div>
-        {ordered.map((n) => {
-          const a = getKnowledgeArticle(n.slug, language);
+        {ordered.map((item) => {
+          const text = texts[item._id];
           return (
-            <a key={n.id} href={localizedPath(`/blog/${n.slug}/`, language)}>
-              <span>
-                {label(
-                  clusters.find((c) => c.id === n.cluster),
-                  language,
-                )}
-              </span>
-              <strong>{a.title}</strong>
-              <small>{a.description}</small>
+            <a
+              key={item._id}
+              href={localizedPath(`/blog/${guideSlug(item)}/`, language)}
+            >
+              <span>{localized(item.category?.label, language)}</span>
+              <strong>{text.title}</strong>
+              <small>{text.description}</small>
             </a>
           );
         })}
@@ -100,30 +103,15 @@ export const KnowledgeRelated = ({ slug, language }) => {
     </nav>
   );
 };
-export const breadcrumbSchema = (slug, language, rootUrl) => {
-  const node = findNode(slug);
-  if (!node) return null;
-  const cluster = clusters.find((c) => c.id === node.cluster),
-    i = languageIndex(language);
-  const links = [
-    [labels.home[i], localizedPath("/", language)],
-    [labels.center[i], localizedPath("/blog/", language)],
-    [
-      label(cluster, language),
-      `${localizedPath("/blog/", language)}#${cluster.id}`,
-    ],
-    [
-      getKnowledgeArticle(slug, language).title,
-      localizedPath(`/blog/${slug}/`, language),
-    ],
-  ];
-  return {
-    "@type": "BreadcrumbList",
-    itemListElement: links.map(([name, url], index) => ({
+
+export const breadcrumbSchema = ({ title, guide, language, rootUrl }) => ({
+  "@type": "BreadcrumbList",
+  itemListElement: trail({ title, guide, language }).map(
+    ([name, url], index) => ({
       "@type": "ListItem",
       position: index + 1,
       name,
       item: `${rootUrl}${url}`,
-    })),
-  };
-};
+    }),
+  ),
+});

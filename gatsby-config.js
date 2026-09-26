@@ -3,9 +3,7 @@
  */
 require("dotenv").config();
 
-const { publishedBlogSlugs } = require("./src/data/publishedBlogSlugs");
-const knowledgeArticles = require("./src/data/knowledgeArticles.json");
-const knowledgeArticleMedia = require("./src/data/knowledgeArticleMedia.json");
+const { retiredBlogSlugs } = require("./src/data/retiredBlogRedirects");
 const { retiredPackageSlugs } = require("./src/data/retiredPackageSlugs");
 
 const publicCrawlers = [
@@ -77,23 +75,23 @@ const seoLastModified = new Map(
   ),
 );
 
-// Use the reviewed content date, never the build clock, for editorial URLs.
-for (const [slug, versions] of Object.entries(knowledgeArticles)) {
-  for (const [language, article] of Object.entries(versions)) {
-    const prefix = language === "en-US" ? "" : `/${language}`;
-    seoLastModified.set(
-      `${prefix}/blog/${slug}/`,
-      [article.reviewedAt, knowledgeArticleMedia[slug]?.updatedAt].filter(Boolean).sort().pop(),
-    );
-    const indexPath = `${prefix}/blog/`;
-    if (
-      !seoLastModified.has(indexPath) ||
-      seoLastModified.get(indexPath) < article.reviewedAt
-    ) {
-      seoLastModified.set(indexPath, article.reviewedAt);
-    }
+// Blog guides come from Sanity, so their lastmod is set from the sitemap query
+// (below): a guide's page uses the later of its review date and its guide's
+// "last updated" date; each /blog/ index uses its language's latest review.
+const blogLastModified = (posts) => {
+  const dates = new Map();
+  const later = (path, date) => {
+    if (date && (!dates.has(path) || dates.get(path) < date)) dates.set(path, date);
+  };
+  for (const post of posts) {
+    const slug = post.guide?.slug?.current;
+    if (!slug) continue;
+    const prefix = post.language === "en" ? "" : `/${post.language}`;
+    later(`${prefix}/blog/${slug}/`, [post.reviewedAt, post.guide.updatedAt].filter(Boolean).sort().pop());
+    later(`${prefix}/blog/`, post.reviewedAt);
   }
-}
+  return dates;
+};
 
 // Sitemap defence in depth: page creation already blocks these routes, but the
 // sitemap must also remain clean if another plugin or future template creates
@@ -101,7 +99,7 @@ for (const [slug, versions] of Object.entries(knowledgeArticles)) {
 const isRetiredOrUnapprovedContentPath = (value) => {
   const normalized = `/${String(value || "")}`.replace(/\/{2,}/g, "/");
   const blogMatch = normalized.match(/^\/(?:(?:es|pt|fr)\/)?blog\/([^/]+)\/?$/);
-  if (blogMatch && !publishedBlogSlugs.has(blogMatch[1].toLowerCase())) {
+  if (blogMatch && retiredBlogSlugs.has(blogMatch[1].toLowerCase())) {
     return true;
   }
 
@@ -172,10 +170,29 @@ module.exports = {
               path
             }
           }
+          allSanityBlogPost {
+            nodes {
+              language
+              reviewedAt
+              guide {
+                slug {
+                  current
+                }
+                updatedAt
+              }
+            }
+          }
         }
         `,
-        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
-          return allPages.filter(
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allSanityBlogPost: { nodes: blogPosts },
+        }) => {
+          const blogDates = blogLastModified(blogPosts);
+          return allPages.map((page) => ({
+            ...page,
+            lastmod: blogDates.get(page.path) || seoLastModified.get(page.path),
+          })).filter(
             (page) =>
               !page.path.includes("admin") &&
               !page.path.includes("/contact/thankyou/") &&
@@ -200,9 +217,7 @@ module.exports = {
         serialize: (page) => {
           return {
             url: page.path,
-            ...(seoLastModified.has(page.path)
-              ? { lastmod: seoLastModified.get(page.path) }
-              : {}),
+            ...(page.lastmod ? { lastmod: page.lastmod } : {}),
           };
         },
       },

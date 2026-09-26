@@ -40,10 +40,6 @@ const loadSourceModule = (modulePath) => {
   return module.exports;
 };
 
-const { publishedBlogSlugs } = require("../src/data/publishedBlogSlugs");
-const { portugueseBlogContent } = loadSourceModule(
-  "src/data/portugueseBlogContent.js",
-);
 const { portugueseProposalPackageContent } = loadSourceModule(
   "src/data/portugueseProposalPackageContent.js",
 );
@@ -56,30 +52,6 @@ const { SITE_LANGUAGES, localizedPath } = loadSourceModule(
 
 assert.deepEqual(SITE_LANGUAGES, ["en-US", "es", "pt", "fr"]);
 assert.equal(localizedPath("/proposal/", "pt"), "/pt/proposal/");
-
-const publishedSlugs = [...publishedBlogSlugs].sort();
-const translatedSlugs = Object.keys(portugueseBlogContent).sort();
-assert.deepEqual(
-  translatedSlugs,
-  publishedSlugs,
-  "Every published article must have exactly one Portuguese translation",
-);
-
-for (const [slug, article] of Object.entries(portugueseBlogContent)) {
-  assert.ok(article.title?.trim(), `${slug}: missing Portuguese title`);
-  assert.ok(
-    article.description?.trim(),
-    `${slug}: missing Portuguese meta description`,
-  );
-  assert.ok(
-    article.directAnswer?.trim(),
-    `${slug}: missing Portuguese direct answer`,
-  );
-  assert.ok(
-    article.sections?.length >= 2,
-    `${slug}: Portuguese article body is incomplete`,
-  );
-}
 
 const packageIds = proposalPackageDetails.map((item) => item.id).sort();
 assert.deepEqual(
@@ -133,11 +105,10 @@ const corePaths = [
 ];
 const expectedPortuguesePaths = [
   ...corePaths,
-  ...publishedSlugs.map((slug) => `/pt/blog/${slug}/`),
   ...packageIds.map((id) => `/pt/packages/${packageSlugs.get(id)}/`),
 ];
-assert.equal(expectedPortuguesePaths.length, 34);
-assert.equal(new Set(expectedPortuguesePaths).size, 34);
+assert.equal(expectedPortuguesePaths.length, 19);
+assert.equal(new Set(expectedPortuguesePaths).size, 19);
 
 const gatsbyNodeSource = fs.readFileSync(
   path.join(projectRoot, "gatsby-node.js"),
@@ -147,13 +118,9 @@ assert.match(gatsbyNodeSource, /pt:\s*\{\s*path:\s*["']pt["']/);
 assert.match(gatsbyNodeSource, /\["pt",\s*"fr"\]\.forEach/);
 assert.match(
   gatsbyNodeSource,
-  /path:\s*`\/\$\{derivedLanguage\}\/blog\/\$\{slug\}`/,
-);
-assert.match(
-  gatsbyNodeSource,
   /path:\s*`\/\$\{derivedLanguage\}\/packages\/\$\{node\.urlSlug/,
 );
 
 console.log(
-  `Validated ${expectedPortuguesePaths.length} Portuguese routes: ${publishedSlugs.length} articles, ${packageIds.length} noindex proposal packages, the blog index and 7 core pages.`,
+  `Validated ${expectedPortuguesePaths.length} Portuguese routes: ${packageIds.length} noindex proposal packages, the blog index and 7 core pages (guide pages come from Sanity; see validate-knowledge-graph.js).`,
 );

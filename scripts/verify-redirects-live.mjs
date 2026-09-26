@@ -32,9 +32,17 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const { groups, categoryRedirects, retiredBlogSlugs } = require(
   path.join(here, "..", "src", "data", "retiredBlogRedirects.js"),
 );
-const { publishedBlogSlugs } = require(
-  path.join(here, "..", "src", "data", "publishedBlogSlugs.js"),
+// Published guides come from Sanity (public dataset, no token needed).
+const guideQuery = encodeURIComponent(
+  '*[_type == "blogGuide" && !(_id in path("drafts.**"))].slug.current',
 );
+const guideResponse = await fetch(
+  `https://mj6f2710.apicdn.sanity.io/v2025-09-19/data/query/production?query=${guideQuery}`,
+);
+if (!guideResponse.ok) {
+  throw new Error(`Could not read the published guides from Sanity: ${guideResponse.status}`);
+}
+const publishedBlogSlugs = new Set((await guideResponse.json()).result);
 const { gonePackageSlugs, retiredPackageRedirects } = require(
   path.join(here, "..", "src", "data", "retiredPackageSlugs.js"),
 );

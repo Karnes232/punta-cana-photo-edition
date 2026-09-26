@@ -4,8 +4,8 @@ const fs = require("fs");
 const {
   groups: retiredBlogRedirectGroups,
   categoryRedirects: retiredBlogCategoryRedirects,
+  retiredBlogSlugs,
 } = require("./src/data/retiredBlogRedirects");
-const { isPublishedBlogSlug } = require("./src/data/publishedBlogSlugs");
 const { retiredPackageSlugs } = require("./src/data/retiredPackageSlugs");
 
 const retiredStaticPaths = new Set([
@@ -35,54 +35,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   const typeDefs = `
     type ContentfulPackagePageContent implements Node {
       videoUrl: String
-    }
-
-    type ContentfulBlogPost implements Node {
-      directAnswer: contentfulBlogPostDirectAnswerTextNode @link(from: "directAnswer___NODE")
-      primaryCtaTitle: String
-      primaryCtaText: contentfulBlogPostPrimaryCtaTextTextNode @link(from: "primaryCtaText___NODE")
-      primaryCtaButtonText: String
-      primaryCtaButtonUrl: String
-      galleryImages: [ContentfulBlogGalleryImage] @link(from: "galleryImages___NODE")
-      articleContent: ContentfulBlogPostArticleContent
-      socialEmbeds: [ContentfulBlogSocialEmbed] @link(from: "socialEmbeds___NODE")
-      helpTitle: String
-      helpText: contentfulBlogPostHelpTextTextNode @link(from: "helpText___NODE")
-      helpWhatsAppEnabled: Boolean
-      helpWhatsAppUrl: String
-      helpEmailEnabled: Boolean
-      helpEmailAddress: String
-      helpCustomLinkEnabled: Boolean
-      helpCustomLinkText: String
-      helpCustomLinkUrl: String
-    }
-
-    type contentfulBlogPostDirectAnswerTextNode implements Node {
-      directAnswer: String
-    }
-
-    type contentfulBlogPostPrimaryCtaTextTextNode implements Node {
-      primaryCtaText: String
-    }
-
-    type contentfulBlogPostHelpTextTextNode implements Node {
-      helpText: String
-    }
-
-    type ContentfulBlogPostArticleContent {
-      raw: String
-      references: [ContentfulReference] @link(from: "references___NODE")
-    }
-
-    type ContentfulBlogGalleryImage implements Node {
-      image: ContentfulAsset @link(from: "image___NODE")
-      altText: String
-      caption: String
-    }
-
-    type ContentfulBlogSocialEmbed implements Node {
-      platform: String
-      url: String
     }
 
     # Optional fields on this type are inferred from entry data, so the schema
@@ -119,11 +71,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           node_locale
         }
       }
-      allContentfulBlogPost {
+      allSanityBlogPost {
         nodes {
-          slug
-          id
-          node_locale
+          _id
+          language
+          guide {
+            slug {
+              current
+            }
+          }
         }
       }
     }
@@ -140,41 +96,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // One language-neutral document, shared by every blog and package page.
   const layout = queryResults.data.sanityGeneralLayout;
 
-  queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
-    const slug = node.slug?.trim();
-    if (!slug || !isPublishedBlogSlug(slug)) return;
-
-    // Get language code for URL from the Contentful locale
-    const lang = node.node_locale === "en-US" ? "" : node.node_locale;
-    const langPrefix = lang ? `/${lang}` : "";
+  // Blog guides: one page per published Blog Post (a guide's text in one
+  // language) whose Blog Guide is published too, at /<lang>/blog/<address>/.
+  queryResults.data.allSanityBlogPost.nodes.forEach((node) => {
+    const slug = node.guide?.slug?.current;
+    if (!slug) return;
+    // A retired address has a redirect or a deliberate 404; a guide must not
+    // take it over.
+    if (retiredBlogSlugs.has(slug)) {
+      reporter.panicOnBuild(
+        `Blog guide "${slug}" reuses a retired blog address. Choose another address in Sanity.`,
+      );
+      return;
+    }
+    const pageLanguage = node.language === "en" ? "en-US" : node.language;
+    const langPrefix = node.language === "en" ? "" : `/${node.language}`;
     createPage({
       path: `${langPrefix}/blog/${slug}`,
       component: blogTemplate,
       context: {
-        id: node.id,
-        language: node.node_locale, // Pass the language to the template
-        contentLanguage: node.node_locale,
-        blog: node,
+        id: node._id,
+        language: pageLanguage,
+        sanityLanguage: node.language,
         layout,
       },
-      // defer: true,
     });
-
-    if (node.node_locale === "en-US") {
-      ["pt", "fr"].forEach((derivedLanguage) =>
-        createPage({
-          path: `/${derivedLanguage}/blog/${slug}`,
-          component: blogTemplate,
-          context: {
-            id: node.id,
-            language: derivedLanguage,
-            contentLanguage: "en-US",
-            blog: node,
-            layout,
-          },
-        }),
-      );
-    }
   });
 
   queryResults.data.allContentfulPackagePageContent.nodes.forEach((node) => {

@@ -1,6 +1,4 @@
 import React from "react";
-import { getKnowledgeArticle } from "../data/knowledgeContent";
-import { getKnowledgeMedia } from "../data/knowledgeMedia";
 import {
   KnowledgeBreadcrumbs,
   KnowledgeToc,
@@ -10,190 +8,117 @@ import {
 import "../styles/knowledge-center.css";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
-import BlogBody from "../components/BlogComponents/BlogBody";
-import PortugueseBlogBody from "../components/BlogComponents/PortugueseBlogBody";
-import FrenchBlogBody from "../components/BlogComponents/FrenchBlogBody";
 import StructuredBlogBody from "../components/BlogComponents/StructuredBlogBody";
-import BlogGallery from "../components/BlogComponents/BlogGallery";
-import LazySocialEmbeds from "../components/BlogComponents/LazySocialEmbeds";
 import Seo from "../components/Layout/seo";
 import LocalizedAlternates from "../components/Layout/LocalizedAlternates";
-import { localizeProposalUrl } from "../utils/localizedLinks";
-import { getPortugueseBlogContent } from "../data/portugueseBlogContent";
-import { getFrenchBlogContent } from "../data/frenchBlogContent";
-import { getFeaturedProposalGuide } from "../data/featuredProposalGuide";
+import { siteLink } from "../components/HomeComponents/siteLink";
+import { guideSlug } from "../utils/blogGuides";
 import {
   getLanguageConfig,
   localizedUrl,
   normalizeLanguage,
 } from "../utils/siteLocales";
-const { findNode } = require("../data/knowledgeGraph");
 
-const safeUrl = (value) => {
-  if (typeof value !== "string") return "";
-  const url = value.trim();
-  return /^(https?:\/\/|\/|mailto:|tel:)/i.test(url) ? url : "";
-};
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
 
-const textValue = (value, fieldName) =>
-  typeof value === "string" ? value : value?.[fieldName] || "";
-
-const normalizePost = (post) => ({
-  ...post,
-  directAnswer: textValue(post.directAnswer, "directAnswer"),
-  primaryCtaText: textValue(post.primaryCtaText, "primaryCtaText"),
-  helpText: textValue(post.helpText, "helpText"),
-});
-
+// A guide's page: its text in this language (Blog Post) and the shared parts
+// (Blog Guide: address, photo, event type, related guides), both from Sanity.
 const BlogCta = ({ post, language }) => {
-  const url = localizeProposalUrl(safeUrl(post.primaryCtaButtonUrl), language);
-  if (
-    !post.primaryCtaTitle &&
-    !post.primaryCtaText &&
-    !(post.primaryCtaButtonText && url)
-  ) {
+  const url = siteLink(post.ctaButton?.url, language);
+  const label = post.ctaButton?.label;
+  if (!post.ctaTitle && !post.ctaText && !(label && url)) {
     return null;
   }
 
   return (
     <section className="blog-cta" aria-labelledby="blog-primary-cta">
-      {post.primaryCtaTitle && (
-        <h2 id="blog-primary-cta">{post.primaryCtaTitle}</h2>
-      )}
-      {post.primaryCtaText && <p>{post.primaryCtaText}</p>}
-      {post.primaryCtaButtonText && url && (
-        <a href={url}>{post.primaryCtaButtonText}</a>
-      )}
+      {post.ctaTitle && <h2 id="blog-primary-cta">{post.ctaTitle}</h2>}
+      {post.ctaText && <p>{post.ctaText}</p>}
+      {label && url && <a href={url}>{label}</a>}
     </section>
   );
 };
 
-const BlogHelp = ({ post, language }) => {
-  const whatsappUrl = post.helpWhatsAppEnabled
-    ? safeUrl(post.helpWhatsAppUrl)
-    : "";
-  const email = post.helpEmailEnabled
-    ? String(post.helpEmailAddress || "").trim()
-    : "";
-  const customUrl = post.helpCustomLinkEnabled
-    ? localizeProposalUrl(safeUrl(post.helpCustomLinkUrl), language)
-    : "";
-  const hasLinks =
-    whatsappUrl || email || (customUrl && post.helpCustomLinkText);
+const BlogHelp = ({ post, telephone }) => {
+  const phone = String(telephone || "").replace(/\D/g, "");
+  const whatsappUrl = post.helpWhatsApp && phone ? `https://wa.me/${phone}` : "";
 
-  if (!post.helpTitle && !post.helpText && !hasLinks) return null;
+  if (!post.helpTitle && !post.helpText && !whatsappUrl) return null;
 
   return (
     <aside className="blog-help" aria-labelledby="blog-help-title">
       {post.helpTitle && <h2 id="blog-help-title">{post.helpTitle}</h2>}
       {post.helpText && <p>{post.helpText}</p>}
-      {hasLinks && (
+      {whatsappUrl && (
         <div className="blog-help__links">
-          {whatsappUrl && <a href={whatsappUrl}>WhatsApp</a>}
-          {email && <a href={`mailto:${email}`}>{email}</a>}
-          {customUrl && post.helpCustomLinkText && (
-            <a href={customUrl}>{post.helpCustomLinkText}</a>
-          )}
+          <a href={whatsappUrl}>WhatsApp</a>
         </div>
       )}
     </aside>
   );
 };
 
-const Blog = ({ pageContext, data }) => {
-  const rawPost = data?.allContentfulBlogPost?.nodes?.[0];
-  if (!rawPost) return null;
-  const language = normalizeLanguage(pageContext.language);
-  const featured =
-    getKnowledgeArticle(rawPost.slug, language) ||
-    getFeaturedProposalGuide(rawPost.slug, language);
-  const portuguese =
-    language === "pt" && !featured
-      ? getPortugueseBlogContent(rawPost.slug)
-      : null;
-  const french =
-    language === "fr" && !featured ? getFrenchBlogContent(rawPost.slug) : null;
-  const post = normalizePost(
-    featured
-      ? { ...rawPost, ...featured }
-      : portuguese
-        ? { ...rawPost, ...portuguese }
-        : french
-          ? { ...rawPost, ...french }
-          : rawPost,
+// Each related guide's title and summary in this language, by guide id.
+const textsByGuide = (data) =>
+  Object.fromEntries(
+    data.allSanityBlogPost.nodes.map((text) => [text.guide?._id, text]),
   );
-  const articleMedia = getKnowledgeMedia(post.slug, language);
-  const galleryImages = (
-    !articleMedia && findNode(post.slug)?.cluster === "proposals" ? post.galleryImages || [] : []
-  ).map((item, index) => ({
-    ...item,
-    altText: featured?.galleryAltTexts?.[index] || item.altText,
-    localizedAltText: featured?.galleryAltTexts?.[index] || "",
-    localizedCaption: featured?.galleryCaptions?.[index] || "",
-    caption: featured?.galleryCaptions?.[index] || item.caption,
-  }));
-  if (portuguese && post.helpCustomLinkEnabled) {
-    post.helpCustomLinkText = "Saiba mais";
-  }
-  if (french && post.helpCustomLinkEnabled) {
-    post.helpCustomLinkText = "En savoir plus";
-  }
+
+const Blog = ({ pageContext, data }) => {
+  const post = data.sanityBlogPost;
+  const guide = post?.guide;
+  if (!guide) return null;
+  const language = normalizeLanguage(pageContext.language);
+  const photo = guide.heroImage?.asset;
+  const photoSize = photo?.metadata?.dimensions;
 
   return (
     <Layout generalInfo={pageContext.layout}>
       <main className="universal-blog">
         <article>
-          <KnowledgeBreadcrumbs slug={post.slug} language={language} />
+          <KnowledgeBreadcrumbs
+            title={post.title}
+            guide={guide}
+            language={language}
+          />
           <header className="universal-blog__header">
             <h1>{post.title}</h1>
-            {featured && (
-              <div className="knowledge-byline">
-                <strong>{featured.author}</strong>
-                {featured.authorRole && <span>{featured.authorRole}</span>}
-                <span>{featured.reviewNote}</span>
-              </div>
-            )}
+            <div className="knowledge-byline">
+              <strong>{post.authorName}</strong>
+              {post.authorRole && <span>{post.authorRole}</span>}
+              <span>{post.reviewNote}</span>
+            </div>
             {post.directAnswer && (
               <p className="universal-blog__answer">{post.directAnswer}</p>
             )}
           </header>
           <BlogCta post={post} language={language} />
-          {featured && <KnowledgeToc article={featured} language={language} />}
-          {articleMedia && (
+          <KnowledgeToc sections={post.sections || []} language={language} />
+          {photo?.url && (
             <figure className="knowledge-article-image">
               <img
-                src={articleMedia.url}
-                srcSet={articleMedia.srcSet}
+                src={photo.url}
+                srcSet={`${photo.url}?w=640 640w, ${photo.url} ${photoSize.width}w`}
                 sizes="(min-width: 1024px) 960px, 100vw"
-                alt={articleMedia.alt}
-                width={articleMedia.width}
-                height={articleMedia.height}
+                alt={post.heroAlt}
+                width={photoSize.width}
+                height={photoSize.height}
                 loading="lazy"
                 decoding="async"
               />
-              {articleMedia.credit && <figcaption>{articleMedia.credit}</figcaption>}
+              {guide.imageCredit && (
+                <figcaption>{guide.imageCredit}</figcaption>
+              )}
             </figure>
           )}
-          <BlogGallery
-            images={galleryImages}
+          <StructuredBlogBody post={post} language={language} />
+          <KnowledgeRelated
+            guide={guide}
+            texts={textsByGuide(data)}
             language={language}
-            articleTitle={post.title}
           />
-          {featured ? (
-            <StructuredBlogBody article={featured} language={language} />
-          ) : portuguese ? (
-            <PortugueseBlogBody article={portuguese} />
-          ) : french ? (
-            <FrenchBlogBody article={french} />
-          ) : (
-            <BlogBody context={post.articleContent} language={language} />
-          )}
-          <LazySocialEmbeds
-            embeds={post.socialEmbeds}
-            language={pageContext.language}
-          />
-          <KnowledgeRelated slug={post.slug} language={language} />
-          <BlogHelp post={post} language={language} />
+          <BlogHelp post={post} telephone={pageContext.layout?.telephone} />
         </article>
       </main>
     </Layout>
@@ -203,69 +128,38 @@ const Blog = ({ pageContext, data }) => {
 export default Blog;
 
 export const Head = ({ pageContext, data }) => {
-  const rawPost = data?.allContentfulBlogPost?.nodes?.[0];
-  if (!rawPost) return null;
+  const post = data.sanityBlogPost;
+  const guide = post?.guide;
+  if (!guide) return null;
   const language = normalizeLanguage(pageContext.language);
   const languageConfig = getLanguageConfig(language);
-  const featured =
-    getKnowledgeArticle(rawPost.slug, language) ||
-    getFeaturedProposalGuide(rawPost.slug, language);
-  const portuguese =
-    language === "pt" && !featured
-      ? getPortugueseBlogContent(rawPost.slug)
-      : null;
-  const french =
-    language === "fr" && !featured ? getFrenchBlogContent(rawPost.slug) : null;
-  const post = normalizePost(
-    featured
-      ? { ...rawPost, ...featured }
-      : portuguese
-        ? { ...rawPost, ...portuguese }
-        : french
-          ? { ...rawPost, ...french }
-          : rawPost,
-  );
-  const seoTitle =
-    featured?.seoTitle ||
-    portuguese?.seoTitle ||
-    french?.seoTitle ||
-    post.title;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
-  const articlePath = `/blog/${post.slug.trim()}/`;
+  const articlePath = `/blog/${guideSlug(guide)}/`;
   const siteUrl = localizedUrl(rootUrl, articlePath, language);
-  const socialImage =
-    findNode(post.slug)?.cluster === "proposals"
-      ? post.galleryImages?.[0]?.image
-      : null;
-  const knowledgeMedia = getKnowledgeMedia(post.slug, language);
-  const imageSource = knowledgeMedia?.url || socialImage?.url;
-  const imageUrl = imageSource ? new URL(imageSource, rootUrl).href : undefined;
-  const imageAlt =
-    knowledgeMedia?.alt ||
-    (featured?.galleryAltTexts?.[0]
-      ? featured.galleryAltTexts[0]
-      : language === "pt"
-        ? `${post.title} em Punta Cana`
-        : language === "fr"
-          ? `${post.title} à Punta Cana`
-          : post.galleryImages?.[0]?.altText || "");
+  const photoUrl = guide.heroImage?.asset?.url;
+  const imageUrl = shareImageUrl(photoUrl);
+  const description = post.description || post.directAnswer;
 
   const articleSchema = {
     "@type": "BlogPosting",
     "@id": `${siteUrl}#article`,
     headline: post.title,
-    description: post.description || post.directAnswer,
+    description,
     mainEntityOfPage: siteUrl,
     inLanguage: languageConfig.htmlLang,
-    ...(imageUrl ? { image: imageUrl } : {}),
-    ...(post.publishedDate ? { datePublished: post.publishedDate } : {}),
-    ...((post.updatedAt || knowledgeMedia?.updatedAt) ? {
-      dateModified: [post.updatedAt, knowledgeMedia?.updatedAt].filter(Boolean).sort().pop(),
-    } : {}),
+    ...(photoUrl ? { image: photoUrl } : {}),
+    ...(guide.updatedAt ? { dateModified: guide.updatedAt } : {}),
     author: {
-      "@type": featured?.authorType || "Organization",
-      name: featured?.author || "Sertuin Events",
-      ...(featured?.authorType === "Person" && featured?.author?.includes("Grecia") ? { "@id": `${rootUrl}/puntacana-wedding-planner/#grecia-mejia`, url: `${rootUrl}/puntacana-wedding-planner/` } : featured?.authorType === "Organization" ? { "@id": `${rootUrl}/#organization`, url: rootUrl } : {}),
+      "@type": post.authorType || "Organization",
+      name: post.authorName || "Sertuin Events",
+      ...(post.authorType === "Person" && post.authorName?.includes("Grecia")
+        ? {
+            "@id": `${rootUrl}/puntacana-wedding-planner/#grecia-mejia`,
+            url: `${rootUrl}/puntacana-wedding-planner/`,
+          }
+        : post.authorType === "Organization"
+          ? { "@id": `${rootUrl}/#organization`, url: rootUrl }
+          : {}),
     },
     publisher: {
       "@type": "Organization",
@@ -279,14 +173,14 @@ export const Head = ({ pageContext, data }) => {
     "@context": "https://schema.org",
     "@graph": [
       articleSchema,
-      breadcrumbSchema(post.slug, language, rootUrl),
-      ...(featured?.faqs?.length
+      breadcrumbSchema({ title: post.title, guide, language, rootUrl }),
+      ...(post.faqs?.length
         ? [
             {
               "@type": "FAQPage",
               "@id": siteUrl + "#faq",
               inLanguage: languageConfig.htmlLang,
-              mainEntity: featured.faqs.map(([question, answer]) => ({
+              mainEntity: post.faqs.map(({ question, answer }) => ({
                 "@type": "Question",
                 name: question,
                 acceptedAnswer: { "@type": "Answer", text: answer },
@@ -294,17 +188,17 @@ export const Head = ({ pageContext, data }) => {
             },
           ]
         : []),
-    ].filter(Boolean),
+    ],
   };
 
   return (
     <>
       <Seo
-        title={seoTitle}
+        title={post.seoTitle || post.title}
         ogType="article"
-        description={post.description || post.directAnswer}
+        description={description}
         image={imageUrl}
-        imageAlt={imageAlt}
+        imageAlt={post.heroAlt}
         url={siteUrl}
         language={languageConfig.htmlLang}
         siteName="Sertuin Events"
@@ -325,7 +219,7 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query UniversalBlogPost($id: String, $contentLanguage: String = "en-US") {
+  query UniversalBlogPost($id: String!, $sanityLanguage: String!) {
     locales: allLocale {
       edges {
         node {
@@ -340,67 +234,97 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulBlogPost(
-      filter: { id: { eq: $id }, node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
-        id
-        title
-        slug
-        description
-        directAnswer {
-          directAnswer
+    sanityBlogPost(_id: { eq: $id }) {
+      title
+      seoTitle
+      description
+      directAnswer
+      heroAlt
+      sections {
+        heading
+        intro
+        paragraphs
+        steps {
+          label
+          detail
         }
-        publishedDate
+        bullets
+        note
+        sources {
+          label
+          url
+        }
+      }
+      faqHeading
+      faqs {
+        question
+        answer
+      }
+      authorName
+      authorType
+      authorRole
+      reviewNote
+      ctaTitle
+      ctaText
+      ctaButton {
+        label
+        url
+      }
+      helpTitle
+      helpText
+      helpWhatsApp
+      guide {
+        _id
+        slug {
+          current
+        }
         updatedAt
-        primaryCtaTitle
-        primaryCtaText {
-          primaryCtaText
-        }
-        primaryCtaButtonText
-        primaryCtaButtonUrl
-        galleryImages {
-          contentful_id
-          altText
-          caption
-          image {
+        imageCredit
+        heroImage {
+          asset {
             url
-            width
-            height
-          }
-        }
-        articleContent {
-          raw
-          references {
-            ... on ContentfulAsset {
-              contentful_id
-              url
-              width
-              height
-              description
+            metadata {
+              dimensions {
+                width
+                height
+              }
             }
           }
         }
-        socialEmbeds {
-          contentful_id
-          platform
-          url
-        }
-        helpTitle
-        helpText {
-          helpText
-        }
-        helpWhatsAppEnabled
-        helpWhatsAppUrl
-        helpEmailEnabled
-        helpEmailAddress
-        helpCustomLinkEnabled
-        helpCustomLinkText
-        helpCustomLinkUrl
-        schema {
-          internal {
-            content
+        category {
+          key
+          label {
+            en
+            es
+            pt
+            fr
           }
+        }
+        related {
+          _id
+          slug {
+            current
+          }
+          category {
+            label {
+              en
+              es
+              pt
+              fr
+            }
+          }
+        }
+        next {
+          _id
+        }
+      }
+    }
+    allSanityBlogPost(filter: { language: { eq: $sanityLanguage } }) {
+      nodes {
+        title
+        description
+        guide {
+          _id
         }
       }
     }
