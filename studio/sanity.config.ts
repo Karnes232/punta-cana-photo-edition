@@ -10,7 +10,12 @@ import { languages } from "./schemaTypes/shared/languages"
 import { hiddenTypes, singletonTypes, structure } from "./structure"
 
 // Types with one document per language, linked through the Translations menu.
-export const translatedTypes = ["homePage", "contactPage", "notFoundPage"]
+export const translatedTypes = [
+  "homePage",
+  "contactPage",
+  "notFoundPage",
+  "shareExperiencePage",
+]
 
 // Singletons can be edited and published, but not duplicated or deleted.
 const singletonActions = new Set(["publish", "discardChanges", "restore", "unpublish"])

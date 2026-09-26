@@ -1,4 +1,5 @@
 import { CogIcon } from "@sanity/icons/Cog"
+import { CommentIcon } from "@sanity/icons/Comment"
 import { EnvelopeIcon } from "@sanity/icons/Envelope"
 import { HomeIcon } from "@sanity/icons/Home"
 import { WarningOutlineIcon } from "@sanity/icons/WarningOutline"
@@ -11,6 +12,7 @@ export const singletonTypes = new Set([
   "homePage",
   "contactPage",
   "notFoundPage",
+  "shareExperiencePage",
 ])
 
 // Hidden from the content list and the "new document" menu: the singletons, the tags
@@ -51,6 +53,7 @@ export const structure: StructureResolver = (S) => {
       singleton("generalLayout", "General Layout", CogIcon),
       translatedPage("homePage", "Home Page", HomeIcon),
       translatedPage("contactPage", "Contact Page", EnvelopeIcon),
+      translatedPage("shareExperiencePage", "Share Your Experience", CommentIcon),
       translatedPage("notFoundPage", "404 Page", WarningOutlineIcon),
       S.divider(),
       ...S.documentTypeListItems().filter((item) => !hiddenTypes.has(item.getId() ?? "")),
