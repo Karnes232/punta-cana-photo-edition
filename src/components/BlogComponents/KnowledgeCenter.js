@@ -60,10 +60,11 @@ export const centerCopy = {
     "Elopements et renouvellement de vœux",
   ],
 };
+const weddingGuides = require("../../data/weddingGuideMetadata.json");
 const KnowledgeCenter = ({ language, availableSlugs }) => {
   const i = languageIndex(language);
   const available = new Set(availableSlugs);
-  const active = nodes.filter((n) => available.has(n.slug));
+  const active = [...nodes.filter((n) => available.has(n.slug)), ...Object.keys(weddingGuides).map(slug => ({ id: slug, slug, cluster: "weddings" }))];
   return (
     <main className="knowledge-center">
       <header className="knowledge-center__hero">
