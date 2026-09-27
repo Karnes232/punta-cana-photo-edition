@@ -146,9 +146,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     generalLayouts.find((node) => node.node_locale === "en-US") ||
     generalLayouts[0];
 
+  // Reviewed local articles use the existing layout and do not depend on CMS entries.
+  const weddingMetadata = require("./src/data/weddingGuideMetadata.json");
+  const weddingBodies = require("./src/data/weddingGuideBodies.json");
+  for (const [slug, versions] of Object.entries(weddingMetadata)) {
+    for (const [language, post] of Object.entries(versions)) {
+      const config = localeMapping[language];
+      createPage({
+        path: `/${config.path ? config.path + "/" : ""}blog/${slug}/`,
+        component: path.resolve("src/template/wedding-guide.js"),
+        context: { language, contentLanguage: config.contentLanguage,
+          layout: layoutFor(config.contentLanguage), slug,
+          post: { ...post, html: weddingBodies[slug][language] } },
+      });
+    }
+  }
+
   queryResults.data.allContentfulBlogPost.nodes.forEach((node) => {
     const slug = node.slug?.trim();
-    if (!slug || !isPublishedBlogSlug(slug)) return;
+    if (!slug || !isPublishedBlogSlug(slug) || weddingMetadata[slug]) return;
 
     // Get language code for URL from the Contentful locale
     const lang = node.node_locale === "en-US" ? "" : node.node_locale;
