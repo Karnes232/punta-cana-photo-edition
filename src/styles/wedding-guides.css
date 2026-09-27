@@ -1,0 +1,5 @@
+.wedding-guide-table { max-width: 100%; overflow-x: auto; margin: 1.5rem 0; }
+.wedding-guide-table table { width: 100%; border-collapse: collapse; }
+.wedding-guide-table th, .wedding-guide-table td { padding: .75rem; border: 1px solid #d5d5d0; text-align: start; vertical-align: top; }
+.wedding-guide-table th { background: #f4f3ef; }
+.blog-article-content a { text-decoration: underline; text-underline-offset: .15em; }
