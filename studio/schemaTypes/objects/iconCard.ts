@@ -34,6 +34,9 @@ export const cardIcons = [
   { title: "Crossed fork and knife (dinner)", value: "utensils-crossed" },
   { title: "Calendar with check (date)", value: "calendar-check-2" },
   { title: "Document (agreement)", value: "file-text" },
+  { title: "Clock (duration)", value: "clock-3" },
+  { title: "Glass (drinks)", value: "glass-water" },
+  { title: "Two people (team)", value: "users-round" },
 ]
 
 // A card with an icon, a title and a short text, e.g. one service in

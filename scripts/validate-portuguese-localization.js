@@ -40,12 +40,6 @@ const loadSourceModule = (modulePath) => {
   return module.exports;
 };
 
-const { portugueseProposalPackageContent } = loadSourceModule(
-  "src/data/portugueseProposalPackageContent.js",
-);
-const { proposalPackageDetails } = loadSourceModule(
-  "src/data/proposalPackageDetails.js",
-);
 const { SITE_LANGUAGES, localizedPath } = loadSourceModule(
   "src/utils/siteLocales.js",
 );
@@ -53,17 +47,8 @@ const { SITE_LANGUAGES, localizedPath } = loadSourceModule(
 assert.deepEqual(SITE_LANGUAGES, ["en-US", "es", "pt", "fr"]);
 assert.equal(localizedPath("/proposal/", "pt"), "/pt/proposal/");
 
-const packageIds = proposalPackageDetails.map((item) => item.id).sort();
-assert.deepEqual(
-  Object.keys(portugueseProposalPackageContent).sort(),
-  packageIds,
-  "Every live proposal package must have Portuguese content",
-);
-for (const [id, content] of Object.entries(portugueseProposalPackageContent)) {
-  assert.ok(content.summary?.trim(), `${id}: missing Portuguese summary`);
-  assert.ok(content.setup?.length, `${id}: missing Portuguese inclusions`);
-  assert.ok(content.exclusions?.length, `${id}: missing Portuguese exclusions`);
-}
+// Proposal package pages live in Sanity; validate-proposal-schema-source.js
+// checks that every package has a Portuguese name and summary.
 
 const englishLocale = JSON.parse(
   fs.readFileSync(
@@ -80,19 +65,6 @@ assert.deepEqual(
   "Portuguese global UI translations must cover every English key",
 );
 
-const packageSlugs = new Map([
-  ["infinity-love", "infinity-love-proposal"],
-  ["golden-whisper", "golden-whisper"],
-  ["amour-essence", "amour-essence"],
-  ["sign-of-love", "sign-of-love-proposal"],
-  ["amour-by-the-sea", "amour-by-the-sea"],
-  ["coral-passion", "coral-passion"],
-  ["romantic-hoopa", "romantic-huppa-proposal"],
-  ["white-serenity", "white-serenity-proposal"],
-  ["romantic-dinner-marriage-proposal", "romantic-dinner-marriage-proposal"],
-  ["cozy-love", "cozy-love"],
-  ["eternal-passion", "eternal-passion"],
-]);
 const corePaths = [
   "/pt/",
   "/pt/contact/",
@@ -103,24 +75,21 @@ const corePaths = [
   "/pt/puntacana-wedding-planner/",
   "/pt/blog/",
 ];
-const expectedPortuguesePaths = [
-  ...corePaths,
-  ...packageIds.map((id) => `/pt/packages/${packageSlugs.get(id)}/`),
-];
-assert.equal(expectedPortuguesePaths.length, 19);
-assert.equal(new Set(expectedPortuguesePaths).size, 19);
+const expectedPortuguesePaths = corePaths;
+assert.equal(expectedPortuguesePaths.length, 8);
+assert.equal(new Set(expectedPortuguesePaths).size, 8);
 
 const gatsbyNodeSource = fs.readFileSync(
   path.join(projectRoot, "gatsby-node.js"),
   "utf8",
 );
 assert.match(gatsbyNodeSource, /pt:\s*\{\s*path:\s*["']pt["']/);
-assert.match(gatsbyNodeSource, /\["pt",\s*"fr"\]\.forEach/);
+assert.match(gatsbyNodeSource, /allSanityProposalPackagePage/);
 assert.match(
   gatsbyNodeSource,
-  /path:\s*`\/\$\{derivedLanguage\}\/packages\/\$\{node\.urlSlug/,
+  /path:\s*`\$\{langPrefix\}\/packages\/\$\{slug\}`/,
 );
 
 console.log(
-  `Validated ${expectedPortuguesePaths.length} Portuguese routes: ${packageIds.length} noindex proposal packages, the blog index and 7 core pages (guide pages come from Sanity; see validate-knowledge-graph.js).`,
+  `Validated ${expectedPortuguesePaths.length} Portuguese routes: the blog index and 7 core pages (guide and package pages come from Sanity; see validate-knowledge-graph.js and validate-proposal-schema-source.js).`,
 );

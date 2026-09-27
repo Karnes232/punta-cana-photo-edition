@@ -53,11 +53,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         telephone
         messengerLink
       }
-      allContentfulPackagePageContent {
+      allSanityProposalPackagePage {
         nodes {
-          id
-          urlSlug
-          node_locale
+          _id
+          language
+          package {
+            slug {
+              current
+            }
+          }
         }
       }
       allSanityBlogPost {
@@ -112,39 +116,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  queryResults.data.allContentfulPackagePageContent.nodes.forEach((node) => {
-    if (retiredPackageSlugs.has(node.urlSlug?.trim())) return;
-
-    // Get language code for URL from the Contentful locale
-    const lang = node.node_locale === "en-US" ? "" : node.node_locale;
-    const langPrefix = lang ? `/${lang}` : "";
+  // Proposal packages: one page per published Package Page (a package's text
+  // in one language) whose Proposal Package is published too, at
+  // /<lang>/packages/<address>/.
+  queryResults.data.allSanityProposalPackagePage.nodes.forEach((node) => {
+    const slug = node.package?.slug?.current;
+    if (!slug) return;
+    // A retired address has a redirect or a deliberate 404; a package must not
+    // take it over.
+    if (retiredPackageSlugs.has(slug)) {
+      reporter.panicOnBuild(
+        `Proposal package "${slug}" reuses a retired package address. Choose another address in Sanity.`,
+      );
+      return;
+    }
+    const pageLanguage = node.language === "en" ? "en-US" : node.language;
+    const langPrefix = node.language === "en" ? "" : `/${node.language}`;
     createPage({
-      path: `${langPrefix}/packages/${node.urlSlug?.trim()}`,
+      path: `${langPrefix}/packages/${slug}`,
       component: packageTemplate,
       context: {
-        id: node.id,
-        language: node.node_locale,
-        contentLanguage: node.node_locale,
+        id: node._id,
+        language: pageLanguage,
+        sanityLanguage: node.language,
         layout,
-        package: node,
       },
     });
-
-    if (node.node_locale === "en-US") {
-      ["pt", "fr"].forEach((derivedLanguage) =>
-        createPage({
-          path: `/${derivedLanguage}/packages/${node.urlSlug?.trim()}`,
-          component: packageTemplate,
-          context: {
-            id: node.id,
-            language: derivedLanguage,
-            contentLanguage: "en-US",
-            layout,
-            package: node,
-          },
-        }),
-      );
-    }
   });
 
   try {

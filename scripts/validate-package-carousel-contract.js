@@ -43,8 +43,14 @@ assert.match(packageTemplate, /sideMedia=\{proposalBookingMedia\}/);
 assert.doesNotMatch(packageTemplate, /object-fill/);
 assert.match(packageForm, /aspect-\[3\/2\]/);
 
-assert.match(packageTemplate, /heroImageList\s*\{\s*url\s*width\s*height/s);
-assert.match(packageTemplate, /images\s*\{[\s\S]*?url\s*width\s*height/);
+// Photos come from Sanity with their CDN address and size, so the slideshows
+// request only the widths they need.
+assert.match(
+  packageTemplate,
+  /fragment PackagePhoto on SanityImageWithAlt\s*\{[\s\S]*?url\s*metadata\s*\{\s*dimensions\s*\{\s*width\s*height/,
+);
+assert.match(packageTemplate, /heroImages\s*\{\s*\.\.\.PackagePhoto/);
+assert.match(packageTemplate, /galleryPhotos\s*\{\s*\.\.\.PackagePhoto/);
 
 console.log(
   "Validated the unchanged package hero, carousel, slide order, controls and form contract with responsive CDN image delivery.",

@@ -1,23 +1,13 @@
-import commercialMetadata from "../data/commercialMetadata.json";
-import React, { useState } from "react";
+import React from "react";
 import Layout from "../components/Layout/Layout";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper";
-import RichText from "../components/RichTextComponents/RichText";
 import SwiperCarousel from "../components/SwiperCarouselComponent/SwiperCarousel";
-import TextComponent from "../components/RichTextComponents/TextComponent";
 import VideoPlayer from "../components/VideoComponent/VideoPlayer";
 import Faqs from "../components/FaqsComponent/Faqs";
 import { graphql } from "gatsby";
 import Seo from "../components/Layout/seo";
 import LocalizedAlternates from "../components/Layout/LocalizedAlternates";
 import PackageForm from "../components/PackageForm/PackageForm";
-import { useTranslation } from "gatsby-plugin-react-i18next";
-import { reconcilePackageSchemaPrices } from "../utils/reconcilePackageSchema";
-import { localizePackageFaqs } from "../utils/packageLocalization";
-import { getProposalAdditions } from "../utils/proposalPackageRules";
-import { getImageSeo } from "../utils/imageSeo";
-import { getProposalPackageDetails } from "../data/proposalPackageDetails";
-import { buildProposalPackageFaqs } from "../data/proposalPackageFaqs";
 import ProposalPackageDetails from "../components/ProposalComponents/ProposalPackageDetails";
 import ContentfulResponsiveImage from "../components/ContentfulResponsiveImage";
 import { buildProposalPackageSchema } from "../utils/proposalSeo";
@@ -27,206 +17,109 @@ import {
   localizedUrl,
   normalizeLanguage,
 } from "../utils/siteLocales";
-const PackagePage = ({ pageContext, data }) => {
-  const { t } = useTranslation();
-  const node = data.allContentfulPackagePageContent.nodes[0];
-  const proposalDetails = getProposalPackageDetails(node, pageContext.language);
-  const packageInformation = proposalDetails
-    ? {
-        ...node,
-        heroHeading: proposalDetails.name,
-        heroHeading2:
-          pageContext.language === "pt"
-            ? proposalDetails.content.summary
-            : pageContext.language === "fr"
-              ? proposalDetails.content.summary
-              : node.heroHeading2,
-        packages: node.packages?.length
-          ? [
-              {
-                ...node.packages[0],
-                price: proposalDetails.price,
-              },
-              ...node.packages.slice(1),
-            ]
-          : node.packages,
-      }
-    : node;
-  const localizedFaqs = proposalDetails
-    ? buildProposalPackageFaqs({
-        language: pageContext.language,
-        details: proposalDetails,
-      })
-    : localizePackageFaqs(node.faqs, pageContext.language);
-  const [selectedAddOns, setSelectedAddOns] = useState([]);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    date: "",
-    hotel: "",
-    message: "",
-    addOn1: "",
-    addOn2: "",
-    addOn3: "",
-    addOn4: "",
-    addOn5: "",
-    addOn6: "",
-    price: packageInformation.packages[0]?.price || 0,
-    packageName: packageInformation.heroHeading,
-  });
 
-  const featureImageSeo = getImageSeo(packageInformation.images[0], {
-    language: pageContext.language,
-    subject: packageInformation.heroHeading,
-    context: "feature",
-  });
-  const handleAddOnToggle = (addOnId) => {
-    setSelectedAddOns((prev) =>
-      prev.includes(addOnId.id)
-        ? prev.filter((id) => id !== addOnId.id)
-        : [...prev, addOnId.id],
-    );
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) =>
+  url && `${url}?w=1200&h=630&fit=crop&auto=format`;
+
+// The slideshows take each photo's CDN address and size; they request the
+// widths they need from Sanity's image CDN.
+const toResponsiveImage = (image) =>
+  image?.asset && {
+    url: image.asset.url,
+    width: image.asset.metadata?.dimensions?.width,
+    height: image.asset.metadata?.dimensions?.height,
+    alt: image.alt,
   };
-  const proposalBookingMedia = proposalDetails ? (
-    packageInformation.videoUrl !== null ? (
-      <VideoPlayer
-        url={packageInformation.videoUrl}
-        className="h-full w-full overflow-hidden"
-      />
-    ) : (
-      <ContentfulResponsiveImage
-        asset={packageInformation.images[0]}
-        alt={featureImageSeo.alt}
-        title={featureImageSeo.title}
-        className="h-full w-full overflow-hidden"
-        imgClassName="h-full w-full object-cover object-center"
-        sizes="(min-width: 1280px) 560px, (min-width: 1024px) 46vw, calc(100vw - 2rem)"
-        widths={[480, 720, 960, 1200]}
-      />
-    )
+
+// The questions every package page shares, followed by the dinner question,
+// answered for packages with the dinner included or offered as an extra.
+const packageFaqs = (texts, pkg) =>
+  [
+    ...(texts?.faqs || []).map(({ question, answer }) => ({
+      title: question,
+      content: { content: answer },
+    })),
+    texts?.dinnerQuestion && {
+      title: texts.dinnerQuestion,
+      content: {
+        content: pkg?.dinnerIncluded
+          ? texts.dinnerAnswerIncluded
+          : texts.dinnerAnswerAddOn,
+      },
+    },
+  ].filter(Boolean);
+
+// A proposal package's page: its text and photos from the package's page in
+// this language, its price and extras from the Proposal Package, and the text
+// every package page shares from this language's Package Page Texts.
+const PackagePage = ({ pageContext, data }) => {
+  const page = data.sanityProposalPackagePage;
+  const pkg = page.package;
+  const texts = data.sanityProposalPackageTexts;
+  const language = pageContext.language;
+  const bookingPhoto = toResponsiveImage(page.bookingPhoto);
+  const addOnNames = new Map(
+    (texts?.addOnNames || []).map((item) => [item.addOn?._id, item.name]),
+  );
+  const addOns = (pkg.addOns || []).map((addOn) => ({
+    id: addOn._id,
+    kind: addOn.kind,
+    price: addOn.price,
+    name: addOnNames.get(addOn._id) || addOn.name,
+  }));
+  const proposalBookingMedia = pkg.videoUrl ? (
+    <VideoPlayer url={pkg.videoUrl} className="h-full w-full overflow-hidden" />
+  ) : bookingPhoto ? (
+    <ContentfulResponsiveImage
+      asset={bookingPhoto}
+      alt={bookingPhoto.alt}
+      title={bookingPhoto.alt}
+      className="h-full w-full overflow-hidden"
+      imgClassName="h-full w-full object-cover object-center"
+      sizes="(min-width: 1280px) 560px, (min-width: 1024px) 46vw, calc(100vw - 2rem)"
+      widths={[480, 720, 960, 1200]}
+    />
   ) : null;
 
   return (
     <Layout generalInfo={pageContext.layout} overlayHeader>
       <main>
-      <HeroSwiper
-        heroInfo={packageInformation}
-        overlayHeader
-        language={pageContext.language}
-      />
-      {proposalDetails ? (
-        <ProposalPackageDetails
-          details={proposalDetails}
-          language={pageContext.language}
+        <HeroSwiper
+          heroInfo={{
+            fullSize: pkg.fullScreenHero,
+            heroHeading: page.name,
+            heroHeading2: page.heroSubheading,
+            heroImageList: (page.heroImages || [])
+              .map(toResponsiveImage)
+              .filter(Boolean),
+          }}
+          overlayHeader
+          language={language}
         />
-      ) : (
-        <div className="mb-10">
-          <RichText context={packageInformation.packageInformation} />
-        </div>
-      )}
-      <SwiperCarousel
-        images={packageInformation.images}
-        language={pageContext.language}
-        subject={packageInformation.heroHeading}
-      />
-
-      {!proposalDetails && (
-        <div className="w-full max-w-7xl mx-auto px-4 lg:mt-5 xl:mt-10">
-          <div className="flex flex-col lg:flex-row gap-8">
-            <div className="lg:basis-1/2">
-              {packageInformation.packages !== null ? (
-                <>
-                  {packageInformation.packages[0].included !== null ? (
-                    <>
-                      {" "}
-                      <div className="my-5 mx-auto">
-                        <TextComponent
-                          title={t("Included")}
-                          heading="h2"
-                          className="my-5 text-center tracking-wide 2xl:mb-2 2xl:mt-10 text-3xl lg:text-4xl"
-                        />
-                        <ul className="flex flex-col justify-center items-center gap-2">
-                          {packageInformation.packages[0].included?.map(
-                            (item, index) => {
-                              return (
-                                <li
-                                  key={index}
-                                  className="list-disc text-sm xl:text-lg capitalize"
-                                >
-                                  {item}
-                                </li>
-                              );
-                            },
-                          )}
-                        </ul>
-                      </div>
-                    </>
-                  ) : (
-                    <div className="flex justify-center items-center h-full">
-                      <TextComponent
-                        paragraph={packageInformation.packages[0].paragraph}
-                        pClassName="text-base lg:text-base capitalize lg:mt-0 mx-5 text-center"
-                      />
-                    </div>
-                  )}{" "}
-                </>
-              ) : (
-                <></>
-              )}
-            </div>
-            {packageInformation.videoUrl !== null ? (
-              <>
-                {/* Rendering ReactPlayer during hydration produced markup that
-                    did not match the SSR output: six React #418 errors plus a
-                    #423, which drops the whole root to client rendering.
-                    VideoPlayer renders only a placeholder until the player
-                    scrolls into view, which is why /proposal/ is clean. */}
-                <VideoPlayer
-                  url={packageInformation.videoUrl}
-                  className="w-full packagePageVideo lg:basis-1/2"
-                />
-              </>
-            ) : (
-              <>
-                <div className="w-full packagePageVideo lg:basis-1/2">
-                  <ContentfulResponsiveImage
-                    asset={packageInformation.images[0]}
-                    alt={featureImageSeo.alt}
-                    title={featureImageSeo.title}
-                    className="w-full overflow-hidden packagePageVideo"
-                    imgClassName="h-full w-full object-cover object-center"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    widths={[480, 960, 1400]}
-                  />
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
-      {packageInformation.packages !== null ? (
-        <>
-          <PackageForm
-            packageInformation={packageInformation}
-            formData={formData}
-            setFormData={setFormData}
-            selectedAddOns={selectedAddOns}
-            handleAddOnToggle={handleAddOnToggle}
-            language={pageContext.language}
-            sideMedia={proposalBookingMedia}
-          />{" "}
-        </>
-      ) : (
-        <></>
-      )}
-      {localizedFaqs?.length ? (
-        <>
-          <Faqs faqs={localizedFaqs} title={t("Frequently Asked Questions")} />
-        </>
-      ) : (
-        <></>
-      )}
+        <ProposalPackageDetails
+          page={page}
+          pkg={pkg}
+          texts={texts}
+          language={language}
+        />
+        <SwiperCarousel
+          images={(page.galleryPhotos || [])
+            .map(toResponsiveImage)
+            .filter(Boolean)}
+          language={language}
+        />
+        <PackageForm
+          packageName={page.name}
+          price={pkg.price}
+          addOns={addOns}
+          dinnerIncluded={pkg.dinnerIncluded}
+          title={texts?.formTitle}
+          submitLabel={texts?.formSubmitLabel}
+          language={language}
+          sideMedia={proposalBookingMedia}
+        />{" "}
+        <Faqs faqs={packageFaqs(texts, pkg)} title={texts?.faqTitle} />
       </main>
     </Layout>
   );
@@ -237,135 +130,56 @@ export default PackagePage;
 export const Head = ({ pageContext, data }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const language = normalizeLanguage(pageContext.language);
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
-  const slug = data.allContentfulPackagePageContent.nodes[0].urlSlug;
-  const packagePath = `/packages/${slug}/`;
+  const page = data.sanityProposalPackagePage;
+  const pkg = page.package;
+  const seo = page.seo;
+  const packagePath = `/packages/${pkg.slug.current}/`;
   const siteUrl = localizedUrl(rootUrl, packagePath, language);
-  const { seoTitle, seoDescription, seoImage, seoKeywords } =
-    data.allContentfulPackagePageContent.nodes[0];
-  const seoImageUrl = seoImage?.file?.url
-    ? `${seoImage.file.url.startsWith("//") ? "https:" : ""}${seoImage.file.url}`
-    : undefined;
-
-  const node = data?.allContentfulPackagePageContent?.nodes[0];
-  const proposalDetails = getProposalPackageDetails(node, language);
-  const metadata = commercialMetadata[packagePath]?.[language];
-  const resolvedSeoTitle = metadata?.title || seoTitle;
-  const nodeWithCanonicalPrice = proposalDetails
-    ? {
-        ...node,
-        packages: node.packages?.length
-          ? [
-              {
-                ...node.packages[0],
-                price: proposalDetails.price,
-              },
-              ...node.packages.slice(1),
-            ]
-          : node.packages,
-      }
-    : node;
-  const schema = node?.schema?.internal?.content;
-  const resolvedDescription =
-    metadata?.description || proposalDetails?.content.summary || seoDescription?.seoDescription;
-  const localizedFaqs = proposalDetails
-    ? buildProposalPackageFaqs({ language, details: proposalDetails })
-    : localizePackageFaqs(node.faqs, language);
-
-  // The schema blob and the page price are maintained separately in Contentful
-  // and have drifted apart before. The page price wins; every correction is
-  // logged so the drift is visible in the build output.
-  let JsonSchema = {};
-  if (proposalDetails) {
-    const proposalPageUrl = localizedUrl(rootUrl, "/proposal/", language);
-    const instagramUrl = /^https?:\/\//i.test(
-      pageContext.layout?.instagram || "",
-    )
-      ? pageContext.layout.instagram
-      : "https://www.instagram.com/sertuinevents/";
-    const schemaImages = [
-      seoImageUrl
-        ? {
-            url: seoImageUrl,
-            title: proposalDetails.name,
-            description: resolvedDescription,
-          }
-        : null,
-      ...(node.heroImageList || []),
-      ...(node.images || []),
-    ].filter(Boolean);
-
-    JsonSchema = buildProposalPackageSchema({
-      siteUrl: rootUrl,
-      pageUrl: siteUrl,
-      proposalPageUrl,
-      language,
-      packageName: proposalDetails.name,
-      description: resolvedDescription,
-      price: proposalDetails.price,
-      images: schemaImages,
-      companyName: pageContext.layout?.companyName,
-      legalName: "Sertuin SRL",
-      directorName: "Grecia Mejía",
-      telephone: pageContext.layout?.telephone,
-      instagram: instagramUrl,
-      googleMapsUrl: GOOGLE_MAPS_URL,
-      faqs: localizedFaqs,
-    });
-  } else if (schema) {
-    try {
-      const packageForSchema = nodeWithCanonicalPrice?.packages?.[0]
-        ? {
-            ...nodeWithCanonicalPrice.packages[0],
-            // Contentful's schema field is shared between locales and authored
-            // in English, so reconcile it against the canonical English add-on
-            // names even while rendering the Spanish page.
-            additions: getProposalAdditions(nodeWithCanonicalPrice, "en-US"),
-          }
-        : nodeWithCanonicalPrice?.packages?.[0];
-      const { schema: reconciled, corrections } = reconcilePackageSchemaPrices(
-        JSON.parse(schema),
-        packageForSchema,
-      );
-      JsonSchema = reconciled;
-      if (corrections.length) {
-        console.warn(`[schema-price] ${slug}:`, corrections);
-      }
-    } catch (error) {
-      console.error(
-        `[schema-price] ${slug}: could not parse the Contentful schema field —`,
-        error.message,
-      );
-    }
-  }
+  const image = shareImageUrl(seo?.image?.asset?.url);
+  const instagramUrl = /^https?:\/\//i.test(pageContext.layout?.instagram || "")
+    ? pageContext.layout.instagram
+    : "https://www.instagram.com/sertuinevents/";
+  // The share photo is named after the package; the other photos are named
+  // in the structured data after the package too, in this language.
+  const shareUrl = seo?.image?.asset?.url;
+  const schemaImages = [
+    shareUrl
+      ? { url: shareUrl, title: page.name, description: seo?.description }
+      : null,
+    ...[...(page.heroImages || []), ...(page.galleryPhotos || [])].map(
+      (item) => item.asset?.url,
+    ),
+  ].filter(Boolean);
+  const schemaMarkup = buildProposalPackageSchema({
+    siteUrl: rootUrl,
+    pageUrl: siteUrl,
+    proposalPageUrl: localizedUrl(rootUrl, "/proposal/", language),
+    language,
+    packageName: page.name,
+    description: seo?.description,
+    price: pkg.price,
+    images: schemaImages,
+    companyName: pageContext.layout?.companyName,
+    legalName: "Sertuin SRL",
+    directorName: "Grecia Mejía",
+    telephone: pageContext.layout?.telephone,
+    instagram: instagramUrl,
+    googleMapsUrl: GOOGLE_MAPS_URL,
+    faqs: packageFaqs(data.sanityProposalPackageTexts, pkg),
+  });
 
   return (
     <>
       <Seo
-        title={resolvedSeoTitle}
-        description={resolvedDescription}
+        title={seo?.title}
+        description={seo?.description}
         robots="noindex, follow"
-        keywords={(isPortuguese
-          ? [
-              `${proposalDetails?.name || "pacote"} Punta Cana`,
-              "pedido de casamento Punta Cana",
-              "pacote romântico Punta Cana",
-              "pedido de casamento na praia",
-            ]
-          : isFrench
-            ? [
-                `${proposalDetails?.name || "forfait"} Punta Cana`,
-                "demande en mariage Punta Cana",
-                "forfait romantique Punta Cana",
-                "demande en mariage sur la plage",
-              ]
-            : seoKeywords || []
-        ).join(", ")}
-        image={seoImageUrl}
+        keywords={(seo?.keywords || []).join(", ")}
+        image={image}
+        imageAlt={seo?.image?.alt}
         url={siteUrl}
-        schemaMarkup={JsonSchema}
+        schemaMarkup={schemaMarkup}
         language={languageConfig.htmlLang}
         locale={languageConfig.ogLocale}
       />
@@ -376,7 +190,19 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query MyQuery($id: String, $contentLanguage: String = "en-US") {
+  fragment PackagePhoto on SanityImageWithAlt {
+    alt
+    asset {
+      url
+      metadata {
+        dimensions {
+          width
+          height
+        }
+      }
+    }
+  }
+  query PackagePage($id: String!, $sanityLanguage: String!) {
     locales: allLocale {
       edges {
         node {
@@ -391,71 +217,102 @@ export const query = graphql`
         siteUrl
       }
     }
-    allContentfulPackagePageContent(
-      filter: { id: { eq: $id }, node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
-        id
-        urlSlug
-        heroHeading
-        fullSize
-        packages {
-          page
-          price
-          included
-          paragraph
-          additions {
-            addition
-            price
-            id
-          }
+    sanityProposalPackagePage(_id: { eq: $id }) {
+      name
+      heroSubheading
+      summary
+      setup
+      exclusions
+      heroImages {
+        ...PackagePhoto
+      }
+      galleryPhotos {
+        ...PackagePhoto
+      }
+      bookingPhoto {
+        ...PackagePhoto
+      }
+      package {
+        slug {
+          current
         }
+        price
+        charcuterieIncluded
+        dinnerIncluded
+        violinIncluded
+        fullScreenHero
         videoUrl
-        heroImageList {
-          url
-          width
-          height
-          title
-          description
-          file {
+        addOns {
+          _id
+          name
+          kind
+          price
+        }
+      }
+      seo {
+        title
+        description
+        keywords
+        image {
+          alt
+          asset {
             url
-          }
-        }
-        packageInformation {
-          raw
-        }
-        images {
-          title
-          description
-          file {
-            url
-          }
-          url
-          width
-          height
-        }
-        faqs {
-          title
-          content {
-            content
-          }
-        }
-        seoTitle
-        seoKeywords
-        seoDescription {
-          seoDescription
-        }
-        seoImage {
-          file {
-            url
-          }
-        }
-        schema {
-          internal {
-            content
           }
         }
       }
+    }
+    sanityProposalPackageTexts(language: { eq: $sanityLanguage }) {
+      breadcrumbLabel
+      breadcrumbHome
+      breadcrumbProposals
+      eyebrow
+      basePriceLabel
+      priceNote
+      bookLabel
+      quickTitle
+      specialTitle
+      setupDetailsLabel
+      setupTitle
+      setupIntro
+      exclusionsTitle
+      charcuterieTitle
+      charcuterieShort
+      charcuterieText
+      dinnerTitle
+      dinnerShort
+      dinnerText
+      violinTitle
+      violinShort
+      violinText
+      completeInfoLabel
+      commonTitle
+      commonIntro
+      inclusions {
+        _key
+        icon
+        title
+        description
+        essential
+      }
+      importantTitle
+      importantIntro
+      conditions
+      formTitle
+      formSubmitLabel
+      addOnNames {
+        name
+        addOn {
+          _id
+        }
+      }
+      faqTitle
+      faqs {
+        question
+        answer
+      }
+      dinnerQuestion
+      dinnerAnswerIncluded
+      dinnerAnswerAddOn
     }
   }
 `;

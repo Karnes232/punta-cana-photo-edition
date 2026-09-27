@@ -11,13 +11,16 @@ import { genderRevealPage } from "./documents/genderRevealPage"
 import { generalLayout } from "./documents/generalLayout"
 import { homePage } from "./documents/homePage"
 import { notFoundPage } from "./documents/notFoundPage"
+import { proposalAddOn } from "./documents/proposalAddOn"
 import { proposalPackage } from "./documents/proposalPackage"
 import { proposalPackagePage } from "./documents/proposalPackagePage"
+import { proposalPackageTexts } from "./documents/proposalPackageTexts"
 import { proposalPage } from "./documents/proposalPage"
 import { shareExperiencePage } from "./documents/shareExperiencePage"
 import { thankYouPage } from "./documents/thankYouPage"
 import { weddingPackage } from "./documents/weddingPackage"
 import { weddingPlannerPage } from "./documents/weddingPlannerPage"
+import { addOnName } from "./objects/addOnName"
 import { blogSection, blogSource, blogStep } from "./objects/blogSection"
 import { caseStudy } from "./objects/caseStudy"
 import { cta } from "./objects/cta"
@@ -28,6 +31,7 @@ import { iconCard } from "./objects/iconCard"
 import { iconLabel } from "./objects/iconLabel"
 import { imageWithAlt } from "./objects/imageWithAlt"
 import { localizedString } from "./objects/localizedString"
+import { packageInclusion } from "./objects/packageInclusion"
 import { processStep } from "./objects/processStep"
 import { reviewExcerpt } from "./objects/reviewExcerpt"
 import { seo } from "./objects/seo"
@@ -52,12 +56,15 @@ export const schemaTypes = [
   proposalPage,
   proposalPackage,
   proposalPackagePage,
+  proposalPackageTexts,
+  proposalAddOn,
   blogPage,
   blogGuide,
   blogPost,
   blogCategory,
   blogTopic,
   // Objects
+  addOnName,
   blogSection,
   blogSource,
   blogStep,
@@ -72,6 +79,7 @@ export const schemaTypes = [
   iconLabel,
   imageWithAlt,
   localizedString,
+  packageInclusion,
   processStep,
   reviewExcerpt,
   seo,

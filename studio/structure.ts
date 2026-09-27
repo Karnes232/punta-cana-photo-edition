@@ -2,6 +2,7 @@ import { BookIcon } from "@sanity/icons/Book"
 import { CaseIcon } from "@sanity/icons/Case"
 import { CheckmarkCircleIcon } from "@sanity/icons/CheckmarkCircle"
 import { DocumentIcon } from "@sanity/icons/Document"
+import { DocumentsIcon } from "@sanity/icons/Documents"
 import { CogIcon } from "@sanity/icons/Cog"
 import { CommentIcon } from "@sanity/icons/Comment"
 import { EnvelopeIcon } from "@sanity/icons/Envelope"
@@ -29,6 +30,7 @@ export const singletonTypes = new Set([
   "elopementPage",
   "proposalPage",
   "proposalPackagePage",
+  "proposalPackageTexts",
   "blogPage",
   "blogPost",
 ])
@@ -44,7 +46,7 @@ export const hiddenTypes = new Set([
 ])
 
 // Listed in their own sections below rather than in the generic type list.
-const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage", "elopementOption", "proposalPackage"])
+const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage", "elopementOption", "proposalPackage", "proposalAddOn"])
 
 // A guide's language texts have fixed IDs: blogPost-<guide>-<language>, where
 // <guide> drops the "blogGuide-" prefix of the guides created by the migration.
@@ -159,6 +161,8 @@ export const structure: StructureResolver = (S) => {
       S.documentTypeListItem("elopementOption").title("Elopement Prices"),
       translatedPage("proposalPage", "Proposal Page", HeartIcon),
       proposalPackages,
+      translatedPage("proposalPackageTexts", "Package Page Texts", DocumentsIcon),
+      S.documentTypeListItem("proposalAddOn").title("Proposal Extras"),
       translatedPage("blogPage", "Blog Page", BookIcon),
       blogGuides,
       S.documentTypeListItem("blogCategory").title("Blog Event Types"),

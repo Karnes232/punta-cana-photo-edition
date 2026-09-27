@@ -1,9 +1,10 @@
 import { TagIcon } from "@sanity/icons/Tag"
-import { defineField, defineType } from "sanity"
+import { defineArrayMember, defineField, defineType } from "sanity"
 
-// A marriage proposal package's shared facts: its address, price and what it
-// includes. One document serves all four languages; each language's Package
-// Page (opened from the package) gives it a name, card text and photos.
+// A marriage proposal package's shared facts: its address, price, what it
+// includes and the extras it offers. One document serves all four languages;
+// each language's Package Page (opened from the package) gives it a name,
+// text and photos.
 export const proposalPackage = defineType({
   name: "proposalPackage",
   title: "Proposal Package",
@@ -36,26 +37,41 @@ export const proposalPackage = defineType({
       name: "charcuterieIncluded",
       title: "Charcuterie included",
       type: "boolean",
+      description: "Shows the charcuterie among the package's inclusions.",
       initialValue: false,
     }),
     defineField({
       name: "dinnerIncluded",
       title: "Private dinner included",
       type: "boolean",
-      description: "Hides the dinner add-on and shows the dinner menu choices on the package page.",
+      description: "Shows the dinner among the package's inclusions and the dinner menu in the booking form.",
       initialValue: false,
     }),
     defineField({
       name: "violinIncluded",
       title: "Violinist included",
       type: "boolean",
-      description: "Hides the violinist add-on.",
+      description: "Shows the live violin among the package's inclusions.",
       initialValue: false,
     }),
     defineField({
-      name: "coldSparksAvailable",
-      title: "Cold sparks can be added",
+      name: "addOns",
+      title: "Extras offered",
+      type: "array",
+      description: "The extras a couple can add in the booking form. Leave out what the package already includes.",
+      of: [defineArrayMember({ type: "reference", to: [{ type: "proposalAddOn" }] })],
+    }),
+    defineField({
+      name: "videoUrl",
+      title: "Video link",
+      type: "url",
+      description: "Optional Vimeo or YouTube link, shown beside the booking form instead of a photo.",
+    }),
+    defineField({
+      name: "fullScreenHero",
+      title: "Full-screen photos at the top",
       type: "boolean",
+      description: "When off, the photos at the top of the package page take two thirds of the screen.",
       initialValue: true,
     }),
   ],

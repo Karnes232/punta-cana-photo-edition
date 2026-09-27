@@ -40,12 +40,6 @@ const loadSourceModule = (modulePath) => {
   return module.exports;
 };
 
-const { frenchProposalPackageContent } = loadSourceModule(
-  "src/data/frenchProposalPackageContent.js",
-);
-const { proposalPackageDetails } = loadSourceModule(
-  "src/data/proposalPackageDetails.js",
-);
 const { SITE_LANGUAGES, localizedPath } = loadSourceModule(
   "src/utils/siteLocales.js",
 );
@@ -55,17 +49,8 @@ assert.equal(localizedPath("/proposal/", "fr"), "/fr/proposal/");
 
 // Wedding packages live in Sanity; scripts/validate-wedding-packages.js checks them.
 
-const packageIds = proposalPackageDetails.map((item) => item.id).sort();
-assert.deepEqual(
-  Object.keys(frenchProposalPackageContent).sort(),
-  packageIds,
-  "Every live proposal package must have French content",
-);
-for (const [id, content] of Object.entries(frenchProposalPackageContent)) {
-  assert.ok(content.summary?.trim(), `${id}: missing French summary`);
-  assert.ok(content.setup?.length, `${id}: missing French inclusions`);
-  assert.ok(content.exclusions?.length, `${id}: missing French exclusions`);
-}
+// Proposal package pages live in Sanity; validate-proposal-schema-source.js
+// checks that every package has a French name and summary.
 
 const englishLocale = JSON.parse(
   fs.readFileSync(
@@ -82,19 +67,6 @@ assert.deepEqual(
   "French global UI translations must cover every English key",
 );
 
-const packageSlugs = new Map([
-  ["infinity-love", "infinity-love-proposal"],
-  ["golden-whisper", "golden-whisper"],
-  ["amour-essence", "amour-essence"],
-  ["sign-of-love", "sign-of-love-proposal"],
-  ["amour-by-the-sea", "amour-by-the-sea"],
-  ["coral-passion", "coral-passion"],
-  ["romantic-hoopa", "romantic-huppa-proposal"],
-  ["white-serenity", "white-serenity-proposal"],
-  ["romantic-dinner-marriage-proposal", "romantic-dinner-marriage-proposal"],
-  ["cozy-love", "cozy-love"],
-  ["eternal-passion", "eternal-passion"],
-]);
 const corePaths = [
   "/fr/",
   "/fr/contact/",
@@ -105,24 +77,21 @@ const corePaths = [
   "/fr/puntacana-wedding-planner/",
   "/fr/blog/",
 ];
-const expectedFrenchPaths = [
-  ...corePaths,
-  ...packageIds.map((id) => `/fr/packages/${packageSlugs.get(id)}/`),
-];
-assert.equal(expectedFrenchPaths.length, 19);
-assert.equal(new Set(expectedFrenchPaths).size, 19);
+const expectedFrenchPaths = corePaths;
+assert.equal(expectedFrenchPaths.length, 8);
+assert.equal(new Set(expectedFrenchPaths).size, 8);
 
 const gatsbyNodeSource = fs.readFileSync(
   path.join(projectRoot, "gatsby-node.js"),
   "utf8",
 );
 assert.match(gatsbyNodeSource, /fr:\s*\{\s*path:\s*["']fr["']/);
-assert.match(gatsbyNodeSource, /\["pt",\s*"fr"\]\.forEach/);
+assert.match(gatsbyNodeSource, /allSanityProposalPackagePage/);
 assert.match(
   gatsbyNodeSource,
-  /path:\s*`\/\$\{derivedLanguage\}\/packages\/\$\{node\.urlSlug/,
+  /path:\s*`\$\{langPrefix\}\/packages\/\$\{slug\}`/,
 );
 
 console.log(
-  `Validated ${expectedFrenchPaths.length} French routes: ${packageIds.length} noindex proposal packages, the blog index and 7 core pages (guide pages come from Sanity; see validate-knowledge-graph.js).`,
+  `Validated ${expectedFrenchPaths.length} French routes: the blog index and 7 core pages (guide and package pages come from Sanity; see validate-knowledge-graph.js and validate-proposal-schema-source.js).`,
 );

@@ -3,61 +3,53 @@ import { Check } from "lucide-react";
 import { Trans } from "gatsby-plugin-react-i18next";
 import { passVisitorName } from "../../utils/thankYouName";
 import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
-import {
-  getProposalAdditions,
-  proposalAddOnType,
-} from "../../utils/proposalPackageRules";
-import { getProposalPackageDetails } from "../../data/proposalPackageDetails";
 import { getMenuItemLabel } from "../../data/proposalDinnerMenu";
 import DinnerMenuSelector, {
   createEmptyDinnerSelection,
 } from "./DinnerMenuSelector";
+
+// The booking form of a proposal package page. The package's name, price and
+// extras come from Sanity (the Proposal Package, its Proposal Extras and their
+// names in this language); the field labels come from the translation files.
 const PackageForm = ({
-  packageInformation,
-  formData,
-  setFormData,
-  selectedAddOns,
-  handleAddOnToggle,
+  packageName,
+  price,
+  addOns = [],
+  dinnerIncluded = false,
+  title,
+  submitLabel,
   language,
   sideMedia,
 }) => {
+  const [selectedAddOns, setSelectedAddOns] = useState([]);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    hotel: "",
+    message: "",
+  });
   const [dinnerSelection, setDinnerSelection] = useState(
     createEmptyDinnerSelection,
   );
-  const proposalDetails = getProposalPackageDetails(
-    packageInformation,
-    language,
-  );
-  const additions = getProposalAdditions(packageInformation, language).sort(
+  const additions = [...addOns].sort(
     (a, b) => Number(a.price || 0) - Number(b.price || 0),
   );
   const dinnerAddition = additions.find(
-    (addition) => proposalAddOnType(addition.addition)?.key === "dinner",
+    (addition) => addition.kind === "dinner",
   );
   const dinnerIsSelected = Boolean(
     dinnerAddition && selectedAddOns.includes(dinnerAddition.id),
   );
-  const dinnerIsAvailable = Boolean(
-    proposalDetails?.dinnerIncluded || dinnerIsSelected,
-  );
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
-  const proposalFormTitle = isPortuguese
-    ? "Solicite sua proposta"
-    : isFrench
-      ? "Demandez votre proposition"
-      : isSpanish
-        ? "Solicita tu propuesta"
-        : "Request your proposal";
-  const proposalSubmitLabel = isPortuguese
-    ? "Enviar solicitação de proposta"
-    : isFrench
-      ? "Envoyer la demande de proposition"
-      : isSpanish
-        ? "Enviar solicitud de propuesta"
-        : "Send proposal request";
-
+  const dinnerIsAvailable = Boolean(dinnerIncluded || dinnerIsSelected);
+  const handleAddOnToggle = (addition) => {
+    setSelectedAddOns((prev) =>
+      prev.includes(addition.id)
+        ? prev.filter((id) => id !== addition.id)
+        : [...prev, addition.id],
+    );
+  };
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -78,12 +70,12 @@ const PackageForm = ({
       const addOn = additions.find((item) => item.id === id);
       return sum + Number(addOn?.price || 0);
     }, 0);
-    return packageInformation.packages[0].price + addOnsTotal;
+    return price + addOnsTotal;
   };
   const selectedAddOnSummary = selectedAddOns
     .map((id) => additions.find((item) => item.id === id))
     .filter(Boolean)
-    .map((item) => `${item.addition} - $${item.price}`)
+    .map((item) => `${item.name} - $${item.price}`)
     .join(", ");
   const chooseLater =
     language === "pt"
@@ -146,15 +138,12 @@ const PackageForm = ({
               </div>
             )}
             <div className="text-center p-6  rounded-lg">
-              <h2 className="text-3xl font-semibold mb-2">
-                {packageInformation.heroHeading}
-              </h2>
+              <h2 className="text-3xl font-semibold mb-2">{packageName}</h2>
               <p className="text-4xl font-bold text-blue-600">
                 ${calculateTotal()}
               </p>
               <p className="text-gray-600 mt-2">
-                <Trans>Base price</Trans>:{" "}
-                {formatter.format(packageInformation.packages[0].price)}
+                <Trans>Base price</Trans>: {formatter.format(price)}
               </p>
             </div>
 
@@ -173,7 +162,7 @@ const PackageForm = ({
                   }`}
                   onClick={() => handleAddOnToggle(addition)}
                   aria-pressed={selectedAddOns.includes(addition.id)}
-                  aria-label={`${addition.addition}, ${formatter.format(
+                  aria-label={`${addition.name}, ${formatter.format(
                     addition.price,
                   )}`}
                 >
@@ -191,7 +180,7 @@ const PackageForm = ({
                         )}
                       </div>
                       <div>
-                        <h4 className="font-medium">{addition.addition}</h4>
+                        <h4 className="font-medium">{addition.name}</h4>
                         {/* <p className="text-sm text-gray-600">{addOn.description}</p>*/}
                       </div>
                     </div>
@@ -207,11 +196,7 @@ const PackageForm = ({
               id="package-booking-heading"
               className="mb-6 text-xl font-semibold"
             >
-              {proposalDetails ? (
-                proposalFormTitle
-              ) : (
-                <Trans>Book Your Session</Trans>
-              )}
+              {title}
             </h3>
             <form
               method="POST"
@@ -230,12 +215,8 @@ const PackageForm = ({
                 name="subject"
                 value="New package information request"
               />
-              <input
-                type="hidden"
-                name="package-name"
-                value={formData.packageName}
-              />
-              <input type="hidden" name="base-price" value={formData.price} />
+              <input type="hidden" name="package-name" value={packageName} />
+              <input type="hidden" name="base-price" value={price} />
               <input
                 type="hidden"
                 name="selected-add-ons"
@@ -251,7 +232,7 @@ const PackageForm = ({
                 name="dinner-selection-status"
                 value={
                   dinnerIsAvailable
-                    ? proposalDetails?.dinnerIncluded
+                    ? dinnerIncluded
                       ? "Included in package"
                       : "Selected add-on"
                     : "Not selected"
@@ -427,11 +408,7 @@ const PackageForm = ({
                 type="submit"
                 className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
               >
-                {proposalDetails ? (
-                  proposalSubmitLabel
-                ) : (
-                  <Trans>Contact Us</Trans>
-                )}
+                {submitLabel}
               </button>
             </form>
           </div>
