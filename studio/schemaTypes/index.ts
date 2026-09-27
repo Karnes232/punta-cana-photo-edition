@@ -11,6 +11,8 @@ import { homePage } from "./documents/homePage"
 import { notFoundPage } from "./documents/notFoundPage"
 import { shareExperiencePage } from "./documents/shareExperiencePage"
 import { thankYouPage } from "./documents/thankYouPage"
+import { weddingPackage } from "./documents/weddingPackage"
+import { weddingPlannerPage } from "./documents/weddingPlannerPage"
 import { blogSection, blogSource, blogStep } from "./objects/blogSection"
 import { caseStudy } from "./objects/caseStudy"
 import { cta } from "./objects/cta"
@@ -22,6 +24,8 @@ import { imageWithAlt } from "./objects/imageWithAlt"
 import { localizedString } from "./objects/localizedString"
 import { processStep } from "./objects/processStep"
 import { seo } from "./objects/seo"
+import { weddingFilm } from "./objects/weddingFilm"
+import { weddingPackageText } from "./objects/weddingPackageText"
 import { workMode } from "./objects/workMode"
 
 export const schemaTypes = [
@@ -34,6 +38,8 @@ export const schemaTypes = [
   shareExperiencePage,
   eventPlannerPage,
   genderRevealPage,
+  weddingPlannerPage,
+  weddingPackage,
   blogPage,
   blogGuide,
   blogPost,
@@ -53,5 +59,7 @@ export const schemaTypes = [
   localizedString,
   processStep,
   seo,
+  weddingFilm,
+  weddingPackageText,
   workMode,
 ]

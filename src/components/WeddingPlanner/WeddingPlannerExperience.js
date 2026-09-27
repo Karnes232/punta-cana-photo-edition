@@ -1,36 +1,24 @@
-import { uxCopy, getIndianPhotos, IndianImage, WeddingGallery, WeddingFilms } from "./WeddingMedia";
+import { IndianImage, WeddingGallery, WeddingFilms } from "./WeddingMedia";
 import React, { useMemo, useRef, useState } from "react";
-import { GatsbyImage, StaticImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { passVisitorName } from "../../utils/thankYouName";
+import { localizedPath } from "../../utils/siteLocales";
 import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
 import {
   ArrowRight,
-  Award,
-  BadgeDollarSign,
   CalendarCheck,
   Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
   ClipboardCheck,
-  Clock3,
-  Globe2,
   HeartHandshake,
-  MapPinned,
   MessageCircle,
   Palette,
   ShieldCheck,
-  Sparkles,
-  Users,
 } from "lucide-react";
-import {
-  ensureSingleSouthAsianWeddingPackage,
-  isSouthAsianWeddingPackage,
-  getWeddingPlannerContent,
-  localizeFrenchWeddingPackage,
-  localizePortugueseWeddingPackage,
-  normalizeWeddingFaqs,
-} from "../../content/weddingPlannerContent";
+import { weddingPlannerFormContent } from "../../content/weddingPlannerFormContent";
+import { cardIcon } from "../../utils/cardIcons";
 
 const SectionHeading = ({ eyebrow, title, body, align = "center", light }) => (
   <div
@@ -64,48 +52,41 @@ const SectionHeading = ({ eyebrow, title, body, align = "center", light }) => (
   </div>
 );
 
-const ContentfulImage = ({ asset, alt, className = "", loading = "lazy" }) => {
-  const image = getImage(asset?.gatsbyImage);
-  if (image) {
-    return (
-      <GatsbyImage
-        image={image}
-        alt={
-          alt ||
-          asset?.description ||
-          asset?.title ||
-          "Wedding planned by Sertuin Events in Punta Cana"
-        }
-        className={className}
-        imgStyle={{ objectFit: "cover" }}
-        loading={loading}
-        fetchPriority={loading === "eager" ? "high" : "auto"}
-      />
-    );
-  }
-  if (!asset?.url) return null;
+// An imageWithAlt from Sanity.
+const SanityImage = ({ image, className = "", loading = "lazy" }) => {
+  const data = getImage(image?.asset?.gatsbyImageData);
+  if (!data) return null;
   return (
-    <img
-      src={`${asset.url}?w=1600&fm=webp&q=80`}
-      srcSet={`${asset.url}?w=480&fm=webp&q=76 480w, ${asset.url}?w=960&fm=webp&q=76 960w, ${asset.url}?w=1600&fm=webp&q=76 1600w`}
-      sizes="100vw"
-      width={asset.width || 1600}
-      height={asset.height || 1067}
-      alt={
-        alt ||
-        asset?.description ||
-        asset?.title ||
-        "Wedding planned by Sertuin Events in Punta Cana"
-      }
-      className={`${className} object-cover`}
+    <GatsbyImage
+      image={data}
+      alt={image.alt || ""}
+      className={className}
+      imgStyle={{ objectFit: "cover" }}
       loading={loading}
-      fetchPriority={loading === "eager" ? "high" : "auto"}
-      decoding="async"
     />
   );
 };
 
-const PackageCard = ({ item, copy, onSelect, icon: Icon }) => {
+// This language's packages in price-list order, each with its shared price,
+// badge, icon and South Asian flag.
+export const weddingPackages = (page) =>
+  (page?.packages || [])
+    .filter((item) => item?.package)
+    .map((item) => ({
+      key: item._key,
+      title: item.title,
+      description: item.description,
+      includedItems: item.items || [],
+      price: item.package.price,
+      mostPopular: item.package.mostPopular,
+      southAsian: item.package.southAsian,
+      icon: item.package.icon,
+      order: item.package.order,
+    }))
+    .sort((a, b) => a.order - b.order);
+
+const PackageCard = ({ item, copy, onSelect }) => {
+  const Icon = cardIcon(item.icon);
   const items = Array.isArray(item?.includedItems) ? item.includedItems : [];
   const price = Number(item?.price);
   return (
@@ -171,70 +152,18 @@ const PackageCard = ({ item, copy, onSelect, icon: Icon }) => {
 };
 
 const InquiryForm = ({
-  copy,
+  submitLabel,
+  undecidedLabel,
   language,
   packages,
   selectedPackage,
   onPackageChange,
 }) => {
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
   const [phone, setPhone] = useState("");
   const inputClass =
     "mt-2 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 font-montserrat text-base text-slate-950 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-100";
-  const labels = isPortuguese
-    ? {
-        package: "Pacote de interesse",
-        name: "Nome completo",
-        email: "E-mail",
-        phone: "Telefone / WhatsApp",
-        country: "País de residência",
-        date: "Data ou mês aproximado",
-        guests: "Número estimado de convidados",
-        venue: "Venue ou resort, se já souberem",
-        details: "Conte-nos sobre o casamento, a cultura e as prioridades",
-        choose: "Selecione um pacote",
-      }
-    : isFrench
-      ? {
-          package: "Forfait souhaité",
-          name: "Nom complet",
-          email: "Adresse e-mail",
-          phone: "Téléphone / WhatsApp",
-          country: "Pays de résidence",
-          date: "Date ou mois approximatif",
-          guests: "Nombre estimé d’invités",
-          venue: "Lieu ou resort, si vous le connaissez",
-          details:
-            "Parlez-nous de votre mariage, de votre culture et de vos priorités",
-          choose: "Sélectionnez un forfait",
-        }
-      : isSpanish
-        ? {
-            package: "Paquete de interés",
-            name: "Nombre y apellido",
-            email: "Correo electrónico",
-            phone: "Teléfono / WhatsApp",
-            country: "País de residencia",
-            date: "Fecha o mes aproximado",
-            guests: "Cantidad estimada de invitados",
-            venue: "Venue o resort, si ya lo saben",
-            details: "Cuéntennos sobre su boda, cultura y prioridades",
-            choose: "Seleccione un paquete",
-          }
-        : {
-            package: "Package of interest",
-            name: "Full name",
-            email: "Email address",
-            phone: "Phone / WhatsApp",
-            country: "Country of residence",
-            date: "Date or approximate month",
-            guests: "Estimated guest count",
-            venue: "Venue or resort, if known",
-            details: "Tell us about your wedding, culture and priorities",
-            choose: "Select a package",
-          };
+  const labels =
+    weddingPlannerFormContent[language] || weddingPlannerFormContent["en-US"];
 
   return (
     <form
@@ -242,15 +171,7 @@ const InquiryForm = ({
       name="wedding-planner"
       method="POST"
       onSubmit={passVisitorName()}
-      action={
-        isPortuguese
-          ? "/pt/contact/thankyou/"
-          : isFrench
-            ? "/fr/contact/thankyou/"
-            : isSpanish
-              ? "/es/contact/thankyou/"
-              : "/contact/thankyou/"
-      }
+      action={localizedPath("/contact/thankyou/", language)}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="bg-white p-6 shadow-2xl shadow-slate-950/15 md:p-10"
@@ -268,13 +189,7 @@ const InquiryForm = ({
       />
       <p className="hidden">
         <label>
-          {isPortuguese
-            ? "Não preencha este campo:"
-            : isFrench
-              ? "Ne remplissez pas ce champ :"
-              : isSpanish
-                ? "No completes este campo:"
-                : "Do not fill this out:"}{" "}
+          {labels.honeypot}{" "}
           <input name="bot-field" />
         </label>
       </p>
@@ -289,7 +204,7 @@ const InquiryForm = ({
             required
           >
             <option value="">{labels.choose}</option>
-            <option value="Planning guidance">{(uxCopy[language] || uxCopy["en-US"]).undecided}</option>
+            <option value="Planning guidance">{undecidedLabel}</option>
             {packages.map((item) => (
               <option key={item.title} value={item.title}>
                 {item.title}
@@ -348,15 +263,7 @@ const InquiryForm = ({
             className={inputClass}
             type="text"
             name="wedding-date"
-            placeholder={
-              isPortuguese
-                ? "Ex.: novembro de 2027"
-                : isFrench
-                  ? "Ex. : novembre 2027"
-                  : isSpanish
-                    ? "Ej. noviembre de 2027"
-                    : "e.g. November 2027"
-            }
+            placeholder={labels.datePlaceholder}
             required
           />
         </label>
@@ -388,121 +295,43 @@ const InquiryForm = ({
         type="submit"
         className="mt-7 inline-flex w-full items-center justify-center gap-2 bg-amber-600 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white transition hover:bg-amber-500"
       >
-        {copy.submit}
+        {submitLabel}
         <ArrowRight size={18} aria-hidden="true" />
       </button>
       <p className="mt-4 text-center font-montserrat text-xs leading-5 text-slate-500">
-        {copy.privacy}
+        {labels.privacy}
       </p>
     </form>
   );
 };
 
-const WeddingPlannerExperience = ({
-  page,
-  galleries,
-  packages,
-  faqs,
-  generalInfo,
-  language,
-}) => {
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
-  const content = getWeddingPlannerContent(language, page?.paragraph3?.raw);
-  const localizedAlt = (english, portuguese, french) =>
-    isPortuguese ? portuguese : isFrench ? french || english : english;
-  const localizedPageText = (value, fallback) => {
-    if (!value) return fallback;
-    if (isPortuguese || isFrench) return fallback;
-    return isSpanish && /\bwedding\b|\bvenue\b/i.test(value) ? fallback : value;
-  };
-  const localizeSpanishTerm = (value) => {
-    if (!isSpanish || typeof value !== "string") return value;
-    return value
-      .replace(/\bwedding planner\b/gi, "planificadora de bodas")
-      .replace(/\bwedding planning\b/gi, "planificación de bodas")
-      .replace(/\bvenues\b/gi, "locaciones")
-      .replace(/\bvenue\b/gi, "locación")
-      .replace(/\bonsite\b/gi, "presente");
-  };
-  const ux = uxCopy[language] || uxCopy["en-US"];
-  const indianPhotos = getIndianPhotos(language);
+// Copy, photos, films and packages come from this language's Wedding Planner
+// Page document in Sanity (prices from the shared Wedding Packages); phone and
+// email from General Layout.
+const WeddingPlannerExperience = ({ page, generalInfo, language }) => {
   const formRef = useRef(null);
   const greciaCarouselRef = useRef(null);
   const [selectedPackage, setSelectedPackage] = useState("");
-  const heroImage = page?.heroImageList?.[0];
-  const editorialImages = page?.heroImageList?.slice(1) || [];
-  const realWeddingGallery = useMemo(
-    () =>
-      (galleries || []).find((gallery) =>
-        /real[-\s]?weddings?|bodas[-\s]?reales/i.test(
-          `${gallery?.section || ""} ${gallery?.title || ""}`,
-        ),
-      ),
-    [galleries],
-  );
-  const greciaGallery = useMemo(
-    () =>
-      (galleries || []).find((gallery) =>
-        /grecia|planner[-\s]?(and|y)?[-\s]?(brides|novias)/i.test(
-          `${gallery?.section || ""} ${gallery?.title || ""}`,
-        ),
-      ),
-    [galleries],
-  );
-  const realWeddingImages = useMemo(() => {
-    if (realWeddingGallery?.images?.length) return realWeddingGallery.images;
-    return (galleries || [])
-      .filter((gallery) => gallery !== greciaGallery)
-      .flatMap((gallery) => gallery?.images || []);
-  }, [galleries, greciaGallery, realWeddingGallery]);
-  const greciaGalleryImages = greciaGallery?.images || [];
-  const greciaCarouselImages = greciaGalleryImages.slice(1);
-  const packageList = useMemo(() => {
-    const cmsPackages = (packages || []).filter(Boolean).map((item) =>
-      isPortuguese
-        ? localizePortugueseWeddingPackage(
-            item,
-            content.packages.fallbackSouthAsian,
-          )
-        : isSpanish
-          ? {
-              ...item,
-              title: localizeSpanishTerm(item.title),
-              description: localizeSpanishTerm(item.description),
-              includedItems: (item.includedItems || []).map(
-                localizeSpanishTerm,
-              ),
-            }
-          : isFrench
-            ? localizeFrenchWeddingPackage(
-                item,
-                content.packages.fallbackSouthAsian,
-              )
-            : item,
-    );
-    return ensureSingleSouthAsianWeddingPackage(
-      cmsPackages,
-      content.packages.fallbackSouthAsian,
-    );
-  }, [
-    packages,
-    content.packages.fallbackSouthAsian,
-    isSpanish,
-    isPortuguese,
-    isFrench,
-  ]);
-  const faqList = normalizeWeddingFaqs(faqs, language);
+  const packageList = useMemo(() => weddingPackages(page), [page]);
+  const southAsianPackage = packageList.find((item) => item.southAsian);
+  const realWeddingImages = page.realWeddingPhotos || [];
+  const southAsianPhotos = page.southAsianPhotos || [];
+  const greciaCarouselImages = page.greciaPhotos || [];
+  const packageCopy = {
+    popular: page.popularLabel,
+    from: page.fromLabel,
+    select: page.selectLabel,
+  };
+  const galleryCopy = {
+    previous: page.previousLabel,
+    next: page.nextLabel,
+    open: page.openLabel,
+    close: page.closeLabel,
+    play: page.playLabel,
+  };
   const telephone = (generalInfo?.telephone || "8295222900").replace(/\D/g, "");
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${telephone}&text=${encodeURIComponent(
-    isPortuguese
-      ? "Olá, gostaria de planejar meu casamento em Punta Cana."
-      : isFrench
-        ? "Bonjour, je souhaite organiser mon mariage à Punta Cana."
-        : isSpanish
-          ? "Hola, me gustaría planificar mi boda en Punta Cana."
-          : "Hello, I would like to plan my wedding in Punta Cana.",
+    page.whatsappMessage || "",
   )}`;
 
   const selectPackage = (title) => {
@@ -528,13 +357,8 @@ const WeddingPlannerExperience = ({
     <main className="wp-page overflow-hidden bg-[#f7f5f0] text-slate-950">
       <section className="relative min-h-[720px] bg-slate-950">
         <div className="absolute inset-0 overflow-hidden">
-          <ContentfulImage
-            asset={heroImage}
-            alt={localizedAlt(
-              "Destination wedding ceremony in Punta Cana planned by Sertuin Events",
-              "Cerimônia de casamento de destino em Punta Cana planejada pela Sertuin Events",
-              "Cérémonie de mariage de destination à Punta Cana organisée par Sertuin Events",
-            )}
+          <SanityImage
+            image={page.heroImage}
             className="h-full w-full"
             loading="eager"
           />
@@ -544,20 +368,20 @@ const WeddingPlannerExperience = ({
         <div className="relative mx-auto flex min-h-[720px] max-w-7xl items-start px-6 pb-16 pt-40 md:items-center md:px-10 md:py-24 lg:px-12">
           <div className="max-w-4xl">
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.26em] text-amber-300 md:text-sm">
-              {localizedPageText(page?.heroEyebrow, content.eyebrow)}
+              {page.eyebrow}
             </p>
             <h1 className="mt-5 max-w-4xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-7xl">
-              {content.heroTitle}
+              {page.heroHeading}
             </h1>
             <p className="mt-7 max-w-2xl font-montserrat text-lg leading-8 text-slate-100 md:text-xl">
-              {localizedPageText(page?.heroHeading2, content.heroText)}
+              {page.heroText}
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#wedding-packages"
                 className="inline-flex items-center justify-center gap-2 bg-amber-600 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white no-underline transition hover:bg-amber-500"
               >
-                {localizedPageText(page?.primaryCtaLabel, content.primaryCta)}
+                {page.primaryCtaLabel}
                 <ArrowRight size={18} aria-hidden="true" />
               </a>
               <a
@@ -567,24 +391,21 @@ const WeddingPlannerExperience = ({
                 className="inline-flex items-center justify-center gap-2 border border-white/70 bg-white/10 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white no-underline backdrop-blur-sm transition hover:bg-white hover:text-slate-950"
               >
                 <MessageCircle size={18} aria-hidden="true" />
-                {localizedPageText(
-                  page?.secondaryCtaLabel,
-                  content.secondaryCta,
-                )}
+                {page.whatsappCtaLabel}
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <nav className="wp-paths" aria-label={content.expertiseTitle}>
-        <a className="wp-path" href="#western-weddings"><ContentfulImage asset={realWeddingImages[0] || heroImage} className="h-full w-full"/><div className="wp-path-copy"><strong>{ux.western}</strong><span>{ux.explore} ↗</span></div></a>
-        <a className="wp-path" href="#indian-weddings"><IndianImage asset={indianPhotos[1]} alt={ux.gallery}/><div className="wp-path-copy"><strong>{ux.indian}</strong><span>{ux.explore} ↗</span></div></a>
+      <nav className="wp-paths" aria-label={page.pathsLabel}>
+        <a className="wp-path" href="#western-weddings"><SanityImage image={realWeddingImages[0] || page.heroImage} className="h-full w-full"/><div className="wp-path-copy"><strong>{page.westernLabel}</strong><span>{page.exploreLabel} ↗</span></div></a>
+        <a className="wp-path" href="#indian-weddings"><IndianImage asset={southAsianPhotos[1]} alt={page.southAsianGalleryTitle}/><div className="wp-path-copy"><strong>{page.southAsianLabel}</strong><span>{page.exploreLabel} ↗</span></div></a>
       </nav>
 
       {realWeddingImages.length > 0 && <section id="western-weddings" className="bg-white px-6 py-20 md:px-10 lg:px-12">
-        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={ux.western} title={ux.story} body={ux.westernText}/>
-          <WeddingGallery images={realWeddingImages.slice(0,8)} copy={ux} label={ux.western} renderImage={(asset,full)=><ContentfulImage asset={asset} className="h-full w-full" loading={full?'eager':'lazy'}/>}/>
+        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={page.westernLabel} title={page.realWeddingsTitle} body={page.realWeddingsText}/>
+          <WeddingGallery images={realWeddingImages} copy={galleryCopy} label={page.westernLabel} renderImage={(image,full)=><SanityImage image={image} className="h-full w-full" loading={full?'eager':'lazy'}/>}/>
         </div>
       </section>}
 
@@ -594,55 +415,42 @@ const WeddingPlannerExperience = ({
       >
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow={content.packages.eyebrow}
-            title={ux.services}
-            body={content.packages.intro}
+            eyebrow={page.packagesEyebrow}
+            title={page.packagesTitle}
+            body={page.packagesIntro}
           />
           <div className="mt-14 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
-            {packageList.filter(item => !isSouthAsianWeddingPackage(item)).map((item) => {
-              const packageTitle = item?.title || "";
-              const Icon = /south asian|sudeste asi[aá]tico|indian|sikh/i.test(
-                packageTitle,
-              )
-                ? Globe2
-                : /venue|vendor|proveedor/i.test(packageTitle)
-                  ? MapPinned
-                  : /day coordinator|coordinador/i.test(packageTitle)
-                    ? CalendarCheck
-                    : Sparkles;
-              return (
-                <PackageCard
-                  key={item.title}
-                  item={item}
-                  copy={content.packages}
-                  onSelect={selectPackage}
-                  icon={Icon}
-                />
-              );
-            })}
+            {packageList.filter((item) => !item.southAsian).map((item) => (
+              <PackageCard
+                key={item.key}
+                item={item}
+                copy={packageCopy}
+                onSelect={selectPackage}
+              />
+            ))}
           </div>
         </div>
       </section>
 
       <section id="indian-weddings" className="wp-indian">
         <div className="wp-indian-inner">
-          <div className="wp-indian-head"><div><p className="wp-kicker">{ux.indian}</p><h2>{ux.title}</h2><p>{ux.intro}</p></div><IndianImage asset={indianPhotos[1]} className="wp-indian-cover" alt={ux.gallery}/></div>
-          <div className="wp-film-row"><div><h3>{ux.films}</h3><p>{ux.indianText}</p><button type="button" className="wp-inquiry-cta" onClick={()=>selectPackage(content.packages.fallbackSouthAsian.title)}>{content.secondaryCta} ↗</button></div><WeddingFilms copy={ux}/></div>
-          <h3>{ux.gallery}</h3>
-          <WeddingGallery images={indianPhotos} copy={ux} label={ux.gallery} renderImage={(asset,full)=>full?<img src={asset.url} alt={asset.description} title={asset.description}/>:<IndianImage asset={asset} alt={ux.gallery}/>}/>
-          <div className="wp-indian-offer"><div><h3>{content.southAsian.eyebrow}</h3><p>{content.southAsian.body}</p><p className="mt-6">{content.southAsian.note}</p></div>
-            {packageList.filter(isSouthAsianWeddingPackage).map(item=><PackageCard key={item.title} item={item} copy={content.packages} onSelect={selectPackage} icon={Globe2}/>)}</div>
+          <div className="wp-indian-head"><div><p className="wp-kicker">{page.southAsianLabel}</p><h2>{page.southAsianTitle}</h2><p>{page.southAsianIntro}</p></div><IndianImage asset={southAsianPhotos[1]} className="wp-indian-cover" alt={page.southAsianGalleryTitle}/></div>
+          <div className="wp-film-row"><div><h3>{page.filmsTitle}</h3><p>{page.filmsText}</p><button type="button" className="wp-inquiry-cta" onClick={()=>selectPackage(southAsianPackage?.title)}>{page.southAsianCtaLabel} ↗</button></div><WeddingFilms films={page.films} copy={galleryCopy}/></div>
+          <h3>{page.southAsianGalleryTitle}</h3>
+          <WeddingGallery images={southAsianPhotos} copy={galleryCopy} label={page.southAsianGalleryTitle} renderImage={(image,full)=>full?<img src={image.asset?.url} alt={image.alt} title={image.alt}/>:<IndianImage asset={image} alt={page.southAsianGalleryTitle}/>}/>
+          <div className="wp-indian-offer"><div><h3>{page.southAsianOfferTitle}</h3><p>{page.southAsianBody}</p><p className="mt-6">{page.southAsianNote}</p></div>
+            {southAsianPackage && <PackageCard key={southAsianPackage.key} item={southAsianPackage} copy={packageCopy} onSelect={selectPackage}/>}</div>
         </div>
       </section>
 
       <section className="px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            title={content.processTitle}
-            body={content.processIntro}
+            title={page.processTitle}
+            body={page.processIntro}
           />
           <ol className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {content.process.map((step, index) => {
+            {(page.processSteps || []).map((step, index) => {
               const Icon = [
                 MessageCircle,
                 ClipboardCheck,
@@ -651,7 +459,7 @@ const WeddingPlannerExperience = ({
               ][index];
               return (
                 <li
-                  key={step.title}
+                  key={step._key}
                   className="border border-slate-200 bg-white p-7 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
@@ -677,43 +485,24 @@ const WeddingPlannerExperience = ({
 
       <section className="bg-slate-950 px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          {greciaGalleryImages[0] || editorialImages[5] ? (
-            <ContentfulImage
-              asset={greciaGalleryImages[0] || editorialImages[5]}
-              className="h-[520px] w-full"
-            />
-          ) : (
-            <StaticImage
-              src="../../images/wedding-planner/grecia-supporting-bride.webp"
-              alt={localizedAlt(
-                "Wedding planner Grecia Mejía with a bride in Punta Cana",
-                "Wedding planner Grecia Mejía com uma noiva em Punta Cana",
-                "La wedding planner Grecia Mejía avec une mariée à Punta Cana",
-              )}
-              className="h-[520px] w-full"
-              imgStyle={{ objectFit: "cover", objectPosition: "center" }}
-              placeholder="blurred"
-            />
-          )}
+          <SanityImage image={page.greciaPortrait} className="h-[520px] w-full" />
           <div>
             <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.24em] text-amber-300">
-              {content.grecia.eyebrow}
+              {page.greciaEyebrow}
             </p>
             <h2 className="mt-4 font-crimson text-5xl font-medium leading-none text-white">
-              {content.grecia.title}
+              {page.greciaTitle}
             </h2>
             <p className="mt-7 font-montserrat text-lg leading-8 text-slate-200">
-              {ux.teamText}
+              {page.greciaText}
             </p>
             <p className="mt-5 font-montserrat text-base leading-7 text-slate-300">
-              {content.introduction.title}
+              {page.greciaQuote}
             </p>
             <div className="mt-8 flex items-center gap-3 text-amber-300">
               <ShieldCheck size={25} aria-hidden="true" />
               <p className="font-montserrat text-sm font-semibold uppercase tracking-[0.12em]">
-                {isSpanish
-                  ? "Sertuin Events · SERTUIN SRL"
-                  : "Sertuin Events · SERTUIN SRL"}
+                {page.greciaCompanyLine}
               </p>
             </div>
           </div>
@@ -730,10 +519,10 @@ const WeddingPlannerExperience = ({
                 />
                 <div>
                   <h3 className="font-crimson text-3xl font-medium text-white md:text-4xl">
-                    {greciaGallery?.title || content.grecia.galleryTitle}
+                    {page.greciaGalleryTitle}
                   </h3>
                   <p className="mt-3 font-montserrat text-sm leading-6 text-slate-300">
-                    {content.grecia.galleryBody}
+                    {page.greciaGalleryBody}
                   </p>
                 </div>
               </div>
@@ -743,15 +532,7 @@ const WeddingPlannerExperience = ({
                     type="button"
                     onClick={() => scrollGreciaCarousel(-1)}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-amber-300 hover:text-amber-300"
-                    aria-label={
-                      isPortuguese
-                        ? "Foto anterior"
-                        : isFrench
-                          ? "Photo précédente"
-                          : isSpanish
-                            ? "Foto anterior"
-                            : "Previous photo"
-                    }
+                    aria-label={page.previousLabel}
                   >
                     <ChevronLeft size={21} aria-hidden="true" />
                   </button>
@@ -759,15 +540,7 @@ const WeddingPlannerExperience = ({
                     type="button"
                     onClick={() => scrollGreciaCarousel(1)}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition hover:border-amber-300 hover:text-amber-300"
-                    aria-label={
-                      isPortuguese
-                        ? "Próxima foto"
-                        : isFrench
-                          ? "Photo suivante"
-                          : isSpanish
-                            ? "Foto siguiente"
-                            : "Next photo"
-                    }
+                    aria-label={page.nextLabel}
                   >
                     <ChevronRight size={21} aria-hidden="true" />
                   </button>
@@ -778,34 +551,16 @@ const WeddingPlannerExperience = ({
               ref={greciaCarouselRef}
               role="region"
               aria-roledescription="carousel"
-              aria-label={
-                isPortuguese
-                  ? "Grecia com casais e noivas"
-                  : isFrench
-                    ? "Grecia avec des couples et des mariées"
-                    : isSpanish
-                      ? "Grecia con parejas y novias"
-                      : "Grecia with couples and brides"
-              }
+              aria-label={page.greciaCarouselLabel}
               tabIndex="0"
               className="-mx-6 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-6 pb-4 [scrollbar-width:none] md:-mx-10 md:px-10 lg:-mx-12 lg:px-12 [&::-webkit-scrollbar]:hidden"
             >
-              {greciaCarouselImages.map((asset, index) => (
+              {greciaCarouselImages.map((image) => (
                 <figure
-                  key={`${asset?.title || "grecia"}-${index}`}
+                  key={image._key}
                   className="w-[82vw] max-w-[460px] flex-none snap-center overflow-hidden bg-slate-900"
                 >
-                  <ContentfulImage
-                    asset={asset}
-                    alt={
-                      isPortuguese
-                        ? `Grecia Mejía com casais e noivas — imagem ${index + 1}`
-                        : isFrench
-                          ? `Grecia Mejía avec des couples et des mariées — image ${index + 1}`
-                          : undefined
-                    }
-                    className="h-[390px] w-full"
-                  />
+                  <SanityImage image={image} className="h-[390px] w-full" />
                 </figure>
               ))}
             </div>
@@ -815,10 +570,10 @@ const WeddingPlannerExperience = ({
 
       <section className="bg-white px-6 py-20 md:px-10 md:py-28 lg:px-12">
         <div className="mx-auto max-w-4xl">
-          <SectionHeading title={content.faqTitle} />
+          <SectionHeading title={page.faqTitle} />
           <div className="mt-12 divide-y divide-slate-200 border-y border-slate-200">
-            {faqList.map((faq) => (
-              <details key={faq.question} className="group py-6">
+            {(page.faqs || []).map((faq) => (
+              <details key={faq._key} className="group py-6">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-crimson text-2xl font-medium text-slate-950">
                   {faq.question}
                   <ChevronDown
@@ -843,9 +598,9 @@ const WeddingPlannerExperience = ({
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div className="lg:sticky lg:top-28">
             <SectionHeading
-              eyebrow={content.form.eyebrow}
-              title={content.form.title}
-              body={content.form.body}
+              eyebrow={page.formEyebrow}
+              title={page.formTitle}
+              body={page.formBody}
               align="left"
             />
             <a
@@ -859,7 +614,8 @@ const WeddingPlannerExperience = ({
             </a>
           </div>
           <InquiryForm
-            copy={content.form}
+            submitLabel={page.formSubmitLabel}
+            undecidedLabel={page.undecidedLabel}
             language={language}
             packages={packageList}
             selectedPackage={selectedPackage}

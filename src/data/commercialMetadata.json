@@ -1,22 +1,4 @@
 {
-  "/puntacana-wedding-planner/": {
-    "en-US": {
-      "title": "Wedding Planner in Punta Cana | Planning & Coordination",
-      "description": "We plan your destination wedding in Punta Cana: venues, trusted vendors, budget, timeline and wedding-day coordination. Talk to our local team."
-    },
-    "es": {
-      "title": "Organización de Bodas en Punta Cana | Planificación Integral",
-      "description": "Planificamos tu boda en Punta Cana: elección del lugar, proveedores, presupuesto, cronograma y coordinación del gran día. Habla con nuestro equipo local."
-    },
-    "pt": {
-      "title": "Wedding Planner em Punta Cana | Planejamento e Coordenação",
-      "description": "Planejamos seu casamento em Punta Cana: escolha do local, fornecedores, orçamento, cronograma e coordenação no dia. Fale com nossa equipe local."
-    },
-    "fr": {
-      "title": "Wedding Planner à Punta Cana | Organisation et Coordination",
-      "description": "Nous organisons votre mariage à Punta Cana : choix du lieu, prestataires, budget, planning et coordination du jour J. Contactez notre équipe locale."
-    }
-  },
   "/punta-cana-elopement-packages/": {
     "en-US": {
       "title": "Punta Cana Elopement Packages | From US$999",

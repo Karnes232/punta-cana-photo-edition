@@ -19,6 +19,9 @@ export const cardIcons = [
   { title: "Party popper (celebration)", value: "party-popper" },
   { title: "Check mark", value: "check" },
   { title: "House (villa)", value: "home" },
+  { title: "Calendar with check (wedding day)", value: "calendar-check" },
+  { title: "Map with pin (venue search)", value: "map-pinned" },
+  { title: "Globe (cultural weddings)", value: "globe" },
 ]
 
 // A card with an icon, a title and a short text, e.g. one service in

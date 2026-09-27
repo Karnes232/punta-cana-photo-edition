@@ -18,6 +18,7 @@ export const translatedTypes = [
   "shareExperiencePage",
   "eventPlannerPage",
   "genderRevealPage",
+  "weddingPlannerPage",
   "blogPage",
 ]
 

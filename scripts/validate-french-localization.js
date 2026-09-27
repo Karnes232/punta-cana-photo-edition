@@ -49,37 +49,11 @@ const { proposalPackageDetails } = loadSourceModule(
 const { SITE_LANGUAGES, localizedPath } = loadSourceModule(
   "src/utils/siteLocales.js",
 );
-const { ensureSingleSouthAsianWeddingPackage, isSouthAsianWeddingPackage } =
-  loadSourceModule("src/content/weddingPlannerContent.js");
 
 assert.deepEqual(SITE_LANGUAGES, ["en-US", "es", "pt", "fr"]);
 assert.equal(localizedPath("/proposal/", "fr"), "/fr/proposal/");
 
-for (const title of [
-  "South Asian Wedding Planning",
-  "Planificación de bodas del sur de Asia",
-  "Planejamento de Casamento Sul-Asiático",
-  "Organisation de mariage sud-asiatique",
-]) {
-  assert.ok(
-    isSouthAsianWeddingPackage({ title }),
-    `The multilingual South Asian package detector missed: ${title}`,
-  );
-}
-const deduplicatedWeddingPackages = ensureSingleSouthAsianWeddingPackage(
-  [
-    { title: "Full Wedding Planning" },
-    { title: "Organisation de mariage sud-asiatique" },
-    { title: "South Asian Wedding Planning" },
-  ],
-  { title: "Organisation de mariage sud-asiatique" },
-);
-assert.equal(deduplicatedWeddingPackages.length, 2);
-assert.equal(
-  deduplicatedWeddingPackages.filter(isSouthAsianWeddingPackage).length,
-  1,
-  "Wedding planning must expose exactly one South Asian package",
-);
+// Wedding packages live in Sanity; scripts/validate-wedding-packages.js checks them.
 
 const packageIds = proposalPackageDetails.map((item) => item.id).sort();
 assert.deepEqual(

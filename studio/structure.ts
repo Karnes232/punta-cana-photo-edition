@@ -5,6 +5,7 @@ import { DocumentIcon } from "@sanity/icons/Document"
 import { CogIcon } from "@sanity/icons/Cog"
 import { CommentIcon } from "@sanity/icons/Comment"
 import { EnvelopeIcon } from "@sanity/icons/Envelope"
+import { HeartIcon } from "@sanity/icons/Heart"
 import { HomeIcon } from "@sanity/icons/Home"
 import { SparklesIcon } from "@sanity/icons/Sparkles"
 import { WarningOutlineIcon } from "@sanity/icons/WarningOutline"
@@ -23,6 +24,7 @@ export const singletonTypes = new Set([
   "shareExperiencePage",
   "eventPlannerPage",
   "genderRevealPage",
+  "weddingPlannerPage",
   "blogPage",
   "blogPost",
 ])
@@ -38,7 +40,7 @@ export const hiddenTypes = new Set([
 ])
 
 // Listed in their own sections below rather than in the generic type list.
-const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic"])
+const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage"])
 
 // A guide's language texts have fixed IDs: blogPost-<guide>-<language>, where
 // <guide> drops the "blogGuide-" prefix of the guides created by the migration.
@@ -108,6 +110,8 @@ export const structure: StructureResolver = (S) => {
       translatedPage("homePage", "Home Page", HomeIcon),
       translatedPage("eventPlannerPage", "Event Planner Page", CaseIcon),
       translatedPage("genderRevealPage", "Gender Reveal Page", SparklesIcon),
+      translatedPage("weddingPlannerPage", "Wedding Planner Page", HeartIcon),
+      S.documentTypeListItem("weddingPackage").title("Wedding Packages"),
       translatedPage("blogPage", "Blog Page", BookIcon),
       blogGuides,
       S.documentTypeListItem("blogCategory").title("Blog Event Types"),

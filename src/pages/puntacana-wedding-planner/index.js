@@ -1,18 +1,12 @@
-import commercialMetadata from "../../data/commercialMetadata.json";
 import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
-import WeddingPlannerExperience from "../../components/WeddingPlanner/WeddingPlannerExperience";
-import {
-  ensureSingleSouthAsianWeddingPackage,
-  getWeddingPlannerContent,
-  localizeFrenchWeddingPackage,
-  localizePortugueseWeddingPackage,
-  normalizeWeddingFaqs,
-} from "../../content/weddingPlannerContent";
+import WeddingPlannerExperience, {
+  weddingPackages,
+} from "../../components/WeddingPlanner/WeddingPlannerExperience";
 import { buildWeddingPlannerSchema } from "../../utils/weddingPlannerSeo";
 import {
   getLanguageConfig,
@@ -20,15 +14,17 @@ import {
   normalizeLanguage,
 } from "../../utils/siteLocales";
 
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
+
+// Copy, photos, films and packages come from this language's Wedding Planner
+// Page document in Sanity; phone and email from General Layout.
 const WeddingPlannerPage = ({ data, pageContext }) => {
   const generalInfo = data.sanityGeneralLayout;
   return (
     <Layout generalInfo={generalInfo} overlayHeader>
       <WeddingPlannerExperience
-        page={data.allContentfulPageContent.nodes[0]}
-        galleries={data.allContentfulPhotoGallery.nodes}
-        packages={data.allContentfulWeddingPackages.nodes}
-        faqs={data.allContentfulFaqsComponent.nodes}
+        page={data.sanityWeddingPlannerPage || {}}
         generalInfo={generalInfo}
         language={pageContext.language}
       />
@@ -41,90 +37,40 @@ export default WeddingPlannerPage;
 
 export const Head = ({ pageContext, data }) => {
   const language = normalizeLanguage(pageContext.language);
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
-  const content = getWeddingPlannerContent(language);
-  const seo = data.allContentfulSeo.nodes[0];
+  const page = data.sanityWeddingPlannerPage || {};
+  const seo = page.seo;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const pageUrl = localizedUrl(
     rootUrl,
     "/puntacana-wedding-planner/",
     language,
   );
-  const { title, description } = commercialMetadata["/puntacana-wedding-planner/"][language];
-  const image = seo?.images?.file?.url
-    ? `${seo.images.file.url.startsWith("//") ? "https:" : ""}${seo.images.file.url}`
-    : undefined;
-  const cmsPackages = data.allContentfulWeddingPackages.nodes.map((item) =>
-    isPortuguese
-      ? localizePortugueseWeddingPackage(
-          item,
-          content.packages.fallbackSouthAsian,
-        )
-      : isFrench
-        ? localizeFrenchWeddingPackage(
-            item,
-            content.packages.fallbackSouthAsian,
-          )
-        : item,
-  );
-  const packages = ensureSingleSouthAsianWeddingPackage(
-    cmsPackages,
-    content.packages.fallbackSouthAsian,
-  );
-  const faqs = normalizeWeddingFaqs(
-    data.allContentfulFaqsComponent.nodes,
-    language,
-  );
+  const image = shareImageUrl(seo?.image?.asset?.url);
   const schemaMarkup = buildWeddingPlannerSchema({
     pageUrl,
     language,
-    title,
-    description,
+    title: seo?.title,
+    description: seo?.description,
     image,
-    packages,
-    faqs,
+    packages: weddingPackages(page),
+    faqs: page.faqs || [],
   });
 
   return (
     <>
       <Seo
-        title={title}
-        description={description}
-        keywords={(isPortuguese
-          ? [
-              "wedding planner Punta Cana",
-              "planejamento de casamento Punta Cana",
-              "casamento de destino Punta Cana",
-              "casamento sul-asiático Punta Cana",
-            ]
-          : isFrench
-            ? [
-                "wedding planner Punta Cana",
-                "organisation mariage Punta Cana",
-                "mariage de destination Punta Cana",
-                "mariage sud-asiatique Punta Cana",
-              ]
-            : seo?.keywords || []
-        ).join(", ")}
+        title={seo?.title}
+        description={seo?.description}
+        keywords={(seo?.keywords || []).join(", ")}
         image={image}
-        imageAlt={
-          isPortuguese
-            ? "Casamento de destino planejado pela Sertuin Events em Punta Cana"
-            : isFrench
-              ? "Mariage de destination organisé par Sertuin Events à Punta Cana"
-              : isSpanish
-                ? "Boda de destino organizada por Sertuin Events en Punta Cana"
-                : "Destination wedding planned by Sertuin Events in Punta Cana"
-        }
+        imageAlt={seo?.image?.alt}
         url={pageUrl}
         schemaMarkup={schemaMarkup}
         language={languageConfig.htmlLang}
         siteName="Sertuin Events"
         locale={languageConfig.ogLocale}
-        alternateLocale={isSpanish ? "en_US" : "es_DO"}
+        alternateLocale={language === "es" ? "en_US" : "es_DO"}
         twitterCard="summary_large_image"
       />
       <link rel="canonical" href={pageUrl} />
@@ -137,7 +83,27 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query WeddingPlannerPage($contentLanguage: String = "en-US") {
+  fragment WeddingPhoto on SanityImageWithAlt {
+    _key
+    alt
+    asset {
+      gatsbyImageData(width: 1100, placeholder: BLURRED)
+    }
+  }
+  fragment WeddingPlainPhoto on SanityImageWithAlt {
+    _key
+    alt
+    asset {
+      url
+      metadata {
+        dimensions {
+          width
+          height
+        }
+      }
+    }
+  }
+  query WeddingPlannerPage($sanityLanguage: String = "en") {
     locales: allLocale {
       edges {
         node {
@@ -161,108 +127,119 @@ export const query = graphql`
       telephone
       x
     }
-    allContentfulSeo(
-      filter: {
-        page: { eq: "Wedding-Planner" }
-        node_locale: { eq: $contentLanguage }
+    sanityWeddingPlannerPage(language: { eq: $sanityLanguage }) {
+      heroImage {
+        alt
+        asset {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+        }
       }
-    ) {
-      nodes {
+      eyebrow
+      heroHeading
+      heroText
+      primaryCtaLabel
+      whatsappCtaLabel
+      whatsappMessage
+      realWeddingsTitle
+      realWeddingsText
+      realWeddingPhotos {
+        ...WeddingPhoto
+      }
+      packagesEyebrow
+      packagesTitle
+      packagesIntro
+      packages {
+        _key
         title
-        keywords
-        images {
-          file {
+        description
+        items
+        package {
+          price
+          mostPopular
+          southAsian
+          icon
+          order
+        }
+      }
+      popularLabel
+      fromLabel
+      selectLabel
+      southAsianTitle
+      southAsianIntro
+      filmsTitle
+      filmsText
+      southAsianCtaLabel
+      films {
+        _key
+        caption
+        video {
+          asset {
             url
           }
         }
-        description {
-          description
+        poster {
+          asset {
+            url
+          }
         }
       }
-    }
-    allContentfulPageContent(
-      filter: {
-        page: { eq: "Wedding-Planner" }
-        node_locale: { eq: $contentLanguage }
+      southAsianGalleryTitle
+      southAsianPhotos {
+        ...WeddingPlainPhoto
       }
-    ) {
-      nodes {
-        page
-        heroImageList {
-          gatsbyImage(
-            layout: FULL_WIDTH
-            width: 1800
-            placeholder: BLURRED
-            formats: [AUTO, WEBP]
-            quality: 82
-          )
-          title
-          description
-        }
-        heroHeading
-        heroHeading2
-        heroEyebrow
-        sectionTitle
-        primaryCtaLabel
-        primaryCtaUrl
-        secondaryCtaLabel
-        secondaryCtaUrl
-        paragraph1 {
-          raw
-        }
-        paragraph2 {
-          raw
-        }
-        paragraph3 {
-          raw
-        }
-      }
-    }
-    allContentfulPhotoGallery(
-      filter: {
-        page: { eq: "Wedding-Planner" }
-        node_locale: { eq: $contentLanguage }
-      }
-      sort: { section: ASC }
-    ) {
-      nodes {
-        page
+      southAsianOfferTitle
+      southAsianBody
+      southAsianNote
+      processTitle
+      processIntro
+      processSteps {
+        _key
         title
-        section
-        images {
-          url
-          width
-          height
-          title
-          description
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1100
-            placeholder: BLURRED
-            formats: [AUTO, WEBP]
-            quality: 78
-          )
-        }
+        body
       }
-    }
-    allContentfulWeddingPackages(
-      filter: { node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
+      greciaPortrait {
+        ...WeddingPhoto
+      }
+      greciaEyebrow
+      greciaTitle
+      greciaText
+      greciaQuote
+      greciaCompanyLine
+      greciaGalleryTitle
+      greciaGalleryBody
+      greciaCarouselLabel
+      greciaPhotos {
+        ...WeddingPhoto
+      }
+      faqTitle
+      faqs {
+        _key
+        question
+        answer
+      }
+      formEyebrow
+      formTitle
+      formBody
+      formSubmitLabel
+      undecidedLabel
+      pathsLabel
+      westernLabel
+      southAsianLabel
+      exploreLabel
+      previousLabel
+      nextLabel
+      openLabel
+      closeLabel
+      playLabel
+      seo {
         title
         description
-        includedItems
-        price
-        mostPopular
-      }
-    }
-    allContentfulFaqsComponent(
-      filter: { page: { eq: "Wedding" }, node_locale: { eq: $contentLanguage } }
-    ) {
-      nodes {
-        title
-        content {
-          content
+        keywords
+        image {
+          alt
+          asset {
+            url
+          }
         }
       }
     }
