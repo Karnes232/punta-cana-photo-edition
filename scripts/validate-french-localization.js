@@ -85,7 +85,7 @@ assert.equal(
 
 const publishedSlugs = [...publishedBlogSlugs].sort();
 assert.deepEqual(
-  Object.keys(frenchBlogContent).sort(),
+  [...Object.keys(frenchBlogContent), ...Object.keys(require("../src/data/weddingGuideMetadata.json"))].sort(),
   publishedSlugs,
   "Every published article must have exactly one French translation",
 );
@@ -170,8 +170,8 @@ const expectedFrenchPaths = [
   ...publishedSlugs.map((slug) => `/fr/blog/${slug}/`),
   ...packageIds.map((id) => `/fr/packages/${packageSlugs.get(id)}/`),
 ];
-assert.equal(expectedFrenchPaths.length, 34);
-assert.equal(new Set(expectedFrenchPaths).size, 34);
+assert.equal(expectedFrenchPaths.length, 84);
+assert.equal(new Set(expectedFrenchPaths).size, 84);
 
 const gatsbyNodeSource = fs.readFileSync(
   path.join(projectRoot, "gatsby-node.js"),

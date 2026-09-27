@@ -58,7 +58,7 @@ assert.deepEqual(SITE_LANGUAGES, ["en-US", "es", "pt", "fr"]);
 assert.equal(localizedPath("/proposal/", "pt"), "/pt/proposal/");
 
 const publishedSlugs = [...publishedBlogSlugs].sort();
-const translatedSlugs = Object.keys(portugueseBlogContent).sort();
+const translatedSlugs = [...Object.keys(portugueseBlogContent), ...Object.keys(require("../src/data/weddingGuideMetadata.json"))].sort();
 assert.deepEqual(
   translatedSlugs,
   publishedSlugs,
@@ -136,8 +136,8 @@ const expectedPortuguesePaths = [
   ...publishedSlugs.map((slug) => `/pt/blog/${slug}/`),
   ...packageIds.map((id) => `/pt/packages/${packageSlugs.get(id)}/`),
 ];
-assert.equal(expectedPortuguesePaths.length, 34);
-assert.equal(new Set(expectedPortuguesePaths).size, 34);
+assert.equal(expectedPortuguesePaths.length, 84);
+assert.equal(new Set(expectedPortuguesePaths).size, 84);
 
 const gatsbyNodeSource = fs.readFileSync(
   path.join(projectRoot, "gatsby-node.js"),
