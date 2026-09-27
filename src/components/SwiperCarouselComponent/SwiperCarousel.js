@@ -65,12 +65,16 @@ const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
   let slideHeight =
     "h-[21rem] sm:h-[26rem] md:h-[32rem] lg:h-[37rem] xl:h-[41rem] 2xl:h-[45rem]";
   images?.forEach((e, index) => {
-    const seo = getImageSeo(e, {
-      language,
-      subject,
-      context: "gallery",
-      index,
-    });
+    // Images from Sanity arrive with an edited alt text; Contentful images get
+    // one generated from their title and the page heading.
+    const seo = e.alt
+      ? { alt: e.alt, title: e.alt }
+      : getImageSeo(e, {
+          language,
+          subject,
+          context: "gallery",
+          index,
+        });
     let image = {
       ...seo,
       asset: e,

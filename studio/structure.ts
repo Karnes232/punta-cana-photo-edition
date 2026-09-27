@@ -8,6 +8,7 @@ import { EnvelopeIcon } from "@sanity/icons/Envelope"
 import { HeartIcon } from "@sanity/icons/Heart"
 import { HomeIcon } from "@sanity/icons/Home"
 import { SparklesIcon } from "@sanity/icons/Sparkles"
+import { TagIcon } from "@sanity/icons/Tag"
 import { WarningOutlineIcon } from "@sanity/icons/WarningOutline"
 import type { StructureResolver } from "sanity/structure"
 
@@ -26,6 +27,8 @@ export const singletonTypes = new Set([
   "genderRevealPage",
   "weddingPlannerPage",
   "elopementPage",
+  "proposalPage",
+  "proposalPackagePage",
   "blogPage",
   "blogPost",
 ])
@@ -41,12 +44,17 @@ export const hiddenTypes = new Set([
 ])
 
 // Listed in their own sections below rather than in the generic type list.
-const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage", "elopementOption"])
+const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage", "elopementOption", "proposalPackage"])
 
 // A guide's language texts have fixed IDs: blogPost-<guide>-<language>, where
 // <guide> drops the "blogGuide-" prefix of the guides created by the migration.
 export const blogPostId = (guideId: string, language: string) =>
   `blogPost-${guideId.replace(/^drafts\./, "").replace(/^blogGuide-/, "")}-${language}`
+
+// A proposal package's language texts have fixed IDs too:
+// proposalPackagePage-<package>-<language>.
+export const proposalPackagePageId = (packageId: string, language: string) =>
+  `proposalPackagePage-${packageId.replace(/^drafts\./, "").replace(/^proposalPackage-/, "")}-${language}`
 
 export const structure: StructureResolver = (S) => {
   const singleton = (type: string, title: string, icon: typeof CogIcon) =>
@@ -104,6 +112,40 @@ export const structure: StructureResolver = (S) => {
         ),
     )
 
+  // Each package opens its shared settings and one page per language.
+  const proposalPackages = S.listItem()
+    .title("Proposal Packages")
+    .id("proposalPackages")
+    .icon(TagIcon)
+    .child(
+      S.documentTypeList("proposalPackage")
+        .title("Proposal Packages")
+        .defaultOrdering([{ field: "price", direction: "asc" }])
+        .child((packageId) =>
+          S.list()
+            .title("Package")
+            .items([
+              S.listItem()
+                .title("Package settings")
+                .id("settings")
+                .icon(CogIcon)
+                .child(S.document().schemaType("proposalPackage").documentId(packageId)),
+              S.divider(),
+              ...languages.map(({ id, title }) =>
+                S.listItem()
+                  .title(title)
+                  .id(id)
+                  .child(
+                    S.document()
+                      .schemaType("proposalPackagePage")
+                      .documentId(proposalPackagePageId(packageId, id))
+                      .initialValueTemplate("proposalPackagePage-for-package", { packageId, language: id }),
+                  ),
+              ),
+            ]),
+        ),
+    )
+
   return S.list()
     .title("Content")
     .items([
@@ -115,6 +157,8 @@ export const structure: StructureResolver = (S) => {
       S.documentTypeListItem("weddingPackage").title("Wedding Packages"),
       translatedPage("elopementPage", "Elopement Page", HeartIcon),
       S.documentTypeListItem("elopementOption").title("Elopement Prices"),
+      translatedPage("proposalPage", "Proposal Page", HeartIcon),
+      proposalPackages,
       translatedPage("blogPage", "Blog Page", BookIcon),
       blogGuides,
       S.documentTypeListItem("blogCategory").title("Blog Event Types"),

@@ -16,216 +16,77 @@ import {
   ProposalIntroduction,
   ProposalMomentsHeading,
   ProposalTrust,
-  buildProposalFaqs,
-  getProposalCopy,
 } from "../../components/ProposalComponents/ProposalExperience";
 import { buildProposalSchema } from "../../utils/proposalSeo";
-import { getProposalPackageDetailsFromCard } from "../../data/proposalPackageDetails";
 import {
   getLanguageConfig,
   localizedUrl,
   normalizeLanguage,
 } from "../../utils/siteLocales";
 
-const withoutYear = (text = "") =>
-  text
-    .replace(/\s*[|—–-]\s*2026\s*$/, "")
-    .replace(/\s*2026\b\s*/, " ")
-    .replace(/\s{2,}/g, " ")
-    .trim();
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
 
-const getConciseProposalInclusions = (details, language) => {
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
-  const labels = isPortuguese
-    ? {
-        transportation: "Transporte privativo para o casal",
-        photography: "Mais de 70 fotografias editadas",
-        bouquetWine: "Buquê natural e vinho espumante",
-        duration: "De 90 a 120 minutos na praia",
-        charcuterie: "Tábua de frios para dois",
-        dinner: "Jantar privativo de três tempos para dois",
-        dinnerDrinks: "Espumante e vinho tinto ou branco",
-        violin: "Violinista ao vivo por 45 minutos",
-      }
-    : isFrench
-      ? {
-          transportation: "Transport privé pour le couple",
-          photography: "Plus de 70 photos retouchées",
-          bouquetWine: "Bouquet naturel et vin pétillant",
-          duration: "90 à 120 minutes sur la plage",
-          charcuterie: "Planche apéritive pour deux",
-          dinner: "Dîner privé en trois services pour deux",
-          dinnerDrinks: "Vin pétillant et vin rouge ou blanc",
-          violin: "Violoniste en direct pendant 45 minutes",
-        }
-      : isSpanish
-        ? {
-            transportation: "Transporte privado para la pareja",
-            photography: "Más de 70 fotografías editadas",
-            bouquetWine: "Bouquet natural y vino espumante",
-            duration: "De 90 a 120 minutos en la playa",
-            charcuterie: "Charcutería para dos",
-            dinner: "Cena privada de tres tiempos para dos",
-            dinnerDrinks: "Vino espumante y vino tinto o blanco",
-            violin: "Violinista en vivo durante 45 minutos",
-          }
-        : {
-            transportation: "Private transportation for the couple",
-            photography: "More than 70 edited photographs",
-            bouquetWine: "Natural bouquet and sparkling wine",
-            duration: "90 to 120 minutes on the beach",
-            charcuterie: "Charcuterie for two",
-            dinner: "Private three-course dinner for two",
-            dinnerDrinks: "Sparkling wine plus red or white wine",
-            violin: "Live violinist for 45 minutes",
-          };
+// HeroSwiper and SwiperCarousel are shared with pages that still read
+// Contentful, so Sanity photos are handed over in the shape they expect, with
+// each photo's edited alt text.
+const toSwiperImages = (images = []) =>
+  images.map((image) => ({
+    gatsbyImage: image.asset?.gatsbyImageData,
+    alt: image.alt,
+  }));
 
-  if (details.dinnerIncluded) {
-    return [
-      labels.transportation,
-      labels.photography,
-      labels.dinner,
-      details.violinIncluded ? labels.violin : labels.dinnerDrinks,
-    ];
-  }
+// FAQs in the shape the FAQ list and the structured data expect.
+const toFaqs = (faqs = []) =>
+  faqs.map(({ question, answer }) => ({
+    title: question,
+    content: { content: answer },
+  }));
 
-  if (details.charcuterieIncluded) {
-    return [
-      labels.transportation,
-      labels.photography,
-      labels.charcuterie,
-      labels.bouquetWine,
-    ];
-  }
-
-  if (details.violinIncluded) {
-    return [
-      labels.transportation,
-      labels.photography,
-      labels.violin,
-      labels.bouquetWine,
-    ];
-  }
-
-  return [
-    labels.transportation,
-    labels.photography,
-    labels.bouquetWine,
-    labels.duration,
-  ];
-};
-
-const withoutRetiredProposalPackages = (packages = [], language = "en-US") =>
-  packages
-    .filter((proposalPackage) => {
-      const slug = proposalPackage.packagePage?.urlSlug?.trim().toLowerCase();
-      const link = proposalPackage.link?.trim().toLowerCase();
-      const title = proposalPackage.title?.trim().toLowerCase();
-      return (
-        slug !== "ocean-of-love" &&
-        !link?.includes("/ocean-of-love") &&
-        title !== "ocean of love" &&
-        title !== "océano de amor" &&
-        title !== "oceano de amor"
-      );
-    })
-    .map((proposalPackage) => {
-      const details = getProposalPackageDetailsFromCard(proposalPackage);
-      return details
-        ? {
-            ...proposalPackage,
-            title:
-              language === "fr" &&
-              details.id === "romantic-dinner-marriage-proposal"
-                ? "Dîner Romantique et Demande en Mariage"
-                : details.name,
-            price: details.price,
-            included: getConciseProposalInclusions(details, language),
-          }
-        : proposalPackage;
-    })
-    .sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
-
+// Copy and photos come from this language's Proposal Page document in Sanity;
+// the package cards from each Proposal Package and its page in this language.
 const Index = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
   const generalInfo = data.sanityGeneralLayout;
-  const pageContent = data.allContentfulPageContent.nodes[0];
-  const carousel = data.allContentfulSwiperCarousel.nodes[0];
-  const proposalCopy = getProposalCopy(language);
-  const proposalPackages = withoutRetiredProposalPackages(
-    data.allContentfulPackages.nodes,
-    language,
-  );
-  const proposalFaqs = buildProposalFaqs({
-    language,
-    packages: proposalPackages,
-  });
+  const page = data.sanityProposalPage || {};
   const heroInfo = {
-    ...pageContent,
-    heroHeading:
-      language === "pt"
-        ? "Pedidos de Casamento em Punta Cana"
-        : language === "fr"
-          ? "Demandes en Mariage à Punta Cana"
-          : withoutYear(pageContent.heroHeading),
-    heroHeading2:
-      language === "pt"
-        ? "Pacotes românticos completos em praia privativa, com transporte, decoração, fotografia e coordenação local."
-        : language === "fr"
-          ? "Forfaits romantiques complets sur plage privée, avec transport, décoration, photographie et coordination locale."
-          : pageContent.heroHeading2,
+    fullSize: false,
+    heroHeading: page.heroHeading,
+    heroHeading2: page.heroSubheading,
+    heroImageList: toSwiperImages(page.heroImages),
   };
 
   return (
     <Layout generalInfo={generalInfo} overlayHeader>
       <main>
-      <HeroSwiper heroInfo={heroInfo} overlayHeader language={language} />
-      <ProposalIntroduction language={language} />
-      <OurPackages
-        title={
-          language === "pt"
-            ? proposalCopy.packagesFallbackTitle
-            : language === "fr"
-              ? "Forfaits de Demande en Mariage à Punta Cana"
-              : pageContent.sectionTitle || proposalCopy.packagesFallbackTitle
-        }
-        photoPackages={proposalPackages}
-        language={language}
-      />
-      <ProposalInclusions language={language} />
-      <section aria-labelledby="proposal-moments-heading">
-        <ProposalMomentsHeading language={language} />
-        {pageContent.videoUrl && (
-          <div className="mb-12 md:mb-16">
-            <VideoPlayer url={pageContent.videoUrl} />
-          </div>
-        )}
-        {carousel?.images?.length > 0 && (
-          <SwiperCarousel
-            images={carousel.images}
-            language={language}
-            subject={heroInfo.heroHeading}
-          />
-        )}
-      </section>
-      <ProposalBookingProcess language={language} />
-      <ProposalTrust language={language} instagramUrl={generalInfo.instagram} />
-      <Faqs
-        faqs={proposalFaqs}
-        title={
-          language === "pt"
-            ? "Perguntas frequentes"
-            : language === "fr"
-              ? "Questions fréquentes"
-              : language === "es"
-                ? "Preguntas frecuentes"
-                : "Frequently Asked Questions"
-        }
-      />
-            <ServiceGuides cluster="proposals" language={language} />
-</main>
+        <HeroSwiper heroInfo={heroInfo} overlayHeader language={language} />
+        <ProposalIntroduction page={page} />
+        <OurPackages
+          title={page.packagesTitle}
+          packagePages={data.allSanityProposalPackagePage.nodes}
+          fromLabel={page.fromLabel}
+          language={language}
+        />
+        <ProposalInclusions page={page} />
+        <section aria-labelledby="proposal-moments-heading">
+          <ProposalMomentsHeading page={page} />
+          {page.videoUrl && (
+            <div className="mb-12 md:mb-16">
+              <VideoPlayer url={page.videoUrl} />
+            </div>
+          )}
+          {page.galleryPhotos?.length > 0 && (
+            <SwiperCarousel
+              images={toSwiperImages(page.galleryPhotos)}
+              language={language}
+            />
+          )}
+        </section>
+        <ProposalBookingProcess page={page} language={language} />
+        <ProposalTrust page={page} instagramUrl={generalInfo.instagram} />
+        <Faqs faqs={toFaqs(page.faqs)} title={page.faqTitle} />
+        <ServiceGuides cluster="proposals" language={language} />
+      </main>
     </Layout>
   );
 };
@@ -233,81 +94,50 @@ const Index = ({ data, pageContext }) => {
 export default Index;
 
 export const Head = ({ pageContext, data }) => {
-  const {
-    title: contentfulTitle,
-    description,
-    images,
-    keywords,
-  } = data.allContentfulSeo.nodes[0];
   const language = normalizeLanguage(pageContext.language);
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
-  const title = isPortuguese
-    ? "Pedido de Casamento em Punta Cana | Pacotes Românticos"
-    : isFrench
-      ? "Demande en Mariage à Punta Cana | Forfaits Romantiques"
-      : withoutYear(contentfulTitle);
+  const page = data.sanityProposalPage || {};
+  const seo = page.seo;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const siteUrl = localizedUrl(rootUrl, "/proposal/", language);
-  const seoDescription = isPortuguese
-    ? "Pacotes de pedido de casamento em Punta Cana com praia privativa, transporte, decoração romântica, fotografia profissional e coordenação local."
-    : isFrench
-      ? "Forfaits de demande en mariage à Punta Cana avec plage privée, transport, décoration romantique, photographie professionnelle et coordination locale."
-      : description.description;
-  const seoImage = images?.file?.url
-    ? `${images.file.url.startsWith("//") ? "https:" : ""}${images.file.url}`
-    : undefined;
+  const image = shareImageUrl(seo?.image?.asset?.url);
   const generalInfo = data.sanityGeneralLayout;
-  const proposalPackages = withoutRetiredProposalPackages(
-    data.allContentfulPackages.nodes,
-    language,
-  );
   const instagramUrl = /^https?:\/\//i.test(generalInfo.instagram || "")
     ? generalInfo.instagram
     : "https://www.instagram.com/sertuinevents/";
+  const packages = [...data.allSanityProposalPackagePage.nodes]
+    .filter((item) => item.package?.slug?.current)
+    .sort((a, b) => a.package.price - b.package.price)
+    .map((item) => ({
+      title: item.name,
+      price: item.package.price,
+      packagePage: { urlSlug: item.package.slug.current },
+    }));
   const schemaMarkup = buildProposalSchema({
     siteUrl: rootUrl,
     pageUrl: siteUrl,
     language,
-    title,
-    description: seoDescription,
-    image: seoImage,
+    title: seo?.title,
+    description: seo?.description,
+    image,
     companyName: generalInfo.companyName,
     legalName: "Sertuin SRL",
     directorName: "Grecia Mejía",
     telephone: generalInfo.telephone,
     instagram: instagramUrl,
     googleMapsUrl: GOOGLE_MAPS_URL,
-    packages: proposalPackages,
-    faqs: buildProposalFaqs({
-      language,
-      packages: proposalPackages,
-    }),
+    packages,
+    faqs: toFaqs(page.faqs),
   });
 
   return (
     <>
       <Seo
-        title={title}
-        description={seoDescription}
-        keywords={(isPortuguese
-          ? [
-              "pedido de casamento Punta Cana",
-              "pacotes de pedido de casamento Punta Cana",
-              "pedido romântico em Punta Cana",
-              "pedido na praia Punta Cana",
-            ]
-          : isFrench
-            ? [
-                "demande en mariage Punta Cana",
-                "forfait demande en mariage Punta Cana",
-                "demande romantique Punta Cana",
-                "demande sur la plage Punta Cana",
-              ]
-            : keywords
-        ).join(", ")}
-        image={seoImage}
+        title={seo?.title}
+        description={seo?.description}
+        keywords={(seo?.keywords || []).join(", ")}
+        image={image}
+        imageAlt={seo?.image?.alt}
         url={siteUrl}
         schemaMarkup={schemaMarkup}
         language={languageConfig.htmlLang}
@@ -318,8 +148,15 @@ export const Head = ({ pageContext, data }) => {
     </>
   );
 };
+
 export const query = graphql`
-  query MyQuery($contentLanguage: String = "en-US") {
+  fragment ProposalPhoto on SanityImageWithAlt {
+    alt
+    asset {
+      gatsbyImageData(width: 1200, placeholder: BLURRED)
+    }
+  }
+  query ProposalPage($sanityLanguage: String = "en") {
     locales: allLocale {
       edges {
         node {
@@ -342,93 +179,104 @@ export const query = graphql`
       telephone
       messengerLink
     }
-    allContentfulSeo(
-      filter: {
-        page: { eq: "Proposal" }
-        node_locale: { eq: $contentLanguage }
+    sanityProposalPage(language: { eq: $sanityLanguage }) {
+      heroImages {
+        ...ProposalPhoto
       }
-    ) {
-      nodes {
+      heroHeading
+      heroSubheading
+      introEyebrow
+      introTitle
+      introParagraphs
+      packagesTitle
+      fromLabel
+      inclusionsEyebrow
+      inclusionsTitle
+      inclusionsIntro
+      inclusions {
+        _key
+        icon
         title
+        description
+      }
+      upgradesTitle
+      upgradesIntro
+      upgrades {
+        _key
+        icon
+        label
+      }
+      momentsEyebrow
+      momentsTitle
+      momentsIntro
+      videoUrl
+      galleryPhotos {
+        ...ProposalPhoto
+      }
+      bookingEyebrow
+      bookingTitle
+      bookingIntro
+      bookingSteps {
+        _key
+        icon
+        title
+        description
+      }
+      contactLabel
+      trustEyebrow
+      trustTitle
+      trustIntro
+      companyTitle
+      experienceFacts
+      appointmentNote
+      portfolioText
+      instagramLabel
+      mapsLabel
+      reviewsTitle
+      reviewsIntro
+      reviews {
+        _key
+        author
+        excerpt
+      }
+      fiveStarsLabel
+      reviewSourceLabel
+      reviewLinkLabel
+      faqTitle
+      faqs {
+        _key
+        question
+        answer
+      }
+      seo {
+        title
+        description
         keywords
-        images {
-          file {
+        image {
+          alt
+          asset {
             url
           }
         }
-        description {
-          description
-        }
       }
     }
-    allContentfulPageContent(
-      filter: {
-        page: { eq: "Proposal" }
-        node_locale: { eq: $contentLanguage }
-      }
+    allSanityProposalPackagePage(
+      filter: { language: { eq: $sanityLanguage } }
     ) {
       nodes {
-        page
-        videoUrl
-        heroImageList {
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
-            quality: 65
-          )
-          title
-          description
+        name
+        cardHighlights
+        cardImage {
+          alt
+          asset {
+            gatsbyImageData(width: 800, placeholder: BLURRED)
+          }
         }
-        fullSize
-        heroHeading
-        heroHeading2
-        sectionTitle
-      }
-    }
-    allContentfulPackages(
-      filter: {
-        page: { eq: "Proposal" }
-        node_locale: { eq: $contentLanguage }
-      }
-      sort: { price: ASC }
-    ) {
-      nodes {
-        page
-        title
-        link
-        included
-        price
-        image {
-          title
-          description
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 800
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
-            quality: 65
-          )
-        }
-        packagePage {
-          urlSlug
-        }
-      }
-    }
-    allContentfulSwiperCarousel(filter: { page: { eq: "Proposal" } }) {
-      nodes {
-        page
-        images {
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: BLURRED
-            formats: [AUTO, WEBP, AVIF]
-            quality: 65
-          )
-          title
-          description
+        package {
+          price
+          slug {
+            current
+          }
         }
       }
     }

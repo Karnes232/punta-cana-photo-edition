@@ -27,6 +27,13 @@ export const cardIcons = [
   { title: "Handshake with heart (coordination)", value: "heart-handshake" },
   { title: "Flower (flowers)", value: "flower-2" },
   { title: "Document with check (certificate)", value: "file-check-2" },
+  { title: "Phone (phone video)", value: "smartphone" },
+  { title: "Music notes (music)", value: "music-2" },
+  { title: "Person with check (coordinator)", value: "user-round-check" },
+  { title: "Video camera (video)", value: "video" },
+  { title: "Crossed fork and knife (dinner)", value: "utensils-crossed" },
+  { title: "Calendar with check (date)", value: "calendar-check-2" },
+  { title: "Document (agreement)", value: "file-text" },
 ]
 
 // A card with an icon, a title and a short text, e.g. one service in

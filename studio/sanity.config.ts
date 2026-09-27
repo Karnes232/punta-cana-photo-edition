@@ -20,6 +20,7 @@ export const translatedTypes = [
   "genderRevealPage",
   "weddingPlannerPage",
   "elopementPage",
+  "proposalPage",
   "blogPage",
 ]
 
@@ -61,6 +62,19 @@ export default defineConfig({
         value: ({ guideId, language }: { guideId: string; language: string }) => ({
           language,
           guide: { _type: "reference", _ref: guideId.replace(/^drafts\./, "") },
+        }),
+      },
+      {
+        id: "proposalPackagePage-for-package",
+        title: "Package Page",
+        schemaType: "proposalPackagePage",
+        parameters: [
+          { name: "packageId", type: "string" },
+          { name: "language", type: "string" },
+        ],
+        value: ({ packageId, language }: { packageId: string; language: string }) => ({
+          language,
+          package: { _type: "reference", _ref: packageId.replace(/^drafts\./, "") },
         }),
       },
     ],

@@ -1,10 +1,13 @@
 import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
 import PackageCard from "./PackageCard";
-import uniqueByTitle from "../../hooks/uniqueByTitle";
 
-const OurPackages = ({ title, photoPackages, language }) => {
-  const uniqueObjects = uniqueByTitle(photoPackages);
+// The proposal packages' cards, from the lowest price.
+const OurPackages = ({ title, packagePages = [], fromLabel, language }) => {
+  const cards = packagePages
+    .filter((item) => item.package?.slug?.current)
+    .sort((a, b) => a.package.price - b.package.price);
+
   return (
     <section
       aria-labelledby="proposal-packages-heading"
@@ -20,15 +23,14 @@ const OurPackages = ({ title, photoPackages, language }) => {
       )}
 
       <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-center md:justify-evenly max-w-5xl xl:max-w-6xl mx-auto gap-8 mb-5">
-        {uniqueObjects.map((photoPackage) => {
-          return (
-            <PackageCard
-              photoPackage={photoPackage}
-              language={language}
-              key={photoPackage.packagePage?.urlSlug || photoPackage.title}
-            />
-          );
-        })}
+        {cards.map((packagePage) => (
+          <PackageCard
+            packagePage={packagePage}
+            fromLabel={fromLabel}
+            language={language}
+            key={packagePage.package.slug.current}
+          />
+        ))}
       </div>
     </section>
   );

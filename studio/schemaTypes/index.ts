@@ -11,6 +11,9 @@ import { genderRevealPage } from "./documents/genderRevealPage"
 import { generalLayout } from "./documents/generalLayout"
 import { homePage } from "./documents/homePage"
 import { notFoundPage } from "./documents/notFoundPage"
+import { proposalPackage } from "./documents/proposalPackage"
+import { proposalPackagePage } from "./documents/proposalPackagePage"
+import { proposalPage } from "./documents/proposalPage"
 import { shareExperiencePage } from "./documents/shareExperiencePage"
 import { thankYouPage } from "./documents/thankYouPage"
 import { weddingPackage } from "./documents/weddingPackage"
@@ -26,6 +29,7 @@ import { iconLabel } from "./objects/iconLabel"
 import { imageWithAlt } from "./objects/imageWithAlt"
 import { localizedString } from "./objects/localizedString"
 import { processStep } from "./objects/processStep"
+import { reviewExcerpt } from "./objects/reviewExcerpt"
 import { seo } from "./objects/seo"
 import { weddingFilm } from "./objects/weddingFilm"
 import { weddingPackageText } from "./objects/weddingPackageText"
@@ -45,6 +49,9 @@ export const schemaTypes = [
   weddingPackage,
   elopementPage,
   elopementOption,
+  proposalPage,
+  proposalPackage,
+  proposalPackagePage,
   blogPage,
   blogGuide,
   blogPost,
@@ -66,6 +73,7 @@ export const schemaTypes = [
   imageWithAlt,
   localizedString,
   processStep,
+  reviewExcerpt,
   seo,
   weddingFilm,
   weddingPackageText,
