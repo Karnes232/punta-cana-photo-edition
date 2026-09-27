@@ -3,20 +3,11 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactPlayer from "react-player/lazy";
 import {
   ArrowRight,
-  BadgeCheck,
   Building2,
   CalendarRange,
   Check,
-  ClipboardCheck,
-  Headphones,
   Hotel,
-  MapPin,
   MessageCircle,
-  Route,
-  ShieldCheck,
-  Truck,
-  Users,
-  Utensils,
   WalletCards,
 } from "lucide-react";
 import {
@@ -26,21 +17,7 @@ import {
 import { passVisitorName } from "../../utils/thankYouName";
 import InternationalPhoneField from "../FormComponents/InternationalPhoneField";
 import { localizedPath } from "../../utils/siteLocales";
-
-// Card icons by the name chosen in Sanity (studio/schemaTypes/objects/iconCard.ts).
-const cardIcons = {
-  "badge-check": BadgeCheck,
-  "clipboard-check": ClipboardCheck,
-  headphones: Headphones,
-  hotel: Hotel,
-  "map-pin": MapPin,
-  "message-circle": MessageCircle,
-  "shield-check": ShieldCheck,
-  truck: Truck,
-  users: Users,
-  utensils: Utensils,
-  "wallet-cards": WalletCards,
-};
+import { cardIcon } from "../../utils/cardIcons";
 
 const SectionHeader = ({
   eyebrow,
@@ -396,7 +373,7 @@ const CorporateEventPlanner = ({ page, generalInfo, language }) => {
           />
           <div className="mt-14 grid gap-px overflow-hidden border border-white/15 bg-white/15 sm:grid-cols-2 lg:grid-cols-4">
             {(page.services || []).map((service) => {
-              const Icon = cardIcons[service.icon] || Check;
+              const Icon = cardIcon(service.icon);
               return (
                 <article
                   key={service._key}
@@ -604,7 +581,7 @@ const CorporateEventPlanner = ({ page, generalInfo, language }) => {
           <SectionHeader title={page.whyTitle} />
           <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
             {(page.whyItems || []).map((item) => {
-              const Icon = cardIcons[item.icon] || Check;
+              const Icon = cardIcon(item.icon);
               return (
                 <article key={item._key} className="flex gap-5">
                   <Icon

@@ -35,24 +35,6 @@
       "description": "Nous organisons votre mariage intimiste à Punta Cana, sur la plage ou en catamaran. Dès 999 USD avec transport, photos de cérémonie et décoration."
     }
   },
-  "/gender-reveal-punta-cana/": {
-    "en-US": {
-      "title": "Gender Reveal in Punta Cana | Custom Event Planning",
-      "description": "We plan your gender reveal in Punta Cana at a hotel, villa or beach, with décor and coordination tailored to your idea. Tell us your plans for a custom quote."
-    },
-    "es": {
-      "title": "Revelación de Género en Punta Cana | Evento a Medida",
-      "description": "Organizamos tu revelación de género en Punta Cana, en hotel, villa o playa, con decoración y coordinación a tu medida. Cuéntanos tu idea para cotizar."
-    },
-    "pt": {
-      "title": "Chá Revelação em Punta Cana | Organização Sob Medida",
-      "description": "Organizamos seu chá revelação em Punta Cana, em hotel, villa ou praia, com decoração e coordenação sob medida. Conte-nos sua ideia para receber um orçamento."
-    },
-    "fr": {
-      "title": "Gender Reveal à Punta Cana | Organisation Sur Mesure",
-      "description": "Nous organisons votre gender reveal à Punta Cana : hôtel, villa ou plage, décoration et coordination sur mesure. Parlez-nous de votre idée pour un devis."
-    }
-  },
   "/packages/infinity-love-proposal/": {
     "en-US": {
       "title": "Infinity Love Proposal in Punta Cana | Bronze Floral Arch",

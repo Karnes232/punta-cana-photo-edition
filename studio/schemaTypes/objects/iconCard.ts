@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity"
 
 // The icons the site can draw beside a card, by name. Each value matches a
-// lucide-react icon in src/components/CorporateEventPlanner/CorporateEventPlanner.js;
-// adding one here also needs adding it there.
+// lucide-react icon in src/utils/cardIcons.js; adding one here also needs
+// adding it there.
 export const cardIcons = [
   { title: "Clipboard with check (planning)", value: "clipboard-check" },
   { title: "Badge with check (quality)", value: "badge-check" },
@@ -15,6 +15,10 @@ export const cardIcons = [
   { title: "Map pin (local)", value: "map-pin" },
   { title: "Speech bubble (communication)", value: "message-circle" },
   { title: "Wallet (budget)", value: "wallet-cards" },
+  { title: "Sparkles (design)", value: "sparkles" },
+  { title: "Party popper (celebration)", value: "party-popper" },
+  { title: "Check mark", value: "check" },
+  { title: "House (villa)", value: "home" },
 ]
 
 // A card with an icon, a title and a short text, e.g. one service in

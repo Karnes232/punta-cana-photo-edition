@@ -5,6 +5,7 @@ import { blogPost } from "./documents/blogPost"
 import { blogTopic } from "./documents/blogTopic"
 import { contactPage } from "./documents/contactPage"
 import { eventPlannerPage } from "./documents/eventPlannerPage"
+import { genderRevealPage } from "./documents/genderRevealPage"
 import { generalLayout } from "./documents/generalLayout"
 import { homePage } from "./documents/homePage"
 import { notFoundPage } from "./documents/notFoundPage"
@@ -16,6 +17,7 @@ import { cta } from "./objects/cta"
 import { eventCard } from "./objects/eventCard"
 import { faqItem } from "./objects/faqItem"
 import { iconCard } from "./objects/iconCard"
+import { iconLabel } from "./objects/iconLabel"
 import { imageWithAlt } from "./objects/imageWithAlt"
 import { localizedString } from "./objects/localizedString"
 import { processStep } from "./objects/processStep"
@@ -31,6 +33,7 @@ export const schemaTypes = [
   notFoundPage,
   shareExperiencePage,
   eventPlannerPage,
+  genderRevealPage,
   blogPage,
   blogGuide,
   blogPost,
@@ -45,6 +48,7 @@ export const schemaTypes = [
   eventCard,
   faqItem,
   iconCard,
+  iconLabel,
   imageWithAlt,
   localizedString,
   processStep,

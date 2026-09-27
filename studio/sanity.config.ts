@@ -17,6 +17,7 @@ export const translatedTypes = [
   "notFoundPage",
   "shareExperiencePage",
   "eventPlannerPage",
+  "genderRevealPage",
   "blogPage",
 ]
 

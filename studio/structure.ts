@@ -6,6 +6,7 @@ import { CogIcon } from "@sanity/icons/Cog"
 import { CommentIcon } from "@sanity/icons/Comment"
 import { EnvelopeIcon } from "@sanity/icons/Envelope"
 import { HomeIcon } from "@sanity/icons/Home"
+import { SparklesIcon } from "@sanity/icons/Sparkles"
 import { WarningOutlineIcon } from "@sanity/icons/WarningOutline"
 import type { StructureResolver } from "sanity/structure"
 
@@ -21,6 +22,7 @@ export const singletonTypes = new Set([
   "notFoundPage",
   "shareExperiencePage",
   "eventPlannerPage",
+  "genderRevealPage",
   "blogPage",
   "blogPost",
 ])
@@ -105,6 +107,7 @@ export const structure: StructureResolver = (S) => {
       singleton("generalLayout", "General Layout", CogIcon),
       translatedPage("homePage", "Home Page", HomeIcon),
       translatedPage("eventPlannerPage", "Event Planner Page", CaseIcon),
+      translatedPage("genderRevealPage", "Gender Reveal Page", SparklesIcon),
       translatedPage("blogPage", "Blog Page", BookIcon),
       blogGuides,
       S.documentTypeListItem("blogCategory").title("Blog Event Types"),

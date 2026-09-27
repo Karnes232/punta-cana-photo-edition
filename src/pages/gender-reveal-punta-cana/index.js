@@ -1,4 +1,3 @@
-import commercialMetadata from "../../data/commercialMetadata.json";
 import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
@@ -6,11 +5,6 @@ import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
 import GenderRevealExperience from "../../components/GenderReveal/GenderRevealExperience";
-import {
-  getGenderRevealContent,
-  isCurrentGenderRevealCopy,
-  normalizeGenderRevealFaqs,
-} from "../../content/genderRevealContent";
 import { buildGenderRevealSchema } from "../../utils/genderRevealSeo";
 import {
   getLanguageConfig,
@@ -18,15 +12,17 @@ import {
   normalizeLanguage,
 } from "../../utils/siteLocales";
 
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
+
+// Copy, photos and SEO come from this language's Gender Reveal Page document
+// in Sanity; phone and email from General Layout.
 const GenderRevealPage = ({ data, pageContext }) => {
   const generalInfo = data.sanityGeneralLayout;
   return (
     <Layout generalInfo={generalInfo} overlayHeader>
       <GenderRevealExperience
-        page={data.allContentfulPageContent.nodes[0]}
-        galleries={data.allContentfulPhotoGallery.nodes}
-        cards={data.allContentfulCardWithImage.nodes}
-        faqs={data.allContentfulFaqsComponent.nodes}
+        page={data.sanityGenderRevealPage || {}}
         generalInfo={generalInfo}
         language={pageContext.language}
       />
@@ -39,88 +35,35 @@ export default GenderRevealPage;
 
 export const Head = ({ pageContext, data }) => {
   const language = normalizeLanguage(pageContext.language);
-  const isSpanish = language === "es";
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
-  const content = getGenderRevealContent(language);
-  const seo = data.allContentfulSeo.nodes[0];
+  const page = data.sanityGenderRevealPage || {};
+  const seo = page.seo;
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const pageUrl = localizedUrl(rootUrl, "/gender-reveal-punta-cana/", language);
-  const { title, description } = commercialMetadata["/gender-reveal-punta-cana/"][language];
-  const image = `${rootUrl}/images/punta-cana-gender-reveal-planning.webp`;
-  const keywords = (seo?.keywords || []).filter((keyword) =>
-    isCurrentGenderRevealCopy(keyword),
-  );
-  const fallbackKeywords = isPortuguese
-    ? [
-        "chá revelação Punta Cana",
-        "organização de chá revelação Punta Cana",
-        "chá revelação em villa Punta Cana",
-        "chá revelação em hotel Punta Cana",
-      ]
-    : isFrench
-      ? [
-          "gender reveal Punta Cana",
-          "organisation gender reveal Punta Cana",
-          "gender reveal villa Punta Cana",
-          "gender reveal hôtel Punta Cana",
-        ]
-      : isSpanish
-        ? [
-            "revelación de género Punta Cana",
-            "organización de revelación de género Punta Cana",
-            "revelación de género en villa Punta Cana",
-            "revelación de género en hotel Punta Cana",
-          ]
-        : [
-            "gender reveal Punta Cana",
-            "Punta Cana gender reveal planner",
-            "custom gender reveal Punta Cana",
-            "villa gender reveal Punta Cana",
-            "hotel gender reveal Punta Cana",
-          ];
-  const faqs = normalizeGenderRevealFaqs(
-    data.allContentfulFaqsComponent.nodes,
-    language,
-  );
+  const image = shareImageUrl(seo?.image?.asset?.url);
   const schemaMarkup = buildGenderRevealSchema({
     pageUrl,
     language,
-    title,
-    description,
+    title: seo?.title,
+    description: seo?.description,
     image,
-    faqs,
+    faqs: page.faqs || [],
   });
 
   return (
     <>
       <Seo
-        title={title}
-        description={description}
-        keywords={(!isSpanish &&
-        !isPortuguese &&
-        !isFrench &&
-        keywords.length > 0
-          ? keywords
-          : fallbackKeywords
-        ).join(", ")}
+        title={seo?.title}
+        description={seo?.description}
+        keywords={(seo?.keywords || []).join(", ")}
         image={image}
-        imageAlt={
-          isPortuguese
-            ? "Chá revelação personalizado em uma praia de Punta Cana"
-            : isFrench
-              ? "Gender reveal personnalisée sur une plage de Punta Cana"
-              : isSpanish
-                ? "Revelación de género personalizada en una playa de Punta Cana"
-                : "Custom gender reveal celebration on a Punta Cana beach"
-        }
+        imageAlt={seo?.image?.alt}
         url={pageUrl}
         schemaMarkup={schemaMarkup}
         language={languageConfig.htmlLang}
         siteName="Sertuin Events"
         locale={languageConfig.ogLocale}
-        alternateLocale={isSpanish ? "en_US" : "es_DO"}
+        alternateLocale={language === "es" ? "en_US" : "es_DO"}
         twitterCard="summary_large_image"
       />
       <link rel="canonical" href={pageUrl} />
@@ -133,7 +76,7 @@ export const Head = ({ pageContext, data }) => {
 };
 
 export const query = graphql`
-  query GenderRevealPage($contentLanguage: String = "en-US") {
+  query GenderRevealPage($sanityLanguage: String = "en") {
     locales: allLocale {
       edges {
         node {
@@ -157,96 +100,87 @@ export const query = graphql`
       telephone
       x
     }
-    allContentfulSeo(
-      filter: {
-        page: { eq: "Gender Reveal" }
-        node_locale: { eq: $contentLanguage }
+    sanityGenderRevealPage(language: { eq: $sanityLanguage }) {
+      heroImage {
+        alt
+        asset {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+        }
       }
-    ) {
-      nodes {
+      eyebrow
+      heroHeading
+      heroText
+      primaryCtaLabel
+      whatsappCtaLabel
+      whatsappMessage
+      trustItems
+      introEyebrow
+      introTitle
+      introParagraphs
+      introImages {
+        _key
+        alt
+        asset {
+          gatsbyImageData(width: 900, placeholder: BLURRED)
+        }
+      }
+      serviceEyebrow
+      serviceTitle
+      serviceIntro
+      services {
+        _key
+        icon
+        label
+      }
+      serviceNote
+      locationsEyebrow
+      locationsTitle
+      locationsIntro
+      locations {
+        _key
+        icon
         title
+        description
+      }
+      locationsNote
+      galleryEyebrow
+      galleryTitle
+      galleryIntro
+      galleryImages {
+        _key
+        alt
+        asset {
+          gatsbyImageData(width: 1200, placeholder: BLURRED)
+        }
+      }
+      processEyebrow
+      processTitle
+      processIntro
+      processSteps {
+        _key
+        title
+        body
+      }
+      formEyebrow
+      formTitle
+      formBody
+      formWhatsappLabel
+      formSubmitLabel
+      faqTitle
+      faqs {
+        _key
+        question
+        answer
+      }
+      seo {
+        title
+        description
         keywords
-        description {
-          description
-        }
-      }
-    }
-    allContentfulPageContent(
-      filter: {
-        page: { eq: "Gender Reveal" }
-        node_locale: { eq: $contentLanguage }
-      }
-    ) {
-      nodes {
-        page
-        heroHeading
-        heroHeading2
-        heroEyebrow
-        sectionTitle
-        sectionTitle2
-        primaryCtaLabel
-        secondaryCtaLabel
-        contactEyebrow
-        contactHeading
-        contactBody
-        paragraph1 {
-          raw
-        }
-        paragraph2 {
-          raw
-        }
-        paragraph3 {
-          raw
-        }
-      }
-    }
-    allContentfulPhotoGallery(
-      filter: {
-        page: { eq: "Gender Reveal" }
-        node_locale: { eq: $contentLanguage }
-      }
-    ) {
-      nodes {
-        page
-        title
-        section
-        images {
-          url
-          width
-          height
-          title
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1600
-            placeholder: BLURRED
-            formats: [AUTO, WEBP]
-            quality: 80
-          )
-        }
-      }
-    }
-    allContentfulCardWithImage(
-      filter: {
-        page: { eq: "Gender Reveal" }
-        node_locale: { eq: $contentLanguage }
-      }
-    ) {
-      nodes {
-        title
-        paragraph
-        paragraph2
-      }
-    }
-    allContentfulFaqsComponent(
-      filter: {
-        page: { eq: "Gender Reveal" }
-        node_locale: { eq: $contentLanguage }
-      }
-    ) {
-      nodes {
-        title
-        content {
-          content
+        image {
+          alt
+          asset {
+            url
+          }
         }
       }
     }
