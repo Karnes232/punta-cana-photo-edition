@@ -4,6 +4,8 @@ import { blogPage } from "./documents/blogPage"
 import { blogPost } from "./documents/blogPost"
 import { blogTopic } from "./documents/blogTopic"
 import { contactPage } from "./documents/contactPage"
+import { elopementOption } from "./documents/elopementOption"
+import { elopementPage } from "./documents/elopementPage"
 import { eventPlannerPage } from "./documents/eventPlannerPage"
 import { genderRevealPage } from "./documents/genderRevealPage"
 import { generalLayout } from "./documents/generalLayout"
@@ -16,6 +18,7 @@ import { weddingPlannerPage } from "./documents/weddingPlannerPage"
 import { blogSection, blogSource, blogStep } from "./objects/blogSection"
 import { caseStudy } from "./objects/caseStudy"
 import { cta } from "./objects/cta"
+import { elopementDecorText, elopementExperienceText, elopementUpgradeText } from "./objects/elopementOptionText"
 import { eventCard } from "./objects/eventCard"
 import { faqItem } from "./objects/faqItem"
 import { iconCard } from "./objects/iconCard"
@@ -40,6 +43,8 @@ export const schemaTypes = [
   genderRevealPage,
   weddingPlannerPage,
   weddingPackage,
+  elopementPage,
+  elopementOption,
   blogPage,
   blogGuide,
   blogPost,
@@ -51,6 +56,9 @@ export const schemaTypes = [
   blogStep,
   caseStudy,
   cta,
+  elopementDecorText,
+  elopementExperienceText,
+  elopementUpgradeText,
   eventCard,
   faqItem,
   iconCard,

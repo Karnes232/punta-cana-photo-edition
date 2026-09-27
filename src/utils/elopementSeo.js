@@ -1,22 +1,17 @@
-import {
-  ELOPEMENT_DECORATIONS,
-  ELOPEMENT_EXPERIENCES,
-  LEGAL_UPGRADE_PRICE,
-  buildElopementFaqs,
-  getElopementCopy,
-} from "../components/ElopementComponents/ElopementExperience";
-
+// JSON-LD for the elopement page. Names, texts, prices and FAQs come from the
+// page's Elopement Page document (page) and its priced choices (choices, from
+// elopementChoices); the descriptions and categories below stay in code.
 export const buildElopementSchema = ({
   siteUrl,
   pageUrl,
   language,
   image,
+  page,
+  choices,
   companyName,
   telephone,
   instagram,
 }) => {
-  const copy = getElopementCopy(language);
-  const faqs = buildElopementFaqs(language);
   const isSpanish = language === "es";
   const isPortuguese = language === "pt";
   const isFrench = language === "fr";
@@ -62,7 +57,7 @@ export const buildElopementSchema = ({
         "@type": "WebPage",
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
-        name: copy.heroTitle,
+        name: page.heroTitle,
         description,
         inLanguage: isSpanish
           ? "es"
@@ -93,7 +88,7 @@ export const buildElopementSchema = ({
       {
         "@type": "Service",
         "@id": `${pageUrl}#service`,
-        name: copy.heroTitle,
+        name: page.heroTitle,
         description,
         serviceType: isPortuguese
           ? "Planejamento de elopement"
@@ -121,10 +116,10 @@ export const buildElopementSchema = ({
           },
         },
         offers: [
-          ...ELOPEMENT_EXPERIENCES.map((experience) => ({
+          ...choices.experiences.map((experience) => ({
             "@type": "Offer",
-            name: copy[experience.id].title,
-            description: copy[experience.id].summary,
+            name: experience.title,
+            description: experience.summary,
             category:
               experience.id === "beach"
                 ? isPortuguese
@@ -162,10 +157,10 @@ export const buildElopementSchema = ({
                   }
                 : undefined,
           })),
-          ...ELOPEMENT_DECORATIONS.map((decoration) => ({
+          ...choices.decorations.map((decoration) => ({
             "@type": "Offer",
-            name: copy.decorNames[decoration.id],
-            description: copy.decorDescriptions[decoration.id],
+            name: decoration.name,
+            description: decoration.description,
             category: isPortuguese
               ? "Decoração para elopement"
               : isFrench
@@ -181,8 +176,8 @@ export const buildElopementSchema = ({
           })),
           {
             "@type": "Offer",
-            name: copy.legal,
-            description: copy.legalText,
+            name: choices.legal.title,
+            description: choices.legal.text,
             category: isPortuguese
               ? "Serviço adicional de casamento civil"
               : isFrench
@@ -190,7 +185,7 @@ export const buildElopementSchema = ({
                 : isSpanish
                   ? "Servicio adicional de boda legal"
                   : "Legal wedding upgrade",
-            price: LEGAL_UPGRADE_PRICE,
+            price: choices.legal.price,
             priceCurrency: "USD",
             availability: "https://schema.org/LimitedAvailability",
             url: pageUrl,
@@ -205,7 +200,7 @@ export const buildElopementSchema = ({
           {
             "@type": "ListItem",
             position: 1,
-            name: copy.breadcrumbHome,
+            name: page.breadcrumbHome,
             item: {
               "@type": "WebPage",
               "@id": isPortuguese
@@ -215,17 +210,17 @@ export const buildElopementSchema = ({
                   : isSpanish
                     ? `${siteUrl}/es/`
                     : `${siteUrl}/`,
-              name: copy.breadcrumbHome,
+              name: page.breadcrumbHome,
             },
           },
           {
             "@type": "ListItem",
             position: 2,
-            name: copy.breadcrumbCurrent,
+            name: page.breadcrumbCurrent,
             item: {
               "@type": "WebPage",
               "@id": pageUrl,
-              name: copy.breadcrumbCurrent,
+              name: page.breadcrumbCurrent,
             },
           },
         ],
@@ -233,7 +228,7 @@ export const buildElopementSchema = ({
       {
         "@type": "FAQPage",
         "@id": `${pageUrl}#faq`,
-        mainEntity: faqs.map(([question, answer]) => ({
+        mainEntity: (page.faqs || []).map(({ question, answer }) => ({
           "@type": "Question",
           name: question,
           acceptedAnswer: {

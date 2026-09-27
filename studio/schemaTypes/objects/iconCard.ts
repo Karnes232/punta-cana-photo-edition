@@ -22,6 +22,11 @@ export const cardIcons = [
   { title: "Calendar with check (wedding day)", value: "calendar-check" },
   { title: "Map with pin (venue search)", value: "map-pinned" },
   { title: "Globe (cultural weddings)", value: "globe" },
+  { title: "Car (transportation)", value: "car-front" },
+  { title: "Camera (photography)", value: "camera" },
+  { title: "Handshake with heart (coordination)", value: "heart-handshake" },
+  { title: "Flower (flowers)", value: "flower-2" },
+  { title: "Document with check (certificate)", value: "file-check-2" },
 ]
 
 // A card with an icon, a title and a short text, e.g. one service in

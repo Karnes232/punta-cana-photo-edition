@@ -1,0 +1,73 @@
+// Copy for the elopement request form fields and messages, which stay in the
+// repo. The send button, the note under it and the "request received" message
+// are edited in Sanity (one Elopement Page document per language).
+export const elopementFormContent = {
+  "en-US": {
+    names: "Couple’s names",
+    email: "Email",
+    whatsapp: "Phone number or WhatsApp",
+    phoneCountry: "Country",
+    date: "Preferred wedding date",
+    guests: "Number of people",
+    hotel: "Hotel or accommodation",
+    message: "Anything else we should know?",
+    optional: "Optional",
+    sending: "Sending request…",
+    phoneError: "Select the country and enter a valid phone number.",
+    emailError: "Enter a valid email address with an active domain.",
+    error:
+      "We could not send the request. Please try again or contact us through WhatsApp.",
+    honeypot: "Do not fill this out:",
+  },
+  es: {
+    names: "Nombres de la pareja",
+    email: "Correo electrónico",
+    whatsapp: "Número de teléfono o WhatsApp",
+    phoneCountry: "País",
+    date: "Fecha preferida de la boda",
+    guests: "Cantidad de personas",
+    hotel: "Hotel o alojamiento",
+    message: "¿Hay algo más que debamos saber?",
+    optional: "Opcional",
+    sending: "Enviando solicitud…",
+    phoneError: "Selecciona el país e ingresa un número de teléfono válido.",
+    emailError: "Ingresa un correo válido con un dominio activo.",
+    error:
+      "No pudimos enviar la solicitud. Inténtalo nuevamente o contáctanos por WhatsApp.",
+    honeypot: "No completes este campo:",
+  },
+  pt: {
+    names: "Nomes do casal",
+    email: "E-mail",
+    whatsapp: "Telefone ou WhatsApp",
+    phoneCountry: "País",
+    date: "Data preferida do casamento",
+    guests: "Número de pessoas",
+    hotel: "Hotel ou hospedagem",
+    message: "Há mais alguma informação importante?",
+    optional: "Opcional",
+    sending: "Enviando solicitação…",
+    phoneError: "Selecione o país e digite um telefone válido.",
+    emailError: "Digite um e-mail válido com domínio ativo.",
+    error:
+      "Não foi possível enviar a solicitação. Tente novamente ou fale conosco pelo WhatsApp.",
+    honeypot: "Não preencha este campo:",
+  },
+  fr: {
+    names: "Noms du couple",
+    email: "E-mail",
+    whatsapp: "Téléphone ou WhatsApp",
+    phoneCountry: "Pays",
+    date: "Date de mariage souhaitée",
+    guests: "Nombre de personnes",
+    hotel: "Hôtel ou hébergement",
+    message: "Y a-t-il une autre information importante ?",
+    optional: "Facultatif",
+    sending: "Envoi de la demande…",
+    phoneError: "Sélectionnez le pays et saisissez un numéro valide.",
+    emailError: "Saisissez une adresse e-mail avec un domaine valide.",
+    error:
+      "Impossible d’envoyer la demande. Réessayez ou contactez-nous sur WhatsApp.",
+    honeypot: "Ne remplissez pas ce champ :",
+  },
+};

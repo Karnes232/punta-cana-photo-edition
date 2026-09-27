@@ -19,6 +19,7 @@ export const translatedTypes = [
   "eventPlannerPage",
   "genderRevealPage",
   "weddingPlannerPage",
+  "elopementPage",
   "blogPage",
 ]
 

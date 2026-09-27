@@ -1,9 +1,10 @@
-import commercialMetadata from "../../data/commercialMetadata.json";
 import ServiceGuides from "../../components/BlogComponents/ServiceGuides";
 import React from "react";
 import { graphql } from "gatsby";
 
-import ElopementExperience from "../../components/ElopementComponents/ElopementExperience";
+import ElopementExperience, {
+  elopementChoices,
+} from "../../components/ElopementComponents/ElopementExperience";
 import Layout from "../../components/Layout/Layout";
 import Seo from "../../components/Layout/seo";
 import LocalizedAlternates from "../../components/Layout/LocalizedAlternates";
@@ -14,15 +15,20 @@ import {
   normalizeLanguage,
 } from "../../utils/siteLocales";
 
-const heroImage =
-  "/images/elopement-gallery/beach-elopement-couple-pampas-arch-1600.webp";
+// Share images are cropped by Sanity's CDN to the size social networks expect.
+const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
 
+// Copy, photos and prices come from this language's Elopement Page document in
+// Sanity; phone and email from General Layout.
 const Index = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
 
   return (
     <Layout generalInfo={data.sanityGeneralLayout}>
-      <ElopementExperience language={language} />
+      <ElopementExperience
+        page={data.sanityElopementPage || {}}
+        language={language}
+      />
       <ServiceGuides cluster="weddings" language={language} />
     </Layout>
   );
@@ -33,29 +39,23 @@ export default Index;
 export const Head = ({ data, pageContext }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const language = normalizeLanguage(pageContext.language);
-  const isPortuguese = language === "pt";
-  const isFrench = language === "fr";
   const languageConfig = getLanguageConfig(language);
   const pageUrl = localizedUrl(
     rootUrl,
     "/punta-cana-elopement-packages/",
     language,
   );
-  const { title, description } = commercialMetadata["/punta-cana-elopement-packages/"][language];
-  const absoluteImage = `${rootUrl}${heroImage}`;
-  const imageAlt = isPortuguese
-    ? "Decoração tropical para elopement em uma praia de Punta Cana"
-    : isFrench
-      ? "Décoration tropicale pour un elopement sur une plage de Punta Cana"
-      : language === "es"
-        ? "Decoración tropical para una boda íntima en una playa de Punta Cana"
-        : "Tropical décor for a Punta Cana beach elopement wedding";
+  const page = data.sanityElopementPage || {};
+  const seo = page.seo;
+  const image = shareImageUrl(seo?.image?.asset?.url);
   const generalInfo = data.sanityGeneralLayout;
   const schemaMarkup = buildElopementSchema({
     siteUrl: rootUrl,
     pageUrl,
     language,
-    image: absoluteImage,
+    image,
+    page,
+    choices: elopementChoices(page),
     companyName: generalInfo.companyName,
     telephone: generalInfo.telephone,
     instagram: generalInfo.instagram,
@@ -64,10 +64,11 @@ export const Head = ({ data, pageContext }) => {
   return (
     <>
       <Seo
-        title={title}
-        description={description}
-        image={absoluteImage}
-        imageAlt={imageAlt}
+        title={seo?.title}
+        description={seo?.description}
+        keywords={(seo?.keywords || []).join(", ") || undefined}
+        image={image}
+        imageAlt={seo?.image?.alt}
         url={pageUrl}
         schemaMarkup={schemaMarkup}
         language={languageConfig.htmlLang}
@@ -87,7 +88,20 @@ export const Head = ({ data, pageContext }) => {
 };
 
 export const query = graphql`
-  query ElopementPageQuery($language: String!) {
+  fragment ElopementPhoto on SanityImageWithAlt {
+    _key
+    alt
+    asset {
+      url
+      metadata {
+        dimensions {
+          width
+          height
+        }
+      }
+    }
+  }
+  query ElopementPageQuery($language: String!, $sanityLanguage: String = "en") {
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
@@ -109,6 +123,127 @@ export const query = graphql`
       x
       telephone
       messengerLink
+    }
+    sanityElopementPage(language: { eq: $sanityLanguage }) {
+      heroImage {
+        ...ElopementPhoto
+      }
+      heroTitle
+      builderEyebrow
+      builderTitle
+      builderIntro
+      formula
+      stepOne
+      experiences {
+        _key
+        title
+        eyebrow
+        summary
+        option {
+          setting
+          price
+        }
+      }
+      fromLabel
+      guestsLabel
+      guestsHelp
+      stepTwo
+      decorations {
+        _key
+        name
+        description
+        photos {
+          ...ElopementPhoto
+        }
+        option {
+          price
+          catamaranAllowed
+        }
+      }
+      realTouchLabel
+      beachAndCatamaranLabel
+      beachOnlyLabel
+      unavailableCatamaran
+      previousPhotoLabel
+      nextPhotoLabel
+      selectLabel
+      selectedLabel
+      stepThree
+      symbolicTitle
+      symbolicIncluded
+      symbolicChoiceText
+      symbolicText
+      legalUpgrade {
+        title
+        choiceText
+        text
+        caution
+        option {
+          price
+        }
+      }
+      estimateTitle
+      experienceLine
+      decorLine
+      legalLine
+      includedLabel
+      customQuote
+      customQuoteText
+      totalNote
+      reserveSelection
+      includedEyebrow
+      includedTitle
+      includedIntro
+      inclusions {
+        _key
+        icon
+        title
+        description
+      }
+      legalEyebrow
+      legalTitle
+      legalIntro
+      realEyebrow
+      realTitle
+      realIntro
+      galleryPhotos {
+        ...ElopementPhoto
+      }
+      reserveEyebrow
+      reserveTitle
+      reserveIntro
+      paymentTitle
+      paymentSteps {
+        _key
+        title
+        body
+      }
+      depositNotice
+      formSubmitLabel
+      formNotice
+      successTitle
+      successText
+      faqEyebrow
+      faqTitle
+      faqIntro
+      faqs {
+        _key
+        question
+        answer
+      }
+      breadcrumbHome
+      breadcrumbCurrent
+      seo {
+        title
+        description
+        keywords
+        image {
+          alt
+          asset {
+            url
+          }
+        }
+      }
     }
   }
 `;

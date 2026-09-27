@@ -25,6 +25,7 @@ export const singletonTypes = new Set([
   "eventPlannerPage",
   "genderRevealPage",
   "weddingPlannerPage",
+  "elopementPage",
   "blogPage",
   "blogPost",
 ])
@@ -40,7 +41,7 @@ export const hiddenTypes = new Set([
 ])
 
 // Listed in their own sections below rather than in the generic type list.
-const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage"])
+const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage", "elopementOption"])
 
 // A guide's language texts have fixed IDs: blogPost-<guide>-<language>, where
 // <guide> drops the "blogGuide-" prefix of the guides created by the migration.
@@ -112,6 +113,8 @@ export const structure: StructureResolver = (S) => {
       translatedPage("genderRevealPage", "Gender Reveal Page", SparklesIcon),
       translatedPage("weddingPlannerPage", "Wedding Planner Page", HeartIcon),
       S.documentTypeListItem("weddingPackage").title("Wedding Packages"),
+      translatedPage("elopementPage", "Elopement Page", HeartIcon),
+      S.documentTypeListItem("elopementOption").title("Elopement Prices"),
       translatedPage("blogPage", "Blog Page", BookIcon),
       blogGuides,
       S.documentTypeListItem("blogCategory").title("Blog Event Types"),

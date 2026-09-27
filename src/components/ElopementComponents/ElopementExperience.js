@@ -10,728 +10,44 @@ import ptPhoneLabels from "react-phone-number-input/locale/pt.json";
 import "react-phone-number-input/style.css";
 import {
   ArrowRight,
-  Camera,
-  CarFront,
   Check,
   ChevronLeft,
   ChevronRight,
   FileCheck2,
-  Flower2,
   HeartHandshake,
   MailCheck,
-  MapPin,
   Palmtree,
   ShieldCheck,
   ShipWheel,
 } from "lucide-react";
 
-import blush from "../../images/elopement/blush.webp";
-import blush2 from "../../images/elopement/blush2.webp";
-import crescent from "../../images/elopement/crescent.webp";
-import crescent2 from "../../images/elopement/crescent2.webp";
-import garden from "../../images/elopement/garden.webp";
-import garden2 from "../../images/elopement/garden2.webp";
-import huppa from "../../images/elopement/huppa.webp";
-import huppa2 from "../../images/elopement/huppa2.webp";
-import {
-  portugueseElopementContent,
-  portugueseElopementFaqs,
-} from "../../content/portugueseCoreContent";
-import {
-  frenchElopementContent,
-  frenchElopementFaqs,
-} from "../../content/frenchCoreContent";
+import { elopementFormContent } from "../../content/elopementFormContent";
+import { cardIcon } from "../../utils/cardIcons";
 import { localizedPath } from "../../utils/siteLocales";
-import pampas from "../../images/elopement/pampas.webp";
-import pampas2 from "../../images/elopement/pampas2.webp";
-import red from "../../images/elopement/red.webp";
-import red2 from "../../images/elopement/red2.webp";
-import sunshine from "../../images/elopement/rr.webp";
-import sunshine2 from "../../images/elopement/rr2.webp";
-import white from "../../images/elopement/white.webp";
-import white2 from "../../images/elopement/white2.webp";
 
-export const LEGAL_UPGRADE_PRICE = 1200;
-
-export const ELOPEMENT_EXPERIENCES = [
-  { id: "beach", price: 999 },
-  { id: "catamaran", price: 1299 },
-];
-
-export const ELOPEMENT_DECORATIONS = [
-  {
-    id: "white-serenity",
-    price: 789,
-    images: [white, white2],
-    catamaran: true,
-  },
-  {
-    id: "classic-blush",
-    price: 849,
-    images: [blush, blush2],
-    catamaran: true,
-  },
-  {
-    id: "red-romance",
-    price: 899,
-    images: [red, red2],
-    catamaran: true,
-  },
-  {
-    id: "golden-pampas-circle",
-    price: 949,
-    images: [pampas, pampas2],
-    catamaran: true,
-  },
-  {
-    id: "caribbean-sunshine",
-    price: 999,
-    images: [sunshine, sunshine2],
-    catamaran: true,
-  },
-  {
-    id: "tropical-crescent",
-    price: 1099,
-    images: [crescent, crescent2],
-    catamaran: true,
-  },
-  {
-    id: "tropical-garden",
-    price: 1199,
-    images: [garden, garden2],
-    catamaran: true,
-  },
-  {
-    id: "full-tropical-huppa",
-    price: 1399,
-    images: [huppa, huppa2],
-    catamaran: false,
-  },
-];
-
-const ELOPEMENT_GALLERY = [
-  {
-    slug: "beach-elopement-couple-pampas-arch",
-    width: 5310,
-    height: 3540,
-    en: "Newlyweds celebrating beneath a pampas and floral arch on a Punta Cana beach",
-    es: "Pareja de recién casados celebrando bajo un arco floral con pampas en una playa de Punta Cana",
-  },
-  {
-    slug: "punta-cana-elopement-vintage-car",
-    width: 5499,
-    height: 3666,
-    en: "Elopement couple beside a classic white car on a palm-lined Punta Cana beach",
-    es: "Pareja de elopement junto a un auto clásico blanco en una playa con palmeras de Punta Cana",
-  },
-  {
-    slug: "groom-waiting-beach-elopement",
-    width: 3235,
-    height: 4853,
-    en: "Groom waiting at a pampas-lined beach ceremony aisle in Punta Cana",
-    es: "Novio esperando en un pasillo de ceremonia con pampas frente al mar en Punta Cana",
-  },
-  {
-    slug: "elopement-couple-palm-beach-arrival",
-    width: 3840,
-    height: 5760,
-    en: "Bride and groom arriving for their intimate Punta Cana beach ceremony",
-    es: "Novia y novio llegando a su ceremonia íntima en una playa de Punta Cana",
-  },
-  {
-    slug: "beach-elopement-champagne-toast",
-    width: 3838,
-    height: 2559,
-    en: "Elopement couple sharing a champagne toast after their Punta Cana beach ceremony",
-    es: "Pareja brindando con champaña después de su ceremonia de elopement en Punta Cana",
-  },
-  {
-    slug: "intimate-beach-elopement-couple",
-    width: 4046,
-    height: 2697,
-    en: "Couple holding hands after an intimate beach elopement ceremony in Punta Cana",
-    es: "Pareja tomada de las manos después de una ceremonia íntima de elopement en Punta Cana",
-  },
-  {
-    slug: "elopement-ring-exchange-beach",
-    width: 4508,
-    height: 3005,
-    en: "Couple exchanging rings during a private Punta Cana beach elopement",
-    es: "Pareja intercambiando anillos durante un elopement privado en una playa de Punta Cana",
-  },
-  {
-    slug: "catamaran-elopement-bride-bouquet",
-    width: 4284,
-    height: 5712,
-    en: "Bride raising her bouquet beside a pampas ceremony arch on a Punta Cana catamaran",
-    es: "Novia levantando su bouquet junto a un arco con pampas en un catamarán de Punta Cana",
-  },
-  {
-    slug: "catamaran-elopement-family",
-    width: 5712,
-    height: 4284,
-    en: "Newlyweds celebrating with family after a private Punta Cana catamaran ceremony",
-    es: "Recién casados celebrando con su familia después de una ceremonia privada en catamarán en Punta Cana",
-  },
-  {
-    slug: "catamaran-bride-pampas-arch",
-    width: 4032,
-    height: 3024,
-    en: "Bride celebrating beside a pampas floral arch aboard a Punta Cana catamaran",
-    es: "Novia celebrando junto a un arco floral con pampas a bordo de un catamarán en Punta Cana",
-  },
-  {
-    slug: "catamaran-elopement-couple",
-    width: 1980,
-    height: 3520,
-    en: "Elopement couple standing beneath a pampas arch on a private Punta Cana catamaran",
-    es: "Pareja de elopement bajo un arco con pampas en un catamarán privado de Punta Cana",
-  },
-  {
-    slug: "elopement-bride-vows-punta-cana",
-    width: 3433,
-    height: 2289,
-    en: "Bride listening to her partner's vows during a Punta Cana beach elopement",
-    es: "Novia escuchando los votos de su pareja durante un elopement en una playa de Punta Cana",
-  },
-  {
-    slug: "intimate-beach-elopement-ceremony",
-    width: 4608,
-    height: 3072,
-    en: "Family attending an intimate elopement ceremony on a quiet Punta Cana beach",
-    es: "Familia acompañando una ceremonia íntima de elopement en una playa tranquila de Punta Cana",
-  },
-  {
-    slug: "beach-wedding-officiant-punta-cana",
-    width: 4335,
-    height: 2890,
-    en: "Officiant leading an intimate elopement ceremony beside the sea in Punta Cana",
-    es: "Oficiante guiando una ceremonia íntima de elopement frente al mar en Punta Cana",
-  },
-  {
-    slug: "colorful-beach-elopement-couple",
-    width: 4608,
-    height: 3072,
-    en: "Newlyweds walking through a colorful tropical elopement ceremony on the beach",
-    es: "Recién casados caminando por una colorida ceremonia tropical de elopement en la playa",
-  },
-  {
-    slug: "bride-vows-colorful-elopement",
-    width: 3902,
-    height: 2601,
-    en: "Bride exchanging vows at a colorful tropical beach elopement in Punta Cana",
-    es: "Novia intercambiando votos en un colorido elopement tropical en una playa de Punta Cana",
-  },
-  {
-    slug: "family-elopement-ceremony-punta-cana",
-    width: 4096,
-    height: 2731,
-    en: "Family gathered around the couple during a Punta Cana beach elopement ceremony",
-    es: "Familia reunida junto a la pareja durante una ceremonia de elopement en una playa de Punta Cana",
-  },
-];
-
-const gallerySource = (slug, size) =>
-  `/images/elopement-gallery/${slug}-${size}.webp`;
-
-const COPY = {
-  "en-US": {
-    heroTitle: "Punta Cana Elopement Wedding Packages",
-    breadcrumbHome: "Home",
-    breadcrumbCurrent: "Punta Cana Elopement Wedding Packages",
-    formula: [
-      "Ceremony experience",
-      "Selected décor",
-      "Optional legal wedding",
-    ],
-    builderEyebrow: "Packages & prices",
-    builderTitle: "Punta Cana Elopement Packages & Prices",
-    builderIntro:
-      "Choose your setting, décor and ceremony type. Your estimated total updates with every selection.",
-    stepOne: "1. Choose your setting",
-    stepTwo: "2. Choose your décor",
-    stepThree: "3. Choose symbolic or legal",
-    selected: "Selected",
-    select: "Select",
-    from: "Base experience",
-    beach: {
-      title: "Private Beach Elopement",
-      eyebrow: "Up to 2 hours",
-      summary:
-        "An intimate ceremony on Sertuin Events’ private beach, coordinated from arrival through the final photographs.",
-      bullets: [
-        "Private beach access",
-        "Round-trip transportation for up to 10 people from Punta Cana",
-        "Elopement photo coverage",
-        "Bouquet and boutonnière",
-        "Officiant, coordination and symbolic certificate",
-        "70–100 edited photos delivered within 48 hours",
-      ],
-    },
-    catamaran: {
-      title: "Private Catamaran Elopement",
-      eyebrow: "3 hours aboard · 2–10 people",
-      summary:
-        "A completely private catamaran experience with capacity for up to 60 people. The published base price covers 2–10 people.",
-      bullets: [
-        "Completely private catamaran",
-        "Round-trip transportation for up to 10 people from Punta Cana",
-        "Elopement photo coverage, bouquet, boutonnière and ceremony team",
-        "Nachos, fruit, sodas and water",
-        "Rum, mamajuana and music",
-        "Snorkeling during the three-hour experience",
-      ],
-    },
-    decorNames: {
-      "white-serenity": "Ivory Tide",
-      "classic-blush": "Blush Horizon",
-      "red-romance": "Crimson Vows",
-      "golden-pampas-circle": "Golden Coast Halo",
-      "caribbean-sunshine": "Sunlit Caribbean",
-      "tropical-crescent": "Island Bloom Crescent",
-      "tropical-garden": "Botanical Shore",
-      "full-tropical-huppa": "Tropical Wedding Canopy",
-    },
-    decorDescriptions: {
-      "white-serenity":
-        "Crisp white florals, greenery and soft draping for a timeless seaside ceremony.",
-      "classic-blush":
-        "Blush, ivory and soft greenery arranged on a classic wooden ceremony arch.",
-      "red-romance":
-        "A dramatic cascade of rich red roses for a bold, romantic statement.",
-      "golden-pampas-circle":
-        "A light circular design with pampas texture and warm neutral tones.",
-      "caribbean-sunshine":
-        "Sunflowers and joyful Caribbean color framing a bright beach aisle.",
-      "tropical-crescent":
-        "An asymmetric tropical circle with vibrant flowers and sculptural greenery.",
-      "tropical-garden":
-        "A lush floral landscape that creates an immersive garden beside the sea.",
-      "full-tropical-huppa":
-        "A full-scale tropical huppa with abundant overhead and aisle florals.",
-    },
-    realTouch: "Premium Real Touch artificial flowers",
-    beachAndCatamaran: "Beach or catamaran",
-    beachOnly: "Private beach only",
-    unavailableCatamaran:
-      "This full wedding canopy cannot be installed on the catamaran.",
-    symbolic: "Symbolic ceremony",
-    symbolicIncluded: "Included in every base experience",
-    symbolicText:
-      "Exchange vows and rings with an officiant and receive a symbolic wedding certificate. Ideal for elopements, vow renewals or couples already legally married at home.",
-    symbolicChoiceText: "Officiant and symbolic wedding certificate included.",
-    legal: "Legal wedding upgrade",
-    legalPrice: "+US$1,200",
-    legalText:
-      "We receive and review your documents, schedule the civil registry appointment, collect the marriage certificate, apostille it and ship the completed certificate.",
-    legalCaution:
-      "Legal service is confirmed only after your documents have been reviewed and accepted.",
-    legalChoiceText:
-      "Adds the Dominican civil process after document approval.",
-    guestsLabel: "People aboard",
-    guestsHelp: "2–10 people are covered by the published catamaran price.",
-    customQuote: "Custom quote required",
-    customQuoteText:
-      "For more than 10 people, send your request so we can confirm the additional cost. The boat has capacity for up to 60 people.",
-    estimate: "Your estimated elopement total",
-    experienceLine: "Experience",
-    decorLine: "Décor",
-    legalLine: "Legal wedding",
-    included: "Included",
-    totalNote:
-      "Estimate for the selections shown. Availability is verified before any reservation is confirmed.",
-    reserveSelection: "Request this combination",
-    includedEyebrow: "No guessing",
-    includedTitle: "What every Punta Cana elopement includes",
-    includedIntro:
-      "These essentials are part of the experience price before you add your décor.",
-    inclusions: [
-      [
-        "Transportation for up to 10 people",
-        "Private round trip from any hotel or accommodation in the Punta Cana area for the couple and up to eight guests.",
-      ],
-      [
-        "Elopement photo coverage",
-        "70–100 edited, high-resolution ceremony images delivered in a digital gallery within 48 hours after the elopement.",
-      ],
-      [
-        "Dedicated wedding coordination",
-        "A coordinator assists you from reservation through planning and is onsite on the wedding day. Your officiant leads the ceremony.",
-      ],
-      [
-        "Personal flowers",
-        "A bouquet and boutonnière complement your selected ceremony design.",
-      ],
-      [
-        "Symbolic certificate",
-        "A keepsake certificate is included with symbolic ceremonies; it is not a civil record.",
-      ],
-      [
-        "Selected setting",
-        "Private beach access or three hours aboard your completely private catamaran.",
-      ],
-    ],
-    legalEyebrow: "Choose with confidence",
-    legalTitle: "Symbolic vs. legal wedding in Punta Cana",
-    legalIntro:
-      "The celebration can look the same. The difference is whether the ceremony creates a Dominican civil marriage record.",
-    reserveEyebrow: "Reserve your date",
-    reserveTitle: "Send your elopement request",
-    reserveIntro:
-      "Send your preferred date and selections. After availability is confirmed, your dedicated coordinator assists you through the wedding day.",
-    form: {
-      names: "Couple’s names",
-      email: "Email",
-      whatsapp: "Phone number or WhatsApp",
-      phoneCountry: "Country",
-      phoneError: "Select the country and enter a valid phone number.",
-      emailError: "Enter a valid email address with an active domain.",
-      date: "Preferred wedding date",
-      guests: "Number of people",
-      hotel: "Hotel or accommodation",
-      message: "Anything else we should know?",
-      optional: "Optional",
-      send: "Check date availability",
-      sending: "Sending request…",
-      error:
-        "We could not send the request. Please try again or contact us through WhatsApp.",
-      successTitle: "Request received",
-      success:
-        "Your request was emailed to Sertuin Events. A coordinator will contact you after reviewing availability. Your date is reserved only after the agreement and US$200 payment are completed.",
-      notice: "Sending this form does not reserve or confirm the date.",
-    },
-    paymentTitle: "How reservation and payment work",
-    paymentSteps: [
-      [
-        "Send your request",
-        "Choose the experience, décor, ceremony type and preferred date.",
-      ],
-      [
-        "We verify availability",
-        "Sertuin confirms the date and assigns your coordinator. Legal weddings also require document review.",
-      ],
-      [
-        "Reserve with US$200",
-        "Complete the agreement and pay the non-refundable deposit through PayPal. It is credited to your total.",
-      ],
-      [
-        "Pay the balance on the event day",
-        "For a beach elopement, pay the balance after the service, before boarding the return van or bus. For a catamaran or boat elopement, pay when boarding.",
-      ],
-    ],
-    depositNotice:
-      "The US$200 reservation deposit is non-refundable, except when unsafe weather makes the elopement impossible during the couple’s stay.",
-    realEyebrow: "Created by Sertuin Events",
-    realTitle: "Real Punta Cana elopements",
-    realIntro:
-      "Beach and catamaran elopements planned and coordinated by Sertuin Events in Punta Cana.",
-    faqEyebrow: "Helpful details",
-    faqTitle: "Punta Cana elopement FAQ",
-    faqIntro: "Open only the questions that matter to your plans.",
-  },
-  es: {
-    heroTitle: "Paquetes de Elopement en Punta Cana",
-    breadcrumbHome: "Inicio",
-    breadcrumbCurrent: "Paquetes de Elopement en Punta Cana",
-    formula: [
-      "Experiencia de ceremonia",
-      "Decoración elegida",
-      "Boda legal opcional",
-    ],
-    builderEyebrow: "Paquetes y precios",
-    builderTitle: "Paquetes y precios de elopement en Punta Cana",
-    builderIntro:
-      "Elige la locación, la decoración y el tipo de ceremonia. El total estimado se actualiza con cada selección.",
-    stepOne: "1. Elige la locación",
-    stepTwo: "2. Elige la decoración",
-    stepThree: "3. Elige ceremonia simbólica o legal",
-    selected: "Seleccionado",
-    select: "Elegir",
-    from: "Experiencia base",
-    beach: {
-      title: "Elopement en Playa Privada",
-      eyebrow: "Hasta 2 horas",
-      summary:
-        "Una ceremonia íntima en la playa privada de Sertuin Events, coordinada desde la llegada hasta las fotografías finales.",
-      bullets: [
-        "Acceso a playa privada",
-        "Transporte ida y vuelta para hasta 10 personas desde Punta Cana",
-        "Cobertura fotográfica del elopement",
-        "Bouquet y boutonnière",
-        "Oficiante, coordinación y certificado simbólico",
-        "70–100 fotos editadas entregadas en 48 horas",
-      ],
-    },
-    catamaran: {
-      title: "Elopement en Catamarán Privado",
-      eyebrow: "3 horas a bordo · 2–10 personas",
-      summary:
-        "Una experiencia en catamarán completamente privado con capacidad máxima para 60 personas. El precio base publicado cubre de 2 a 10 personas.",
-      bullets: [
-        "Catamarán completamente privado",
-        "Transporte ida y vuelta para hasta 10 personas desde Punta Cana",
-        "Cobertura fotográfica, bouquet, boutonnière y equipo de ceremonia",
-        "Nachos, frutas, sodas y agua",
-        "Ron, mamajuana y música",
-        "Snorkel durante las tres horas de experiencia",
-      ],
-    },
-    decorNames: {
-      "white-serenity": "Marea Marfil",
-      "classic-blush": "Horizonte Blush",
-      "red-romance": "Votos Carmesí",
-      "golden-pampas-circle": "Halo de Costa Dorada",
-      "caribbean-sunshine": "Caribe Luminoso",
-      "tropical-crescent": "Media Luna Isleña",
-      "tropical-garden": "Orilla Botánica",
-      "full-tropical-huppa": "Dosel Nupcial Tropical",
-    },
-    decorDescriptions: {
-      "white-serenity":
-        "Flores blancas, follaje y telas suaves para una ceremonia atemporal frente al mar.",
-      "classic-blush":
-        "Tonos blush, marfil y follaje suave sobre un arco de madera clásico.",
-      "red-romance":
-        "Una cascada intensa de rosas rojas para un diseño romántico y llamativo.",
-      "golden-pampas-circle":
-        "Un diseño circular ligero con textura de pampas y tonos cálidos neutros.",
-      "caribbean-sunshine":
-        "Girasoles y color caribeño enmarcando un pasillo alegre frente al mar.",
-      "tropical-crescent":
-        "Un círculo tropical asimétrico con flores vibrantes y follaje escultórico.",
-      "tropical-garden":
-        "Un paisaje floral abundante que crea un jardín inmersivo junto al mar.",
-      "full-tropical-huppa":
-        "Una huppa tropical de gran formato con flores abundantes en la parte superior y el pasillo.",
-    },
-    realTouch: "Flores artificiales premium Real Touch",
-    beachAndCatamaran: "Playa o catamarán",
-    beachOnly: "Solo playa privada",
-    unavailableCatamaran:
-      "Este dosel nupcial completo no puede instalarse en el catamarán.",
-    symbolic: "Ceremonia simbólica",
-    symbolicIncluded: "Incluida en todas las experiencias base",
-    symbolicText:
-      "Intercambien votos y anillos con un oficiante y reciban un certificado simbólico. Ideal para elopements, renovaciones de votos o parejas ya casadas legalmente en su país.",
-    symbolicChoiceText: "Oficiante y certificado de boda simbólica incluidos.",
-    legal: "Upgrade de boda legal",
-    legalPrice: "+US$1,200",
-    legalText:
-      "Recibimos y revisamos sus documentos, agendamos la cita en la oficialía, recogemos el certificado de matrimonio, lo apostillamos y enviamos.",
-    legalCaution:
-      "El servicio legal se confirma únicamente después de revisar y aceptar la documentación.",
-    legalChoiceText:
-      "Agrega el proceso civil dominicano después de aprobar los documentos.",
-    guestsLabel: "Personas a bordo",
-    guestsHelp:
-      "De 2 a 10 personas están cubiertas por el precio publicado del catamarán.",
-    customQuote: "Requiere cotización personalizada",
-    customQuoteText:
-      "Para más de 10 personas, envía la solicitud para confirmar el costo adicional. La embarcación tiene capacidad máxima para 60 personas.",
-    estimate: "Total estimado de tu elopement",
-    experienceLine: "Experiencia",
-    decorLine: "Decoración",
-    legalLine: "Boda legal",
-    included: "Incluido",
-    totalNote:
-      "Estimado para las selecciones mostradas. Verificamos disponibilidad antes de confirmar cualquier reserva.",
-    reserveSelection: "Solicitar esta combinación",
-    includedEyebrow: "Sin adivinar",
-    includedTitle: "Qué incluye cada elopement en Punta Cana",
-    includedIntro:
-      "Estos elementos forman parte de la experiencia antes de agregar la decoración.",
-    inclusions: [
-      [
-        "Transporte para hasta 10 personas",
-        "Traslado privado ida y vuelta desde cualquier hotel o alojamiento de la zona de Punta Cana para la pareja y hasta ocho invitados.",
-      ],
-      [
-        "Cobertura fotográfica del elopement",
-        "70–100 imágenes editadas en alta resolución, entregadas en una galería digital dentro de las 48 horas posteriores al elopement.",
-      ],
-      [
-        "Coordinación dedicada de la boda",
-        "Una coordinadora te asiste desde la reserva, acompaña la planificación y está onsite el día de la boda. El oficiante dirige la ceremonia.",
-      ],
-      [
-        "Flores personales",
-        "Bouquet y boutonnière coordinados con el diseño de ceremonia elegido.",
-      ],
-      [
-        "Certificado simbólico",
-        "Un certificado de recuerdo está incluido; no es un documento de registro civil.",
-      ],
-      [
-        "Locación elegida",
-        "Acceso a playa privada o tres horas a bordo de un catamarán completamente privado.",
-      ],
-    ],
-    legalEyebrow: "Elige con confianza",
-    legalTitle: "Boda simbólica vs. boda legal en Punta Cana",
-    legalIntro:
-      "La celebración puede verse igual. La diferencia es si la ceremonia genera un registro civil dominicano.",
-    reserveEyebrow: "Reserva tu fecha",
-    reserveTitle: "Envía tu solicitud de elopement",
-    reserveIntro:
-      "Envíanos la fecha y tus selecciones. Después de confirmar disponibilidad, tu coordinadora dedicada te asiste hasta el día de la boda.",
-    form: {
-      names: "Nombres de la pareja",
-      email: "Correo electrónico",
-      whatsapp: "Número de teléfono o WhatsApp",
-      phoneCountry: "País",
-      phoneError: "Selecciona el país e ingresa un número de teléfono válido.",
-      emailError: "Ingresa un correo válido con un dominio activo.",
-      date: "Fecha preferida de la boda",
-      guests: "Cantidad de personas",
-      hotel: "Hotel o alojamiento",
-      message: "¿Hay algo más que debamos saber?",
-      optional: "Opcional",
-      send: "Consultar disponibilidad",
-      sending: "Enviando solicitud…",
-      error:
-        "No pudimos enviar la solicitud. Inténtalo nuevamente o contáctanos por WhatsApp.",
-      successTitle: "Solicitud recibida",
-      success:
-        "Tu solicitud fue enviada por correo a Sertuin Events. Una coordinadora te contactará después de revisar disponibilidad. La fecha se reserva al completar el contrato y el pago de US$200.",
-      notice: "Enviar este formulario no reserva ni confirma la fecha.",
-    },
-    paymentTitle: "Cómo funcionan la reserva y el pago",
-    paymentSteps: [
-      [
-        "Envía tu solicitud",
-        "Elige experiencia, decoración, tipo de ceremonia y fecha preferida.",
-      ],
-      [
-        "Verificamos disponibilidad",
-        "Sertuin confirma la fecha y asigna tu coordinadora. Las bodas legales también requieren revisión de documentos.",
-      ],
-      [
-        "Reserva con US$200",
-        "Completa el contrato y paga por PayPal el depósito no reembolsable. Se acredita al total.",
-      ],
-      [
-        "Paga el balance el día del evento",
-        "En la playa, paga el saldo después del servicio y antes de abordar la van o autobús de regreso. En catamarán o barco, paga al abordar.",
-      ],
-    ],
-    depositNotice:
-      "El pago de reserva de US$200 no es reembolsable, excepto cuando el clima inseguro impide realizar el elopement durante la estadía de la pareja.",
-    realEyebrow: "Creado por Sertuin Events",
-    realTitle: "Elopements reales en Punta Cana",
-    realIntro:
-      "Elopements en playa y catamarán planificados y coordinados por Sertuin Events en Punta Cana.",
-    faqEyebrow: "Detalles útiles",
-    faqTitle: "Preguntas frecuentes sobre elopements en Punta Cana",
-    faqIntro: "Abre únicamente las preguntas que importan para tus planes.",
-  },
-};
-
-const localizeSpanishElopementTerms = (value) => {
-  if (typeof value === "string") {
-    return value
-      .replace(/\bUn elopement\b/g, "Una boda íntima")
-      .replace(/\belopements\b/gi, "bodas íntimas")
-      .replace(/\belopement\b/gi, "boda íntima")
-      .replace(/\bonsite\b/gi, "presente");
-  }
-  if (Array.isArray(value)) return value.map(localizeSpanishElopementTerms);
-  if (value && typeof value === "object") {
-    return Object.fromEntries(
-      Object.entries(value).map(([key, item]) => [
-        key,
-        localizeSpanishElopementTerms(item),
-      ]),
-    );
-  }
-  return value;
-};
-
-export const getElopementCopy = (language = "en-US") =>
-  language === "es"
-    ? localizeSpanishElopementTerms(COPY.es)
-    : language === "pt"
-      ? portugueseElopementContent
-      : language === "fr"
-        ? frenchElopementContent
-        : COPY["en-US"];
-
-export const buildElopementFaqs = (language = "en-US") => {
-  if (language === "pt") return portugueseElopementFaqs;
-  if (language === "fr") return frenchElopementFaqs;
-  const es = language === "es";
-
-  const questions = es
-    ? [
-        [
-          "¿Cuánto cuesta un elopement en Punta Cana?",
-          "La experiencia base en playa privada cuesta US$999 y el catamarán privado US$1,299. A ese precio se agrega la decoración elegida, desde US$789 hasta US$1,399. La boda legal es opcional por US$1,200 adicionales.",
-        ],
-        [
-          "¿Qué incluye el precio base?",
-          "Incluye transporte ida y vuelta para la pareja y hasta ocho invitados desde la zona de Punta Cana, cobertura fotográfica de la ceremonia, bouquet, boutonnière, oficiante, coordinadora y certificado simbólico. La experiencia de playa dura hasta dos horas; el catamarán incluye tres horas a bordo.",
-        ],
-        [
-          "¿Cuándo recibiremos las fotografías del elopement?",
-          "Recibirán entre 70 y 100 fotografías editadas en alta resolución mediante una galería digital dentro de las 48 horas posteriores a la ceremonia.",
-        ],
-        [
-          "¿Tendremos coordinadora y en qué idiomas puede realizarse la ceremonia?",
-          "Sí. Una coordinadora les asiste desde la reserva y está presente el día del elopement. La ceremonia puede realizarse en inglés o español.",
-        ],
-        [
-          "¿Cuántas personas pueden participar?",
-          "Un elopement incluye a la pareja y hasta ocho invitados. El catamarán es privado, tiene capacidad para 60 personas y el precio publicado cubre hasta 10; las personas adicionales se confirman antes de reservar y normalmente cuestan US$70 por persona.",
-        ],
-        [
-          "¿Qué diferencia hay entre una ceremonia simbólica y una boda legal?",
-          "La ceremonia simbólica incluye votos, anillos, oficiante y certificado de recuerdo, pero no crea un registro civil. La boda legal completa el proceso civil dominicano y requiere que revisemos y aprobemos los documentos antes de aceptar el depósito.",
-        ],
-        [
-          "¿Qué sucede si el clima no permite realizar el elopement?",
-          "Según las condiciones y la disponibilidad, podemos cambiar la hora, mover la ceremonia a un lugar techado o reprogramarla hasta dos veces. Si el clima hace imposible realizarla durante la estadía de la pareja, se devuelve el depósito. En el catamarán, el capitán toma la decisión final de seguridad y navegación.",
-        ],
-        [
-          "¿Cómo se reserva? ¿Enviar el formulario confirma la fecha?",
-          "El formulario solamente envía una solicitud. La fecha queda reservada después de confirmar disponibilidad, completar el contrato y pagar el depósito de US$200 por PayPal. En la playa, el balance se paga después del servicio y antes de abordar la van o autobús de regreso. En catamarán o barco, se paga al abordar.",
-        ],
-      ]
-    : [
-        [
-          "How much does a Punta Cana elopement cost?",
-          "The private beach base experience is US$999 and the private catamaran is US$1,299. Add your selected décor, priced from US$789 to US$1,399. A legal wedding is optional for an additional US$1,200.",
-        ],
-        [
-          "What is included in the base price?",
-          "It includes round-trip transportation for the couple and up to eight guests from the Punta Cana area, ceremony photo coverage, bouquet, boutonnière, officiant, coordinator and symbolic certificate. The beach experience lasts up to two hours; the catamaran includes three hours aboard.",
-        ],
-        [
-          "When will we receive our elopement photographs?",
-          "You will receive 70–100 edited, high-resolution photographs in a digital gallery within 48 hours after the ceremony.",
-        ],
-        [
-          "Will we have a coordinator, and which ceremony languages are available?",
-          "Yes. A coordinator assists you from reservation and is onsite for the elopement. The ceremony can be held in English or Spanish.",
-        ],
-        [
-          "How many people can participate?",
-          "An elopement includes the couple and up to eight guests. The private catamaran holds up to 60 people and the published price covers up to 10; additional guests are confirmed before booking and normally cost US$70 per person.",
-        ],
-        [
-          "What is the difference between a symbolic ceremony and a legal wedding?",
-          "A symbolic ceremony includes vows, rings, an officiant and a keepsake certificate, but it does not create a civil record. A legal wedding completes the Dominican civil process and requires us to review and approve the documents before accepting the deposit.",
-        ],
-        [
-          "What happens if weather prevents the elopement?",
-          "Depending on conditions and availability, we can change the time, move the ceremony to a covered location or reschedule up to two times. If weather makes the elopement impossible during the couple’s stay, the deposit is refunded. On the catamaran, the captain makes the final navigation and safety decision.",
-        ],
-        [
-          "How do we reserve, and does submitting the form confirm the date?",
-          "The form only sends a request. The date is reserved after availability is confirmed, the agreement is completed and the US$200 deposit is paid through PayPal. For a beach elopement, the balance is paid after the service and before boarding the return van or bus. For a catamaran or boat, it is paid when boarding.",
-        ],
-      ];
-
-  return es ? localizeSpanishElopementTerms(questions) : questions;
-};
+// The price builder's choices from this language's Elopement Page, each with
+// the price of its linked Elopement Price. Settings are identified by their
+// setting (beach or catamaran); décor by its key in the page.
+export const elopementChoices = (page) => ({
+  experiences: (page.experiences || [])
+    .filter((item) => item.option)
+    .map((item) => ({
+      ...item,
+      id: item.option.setting,
+      price: item.option.price,
+    })),
+  decorations: (page.decorations || [])
+    .filter((item) => item.option)
+    .map((item) => ({
+      ...item,
+      id: item._key,
+      price: item.option.price,
+      catamaran: item.option.catamaranAllowed !== false,
+    })),
+  legal: page.legalUpgrade
+    ? { ...page.legalUpgrade, price: page.legalUpgrade.option?.price || 0 }
+    : { price: 0 },
+});
 
 const money = (value) =>
   new Intl.NumberFormat("en-US", {
@@ -739,6 +55,21 @@ const money = (value) =>
     currency: "USD",
     maximumFractionDigits: 0,
   }).format(value);
+
+// The legal upgrade's price as each language writes it: +US$1,200,
+// +US$ 1.200 (pt) or +1 200 USD (fr).
+const upgradePrice = (value, language) => {
+  const group = (separator) =>
+    String(value).replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+  if (language === "pt") return `+US$ ${group(".")}`;
+  if (language === "fr") return `+${group(" ")} USD`;
+  return `+US$${group(",")}`;
+};
+
+// Sanity serves each photo at the width asked for.
+const sized = (url, width) => `${url}?w=${width}`;
+const srcSet = (url, widths) =>
+  widths.map((width) => `${sized(url, width)} ${width}w`).join(", ");
 
 const scrollToSection = (event, id) => {
   event.preventDefault();
@@ -787,9 +118,8 @@ const SectionHeading = ({
   </div>
 );
 
-const ExperienceCard = ({ experience, copy, active, onSelect }) => {
-  const Icon = experience.id === "beach" ? Palmtree : ShipWheel;
-  const details = copy[experience.id];
+const ExperienceCard = ({ experience, page, active, onSelect }) => {
+  const Icon = experience.id === "catamaran" ? ShipWheel : Palmtree;
 
   return (
     <button
@@ -811,21 +141,21 @@ const ExperienceCard = ({ experience, copy, active, onSelect }) => {
             active ? "bg-amber-500 text-white" : "bg-stone-100 text-stone-600"
           }`}
         >
-          {active ? copy.selected : copy.select}
+          {active ? page.selectedLabel : page.selectLabel}
         </span>
       </div>
       <p className="mt-5 font-montserrat text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
-        {details.eyebrow}
+        {experience.eyebrow}
       </p>
       <h3 className="mt-2 font-crimson text-3xl text-stone-900">
-        {details.title}
+        {experience.title}
       </h3>
       <p className="mt-2 font-montserrat text-sm leading-6 text-stone-600">
-        {details.summary}
+        {experience.summary}
       </p>
       <div className="mt-5 flex items-end justify-between border-t border-stone-200 pt-5">
         <span className="font-montserrat text-xs uppercase tracking-wider text-stone-500">
-          {copy.from}
+          {page.fromLabel}
         </span>
         <span className="font-crimson text-3xl text-stone-900">
           {money(experience.price)}
@@ -835,23 +165,15 @@ const ExperienceCard = ({ experience, copy, active, onSelect }) => {
   );
 };
 
-const DecorCard = ({
-  decoration,
-  copy,
-  active,
-  disabled,
-  onSelect,
-  language,
-}) => {
+const DecorCard = ({ decoration, page, active, disabled, onSelect }) => {
   const [photo, setPhoto] = useState(0);
-  const name = copy.decorNames[decoration.id];
+  const photos = decoration.photos || [];
+  const current = photos[photo];
+  const name = decoration.name;
+  const label = (template) => (template || "").replace("{name}", name);
 
   const changePhoto = (direction) => {
-    setPhoto(
-      (current) =>
-        (current + direction + decoration.images.length) %
-        decoration.images.length,
-    );
+    setPhoto((index) => (index + direction + photos.length) % photos.length);
   };
 
   return (
@@ -863,50 +185,32 @@ const DecorCard = ({
       } ${disabled ? "opacity-55" : ""}`}
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
-        <img
-          src={decoration.images[photo]}
-          alt={
-            language === "pt"
-              ? `${name}, decoração para elopement em Punta Cana pela Sertuin Events`
-              : language === "fr"
-                ? `${name}, décoration d’elopement à Punta Cana par Sertuin Events`
-                : language === "es"
-                  ? `${name} para una boda íntima en Punta Cana por Sertuin Events`
-                  : `${name} Punta Cana elopement décor by Sertuin Events`
-          }
-          loading="lazy"
-          width="1600"
-          height="1200"
-          className="h-full w-full object-cover"
-        />
+        {current?.asset?.url && (
+          <img
+            src={current.asset.url}
+            alt={current.alt}
+            loading="lazy"
+            width="1600"
+            height="1200"
+            className="h-full w-full object-cover"
+          />
+        )}
         <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-3">
           <button
             type="button"
             onClick={() => changePhoto(-1)}
-            aria-label={
-              language === "pt"
-                ? `Foto anterior de ${name}`
-                : language === "fr"
-                  ? `Photo précédente de ${name}`
-                  : `Previous ${name} photo`
-            }
+            aria-label={label(page.previousPhotoLabel)}
             className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
           >
             <ChevronLeft size={18} />
           </button>
           <span className="rounded-full bg-stone-950/70 px-3 py-1 font-montserrat text-xs text-white backdrop-blur">
-            {photo + 1} / {decoration.images.length}
+            {photo + 1} / {photos.length}
           </span>
           <button
             type="button"
             onClick={() => changePhoto(1)}
-            aria-label={
-              language === "pt"
-                ? `Próxima foto de ${name}`
-                : language === "fr"
-                  ? `Photo suivante de ${name}`
-                  : `Next ${name} photo`
-            }
+            aria-label={label(page.nextPhotoLabel)}
             className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
           >
             <ChevronRight size={18} />
@@ -923,19 +227,21 @@ const DecorCard = ({
           </span>
         </div>
         <p className="mt-3 min-h-[4.5rem] font-montserrat text-sm leading-6 text-stone-600">
-          {copy.decorDescriptions[decoration.id]}
+          {decoration.description}
         </p>
         <div className="mt-4 flex flex-wrap gap-2 font-montserrat text-xs text-stone-600">
           <span className="rounded-full bg-stone-100 px-3 py-1.5">
-            {copy.realTouch}
+            {page.realTouchLabel}
           </span>
           <span className="rounded-full bg-stone-100 px-3 py-1.5">
-            {decoration.catamaran ? copy.beachAndCatamaran : copy.beachOnly}
+            {decoration.catamaran
+              ? page.beachAndCatamaranLabel
+              : page.beachOnlyLabel}
           </span>
         </div>
         {disabled && (
           <p className="mt-3 font-montserrat text-xs font-semibold text-rose-700">
-            {copy.unavailableCatamaran}
+            {page.unavailableCatamaran}
           </p>
         )}
         <button
@@ -949,36 +255,43 @@ const DecorCard = ({
           } disabled:cursor-not-allowed disabled:border-stone-200 disabled:bg-stone-100 disabled:text-stone-400`}
         >
           {active ? <Check size={17} /> : null}
-          {active ? copy.selected : copy.select}
+          {active ? page.selectedLabel : page.selectLabel}
         </button>
       </div>
     </article>
   );
 };
 
-const Summary = ({ copy, experience, decoration, legal, customQuote }) => {
+const Summary = ({
+  page,
+  experience,
+  decoration,
+  legal,
+  upgrade,
+  customQuote,
+}) => {
   const total =
-    experience.price + decoration.price + (legal ? LEGAL_UPGRADE_PRICE : 0);
+    experience.price + decoration.price + (legal ? upgrade.price : 0);
 
   return (
     <aside className="rounded-3xl bg-stone-950 p-6 text-white shadow-2xl md:p-8 lg:sticky lg:top-6">
       <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">
-        {copy.estimate}
+        {page.estimateTitle}
       </p>
       <div className="mt-6 space-y-4 font-montserrat text-sm">
         <div className="flex items-start justify-between gap-4">
-          <span className="text-stone-300">{copy.experienceLine}</span>
+          <span className="text-stone-300">{page.experienceLine}</span>
           <span className="text-right">
-            {copy[experience.id].title}
+            {experience.title}
             <strong className="block text-base">
               {money(experience.price)}
             </strong>
           </span>
         </div>
         <div className="flex items-start justify-between gap-4">
-          <span className="text-stone-300">{copy.decorLine}</span>
+          <span className="text-stone-300">{page.decorLine}</span>
           <span className="text-right">
-            {copy.decorNames[decoration.id]}
+            {decoration.name}
             <strong className="block text-base">
               {money(decoration.price)}
             </strong>
@@ -986,26 +299,26 @@ const Summary = ({ copy, experience, decoration, legal, customQuote }) => {
         </div>
         <div className="flex items-start justify-between gap-4">
           <span className="text-stone-300">
-            {legal ? copy.legalLine : copy.symbolic}
+            {legal ? page.legalLine : page.symbolicTitle}
           </span>
-          <strong>{legal ? money(LEGAL_UPGRADE_PRICE) : copy.included}</strong>
+          <strong>{legal ? money(upgrade.price) : page.includedLabel}</strong>
         </div>
       </div>
       <div className="mt-6 border-t border-white/20 pt-6">
         {customQuote ? (
           <>
             <p className="font-crimson text-3xl text-amber-300">
-              {copy.customQuote}
+              {page.customQuote}
             </p>
             <p className="mt-3 font-montserrat text-sm leading-6 text-stone-300">
-              {copy.customQuoteText}
+              {page.customQuoteText}
             </p>
           </>
         ) : (
           <p className="font-crimson text-5xl text-amber-300">{money(total)}</p>
         )}
         <p className="mt-3 font-montserrat text-xs leading-5 text-stone-400">
-          {copy.totalNote}
+          {page.totalNote}
         </p>
       </div>
       <a
@@ -1013,7 +326,7 @@ const Summary = ({ copy, experience, decoration, legal, customQuote }) => {
         onClick={(event) => scrollToSection(event, "reserve")}
         className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-amber-500 px-5 py-3.5 font-montserrat text-sm font-bold text-white transition hover:bg-amber-600"
       >
-        {copy.reserveSelection}
+        {page.reserveSelection}
         <ArrowRight size={17} />
       </a>
     </aside>
@@ -1021,10 +334,11 @@ const Summary = ({ copy, experience, decoration, legal, customQuote }) => {
 };
 
 const ElopementForm = ({
-  copy,
+  page,
   experience,
   decoration,
   legal,
+  upgrade,
   guestCount,
   setGuestCount,
   language,
@@ -1032,10 +346,12 @@ const ElopementForm = ({
   const [status, setStatus] = useState("idle");
   const [phone, setPhone] = useState("");
   const [formError, setFormError] = useState("");
+  const form = elopementFormContent[language] || elopementFormContent["en-US"];
   const total =
-    experience.price + decoration.price + (legal ? LEGAL_UPGRADE_PRICE : 0);
+    experience.price + decoration.price + (legal ? upgrade.price : 0);
   const customQuote = experience.id === "catamaran" && guestCount > 10;
   const phoneCountry = parsePhoneNumber(phone || "")?.country || "";
+  const ceremony = legal ? upgrade.title : page.symbolicTitle;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -1043,15 +359,15 @@ const ElopementForm = ({
 
     if (!phoneCountry || !phone || !isPossiblePhoneNumber(phone)) {
       setStatus("error");
-      setFormError(copy.form.phoneError);
+      setFormError(form.phoneError);
       return;
     }
 
     setStatus("sending");
-    const form = event.currentTarget;
+    const formElement = event.currentTarget;
 
     try {
-      const formData = new FormData(form);
+      const formData = new FormData(formElement);
       formData.set("whatsapp", phone);
       formData.set("phone-country", phoneCountry);
       const validationPayload = Object.fromEntries(formData.entries());
@@ -1085,7 +401,7 @@ const ElopementForm = ({
         throw new Error("Form submission failed");
       }
 
-      form.reset();
+      formElement.reset();
       setPhone("");
       recordConfirmedInquiry("elopement-request");
       setStatus("success");
@@ -1093,10 +409,10 @@ const ElopementForm = ({
       setStatus("error");
       setFormError(
         /email/i.test(error.message)
-          ? copy.form.emailError
+          ? form.emailError
           : /phone/i.test(error.message)
-            ? copy.form.phoneError
-            : copy.form.error,
+            ? form.phoneError
+            : form.error,
       );
     }
   };
@@ -1113,10 +429,10 @@ const ElopementForm = ({
           strokeWidth={1.5}
         />
         <h3 className="mt-4 font-crimson text-3xl text-stone-900">
-          {copy.form.successTitle}
+          {page.successTitle}
         </h3>
         <p className="mx-auto mt-3 max-w-xl font-montserrat text-sm leading-6 text-stone-700">
-          {copy.form.success}
+          {page.successText}
         </p>
       </div>
     );
@@ -1137,55 +453,36 @@ const ElopementForm = ({
     >
       <input type="hidden" name="form-name" value="elopement-request" />
       <input type="hidden" name="language" value={language} />
-      <input
-        type="hidden"
-        name="experience"
-        value={copy[experience.id].title}
-      />
-      <input
-        type="hidden"
-        name="decoration"
-        value={copy.decorNames[decoration.id]}
-      />
-      <input
-        type="hidden"
-        name="ceremony"
-        value={legal ? copy.legal : copy.symbolic}
-      />
+      <input type="hidden" name="experience" value={experience.title} />
+      <input type="hidden" name="decoration" value={decoration.name} />
+      <input type="hidden" name="ceremony" value={ceremony} />
       <input
         type="hidden"
         name="estimated-total"
-        value={customQuote ? copy.customQuote : money(total)}
+        value={customQuote ? page.customQuote : money(total)}
       />
       <p className="hidden">
         <label>
-          {language === "pt"
-            ? "Não preencha este campo:"
-            : language === "fr"
-              ? "Ne remplissez pas ce champ :"
-              : language === "es"
-                ? "No completes este campo:"
-                : "Do not fill this out:"}
+          {form.honeypot}
           <input name="bot-field" />
         </label>
       </p>
 
       <div className="mb-7 rounded-2xl bg-amber-50 p-5">
         <p className="font-montserrat text-xs font-semibold uppercase tracking-wider text-amber-800">
-          {copy.selected}
+          {page.selectedLabel}
         </p>
         <p className="mt-2 font-crimson text-2xl text-stone-900">
-          {copy[experience.id].title} + {copy.decorNames[decoration.id]}
+          {experience.title} + {decoration.name}
         </p>
         <p className="mt-1 font-montserrat text-sm text-stone-600">
-          {customQuote ? copy.customQuote : money(total)} ·{" "}
-          {legal ? copy.legal : copy.symbolic}
+          {customQuote ? page.customQuote : money(total)} · {ceremony}
         </p>
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">
         <label className="font-montserrat text-sm font-semibold text-stone-700 md:col-span-2">
-          {copy.form.names}
+          {form.names}
           <input
             className={inputClass}
             type="text"
@@ -1196,7 +493,7 @@ const ElopementForm = ({
           />
         </label>
         <label className="font-montserrat text-sm font-semibold text-stone-700">
-          {copy.form.email}
+          {form.email}
           <input
             className={inputClass}
             type="email"
@@ -1209,7 +506,7 @@ const ElopementForm = ({
           />
         </label>
         <div className="font-montserrat text-sm font-semibold text-stone-700">
-          <span>{copy.form.whatsapp}</span>
+          <span>{form.whatsapp}</span>
           <PhoneInput
             international
             labels={
@@ -1231,7 +528,7 @@ const ElopementForm = ({
               }
             }}
             countrySelectProps={{
-              "aria-label": copy.form.phoneCountry,
+              "aria-label": form.phoneCountry,
               required: true,
             }}
             numberInputProps={{
@@ -1246,11 +543,11 @@ const ElopementForm = ({
           <input type="hidden" name="phone-country" value={phoneCountry} />
         </div>
         <label className="font-montserrat text-sm font-semibold text-stone-700">
-          {copy.form.date}
+          {form.date}
           <input className={inputClass} type="date" name="date" required />
         </label>
         <label className="font-montserrat text-sm font-semibold text-stone-700">
-          {copy.form.guests}
+          {form.guests}
           <input
             className={inputClass}
             type="number"
@@ -1273,7 +570,7 @@ const ElopementForm = ({
           />
         </label>
         <label className="font-montserrat text-sm font-semibold text-stone-700 md:col-span-2">
-          {copy.form.hotel}
+          {form.hotel}
           <input
             className={inputClass}
             type="text"
@@ -1283,10 +580,8 @@ const ElopementForm = ({
           />
         </label>
         <label className="font-montserrat text-sm font-semibold text-stone-700 md:col-span-2">
-          {copy.form.message}{" "}
-          <span className="font-normal text-stone-500">
-            ({copy.form.optional})
-          </span>
+          {form.message}{" "}
+          <span className="font-normal text-stone-500">({form.optional})</span>
           <textarea
             className={inputClass}
             name="message"
@@ -1301,7 +596,7 @@ const ElopementForm = ({
           role="alert"
           className="mt-5 font-montserrat text-sm font-semibold text-rose-700"
         >
-          {formError || copy.form.error}
+          {formError || form.error}
         </p>
       )}
 
@@ -1310,34 +605,35 @@ const ElopementForm = ({
         disabled={status === "sending"}
         className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-amber-500 px-6 py-4 font-montserrat text-sm font-bold text-white transition hover:bg-amber-600 disabled:cursor-wait disabled:opacity-70"
       >
-        {status === "sending" ? copy.form.sending : copy.form.send}
+        {status === "sending" ? form.sending : page.formSubmitLabel}
         <ArrowRight size={18} />
       </button>
       <p className="mt-4 text-center font-montserrat text-xs leading-5 text-stone-500">
-        {copy.form.notice}
+        {page.formNotice}
       </p>
     </form>
   );
 };
 
-const ICONS = [CarFront, Camera, HeartHandshake, Flower2, FileCheck2, MapPin];
-
-const ElopementExperience = ({ language = "en-US" }) => {
-  const copy = getElopementCopy(language);
+// Every section of the elopement page from this language's Elopement Page
+// document in Sanity; prices from the linked Elopement Prices.
+const ElopementExperience = ({ page, language = "en-US" }) => {
+  const {
+    experiences,
+    decorations,
+    legal: upgrade,
+  } = useMemo(() => elopementChoices(page), [page]);
   const [experienceId, setExperienceId] = useState("beach");
-  const [decorationId, setDecorationId] = useState("white-serenity");
+  const [decorationId, setDecorationId] = useState(decorations[0]?.id);
   const [legal, setLegal] = useState(false);
   const [guestCount, setGuestCount] = useState(2);
-  const faqs = buildElopementFaqs(language);
+  const hero = page.heroImage?.asset;
 
-  const experience = useMemo(
-    () => ELOPEMENT_EXPERIENCES.find((item) => item.id === experienceId),
-    [experienceId],
-  );
-  const decoration = useMemo(
-    () => ELOPEMENT_DECORATIONS.find((item) => item.id === decorationId),
-    [decorationId],
-  );
+  const experience =
+    experiences.find((item) => item.id === experienceId) || experiences[0];
+  const decoration =
+    decorations.find((item) => item.id === decorationId) || decorations[0];
+  if (!experience || !decoration) return null;
   const customQuote = experience.id === "catamaran" && guestCount > 10;
 
   const selectExperience = (id) => {
@@ -1346,37 +642,31 @@ const ElopementExperience = ({ language = "en-US" }) => {
       setGuestCount((current) => Math.min(current, 60));
     }
     if (id === "catamaran" && !decoration.catamaran) {
-      setDecorationId("white-serenity");
+      setDecorationId(decorations.find((item) => item.catamaran)?.id);
     }
   };
 
   return (
     <main className="overflow-hidden bg-white">
       <section className="absolute left-0 top-0 h-screen w-full bg-stone-900">
-        <img
-          src={gallerySource("beach-elopement-couple-pampas-arch", 1600)}
-          srcSet={`${gallerySource("beach-elopement-couple-pampas-arch", 480)} 480w, ${gallerySource("beach-elopement-couple-pampas-arch", 960)} 960w, ${gallerySource("beach-elopement-couple-pampas-arch", 1600)} 1600w, ${gallerySource("beach-elopement-couple-pampas-arch", 2400)} 2400w`}
-          sizes="100vw"
-          alt={
-            language === "pt"
-              ? "Casal recém-casado sob um arco floral com pampas em uma praia de Punta Cana"
-              : language === "fr"
-                ? "Couple de jeunes mariés sous une arche florale ornée de pampas sur une plage de Punta Cana"
-                : language === "es"
-                  ? localizeSpanishElopementTerms(ELOPEMENT_GALLERY[0].es)
-                  : ELOPEMENT_GALLERY[0].en
-          }
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          width="5310"
-          height="3540"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
+        {hero?.url && (
+          <img
+            src={sized(hero.url, 1600)}
+            srcSet={srcSet(hero.url, [480, 960, 1600, 2400])}
+            sizes="100vw"
+            alt={page.heroImage.alt}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            width={hero.metadata?.dimensions?.width}
+            height={hero.metadata?.dimensions?.height}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/65" />
         <div className="relative z-10 mx-auto flex h-full max-w-6xl items-end justify-center px-5 pb-[14vh] text-center md:px-10 md:pb-[16vh]">
           <h1 className="max-w-5xl font-crimson text-5xl font-normal leading-[1.02] text-white md:text-7xl lg:text-8xl">
-            {copy.heroTitle}
+            {page.heroTitle}
           </h1>
         </div>
       </section>
@@ -1387,18 +677,18 @@ const ElopementExperience = ({ language = "en-US" }) => {
         className="scroll-mt-6 bg-stone-50 px-5 py-20 md:px-10 md:py-24"
       >
         <SectionHeading
-          eyebrow={copy.builderEyebrow}
-          title={copy.builderTitle}
-          intro={copy.builderIntro}
+          eyebrow={page.builderEyebrow}
+          title={page.builderTitle}
+          intro={page.builderIntro}
         />
 
         <div className="mx-auto mt-10 grid max-w-4xl gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
-          {copy.formula.map((item, index) => (
+          {(page.formula || []).map((item, index) => (
             <React.Fragment key={item}>
               <div className="rounded-2xl border border-stone-200 bg-white px-5 py-5 text-center font-montserrat text-sm font-semibold text-stone-800">
                 {item}
               </div>
-              {index < copy.formula.length - 1 && (
+              {index < page.formula.length - 1 && (
                 <span className="text-center font-crimson text-3xl text-amber-600">
                   +
                 </span>
@@ -1409,32 +699,32 @@ const ElopementExperience = ({ language = "en-US" }) => {
 
         <div className="mx-auto mt-14 max-w-6xl">
           <h2 className="font-crimson text-3xl text-stone-900">
-            {copy.stepOne}
+            {page.stepOne}
           </h2>
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
-            {ELOPEMENT_EXPERIENCES.map((item) => (
+            {experiences.map((item) => (
               <ExperienceCard
-                key={item.id}
+                key={item._key}
                 experience={item}
-                copy={copy}
-                active={experienceId === item.id}
+                page={page}
+                active={experience.id === item.id}
                 onSelect={() => selectExperience(item.id)}
               />
             ))}
           </div>
         </div>
 
-        {experienceId === "catamaran" && (
+        {experience.id === "catamaran" && (
           <div className="mx-auto mt-7 max-w-6xl rounded-2xl border border-sky-200 bg-sky-50 p-5 md:flex md:items-center md:justify-between md:gap-6">
             <div>
               <label
                 htmlFor="catamaran-guests"
                 className="font-montserrat text-sm font-bold text-stone-900"
               >
-                {copy.guestsLabel}
+                {page.guestsLabel}
               </label>
               <p className="mt-1 font-montserrat text-sm text-stone-600">
-                {copy.guestsHelp}
+                {page.guestsHelp}
               </p>
             </div>
             <input
@@ -1455,18 +745,17 @@ const ElopementExperience = ({ language = "en-US" }) => {
 
         <div className="mx-auto mt-16 max-w-6xl">
           <h2 className="font-crimson text-3xl text-stone-900">
-            {copy.stepTwo}
+            {page.stepTwo}
           </h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {ELOPEMENT_DECORATIONS.map((item) => (
+            {decorations.map((item) => (
               <DecorCard
                 key={item.id}
                 decoration={item}
-                copy={copy}
-                active={decorationId === item.id}
-                disabled={experienceId === "catamaran" && !item.catamaran}
+                page={page}
+                active={decoration.id === item.id}
+                disabled={experience.id === "catamaran" && !item.catamaran}
                 onSelect={() => setDecorationId(item.id)}
-                language={language}
               />
             ))}
           </div>
@@ -1475,7 +764,7 @@ const ElopementExperience = ({ language = "en-US" }) => {
         <div className="mx-auto mt-16 grid max-w-6xl gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:items-start">
           <div>
             <h2 className="font-crimson text-3xl text-stone-900">
-              {copy.stepThree}
+              {page.stepThree}
             </h2>
             <div className="mt-6 grid gap-5 md:grid-cols-2">
               <button
@@ -1495,18 +784,18 @@ const ElopementExperience = ({ language = "en-US" }) => {
                   />
                   {!legal && (
                     <span className="rounded-full bg-amber-500 px-3 py-1 font-montserrat text-xs font-bold text-white">
-                      {copy.selected}
+                      {page.selectedLabel}
                     </span>
                   )}
                 </div>
                 <h3 className="mt-5 font-crimson text-3xl text-stone-900">
-                  {copy.symbolic}
+                  {page.symbolicTitle}
                 </h3>
                 <p className="mt-1 font-montserrat text-xs font-bold uppercase tracking-wider text-amber-700">
-                  {copy.symbolicIncluded}
+                  {page.symbolicIncluded}
                 </p>
                 <p className="mt-4 font-montserrat text-sm leading-6 text-stone-600">
-                  {copy.symbolicChoiceText}
+                  {page.symbolicChoiceText}
                 </p>
               </button>
               <button
@@ -1526,32 +815,33 @@ const ElopementExperience = ({ language = "en-US" }) => {
                   />
                   {legal && (
                     <span className="rounded-full bg-amber-500 px-3 py-1 font-montserrat text-xs font-bold text-white">
-                      {copy.selected}
+                      {page.selectedLabel}
                     </span>
                   )}
                 </div>
                 <div className="mt-5 flex items-end justify-between gap-3">
                   <h3 className="font-crimson text-3xl text-stone-900">
-                    {copy.legal}
+                    {upgrade.title}
                   </h3>
                   <span className="font-crimson text-2xl text-amber-700">
-                    {copy.legalPrice}
+                    {upgradePrice(upgrade.price, language)}
                   </span>
                 </div>
                 <p className="mt-4 font-montserrat text-sm leading-6 text-stone-600">
-                  {copy.legalChoiceText}
+                  {upgrade.choiceText}
                 </p>
                 <p className="mt-3 font-montserrat text-xs font-semibold leading-5 text-rose-700">
-                  {copy.legalCaution}
+                  {upgrade.caution}
                 </p>
               </button>
             </div>
           </div>
           <Summary
-            copy={copy}
+            page={page}
             experience={experience}
             decoration={decoration}
             legal={legal}
+            upgrade={upgrade}
             customQuote={customQuote}
           />
         </div>
@@ -1562,24 +852,24 @@ const ElopementExperience = ({ language = "en-US" }) => {
         className="scroll-mt-6 px-5 py-20 md:px-10 md:py-28"
       >
         <SectionHeading
-          eyebrow={copy.includedEyebrow}
-          title={copy.includedTitle}
-          intro={copy.includedIntro}
+          eyebrow={page.includedEyebrow}
+          title={page.includedTitle}
+          intro={page.includedIntro}
         />
         <div className="mx-auto mt-12 grid max-w-6xl gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {copy.inclusions.map(([title, text], index) => {
-            const Icon = ICONS[index];
+          {(page.inclusions || []).map((item) => {
+            const Icon = cardIcon(item.icon);
             return (
               <article
-                key={title}
+                key={item._key}
                 className="rounded-3xl border border-stone-200 p-6"
               >
                 <Icon className="text-amber-700" size={27} strokeWidth={1.5} />
                 <h3 className="mt-5 font-crimson text-2xl text-stone-900">
-                  {title}
+                  {item.title}
                 </h3>
                 <p className="mt-2 font-montserrat text-sm leading-6 text-stone-600">
-                  {text}
+                  {item.description}
                 </p>
               </article>
             );
@@ -1590,9 +880,9 @@ const ElopementExperience = ({ language = "en-US" }) => {
       <section className="bg-stone-950 px-5 py-20 text-white md:px-10 md:py-28">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
-            eyebrow={copy.legalEyebrow}
-            title={copy.legalTitle}
-            intro={copy.legalIntro}
+            eyebrow={page.legalEyebrow}
+            title={page.legalTitle}
+            intro={page.legalIntro}
             dark
           />
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -1602,12 +892,14 @@ const ElopementExperience = ({ language = "en-US" }) => {
                 size={32}
                 strokeWidth={1.4}
               />
-              <h3 className="mt-5 font-crimson text-3xl">{copy.symbolic}</h3>
+              <h3 className="mt-5 font-crimson text-3xl">
+                {page.symbolicTitle}
+              </h3>
               <p className="mt-2 font-montserrat text-sm font-bold uppercase tracking-wider text-amber-300">
-                {copy.symbolicIncluded}
+                {page.symbolicIncluded}
               </p>
               <p className="mt-5 font-montserrat text-sm leading-7 text-stone-300">
-                {copy.symbolicText}
+                {page.symbolicText}
               </p>
             </article>
             <article className="rounded-3xl border border-amber-400/40 bg-amber-400/10 p-7 md:p-9">
@@ -1617,17 +909,16 @@ const ElopementExperience = ({ language = "en-US" }) => {
                 strokeWidth={1.4}
               />
               <div className="mt-5 flex flex-wrap items-end justify-between gap-3">
-                <h3 className="font-crimson text-3xl">{copy.legal}</h3>
+                <h3 className="font-crimson text-3xl">{upgrade.title}</h3>
                 <span className="font-crimson text-3xl text-amber-300">
-                  {copy.legalPrice}
+                  {upgradePrice(upgrade.price, language)}
                 </span>
               </div>
               <p className="mt-5 font-montserrat text-sm leading-7 text-stone-200">
-                {copy.legalText}
+                {upgrade.text}
               </p>
               <p className="mt-4 flex gap-2 font-montserrat text-xs font-semibold leading-5 text-amber-200">
-                <ShieldCheck className="shrink-0" size={18} />{" "}
-                {copy.legalCaution}
+                <ShieldCheck className="shrink-0" size={18} /> {upgrade.caution}
               </p>
             </article>
           </div>
@@ -1636,38 +927,32 @@ const ElopementExperience = ({ language = "en-US" }) => {
 
       <section className="px-5 py-20 md:px-10 md:py-28">
         <SectionHeading
-          eyebrow={copy.realEyebrow}
-          title={copy.realTitle}
-          intro={copy.realIntro}
+          eyebrow={page.realEyebrow}
+          title={page.realTitle}
+          intro={page.realIntro}
         />
         <div className="mx-auto mt-12 max-w-6xl columns-2 gap-3 md:columns-3 md:gap-5 lg:columns-4">
-          {ELOPEMENT_GALLERY.map((image) => (
-            <figure
-              key={image.slug}
-              className="mb-3 break-inside-avoid overflow-hidden rounded-2xl bg-stone-100 md:mb-5"
-              style={{ contentVisibility: "auto" }}
-            >
-              <img
-                src={gallerySource(image.slug, 960)}
-                srcSet={`${gallerySource(image.slug, 480)} 480w, ${gallerySource(image.slug, 960)} 960w, ${gallerySource(image.slug, 1600)} 1600w`}
-                sizes="(min-width: 1024px) 280px, (min-width: 768px) 33vw, 50vw"
-                alt={
-                  language === "pt"
-                    ? `${copy.heroTitle} — ${copy.decorNames[decorationId] || "cerimônia na praia"}`
-                    : language === "fr"
-                      ? `${copy.heroTitle} — ${copy.decorNames[decorationId] || "cérémonie sur la plage"}`
-                      : language === "es"
-                        ? localizeSpanishElopementTerms(image.es)
-                        : image.en
-                }
-                loading="lazy"
-                decoding="async"
-                width={image.width}
-                height={image.height}
-                className="h-auto w-full"
-              />
-            </figure>
-          ))}
+          {(page.galleryPhotos || [])
+            .filter((image) => image.asset?.url)
+            .map((image) => (
+              <figure
+                key={image._key}
+                className="mb-3 break-inside-avoid overflow-hidden rounded-2xl bg-stone-100 md:mb-5"
+                style={{ contentVisibility: "auto" }}
+              >
+                <img
+                  src={sized(image.asset.url, 960)}
+                  srcSet={srcSet(image.asset.url, [480, 960, 1600])}
+                  sizes="(min-width: 1024px) 280px, (min-width: 768px) 33vw, 50vw"
+                  alt={image.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width={image.asset.metadata?.dimensions?.width}
+                  height={image.asset.metadata?.dimensions?.height}
+                  className="h-auto w-full"
+                />
+              </figure>
+            ))}
         </div>
       </section>
 
@@ -1678,26 +963,26 @@ const ElopementExperience = ({ language = "en-US" }) => {
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <SectionHeading
-              eyebrow={copy.reserveEyebrow}
-              title={copy.reserveTitle}
-              intro={copy.reserveIntro}
+              eyebrow={page.reserveEyebrow}
+              title={page.reserveTitle}
+              intro={page.reserveIntro}
               align="left"
             />
             <h3 className="mt-10 font-crimson text-3xl text-stone-900">
-              {copy.paymentTitle}
+              {page.paymentTitle}
             </h3>
             <ol className="mt-6 space-y-5">
-              {copy.paymentSteps.map(([title, text], index) => (
-                <li key={title} className="flex gap-4">
+              {(page.paymentSteps || []).map((step, index) => (
+                <li key={step._key} className="flex gap-4">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-500 font-montserrat text-sm font-bold text-white">
                     {index + 1}
                   </span>
                   <div>
                     <h4 className="font-montserrat text-sm font-bold text-stone-900">
-                      {title}
+                      {step.title}
                     </h4>
                     <p className="mt-1 font-montserrat text-sm leading-6 text-stone-600">
-                      {text}
+                      {step.body}
                     </p>
                   </div>
                 </li>
@@ -1705,14 +990,15 @@ const ElopementExperience = ({ language = "en-US" }) => {
             </ol>
             <p className="mt-8 flex gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 font-montserrat text-sm font-semibold leading-6 text-rose-800">
               <ShieldCheck className="shrink-0" size={21} />{" "}
-              {copy.depositNotice}
+              {page.depositNotice}
             </p>
           </div>
           <ElopementForm
-            copy={copy}
+            page={page}
             experience={experience}
             decoration={decoration}
             legal={legal}
+            upgrade={upgrade}
             guestCount={guestCount}
             setGuestCount={setGuestCount}
             language={language}
@@ -1722,21 +1008,21 @@ const ElopementExperience = ({ language = "en-US" }) => {
 
       <section className="px-5 py-20 md:px-10 md:py-28">
         <SectionHeading
-          eyebrow={copy.faqEyebrow}
-          title={copy.faqTitle}
-          intro={copy.faqIntro}
+          eyebrow={page.faqEyebrow}
+          title={page.faqTitle}
+          intro={page.faqIntro}
         />
         <div className="mx-auto mt-12 max-w-4xl divide-y divide-stone-200 border-y border-stone-200">
-          {faqs.map(([question, answer]) => (
-            <details key={question} className="group py-1">
+          {(page.faqs || []).map((faq) => (
+            <details key={faq._key} className="group py-1">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 font-crimson text-xl text-stone-900 md:text-2xl">
-                {question}
+                {faq.question}
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-stone-100 font-montserrat text-lg text-amber-700 transition group-open:rotate-45">
                   +
                 </span>
               </summary>
               <p className="max-w-3xl pb-6 pr-10 font-montserrat text-sm leading-7 text-stone-600">
-                {answer}
+                {faq.answer}
               </p>
             </details>
           ))}
