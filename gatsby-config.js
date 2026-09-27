@@ -95,6 +95,14 @@ for (const [slug, versions] of Object.entries(knowledgeArticles)) {
   }
 }
 
+for (const [slug, versions] of Object.entries(require("./src/data/weddingGuideMetadata.json"))) {
+  for (const [language, article] of Object.entries(versions)) {
+    const prefix = language === "en-US" ? "" : `/${language}`;
+    seoLastModified.set(`${prefix}/blog/${slug}/`, article.reviewedAt);
+    seoLastModified.set(`${prefix}/blog/`, article.reviewedAt);
+  }
+}
+
 // Sitemap defence in depth: page creation already blocks these routes, but the
 // sitemap must also remain clean if another plugin or future template creates
 // one accidentally.

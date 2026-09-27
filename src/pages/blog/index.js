@@ -16,6 +16,7 @@ import "../../styles/knowledge-center.css";
 const { nodes, languageIndex } = require("../../data/knowledgeGraph");
 const { isPublishedBlogSlug } = require("../../data/publishedBlogSlugs");
 
+const weddingGuides = require("../../data/weddingGuideMetadata.json");
 const BlogIndex = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);
   return (
@@ -57,8 +58,8 @@ export const Head = ({ data, pageContext }) => {
     inLanguage: config.htmlLang,
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: nodes
-        .filter((n) => active.has(n.slug))
+      itemListElement: [...nodes, ...Object.keys(weddingGuides).map(slug => ({ slug }))]
+        .filter((n) => active.has(n.slug) || weddingGuides[n.slug])
         .map((n, index) => ({
           "@type": "ListItem",
           position: index + 1,

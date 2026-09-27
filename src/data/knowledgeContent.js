@@ -1,4 +1,5 @@
 import articles from "./knowledgeArticles.json";
+import weddingGuides from "./weddingGuideMetadata.json";
 import { normalizeLanguage } from "../utils/siteLocales";
 
 // The amount is maintained once, with provenance in the private editorial register.
@@ -35,7 +36,7 @@ const substitute = (value, language) => {
 export const getKnowledgeArticle = (slug, language) => {
   const normalized = String(slug || "").trim();
   const lang = normalizeLanguage(language);
-  const article = articles[normalized]?.[lang];
+  const article = articles[normalized]?.[lang] || weddingGuides[normalized]?.[lang];
   if (!article) return null;
   return substitute(article, lang);
 };

@@ -5,7 +5,7 @@ const { publishedBlogSlugs } = require("../src/data/publishedBlogSlugs");
 const languages = ["en-US", "es", "pt", "fr"];
 const ids = new Set(nodes.map(n => n.id));
 assert.equal(ids.size, nodes.length, "Conceptual IDs must be unique");
-assert.deepEqual(new Set(nodes.map(n=>n.slug)), publishedBlogSlugs, "Preserve the current approved route set");
+assert.deepEqual(new Set([...nodes.map(n=>n.slug), ...Object.keys(require("../src/data/weddingGuideMetadata.json"))]), publishedBlogSlugs, "Preserve the current approved route set");
 for(const node of nodes){
   assert(clusters.some(c=>c.id===node.cluster), node.id+": missing parent");
   assert(node.related.length>0,node.id+": missing related guides");

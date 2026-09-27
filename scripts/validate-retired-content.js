@@ -16,7 +16,7 @@ const source = (relativePath) =>
 
 assert.equal(
   publishedBlogSlugs.size,
-  15,
+  65,
   "The public blog allowlist changed; review the sitemap and update this contract intentionally.",
 );
 

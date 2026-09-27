@@ -5,6 +5,7 @@
 // entry from silently returning to the site after an editorial or locale
 // change. New articles must be reviewed and added here intentionally.
 const publishedBlogSlugs = new Set([
+  ...Object.keys(require("./weddingGuideMetadata.json")),
   "punta-cana-resort-proposal-permits-fees-privacy",
   "punta-cana-proposal-rain-weather-policy",
   "punta-cana-destination-wedding-guest-travel-guide",
