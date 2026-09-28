@@ -11,6 +11,13 @@ import {
 } from "@react-pdf/renderer";
 import { Trans, useI18next } from "gatsby-plugin-react-i18next";
 import { format, parseISO } from "date-fns";
+import { es as spanishLocale } from "date-fns/locale";
+
+// "January 15, 2027" in English, "15 de enero de 2027" in Spanish.
+const formatDate = (date, language) =>
+  language === "es"
+    ? format(date, "d 'de' MMMM 'de' yyyy", { locale: spanishLocale })
+    : format(date, "MMMM d, yyyy");
 import axios from "axios";
 
 const styles = StyleSheet.create({
@@ -118,7 +125,7 @@ const styles = StyleSheet.create({
 });
 
 const ContractPDF = ({ formData, companyInfo, language }) => {
-  const currentDate = format(new Date(), "MMMM d, yyyy");
+  const currentDate = formatDate(new Date(), language);
   const companyStamp = companyInfo.companyStamp?.asset?.url;
   const signature = companyInfo.signature?.asset?.url;
   // Calculate subtotal, taxes and total
@@ -140,7 +147,7 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
 
   // Format date
   const eventDate = formData.eventDate
-    ? format(parseISO(formData.eventDate), "MMMM d, yyyy")
+    ? formatDate(parseISO(formData.eventDate), language)
     : "[DATE]";
 
   return (
