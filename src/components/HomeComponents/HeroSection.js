@@ -35,7 +35,7 @@ const HeroSection = ({ home, language }) => {
             {home.heroIntro}
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            {primaryCta && (
+            {primaryCta?.label && primaryCta?.url && (
               <a
                 href={siteLink(primaryCta.url, language)}
                 className="inline-flex items-center justify-center gap-2 bg-primary-color px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-black no-underline transition hover:opacity-90"
@@ -44,7 +44,7 @@ const HeroSection = ({ home, language }) => {
                 <ArrowRight aria-hidden="true" size={18} />
               </a>
             )}
-            {secondaryCta && (
+            {secondaryCta?.label && secondaryCta?.url && (
               <a
                 href={siteLink(secondaryCta.url, language)}
                 className="inline-flex items-center justify-center gap-2 border border-white/60 bg-black/20 px-6 py-4 font-montserrat text-sm font-semibold uppercase tracking-[0.12em] text-white no-underline backdrop-blur-sm transition hover:bg-white hover:text-black"

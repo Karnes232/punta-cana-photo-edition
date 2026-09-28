@@ -22,7 +22,10 @@ const KnowledgeCenter = ({ copy, categories, topics, posts, language }) => {
     ...categories
       .filter((category) => inCategory(category).length)
       .map((category) => [`#${category.key}`, localized(category.label, language)]),
-    ["#intimate", copy.intimateLink?.label],
+    // The intimate-events link only when it has both a label and an address.
+    ...(copy.intimateLink?.label && copy.intimateLink?.url
+      ? [["#intimate", copy.intimateLink.label]]
+      : []),
   ];
   return (
     <main className="bg-primary-bg-color text-[#111827]">
@@ -63,12 +66,14 @@ const KnowledgeCenter = ({ copy, categories, topics, posts, language }) => {
                 <h2 className={sectionTitle}>
                   {localized(category.label, language)}
                 </h2>
-                <a
-                  href={localizedPath(category.servicePage, language)}
-                  className={`${smallLink} max-[760px]:col-start-2`}
-                >
-                  {copy.serviceLabel} <span aria-hidden="true">↗</span>
-                </a>
+                {category.servicePage && (
+                  <a
+                    href={localizedPath(category.servicePage, language)}
+                    className={`${smallLink} max-[760px]:col-start-2`}
+                  >
+                    {copy.serviceLabel} <span aria-hidden="true">↗</span>
+                  </a>
+                )}
               </header>
               <div className="grid grid-cols-3 gap-[22px] max-[760px]:grid-cols-1">
                 {collection.map((post, ni) => (
@@ -113,12 +118,14 @@ const KnowledgeCenter = ({ copy, categories, topics, posts, language }) => {
               {copy.intimateText}
             </p>
           </div>
-          <a
-            href={siteLink(copy.intimateLink?.url, language)}
-            className={`min-w-[180px] ${smallLink}`}
-          >
-            {copy.intimateLink?.label} <span aria-hidden="true">↗</span>
-          </a>
+          {copy.intimateLink?.label && copy.intimateLink?.url && (
+            <a
+              href={siteLink(copy.intimateLink.url, language)}
+              className={`min-w-[180px] ${smallLink}`}
+            >
+              {copy.intimateLink.label} <span aria-hidden="true">↗</span>
+            </a>
+          )}
         </section>
         <section id="planning-topics">
           <h2 className={sectionTitle}>{copy.topicsTitle}</h2>

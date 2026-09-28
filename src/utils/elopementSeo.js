@@ -174,23 +174,28 @@ export const buildElopementSchema = ({
             url: pageUrl,
             seller: { "@id": `${siteUrl}/#organization` },
           })),
-          {
-            "@type": "Offer",
-            name: choices.legal.title,
-            description: choices.legal.text,
-            category: isPortuguese
-              ? "Serviço adicional de casamento civil"
-              : isFrench
-                ? "Option de mariage civil légal"
-                : isSpanish
-                  ? "Servicio adicional de boda legal"
-                  : "Legal wedding upgrade",
-            price: choices.legal.price,
-            priceCurrency: "USD",
-            availability: "https://schema.org/LimitedAvailability",
-            url: pageUrl,
-            seller: { "@id": `${siteUrl}/#organization` },
-          },
+          // The legal upgrade's offer only when the page has one.
+          ...(choices.legal.title
+            ? [
+                {
+                  "@type": "Offer",
+                  name: choices.legal.title,
+                  description: choices.legal.text,
+                  category: isPortuguese
+                    ? "Serviço adicional de casamento civil"
+                    : isFrench
+                      ? "Option de mariage civil légal"
+                      : isSpanish
+                        ? "Servicio adicional de boda legal"
+                        : "Legal wedding upgrade",
+                  price: choices.legal.price,
+                  priceCurrency: "USD",
+                  availability: "https://schema.org/LimitedAvailability",
+                  url: pageUrl,
+                  seller: { "@id": `${siteUrl}/#organization` },
+                },
+              ]
+            : []),
         ],
       },
       {

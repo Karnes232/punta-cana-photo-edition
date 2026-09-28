@@ -36,38 +36,49 @@ const toResponsiveImage = (image) =>
 // answered for packages with the dinner included or offered as an extra.
 const packageFaqs = (texts, pkg) =>
   [
-    ...(texts?.faqs || []).map(({ question, answer }) => ({
-      title: question,
-      content: { content: answer },
-    })),
-    texts?.dinnerQuestion && {
-      title: texts.dinnerQuestion,
-      content: {
-        content: pkg?.dinnerIncluded
-          ? texts.dinnerAnswerIncluded
-          : texts.dinnerAnswerAddOn,
+    ...(texts?.faqs || [])
+      .filter((faq) => faq?.question && faq?.answer)
+      .map(({ question, answer }) => ({
+        title: question,
+        content: { content: answer },
+      })),
+    texts?.dinnerQuestion &&
+      (pkg?.dinnerIncluded
+        ? texts.dinnerAnswerIncluded
+        : texts.dinnerAnswerAddOn) && {
+        title: texts.dinnerQuestion,
+        content: {
+          content: pkg?.dinnerIncluded
+            ? texts.dinnerAnswerIncluded
+            : texts.dinnerAnswerAddOn,
+        },
       },
-    },
   ].filter(Boolean);
 
 // A proposal package's page: its text and photos from the package's page in
 // this language, its price and extras from the Proposal Package, and the text
 // every package page shares from this language's Package Page Texts.
 const PackagePage = ({ pageContext, data }) => {
-  const page = data.sanityProposalPackagePage;
-  const pkg = page.package;
+  const page = data.sanityProposalPackagePage || {};
+  const pkg = page.package || {};
   const texts = data.sanityProposalPackageTexts;
   const language = pageContext.language;
   const bookingPhoto = toResponsiveImage(page.bookingPhoto);
   const addOnNames = new Map(
     (texts?.addOnNames || []).map((item) => [item.addOn?._id, item.name]),
   );
-  const addOns = (pkg.addOns || []).map((addOn) => ({
-    id: addOn._id,
-    kind: addOn.kind,
-    price: addOn.price,
-    name: addOnNames.get(addOn._id) || addOn.name,
-  }));
+  // Extras whose document is missing or has no price are left out.
+  const addOns = (pkg.addOns || [])
+    .filter((addOn) => addOn && addOn.price != null)
+    .map((addOn) => ({
+      id: addOn._id,
+      kind: addOn.kind,
+      price: addOn.price,
+      name: addOnNames.get(addOn._id) || addOn.name,
+    }));
+  const galleryImages = (page.galleryPhotos || [])
+    .map(toResponsiveImage)
+    .filter(Boolean);
   const proposalBookingMedia = pkg.videoUrl ? (
     <VideoPlayer url={pkg.videoUrl} className="h-full w-full overflow-hidden" />
   ) : bookingPhoto ? (
@@ -103,12 +114,9 @@ const PackagePage = ({ pageContext, data }) => {
           texts={texts}
           language={language}
         />
-        <SwiperCarousel
-          images={(page.galleryPhotos || [])
-            .map(toResponsiveImage)
-            .filter(Boolean)}
-          language={language}
-        />
+        {galleryImages.length > 0 && (
+          <SwiperCarousel images={galleryImages} language={language} />
+        )}
         <PackageForm
           packageName={page.name}
           price={pkg.price}
@@ -131,10 +139,10 @@ export const Head = ({ pageContext, data }) => {
   const rootUrl = data.site.siteMetadata.siteUrl.replace(/\/$/, "");
   const language = normalizeLanguage(pageContext.language);
   const languageConfig = getLanguageConfig(language);
-  const page = data.sanityProposalPackagePage;
-  const pkg = page.package;
+  const page = data.sanityProposalPackagePage || {};
+  const pkg = page.package || {};
   const seo = page.seo;
-  const packagePath = `/packages/${pkg.slug.current}/`;
+  const packagePath = `/packages/${pkg.slug?.current || ""}/`;
   const siteUrl = localizedUrl(rootUrl, packagePath, language);
   const image = shareImageUrl(seo?.image?.asset?.url);
   const instagramUrl = /^https?:\/\//i.test(pageContext.layout?.instagram || "")

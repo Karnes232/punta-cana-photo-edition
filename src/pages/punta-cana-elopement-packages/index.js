@@ -56,9 +56,9 @@ export const Head = ({ data, pageContext }) => {
     image,
     page,
     choices: elopementChoices(page),
-    companyName: generalInfo.companyName,
-    telephone: generalInfo.telephone,
-    instagram: generalInfo.instagram,
+    companyName: generalInfo?.companyName,
+    telephone: generalInfo?.telephone,
+    instagram: generalInfo?.instagram,
   });
 
   return (

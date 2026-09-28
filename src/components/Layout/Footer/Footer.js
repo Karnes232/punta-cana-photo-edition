@@ -9,11 +9,11 @@ import LanguageSwitcher from "../../LanguageSwitcherComponents/LanguageSwitcher"
 import { useI18next } from "gatsby-plugin-react-i18next";
 const Footer = ({ generalInfo }) => {
   const { language } = useI18next();
-  const instatag = generalInfo.instagram.split("/")[3];
+  const instatag = generalInfo?.instagram?.split("/")[3];
   return (
     <div className="flex flex-col h-screen md:h-auto lg:h-[50vh] xl:max-w-6xl xl:w-full xl:mx-auto justify-between py-10 mx-8 md:mx-10">
       <div className="flex justify-center items-center">
-        {generalInfo.instagram && (
+        {generalInfo?.instagram && (
           <a
             href={generalInfo.instagram}
             target="_blank"
@@ -22,7 +22,9 @@ const Footer = ({ generalInfo }) => {
             className="flex flex-row items-center justify-center space-x-2 text-gray-600"
           >
             <FaInstagram className="text-2xl" />{" "}
-            <p className="uppercase text-sm tracking-widest">@{instatag}</p>
+            {instatag && (
+              <p className="uppercase text-sm tracking-widest">@{instatag}</p>
+            )}
           </a>
         )}
       </div>
@@ -38,7 +40,7 @@ const Footer = ({ generalInfo }) => {
         <LanguageSwitcher currentLanguage={language} />
         <SocialMedia generalInfo={generalInfo} />
       </div>
-      <Copyright companyName={generalInfo.companyName} language={language} />
+      <Copyright companyName={generalInfo?.companyName} language={language} />
       <Signature />
     </div>
   );

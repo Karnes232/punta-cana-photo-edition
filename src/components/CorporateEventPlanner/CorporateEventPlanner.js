@@ -84,7 +84,7 @@ const CaseStudyGallery = ({ images, client, language }) => {
   return (
     <div
       className="grid grid-cols-2 gap-2 md:gap-3"
-      aria-label={(galleryLabel[language] || galleryLabel["en-US"])(client)}
+      aria-label={(galleryLabel[language] || galleryLabel["en-US"])(client || "")}
     >
       {visibleImages.map((image, index) => (
         <EventImage
@@ -245,7 +245,7 @@ const ProposalForm = ({ submitLabel, language }) => {
 };
 
 const CorporateEventPlanner = ({ page, generalInfo, language }) => {
-  const telephone = (generalInfo?.telephone || "").replace(/\D/g, "");
+  const telephone = (generalInfo?.telephone || "8295222900").replace(/\D/g, "");
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${telephone}&text=${encodeURIComponent(
     page.whatsappMessage || "",
   )}`;

@@ -10,14 +10,15 @@ export function IndianImage({asset,className='',alt=''}) {
   const url = asset?.asset?.url;
   const { width, height } = asset?.asset?.metadata?.dimensions || {};
   if (!url) return null;
-  const thumb = `${url}?w=${thumbWidth(width)}`;
-  return <img className={className} src={thumb} srcSet={`${thumb} ${thumbWidth(width)}w, ${url} ${width}w`} sizes="(max-width: 640px) 85vw, 430px" width={width} height={height} loading="lazy" decoding="async" alt={asset.alt||alt} title={asset.alt||alt}/>;
+  // Without known dimensions there's no thumbnail size, so the full file is used.
+  const thumb = width ? `${url}?w=${thumbWidth(width)}` : url;
+  return <img className={className} src={thumb} srcSet={width ? `${thumb} ${thumbWidth(width)}w, ${url} ${width}w` : undefined} sizes="(max-width: 640px) 85vw, 430px" width={width} height={height} loading="lazy" decoding="async" alt={asset.alt||alt} title={asset.alt||alt}/>;
 }
 export function WeddingGallery({images,copy,renderImage,label}) {
   const [active,setActive]=useState(0), [opened,setOpened]=useState(false);
   const [slide,setSlide]=useState(0);
   const dialog=useRef(null), touch=useRef(null),rail=useRef(null);
-  const go=direction=>{const next=Math.max(0,Math.min(images.length-1,slide+direction));const child=rail.current.children[next];rail.current.scrollTo({left:child.offsetLeft,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};
+  const go=direction=>{const next=Math.max(0,Math.min(images.length-1,slide+direction));const child=rail.current?.children[next];if(!child)return;rail.current.scrollTo({left:child.offsetLeft,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});};
   useEffect(()=>{if(!opened)return;const old=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{document.body.style.overflow=old;};},[opened]);
   const move=direction=>setActive(value=>(value+direction+images.length)%images.length);
   const close=()=>{dialog.current.close();setOpened(false);};
@@ -33,6 +34,7 @@ export function WeddingGallery({images,copy,renderImage,label}) {
 }
 export function WeddingFilms({films,copy}) {
   const [active,setActive]=useState(null);
-  return <div className="wp-films">{(films||[]).map((film,index)=>{const title=film.caption;const poster=film.poster?.asset?.url;return <figure key={film._key||title}><div className="wp-film">{active===index?<video controls autoPlay muted playsInline preload="none" poster={poster} aria-label={`${title} — Punta Cana`} title={`${title} — Punta Cana`} src={film.video?.asset?.url}/>:<button type="button" onClick={()=>setActive(index)} aria-label={`${copy.play}: ${title}`}><img src={poster} width="540" height="960" loading="lazy" alt={`${title} — Punta Cana`} title={`${title} — Punta Cana`}/><span className="wp-play" aria-hidden="true">▷</span></button>}</div><figcaption>{title}</figcaption></figure>;})}</div>;
+  // Films without a video file are skipped; a missing caption leaves just "Punta Cana".
+  return <div className="wp-films">{(films||[]).filter(film=>film?.video?.asset?.url).map((film,index)=>{const title=film.caption;const label=[title,'Punta Cana'].filter(Boolean).join(' — ');const poster=film.poster?.asset?.url;return <figure key={film._key||title}><div className="wp-film">{active===index?<video controls autoPlay muted playsInline preload="none" poster={poster} aria-label={label} title={label} src={film.video.asset.url}/>:<button type="button" onClick={()=>setActive(index)} aria-label={`${copy.play}: ${title}`}>{poster&&<img src={poster} width="540" height="960" loading="lazy" alt={label} title={label}/>}<span className="wp-play" aria-hidden="true">▷</span></button>}</div><figcaption>{title}</figcaption></figure>;})}</div>;
 }
 

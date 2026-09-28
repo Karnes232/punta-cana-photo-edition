@@ -33,7 +33,7 @@ const CommitmentSection = ({ home, language }) => {
           <p className="mt-7 font-montserrat text-base leading-8 text-gray-700 md:text-lg">
             {home.commitmentBody}
           </p>
-          {cta && (
+          {cta?.label && cta?.url && (
             <a
               href={siteLink(cta.url, language)}
               className="mt-8 inline-flex w-fit items-center gap-2 border-b border-primary-color pb-2 font-montserrat text-xs font-semibold uppercase tracking-[0.14em] text-black no-underline"

@@ -126,8 +126,10 @@ const styles = StyleSheet.create({
 
 const ContractPDF = ({ formData, companyInfo, language }) => {
   const currentDate = formatDate(new Date(), language);
-  const companyStamp = companyInfo.companyStamp?.asset?.url;
-  const signature = companyInfo.signature?.asset?.url;
+  const companyStamp = companyInfo?.companyStamp?.asset?.url;
+  const signature = companyInfo?.signature?.asset?.url;
+  // General Layout's RNC, or the company's registered one if it's empty.
+  const rnc = companyInfo?.rnc || "132-19965-2";
   // Calculate subtotal, taxes and total
   const subtotal = formData.selectedItems.reduce((sum, item) => {
     const originalPrice = parseFloat(item.price) * parseInt(item.quantity);
@@ -180,12 +182,12 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
           {language === "es" ? (
             <React.Fragment>
               <Text style={{ fontWeight: "bold" }}>Entre:</Text>
-              {` Sertuin Events, una empresa debidamente constituida bajo las leyes de la República Dominicana, representada en este acto por ${formData.representativeName}, titular del RNC No. ${companyInfo.rnc}, en lo adelante denominada "LA EMPRESA`}
+              {` Sertuin Events, una empresa debidamente constituida bajo las leyes de la República Dominicana, representada en este acto por ${formData.representativeName}, titular del RNC No. ${rnc}, en lo adelante denominada "LA EMPRESA`}
             </React.Fragment>
           ) : (
             <React.Fragment>
               <Text style={{ fontWeight: "bold" }}>Between:</Text>
-              {` Sertuin Events, a company duly incorporated under the laws of the Dominican Republic, represented in this act by ${formData.representativeName}, holder of RNC No. ${companyInfo.rnc}, hereinafter referred to as "THE COMPANY";`}
+              {` Sertuin Events, a company duly incorporated under the laws of the Dominican Republic, represented in this act by ${formData.representativeName}, holder of RNC No. ${rnc}, hereinafter referred to as "THE COMPANY";`}
             </React.Fragment>
           )}
         </Text>
@@ -716,7 +718,7 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
         <View style={styles.signatureSection}>
           <View style={styles.signatureBlock}>
             <Text>Sertuin Events</Text>
-            <Image src={signature} style={styles.signature} />
+            {signature && <Image src={signature} style={styles.signature} />}
             <View style={styles.signatureLine} />
             <Text>{formData.representativeName}</Text>
             <Text>Representative</Text>
@@ -729,7 +731,7 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
           </View>
         </View>
         {/* Company Stamp - Absolute Positioned */}
-        <Image src={companyStamp} style={styles.stamp} />
+        {companyStamp && <Image src={companyStamp} style={styles.stamp} />}
       </Page>
     </Document>
   );

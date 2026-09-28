@@ -77,7 +77,8 @@ export const weddingPackages = (page) =>
       title: item.title,
       description: item.description,
       includedItems: item.items || [],
-      price: item.package.price,
+      // A missing price becomes NaN below, so no "$0" is shown or sent.
+      price: item.package.price ?? undefined,
       mostPopular: item.package.mostPopular,
       southAsian: item.package.southAsian,
       icon: item.package.icon,
@@ -400,7 +401,7 @@ const WeddingPlannerExperience = ({ page, generalInfo, language }) => {
 
       <nav className="wp-paths" aria-label={page.pathsLabel}>
         <a className="wp-path" href="#western-weddings"><SanityImage image={realWeddingImages[0] || page.heroImage} className="h-full w-full"/><div className="wp-path-copy"><strong>{page.westernLabel}</strong><span>{page.exploreLabel} ↗</span></div></a>
-        <a className="wp-path" href="#indian-weddings"><IndianImage asset={southAsianPhotos[1]} alt={page.southAsianGalleryTitle}/><div className="wp-path-copy"><strong>{page.southAsianLabel}</strong><span>{page.exploreLabel} ↗</span></div></a>
+        <a className="wp-path" href="#indian-weddings"><IndianImage asset={southAsianPhotos[1]||southAsianPhotos[0]} alt={page.southAsianGalleryTitle}/><div className="wp-path-copy"><strong>{page.southAsianLabel}</strong><span>{page.exploreLabel} ↗</span></div></a>
       </nav>
 
       {realWeddingImages.length > 0 && <section id="western-weddings" className="bg-white px-6 py-20 md:px-10 lg:px-12">
@@ -434,10 +435,12 @@ const WeddingPlannerExperience = ({ page, generalInfo, language }) => {
 
       <section id="indian-weddings" className="wp-indian">
         <div className="wp-indian-inner">
-          <div className="wp-indian-head"><div><p className="wp-kicker">{page.southAsianLabel}</p><h2>{page.southAsianTitle}</h2><p>{page.southAsianIntro}</p></div><IndianImage asset={southAsianPhotos[1]} className="wp-indian-cover" alt={page.southAsianGalleryTitle}/></div>
+          <div className="wp-indian-head"><div><p className="wp-kicker">{page.southAsianLabel}</p><h2>{page.southAsianTitle}</h2><p>{page.southAsianIntro}</p></div><IndianImage asset={southAsianPhotos[1]||southAsianPhotos[0]} className="wp-indian-cover" alt={page.southAsianGalleryTitle}/></div>
           <div className="wp-film-row"><div><h3>{page.filmsTitle}</h3><p>{page.filmsText}</p><button type="button" className="wp-inquiry-cta" onClick={()=>selectPackage(southAsianPackage?.title)}>{page.southAsianCtaLabel} ↗</button></div><WeddingFilms films={page.films} copy={galleryCopy}/></div>
+          {southAsianPhotos.length>0&&<>
           <h3>{page.southAsianGalleryTitle}</h3>
           <WeddingGallery images={southAsianPhotos} copy={galleryCopy} label={page.southAsianGalleryTitle} renderImage={(image,full)=>full?<img src={image.asset?.url} alt={image.alt} title={image.alt}/>:<IndianImage asset={image} alt={page.southAsianGalleryTitle}/>}/>
+          </>}
           <div className="wp-indian-offer"><div><h3>{page.southAsianOfferTitle}</h3><p>{page.southAsianBody}</p><p className="mt-6">{page.southAsianNote}</p></div>
             {southAsianPackage && <PackageCard key={southAsianPackage.key} item={southAsianPackage} copy={packageCopy} onSelect={selectPackage}/>}</div>
         </div>
@@ -456,7 +459,7 @@ const WeddingPlannerExperience = ({ page, generalInfo, language }) => {
                 ClipboardCheck,
                 Palette,
                 CalendarCheck,
-              ][index];
+              ][index] || Check;
               return (
                 <li
                   key={step._key}

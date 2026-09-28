@@ -59,9 +59,11 @@ const PackageCard = ({ packagePage, fromLabel, language }) => {
               ))}
             </ul>
           </div>
-          <div className="my-5 uppercase font-thin tracking-widest">
-            {fromLabel} {formatter.format(shared.price)}
-          </div>
+          {shared.price != null && (
+            <div className="my-5 uppercase font-thin tracking-widest">
+              {fromLabel} {formatter.format(shared.price)}
+            </div>
+          )}
         </div>
       </div>
     </Link>

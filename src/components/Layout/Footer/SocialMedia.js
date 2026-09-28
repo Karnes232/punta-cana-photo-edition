@@ -11,6 +11,7 @@ import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const SocialMedia = ({ generalInfo }) => {
   const { t } = useTranslation();
+  if (!generalInfo) return null;
   return (
     <div className="flex flex-row space-x-5 md:space-x-7 py-4 text-slate-600">
       {generalInfo.facebook && (

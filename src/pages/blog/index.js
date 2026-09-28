@@ -14,9 +14,12 @@ import {
 // Share images are cropped by Sanity's CDN to the size social networks expect.
 const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
 
-// This language's guide texts whose Blog Guide is published, in library order.
+// This language's guide texts whose Blog Guide is published (with an address),
+// in library order.
 const libraryPosts = (data) =>
-  data.allSanityBlogPost.nodes.filter((post) => post.guide).sort(byLibraryOrder);
+  data.allSanityBlogPost.nodes
+    .filter((post) => guideSlug(post.guide))
+    .sort(byLibraryOrder);
 
 const BlogIndex = ({ data, pageContext }) => {
   const language = normalizeLanguage(pageContext.language);

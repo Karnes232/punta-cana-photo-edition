@@ -70,7 +70,7 @@ const PackageForm = ({
       const addOn = additions.find((item) => item.id === id);
       return sum + Number(addOn?.price || 0);
     }, 0);
-    return price + addOnsTotal;
+    return (price || 0) + addOnsTotal;
   };
   const selectedAddOnSummary = selectedAddOns
     .map((id) => additions.find((item) => item.id === id))
@@ -139,12 +139,17 @@ const PackageForm = ({
             )}
             <div className="text-center p-6  rounded-lg">
               <h2 className="text-3xl font-semibold mb-2">{packageName}</h2>
-              <p className="text-4xl font-bold text-blue-600">
-                ${calculateTotal()}
-              </p>
-              <p className="text-gray-600 mt-2">
-                <Trans>Base price</Trans>: {formatter.format(price)}
-              </p>
+              {/* A package without a price shows no total instead of "$0". */}
+              {price != null && (
+                <>
+                  <p className="text-4xl font-bold text-blue-600">
+                    ${calculateTotal()}
+                  </p>
+                  <p className="text-gray-600 mt-2">
+                    <Trans>Base price</Trans>: {formatter.format(price)}
+                  </p>
+                </>
+              )}
             </div>
 
             <div className="space-y-4">

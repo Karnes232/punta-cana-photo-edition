@@ -33,7 +33,7 @@ const ThankYou = ({ data, pageContext }) => {
         <section className="mx-auto max-w-[820px] rounded-[20px] border border-[#e7dfcf] bg-[#fffefa] px-[58px] py-[44px] text-center [box-shadow:0_24px_80px_#0003] max-[600px]:rounded-[14px] max-[600px]:px-[23px] max-[600px]:py-[30px]" aria-labelledby="thankyou-heading">
           <div className="mx-auto mb-[22px] flex h-16 w-16 items-center justify-center rounded-[50%] border border-[#d5c08c] bg-[#f4eedf] text-[#80651f] max-[600px]:mb-[18px] max-[600px]:h-[54px] max-[600px]:w-[54px]" aria-hidden="true"><Check size={30} strokeWidth={1.4} /></div>
           <p className={`${label} mb-[14px]`}>{copy.eyebrow}</p>
-          <h1 id="thankyou-heading" className="mb-[22px] text-[length:clamp(40px,4.5vw,56px)] font-normal leading-[1.06] tracking-[-.02em] [overflow-wrap:anywhere] max-[600px]:text-[40px]">{name ? `${copy.greeting} ${name}.` : copy.title}</h1>
+          <h1 id="thankyou-heading" className="mb-[22px] text-[length:clamp(40px,4.5vw,56px)] font-normal leading-[1.06] tracking-[-.02em] [overflow-wrap:anywhere] max-[600px]:text-[40px]">{name && copy.greeting ? `${copy.greeting} ${name}.` : copy.title}</h1>
           <p className="mx-auto max-w-[570px] font-montserrat text-[14px] leading-[1.85] text-[#686156] max-[600px]:text-[13px]">{copy.intro}</p>
           <div className="my-[30px] border-y border-y-[#e3dac9] py-6 text-left max-[600px]:my-[25px]">
             <h2 className={`${label} mb-[18px]`}>{copy.nextTitle}</h2>

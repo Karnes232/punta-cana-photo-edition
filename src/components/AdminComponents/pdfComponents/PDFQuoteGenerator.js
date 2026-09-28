@@ -269,14 +269,22 @@ const QuotePDF = ({ formData, companyInfo, language }) => {
           {logoUrl && <Image src={logoUrl} style={styles.logo} />}
           <View style={styles.companyInfo}>
             <Text style={styles.companyName}>Sertuin Events</Text>
+            {companyInfo?.telephone && (
+              <Text style={styles.companyDetail}>
+                {language === "es" ? "Tel" : "Tel"}: {companyInfo.telephone}
+              </Text>
+            )}
+            {companyInfo?.email && (
+              <Text style={styles.companyDetail}>
+                {language === "es" ? "Correo" : "Email"}: {companyInfo.email}
+              </Text>
+            )}
             <Text style={styles.companyDetail}>
-              {language === "es" ? "Tel" : "Tel"}: {companyInfo.telephone}
+              RNC: {companyInfo?.rnc || "132-19965-2"}
             </Text>
-            <Text style={styles.companyDetail}>
-              {language === "es" ? "Correo" : "Email"}: {companyInfo.email}
-            </Text>
-            <Text style={styles.companyDetail}>RNC: {companyInfo.rnc}</Text>
-            <Text style={styles.companyDetail}>{companyInfo.address}</Text>
+            {companyInfo?.address && (
+              <Text style={styles.companyDetail}>{companyInfo.address}</Text>
+            )}
             <Text style={styles.companyDetail}>
               {language === "es" ? "Cotización" : "Quote"} #: {quoteNumber}
             </Text>

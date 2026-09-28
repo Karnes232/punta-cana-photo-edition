@@ -30,14 +30,14 @@ import { localizedPath } from "../../utils/siteLocales";
 // setting (beach or catamaran); décor by its key in the page.
 export const elopementChoices = (page) => ({
   experiences: (page.experiences || [])
-    .filter((item) => item.option)
+    .filter((item) => item?.option && item.option.price != null)
     .map((item) => ({
       ...item,
       id: item.option.setting,
       price: item.option.price,
     })),
   decorations: (page.decorations || [])
-    .filter((item) => item.option)
+    .filter((item) => item?.option && item.option.price != null)
     .map((item) => ({
       ...item,
       id: item._key,
@@ -170,7 +170,7 @@ const DecorCard = ({ decoration, page, active, disabled, onSelect }) => {
   const photos = decoration.photos || [];
   const current = photos[photo];
   const name = decoration.name;
-  const label = (template) => (template || "").replace("{name}", name);
+  const label = (template) => (template || "").replace("{name}", name || "");
 
   const changePhoto = (direction) => {
     setPhoto((index) => (index + direction + photos.length) % photos.length);
@@ -195,27 +195,29 @@ const DecorCard = ({ decoration, page, active, disabled, onSelect }) => {
             className="h-full w-full object-cover"
           />
         )}
-        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-3">
-          <button
-            type="button"
-            onClick={() => changePhoto(-1)}
-            aria-label={label(page.previousPhotoLabel)}
-            className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
-          >
-            <ChevronLeft size={18} />
-          </button>
-          <span className="rounded-full bg-stone-950/70 px-3 py-1 font-montserrat text-xs text-white backdrop-blur">
-            {photo + 1} / {photos.length}
-          </span>
-          <button
-            type="button"
-            onClick={() => changePhoto(1)}
-            aria-label={label(page.nextPhotoLabel)}
-            className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
-          >
-            <ChevronRight size={18} />
-          </button>
-        </div>
+        {photos.length > 1 && (
+          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-3">
+            <button
+              type="button"
+              onClick={() => changePhoto(-1)}
+              aria-label={label(page.previousPhotoLabel)}
+              className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <span className="rounded-full bg-stone-950/70 px-3 py-1 font-montserrat text-xs text-white backdrop-blur">
+              {photo + 1} / {photos.length}
+            </span>
+            <button
+              type="button"
+              onClick={() => changePhoto(1)}
+              aria-label={label(page.nextPhotoLabel)}
+              className="pointer-events-auto rounded-full bg-white/90 p-2 text-stone-800 shadow backdrop-blur"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        )}
       </div>
       <div className="p-5">
         <div className="flex items-start justify-between gap-4">
@@ -633,15 +635,19 @@ const ElopementExperience = ({ page, language = "en-US" }) => {
     experiences.find((item) => item.id === experienceId) || experiences[0];
   const decoration =
     decorations.find((item) => item.id === decorationId) || decorations[0];
-  if (!experience || !decoration) return null;
-  const customQuote = experience.id === "catamaran" && guestCount > 10;
+  // Without a setting or a décor there's nothing to price: the builder and the
+  // request form are hidden, the rest of the page still shows.
+  const canBuild = Boolean(experience && decoration);
+  // The legal upgrade's cards show only when it is filled in.
+  const hasUpgrade = Boolean(page.legalUpgrade?.title);
+  const customQuote = experience?.id === "catamaran" && guestCount > 10;
 
   const selectExperience = (id) => {
     setExperienceId(id);
     if (id === "catamaran") {
       setGuestCount((current) => Math.min(current, 60));
     }
-    if (id === "catamaran" && !decoration.catamaran) {
+    if (id === "catamaran" && !decoration?.catamaran) {
       setDecorationId(decorations.find((item) => item.catamaran)?.id);
     }
   };
@@ -672,180 +678,184 @@ const ElopementExperience = ({ page, language = "en-US" }) => {
       </section>
       <div className="h-[90vh]" aria-hidden="true" />
 
-      <section
-        id="builder"
-        className="scroll-mt-6 bg-stone-50 px-5 py-20 md:px-10 md:py-24"
-      >
-        <SectionHeading
-          eyebrow={page.builderEyebrow}
-          title={page.builderTitle}
-          intro={page.builderIntro}
-        />
+      {canBuild && (
+        <section
+          id="builder"
+          className="scroll-mt-6 bg-stone-50 px-5 py-20 md:px-10 md:py-24"
+        >
+          <SectionHeading
+            eyebrow={page.builderEyebrow}
+            title={page.builderTitle}
+            intro={page.builderIntro}
+          />
 
-        <div className="mx-auto mt-10 grid max-w-4xl gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
-          {(page.formula || []).map((item, index) => (
-            <React.Fragment key={item}>
-              <div className="rounded-2xl border border-stone-200 bg-white px-5 py-5 text-center font-montserrat text-sm font-semibold text-stone-800">
-                {item}
-              </div>
-              {index < page.formula.length - 1 && (
-                <span className="text-center font-crimson text-3xl text-amber-600">
-                  +
-                </span>
-              )}
-            </React.Fragment>
-          ))}
-        </div>
-
-        <div className="mx-auto mt-14 max-w-6xl">
-          <h2 className="font-crimson text-3xl text-stone-900">
-            {page.stepOne}
-          </h2>
-          <div className="mt-6 grid gap-5 lg:grid-cols-2">
-            {experiences.map((item) => (
-              <ExperienceCard
-                key={item._key}
-                experience={item}
-                page={page}
-                active={experience.id === item.id}
-                onSelect={() => selectExperience(item.id)}
-              />
+          <div className="mx-auto mt-10 grid max-w-4xl gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
+            {(page.formula || []).map((item, index) => (
+              <React.Fragment key={item}>
+                <div className="rounded-2xl border border-stone-200 bg-white px-5 py-5 text-center font-montserrat text-sm font-semibold text-stone-800">
+                  {item}
+                </div>
+                {index < page.formula.length - 1 && (
+                  <span className="text-center font-crimson text-3xl text-amber-600">
+                    +
+                  </span>
+                )}
+              </React.Fragment>
             ))}
           </div>
-        </div>
 
-        {experience.id === "catamaran" && (
-          <div className="mx-auto mt-7 max-w-6xl rounded-2xl border border-sky-200 bg-sky-50 p-5 md:flex md:items-center md:justify-between md:gap-6">
-            <div>
-              <label
-                htmlFor="catamaran-guests"
-                className="font-montserrat text-sm font-bold text-stone-900"
-              >
-                {page.guestsLabel}
-              </label>
-              <p className="mt-1 font-montserrat text-sm text-stone-600">
-                {page.guestsHelp}
-              </p>
+          <div className="mx-auto mt-14 max-w-6xl">
+            <h2 className="font-crimson text-3xl text-stone-900">
+              {page.stepOne}
+            </h2>
+            <div className="mt-6 grid gap-5 lg:grid-cols-2">
+              {experiences.map((item) => (
+                <ExperienceCard
+                  key={item._key}
+                  experience={item}
+                  page={page}
+                  active={experience.id === item.id}
+                  onSelect={() => selectExperience(item.id)}
+                />
+              ))}
             </div>
-            <input
-              id="catamaran-guests"
-              type="number"
-              min="2"
-              max="60"
-              value={guestCount}
-              onChange={(event) =>
-                setGuestCount(
-                  Math.max(2, Math.min(60, Number(event.target.value) || 2)),
-                )
-              }
-              className="mt-4 w-28 rounded-xl border border-sky-300 bg-white px-4 py-3 font-montserrat text-lg font-bold outline-none focus:border-amber-500 md:mt-0"
+          </div>
+
+          {experience.id === "catamaran" && (
+            <div className="mx-auto mt-7 max-w-6xl rounded-2xl border border-sky-200 bg-sky-50 p-5 md:flex md:items-center md:justify-between md:gap-6">
+              <div>
+                <label
+                  htmlFor="catamaran-guests"
+                  className="font-montserrat text-sm font-bold text-stone-900"
+                >
+                  {page.guestsLabel}
+                </label>
+                <p className="mt-1 font-montserrat text-sm text-stone-600">
+                  {page.guestsHelp}
+                </p>
+              </div>
+              <input
+                id="catamaran-guests"
+                type="number"
+                min="2"
+                max="60"
+                value={guestCount}
+                onChange={(event) =>
+                  setGuestCount(
+                    Math.max(2, Math.min(60, Number(event.target.value) || 2)),
+                  )
+                }
+                className="mt-4 w-28 rounded-xl border border-sky-300 bg-white px-4 py-3 font-montserrat text-lg font-bold outline-none focus:border-amber-500 md:mt-0"
+              />
+            </div>
+          )}
+
+          <div className="mx-auto mt-16 max-w-6xl">
+            <h2 className="font-crimson text-3xl text-stone-900">
+              {page.stepTwo}
+            </h2>
+            <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {decorations.map((item) => (
+                <DecorCard
+                  key={item.id}
+                  decoration={item}
+                  page={page}
+                  active={decoration.id === item.id}
+                  disabled={experience.id === "catamaran" && !item.catamaran}
+                  onSelect={() => setDecorationId(item.id)}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="mx-auto mt-16 grid max-w-6xl gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:items-start">
+            <div>
+              <h2 className="font-crimson text-3xl text-stone-900">
+                {page.stepThree}
+              </h2>
+              <div className="mt-6 grid gap-5 md:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => setLegal(false)}
+                  className={`rounded-3xl border p-6 text-left transition ${
+                    !legal
+                      ? "border-amber-500 bg-amber-50"
+                      : "border-stone-200 bg-white"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <HeartHandshake
+                      className="text-amber-700"
+                      size={28}
+                      strokeWidth={1.5}
+                    />
+                    {!legal && (
+                      <span className="rounded-full bg-amber-500 px-3 py-1 font-montserrat text-xs font-bold text-white">
+                        {page.selectedLabel}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="mt-5 font-crimson text-3xl text-stone-900">
+                    {page.symbolicTitle}
+                  </h3>
+                  <p className="mt-1 font-montserrat text-xs font-bold uppercase tracking-wider text-amber-700">
+                    {page.symbolicIncluded}
+                  </p>
+                  <p className="mt-4 font-montserrat text-sm leading-6 text-stone-600">
+                    {page.symbolicChoiceText}
+                  </p>
+                </button>
+                {hasUpgrade && (
+                  <button
+                    type="button"
+                    onClick={() => setLegal(true)}
+                    className={`rounded-3xl border p-6 text-left transition ${
+                      legal
+                        ? "border-amber-500 bg-amber-50"
+                        : "border-stone-200 bg-white"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <FileCheck2
+                        className="text-amber-700"
+                        size={28}
+                        strokeWidth={1.5}
+                      />
+                      {legal && (
+                        <span className="rounded-full bg-amber-500 px-3 py-1 font-montserrat text-xs font-bold text-white">
+                          {page.selectedLabel}
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-5 flex items-end justify-between gap-3">
+                      <h3 className="font-crimson text-3xl text-stone-900">
+                        {upgrade.title}
+                      </h3>
+                      <span className="font-crimson text-2xl text-amber-700">
+                        {upgradePrice(upgrade.price, language)}
+                      </span>
+                    </div>
+                    <p className="mt-4 font-montserrat text-sm leading-6 text-stone-600">
+                      {upgrade.choiceText}
+                    </p>
+                    <p className="mt-3 font-montserrat text-xs font-semibold leading-5 text-rose-700">
+                      {upgrade.caution}
+                    </p>
+                  </button>
+                )}
+              </div>
+            </div>
+            <Summary
+              page={page}
+              experience={experience}
+              decoration={decoration}
+              legal={legal}
+              upgrade={upgrade}
+              customQuote={customQuote}
             />
           </div>
-        )}
-
-        <div className="mx-auto mt-16 max-w-6xl">
-          <h2 className="font-crimson text-3xl text-stone-900">
-            {page.stepTwo}
-          </h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {decorations.map((item) => (
-              <DecorCard
-                key={item.id}
-                decoration={item}
-                page={page}
-                active={decoration.id === item.id}
-                disabled={experience.id === "catamaran" && !item.catamaran}
-                onSelect={() => setDecorationId(item.id)}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="mx-auto mt-16 grid max-w-6xl gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:items-start">
-          <div>
-            <h2 className="font-crimson text-3xl text-stone-900">
-              {page.stepThree}
-            </h2>
-            <div className="mt-6 grid gap-5 md:grid-cols-2">
-              <button
-                type="button"
-                onClick={() => setLegal(false)}
-                className={`rounded-3xl border p-6 text-left transition ${
-                  !legal
-                    ? "border-amber-500 bg-amber-50"
-                    : "border-stone-200 bg-white"
-                }`}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <HeartHandshake
-                    className="text-amber-700"
-                    size={28}
-                    strokeWidth={1.5}
-                  />
-                  {!legal && (
-                    <span className="rounded-full bg-amber-500 px-3 py-1 font-montserrat text-xs font-bold text-white">
-                      {page.selectedLabel}
-                    </span>
-                  )}
-                </div>
-                <h3 className="mt-5 font-crimson text-3xl text-stone-900">
-                  {page.symbolicTitle}
-                </h3>
-                <p className="mt-1 font-montserrat text-xs font-bold uppercase tracking-wider text-amber-700">
-                  {page.symbolicIncluded}
-                </p>
-                <p className="mt-4 font-montserrat text-sm leading-6 text-stone-600">
-                  {page.symbolicChoiceText}
-                </p>
-              </button>
-              <button
-                type="button"
-                onClick={() => setLegal(true)}
-                className={`rounded-3xl border p-6 text-left transition ${
-                  legal
-                    ? "border-amber-500 bg-amber-50"
-                    : "border-stone-200 bg-white"
-                }`}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <FileCheck2
-                    className="text-amber-700"
-                    size={28}
-                    strokeWidth={1.5}
-                  />
-                  {legal && (
-                    <span className="rounded-full bg-amber-500 px-3 py-1 font-montserrat text-xs font-bold text-white">
-                      {page.selectedLabel}
-                    </span>
-                  )}
-                </div>
-                <div className="mt-5 flex items-end justify-between gap-3">
-                  <h3 className="font-crimson text-3xl text-stone-900">
-                    {upgrade.title}
-                  </h3>
-                  <span className="font-crimson text-2xl text-amber-700">
-                    {upgradePrice(upgrade.price, language)}
-                  </span>
-                </div>
-                <p className="mt-4 font-montserrat text-sm leading-6 text-stone-600">
-                  {upgrade.choiceText}
-                </p>
-                <p className="mt-3 font-montserrat text-xs font-semibold leading-5 text-rose-700">
-                  {upgrade.caution}
-                </p>
-              </button>
-            </div>
-          </div>
-          <Summary
-            page={page}
-            experience={experience}
-            decoration={decoration}
-            legal={legal}
-            upgrade={upgrade}
-            customQuote={customQuote}
-          />
-        </div>
-      </section>
+        </section>
+      )}
 
       <section
         id="included"
@@ -902,25 +912,28 @@ const ElopementExperience = ({ page, language = "en-US" }) => {
                 {page.symbolicText}
               </p>
             </article>
-            <article className="rounded-3xl border border-amber-400/40 bg-amber-400/10 p-7 md:p-9">
-              <FileCheck2
-                className="text-amber-300"
-                size={32}
-                strokeWidth={1.4}
-              />
-              <div className="mt-5 flex flex-wrap items-end justify-between gap-3">
-                <h3 className="font-crimson text-3xl">{upgrade.title}</h3>
-                <span className="font-crimson text-3xl text-amber-300">
-                  {upgradePrice(upgrade.price, language)}
-                </span>
-              </div>
-              <p className="mt-5 font-montserrat text-sm leading-7 text-stone-200">
-                {upgrade.text}
-              </p>
-              <p className="mt-4 flex gap-2 font-montserrat text-xs font-semibold leading-5 text-amber-200">
-                <ShieldCheck className="shrink-0" size={18} /> {upgrade.caution}
-              </p>
-            </article>
+            {hasUpgrade && (
+              <article className="rounded-3xl border border-amber-400/40 bg-amber-400/10 p-7 md:p-9">
+                <FileCheck2
+                  className="text-amber-300"
+                  size={32}
+                  strokeWidth={1.4}
+                />
+                <div className="mt-5 flex flex-wrap items-end justify-between gap-3">
+                  <h3 className="font-crimson text-3xl">{upgrade.title}</h3>
+                  <span className="font-crimson text-3xl text-amber-300">
+                    {upgradePrice(upgrade.price, language)}
+                  </span>
+                </div>
+                <p className="mt-5 font-montserrat text-sm leading-7 text-stone-200">
+                  {upgrade.text}
+                </p>
+                <p className="mt-4 flex gap-2 font-montserrat text-xs font-semibold leading-5 text-amber-200">
+                  <ShieldCheck className="shrink-0" size={18} />{" "}
+                  {upgrade.caution}
+                </p>
+              </article>
+            )}
           </div>
         </div>
       </section>
@@ -993,16 +1006,18 @@ const ElopementExperience = ({ page, language = "en-US" }) => {
               {page.depositNotice}
             </p>
           </div>
-          <ElopementForm
-            page={page}
-            experience={experience}
-            decoration={decoration}
-            legal={legal}
-            upgrade={upgrade}
-            guestCount={guestCount}
-            setGuestCount={setGuestCount}
-            language={language}
-          />
+          {canBuild && (
+            <ElopementForm
+              page={page}
+              experience={experience}
+              decoration={decoration}
+              legal={legal}
+              upgrade={upgrade}
+              guestCount={guestCount}
+              setGuestCount={setGuestCount}
+              language={language}
+            />
+          )}
         </div>
       </section>
 

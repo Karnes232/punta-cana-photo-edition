@@ -95,8 +95,10 @@ const buildWebsite = ({ rootUrl, websiteId, organizationId, companyName }) => ({
   inLanguage: ["en-US", "es", "pt-BR", "fr-FR"],
 });
 
-const buildImageObjects = ({ images, pageUrl, language, packageName }) => {
+const buildImageObjects = ({ images, pageUrl, language, packageName: name }) => {
   const seen = new Set();
+  // Captions start with the package name, or the company name without one.
+  const packageName = name || "Sertuin Events";
 
   return images
     .map((image, index) => {
@@ -173,8 +175,10 @@ export const buildProposalSchema = ({
       "@id": `${packageUrl}#offer`,
       name: proposalPackage.title,
       url: packageUrl,
-      price: proposalPackage.price,
-      priceCurrency: "USD",
+      // An offer without a price leaves both out rather than sending null.
+      ...(proposalPackage.price != null
+        ? { price: proposalPackage.price, priceCurrency: "USD" }
+        : {}),
       seller: { "@id": organizationId },
       itemOffered: {
         "@type": "Service",
@@ -449,8 +453,7 @@ export const buildProposalPackageSchema = ({
         "@id": offerId,
         name: packageName,
         url: pageUrl,
-        price,
-        priceCurrency: "USD",
+        ...(price != null ? { price, priceCurrency: "USD" } : {}),
         seller: { "@id": organizationId },
         itemOffered: { "@id": serviceId },
       },

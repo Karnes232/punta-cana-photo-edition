@@ -67,6 +67,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     }
   `);
+  // Stop with the real GraphQL error rather than a TypeError further down.
+  if (queryResults.errors) {
+    reporter.panicOnBuild("Could not load the pages' content", queryResults.errors);
+    return;
+  }
   const localeMapping = {
     "en-US": { path: "", urlCode: "en-US", contentLanguage: "en-US" },
     es: { path: "es", urlCode: "es", contentLanguage: "es" },

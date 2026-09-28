@@ -23,7 +23,8 @@ const trail = ({ title, guide, labels, language }) => {
       `${localizedPath("/blog/", language)}#${category?.key}`,
     ],
     [title, localizedPath(`/blog/${guideSlug(guide)}/`, language)],
-  ];
+    // A step without a name (e.g. a guide with no event type) is left out.
+  ].filter(([name]) => name);
 };
 
 export const KnowledgeBreadcrumbs = ({ title, guide, labels, language }) => {
@@ -78,7 +79,9 @@ export const KnowledgeToc = ({ sections, labels }) => (
 // The guide's related guides, its suggested next one first. `texts` maps a
 // guide's id to its text in this language.
 export const KnowledgeRelated = ({ guide, texts, labels, language }) => {
-  const related = (guide.related || []).filter((item) => texts[item._id]);
+  const related = (guide.related || []).filter(
+    (item) => item && texts[item._id],
+  );
   const nextId = guide.next?._id;
   const ordered = [
     ...related.filter((item) => item._id === nextId),

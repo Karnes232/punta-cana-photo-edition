@@ -126,11 +126,15 @@ const Blog = ({ pageContext, data }) => {
             <figure className={`${column} my-8`}>
               <img
                 src={photo.url}
-                srcSet={`${photo.url}?w=640 640w, ${photo.url} ${photoSize.width}w`}
+                srcSet={
+                  photoSize?.width
+                    ? `${photo.url}?w=640 640w, ${photo.url} ${photoSize.width}w`
+                    : undefined
+                }
                 sizes="(min-width: 1024px) 960px, 100vw"
                 alt={post.heroAlt}
-                width={photoSize.width}
-                height={photoSize.height}
+                width={photoSize?.width}
+                height={photoSize?.height}
                 loading="lazy"
                 decoding="async"
                 className="block max-h-[520px] w-full rounded-[3px] object-contain"

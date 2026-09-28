@@ -17,17 +17,21 @@ export const adminHeroInfo = (adminPage, language) => ({
 });
 
 // Quote packages: every proposal package (its name in this language) and
-// elopement setting, most expensive first.
+// elopement setting, most expensive first. Entries without a name or price are
+// left out, so a quote total can't become NaN.
 export const adminPackages = (data, language) => {
   const lang = sanityLanguage(language);
   const proposals = data.allSanityProposalPackagePage.nodes
-    .filter((page) => page.language === lang && page.package)
+    .filter(
+      (page) =>
+        page.language === lang && page.name && page.package?.price != null,
+    )
     .map((page) => ({ title: page.name, price: page.package.price }));
   const elopement = data.allSanityElopementPage.nodes.find(
     (page) => page.language === lang,
   );
   const settings = (elopement?.experiences || [])
-    .filter((item) => item.option)
+    .filter((item) => item?.title && item.option?.price != null)
     .map((item) => ({ title: item.title, price: item.option.price }));
   return [...proposals, ...settings].sort((a, b) => b.price - a.price);
 };
@@ -42,6 +46,7 @@ export const adminAdditions = (data, language) => {
     (texts?.addOnNames || []).map((item) => [item.addOn?._id, item.name]),
   );
   return data.allSanityProposalAddOn.nodes
+    .filter((addOn) => addOn.price != null)
     .map((addOn) => ({
       addition: names.get(addOn._id) || addOn.name,
       price: addOn.price,
@@ -50,7 +55,8 @@ export const adminAdditions = (data, language) => {
 };
 
 // Rental items offered in quotes, with their name and description in this
-// language (Spanish falls back to English), in alphabetical order.
+// language (Spanish falls back to English), in alphabetical order. Items
+// without a name are left out; a missing price is typed on the quote.
 export const adminRentalItems = (data, language) => {
   const lang = sanityLanguage(language);
   return data.allSanityRentalItem.nodes
@@ -59,5 +65,6 @@ export const adminRentalItems = (data, language) => {
       price: item.price ?? null,
       description: item.description?.[lang] || item.description?.en || "",
     }))
+    .filter((item) => item.rentalItem)
     .sort((a, b) => a.rentalItem.localeCompare(b.rentalItem, lang));
 };

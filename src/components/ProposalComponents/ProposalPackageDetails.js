@@ -118,16 +118,20 @@ const ProposalPackageDetails = ({ page, pkg, texts, language }) => {
             </p>
           </div>
           <div className="lg:min-w-72 lg:text-right">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-              {content.basePriceLabel}
-            </p>
-            <p className="mt-1 font-crimson text-4xl text-gray-950 md:text-5xl">
-              {new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              }).format(pkg.price)}
-            </p>
+            {pkg.price != null && (
+              <>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+                  {content.basePriceLabel}
+                </p>
+                <p className="mt-1 font-crimson text-4xl text-gray-950 md:text-5xl">
+                  {new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                    maximumFractionDigits: 0,
+                  }).format(pkg.price)}
+                </p>
+              </>
+            )}
             <p className="mt-2 text-sm text-gray-600">{content.priceNote}</p>
             <a
               href="#package-booking"

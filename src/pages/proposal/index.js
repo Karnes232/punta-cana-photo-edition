@@ -29,15 +29,17 @@ const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`
 
 // HeroSwiper and SwiperCarousel take each photo as { gatsbyImage, alt }, so
 // Sanity photos are handed over in that shape, with their edited alt text.
-const toSwiperImages = (images = []) =>
-  images.map((image) => ({
+const toSwiperImages = (images) =>
+  (images || []).map((image) => ({
     gatsbyImage: image.asset?.gatsbyImageData,
     alt: image.alt,
   }));
 
 // FAQs in the shape the FAQ list and the structured data expect.
-const toFaqs = (faqs = []) =>
-  faqs.map(({ question, answer }) => ({
+const toFaqs = (faqs) =>
+  (faqs || [])
+    .filter((faq) => faq?.question && faq?.answer)
+    .map(({ question, answer }) => ({
     title: question,
     content: { content: answer },
   }));
@@ -82,7 +84,7 @@ const Index = ({ data, pageContext }) => {
           )}
         </section>
         <ProposalBookingProcess page={page} language={language} />
-        <ProposalTrust page={page} instagramUrl={generalInfo.instagram} />
+        <ProposalTrust page={page} instagramUrl={generalInfo?.instagram} />
         <Faqs faqs={toFaqs(page.faqs)} title={page.faqTitle} />
         <ServiceGuides cluster="proposals" language={language} />
       </main>
@@ -101,7 +103,7 @@ export const Head = ({ pageContext, data }) => {
   const siteUrl = localizedUrl(rootUrl, "/proposal/", language);
   const image = shareImageUrl(seo?.image?.asset?.url);
   const generalInfo = data.sanityGeneralLayout;
-  const instagramUrl = /^https?:\/\//i.test(generalInfo.instagram || "")
+  const instagramUrl = /^https?:\/\//i.test(generalInfo?.instagram || "")
     ? generalInfo.instagram
     : "https://www.instagram.com/sertuinevents/";
   const packages = [...data.allSanityProposalPackagePage.nodes]
@@ -119,10 +121,10 @@ export const Head = ({ pageContext, data }) => {
     title: seo?.title,
     description: seo?.description,
     image,
-    companyName: generalInfo.companyName,
+    companyName: generalInfo?.companyName,
     legalName: "Sertuin SRL",
     directorName: "Grecia Mejía",
-    telephone: generalInfo.telephone,
+    telephone: generalInfo?.telephone,
     instagram: instagramUrl,
     googleMapsUrl: GOOGLE_MAPS_URL,
     packages,

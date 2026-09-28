@@ -40,11 +40,14 @@ export default function ServiceGuides({ cluster, language }) {
     .filter(
       (post) =>
         post.language === languageKey(language) &&
-        post.guide?.category?.key === cluster,
+        post.guide?.category?.key === cluster &&
+        guideSlug(post.guide),
     )
     .sort((a, b) => a.guide.order - b.guide.order);
   const copy =
     allSanityBlogPage.nodes.find((page) => page.language === languageKey(language)) || {};
+  // No guides for this service: no empty section.
+  if (!guides.length) return null;
   return (
     <section className="mx-auto my-16 w-full max-w-6xl px-5" aria-labelledby="service-guides-title">
       <h2 id="service-guides-title" className="font-crimson text-3xl md:text-4xl text-gray-900">

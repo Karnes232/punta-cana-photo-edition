@@ -11,45 +11,52 @@ const ExpandableMessengerButton = ({ messengerLink, telephone }) => {
     setIsExpanded(!isExpanded);
   };
 
+  // Each entry needs its link from General Layout; with neither, no button.
+  if (!messengerLink && !telephone) return null;
+
   return (
     <div className="fixed z-[500] bottom-6 right-6 xl:right-10">
       {/* WhatsApp Button - appears when expanded */}
-      <div
-        className={`transition-all duration-300 ease-in-out transform ${
-          isExpanded
-            ? "translate-y-0 opacity-100 scale-100"
-            : "translate-y-4 opacity-0 scale-75 pointer-events-none"
-        } mb-3`}
-      >
-        <a
-          href={`https://api.whatsapp.com/send?phone=${telephone}`}
-          aria-label="WhatsApp"
-          rel="noreferrer"
-          target="_blank"
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-shadow duration-200 hover:shadow-xl"
+      {telephone && (
+        <div
+          className={`transition-all duration-300 ease-in-out transform ${
+            isExpanded
+              ? "translate-y-0 opacity-100 scale-100"
+              : "translate-y-4 opacity-0 scale-75 pointer-events-none"
+          } mb-3`}
         >
-          <FaWhatsapp size={24} />
-        </a>
-      </div>
+          <a
+            href={`https://api.whatsapp.com/send?phone=${telephone}`}
+            aria-label="WhatsApp"
+            rel="noreferrer"
+            target="_blank"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-shadow duration-200 hover:shadow-xl"
+          >
+            <FaWhatsapp size={24} />
+          </a>
+        </div>
+      )}
 
       {/* Messenger Button - appears when expanded */}
-      <div
-        className={`transition-all duration-300 ease-in-out transform ${
-          isExpanded
-            ? "translate-y-0 opacity-100 scale-100"
-            : "translate-y-2 opacity-0 scale-75 pointer-events-none"
-        } mb-3`}
-      >
-        <a
-          href={messengerLink}
-          aria-label="Messenger"
-          rel="noreferrer"
-          target="_blank"
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#007FFF] text-white shadow-lg transition-shadow duration-200 hover:shadow-xl"
+      {messengerLink && (
+        <div
+          className={`transition-all duration-300 ease-in-out transform ${
+            isExpanded
+              ? "translate-y-0 opacity-100 scale-100"
+              : "translate-y-2 opacity-0 scale-75 pointer-events-none"
+          } mb-3`}
         >
-          <FaFacebookMessenger size={24} />
-        </a>
-      </div>
+          <a
+            href={messengerLink}
+            aria-label="Messenger"
+            rel="noreferrer"
+            target="_blank"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-[#007FFF] text-white shadow-lg transition-shadow duration-200 hover:shadow-xl"
+          >
+            <FaFacebookMessenger size={24} />
+          </a>
+        </div>
+      )}
 
       {/* Main Toggle Button */}
       <button
