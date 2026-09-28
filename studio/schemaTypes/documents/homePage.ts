@@ -1,7 +1,7 @@
 import { HomeIcon } from "@sanity/icons/Home"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { atLeast, exactly, languageField, languagePreview, needed, neededImage, text, withRules } from "../fields"
 
 // Every visible section of the home page, in page order. There is one Home
 // Page document per language (document-internationalization): English is
@@ -24,7 +24,7 @@ export const homePage = defineType({
     { name: "contact", title: "Contact" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     defineField({
@@ -33,7 +33,7 @@ export const homePage = defineType({
       type: "imageWithAlt",
       group: "hero",
       description: "Full-width background photo. Landscape, at least 2200px wide.",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     text("heroEyebrow", "Eyebrow", "hero", { description: "Small line above the heading." }),
     text("heroHeading", "Heading", "hero", { required: true }),
@@ -123,6 +123,16 @@ export const homePage = defineType({
     }),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
-  ],
+  ], {
+    seo: needed,
+    processSteps: exactly(3),
+    eventCards: atLeast(1),
+    commitmentImage: neededImage,
+    eventCardLinkLabel: needed,
+    whatsappLabel: needed,
+    callLabel: needed,
+    emailLabel: needed,
+    availability: needed,
+  }),
   preview: languagePreview("Home Page"),
 })

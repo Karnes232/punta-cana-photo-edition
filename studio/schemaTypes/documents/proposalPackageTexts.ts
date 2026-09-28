@@ -1,7 +1,7 @@
 import { DocumentsIcon } from "@sanity/icons/Documents"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { atLeast, languageField, languagePreview, needed, text, withRules } from "../fields"
 
 // The text every proposal package page shares, one document per language:
 // labels, the services every package includes, the booking conditions, the
@@ -31,7 +31,7 @@ export const proposalPackageTexts = defineType({
     { name: "form", title: "Booking form" },
     { name: "faq", title: "FAQ" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     text("breadcrumbLabel", "Breadcrumb (screen readers)", "top", { description: "Names the breadcrumb for screen readers." }),
@@ -82,6 +82,34 @@ export const proposalPackageTexts = defineType({
     text("dinnerQuestion", "Dinner question", "faq"),
     text("dinnerAnswerIncluded", "Dinner answer (dinner included)", "faq", { long: true }),
     text("dinnerAnswerAddOn", "Dinner answer (dinner as an extra)", "faq", { long: true }),
-  ],
+  ], {
+    breadcrumbHome: needed,
+    breadcrumbProposals: needed,
+    breadcrumbLabel: needed,
+    eyebrow: needed,
+    basePriceLabel: needed,
+    bookLabel: needed,
+    quickTitle: needed,
+    setupDetailsLabel: needed,
+    completeInfoLabel: needed,
+    setupTitle: needed,
+    commonTitle: needed,
+    importantTitle: needed,
+    formTitle: needed,
+    formSubmitLabel: needed,
+    charcuterieTitle: needed,
+    charcuterieShort: needed,
+    charcuterieText: needed,
+    dinnerTitle: needed,
+    dinnerShort: needed,
+    dinnerText: needed,
+    violinTitle: needed,
+    violinShort: needed,
+    violinText: needed,
+    dinnerQuestion: needed,
+    dinnerAnswerIncluded: needed,
+    dinnerAnswerAddOn: needed,
+    inclusions: atLeast(1),
+  }),
   preview: languagePreview("Package Page Texts"),
 })

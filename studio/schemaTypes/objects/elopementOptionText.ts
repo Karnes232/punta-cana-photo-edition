@@ -41,7 +41,7 @@ export const elopementDecorText = defineType({
       type: "array",
       description: "Browsed with the arrows on the card; the first is shown first.",
       of: [defineArrayMember({ type: "imageWithAlt" })],
-      validation: (rule) => rule.min(1),
+      validation: (rule) => rule.required().min(1),
     }),
   ],
   preview: { select: { title: "name", subtitle: "option.name", media: "photos.0" } },

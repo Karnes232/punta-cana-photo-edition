@@ -1,6 +1,8 @@
 import { LockIcon } from "@sanity/icons/Lock"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
+import { atLeast, withRules } from "../fields"
+
 // The photos and heading at the top of every /admin page (quotes, contracts,
 // sign-in). A singleton: structure.ts always opens the document with this ID.
 export const adminPage = defineType({
@@ -8,7 +10,7 @@ export const adminPage = defineType({
   title: "Admin Area",
   type: "document",
   icon: LockIcon,
-  fields: [
+  fields: withRules([
     defineField({
       name: "heroImages",
       title: "Photos",
@@ -23,6 +25,8 @@ export const adminPage = defineType({
       type: "boolean",
       initialValue: false,
     }),
-  ],
+  ], {
+    heroImages: atLeast(1),
+  }),
   preview: { prepare: () => ({ title: "Admin Area" }) },
 })

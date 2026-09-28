@@ -39,7 +39,7 @@ export const proposalAddOn = defineType({
       title: "Price (USD)",
       type: "number",
       description: "Added to the estimate in the booking form. Extras are listed from the lowest price.",
-      validation: (rule) => rule.required().min(0),
+      validation: (rule) => rule.required().positive(),
     }),
   ],
   preview: {

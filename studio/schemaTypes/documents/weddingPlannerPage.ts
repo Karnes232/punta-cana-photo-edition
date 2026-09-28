@@ -1,7 +1,7 @@
 import { HeartIcon } from "@sanity/icons/Heart"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { atLeast, languageField, languagePreview, needed, neededImage, text, uniqueRefs, withRules } from "../fields"
 
 // Every visible section of the wedding planner page (/puntacana-wedding-planner/),
 // in page order, one document per language. Package prices, badges and icons
@@ -37,7 +37,7 @@ export const weddingPlannerPage = defineType({
     { name: "labels", title: "Labels" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     defineField({
@@ -46,7 +46,7 @@ export const weddingPlannerPage = defineType({
       type: "imageWithAlt",
       group: "hero",
       description: "Full-screen background photo, darkened on the left behind the text.",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     text("eyebrow", "Eyebrow", "hero", { description: "Small line above the heading." }),
     text("heroHeading", "Heading", "hero", { required: true }),
@@ -160,6 +160,35 @@ export const weddingPlannerPage = defineType({
     text("playLabel", "Play film", "labels"),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
-  ],
+  ], {
+    seo: needed,
+    southAsianPhotos: atLeast(2),
+    realWeddingPhotos: atLeast(1),
+    packages: (rule) => [rule.required().min(1), uniqueRefs("package", "Each Wedding Package can appear only once.")(rule)],
+    greciaPortrait: neededImage,
+    processSteps: (rule) => rule.required().min(1).max(4),
+    faqs: atLeast(1),
+    primaryCtaLabel: needed,
+    whatsappCtaLabel: needed,
+    southAsianCtaLabel: needed,
+    formSubmitLabel: needed,
+    undecidedLabel: needed,
+    selectLabel: needed,
+    fromLabel: needed,
+    popularLabel: needed,
+    westernLabel: needed,
+    southAsianLabel: needed,
+    exploreLabel: needed,
+    filmsTitle: needed,
+    southAsianGalleryTitle: needed,
+    southAsianOfferTitle: needed,
+    pathsLabel: needed,
+    previousLabel: needed,
+    nextLabel: needed,
+    openLabel: needed,
+    closeLabel: needed,
+    playLabel: needed,
+    greciaCarouselLabel: needed,
+  }),
   preview: languagePreview("Wedding Planner Page"),
 })

@@ -1,7 +1,7 @@
 import { HeartIcon } from "@sanity/icons/Heart"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { atLeast, languageField, languagePreview, needed, text, withRules } from "../fields"
 
 // Every visible section of the marriage proposal page (/proposal/), in page
 // order, one document per language. The package cards come from the Proposal
@@ -45,7 +45,7 @@ export const proposalPage = defineType({
     { name: "faq", title: "FAQ" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     array("heroImages", "Photos", "hero", "imageWithAlt", "The slideshow behind the heading, in order."),
@@ -105,6 +105,23 @@ export const proposalPage = defineType({
     array("faqs", "Questions", "faq", "faqItem"),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
-  ],
+  ], {
+    seo: needed,
+    heroImages: atLeast(1),
+    contactLabel: needed,
+    fromLabel: needed,
+    upgradesTitle: needed,
+    companyTitle: needed,
+    reviewsTitle: needed,
+    instagramLabel: needed,
+    mapsLabel: needed,
+    reviewSourceLabel: needed,
+    reviewLinkLabel: needed,
+    fiveStarsLabel: needed,
+    inclusions: atLeast(1),
+    bookingSteps: atLeast(1),
+    introParagraphs: atLeast(1),
+    reviews: atLeast(1),
+  }),
   preview: languagePreview("Proposal Page"),
 })

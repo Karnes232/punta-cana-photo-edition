@@ -1,7 +1,7 @@
 import { EnvelopeIcon } from "@sanity/icons/Envelope"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { exactly, languageField, languagePreview, needed, text, withRules } from "../fields"
 
 // The Contact page, in page order, one document per language ("contactPage-en"
 // plus translations). The phone number and email come from General Layout.
@@ -19,7 +19,7 @@ export const contactPage = defineType({
     { name: "next", title: "Next steps" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     text("heroEyebrow", "Eyebrow", "hero", { description: "Small line above the heading." }),
@@ -56,6 +56,14 @@ export const contactPage = defineType({
     }),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
-  ],
+  ], {
+    seo: needed,
+    nextSteps: exactly(3),
+    nextTitle: needed,
+    whatsappLabel: needed,
+    emailLabel: needed,
+    phoneLabel: needed,
+    directLabel: needed,
+  }),
   preview: languagePreview("Contact Page"),
 })

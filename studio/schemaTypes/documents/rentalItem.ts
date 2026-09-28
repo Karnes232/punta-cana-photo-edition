@@ -1,6 +1,8 @@
 import { PackageIcon } from "@sanity/icons/Package"
 import { defineField, defineType } from "sanity"
 
+import { othersMatching } from "../fields"
+
 // An item offered in the /admin rental quotes and contracts (tables, chairs,
 // bars…). Staff pick it by name; the price is filled in when set and can be
 // changed on each quote.
@@ -14,7 +16,14 @@ export const rentalItem = defineType({
       name: "name",
       title: "Name",
       type: "adminLabel",
-      validation: (rule) => rule.required(),
+      // The quote forms find an item by its name, so names must be unique.
+      validation: (rule) =>
+        rule.required().custom(async (value?: { en?: string }, context?: any) =>
+          value?.en &&
+          (await othersMatching(context, `_type == "rentalItem" && lower(name.en) == lower($name)`, { name: value.en.trim() })) > 0
+            ? "Another rental item already has this English name"
+            : true,
+        ),
     }),
     defineField({
       name: "description",

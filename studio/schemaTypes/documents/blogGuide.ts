@@ -99,7 +99,7 @@ export const blogGuide = defineType({
       type: "image",
       options: { hotspot: true },
       description: "Shown under the introduction and when the guide is shared. Landscape, 3:2. Each language describes it in its own alt text.",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     defineField({
       name: "imageCredit",

@@ -1,7 +1,7 @@
 import { BookIcon } from "@sanity/icons/Book"
 import { defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { languageField, languagePreview, needed, text, withRules } from "../fields"
 
 // The planning library's front page (/blog/), one document per language. The
 // guide cards and the event-type and topic headings come from the guides and
@@ -20,7 +20,7 @@ export const blogPage = defineType({
     { name: "services", title: "Service pages" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     text("eyebrow", "Eyebrow", "hero", { description: "Small line above the heading." }),
@@ -62,6 +62,19 @@ export const blogPage = defineType({
     text("serviceGuidesIntro", "Intro", "services", { long: true }),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
-  ],
+  ], {
+    seo: needed,
+    homeLabel: needed,
+    libraryLabel: needed,
+    breadcrumbLabel: needed,
+    tocLabel: needed,
+    nextLabel: needed,
+    readLabel: needed,
+    serviceLabel: needed,
+    topicsTitle: needed,
+    intimateTitle: needed,
+    intimateLink: needed,
+    serviceGuidesTitle: needed,
+  }),
   preview: languagePreview("Blog Page"),
 })

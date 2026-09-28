@@ -9,7 +9,12 @@ export const blogCategory = defineType({
   type: "document",
   icon: TagIcon,
   fields: [
-    defineField({ name: "label", title: "Name", type: "localizedString" }),
+    defineField({
+      name: "label",
+      title: "Name",
+      type: "localizedString",
+      validation: (rule) => rule.required(),
+    }),
     defineField({
       name: "key",
       title: "Anchor",

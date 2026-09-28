@@ -26,6 +26,7 @@ export const workMode = defineType({
       type: "text",
       rows: 2,
       description: "Closing line under a divider, e.g. \"Best for companies that…\"",
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

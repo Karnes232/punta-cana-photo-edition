@@ -1,7 +1,7 @@
 import { CommentIcon } from "@sanity/icons/Comment"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { languageField, languagePreview, needed, text, withRules } from "../fields"
 
 // The page where clients leave a testimonial (/share-your-experience/), one
 // document per language. It is hidden from search engines, but its link is
@@ -18,7 +18,7 @@ export const shareExperiencePage = defineType({
     { name: "form", title: "Form" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     defineField({
@@ -43,6 +43,8 @@ export const shareExperiencePage = defineType({
     text("formIntro", "Intro", "form", { long: true }),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
-  ],
+  ], {
+    seo: needed,
+  }),
   preview: languagePreview("Share Your Experience"),
 })

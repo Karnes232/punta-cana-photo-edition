@@ -1,6 +1,7 @@
 import { TranslateIcon } from "@sanity/icons/Translate"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
+import { atLeast, needed, withRules } from "../fields"
 import { languages } from "../shared/languages"
 
 // One language's text and photos of a proposal package: its card on the
@@ -40,7 +41,7 @@ export const proposalPackagePage = defineType({
     { name: "photos", title: "Photos" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     defineField({ name: "language", type: "string", readOnly: true, hidden: true }),
     defineField({
       name: "package",
@@ -64,7 +65,7 @@ export const proposalPackagePage = defineType({
       title: "Card photo",
       type: "imageWithAlt",
       group: "card",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     list("cardHighlights", "Card highlights", "card", "The short list on the package's card on the proposal page."),
 
@@ -98,7 +99,13 @@ export const proposalPackagePage = defineType({
     }),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
-  ],
+  ], {
+    seo: needed,
+    heroImages: atLeast(1),
+    galleryPhotos: atLeast(1),
+    setup: atLeast(1),
+    summary: needed,
+  }),
   preview: {
     select: { title: "name", language: "language", media: "cardImage" },
     prepare: ({ title, language, media }) => ({

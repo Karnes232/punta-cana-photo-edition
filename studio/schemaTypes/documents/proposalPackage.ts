@@ -24,14 +24,19 @@ export const proposalPackage = defineType({
       type: "slug",
       description: "The package page lives at /packages/<address>/. Changing it breaks existing links.",
       options: { source: "name" },
-      validation: (rule) => rule.required(),
+      validation: (rule) =>
+        rule.required().custom((slug?: { current?: string }) =>
+          /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug?.current || "")
+            ? true
+            : "Use lowercase letters, digits and single dashes",
+        ),
     }),
     defineField({
       name: "price",
       title: "Price (USD)",
       type: "number",
       description: "Shown on the card, on the package page and in search results in every language. Packages are listed from the lowest price.",
-      validation: (rule) => rule.required().min(0),
+      validation: (rule) => rule.required().positive(),
     }),
     defineField({
       name: "charcuterieIncluded",
@@ -60,6 +65,7 @@ export const proposalPackage = defineType({
       type: "array",
       description: "The extras a couple can add in the booking form. Leave out what the package already includes.",
       of: [defineArrayMember({ type: "reference", to: [{ type: "proposalAddOn" }] })],
+      validation: (rule) => rule.unique(),
     }),
     defineField({
       name: "videoUrl",

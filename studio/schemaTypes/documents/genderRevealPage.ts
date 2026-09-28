@@ -1,7 +1,7 @@
 import { SparklesIcon } from "@sanity/icons/Sparkles"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { atLeast, exactly, languageField, languagePreview, needed, text, withRules } from "../fields"
 
 // Every visible section of the gender reveal page (/gender-reveal-punta-cana/),
 // in page order, one document per language. Phone and email come from General
@@ -46,7 +46,7 @@ export const genderRevealPage = defineType({
     { name: "faq", title: "FAQ" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     defineField({
@@ -55,7 +55,7 @@ export const genderRevealPage = defineType({
       type: "imageWithAlt",
       group: "hero",
       description: "Full-screen background photo, darkened on the left behind the text.",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     text("eyebrow", "Eyebrow", "hero", { description: "Small line above the heading." }),
     text("heroHeading", "Heading", "hero", { required: true }),
@@ -148,6 +148,19 @@ export const genderRevealPage = defineType({
     }),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
-  ],
+  ], {
+    seo: needed,
+    introImages: exactly(2),
+    galleryImages: exactly(5),
+    primaryCtaLabel: needed,
+    whatsappCtaLabel: needed,
+    formWhatsappLabel: needed,
+    formSubmitLabel: needed,
+    introParagraphs: atLeast(1),
+    services: atLeast(1),
+    locations: atLeast(1),
+    processSteps: atLeast(1),
+    faqs: atLeast(1),
+  }),
   preview: languagePreview("Gender Reveal Page"),
 })

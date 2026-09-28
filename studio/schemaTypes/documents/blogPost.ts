@@ -1,7 +1,7 @@
 import { TranslateIcon } from "@sanity/icons/Translate"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languagePreview } from "../fields"
+import { languagePreview, needed, withRules } from "../fields"
 
 // One language's text of a blog guide. Opened from its Blog Guide, which sets
 // the guide and language; the address, photo and related guides are shared
@@ -30,7 +30,7 @@ export const blogPost = defineType({
     { name: "cta", title: "Call to action" },
     { name: "help", title: "Help box" },
   ],
-  fields: [
+  fields: withRules([
     defineField({ name: "language", type: "string", readOnly: true, hidden: true }),
     defineField({
       name: "guide",
@@ -117,7 +117,9 @@ export const blogPost = defineType({
       description: "Uses the phone number in General Layout.",
       initialValue: true,
     }),
-  ],
+  ], {
+    description: needed,
+  }),
   preview: {
     select: { title: "title", language: "language" },
     prepare: ({ title, language }: { title?: string; language?: string }) => ({

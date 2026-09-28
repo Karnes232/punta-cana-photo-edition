@@ -1,7 +1,7 @@
 import { CheckmarkCircleIcon } from "@sanity/icons/CheckmarkCircle"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { languageField, languagePreview, needed, text, withRules } from "../fields"
 
 // The confirmation every form on the site lands on (/contact/thankyou/), one
 // document per language. The WhatsApp number and email come from General
@@ -16,7 +16,7 @@ export const thankYouPage = defineType({
     { name: "content", title: "Content", default: true },
     { name: "seo", title: "Browser tab" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     text("eyebrow", "Eyebrow", "content", { description: "Small line above the heading." }),
@@ -68,6 +68,14 @@ export const thankYouPage = defineType({
         rule.max(160).warning("Over 160 characters"),
       ],
     }),
-  ],
+  ], {
+    greeting: needed,
+    steps: (rule) => rule.required().min(1).max(3),
+    nextTitle: needed,
+    guidesLabel: needed,
+    homeLabel: needed,
+    whatsappLabel: needed,
+    emailLabel: needed,
+  }),
   preview: languagePreview("Thank-You Page"),
 })

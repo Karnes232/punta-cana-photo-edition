@@ -1,7 +1,7 @@
 import { CaseIcon } from "@sanity/icons/Case"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { atLeast, languageField, languagePreview, needed, neededImage, text, withRules } from "../fields"
 
 // Every visible section of the corporate event planner page (/event-planner/),
 // in page order, one document per language. Phone and email come from General
@@ -40,7 +40,7 @@ export const eventPlannerPage = defineType({
     { name: "form", title: "Form" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     defineField({
@@ -49,7 +49,7 @@ export const eventPlannerPage = defineType({
       type: "imageWithAlt",
       group: "hero",
       description: "Full-screen background photo, darkened on the left behind the text.",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     text("eyebrow", "Eyebrow", "hero", {
       description: "Small line above the heading; also shown above the introduction.",
@@ -179,6 +179,23 @@ export const eventPlannerPage = defineType({
     text("formSubmitLabel", "Send button", "form"),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
-  ],
+  ], {
+    seo: needed,
+    primaryCtaLabel: needed,
+    whatsappCtaLabel: needed,
+    formSubmitLabel: needed,
+    onsiteImage: neededImage,
+    onsitePoints: atLeast(1),
+    budgetChangeTitle: needed,
+    resortTitle: needed,
+    independentTitle: needed,
+    workModes: atLeast(1),
+    services: atLeast(1),
+    processSteps: atLeast(1),
+    caseStudies: atLeast(1),
+    whyItems: atLeast(1),
+    eventTypes: atLeast(1),
+    faqs: atLeast(1),
+  }),
   preview: languagePreview("Event Planner Page"),
 })

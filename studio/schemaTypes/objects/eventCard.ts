@@ -25,7 +25,7 @@ export const eventCard = defineType({
       title: "Image",
       type: "imageWithAlt",
       description: "Portrait photos work best; the card crops to about 6:7.",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     defineField({
       name: "link",

@@ -54,7 +54,7 @@ export const elopementOption = defineType({
       title: "Price (USD)",
       type: "number",
       description: "Shown on the card, in the estimate and in search results in every language.",
-      validation: (rule) => rule.required().min(0),
+      validation: (rule) => rule.required().positive(),
     }),
     defineField({
       name: "catamaranAllowed",

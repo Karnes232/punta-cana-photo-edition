@@ -8,6 +8,9 @@ export const imageWithAlt = defineType({
   title: "Image",
   type: "image",
   options: { hotspot: true },
+  // Alt text alone isn't a photo: if the image is filled in, it needs a file.
+  validation: (rule) =>
+    rule.custom((value?: { asset?: unknown }) => (!value || value.asset ? true : "Upload an image")),
   fields: [
     defineField({
       name: "alt",

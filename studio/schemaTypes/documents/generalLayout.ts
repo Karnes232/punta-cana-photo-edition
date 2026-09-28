@@ -31,7 +31,7 @@ export const generalLayout = defineType({
       type: "imageWithAlt",
       group: "branding",
       description: "PNG or SVG with a transparent background.",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     defineField({
       name: "favIcon",
@@ -62,8 +62,8 @@ export const generalLayout = defineType({
       title: "Messenger link",
       type: "url",
       group: "contact",
-      description: "e.g. https://m.me/sertuinevents",
-      validation: (rule) => rule.uri({ scheme: ["http", "https"] }),
+      description: "e.g. https://m.me/sertuinevents. The chat button on every page.",
+      validation: (rule) => rule.required().uri({ scheme: ["http", "https"] }),
     }),
 
     ...[
@@ -76,7 +76,18 @@ export const generalLayout = defineType({
         title: `${title} URL`,
         type: "url",
         group: "social",
-        validation: (rule) => rule.uri({ scheme: ["https"] }),
+        // The footer shows the Instagram handle from this address on every page.
+        validation: (rule) =>
+          name === "instagram"
+            ? rule
+                .required()
+                .uri({ scheme: ["https"] })
+                .custom((value?: string) =>
+                  !value || /^https:\/\/(www\.)?instagram\.com\/[^/?#]+\/?$/.test(value)
+                    ? true
+                    : "Use the profile address, e.g. https://www.instagram.com/sertuinevents/",
+                )
+            : rule.uri({ scheme: ["https"] }),
       }),
     ),
 
@@ -93,7 +104,7 @@ export const generalLayout = defineType({
       type: "string",
       group: "legal",
       description: "Dominican tax ID, e.g. 132-19965-2.",
-      validation: (rule) => rule.regex(/^\d{3}-\d{5}-\d$/, { name: "RNC (000-00000-0)" }),
+      validation: (rule) => rule.required().regex(/^\d{3}-\d{5}-\d$/, { name: "RNC (000-00000-0)" }),
     }),
     defineField({
       name: "address",
@@ -102,6 +113,7 @@ export const generalLayout = defineType({
       rows: 3,
       group: "legal",
       description: "Printed on contract PDFs.",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "companyStamp",
@@ -109,6 +121,7 @@ export const generalLayout = defineType({
       type: "image",
       group: "legal",
       description: "Only used on /admin contract PDFs.",
+      validation: (rule) => rule.required().assetRequired(),
     }),
     defineField({
       name: "signature",
@@ -116,6 +129,7 @@ export const generalLayout = defineType({
       type: "image",
       group: "legal",
       description: "Only used on /admin contract PDFs.",
+      validation: (rule) => rule.required().assetRequired(),
     }),
   ],
   preview: {

@@ -1,7 +1,7 @@
 import { HeartIcon } from "@sanity/icons/Heart"
 import { defineArrayMember, defineField, defineType } from "sanity"
 
-import { languageField, languagePreview, text } from "../fields"
+import { atLeast, exactly, languageField, languagePreview, needed, text, uniqueRefs, withRules } from "../fields"
 
 // Every visible section of the elopement page (/punta-cana-elopement-packages/),
 // in page order, one document per language. Prices come from the shared
@@ -36,7 +36,7 @@ export const elopementPage = defineType({
     { name: "faq", title: "FAQ" },
     { name: "seo", title: "SEO" },
   ],
-  fields: [
+  fields: withRules([
     languageField,
 
     defineField({
@@ -45,7 +45,7 @@ export const elopementPage = defineType({
       type: "imageWithAlt",
       group: "hero",
       description: "Full-screen background photo, darkened towards the bottom behind the heading.",
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.required().assetRequired(),
     }),
     text("heroTitle", "Heading", "hero", { required: true }),
 
@@ -139,6 +139,41 @@ export const elopementPage = defineType({
     defineField({ name: "seo", title: "SEO", type: "seo", group: "seo" }),
     text("breadcrumbHome", "Breadcrumb: home", "seo", { description: "Sent to search engines with the page's breadcrumb." }),
     text("breadcrumbCurrent", "Breadcrumb: this page", "seo"),
-  ],
+  ], {
+    seo: needed,
+    experiences: (rule) => [rule.required().min(1), uniqueRefs("option", "Each setting can appear only once.")(rule)],
+    decorations: (rule) => [rule.required().min(1), uniqueRefs("option", "Each décor can appear only once.")(rule)],
+    legalUpgrade: needed,
+    formula: exactly(3),
+    breadcrumbHome: needed,
+    breadcrumbCurrent: needed,
+    faqs: atLeast(1),
+    inclusions: atLeast(1),
+    galleryPhotos: atLeast(1),
+    paymentSteps: atLeast(1),
+    stepOne: needed,
+    stepTwo: needed,
+    stepThree: needed,
+    estimateTitle: needed,
+    experienceLine: needed,
+    decorLine: needed,
+    legalLine: needed,
+    includedLabel: needed,
+    fromLabel: needed,
+    selectLabel: needed,
+    selectedLabel: needed,
+    realTouchLabel: needed,
+    beachAndCatamaranLabel: needed,
+    beachOnlyLabel: needed,
+    reserveSelection: needed,
+    formSubmitLabel: needed,
+    successTitle: needed,
+    paymentTitle: needed,
+    guestsLabel: needed,
+    previousPhotoLabel: needed,
+    nextPhotoLabel: needed,
+    unavailableCatamaran: needed,
+    customQuote: needed,
+  }),
   preview: languagePreview("Elopement Page"),
 })

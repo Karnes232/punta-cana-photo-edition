@@ -9,7 +9,12 @@ export const blogTopic = defineType({
   type: "document",
   icon: TagsIcon,
   fields: [
-    defineField({ name: "label", title: "Name", type: "localizedString" }),
+    defineField({
+      name: "label",
+      title: "Name",
+      type: "localizedString",
+      validation: (rule) => rule.required(),
+    }),
     defineField({
       name: "key",
       title: "Anchor",

@@ -1,6 +1,7 @@
 import { TagIcon } from "@sanity/icons/Tag"
 import { defineField, defineType } from "sanity"
 
+import { othersMatching } from "../fields"
 import { cardIcons } from "../objects/iconCard"
 
 // A wedding planning package's shared facts: its price, badge and icon. One
@@ -24,7 +25,7 @@ export const weddingPackage = defineType({
       title: "Price (USD)",
       type: "number",
       description: "Shown on the card and in the form in every language.",
-      validation: (rule) => rule.required().min(0),
+      validation: (rule) => rule.required().positive(),
     }),
     defineField({
       name: "mostPopular",
@@ -36,8 +37,14 @@ export const weddingPackage = defineType({
       name: "southAsian",
       title: "South Asian package",
       type: "boolean",
-      description: "Shown in the South Asian weddings section instead of the package grid. Only one package should have this.",
+      description: "Shown in the South Asian weddings section instead of the package grid. Only one package can have this.",
       initialValue: false,
+      validation: (rule) =>
+        rule.custom(async (value, context) =>
+          value && (await othersMatching(context, `_type == "weddingPackage" && southAsian == true`, {})) > 0
+            ? "Another package is already the South Asian one; the site shows only one."
+            : true,
+        ),
     }),
     defineField({
       name: "icon",
