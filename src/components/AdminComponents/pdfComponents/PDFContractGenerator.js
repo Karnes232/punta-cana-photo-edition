@@ -11,14 +11,14 @@ import {
 } from "@react-pdf/renderer";
 import { format, parseISO } from "date-fns";
 import { es as spanishLocale } from "date-fns/locale";
-
+import { Trans, useI18next } from "gatsby-plugin-react-i18next";
+import axios from "axios";
 // "January 15, 2027" in English, "15 de enero de 2027" in Spanish.
 const formatDate = (date, language) =>
   language === "es"
     ? format(date, "d 'de' MMMM 'de' yyyy", { locale: spanishLocale })
     : format(date, "MMMM d, yyyy");
-import { Trans, useI18next } from "gatsby-plugin-react-i18next";
-import axios from "axios";
+
 
 const styles = StyleSheet.create({
   page: {
