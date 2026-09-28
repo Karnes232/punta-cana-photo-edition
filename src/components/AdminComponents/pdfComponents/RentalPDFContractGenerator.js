@@ -10,7 +10,7 @@ import {
   pdf,
 } from "@react-pdf/renderer";
 import { Trans, useI18next } from "gatsby-plugin-react-i18next";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import axios from "axios";
 
 const styles = StyleSheet.create({
@@ -140,7 +140,7 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
 
   // Format date
   const eventDate = formData.eventDate
-    ? format(new Date(formData.eventDate), "MMMM d, yyyy")
+    ? format(parseISO(formData.eventDate), "MMMM d, yyyy")
     : "[DATE]";
 
   return (

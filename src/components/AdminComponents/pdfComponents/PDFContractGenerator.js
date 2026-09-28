@@ -9,7 +9,7 @@ import {
   pdf,
   Image,
 } from "@react-pdf/renderer";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { Trans, useI18next } from "gatsby-plugin-react-i18next";
 import axios from "axios";
 
@@ -137,7 +137,7 @@ const ContractPDF = ({ formData, companyInfo, language }) => {
   // const cashPrice = (parseFloat(totalPrice) / (1 + taxRate) / 1.1).toFixed(2);
   const eventLocation = formData.eventLocation;
   const eventDate = formData.eventDate
-    ? format(new Date(formData.eventDate), "MMMM d, yyyy")
+    ? format(parseISO(formData.eventDate), "MMMM d, yyyy")
     : "[DATE]";
   const eventStartTime = formData.eventStartTime;
   const eventEndTime = formData.eventEndTime;

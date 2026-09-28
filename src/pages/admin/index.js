@@ -9,6 +9,7 @@ import { auth } from "../../config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import LogoutButton from "../../components/auth/LogoutButton";
 import { allowedEmails } from "../../data/allowedEmails";
+import { localizedPath } from "../../utils/siteLocales";
 const Index = ({ data }) => {
   const { language } = useI18next();
   const { t } = useTranslation();
@@ -41,28 +42,28 @@ const Index = ({ data }) => {
 
             <div className="flex flex-col space-y-4">
               <Link
-                to="/admin/package-quotes"
+                to={localizedPath("/admin/package-quotes/", language)}
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
                 {t("Package Quotes")}
               </Link>
 
               <Link
-                to="/admin/package-contract"
+                to={localizedPath("/admin/package-contract/", language)}
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
                 {t("Package Contract")}
               </Link>
 
               <Link
-                to="/admin/rental-items-quotes"
+                to={localizedPath("/admin/rental-items-quotes/", language)}
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
                 {t("Rental Items Quotes")}
               </Link>
 
               <Link
-                to="/admin/rental-items-contract"
+                to={localizedPath("/admin/rental-items-contract/", language)}
                 className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg text-center transition duration-300"
               >
                 {t("Rental Items Contract")}
