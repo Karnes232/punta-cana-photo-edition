@@ -13,9 +13,8 @@ import {
 // Share images are cropped by Sanity's CDN to the size social networks expect.
 const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
 
-// HeroSwiper is shared with pages that still read Contentful, so the Sanity
-// slideshow is handed over in the shape it expects, with each photo's edited
-// alt text. No heading over the photos: the form title is the page's heading.
+// HeroSwiper takes each photo as { gatsbyImage, alt }, so the Sanity slideshow
+// is handed over in that shape, with each photo's edited alt text. No heading over the photos: the form title is the page's heading.
 const toHeroInfo = (page) => ({
   fullSize: Boolean(page?.fullScreen),
   heroImageList: (page?.heroImages || []).map((image) => ({

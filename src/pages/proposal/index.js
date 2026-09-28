@@ -27,9 +27,8 @@ import {
 // Share images are cropped by Sanity's CDN to the size social networks expect.
 const shareImageUrl = (url) => url && `${url}?w=1200&h=630&fit=crop&auto=format`;
 
-// HeroSwiper and SwiperCarousel are shared with pages that still read
-// Contentful, so Sanity photos are handed over in the shape they expect, with
-// each photo's edited alt text.
+// HeroSwiper and SwiperCarousel take each photo as { gatsbyImage, alt }, so
+// Sanity photos are handed over in that shape, with their edited alt text.
 const toSwiperImages = (images = []) =>
   images.map((image) => ({
     gatsbyImage: image.asset?.gatsbyImageData,

@@ -8,6 +8,7 @@ import { CommentIcon } from "@sanity/icons/Comment"
 import { EnvelopeIcon } from "@sanity/icons/Envelope"
 import { HeartIcon } from "@sanity/icons/Heart"
 import { HomeIcon } from "@sanity/icons/Home"
+import { LockIcon } from "@sanity/icons/Lock"
 import { SparklesIcon } from "@sanity/icons/Sparkles"
 import { TagIcon } from "@sanity/icons/Tag"
 import { WarningOutlineIcon } from "@sanity/icons/WarningOutline"
@@ -19,6 +20,7 @@ import { languages } from "./schemaTypes/shared/languages"
 // one per language for the pages. sanity.config.ts drops their delete/duplicate actions.
 export const singletonTypes = new Set([
   "generalLayout",
+  "adminPage",
   "homePage",
   "contactPage",
   "thankYouPage",
@@ -46,7 +48,7 @@ export const hiddenTypes = new Set([
 ])
 
 // Listed in their own sections below rather than in the generic type list.
-const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage", "elopementOption", "proposalPackage", "proposalAddOn"])
+const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage", "elopementOption", "proposalPackage", "proposalAddOn", "rentalItem", "redirect"])
 
 // A guide's language texts have fixed IDs: blogPost-<guide>-<language>, where
 // <guide> drops the "blogGuide-" prefix of the guides created by the migration.
@@ -171,6 +173,10 @@ export const structure: StructureResolver = (S) => {
       translatedPage("thankYouPage", "Thank-You Page", CheckmarkCircleIcon),
       translatedPage("shareExperiencePage", "Share Your Experience", CommentIcon),
       translatedPage("notFoundPage", "404 Page", WarningOutlineIcon),
+      S.divider(),
+      singleton("adminPage", "Admin Area", LockIcon),
+      S.documentTypeListItem("rentalItem").title("Rental Items"),
+      S.documentTypeListItem("redirect").title("Redirects"),
       S.divider(),
       ...S.documentTypeListItems().filter((item) => !hiddenTypes.has(item.getId() ?? "") && !listedTypes.has(item.getId() ?? "")),
     ])

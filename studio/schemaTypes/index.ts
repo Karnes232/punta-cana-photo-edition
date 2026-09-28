@@ -1,3 +1,4 @@
+import { adminPage } from "./documents/adminPage"
 import { blogCategory } from "./documents/blogCategory"
 import { blogGuide } from "./documents/blogGuide"
 import { blogPage } from "./documents/blogPage"
@@ -16,11 +17,14 @@ import { proposalPackage } from "./documents/proposalPackage"
 import { proposalPackagePage } from "./documents/proposalPackagePage"
 import { proposalPackageTexts } from "./documents/proposalPackageTexts"
 import { proposalPage } from "./documents/proposalPage"
+import { redirect } from "./documents/redirect"
+import { rentalItem } from "./documents/rentalItem"
 import { shareExperiencePage } from "./documents/shareExperiencePage"
 import { thankYouPage } from "./documents/thankYouPage"
 import { weddingPackage } from "./documents/weddingPackage"
 import { weddingPlannerPage } from "./documents/weddingPlannerPage"
 import { addOnName } from "./objects/addOnName"
+import { adminLabel } from "./objects/adminLabel"
 import { blogSection, blogSource, blogStep } from "./objects/blogSection"
 import { caseStudy } from "./objects/caseStudy"
 import { cta } from "./objects/cta"
@@ -58,6 +62,9 @@ export const schemaTypes = [
   proposalPackagePage,
   proposalPackageTexts,
   proposalAddOn,
+  rentalItem,
+  adminPage,
+  redirect,
   blogPage,
   blogGuide,
   blogPost,
@@ -65,6 +72,7 @@ export const schemaTypes = [
   blogTopic,
   // Objects
   addOnName,
+  adminLabel,
   blogSection,
   blogSource,
   blogStep,

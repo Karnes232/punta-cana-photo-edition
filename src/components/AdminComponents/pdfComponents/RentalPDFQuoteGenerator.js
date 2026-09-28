@@ -146,8 +146,10 @@ const styles = StyleSheet.create({
 });
 
 const RentalQuotePDF = ({ formData, companyInfo, language }) => {
-  const logoUrl =
-    "https://images.ctfassets.net/vpskymlp6aa0/pKzEbbiqIVQrzq8SeaxPy/8fe23dd9429e712b8c681cb2d287056b/logotipo_sertuin_events.png";
+  // General Layout's logo from Sanity, as a PNG (react-pdf can't draw WebP or SVG).
+  const logoUrl = companyInfo?.logo?.asset?.url
+    ? `${companyInfo.logo.asset.url}?fm=png&w=400`
+    : null;
 
   const dateOptions = {
     year: "numeric",
@@ -234,7 +236,7 @@ const RentalQuotePDF = ({ formData, companyInfo, language }) => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          <Image src={logoUrl} style={styles.logo} />
+          {logoUrl && <Image src={logoUrl} style={styles.logo} />}
           <View style={styles.companyInfo}>
             <Text style={styles.companyName}>Sertuin Events</Text>
             <Text style={styles.companyDetail}>

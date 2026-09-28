@@ -30,16 +30,6 @@ exports.onCreatePage = ({ page, actions }) => {
   }
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
-  const typeDefs = `
-    type ContentfulPackagePageContent implements Node {
-      videoUrl: String
-    }
-  `;
-  createTypes(typeDefs);
-};
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const queryResults = await graphql(`
@@ -346,10 +336,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     },
   );
 
-  // --- Client-editable 301 redirects (Contentful "Redirect" content type) ---
-  // Queried separately from MyQuery so that if the "Redirect" content type does
-  // not exist yet in Contentful (or the query fails), it degrades gracefully
-  // instead of breaking the entire page build.
+  // --- Client-editable 301 redirects (Sanity "Redirect" documents) ---
+  // Queried separately from MyQuery so that if the query fails, it degrades
+  // gracefully instead of breaking the entire page build.
   const { createRedirect } = actions;
   const protectedRedirectSources = new Set();
 
@@ -413,7 +402,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const redirectResults = await graphql(`
     query RedirectsQuery {
-      allContentfulRedirect {
+      allSanityRedirect {
         nodes {
           from
           to
@@ -424,10 +413,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (redirectResults.errors) {
     reporter.warn(
-      `[redirects] Skipping redirects — GraphQL query failed (is the "Redirect" content type created in Contentful?): ${redirectResults.errors}`,
+      `[redirects] Skipping redirects — GraphQL query failed: ${redirectResults.errors}`,
     );
   } else {
-    const rawNodes = redirectResults.data?.allContentfulRedirect?.nodes || [];
+    const rawNodes = redirectResults.data?.allSanityRedirect?.nodes || [];
 
     const seen = new Set();
     let created = 0;
@@ -448,7 +437,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         continue;
       }
 
-      // Dedupe: localeFilter yields one node per locale → duplicate pairs.
+      // Dedupe: the first entry for an address wins.
       if (seen.has(from)) continue;
       seen.add(from);
 
@@ -460,11 +449,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const fromVariants = noSlash === "" ? [from] : [noSlash, withSlash];
 
       // Source-controlled migrations are reviewed and language-safe. A stale
-      // Contentful entry must not override one of them (this previously sent a
+      // Studio entry must not override one of them (this previously sent a
       // Spanish proposal article to the English proposal page).
       if (fromVariants.some((source) => protectedRedirectSources.has(source))) {
         reporter.warn(
-          `[redirects] Skipping Contentful override for protected source ${from}`,
+          `[redirects] Skipping Studio override for protected source ${from}`,
         );
         skipped++;
         continue;
@@ -499,7 +488,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
 
     reporter.info(
-      `[redirects] Created ${created} redirect rule(s) from ${seen.size} Contentful entr${
+      `[redirects] Created ${created} redirect rule(s) from ${seen.size} Studio entr${
         seen.size === 1 ? "y" : "ies"
       } (${skipped} skipped).`,
     );

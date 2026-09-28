@@ -126,16 +126,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        localeFilter: (locale) => true,
-        // downloadLocal: true,
-      },
-    },
-    {
       resolve: `gatsby-source-sanity`,
       options: {
         // Same defaults as studio/env.ts. The dataset is public, so published

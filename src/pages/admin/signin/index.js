@@ -1,6 +1,7 @@
 import { graphql, navigate } from "gatsby";
 import React, { useEffect } from "react";
-import Seo from "../../../components/Layout/seo";
+import AdminHead from "../../../components/Layout/AdminHead";
+import { adminHeroInfo } from "../../../utils/adminData";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import AdminLayout from "../../../components/Layout/AdminLayout";
 import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
@@ -9,6 +10,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 const Index = ({ data }) => {
+  const { language } = useI18next();
   const provider = new GoogleAuthProvider();
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -40,7 +42,10 @@ const Index = ({ data }) => {
   };
   return (
     <AdminLayout generalInfo={data.sanityGeneralLayout}>
-      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <HeroSwiper
+        heroInfo={adminHeroInfo(data.sanityAdminPage, language)}
+        language={language}
+      />
       <button
         className="flex justify-center items-center px-5 py-2 gap-4 border rounded-lg w-full max-w-4xl mx-auto"
         onClick={signIn}
@@ -53,38 +58,18 @@ const Index = ({ data }) => {
 
 export default Index;
 
-export const Head = ({ data }) => {
-  const { language } = useI18next();
-  const { title, description, images, keywords } =
-    data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : "/admin/signin/"}`;
-
-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
-
-  let JsonSchema = {};
-  if (schema) {
-    JsonSchema = JSON.parse(schema);
-  }
-
+export const Head = ({ data, pageContext }) => {
   return (
-    <>
-      <Seo
-        title={title}
-        description={description.description}
-        keywords={keywords.join(", ")}
-        image={`https:${images.file.url}`}
-        url={siteUrl}
-        schemaMarkup={JsonSchema}
-        language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
-      />
-      <link rel="canonical" href={siteUrl} />
-      <meta name="robots" content="noindex,nofollow" />
-    </>
+    <AdminHead
+      siteUrl={data.site.siteMetadata.siteUrl}
+      path="/admin/signin/"
+      language={pageContext.language}
+    />
   );
 };
 
 export const query = graphql`
-  query IndexPageQuery($language: String!) {
+  query IndexPageQuery {
     locales: allLocale {
       edges {
         node {
@@ -104,49 +89,28 @@ export const query = graphql`
       facebook
       instagram
       x
-      messengerLink
       telephone
-    }
-    allContentfulSeo(
-      filter: { page: { eq: "Admin" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        title
-        keywords
-        images {
-          file {
-            url
-          }
-        }
-        description {
-          description
-        }
-        schema {
-          internal {
-            content
-          }
+      messengerLink
+      rnc
+      email
+      address
+      logo {
+        asset {
+          url
         }
       }
     }
-    allContentfulPageContent(
-      filter: { page: { eq: "Admin" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        page
-        heroImageList {
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-          title
+    sanityAdminPage(_id: { eq: "adminPage" }) {
+      fullScreenHero
+      heroHeading {
+        en
+        es
+      }
+      heroImages {
+        alt
+        asset {
+          gatsbyImageData(width: 1200, placeholder: NONE)
         }
-        fullSize
-        heroHeading
-        heroHeading2
-        sectionTitle
       }
     }
   }

@@ -1,16 +1,18 @@
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
+import AdminHead from "../../../components/Layout/AdminHead";
+import { adminHeroInfo, adminRentalItems } from "../../../utils/adminData";
 import { auth } from "../../../config/firebase";
 import { graphql, navigate } from "gatsby";
 import AdminLayout from "../../../components/Layout/AdminLayout";
 import HeroSwiper from "../../../components/HeroSwiper/HeroSwiper";
-import Seo from "../../../components/Layout/seo";
 import { useI18next } from "gatsby-plugin-react-i18next";
 import { allowedEmails } from "../../../data/allowedEmails";
 import LogoutButton from "../../../components/auth/LogoutButton";
 import RentalItemsContractForm from "../../../components/AdminComponents/RentalItemsContractForm";
 
 const Index = ({ data }) => {
+  const { language } = useI18next();
   const [adminUser, setAdminUser] = useState(false);
 
   useEffect(() => {
@@ -27,12 +29,15 @@ const Index = ({ data }) => {
   }, []);
   return (
     <AdminLayout generalInfo={data.sanityGeneralLayout}>
-      <HeroSwiper heroInfo={data.allContentfulPageContent.nodes[0]} />
+      <HeroSwiper
+        heroInfo={adminHeroInfo(data.sanityAdminPage, language)}
+        language={language}
+      />
       <div className="flex flex-col items-center bg-gray-100 p-8 lg:pt-24 -mt-5 md:-mt-10 lg:-mt-20">
         {adminUser ? (
           <RentalItemsContractForm
             companyInfo={data.sanityGeneralLayout}
-            rentalItems={data.allContentfulRentalItems.nodes}
+            rentalItems={adminRentalItems(data, language)}
           />
         ) : (
           <div className="text-center text-2xl font-bold min-h-[25vh] flex flex-col justify-center items-center">
@@ -47,38 +52,18 @@ const Index = ({ data }) => {
 
 export default Index;
 
-export const Head = ({ data }) => {
-  const { language } = useI18next();
-  const { title, description, images, keywords } =
-    data.allContentfulSeo.nodes[0];
-  const siteUrl = `${data.site.siteMetadata.siteUrl}${language !== "en-US" ? `/${language === "es" ? "es" : language}` : "/admin/rental-items-contract/"}`;
-
-  const schema = data?.allContentfulSeo?.nodes[0]?.schema?.internal?.content;
-
-  let JsonSchema = {};
-  if (schema) {
-    JsonSchema = JSON.parse(schema);
-  }
-
+export const Head = ({ data, pageContext }) => {
   return (
-    <>
-      <Seo
-        title={title}
-        description={description.description}
-        keywords={keywords.join(", ")}
-        image={`https:${images.file.url}`}
-        url={siteUrl}
-        schemaMarkup={JsonSchema}
-        language={language === "en-US" ? "en" : language} // Convert to standard HTML lang attribute
-      />
-      <link rel="canonical" href={siteUrl} />
-      <meta name="robots" content="noindex,nofollow" />
-    </>
+    <AdminHead
+      siteUrl={data.site.siteMetadata.siteUrl}
+      path="/admin/rental-items-contract/"
+      language={pageContext.language}
+    />
   );
 };
 
 export const query = graphql`
-  query IndexPageQuery($language: String!) {
+  query IndexPageQuery {
     locales: allLocale {
       edges {
         node {
@@ -98,77 +83,55 @@ export const query = graphql`
       facebook
       instagram
       x
-      messengerLink
       telephone
+      messengerLink
       rnc
       email
       address
+      logo {
+        asset {
+          url
+        }
+      }
       companyStamp {
-        asset { url }
+        asset {
+          url
+        }
       }
       signature {
-        asset { url }
+        asset {
+          url
+        }
       }
     }
-    allContentfulSeo(
-      filter: { page: { eq: "Admin" }, node_locale: { eq: $language } }
+    sanityAdminPage(_id: { eq: "adminPage" }) {
+      fullScreenHero
+      heroHeading {
+        en
+        es
+      }
+      heroImages {
+        alt
+        asset {
+          gatsbyImageData(width: 1200, placeholder: NONE)
+        }
+      }
+    }
+    allSanityRentalItem(
+      filter: { active: { ne: false } }
+      sort: { name: { en: ASC } }
     ) {
       nodes {
-        title
-        keywords
-        images {
-          file {
-            url
-          }
+        name {
+          en
+          es
         }
         description {
-          description
+          en
+          es
         }
-        schema {
-          internal {
-            content
-          }
-        }
-      }
-    }
-    allContentfulPageContent(
-      filter: { page: { eq: "Admin" }, node_locale: { eq: $language } }
-    ) {
-      nodes {
-        page
-        heroImageList {
-          gatsbyImage(
-            layout: CONSTRAINED
-            width: 1200
-            placeholder: NONE
-            formats: WEBP
-            quality: 75
-          )
-          title
-        }
-        fullSize
-        heroHeading
-        heroHeading2
-        sectionTitle
-      }
-    }
-    allContentfulRentalItems(filter: { node_locale: { eq: $language } }) {
-      nodes {
-        rentalItem
         price
       }
     }
-    #   allContentfulPackages(filter: { node_locale: { eq: $language } }) {
-    #     nodes {
-    #       title
-    #       price
-    #     }
-    #   }
-    #   allContentfulPackageAdditions(filter: { node_locale: { eq: $language } }) {
-    #     nodes {
-    #       addition
-    #       price
-    #     }
-    #   }
   }
 `;
