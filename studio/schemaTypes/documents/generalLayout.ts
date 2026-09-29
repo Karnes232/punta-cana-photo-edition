@@ -4,7 +4,6 @@ import { defineField, defineType } from "sanity"
 // Site-wide settings shown on every page: logo, contact buttons, footer socials and the
 // copyright line, plus the legal details used on the /admin contract PDFs.
 // A singleton: structure.ts always opens the document with this same ID.
-// Field names match Contentful's generalLayout, which the site reads today.
 export const generalLayout = defineType({
   name: "generalLayout",
   title: "General Layout",

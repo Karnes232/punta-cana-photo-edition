@@ -9,7 +9,7 @@ import Seo from "../components/Layout/seo";
 import LocalizedAlternates from "../components/Layout/LocalizedAlternates";
 import PackageForm from "../components/PackageForm/PackageForm";
 import ProposalPackageDetails from "../components/ProposalComponents/ProposalPackageDetails";
-import ContentfulResponsiveImage from "../components/ContentfulResponsiveImage";
+import ResponsiveImage from "../components/ResponsiveImage";
 import { buildProposalPackageSchema } from "../utils/proposalSeo";
 import { GOOGLE_MAPS_URL } from "../components/ProposalComponents/ProposalExperience";
 import {
@@ -82,7 +82,7 @@ const PackagePage = ({ pageContext, data }) => {
   const proposalBookingMedia = pkg.videoUrl ? (
     <VideoPlayer url={pkg.videoUrl} className="h-full w-full overflow-hidden" />
   ) : bookingPhoto ? (
-    <ContentfulResponsiveImage
+    <ResponsiveImage
       asset={bookingPhoto}
       alt={bookingPhoto.alt}
       title={bookingPhoto.alt}

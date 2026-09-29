@@ -1,4 +1,4 @@
-// Package entries that must never create a public page, even if the Contentful
+// Package entries that must never create a public page, even if its Sanity
 // record remains available to staff. A URL with a true successor is redirected
 // separately; discontinued offers without an equivalent return a real 404.
 const retiredPackageRedirects = Object.freeze({

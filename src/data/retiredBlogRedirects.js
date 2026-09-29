@@ -274,7 +274,7 @@ const elopementBlogSlugs = split(`
 // Revisit once a /packages/ hub page ships: that becomes the honest destination.
 
 // These topics are outside Sertuin Events' current services and have no close
-// replacement. If an old Contentful entry remains, do not recreate the page.
+// replacement. Do not recreate these pages, even if an old draft turns up.
 const goneBlogSlugs = split(`
   engagement-photoshoot-punta-cana
   ultimate-bachelor-party-guide-punta-cana

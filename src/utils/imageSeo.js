@@ -2,7 +2,7 @@ const clean = (value) =>
   typeof value === "string" ? value.replace(/\s+/g, " ").trim() : "";
 
 /**
- * Gives every rendered Contentful image a meaningful alt description and an
+ * Gives every rendered image a meaningful alt description and an
  * HTML title. Editorial asset metadata wins; localized, unique copy fills any
  * gaps so no proposal image is emitted unnamed.
  */

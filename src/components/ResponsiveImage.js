@@ -30,7 +30,7 @@ const responsiveWidths = (asset, requestedWidths) => {
   return [...new Set(widths)].sort((a, b) => a - b);
 };
 
-const ContentfulResponsiveImage = ({
+const ResponsiveImage = ({
   asset,
   alt,
   className = "",
@@ -78,4 +78,4 @@ const ContentfulResponsiveImage = ({
   );
 };
 
-export default ContentfulResponsiveImage;
+export default ResponsiveImage;

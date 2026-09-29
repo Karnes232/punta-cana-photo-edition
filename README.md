@@ -27,7 +27,7 @@ A comprehensive digital platform for a premier event planning company specializi
 | ---------------- | -------------------- | ------------------------------------------------ |
 | **GatsbyJS**     | Frontend Framework   | Static site generation, React-based architecture |
 | **Netlify**      | Hosting & Deployment | Global CDN, continuous deployment                |
-| **Contentful**   | Content Management   | Headless CMS, API-driven content                 |
+| **Sanity**       | Content Management   | Headless CMS; editors work in Sanity Studio at /studio |
 | **Tailwind CSS** | Styling              | Utility-first CSS framework                      |
 | **Firebase**     | Auth & Database      | Google Sign-In, Firestore, Cloud Storage         |
 | **React-PDF**    | Document Generation  | Client-side PDF creation                         |
@@ -43,7 +43,7 @@ Complete English and Spanish localization with dynamic language switching and SE
 
 ### 📝 Dynamic Content Management
 
-- **Event Packages** - Auto-generated pages from Contentful data models
+- **Event Packages** - Auto-generated pages from Sanity content
 - **Blog System** - Full-featured blog with build-time generation
   - 📖 [Example: Complete Guide to Organizing Events in Punta Cana](https://sertuinevents.com/blog/complete-guide-to-organizing-events-in-punta-cana/)
 - **Equipment Rentals** - Dynamic catalog with real-time inventory
@@ -78,7 +78,7 @@ Complete English and Spanish localization with dynamic language switching and SE
 
 - **🏠 Home** - Company overview and featured services
 - **🎉 Event Services** - Detailed pages for weddings, birthdays, proposals
-- **📦 Package Catalog** - Dynamic pages built from Contentful
+- **📦 Package Catalog** - Dynamic pages built from Sanity
 - **📝 Blog** - SEO-optimized articles and guides
 - **🛠️ Equipment Rentals** - Searchable catalog with pricing
 - **💬 Testimonials** - Client experience sharing system
@@ -89,7 +89,7 @@ Complete English and Spanish localization with dynamic language switching and SE
 - **💰 Quote Management** - Create and send professional proposals
 - **📄 Contract Generation** - Legal document creation and delivery
 - **👥 Client Database** - Centralized customer information
-- **📝 Content Management** - Direct integration with Contentful
+- **📝 Content Management** - Sanity Studio, served with the site at /studio
 
 ---
 
@@ -114,7 +114,7 @@ Complete English and Spanish localization with dynamic language switching and SE
 
 ### 🔧 Integration Architecture
 
-- **Headless CMS Integration** - Real-time content sync between Contentful and Gatsby
+- **Headless CMS Integration** - Gatsby builds pages from Sanity content
 - **Real-time Database** - Live data synchronization using Firebase WebSockets
 - **Email Automation** - Professional communication workflows with Nodemailer
 - **PDF Generation** - Browser-based document creation with multilingual support
@@ -143,8 +143,9 @@ This technical architecture delivers significant advantages:
 ### Environment Variables
 
 ```env
-CONTENTFUL_SPACE_ID=your_space_id
-CONTENTFUL_ACCESS_TOKEN=your_access_token
+# Optional: these are the defaults
+SANITY_PROJECT_ID=mj6f2710
+SANITY_DATASET=production
 FIREBASE_API_KEY=your_firebase_key
 FIREBASE_AUTH_DOMAIN=your_auth_domain
 FIREBASE_PROJECT_ID=your_project_id
@@ -160,7 +161,7 @@ The website is automatically deployed to Netlify when changes are pushed to the 
 
 ### Build Process
 
-1. **Content Fetch** - Gatsby pulls content from Contentful at build time
+1. **Content Fetch** - Gatsby pulls content from Sanity at build time
 2. **Static Generation** - All pages are pre-built for optimal performance
 3. **Asset Optimization** - Images and CSS are automatically optimized
 4. **Deployment** - Site is deployed to Netlify's global CDN
@@ -172,7 +173,7 @@ The website is automatically deployed to Netlify when changes are pushed to the 
 The website is built with modern, well-supported technologies that ensure:
 
 - Long-term stability and security
-- Easy content updates through Contentful
+- Easy content updates through Sanity Studio
 - Automated deployments and backups
 - Scalable hosting that grows with your business
 

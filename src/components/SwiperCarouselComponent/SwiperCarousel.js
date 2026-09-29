@@ -11,7 +11,7 @@ import { A11y, Autoplay, Pagination, Navigation } from "swiper/modules";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { withSizes } from "../../utils/imageSizes";
 import { getImageSeo } from "../../utils/imageSeo";
-import ContentfulResponsiveImage from "../ContentfulResponsiveImage";
+import ResponsiveImage from "../ResponsiveImage";
 
 const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
   const carouselLabels = {
@@ -65,8 +65,8 @@ const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
   let slideHeight =
     "h-[21rem] sm:h-[26rem] md:h-[32rem] lg:h-[37rem] xl:h-[41rem] 2xl:h-[45rem]";
   images?.forEach((e, index) => {
-    // Images from Sanity arrive with an edited alt text; Contentful images get
-    // one generated from their title and the page heading.
+    // Use the photo's alt text from Sanity; a photo without one gets alt text
+    // generated from its title and the page heading.
     const seo = e.alt
       ? { alt: e.alt, title: e.alt }
       : getImageSeo(e, {
@@ -129,7 +129,7 @@ const SwiperCarousel = ({ images, className, language = "en-US", subject }) => {
                     className={`w-full object-cover object-center ${imageHeight}`}
                   />
                 ) : (
-                  <ContentfulResponsiveImage
+                  <ResponsiveImage
                     asset={image.asset}
                     alt={image.alt}
                     title={image.title}

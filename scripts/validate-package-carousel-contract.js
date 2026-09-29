@@ -27,7 +27,7 @@ assert.match(heroCarousel, /heroInfo\?\.heroImageList\?\.forEach/);
 assert.match(heroCarousel, /loop=\{true\}/);
 assert.match(heroCarousel, /autoplay=\{\{/);
 assert.match(heroCarousel, /<SwiperSlide\b/);
-assert.match(heroCarousel, /<ContentfulResponsiveImage\b/);
+assert.match(heroCarousel, /<ResponsiveImage\b/);
 
 assert.match(packageCarousel, /images\?\.forEach/);
 assert.match(packageCarousel, /loop=\{true\}/);
@@ -35,7 +35,7 @@ assert.match(packageCarousel, /autoplay=\{\{/);
 assert.match(packageCarousel, /navigation=\{true\}/);
 assert.match(packageCarousel, /type: "fraction"/);
 assert.match(packageCarousel, /photoListEdited\.map/);
-assert.match(packageCarousel, /<ContentfulResponsiveImage\b/);
+assert.match(packageCarousel, /<ResponsiveImage\b/);
 assert.match(packageCarousel, /lazyPreloadPrevNext=\{2\}/);
 assert.doesNotMatch(packageCarousel, /images\?*\.slice\(/);
 
