@@ -7,9 +7,7 @@ import { openCookieSettings } from "../../CookieConsent/consent";
 const Copyright = ({ companyName, language }) => {
   const { t } = useTranslation();
   const [date, setDate] = useState(new Date().getFullYear());
-  // useEffect(() => {
-  //   setDate(new Date().getFullYear());
-  // }, []);
+
 
   // Queried here rather than threaded through props: generalLayout is selected
   // in 16 page queries plus gatsby-node, so passing it down would mean editing
@@ -70,9 +68,6 @@ const Copyright = ({ companyName, language }) => {
         target="_blank"
         rel="noreferrer"
       >
-        {/* Sanity's CDN transcodes on request. The source is a 512x487 PNG
-            (328 KB) but this renders at 17x16, so ask for webp at ~4x the
-            render width: 2.2 KB instead. */}
         <img
           src="https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png?fm=webp&q=80&w=64"
           alt="DR Web Studio logo"
