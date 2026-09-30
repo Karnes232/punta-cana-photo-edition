@@ -10,7 +10,8 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "node scripts/validate-commercial-metadata.js && node scripts/validate-retired-content.js && node scripts/validate-package-carousel-contract.js && node scripts/validate-proposal-schema-source.js && node scripts/validate-portuguese-localization.js && node scripts/validate-french-localization.js && gatsby build && node scripts/validate-language-routing-seo.js && node scripts/validate-proposal-seo.js && node scripts/validate-commercial-metadata.js --built",
+    "build": "node scripts/validate-commercial-metadata.js && node scripts/validate-retired-content.js && node scripts/validate-package-carousel-contract.js && node scripts/validate-proposal-schema-source.js && node scripts/validate-portuguese-localization.js && node scripts/validate-french-localization.js && gatsby build && node scripts/validate-language-routing-seo.js && node scripts/validate-proposal-seo.js && node scripts/validate-commercial-metadata.js --built && node scripts/validate-no-nul-bytes.js",
+    "postinstall": "patch-package",
     "validate:retired-content": "node scripts/validate-retired-content.js",
     "validate:package-carousel": "node scripts/validate-package-carousel-contract.js",
     "verify:retired-content:live": "node scripts/verify-redirects-live.mjs",
@@ -19,6 +20,7 @@
     "validate:french": "node scripts/validate-french-localization.js",
     "validate:proposal-seo": "node scripts/validate-proposal-seo.js",
     "validate:language-routing-seo": "node scripts/validate-language-routing-seo.js",
+    "validate:no-nul-bytes": "node scripts/validate-no-nul-bytes.js",
     "serve": "gatsby serve",
     "netlify:dev": "netlify dev",
     "studio": "npm --prefix studio run dev",
@@ -80,6 +82,7 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "babel-loader": "^10.0.0",
+    "patch-package": "^8.0.1",
     "prettier": "3.3.3"
   }
 }
