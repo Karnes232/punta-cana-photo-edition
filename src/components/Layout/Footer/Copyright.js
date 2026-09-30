@@ -26,7 +26,8 @@ const Copyright = ({ companyName, language }) => {
   const { legalName, rnc } = data.sanityGeneralLayout ?? {};
 
   return (
-    <div className=" flex flex-col xl:flex-row justify-between xl:gap-10 py-4 w-full">
+    <div className="w-full py-4">
+    <div className=" flex flex-col xl:flex-row justify-between xl:gap-10 w-full">
       <div className="flex flex-col gap-1">
         <Link to={localizedPath("/", language)}>
           <p className="tracking-wider cursor-pointer text-slate-600">
@@ -42,20 +43,6 @@ const Copyright = ({ companyName, language }) => {
           {legalName} &middot; RNC {rnc}
         </p>
       )}
-      <nav aria-label={t("Legal")} className="flex flex-wrap gap-x-4 gap-y-1 text-slate-600">
-        <Link to={localizedPath("/privacy-policy/", language)} className="hover:text-orange-500">
-          {t("Privacy Policy")}
-        </Link>
-        <Link to={localizedPath("/terms-and-conditions/", language)} className="hover:text-orange-500">
-          {t("Terms & Conditions")}
-        </Link>
-        <Link to={localizedPath("/cookie-policy/", language)} className="hover:text-orange-500">
-          {t("Cookie Policy")}
-        </Link>
-        <button type="button" onClick={openCookieSettings} className="hover:text-orange-500">
-          {t("Cookie settings")}
-        </button>
-      </nav>
       <p className="text-slate-600 flex flex-col md:flex-row items-center gap-2 lg:flex-1 lg:justify-start  mt-5 lg:mt-0">
         {t("Built by")}
         {/* DR Web Studio's site has only English and Spanish. */}
@@ -81,6 +68,22 @@ const Copyright = ({ companyName, language }) => {
         <span className="hidden lg:inline"> —</span>
         {t("Web Development in the Dominican Republic")}
       </p>
+    </div>
+    {/* Its own line, so the copyright row keeps its three columns. */}
+    <nav aria-label={t("Legal")} className="mt-4 flex flex-wrap gap-x-5 gap-y-2 tracking-wider text-slate-600">
+      <Link to={localizedPath("/privacy-policy/", language)} className="hover:text-orange-500">
+        {t("Privacy Policy")}
+      </Link>
+      <Link to={localizedPath("/terms-and-conditions/", language)} className="hover:text-orange-500">
+        {t("Terms & Conditions")}
+      </Link>
+      <Link to={localizedPath("/cookie-policy/", language)} className="hover:text-orange-500">
+        {t("Cookie Policy")}
+      </Link>
+      <button type="button" onClick={openCookieSettings} className="tracking-wider hover:text-orange-500">
+        {t("Cookie settings")}
+      </button>
+    </nav>
     </div>
   );
 };

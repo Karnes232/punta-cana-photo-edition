@@ -6,7 +6,7 @@ import { OPEN_EVENT, readConsent, saveConsent } from "./consent";
 // until the visitor chooses; reopened from "Cookie settings" in the footer and
 // on the cookie policy. Accept and Reject have equal weight, as EU rules require.
 const buttonClass =
-  "px-5 py-3 font-montserrat text-xs font-semibold uppercase tracking-[0.14em] transition";
+  "whitespace-nowrap px-5 py-3 font-montserrat text-xs font-semibold uppercase tracking-[0.14em] transition";
 
 const Toggle = ({ id, label, text, checked, disabled, onChange }) => (
   <label htmlFor={id} className="flex items-start gap-3 py-2">
@@ -62,7 +62,8 @@ const CookieConsent = () => {
       role="dialog"
       aria-modal="false"
       aria-labelledby="cookie-consent-title"
-      className="fixed inset-x-0 bottom-0 z-[60] border-t border-gray-200 bg-white px-4 pt-5 font-montserrat text-sm text-gray-700 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] md:px-10"
+      // Above the floating contact button (z-index 500) until a choice is made.
+      className="fixed inset-x-0 bottom-0 z-[600] border-t border-gray-200 bg-white px-4 pt-5 font-montserrat text-sm text-gray-700 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] md:px-10"
       style={{ paddingBottom: "calc(1.25rem + env(safe-area-inset-bottom, 0px))" }}
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
