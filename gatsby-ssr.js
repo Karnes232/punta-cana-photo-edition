@@ -1,4 +1,5 @@
 import React from "react";
+import { consentDefaultsScript } from "./src/components/CookieConsent/consent";
 
 // Third-party tags injected into the <head> of every statically generated page.
 // Google Analytics/Ads are handled separately by gatsby-plugin-google-gtag.
@@ -10,6 +11,12 @@ import React from "react";
 // costing ~1.4s of FCP and pushing LCP from 2.7s to 6.0s.
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
+    // Google Consent Mode v2 defaults. Must run before Google's tag, which
+    // gatsby-plugin-google-gtag puts at the end of <body>.
+    <script
+      key="consent-defaults"
+      dangerouslySetInnerHTML={{ __html: consentDefaultsScript }}
+    />,
     <script
       key="ahrefs-analytics"
       src="https://analytics.ahrefs.com/analytics.js"

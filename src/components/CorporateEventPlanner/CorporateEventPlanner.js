@@ -565,6 +565,8 @@ const CorporateEventPlanner = ({ page, generalInfo, language }) => {
                           height="100%"
                           light
                           playsinline
+                          // dnt: Vimeo sets no tracking cookies, so the video needs no consent.
+                          config={{ vimeo: { playerOptions: { dnt: true } } }}
                         />
                       </div>
                     )}

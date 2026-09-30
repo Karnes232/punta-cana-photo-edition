@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import ExpandableMessengerButton from "../FloatingButtonComponents/ExpandableMessengerButton";
+import CookieConsent from "../CookieConsent/CookieConsent";
 
 const Layout = ({ children, generalInfo, overlayHeader = false }) => {
   const data = useStaticQuery(graphql`
@@ -25,6 +26,7 @@ const Layout = ({ children, generalInfo, overlayHeader = false }) => {
       />
       {children}
       <Footer generalInfo={generalInfo} />
+      <CookieConsent />
     </div>
   );
 };

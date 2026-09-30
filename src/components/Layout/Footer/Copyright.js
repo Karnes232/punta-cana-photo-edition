@@ -2,6 +2,7 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { localizedPath } from "../../../utils/siteLocales";
+import { openCookieSettings } from "../../CookieConsent/consent";
 
 const Copyright = ({ companyName, language }) => {
   const { t } = useTranslation();
@@ -41,6 +42,20 @@ const Copyright = ({ companyName, language }) => {
           {legalName} &middot; RNC {rnc}
         </p>
       )}
+      <nav aria-label={t("Legal")} className="flex flex-wrap gap-x-4 gap-y-1 text-slate-600">
+        <Link to={localizedPath("/privacy-policy/", language)} className="hover:text-orange-500">
+          {t("Privacy Policy")}
+        </Link>
+        <Link to={localizedPath("/terms-and-conditions/", language)} className="hover:text-orange-500">
+          {t("Terms & Conditions")}
+        </Link>
+        <Link to={localizedPath("/cookie-policy/", language)} className="hover:text-orange-500">
+          {t("Cookie Policy")}
+        </Link>
+        <button type="button" onClick={openCookieSettings} className="hover:text-orange-500">
+          {t("Cookie settings")}
+        </button>
+      </nav>
       <p className="text-slate-600 flex flex-col md:flex-row items-center gap-2 lg:flex-1 lg:justify-start  mt-5 lg:mt-0">
         {t("Built by")}
         {/* DR Web Studio's site has only English and Spanish. */}

@@ -59,6 +59,8 @@ const VideoPlayer = ({ url, vertical, className }) => {
           width="100%"
           height="100%"
           pip
+          // dnt: Vimeo sets no tracking cookies, so the video needs no consent.
+          config={{ vimeo: { playerOptions: { dnt: true } } }}
         />
       ) : (
         <div className="h-full w-full bg-black/5" aria-hidden="true" />
