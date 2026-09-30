@@ -2,6 +2,7 @@ import { BookIcon } from "@sanity/icons/Book"
 import { CaseIcon } from "@sanity/icons/Case"
 import { CheckmarkCircleIcon } from "@sanity/icons/CheckmarkCircle"
 import { DocumentIcon } from "@sanity/icons/Document"
+import { DocumentTextIcon } from "@sanity/icons/DocumentText"
 import { DocumentsIcon } from "@sanity/icons/Documents"
 import { CogIcon } from "@sanity/icons/Cog"
 import { CommentIcon } from "@sanity/icons/Comment"
@@ -35,6 +36,9 @@ export const singletonTypes = new Set([
   "proposalPackageTexts",
   "blogPage",
   "blogPost",
+  "privacyPolicyPage",
+  "termsPage",
+  "cookiePolicyPage",
 ])
 
 // Hidden from the content list and the "new document" menu: the singletons, the tags
@@ -173,6 +177,19 @@ export const structure: StructureResolver = (S) => {
       translatedPage("thankYouPage", "Thank-You Page", CheckmarkCircleIcon),
       translatedPage("shareExperiencePage", "Share Your Experience", CommentIcon),
       translatedPage("notFoundPage", "404 Page", WarningOutlineIcon),
+      S.listItem()
+        .title("Legal pages")
+        .id("legalPages")
+        .icon(DocumentTextIcon)
+        .child(
+          S.list()
+            .title("Legal pages")
+            .items([
+              translatedPage("privacyPolicyPage", "Privacy Policy", LockIcon),
+              translatedPage("termsPage", "Terms & Conditions", DocumentTextIcon),
+              translatedPage("cookiePolicyPage", "Cookie Policy", CogIcon),
+            ]),
+        ),
       S.divider(),
       singleton("adminPage", "Admin Area", LockIcon),
       S.documentTypeListItem("rentalItem").title("Rental Items"),

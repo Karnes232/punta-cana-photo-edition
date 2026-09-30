@@ -349,6 +349,18 @@ module.exports = {
             getLanguageFromPath: true,
           },
           {
+            matchPath: "/:lang?/privacy-policy",
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: "/:lang?/terms-and-conditions",
+            getLanguageFromPath: true,
+          },
+          {
+            matchPath: "/:lang?/cookie-policy",
+            getLanguageFromPath: true,
+          },
+          {
             matchPath: "/:lang?/admin/:uid",
             getLanguageFromPath: true,
             excludeLanguages: ["pt", "fr"],

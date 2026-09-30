@@ -23,6 +23,9 @@ export const translatedTypes = [
   "proposalPage",
   "proposalPackageTexts",
   "blogPage",
+  "privacyPolicyPage",
+  "termsPage",
+  "cookiePolicyPage",
 ]
 
 // Singletons can be edited and published, but not duplicated or deleted.

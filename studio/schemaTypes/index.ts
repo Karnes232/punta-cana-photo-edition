@@ -11,6 +11,7 @@ import { eventPlannerPage } from "./documents/eventPlannerPage"
 import { genderRevealPage } from "./documents/genderRevealPage"
 import { generalLayout } from "./documents/generalLayout"
 import { homePage } from "./documents/homePage"
+import { cookiePolicyPage, privacyPolicyPage, termsPage } from "./documents/legalPages"
 import { notFoundPage } from "./documents/notFoundPage"
 import { proposalAddOn } from "./documents/proposalAddOn"
 import { proposalPackage } from "./documents/proposalPackage"
@@ -70,6 +71,9 @@ export const schemaTypes = [
   blogPost,
   blogCategory,
   blogTopic,
+  privacyPolicyPage,
+  termsPage,
+  cookiePolicyPage,
   // Objects
   addOnName,
   adminLabel,

@@ -54,6 +54,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      allSanityPrivacyPolicyPage {
+        nodes {
+          _id
+          language
+        }
+      }
+      allSanityTermsPage {
+        nodes {
+          _id
+          language
+        }
+      }
+      allSanityCookiePolicyPage {
+        nodes {
+          _id
+          language
+        }
+      }
       allSanityBlogPost {
         nodes {
           _id
@@ -108,6 +126,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         sanityLanguage: node.language,
         layout,
       },
+    });
+  });
+
+  // Legal pages: one page per published document, at /<lang>/<address>/. A
+  // language without a published document simply gets no page.
+  const legalTemplate = path.resolve(`src/template/legalPage.js`);
+  [
+    ["allSanityPrivacyPolicyPage", "privacy", "/privacy-policy/"],
+    ["allSanityTermsPage", "terms", "/terms-and-conditions/"],
+    ["allSanityCookiePolicyPage", "cookies", "/cookie-policy/"],
+  ].forEach(([list, kind, basePath]) => {
+    queryResults.data[list].nodes.forEach((node) => {
+      const pageLanguage = node.language === "en" ? "en-US" : node.language;
+      const langPrefix = node.language === "en" ? "" : `/${node.language}`;
+      createPage({
+        path: `${langPrefix}${basePath}`,
+        component: legalTemplate,
+        context: {
+          id: node._id,
+          kind,
+          basePath,
+          language: pageLanguage,
+          sanityLanguage: node.language,
+        },
+      });
     });
   });
 
