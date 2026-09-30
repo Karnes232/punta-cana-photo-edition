@@ -27,7 +27,7 @@ const Copyright = ({ companyName, language }) => {
 
   return (
     <div className="w-full py-4">
-    <div className=" flex flex-col xl:flex-row justify-between xl:gap-10 w-full">
+    <div className="flex flex-col gap-1 xl:flex-row xl:justify-start xl:gap-10 w-full">
       <div className="flex flex-col gap-1">
         <Link to={localizedPath("/", language)}>
           <p className="tracking-wider cursor-pointer text-slate-600">
@@ -43,33 +43,9 @@ const Copyright = ({ companyName, language }) => {
           {legalName} &middot; RNC {rnc}
         </p>
       )}
-      <p className="text-slate-600 flex flex-col md:flex-row items-center gap-2 lg:flex-1 lg:justify-start  mt-5 lg:mt-0">
-        {t("Built by")}
-        {/* DR Web Studio's site has only English and Spanish. */}
-        <a
-          href={`https://www.dr-webstudio.com/${language === "es" ? "es" : "en"}`}
-          className="flex items-center gap-1 hover:text-orange-500 cursor-pointer"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {/* Sanity's CDN transcodes on request. The source is a 512x487 PNG
-              (328 KB) but this renders at 17x16, so ask for webp at ~4x the
-              render width: 2.2 KB instead. */}
-          <img
-            src="https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png?fm=webp&q=80&w=64"
-            alt="DR Web Studio logo"
-            className="h-4"
-            width="17"
-            height="16"
-            loading="lazy"
-          />
-          DR Web Studio
-        </a>
-        <span className="hidden lg:inline"> —</span>
-        {t("Web Development in the Dominican Republic")}
-      </p>
     </div>
-    {/* Its own line, so the copyright row keeps its three columns. */}
+    {/* The legal links and the credit get their own lines, so the copyright row
+        never has to squeeze. */}
     <nav aria-label={t("Legal")} className="mt-4 flex flex-wrap gap-x-5 gap-y-2 tracking-wider text-slate-600">
       <Link to={localizedPath("/privacy-policy/", language)} className="hover:text-orange-500">
         {t("Privacy Policy")}
@@ -84,6 +60,32 @@ const Copyright = ({ companyName, language }) => {
         {t("Cookie settings")}
       </button>
     </nav>
+    {/* Last line, on its own. */}
+    <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-slate-600">
+      {t("Built by")}
+      {/* DR Web Studio's site has only English and Spanish. */}
+      <a
+        href={`https://www.dr-webstudio.com/${language === "es" ? "es" : "en"}`}
+        className="flex items-center gap-1 hover:text-orange-500 cursor-pointer"
+        target="_blank"
+        rel="noreferrer"
+      >
+        {/* Sanity's CDN transcodes on request. The source is a 512x487 PNG
+            (328 KB) but this renders at 17x16, so ask for webp at ~4x the
+            render width: 2.2 KB instead. */}
+        <img
+          src="https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png?fm=webp&q=80&w=64"
+          alt="DR Web Studio logo"
+          className="h-4"
+          width="17"
+          height="16"
+          loading="lazy"
+        />
+        DR Web Studio
+      </a>
+      <span className="hidden md:inline"> —</span>
+      {t("Web Development in the Dominican Republic")}
+    </p>
     </div>
   );
 };
