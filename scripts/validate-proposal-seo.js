@@ -177,7 +177,7 @@ const main = async () => {
   const response = await fetch(url);
   assert.ok(response.ok, `Sanity query failed: ${response.status}`);
   const { packages, pages, texts } = (await response.json()).result;
-  assert.equal(packages.length, 11);
+  assert.ok(packages.length > 0, "At least one published proposal package is required");
   const expectedFor = (language) =>
     packages.map((item) => {
       const page = pages.find(

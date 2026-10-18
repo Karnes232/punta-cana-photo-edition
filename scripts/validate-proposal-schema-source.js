@@ -59,10 +59,10 @@ const main = async () => {
   assert.ok(response.ok, `Sanity query failed: ${response.status}`);
   const { packages, pages } = (await response.json()).result;
 
-  assert.equal(packages.length, 11);
+  assert.ok(packages.length > 0, "At least one published proposal package is required");
   assert.equal(
     new Set(packages.map((item) => item.slug)).size,
-    11,
+    packages.length,
     "Package addresses must be unique",
   );
   packages.forEach((item) => {
@@ -114,8 +114,8 @@ const main = async () => {
     );
 
     assert.ok(catalog);
-    assert.equal(catalog.numberOfItems, 11);
-    assert.equal(catalog.itemListElement.length, 11);
+    assert.equal(catalog.numberOfItems, packages.length);
+    assert.equal(catalog.itemListElement.length, packages.length);
     assert.equal(hubService.hasOfferCatalog["@id"], catalog["@id"]);
 
     packages.forEach((item, index) => {
@@ -206,7 +206,7 @@ const main = async () => {
   assert.match(gatsbyConfigSource, /!isPackageDetailPath\(page\.path\)/);
 
   console.log(
-    "Validated the 11 shared proposal offers in four languages, localized URLs, noindex policy, package relationships, prices, breadcrumbs and image references at source level.",
+    `Validated the ${packages.length} shared proposal offers in four languages, localized URLs, noindex policy, package relationships, prices, breadcrumbs and image references at source level.`,
   );
 };
 

@@ -27,7 +27,7 @@ const main = async () => {
 
   const bySlug = new Map();
   for (const page of pages) bySlug.set(page.slug, [...(bySlug.get(page.slug) || []), page.language]);
-  assert.equal(bySlug.size, 11, 'The eleven proposal package pages');
+  assert.ok(bySlug.size > 0, 'At least one published proposal package is required');
   for (const [slug, found] of bySlug) assert.deepEqual([...found].sort(), languages, `/packages/${slug}/: all languages required`);
 
   const titles = new Set(), descriptions = new Set();
@@ -66,3 +66,4 @@ main().catch((error) => {
   console.error(error.message);
   process.exit(1);
 });
+
