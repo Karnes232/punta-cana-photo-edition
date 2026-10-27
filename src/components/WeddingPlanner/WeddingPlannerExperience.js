@@ -113,7 +113,7 @@ const PackageCard = ({ item, copy, onSelect }) => {
         {item?.title}
       </h3>
       {item?.description && (
-        <p className="mt-4 font-montserrat text-sm leading-6 text-slate-600">
+        <p className="mt-4 whitespace-pre-line font-montserrat text-sm leading-6 text-slate-600">
           {item.description}
         </p>
       )}
@@ -374,10 +374,12 @@ const WeddingPlannerExperience = ({ page, generalInfo, language }) => {
             <h1 className="mt-5 max-w-4xl font-crimson text-5xl font-medium leading-[0.98] text-white sm:text-6xl md:text-7xl">
               {page.heroHeading}
             </h1>
-            <p className="mt-7 max-w-2xl font-montserrat text-lg leading-8 text-slate-100 md:text-xl">
-              {page.heroText}
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            {(page.heroText || "").split(/\n\s*\n/).map((paragraph, index) => (
+              <p key={index} className={`mt-7 max-w-2xl whitespace-pre-line font-montserrat text-slate-100 ${index === 0 ? "text-lg leading-8 md:text-xl" : "text-sm leading-7"}`}>
+                {paragraph}
+              </p>
+            ))}
+            <div className="mt-9 flex flex-col flex-wrap gap-3 sm:flex-row">
               <a
                 href="#wedding-packages"
                 className="inline-flex items-center justify-center gap-2 bg-amber-600 px-6 py-4 font-montserrat text-xs font-semibold uppercase tracking-[0.13em] text-white no-underline transition hover:bg-amber-500"
@@ -404,12 +406,6 @@ const WeddingPlannerExperience = ({ page, generalInfo, language }) => {
         <a className="wp-path" href="#indian-weddings"><IndianImage asset={southAsianPhotos[1]||southAsianPhotos[0]} alt={page.southAsianGalleryTitle}/><div className="wp-path-copy"><strong>{page.southAsianLabel}</strong><span>{page.exploreLabel} ↗</span></div></a>
       </nav>
 
-      {realWeddingImages.length > 0 && <section id="western-weddings" className="bg-white px-6 py-20 md:px-10 lg:px-12">
-        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={page.westernLabel} title={page.realWeddingsTitle} body={page.realWeddingsText}/>
-          <WeddingGallery images={realWeddingImages} copy={galleryCopy} label={page.westernLabel} renderImage={(image,full)=><SanityImage image={image} className="h-full w-full" loading={full?'eager':'lazy'}/>}/>
-        </div>
-      </section>}
-
       <section
         id="wedding-packages"
         className="scroll-mt-24 px-6 py-20 md:px-10 md:py-28 lg:px-12"
@@ -421,7 +417,7 @@ const WeddingPlannerExperience = ({ page, generalInfo, language }) => {
             body={page.packagesIntro}
           />
           <div className="mt-14 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
-            {packageList.filter((item) => !item.southAsian).map((item) => (
+            {packageList.filter((item) => !item.southAsian).sort((a, b) => Number(Boolean(b.mostPopular)) - Number(Boolean(a.mostPopular))).map((item) => (
               <PackageCard
                 key={item.key}
                 item={item}
@@ -433,16 +429,22 @@ const WeddingPlannerExperience = ({ page, generalInfo, language }) => {
         </div>
       </section>
 
+      {realWeddingImages.length > 0 && <section id="western-weddings" className="bg-white px-6 py-20 md:px-10 lg:px-12">
+        <div className="mx-auto max-w-7xl"><SectionHeading eyebrow={page.westernLabel} title={page.realWeddingsTitle} body={page.realWeddingsText}/>
+          <WeddingGallery images={realWeddingImages} copy={galleryCopy} label={page.westernLabel} renderImage={(image,full)=><SanityImage image={image} className="h-full w-full" loading={full?'eager':'lazy'}/>}/>
+        </div>
+      </section>}
+
       <section id="indian-weddings" className="wp-indian">
         <div className="wp-indian-inner">
           <div className="wp-indian-head"><div><p className="wp-kicker">{page.southAsianLabel}</p><h2>{page.southAsianTitle}</h2><p>{page.southAsianIntro}</p></div><IndianImage asset={southAsianPhotos[1]||southAsianPhotos[0]} className="wp-indian-cover" alt={page.southAsianGalleryTitle}/></div>
+          <div className="wp-indian-offer"><div><h3>{page.southAsianOfferTitle}</h3><p>{page.southAsianBody}</p><p className="mt-6">{page.southAsianNote}</p></div>
+            {southAsianPackage && <PackageCard key={southAsianPackage.key} item={southAsianPackage} copy={packageCopy} onSelect={selectPackage}/>}</div>
           <div className="wp-film-row"><div><h3>{page.filmsTitle}</h3><p>{page.filmsText}</p><button type="button" className="wp-inquiry-cta" onClick={()=>selectPackage(southAsianPackage?.title)}>{page.southAsianCtaLabel} ↗</button></div><WeddingFilms films={page.films} copy={galleryCopy}/></div>
           {southAsianPhotos.length>0&&<>
           <h3>{page.southAsianGalleryTitle}</h3>
           <WeddingGallery images={southAsianPhotos} copy={galleryCopy} label={page.southAsianGalleryTitle} renderImage={(image,full)=>full?<img src={image.asset?.url} alt={image.alt} title={image.alt}/>:<IndianImage asset={image} alt={page.southAsianGalleryTitle}/>}/>
           </>}
-          <div className="wp-indian-offer"><div><h3>{page.southAsianOfferTitle}</h3><p>{page.southAsianBody}</p><p className="mt-6">{page.southAsianNote}</p></div>
-            {southAsianPackage && <PackageCard key={southAsianPackage.key} item={southAsianPackage} copy={packageCopy} onSelect={selectPackage}/>}</div>
         </div>
       </section>
 
