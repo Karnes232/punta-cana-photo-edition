@@ -44,10 +44,11 @@ assert.match(
 
 assert.match(
   spanishWedding,
-  /<title[^>]*>Organización de Bodas en Punta Cana \| Planificación Integral<\/title>/i,
+  /<title[^>]*>Wedding Planner Punta Cana \| República Dominicana \| \$2,500<\/title>/i,
 );
 assert.doesNotMatch(
-  visibleText(spanishWedding),
+  // The approved Spanish H1/title intentionally retain this SEO phrase.
+  visibleText(spanishWedding).replace(/\bWedding Planner(?: en)? Punta Cana\b/gi, ""),
   /\bwedding (?:planner|planning)\b/i,
 );
 
@@ -77,7 +78,7 @@ assert.doesNotMatch(visibleText(spanishHome), /\belopements?\b/i);
 
 assert.match(
   portugueseWedding,
-  /<title[^>]*>Wedding Planner em Punta Cana \| Planejamento e Coordenação<\/title>/i,
+  /<title[^>]*>Wedding Planner Punta Cana \| República Dominicana \| US\$2\.500<\/title>/i,
 );
 assert.match(
   portugueseGenderReveal,
@@ -102,7 +103,7 @@ for (const portuguesePage of [
 
 assert.match(
   frenchWedding,
-  /<title[^>]*>Wedding Planner à Punta Cana \| Organisation et Coordination<\/title>/i,
+  /<title[^>]*>Wedding Planner à Punta Cana \| République dominicaine<\/title>/i,
 );
 assert.match(
   frenchGenderReveal,

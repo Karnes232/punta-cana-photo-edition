@@ -52,6 +52,7 @@ export const Head = ({ pageContext, data }) => {
     language,
     title: seo?.title,
     description: seo?.description,
+    plannerDescription: page.greciaText,
     image,
     packages: weddingPackages(page),
     faqs: page.faqs || [],

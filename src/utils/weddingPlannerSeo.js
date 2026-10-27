@@ -3,6 +3,7 @@ export const buildWeddingPlannerSchema = ({
   language,
   title,
   description,
+  plannerDescription,
   image,
   packages,
   faqs,
@@ -69,13 +70,7 @@ export const buildWeddingPlannerSchema = ({
               ? "Planificadora de bodas principal"
               : "Lead Wedding Planner",
         worksFor: { "@id": organizationId },
-        description: isPortuguese
-          ? "Wedding planner em Punta Cana com 10 anos de experiência em casamentos de destino, multiculturais e sul-asiáticos."
-          : isFrench
-            ? "Wedding planner à Punta Cana avec 10 ans d’expérience en mariages de destination, multiculturels et sud-asiatiques."
-            : isSpanish
-              ? "Planificadora de bodas en Punta Cana con 10 años de experiencia en bodas de destino, multiculturales y del sur de Asia."
-              : "Punta Cana wedding planner with 10 years of experience in destination, multicultural and South Asian weddings.",
+        description: plannerDescription,
         knowsAbout: isPortuguese
           ? [
               "Planejamento de casamentos de destino",
