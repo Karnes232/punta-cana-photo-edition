@@ -1,12 +1,13 @@
 import React from "react";
 import TextComponent from "../TextComponent/TextComponent";
 import PackageCard from "./PackageCard";
+import { compareProposalPackagePages } from "../../utils/proposalSeo";
 
-// The proposal packages' cards, from the lowest price.
+// The proposal packages' cards, from the lowest price (same-price packages by slug).
 const OurPackages = ({ title, packagePages = [], fromLabel, language }) => {
   const cards = packagePages
     .filter((item) => item.package?.slug?.current)
-    .sort((a, b) => a.package.price - b.package.price);
+    .sort(compareProposalPackagePages);
 
   return (
     <section
