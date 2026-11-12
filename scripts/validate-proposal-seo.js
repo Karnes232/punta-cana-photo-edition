@@ -9,7 +9,7 @@ const publicDir = path.resolve(__dirname, "..", "public");
 const projectId = process.env.SANITY_PROJECT_ID || "mj6f2710";
 const dataset = process.env.SANITY_DATASET || "production";
 const query = `{
-  "packages": *[_type == "proposalPackage" && !(_id in path("drafts.**"))] | order(price asc){ _id, price, "slug": slug.current },
+  "packages": *[_type == "proposalPackage" && !(_id in path("drafts.**"))] | order(price asc, slug.current asc){ _id, price, "slug": slug.current },
   "pages": *[_type == "proposalPackagePage" && !(_id in path("drafts.**"))]{ language, "ref": package._ref, name },
   "texts": *[_type == "proposalPackageTexts" && !(_id in path("drafts.**"))]{ language, formTitle, formSubmitLabel }
 }`;

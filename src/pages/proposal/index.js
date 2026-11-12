@@ -17,7 +17,10 @@ import {
   ProposalMomentsHeading,
   ProposalTrust,
 } from "../../components/ProposalComponents/ProposalExperience";
-import { buildProposalSchema } from "../../utils/proposalSeo";
+import {
+  buildProposalSchema,
+  compareProposalPackagePages,
+} from "../../utils/proposalSeo";
 import {
   getLanguageConfig,
   localizedUrl,
@@ -108,7 +111,7 @@ export const Head = ({ pageContext, data }) => {
     : "https://www.instagram.com/sertuinevents/";
   const packages = [...data.allSanityProposalPackagePage.nodes]
     .filter((item) => item.package?.slug?.current)
-    .sort((a, b) => a.package.price - b.package.price)
+    .sort(compareProposalPackagePages)
     .map((item) => ({
       title: item.name,
       price: item.package.price,

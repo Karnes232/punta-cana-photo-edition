@@ -133,6 +133,18 @@ const buildImageObjects = ({ images, pageUrl, language, packageName: name }) => 
     .filter(Boolean);
 };
 
+// Package Pages from the lowest price; packages with the same price follow
+// their slug, the same order as the GROQ `order(price asc, slug.current asc)`
+// in scripts/validate-proposal-seo.js.
+export const compareProposalPackagePages = (a, b) => {
+  const aSlug = a.package.slug.current;
+  const bSlug = b.package.slug.current;
+  return (
+    a.package.price - b.package.price ||
+    (aSlug < bSlug ? -1 : aSlug > bSlug ? 1 : 0)
+  );
+};
+
 export const buildProposalSchema = ({
   siteUrl,
   pageUrl,
