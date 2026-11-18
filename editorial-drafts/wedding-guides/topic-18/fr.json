@@ -201,6 +201,28 @@
         "Classez chaque demande comme comprise, chiffrée séparément, indisponible ou à confirmer. Une case vide ne vaut pas zéro. Comparez les totaux lorsque les propositions répondent au même programme : un prix de départ inférieur peut couvrir moins d'heures ou d'événements privés.",
         "Avant de signer, demandez l'échéancier, les conditions d'annulation et de modification, la validité du prix et le traitement des taxes ou frais obligatoires. Conservez la liste finale avec le contrat pour évaluer les changements futurs à partir d'un périmètre précis."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guides de préparation complémentaires",
+      "paragraphs": [
+        "Poursuivez avec ces guides pour transformer les questions de cet article en un cahier de préparation concret pour votre célébration."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Comparez resort tout compris et lieu privé",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Examinez la logistique du lieu pour un mariage sud-asiatique",
+          "url": "https://sertuinevents.com/fr/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Questions fréquentes",
