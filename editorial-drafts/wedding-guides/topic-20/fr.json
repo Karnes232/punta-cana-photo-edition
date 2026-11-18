@@ -216,6 +216,28 @@
         "Si vous visitez les destinations, utilisez le même ordre du jour : espaces, repas, accès et responsables. La visite doit éclaircir les questions ouvertes autant que montrer le cadre. Notez les réponses qui demandent une confirmation écrite ultérieure.",
         "Une bonne impression compte, mais doit rejoindre le programme et le contrat. Vérifiez que l'espace visité sera bien celui réservé et que la disponibilité couvre le repli. Après la visite, mettez la comparaison à jour et demandez les propositions finales avant de vous engager financièrement."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guides de préparation complémentaires",
+      "paragraphs": [
+        "Poursuivez avec ces guides pour transformer les questions de cet article en un cahier de préparation concret pour votre célébration."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Comparez resort tout compris et lieu privé",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Organisez le voyage des invités à Punta Cana",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        }
+      ]
     }
   ],
   "faqHeading": "Questions fréquentes",
