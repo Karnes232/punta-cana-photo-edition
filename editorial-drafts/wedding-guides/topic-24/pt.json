@@ -202,6 +202,28 @@
         "Antes de aceitar a proposta final, revisem as mesmas categorias usadas na comparação. Confirmem público por evento, duração, refeições, produção, apoio profissional, viagens assumidas e cobranças obrigatórias. Uma alteração negociada pode mudar mais de uma dessas linhas.",
         "Anotem as condições ainda abertas e quem pode aprovar sua solução. Se o total só funciona quando um desconto não confirmado acontece, mantenham essa dependência visível. A conferência final não precisa reiniciar a pesquisa: ela liga a escolha ao contrato que vocês estão prestes a assumir, preservando as decisões tomadas em conjunto."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guias de planejamento relacionados",
+      "paragraphs": [
+        "Continuem com estes guias para transformar as perguntas deste artigo em orientações práticas para o planejamento da celebração."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Preparem a primeira reunião com a assessoria em Punta Cana",
+          "url": "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Comparem resort all inclusive e espaço privado",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        }
+      ]
     }
   ],
   "faqHeading": "Perguntas frequentes",
