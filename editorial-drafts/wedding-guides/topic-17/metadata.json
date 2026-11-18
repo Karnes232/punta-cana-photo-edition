@@ -47,10 +47,10 @@
     }
   },
   "wordCounts": {
-    "en": 2031,
-    "es": 2027,
-    "pt": 2003,
-    "fr": 2017
+    "en": 2032,
+    "es": 2034,
+    "pt": 2007,
+    "fr": 2020
   },
   "searchIntent": {
     "en": "Indian wedding cost Punta Cana budget catering",
@@ -77,5 +77,28 @@
     "Current individual venue quotations and contract terms needed before purchase."
   ],
   "cta": "/puntacana-wedding-planner/",
-  "publication": false
+  "publication": false,
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "date": "2026-11-18",
+    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
+    "paths": [
+      "first-meeting-punta-cana-wedding-planner-checklist",
+      "south-asian-wedding-punta-cana-venue-logistics-checklist"
+    ]
+  }
 }
