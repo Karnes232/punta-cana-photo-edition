@@ -31,8 +31,8 @@
       ],
       "sources": [
         {
-          "label": "Sertuin Events : prestations et tarifs publiés, en anglais",
-          "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+          "label": "Sertuin Events : prestations et tarifs publiés",
+          "url": "https://sertuinevents.com/fr/puntacana-wedding-planner/",
           "_type": "blogSource",
           "_key": "source1"
         }
@@ -130,6 +130,29 @@
   "ctaButton": {
     "_type": "cta",
     "label": "Wedding planner indépendant à Punta Cana",
-    "url": "/fr/puntacana-wedding-planner/"
-  }
+    "url": "/puntacana-wedding-planner/"
+  },
+  "reviewedAt": "2026-11-18",
+  "reviewNote": "Recherche éditoriale vérifiée le 18 novembre 2026. Confirmez les conditions actuelles dans votre devis écrit.",
+  "faqHeading": "Questions fréquentes",
+  "faqs": [
+    {
+      "_key": "faq1",
+      "_type": "faqItem",
+      "question": "Les honoraires financent-ils aussi la célébration ?",
+      "answer": "Pas nécessairement. Ils rémunèrent la mission d’organisation convenue. Le lieu, les repas, la décoration, les photographies, le transport et l’hébergement peuvent être facturés séparément. Demandez un devis détaillé."
+    },
+    {
+      "_key": "faq2",
+      "_type": "faqItem",
+      "question": "Un forfait est-il toujours préférable à un pourcentage ?",
+      "answer": "Aucun modèle n’est automatiquement préférable. Comparez les mêmes responsabilités et événements. Pour un pourcentage, vérifiez l’assiette ; pour un forfait, précisez les modifications qui nécessiteraient un nouveau devis."
+    },
+    {
+      "_key": "faq3",
+      "_type": "faqItem",
+      "question": "La coordination du jour J comprend-elle la répétition ?",
+      "answer": "Uniquement si l’accord le prévoit. Le service de coordination du jour J publié par Sertuin Events exclut la répétition. Confirmez la prise en charge de chaque activité."
+    }
+  ]
 }
