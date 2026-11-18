@@ -1,0 +1,69 @@
+{
+  "topic": 7,
+  "status": "draft-editorial-review",
+  "reviewedAt": "2026-11-18",
+  "guideId": "blogGuide-wedding-topic-07",
+  "provisionalSharedSlug": "documents-get-married-dominican-republic",
+  "keywords": {
+    "en": {
+      "title": "Getting Married in the Dominican Republic: Documents",
+      "primary": "documents to get married in Dominican Republic",
+      "secondary": [
+        "Dominican Republic marriage requirements for foreigners",
+        "apostille wedding documents",
+        "certified marriage document translation"
+      ],
+      "anchor": "wedding planning in the Dominican Republic"
+    },
+    "es": {
+      "title": "Documentos necesarios para casarse en República Dominicana",
+      "primary": "documentos para casarse en República Dominicana",
+      "secondary": [
+        "requisitos para extranjeros que se casan en República Dominicana",
+        "documentos para matrimonio civil",
+        "apostilla de documentos para matrimonio"
+      ],
+      "anchor": "planificación de bodas en República Dominicana"
+    },
+    "pt": {
+      "title": "Documentos necessários para casar na República Dominicana",
+      "primary": "documentos para casar na República Dominicana",
+      "secondary": [
+        "requisitos para casamento civil na República Dominicana",
+        "documentos para estrangeiros se casarem",
+        "apostila de documentos para casamento"
+      ],
+      "anchor": "organização de casamentos na República Dominicana"
+    },
+    "fr": {
+      "title": "Documents nécessaires pour se marier en République dominicaine",
+      "primary": "documents pour se marier en République dominicaine",
+      "secondary": [
+        "formalités de mariage en République dominicaine",
+        "mariage civil pour étrangers",
+        "apostille et traduction de documents"
+      ],
+      "anchor": "organisation de mariages en République dominicaine"
+    }
+  },
+  "research": {
+    "queries": [
+      "documents marry Dominican Republic foreigners official",
+      "documentos casarse República Dominicana extranjeros JCE",
+      "documentos casar República Dominicana consulado Brasil",
+      "mariage République dominicaine documents ambassade France"
+    ],
+    "sources": [
+      "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
+      "https://servicios360.mirex.gob.do/matrimonio/",
+      "https://poderjudicial.gob.do/wp-content/uploads/2023/08/Ley4-23-Estado-Civil-deroga-la-Ley-659.pdf"
+    ],
+    "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
+  },
+  "pending": [
+    "Expand topic-specific depth toward requested2000–3000 words; current core drafts below target.",
+    "Select and inspect actual hero asset before writing heroAlt.",
+    "Verify2–4 existing same-language related guide URLs before inserting links.",
+    "Confirm shared slug and CMS draft persistence; no publication authorized."
+  ]
+}
