@@ -145,5 +145,28 @@
     "_type": "cta",
     "label": "Independent wedding planner in Punta Cana",
     "url": "/puntacana-wedding-planner/"
-  }
+  },
+  "reviewedAt": "2026-11-18",
+  "reviewNote": "Editorial research checked November 18, 2026. Confirm current terms in your written proposal.",
+  "faqHeading": "Frequently asked questions",
+  "faqs": [
+    {
+      "_key": "faq1",
+      "_type": "faqItem",
+      "question": "Does the planning fee pay for the wedding itself?",
+      "answer": "Not necessarily. A planning fee remunerates the agreed organizational work. Venue hire, catering, décor production, photography, transport and accommodation may be separate. Ask for an itemized proposal before comparing offers."
+    },
+    {
+      "_key": "faq2",
+      "_type": "faqItem",
+      "question": "Is a fixed fee always better than a percentage?",
+      "answer": "Neither model is automatically better. Compare the same responsibilities and event coverage. For a percentage, establish the eligible spending base; for a fixed fee, establish which changes would require a new quote."
+    },
+    {
+      "_key": "faq3",
+      "_type": "faqItem",
+      "question": "Does day-of coordination include the rehearsal?",
+      "answer": "Only if the agreement says so. Sertuin Events' published wedding-day coordination service excludes the rehearsal. Confirm the scope for every event you want covered."
+    }
+  ]
 }
