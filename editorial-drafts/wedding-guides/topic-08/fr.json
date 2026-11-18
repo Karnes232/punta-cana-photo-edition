@@ -1,0 +1,123 @@
+{
+  "_id": "drafts.blogPost-wedding-topic-08-fr",
+  "_type": "blogPost",
+  "language": "fr",
+  "guide": {
+    "_type": "reference",
+    "_ref": "blogGuide-wedding-topic-08"
+  },
+  "title": "Mariage civil ou symbolique à Punta Cana ?",
+  "seoTitle": "Mariage civil ou symbolique à Punta Cana ?",
+  "description": "Comparez mariage civil et cérémonie symbolique à Punta Cana : effets juridiques, documents, liberté de déroulement, coûts et responsabilités.",
+  "directAnswer": "Le mariage civil vise à créer une union légale par l'autorité compétente et les formalités requises. La cérémonie symbolique célèbre votre engagement sans créer elle-même ce statut. Choisissez selon le lieu souhaité pour vos démarches légales, leurs délais et l'expérience des invités. Les conditions religieuses doivent être confirmées séparément.",
+  "authorName": "Sertuin Events",
+  "authorType": "Organization",
+  "reviewedAt": "2026-11-18",
+  "sections": [
+    {
+      "_type": "blogSection",
+      "_key": "s1",
+      "heading": "Choisir le lieu du mariage légal",
+      "paragraphs": [
+        "Commencez par le résultat juridique. Pour vous marier civilement en République dominicaine, identifiez l'oficialía responsable et confirmez votre capacité matrimoniale et vos documents. Si vous préférez les démarches dans votre pays, la célébration à Punta Cana peut être symbolique.",
+        "La JCE publie les exigences du mariage civil. Elles amorcent la consultation, mais le service destinataire doit confirmer votre dossier. L'intitulé d'un forfait hôtelier ne remplace pas cette vérification."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "src0",
+          "label": "JCE : exigences du mariage civil",
+          "url": "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189"
+        }
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s2",
+      "heading": "Comparer le travail plutôt que les images",
+      "paragraphs": [
+        "Les deux événements peuvent comprendre vœux, alliances, participation familiale et réception. Leurs photographies peuvent se ressembler alors que leurs effets diffèrent. Demandez à l'officiant son rôle exact et le document éventuellement remis.",
+        "Pour le civil, attribuez documents, rendez-vous officiel, témoins et retrait de l'acte. Pour le symbolique, attribuez texte, langue, durée et conduite. La similitude du décor ne doit pas masquer une étape juridique manquante."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s3",
+      "heading": "Évaluer la liberté souhaitée",
+      "paragraphs": [
+        "La cérémonie symbolique permet de développer un texte personnel avec le célébrant, dans le respect du lieu et du service convenu. Discutez lectures, traductions et interventions avant d'arrêter la durée.",
+        "Le mariage civil suit les formalités de l'autorité. Demandez où intégrer des éléments personnels et si une partie symbolique distincte convient. Ne demandez pas de supprimer une formalité parce que le dîner prend du retard."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s4",
+      "heading": "Comparer les coûts complets",
+      "paragraphs": [
+        "Distinguez délivrance des actes, authentification, traduction admise, frais officiels et livraison de la production de cérémonie. Ajoutez lieu, célébrant, son, fleurs, chaises et coordination. Incluez aussi les frais du mariage dans votre pays si vous retenez cette voie.",
+        "Le symbolique peut simplifier les démarches à l'étranger sans diminuer tout le budget du séjour. Repas, transferts et production peuvent rester identiques. Comparez les prestations et conditions plutôt que les noms des forfaits."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s5",
+      "heading": "Traiter la question religieuse séparément",
+      "paragraphs": [
+        "Un mariage religieux n'est pas simplement une cérémonie symbolique élaborée. Capacité, lieu et forme relèvent de l'autorité religieuse compétente. Vérifiez également les formalités civiles nécessaires.",
+        "L'apparence religieuse d'un officiant ou l'utilisation de symboles n'établit ni reconnaissance religieuse ni validité civile. Si la foi est centrale dans votre projet, réglez cette question avant de réserver un format incompatible."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s6",
+      "heading": "Clarifier invitation et déroulement",
+      "paragraphs": [
+        "Si vous vous mariez légalement avant le voyage, vous pouvez présenter le séjour comme la célébration de votre mariage. Décidez ce que vous souhaitez partager avec vos proches tout en conservant des données officielles exactes. Un certificat symbolique n'est pas un acte gouvernemental.",
+        "Adaptez le planning au format confirmé, avec interprétation, arrivées et photos. Si les documents tardent, examinez les solutions contractuelles ; la présence de tous ne transforme pas une célébration symbolique en mariage légal."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s7",
+      "heading": "Consigner votre choix",
+      "paragraphs": [
+        "Notez où se déroule le mariage légal, qui confirme les exigences, qui conduit chaque cérémonie et quel acte sera obtenu. Ajoutez échéances, coûts et questions ouvertes. Les deux partenaires doivent comprendre cette distinction avant les acomptes.",
+        "Sertuin Events peut coordonner le séjour autour de cette décision en alignant lieu, célébrant et horaires, pendant que l'autorité compétente traite le volet civil."
+      ]
+    }
+  ],
+  "faqHeading": "Questions fréquentes",
+  "faqs": [
+    {
+      "_type": "faqItem",
+      "_key": "faq0",
+      "question": "La cérémonie symbolique crée-t-elle un mariage civil ?",
+      "answer": "Non. Les formalités légales doivent être accomplies séparément auprès de l'autorité compétente."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq1",
+      "question": "Un ami peut-il la conduire ?",
+      "answer": "Confirmez l'organisation avec le lieu. Cela ne confère pas à cet ami la qualité d'officier d'état civil."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq2",
+      "question": "Les dates légale et festive peuvent-elles différer ?",
+      "answer": "Oui. Gardez la date civile exacte dans les documents officiels et présentez la célébration selon vos souhaits."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq3",
+      "question": "Quelle option coûte moins cher ?",
+      "answer": "Comparez démarches et événement au complet. Le symbolique peut simplifier l'administration sans changer le coût de la réception."
+    }
+  ],
+  "ctaTitle": "Choisir le format adapté à votre projet",
+  "ctaText": "Précisez où vous souhaitez vous marier civilement et quelle célébration vous imaginez à Punta Cana.",
+  "ctaButton": {
+    "_type": "cta",
+    "label": "coordination de mariage à Punta Cana",
+    "url": "/puntacana-wedding-planner/"
+  }
+}
