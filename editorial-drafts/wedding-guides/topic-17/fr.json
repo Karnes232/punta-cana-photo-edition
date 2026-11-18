@@ -194,6 +194,28 @@
         "Enregistrez acomptes, soldes, échéances et conditions de modification ou d'annulation. Les postes non chiffrés restent en attente, pas à zéro. Un budget utile se rapproche de propositions écrites et s'actualise après chaque décision validée.",
         "Terminez par une vérification avec les personnes qui contribuent : total approuvé, sommes versées, fonds disponibles et prochaines échéances. Identifiez les montants estimatifs qui attendent encore une confirmation écrite et désignez la personne chargée de l'obtenir."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guides de préparation complémentaires",
+      "paragraphs": [
+        "Poursuivez avec ces guides pour transformer les questions de cet article en un cahier de préparation concret pour votre célébration."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Préparez votre premier rendez-vous avec l'organisateur à Punta Cana",
+          "url": "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Examinez la logistique du lieu pour un mariage sud-asiatique",
+          "url": "https://sertuinevents.com/fr/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Questions fréquentes",
