@@ -92,8 +92,99 @@
       ]
     },
     {
+      "heading": "Leia as opções de privacidade de cada proposta",
+      "paragraphs": [
+        "O Jellyfish descreve reservas parciais e integrais; a opção parcial pode manter o restaurante superior aberto. O Kukua informa um evento diário quando exige fechamento. Confirme áreas e horários na sua proposta.",
+        "Essas descrições respondem a perguntas diferentes: uma identifica a parte reservada e outra explica a organização dos eventos. Nenhuma substitui uma planta com cerimônia, recepção e circulação de fornecedores. Peça que as equipes marquem as áreas incluídas e expliquem o que os convidados encontrarão fora delas.",
+        "Pense na experiência de cada etapa. Vocês podem aceitar movimento em outra área e desejar tranquilidade durante votos e discursos. Explique essa diferença em vez de pedir privacidade sem definição. Inclua preparação, fotos e chegada, pois um jantar exclusivo não esclarece automaticamente como funcionam as horas anteriores."
+      ],
+      "sources": [
+        {
+          "label": "Jellyfish: reservas e utilização do espaço",
+          "url": "https://www.jellyfishrestaurant.com/weddings-faq",
+          "_type": "blogSource",
+          "_key": "src0"
+        },
+        {
+          "label": "Kukua: organização dos eventos",
+          "url": "https://kukuabeachclub.co/faqs/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "_type": "blogSection",
-      "_key": "s8",
+      "_key": "s8"
+    },
+    {
+      "heading": "Percorra o dia inteiro durante a visita",
+      "paragraphs": [
+        "Comece onde o veículo deixa os convidados e siga o caminho de quem chega. Localize boas-vindas, assentos da cerimônia, bebidas, jantar e banheiros. Peça para ver esse percurso com a montagem alternativa. Assim aparecem diferenças práticas que uma galeria de mesas decoradas não permite avaliar.",
+        "Repita o exercício como casal: onde se arrumar, deixar objetos, encontrar o fotógrafo e esperar antes da entrada. Se a preparação ocorrer no hotel, inclua transporte e recepção no destino. Um quarto bonito ajuda pouco quando o roteiro não permite chegar com tempo ou quando ninguém ficou responsável pelos pertences.",
+        "Veja também como os fornecedores trabalham. Pergunte onde descarregam, guardam equipamentos e circulam durante o atendimento. São questões para os dois espaços, sem sugerir problemas em qualquer deles. Guarde respostas com fotos da visita para comparar a planta final com o que realmente foi observado.",
+        "Em uma chamada de vídeo, solicite um percurso contínuo e pontos específicos de observação. Um filme promocional transmite atmosfera, mas não explica o espaço entre mesas ou o acesso à alternativa coberta. Leve uma lista objetiva para aproveitar a conversa e registre dúvidas que exigem resposta posterior."
+      ],
+      "_type": "blogSection",
+      "_key": "s9"
+    },
+    {
+      "heading": "Compare a assessoria sem duplicar responsabilidades",
+      "paragraphs": [
+        "Pergunte quais tarefas a equipe do espaço assume desde a proposta até a retirada dos últimos materiais. Depois liste o que acontece fora: comunicação com hotéis, viagens, celebrações extras e fornecedores contratados separadamente. Essa fronteira esclarece mais que comparar apenas títulos de profissionais.",
+        "Se vocês consideram assessoria independente, solicitem uma divisão de funções. Em um exemplo hipotético, o local controla seu buffet enquanto a coordenação externa acompanha traslados e cronograma geral. Isso não descreve o contrato do Jellyfish ou do Kukua: as equipes escolhidas precisam combinar a operação real.",
+        "Defina um contato operacional para mudanças no dia e quem aprova gastos adicionais. O casal não deve receber perguntas incompatíveis de várias equipes durante os preparativos. A divisão clara evita trabalho repetido e preserva o conhecimento de quem atua diariamente no estabelecimento.",
+        "Confira quem orientará familiares nos hotéis ou reunirá pessoas para fotos. Ter coordenação no espaço não significa automaticamente contar com assistência em cada ponto de saída. Uma tarefa simples com responsável definido costuma funcionar melhor que uma expectativa ampla de que alguém cuidará de tudo."
+      ],
+      "_type": "blogSection",
+      "_key": "s10"
+    },
+    {
+      "heading": "Teste as propostas com dois cenários de convidados",
+      "paragraphs": [
+        "Use a participação esperada e uma alternativa plausível. Por exemplo, compare um grupo hipotético de quarenta adultos com outro de cinquenta e cinco, mantendo cerimônia e recepção. Esses números são premissas de análise, não informações sobre capacidade ou preços dos estabelecimentos.",
+        "Peça a diferença efetiva em refeições, cadeiras, mesas, equipe, transporte e alternativa coberta. Algumas linhas permanecem fixas e outras aumentam por etapas. A proposta que funciona para o primeiro grupo pode exigir outra planta para o segundo. O resultado relevante é a mudança documentada, não uma média genérica por pessoa.",
+        "Quando uma redução também for possível, pergunte quais compromissos permanecem e quando o total precisa ser confirmado. Mantenha os cenários com data e serviços equivalentes. Assim você avalia flexibilidade sem comparar festas diferentes.",
+        "Separe adultos, crianças e pessoas presentes apenas em parte do programa, quando isso fizer sentido. Solicite as categorias adotadas por cada fornecedor; não aplique automaticamente a política infantil de outro hotel. Uma lista clara permite ajustar orçamento e montagem de maneira coordenada."
+      ],
+      "_type": "blogSection",
+      "_key": "s11"
+    },
+    {
+      "heading": "Separe requisitos essenciais e preferências",
+      "paragraphs": [
+        "Identifique o que eliminaria uma opção: ausência de alternativa adequada, acesso necessário, requisito de cardápio ou teto financeiro firme. Confirme esses pontos antes de pontuar decoração e atmosfera. Uma média alta não deve esconder uma necessidade sem solução que inviabiliza a celebração.",
+        "Depois escolham preferências que distinguem as propostas, como sensação do salão, quantidade de deslocamentos ou preparação no local. Decidam sua importância antes de olhar os totais finais. Isso reduz a tentação de mudar os critérios porque uma fotografia chamou mais atenção.",
+        "Registre respostas ausentes como pendentes. Não atribua vantagem ou desvantagem a uma condição presumida. Quando ambas as equipes responderem, compare com a proposta escrita. Se uma confirma requisitos e outra ainda não consegue, existe uma diferença útil sem precisar declarar um vencedor universal."
+      ],
+      "_type": "blogSection",
+      "_key": "s12"
+    },
+    {
+      "heading": "Organize os documentos até a reserva final",
+      "paragraphs": [
+        "Reúna proposta discriminada, planta, áreas reservadas, transporte e pagamentos. Anote quem respondeu às dúvidas e quando. Ao receber nova cotação, atualize a comparação e guarde a anterior como referência, sem misturar condições favoráveis de versões incompatíveis.",
+        "Antes do pagamento, confirme data exata e procedimento de reserva. Pergunte sobre alterações, adiamento e cancelamento nos documentos. Uma conversa sobre disponibilidade não equivale a uma reserva confirmada. A equipe deve explicar qual confirmação vocês receberão ao concluir o processo.",
+        "Use a checklist da primeira reunião para reunir público previsto, opções de hospedagem e prioridades. O objetivo é escolher um espaço adequado ao grupo, com responsabilidades claras e um preço completo compreensível. Essa organização também facilita conferir se o projeto final corresponde ao que motivou a escolha."
+      ],
+      "sources": [
+        {
+          "label": "Preparar a primeira reunião com a assessoria",
+          "url": "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+          "_type": "blogSource",
+          "_key": "src0"
+        },
+        {
+          "label": "Organizar viagem e transporte dos convidados",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
+      "_type": "blogSection",
+      "_key": "s13"
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s14",
       "heading": "Escolha pelas prioridades do grupo",
       "paragraphs": [
         "Monte uma comparação com fatores decisivos: alternativa coberta, planta, acessibilidade, menu, preço total e flexibilidade contratual. Registre respostas ausentes como pendências. Não atribua uma vantagem com base em uma condição ainda não confirmada.",
@@ -134,5 +225,6 @@
     "_type": "cta",
     "label": "escolha de espaços para casamento em Punta Cana",
     "url": "/puntacana-wedding-planner/"
-  }
+  },
+  "reviewNote": "Fontes oficiais revisadas em 18 de novembro de 2026. Disponibilidade, planta e cobranças dependem da proposta atual."
 }
