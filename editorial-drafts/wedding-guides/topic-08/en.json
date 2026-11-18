@@ -1,0 +1,123 @@
+{
+  "_id": "drafts.blogPost-wedding-topic-08-en",
+  "_type": "blogPost",
+  "language": "en",
+  "guide": {
+    "_type": "reference",
+    "_ref": "blogGuide-wedding-topic-08"
+  },
+  "title": "Legal or Symbolic Wedding in Punta Cana?",
+  "seoTitle": "Legal or Symbolic Wedding in Punta Cana?",
+  "description": "Compare civil and symbolic weddings in Punta Cana by legal effect, paperwork, ceremony flexibility, costs and the responsibilities that need confirmation.",
+  "directAnswer": "A civil wedding is intended to create a legal marriage through the competent authority and required formalities. A symbolic ceremony celebrates your commitment but does not itself create that legal status. Choose based on where you want to complete the legal process, your documentation timeline and the experience you want for guests. Confirm civil and religious requirements separately.",
+  "authorName": "Sertuin Events",
+  "authorType": "Organization",
+  "reviewedAt": "2026-11-18",
+  "sections": [
+    {
+      "_type": "blogSection",
+      "_key": "s1",
+      "heading": "Decide where the legal marriage will happen",
+      "paragraphs": [
+        "Start with the legal outcome, not the décor. If you want to marry legally in the Dominican Republic, identify the civil office handling the marriage and confirm eligibility and documents for your circumstances. If you prefer to complete the legal process at home, the Punta Cana event can be symbolic.",
+        "The JCE publishes civil-marriage requirements. Its checklist is a starting point for confirmation by the receiving office; a hotel's package description does not replace official review."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "src0",
+          "label": "JCE: civil marriage requirements",
+          "url": "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189"
+        }
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s2",
+      "heading": "Compare the work, not the appearance",
+      "paragraphs": [
+        "Both celebrations can include vows, rings, family participation and a reception. Their photographs may look similar while their legal effects differ. Ask the proposed officiant what role they perform and what document, if any, results from the service.",
+        "For the civil route, assign responsibility for the accepted documents, official appointment, witnesses and certificate collection. For a symbolic event, assign responsibility for the script, language, timing and delivery. Do not let the similarity of the ceremony setup conceal a missing legal step."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s3",
+      "heading": "Consider how much flexibility you need",
+      "paragraphs": [
+        "A symbolic celebration allows the couple to develop a personal script with the celebrant, subject to venue rules and the agreed service. Discuss readings, translations and participation without promising a particular duration before the script is prepared.",
+        "A civil ceremony must follow the authority's required formalities. Ask where personal elements may be included and whether a separate symbolic portion would be appropriate. Never ask the officiant to omit legal content because the reception schedule is running late."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s4",
+      "heading": "Compare complete costs",
+      "paragraphs": [
+        "List document issuance, authentication, accepted translation, civil fees and delivery separately from ceremony production. Then price the venue, celebrant, sound, flowers, chairs and coordination. If marrying at home, include those domestic costs rather than treating the legal process as free.",
+        "A symbolic option may reduce overseas administration, but it does not automatically make the full destination wedding cheaper. Dinner, transport and production can remain identical. Compare the actual services and payment terms, not a package label."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s5",
+      "heading": "Keep religious decisions separate",
+      "paragraphs": [
+        "A religious wedding is not simply a more elaborate symbolic ceremony. Its eligibility, venue and form must be determined by the competent religious authority. Ask separately what civil registration or documentation is necessary.",
+        "Do not assume that hiring a religious-looking officiant or using religious imagery provides either religious recognition or civil validity. If faith is central to your plans, resolve that process before booking an event format that may be incompatible."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s6",
+      "heading": "Make the invitation and timeline clear",
+      "paragraphs": [
+        "Couples who marry legally before travelling can describe the Punta Cana gathering as their wedding celebration. Decide together what you wish to share with family, while keeping the actual legal paperwork accurate. Do not describe a symbolic certificate as a government marriage record.",
+        "Build the event schedule around the confirmed ceremony format, with time for interpretation, guest arrivals and photographs. If official documents are delayed, ask about contractual alternatives promptly; a symbolic fallback does not turn into a legal marriage merely because everyone attends."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s7",
+      "heading": "Choose with a simple decision file",
+      "paragraphs": [
+        "Record where the legal marriage takes place, who confirms requirements, who conducts each ceremony and what certificate will be obtained. Add deadlines, costs and unresolved questions. Both partners should be comfortable with the distinction before deposits are paid.",
+        "Sertuin Events can coordinate the destination event around this decision. A clear brief lets the team align the celebrant, venue and schedule while the competent authority handles the legal process."
+      ]
+    }
+  ],
+  "faqHeading": "Frequently asked questions",
+  "faqs": [
+    {
+      "_type": "faqItem",
+      "_key": "faq0",
+      "question": "Is a symbolic ceremony legally binding?",
+      "answer": "It does not itself create a civil marriage. Complete the legal process separately with the competent authority."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq1",
+      "question": "Can a friend lead our symbolic ceremony?",
+      "answer": "Ask the venue and confirm the arrangement in your event plan. It does not make that friend a civil officiant."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq2",
+      "question": "Can the legal and celebration dates differ?",
+      "answer": "Yes. Keep the actual civil date accurate in official documents and explain the celebration program as you prefer."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq3",
+      "question": "Which option is cheaper?",
+      "answer": "Compare the full costs of the legal process and event. Symbolic ceremonies can simplify overseas administration without changing reception costs."
+    }
+  ],
+  "ctaTitle": "Choose the format that fits your plans",
+  "ctaText": "Share where you intend to complete the civil marriage and the experience you want in Punta Cana.",
+  "ctaButton": {
+    "_type": "cta",
+    "label": "wedding coordination in Punta Cana",
+    "url": "/puntacana-wedding-planner/"
+  }
+}
