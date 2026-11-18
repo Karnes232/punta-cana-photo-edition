@@ -253,6 +253,28 @@
         "Registre condições religiosas, menus, plantas, orçamento dos convidados, espaços alternativos e total. Marque respostas ausentes como pendências. Uma oferta que exclui atividade essencial não é equivalente por ser mais barata.",
         "A Sertuin Events pode coordenar consultas e logística com o resort escolhido. Envie o mesmo programa aos dois hotéis e escolha conforme a proposta confirmada que melhor atende à família."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guias de planejamento relacionados",
+      "paragraphs": [
+        "Continuem com estes guias para transformar as perguntas deste artigo em orientações práticas para o planejamento da celebração."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Comparem resort all inclusive e espaço privado",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Revisem a logística do local para um casamento sul-asiático",
+          "url": "https://sertuinevents.com/pt/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Perguntas frequentes",
