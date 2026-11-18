@@ -116,10 +116,10 @@
       ],
       "sources": [
         {
-          "label": "How a Punta Cana wedding rain plan works",
-          "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/",
           "_type": "blogSource",
-          "_key": "src1"
+          "_key": "relatedRain",
+          "label": "Wedding rain-plan guide",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/"
         }
       ],
       "_type": "blogSection",
@@ -144,10 +144,10 @@
       ],
       "sources": [
         {
-          "label": "First-meeting checklist for a Punta Cana wedding planner",
-          "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
           "_type": "blogSource",
-          "_key": "src1"
+          "_key": "relatedMeeting",
+          "label": "First-meeting checklist",
+          "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/"
         }
       ],
       "_type": "blogSection",
