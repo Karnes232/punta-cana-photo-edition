@@ -144,6 +144,29 @@
   "ctaButton": {
     "_type": "cta",
     "label": "Organizador de bodas en Punta Cana",
-    "url": "/es/puntacana-wedding-planner/"
-  }
+    "url": "/puntacana-wedding-planner/"
+  },
+  "reviewedAt": "2026-11-18",
+  "reviewNote": "Investigación editorial revisada el 18 de noviembre de 2026. Confirma las condiciones vigentes en tu propuesta escrita.",
+  "faqHeading": "Preguntas frecuentes",
+  "faqs": [
+    {
+      "_key": "faq1",
+      "_type": "faqItem",
+      "question": "¿Los honorarios pagan también la celebración?",
+      "answer": "No necesariamente. Los honorarios remuneran el trabajo de organización acordado. Locación, banquete, producción de decoración, fotografía, transporte y alojamiento pueden pagarse aparte. Solicita una propuesta desglosada."
+    },
+    {
+      "_key": "faq2",
+      "_type": "faqItem",
+      "question": "¿Es mejor una tarifa fija que un porcentaje?",
+      "answer": "Ningún modelo es automáticamente mejor. Compara las mismas responsabilidades y eventos. Si hay porcentaje, aclara la base del cálculo; si hay tarifa fija, pregunta qué cambios requerirían otra cotización."
+    },
+    {
+      "_key": "faq3",
+      "_type": "faqItem",
+      "question": "¿La coordinación del día incluye el ensayo?",
+      "answer": "Solo si lo establece el acuerdo. El servicio de coordinación del día publicado por Sertuin Events excluye el ensayo. Confirma la cobertura de cada actividad."
+    }
+  ]
 }
