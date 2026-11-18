@@ -47,12 +47,12 @@
     }
   },
   "wordCounts": {
-    "en": 2080,
-    "es": 2056,
+    "en": 2077,
+    "es": 2057,
     "pt": 2100,
-    "fr": 2196
+    "fr": 2199
   },
-  "wordCountMethod": "directAnswer, section headings/paragraphs, FAQ questions/answers and CTA text; excludes title, description and source labels",
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
   "researchNotes": [
     "Independent localized searches EN/ES/PT/FR performed; no unsupported national wedding averages or universal destination savings adopted.",
     "Official localized Sertuin service pages consulted only for the published planning/third-party-services distinction.",
@@ -70,9 +70,30 @@
   "unresolved": [
     "heroAlt and image pending authorized selection and visual inspection.",
     "Guide ID/shared slug provisional until CMS reconciliation.",
-    "Related localized article links pending independent destination validation.",
     "Current venue/supplier quotes needed before making financial commitments; no actual market total asserted."
   ],
   "cta": "/puntacana-wedding-planner/",
-  "publication": false
+  "publication": false,
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "date": "2026-11-18",
+    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
+    "paths": [
+      "first-meeting-punta-cana-wedding-planner-checklist",
+      "punta-cana-wedding-all-inclusive-resort-vs-private-venue"
+    ]
+  }
 }
