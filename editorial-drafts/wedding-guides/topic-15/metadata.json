@@ -1,0 +1,71 @@
+{
+  "topic": 15,
+  "status": "draft-editorial-review",
+  "reviewedAt": "2026-11-18",
+  "guideId": "blogGuide-wedding-topic-15",
+  "provisionalSharedSlug": "boat-wedding-punta-cana-cost-planning",
+  "keywords": {
+    "en": {
+      "title": "Boat Weddings in Punta Cana: Costs and Planning",
+      "primary": "boat wedding Punta Cana cost",
+      "secondary": [
+        "Punta Cana catamaran wedding",
+        "wedding boat capacity",
+        "boat wedding weather contingency"
+      ],
+      "anchor": "wedding venue and vendor coordination in Punta Cana"
+    },
+    "es": {
+      "title": "Bodas en barco en Punta Cana: costos y organización",
+      "primary": "boda en barco en Punta Cana",
+      "secondary": [
+        "boda en catamarán en Punta Cana",
+        "precio de boda en barco",
+        "ceremonia de boda en el mar"
+      ],
+      "anchor": "coordinación de bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Casamento em barco em Punta Cana: custos e planejamento",
+      "primary": "casamento em barco em Punta Cana",
+      "secondary": [
+        "casamento em catamarã em Punta Cana",
+        "cerimônia de casamento no mar",
+        "preço de casamento em barco"
+      ],
+      "anchor": "organização de casamentos em Punta Cana"
+    },
+    "fr": {
+      "title": "Mariage sur un bateau à Punta Cana : tarifs et organisation",
+      "primary": "mariage sur un bateau à Punta Cana",
+      "secondary": [
+        "mariage sur un catamaran à Punta Cana",
+        "prix d'un mariage en bateau",
+        "cérémonie de mariage en mer"
+      ],
+      "anchor": "coordination de mariages à Punta Cana"
+    }
+  },
+  "research": {
+    "queries": [
+      "boat wedding Punta Cana private catamaran cost",
+      "boda barco Punta Cana catamaran precio",
+      "casamento barco Punta Cana catamarã",
+      "mariage bateau Punta Cana catamaran prix"
+    ],
+    "sources": [
+      "https://sertuinevents.com/punta-cana-elopement-packages/",
+      "https://sertuinevents.com/es/punta-cana-elopement-packages/",
+      "https://sertuinevents.com/pt/punta-cana-elopement-packages/",
+      "https://sertuinevents.com/fr/punta-cana-elopement-packages/",
+      "https://hispaniolaaquaticadventures.com/events/weddings"
+    ],
+    "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
+  },
+  "pending": [
+    "Expand topic-specific depth toward requested2000–3000 words; current core drafts below target.",
+    "Select and inspect actual hero asset before writing heroAlt.",
+    "Verify2–4 existing same-language related guide URLs before inserting links.",
+    "Confirm shared slug and CMS draft persistence; no publication authorized."
+  ]
+}
