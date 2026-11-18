@@ -1,0 +1,69 @@
+{
+  "topic": 19,
+  "status": "draft-editorial-review",
+  "reviewedAt": "2026-11-18",
+  "guideId": "blogGuide-wedding-topic-19",
+  "provisionalSharedSlug": "hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana",
+  "keywords": {
+    "en": {
+      "title": "Hard Rock vs. Hyatt Ziva: Indian Weddings in Punta Cana",
+      "primary": "Hard Rock vs Hyatt Ziva Indian wedding",
+      "secondary": [
+        "Indian wedding at Hard Rock Punta Cana",
+        "Hyatt Ziva Cap Cana Indian weddings",
+        "Indian wedding resort comparison"
+      ],
+      "anchor": "Indian wedding venue sourcing in Punta Cana"
+    },
+    "es": {
+      "title": "Hard Rock vs. Hyatt Ziva: bodas indias en Punta Cana",
+      "primary": "Hard Rock vs Hyatt Ziva bodas indias",
+      "secondary": [
+        "boda india Hard Rock Punta Cana",
+        "boda india Hyatt Ziva Cap Cana",
+        "hoteles para bodas indias en Punta Cana"
+      ],
+      "anchor": "selección de hoteles para bodas indias en Punta Cana"
+    },
+    "pt": {
+      "title": "Hard Rock vs. Hyatt Ziva: casamentos indianos em Punta Cana",
+      "primary": "Hard Rock vs Hyatt Ziva casamento indiano",
+      "secondary": [
+        "casamento indiano no Hard Rock Punta Cana",
+        "casamento no Hyatt Ziva Cap Cana",
+        "resorts para casamento indiano"
+      ],
+      "anchor": "escolha de resorts para casamento indiano em Punta Cana"
+    },
+    "fr": {
+      "title": "Hard Rock ou Hyatt Ziva : mariage indien à Punta Cana",
+      "primary": "Hard Rock vs Hyatt Ziva mariage indien",
+      "secondary": [
+        "mariage indien au Hard Rock Punta Cana",
+        "mariage indien au Hyatt Ziva Cap Cana",
+        "resorts pour mariage indien à Punta Cana"
+      ],
+      "anchor": "sélection de lieux pour un mariage indien à Punta Cana"
+    }
+  },
+  "research": {
+    "queries": [
+      "Hard Rock Hyatt Ziva Indian wedding compare",
+      "Hard Rock Hyatt Ziva bodas indias",
+      "Hard Rock Hyatt Ziva casamento indiano",
+      "Hard Rock Hyatt Ziva mariage indien"
+    ],
+    "sources": [
+      "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
+      "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
+      "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings"
+    ],
+    "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
+  },
+  "pending": [
+    "Expand topic-specific depth toward requested2000–3000 words; current core drafts below target.",
+    "Select and inspect actual hero asset before writing heroAlt.",
+    "Verify2–4 existing same-language related guide URLs before inserting links.",
+    "Confirm shared slug and CMS draft persistence; no publication authorized."
+  ]
+}
