@@ -1,51 +1,46 @@
 # Multilingual wedding guide drafts
 
-Status: partial editorial work. Four article drafts for topic 02 are stored in this branch. Zero of the 100 required language versions have been verified as complete saved articles in Sanity. Nothing is published.
+Status on November 18, 2026: **90 of 100 article versions are saved and read back from this branch. The project is incomplete.** All three auxiliary agents stopped with the workspace-out-of-credits error. Nothing is published or merged; zero article versions have a verified Sanity import.
 
 ## Scope
 
-Only files beneath `editorial-drafts/wedding-guides/` are added. Application code, routes, templates, styles, dependencies, Sanity schemas and configuration are unchanged. This directory is not connected to the site's build. Merging these files would not import or publish the articles.
+Only editorial JSON and documentation beneath `editorial-drafts/wedding-guides/` are added. Application code, routes, blog templates, styles, dependencies, Sanity schemas and configuration are unchanged. This directory is not consumed by the build. Merging it would not import or publish articles.
 
-The JSON documents follow the existing `blogPost`, `blogSection`, `blogSource`, `faqItem` and `cta` field shapes. They are editorial working data, not a deployable import bundle. Each proposed article ID begins with `drafts.`. They reference the existing draft guide `baa18c57-5f7f-456c-9d8b-2630c8ea38a0`, whose actual shared slug is `wedding-planner-cost-punta-cana`. Do not publish the guide to work around the editor issue.
+## Exact remaining writing
 
-## Current content
+- Topic 11: Spanish and Brazilian Portuguese are missing; English and French are saved.
+- Topic 12: all four languages are missing.
+- Topic 16: all four languages are missing.
+- Thirty existing first-pass versions still need substantial expansion: topic 06 ES/PT/FR; topics 07/08/09 all languages; topic 13 ES/PT/FR; topics 15/19/22 all languages.
+- Topic 13 English was expanded; localize its additional walkthrough, privacy, coordination and decision sections into the other three versions.
+- Topic 21 is intentionally shorter because the confirmed case evidence does not justify invented details. Its four versions are anonymous, avoid exact dates and unconfirmed ritual names, and distinguish evidence from recommendations.
+- Some topic metadata files and the final cross-language editorial review remain incomplete. `inventory.json` is the latest authoritative file-level snapshot, including actual word counts. Older per-topic metadata may reflect the first pass.
 
-- Topic 02: wedding planner fees; English, Spanish, Brazilian Portuguese and French drafts, approximately 2,000–2,300 words per version, including FAQs and metadata. Counts depend on whether metadata and link labels are included.
-- Topic 21: owner-confirmed evidence and unresolved details only; no article yet.
-- `inventory.json`: all 100 required language versions, with actual progress. `drafting` means repository work and does not mean saved in Sanity.
+The remaining saved versions are substantial drafts, not publication-ready articles. Length alone is not a completion criterion. Source accuracy, language, links, images and rendered content still need final review.
 
-The separate general wedding-budget article (topic 01) remains distinct from topic 02. Topic 02 explains professional fees and scope without claiming a verified local market average. The 10% arithmetic and USD 2,000/2,800 comparison are explicitly hypothetical.
+## Validation completed
 
-## Research and sources
+All 90 article files were fetched back from GitHub and parsed successfully. Checks found no errors in draft ID prefix, `blogPost` type, section type/keys or the established CTA path. Branch comparison showed only added editorial files, with no source-code modifications or deletions. Word counts cover title, direct answer, section headings/body/steps/bullets/notes and FAQs; they exclude CTA, source labels and metadata.
 
-Consulted November 18, 2026:
+## Existing CMS conventions
 
-- https://sertuinevents.com/puntacana-wedding-planner/
-- https://sertuinevents.com/es/puntacana-wedding-planner/
-- https://sertuinevents.com/pt/puntacana-wedding-planner/
-- https://sertuinevents.com/fr/puntacana-wedding-planner/
-- https://dominicanweddingplanner.com/rates/
+A Blog Guide holds a shared slug, image, taxonomy and related references. Each Blog Post contains one language. Portuguese uses `pt`; slugs are shared across languages. The new proposed references require resolution before import. Topic 02 uses the existing draft guide `baa18c57-5f7f-456c-9d8b-2630c8ea38a0` and shared slug `wedding-planner-cost-punta-cana`.
 
-The first four are the company's published service offers. Publication/update dates were not established. Treat them as dated observations, not irrevocable future quotations. The other provider is based on the north coast, not a Punta Cana price benchmark. Its fee model illustrates why an entire calculation must be read. Its old legal-fee information and inconsistent advance-payment dates are not used in the articles.
+The CTA stores `/puntacana-wedding-planner/` in every language because the existing site applies the language prefix. Absolute source links retain explicit localized paths. Existing section fields are used; no new rich-text format or heading nesting was introduced.
 
-Search intent was examined independently with these Google queries: `wedding planner cost Punta Cana`; `cuanto cuesta un wedding planner en Punta Cana`; `quanto custa assessoria casamento Punta Cana`; `tarif wedding planner Punta Cana`. Results were personalized and showed a Dominican Republic geographic context. This is qualitative terminology research, not a ranking report or a measurement of search volume. AI overview prices were not adopted as evidence. Brazilian wording uses `assessoria` naturally alongside the approved `wedding planner` target. French uses `honoraires`, `forfait` and `coordination du jour J`. Primary targets remain aligned with the approved brief.
+## Research and editorial safeguards
 
-## Existing CMS conventions preserved
+The catalog preserves the user's approved starting keywords; these are not search-volume claims. Per-topic metadata records research queries and primary sources. Company offers are dated observations, not guaranteed future quotations. Numerical teaching examples are clearly hypothetical. Hotel-specific prices, capacities, religious permissions and legal outcomes are not generalized.
 
-A Blog Guide holds the shared slug, photo, taxonomy and related-guide references. One Blog Post holds each language's text. The current schema uses `pt` for Portuguese. The same slug is shared between languages; creating four independent slugs would require a structural change and is outside this task.
+Hard Rock's English and Spanish wedding-information pages displayed conflicting deposit and cancellation details during review. Topic 14 explains the need for current written terms without choosing one version as authoritative. Its French title clarifies that the subject is supplier contracts, not matrimonial property arrangements.
 
-The CTA field stores `/puntacana-wedding-planner/` in every language. The existing site adds the language prefix; do not put `/es`, `/pt` or `/fr` into this field. Absolute URLs in section sources remain explicit.
+## Required before CMS completion
 
-Sections use the existing heading, paragraphs and sources fields. Related reading is represented through supported links rather than adding unsupported rich-text markup or new fields. Contextual inline hyperlinks and H3 nesting are not introduced by changing the schema.
+1. Finish the missing writing, expansion and multilingual editorial review described above.
+2. Select and inspect authorized images, then write accurate localized `heroAlt`. Image fields were not fabricated.
+3. Resolve the proposed guide references, shared slugs and related-guide assignments within the existing CMS conventions.
+4. Verify existing same-language links and rendered layout. Localized service navigation exposes the shared-slug routes; some direct research fetches returned cache misses, which are not evidence of404 errors.
+5. Import through an authorized content-only workflow and verify persistence. The earlier visual Studio attempt displayed article text transiently and then lost it after saving; the underlying cause was not established. No code workaround was attempted.
+6. Keep drafts unpublished until the requested review and publication process is complete. No prospective unpublished article links have been invented.
 
-## Remaining work before CMS completion
-
-1. Resolve or use an authorized content-only route around the observed Studio save failure. In the new English and Spanish documents, text appeared transiently and disappeared after saving, including after reopening. The guide's slug and category persisted. The underlying cause is not established.
-2. Select and inspect a legitimate existing media-library photo for topic 02. Add its shared image reference and an accurate `heroAlt` in each language. These required fields are intentionally absent rather than fabricated.
-3. Confirm the shared guide's required order, related references and image in the existing editor. Existing candidates include `blogGuide-wedding-first-meeting` and `blogGuide-wedding-venue`; both were observed in the CMS.
-4. Recheck direct access to each related public article. English and Spanish related URLs were exposed in the service page navigation. Portuguese and French versions were also linked there, but the research fetch returned cache misses; no claim of a 404 is made. Their article links remain pending in the inventory.
-5. Review the saved CMS content and rendered preview, including factual consistency, language, formatting and actual link destinations. A repository parse check does not replace CMS verification.
-6. Continue research and writing for the remaining 24 topics in all four languages. Topic 21 must use only the confirmed evidence; do not invent exact dates, a daily program, ritual names or client testimonials.
-7. After explicit publication approval, add links among newly published articles. No links to the prospective unpublished articles are included now.
-
-No import commands, executable scripts or code changes are supplied. No Sanity API or CLI was used to create these files or to work around the UI failure.
+The repository preserves the work completed so far. It is not a deployable import bundle, and no import script, CLI operation or schema change is included.
