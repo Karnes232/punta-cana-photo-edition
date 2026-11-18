@@ -253,6 +253,28 @@
         "Consignez conditions religieuses, menus, plans, budget des invités, replis et prix complet. Marquez les réponses manquantes comme en attente. Un devis excluant une activité indispensable n'est pas équivalent même s'il est moins cher.",
         "Sertuin Events peut coordonner demandes et logistique autour du resort choisi. Présentez le même programme aux deux hôtels et retenez le plan confirmé qui convient le mieux à votre famille."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guides de préparation complémentaires",
+      "paragraphs": [
+        "Poursuivez avec ces guides pour transformer les questions de cet article en un cahier de préparation concret pour votre célébration."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Comparez resort tout compris et lieu privé",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Examinez la logistique du lieu pour un mariage sud-asiatique",
+          "url": "https://sertuinevents.com/fr/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Questions fréquentes",
