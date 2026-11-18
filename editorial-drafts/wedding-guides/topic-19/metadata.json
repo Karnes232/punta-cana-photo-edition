@@ -56,14 +56,44 @@
     "sources": [
       "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
       "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
-      "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings"
+      "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings",
+      "https://hotel.hardrock.com/punta-cana/es/requisitos-matrimoniales.aspx",
+      "https://hotel.hardrock.com/punta-cana/es/preguntas-frecuentes-bodas.aspx"
     ],
-    "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
+    "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms.",
+    "expansionReview": "Official Hard Rock Indian weddings, EN requirements, ES requirements/FAQ and Hyatt Ziva Cap Cana wedding page checked. Published outside-vendor conditions differ; no universal fee or automatic access stated. Expanded original practical comparison covers layouts, transitions, guests, menus, production, responsibility, scenarios and site review."
   },
   "pending": [
-    "Expand topic-specific depth toward requested2000–3000 words; current core drafts below target.",
     "Select and inspect actual hero asset before writing heroAlt.",
-    "Verify2–4 existing same-language related guide URLs before inserting links.",
     "Confirm shared slug and CMS draft persistence; no publication authorized."
-  ]
+  ],
+  "wordCounts": {
+    "en": 2289,
+    "es": 2075,
+    "pt": 2004,
+    "fr": 2029
+  },
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "date": "2026-11-18",
+    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
+    "paths": [
+      "punta-cana-wedding-all-inclusive-resort-vs-private-venue",
+      "south-asian-wedding-punta-cana-venue-logistics-checklist"
+    ]
+  }
 }
