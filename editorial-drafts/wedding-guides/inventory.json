@@ -1,0 +1,2000 @@
+{
+  "updated": "2026-11-18",
+  "totalRequiredVersions": 100,
+  "repositoryArticleDrafts": 4,
+  "completedAndVerifiedInSanity": 0,
+  "versions": [
+    {
+      "topic": 1,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 1,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 1,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 1,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 2,
+      "language": "en",
+      "status": "drafting",
+      "repositoryDraft": "topic-02/en.json",
+      "finalTitle": "How Much Does a Wedding Planner Cost in Punta Cana?",
+      "primaryKeyword": "wedding planner cost Punta Cana",
+      "secondaryKeywords": [
+        "how much does a wedding planner charge in Punta Cana",
+        "flat fee vs percentage wedding planner",
+        "wedding planning fee inclusions"
+      ],
+      "sanityDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-en",
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": "wedding-planner-cost-punta-cana",
+      "sources": [
+        "https://sertuinevents.com/puntacana-wedding-planner/",
+        "https://dominicanweddingplanner.com/rates/",
+        "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+      ],
+      "serviceAnchor": "Independent wedding planner in Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Prepare for your first Punta Cana wedding planner meeting",
+          "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+          "_type": "blogSource",
+          "_key": "source1"
+        },
+        {
+          "label": "Compare a Punta Cana resort with a private wedding venue",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+          "_type": "blogSource",
+          "_key": "source2"
+        }
+      ],
+      "pendingLinks": [
+        "Same-language topic 01 (total wedding budget), after publication",
+        "Same-language topic 03 (package inclusions), after publication",
+        "Same-language topic 04 (full planning vs coordination), after publication"
+      ],
+      "issues": [
+        "Repository editorial draft only; not a saved Sanity article.",
+        "Select and inspect an authorized image in Sanity; add accurate localized heroAlt.",
+        "Verify rendered layout and links in CMS preview after import."
+      ]
+    },
+    {
+      "topic": 2,
+      "language": "es",
+      "status": "drafting",
+      "repositoryDraft": "topic-02/es.json",
+      "finalTitle": "¿Cuánto cuesta contratar un wedding planner en Punta Cana?",
+      "primaryKeyword": "cuánto cuesta un wedding planner en Punta Cana",
+      "secondaryKeywords": [
+        "precio de organizador de bodas en Punta Cana",
+        "honorarios de wedding planner",
+        "servicios de planificación de bodas"
+      ],
+      "sanityDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-es",
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": "wedding-planner-cost-punta-cana",
+      "sources": [
+        "https://sertuinevents.com/es/puntacana-wedding-planner/",
+        "https://dominicanweddingplanner.com/rates/",
+        "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+      ],
+      "serviceAnchor": "Organizador de bodas en Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Prepara tu primera reunión con la planificadora de bodas",
+          "url": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+          "_type": "blogSource",
+          "_key": "source1"
+        },
+        {
+          "label": "Compara un resort con una locación privada en Punta Cana",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+          "_type": "blogSource",
+          "_key": "source2"
+        }
+      ],
+      "pendingLinks": [
+        "Same-language topic 01 (total wedding budget), after publication",
+        "Same-language topic 03 (package inclusions), after publication",
+        "Same-language topic 04 (full planning vs coordination), after publication"
+      ],
+      "issues": [
+        "Repository editorial draft only; not a saved Sanity article.",
+        "Select and inspect an authorized image in Sanity; add accurate localized heroAlt.",
+        "Verify rendered layout and links in CMS preview after import."
+      ]
+    },
+    {
+      "topic": 2,
+      "language": "pt-BR",
+      "status": "drafting",
+      "repositoryDraft": "topic-02/pt.json",
+      "finalTitle": "Quanto custa contratar um wedding planner em Punta Cana?",
+      "primaryKeyword": "quanto custa um wedding planner em Punta Cana",
+      "secondaryKeywords": [
+        "preço de assessoria de casamento em Punta Cana",
+        "honorários de assessoria de casamento",
+        "serviços de organização de casamentos"
+      ],
+      "sanityDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-pt",
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": "wedding-planner-cost-punta-cana",
+      "sources": [
+        "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+        "https://dominicanweddingplanner.com/rates/"
+      ],
+      "serviceAnchor": "Assessoria de casamento em Punta Cana",
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [
+        "Same-language topic 01 (total wedding budget), after publication",
+        "Same-language topic 03 (package inclusions), after publication",
+        "Same-language topic 04 (full planning vs coordination), after publication",
+        "Verify direct access to existing localized first-meeting and venue guides; links listed on service page but research fetch returned a cache miss."
+      ],
+      "issues": [
+        "Repository editorial draft only; not a saved Sanity article.",
+        "Select and inspect an authorized image in Sanity; add accurate localized heroAlt.",
+        "Verify rendered layout and links in CMS preview after import."
+      ]
+    },
+    {
+      "topic": 2,
+      "language": "fr",
+      "status": "drafting",
+      "repositoryDraft": "topic-02/fr.json",
+      "finalTitle": "Combien coûte un wedding planner à Punta Cana ?",
+      "primaryKeyword": "tarif wedding planner Punta Cana",
+      "secondaryKeywords": [
+        "prix d'un organisateur de mariage à Punta Cana",
+        "honoraires d'organisation de mariage",
+        "prestations d'un wedding planner"
+      ],
+      "sanityDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-fr",
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": "wedding-planner-cost-punta-cana",
+      "sources": [
+        "https://sertuinevents.com/fr/puntacana-wedding-planner/",
+        "https://dominicanweddingplanner.com/rates/"
+      ],
+      "serviceAnchor": "Wedding planner indépendant à Punta Cana",
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [
+        "Same-language topic 01 (total wedding budget), after publication",
+        "Same-language topic 03 (package inclusions), after publication",
+        "Same-language topic 04 (full planning vs coordination), after publication",
+        "Verify direct access to existing localized first-meeting and venue guides; links listed on service page but research fetch returned a cache miss."
+      ],
+      "issues": [
+        "Repository editorial draft only; not a saved Sanity article.",
+        "Select and inspect an authorized image in Sanity; add accurate localized heroAlt.",
+        "Verify rendered layout and links in CMS preview after import."
+      ]
+    },
+    {
+      "topic": 3,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 3,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 3,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 3,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 4,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 4,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 4,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 4,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 5,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 5,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 5,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 5,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 6,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 6,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 6,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 6,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 7,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 7,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 7,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 7,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 8,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 8,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 8,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 8,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 9,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 9,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 9,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 9,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 10,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 10,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 10,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 10,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 11,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 11,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 11,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 11,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 12,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 12,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 12,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 12,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 13,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 13,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 13,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 13,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 14,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 14,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 14,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 14,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 15,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 15,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 15,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 15,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 16,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 16,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 16,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 16,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 17,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 17,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 17,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 17,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 18,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 18,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 18,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 18,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 19,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 19,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 19,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 19,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 20,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 20,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 20,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 20,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 21,
+      "language": "en",
+      "status": "research",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Company experience supplied; exact date and year unconfirmed; no verified day-by-day schedule.",
+        "Do not guess ritual names from voice transcription.",
+        "Names and event-specific photo authorization not supplied; use anonymous account unless confirmed."
+      ]
+    },
+    {
+      "topic": 21,
+      "language": "es",
+      "status": "research",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Company experience supplied; exact date and year unconfirmed; no verified day-by-day schedule.",
+        "Do not guess ritual names from voice transcription.",
+        "Names and event-specific photo authorization not supplied; use anonymous account unless confirmed."
+      ]
+    },
+    {
+      "topic": 21,
+      "language": "pt-BR",
+      "status": "research",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Company experience supplied; exact date and year unconfirmed; no verified day-by-day schedule.",
+        "Do not guess ritual names from voice transcription.",
+        "Names and event-specific photo authorization not supplied; use anonymous account unless confirmed."
+      ]
+    },
+    {
+      "topic": 21,
+      "language": "fr",
+      "status": "research",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Company experience supplied; exact date and year unconfirmed; no verified day-by-day schedule.",
+        "Do not guess ritual names from voice transcription.",
+        "Names and event-specific photo authorization not supplied; use anonymous account unless confirmed."
+      ]
+    },
+    {
+      "topic": 22,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 22,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 22,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 22,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 23,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 23,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 23,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 23,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 24,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 24,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 24,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 24,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 25,
+      "language": "en",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 25,
+      "language": "es",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 25,
+      "language": "pt-BR",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    },
+    {
+      "topic": 25,
+      "language": "fr",
+      "status": "not started",
+      "repositoryDraft": null,
+      "finalTitle": null,
+      "primaryKeyword": null,
+      "secondaryKeywords": [],
+      "sanityDocumentReference": null,
+      "sanityContentSavedAndVerified": false,
+      "actualSlug": null,
+      "sources": [],
+      "serviceAnchor": null,
+      "internalLinksInRepositoryDraft": [],
+      "pendingLinks": [],
+      "issues": [
+        "Not researched or drafted in this work session."
+      ]
+    }
+  ]
+}
