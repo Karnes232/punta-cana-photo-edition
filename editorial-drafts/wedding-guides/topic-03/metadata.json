@@ -1,0 +1,88 @@
+{
+  "topic": 3,
+  "status": "repository-drafts-editorial-review-required",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "punta-cana-wedding-package-inclusions",
+  "versions": {
+    "en": {
+      "title": "Punta Cana Wedding Packages: Inclusions and Extras",
+      "primary": "what do Punta Cana wedding packages include",
+      "secondary": [
+        "Punta Cana wedding package inclusions",
+        "wedding reception upgrades",
+        "outside vendor fees"
+      ],
+      "anchor": "wedding planning and vendor coordination in Punta Cana"
+    },
+    "es": {
+      "title": "Paquetes de bodas en Punta Cana: qué incluyen y qué se paga aparte",
+      "primary": "qué incluyen los paquetes de bodas en Punta Cana",
+      "secondary": [
+        "paquetes de boda todo incluido en Punta Cana",
+        "extras de paquetes de boda",
+        "proveedores externos para bodas"
+      ],
+      "anchor": "planificación y coordinación de bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Pacotes de casamento em Punta Cana: o que está incluído?",
+      "primary": "o que incluem os pacotes de casamento em Punta Cana",
+      "secondary": [
+        "casamento all inclusive em Punta Cana",
+        "serviços extras de casamento",
+        "fornecedores externos para casamentos"
+      ],
+      "anchor": "planejamento e organização de casamentos em Punta Cana"
+    },
+    "fr": {
+      "title": "Forfaits mariage à Punta Cana : prestations incluses et suppléments",
+      "primary": "que comprennent les forfaits mariage à Punta Cana",
+      "secondary": [
+        "forfait mariage tout compris à Punta Cana",
+        "suppléments pour réception de mariage",
+        "prestataires extérieurs"
+      ],
+      "anchor": "organisation et coordination de mariages à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2245,
+    "es": 2152,
+    "pt": 2054,
+    "fr": 2104
+  },
+  "sources": [
+    {
+      "url": "https://www.impressiveresortspuntacana.com/en/weddings.html",
+      "authority": "Official hotel",
+      "dateScope": "Page distinguishes 2025 from 2026–2027; dates not generalized."
+    },
+    {
+      "url": "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
+      "authority": "Official hotel",
+      "dateScope": "Undated policies and explicitly 2024 rates coexist; no numeric policy charges reproduced as current."
+    },
+    {
+      "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+      "authority": "Company service page and localized navigation"
+    }
+  ],
+  "searchIntent": {
+    "en": "Compare deliverables, guest limits and outside-vendor extras before booking",
+    "es": "Distinguir todo incluido, recepción privada y extras del paquete",
+    "pt": "Distinguir hospedagem all inclusive e serviços privativos do casamento",
+    "fr": "Comparer forfait tout compris, privatisation et suppléments"
+  },
+  "researchQueries": [
+    "Punta Cana wedding packages inclusions outside vendor official",
+    "qué incluyen paquetes bodas Punta Cana hotel oficial",
+    "pacotes casamento Punta Cana o que inclui hotel",
+    "forfait mariage Punta Cana prestations incluses hôtel"
+  ],
+  "pendingIssues": [
+    "No hero image selected: heroAlt deliberately omitted pending image selection and rights confirmation.",
+    "Proposed shared guide reference must be resolved on later CMS import; slug is provisional metadata only.",
+    "Same-language existing internal guides verified through localized service-page navigation; direct ES venue fetch returned cache miss. Recheck destinations and rendering before publication.",
+    "Repository drafts only: not imported or saved in Sanity; not published."
+  ]
+}
