@@ -47,9 +47,9 @@
     }
   },
   "wordCounts": {
-    "en": 1999,
-    "es": 1991,
-    "pt": 2000,
+    "en": 1998,
+    "es": 1993,
+    "pt": 1999,
     "fr": 2065
   },
   "researchNotes": [
@@ -70,9 +70,31 @@
   "unresolved": [
     "heroAlt and image pending authorized selection and visual review.",
     "Shared guide ID/slug provisional until CMS reconciliation.",
-    "Related localized article URLs pending verification.",
     "Current dates/flight schedules/venue quotes intentionally not asserted."
   ],
   "cta": "/puntacana-wedding-planner/",
-  "publication": false
+  "publication": false,
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "date": "2026-11-18",
+    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
+    "paths": [
+      "punta-cana-wedding-all-inclusive-resort-vs-private-venue",
+      "punta-cana-destination-wedding-guest-travel-guide"
+    ]
+  }
 }
