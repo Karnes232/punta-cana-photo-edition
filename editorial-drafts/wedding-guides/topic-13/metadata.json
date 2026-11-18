@@ -1,6 +1,6 @@
 {
   "topic": 13,
-  "status": "draft-editorial-review",
+  "status": "expanded-repository-drafts",
   "reviewedAt": "2026-11-18",
   "guideId": "blogGuide-wedding-topic-13",
   "provisionalSharedSlug": "jellyfish-vs-kukua-wedding-punta-cana",
@@ -61,9 +61,14 @@
     "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
   },
   "pending": [
-    "Expand topic-specific depth toward requested2000–3000 words; current core drafts below target.",
-    "Select and inspect actual hero asset before writing heroAlt.",
-    "Verify2–4 existing same-language related guide URLs before inserting links.",
-    "Confirm shared slug and CMS draft persistence; no publication authorized."
-  ]
+    "Final assignment of selected image and guide reference in CMS; no publication.",
+    "Rendered preview of new article after import."
+  ],
+  "bodyWordCounts": {
+    "en": 1878,
+    "es": 1823,
+    "pt": 1749,
+    "fr": 1819
+  },
+  "editorialNote": "Original walkthrough, coordination, attendance scenarios and decision criteria; approximately1750–1900 substantive words, no invented prices or ranking. Related-page destinations verified in Chrome in all four languages."
 }
