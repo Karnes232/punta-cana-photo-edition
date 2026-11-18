@@ -59,13 +59,41 @@
       "https://www.gurunanakdarbar.org/anandkaraj",
       "https://old.sgpc.net/CDN/Sikh_Rehat_Maryada_English.pdf"
     ],
-    "sourceNotes": "Council guidance and gurdwara booking page opened. SGPC indexed primary PDF returned502 on direct fetch; not used for detailed claims."
+    "sourceNotes": "Council guidance and gurdwara booking page opened. SGPC indexed primary PDF returned502 on direct fetch; not used for detailed claims.",
+    "expansionReview": "Supreme Sikh Council UK guidance and Guru Nanak Darbar Gravesend primary preparation page re-opened. SGPC PDF still returns502; no detailed SGPC claim added. Expansion preserves religious authority, no promised resort Anand Karaj, and separates approved ceremony, civil process and destination celebration."
   },
   "pending": [
     "Religious authority review; no Punta Cana Anand Karaj location authorized or promised.",
-    "Expand useful topic-specific coverage toward requested2000–3000 words; current localized drafts approximately1000–1100 words.",
     "Select and inspect real photo before writing heroAlt.",
-    "Verify2–4 same-language related guide destinations before inserting links.",
     "Confirm shared slug and create CMS draft without publication when authorized workflow is available."
-  ]
+  ],
+  "wordCounts": {
+    "en": 2387,
+    "es": 2234,
+    "pt": 2167,
+    "fr": 2202
+  },
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "date": "2026-11-18",
+    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
+    "paths": [
+      "plan-multicultural-wedding-punta-cana-family-traditions",
+      "punta-cana-destination-wedding-guest-travel-guide"
+    ]
+  }
 }
