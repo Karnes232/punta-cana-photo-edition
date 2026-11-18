@@ -47,10 +47,10 @@
     }
   },
   "wordCounts": {
-    "en": 2157,
-    "es": 2016,
-    "pt": 2007,
-    "fr": 2011
+    "en": 2160,
+    "es": 2022,
+    "pt": 2010,
+    "fr": 2015
   },
   "researchNotes": [
     "Localized independent searches in EN/ES/PT/FR for package inclusions; no search-volume claims.",
@@ -68,9 +68,31 @@
   "unresolved": [
     "heroAlt and guide image pending legitimate asset selection and visual inspection.",
     "Guide ID/shared slug provisional until CMS reconciliation.",
-    "Related links pending verified localized article destinations.",
     "Current venue proposal required before contracting; no universal package inclusions asserted."
   ],
   "cta": "/puntacana-wedding-planner/",
-  "publication": false
+  "publication": false,
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "date": "2026-11-18",
+    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
+    "paths": [
+      "punta-cana-wedding-all-inclusive-resort-vs-private-venue",
+      "south-asian-wedding-punta-cana-venue-logistics-checklist"
+    ]
+  }
 }
