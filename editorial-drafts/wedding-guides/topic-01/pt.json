@@ -115,7 +115,15 @@
         "Converse sobre a alternativa para mudanças de tempo antes do evento. Pergunte qual espaço pode ser usado, qual capacidade atende e se a mudança gera cobrança. Defina quem pode aprovar gastos extras. A disponibilidade da área coberta e as condições de uso precisam ser combinadas com o local; uma previsão favorável não substitui esse acordo."
       ],
       "_type": "blogSection",
-      "_key": "s9"
+      "_key": "s9",
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedRain",
+          "label": "Guia do plano para chuva",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-rain-plan/"
+        }
+      ]
     },
     {
       "heading": "Ajuste as decisões que realmente movem o total",
@@ -135,7 +143,15 @@
         "A organização de casamentos em Punta Cana da Sertuin pode ajudar a conectar propostas de espaços, escopo dos fornecedores e logística dos convidados. A consulta serve para identificar o que sua celebração precisa e o que ainda falta cotar. Traga as propostas existentes e as dúvidas em aberto para transformar a conversa em decisões práticas."
       ],
       "_type": "blogSection",
-      "_key": "s11"
+      "_key": "s11",
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedMeeting",
+          "label": "Checklist da primeira reunião",
+          "url": "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Dúvidas sobre o orçamento",
