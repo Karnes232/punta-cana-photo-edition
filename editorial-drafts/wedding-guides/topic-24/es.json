@@ -193,6 +193,28 @@
         "Si alguna persona ofrece financiar un evento o alojamiento, confirmen cantidad, alcance y momento de entrega. Una contribución generosa no siempre cubre cualquier cambio posterior. Pregunten quién aprueba ampliaciones y cómo se atenderían sobrecostos antes de contratar.",
         "Comuniquen al grupo solo lo que ya está definido: eventos cubiertos, gastos individuales y condiciones de reserva. Si una tarifa es provisional, identifíquenla. La elección del destino debe apoyarse en compromisos claros, no en suposiciones sobre lo que familiares o invitados podrán aportar cuando llegue el pago."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guías de planificación relacionadas",
+      "paragraphs": [
+        "Continúen con estas guías para convertir las preguntas de este artículo en un documento práctico de planificación para su celebración."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Preparen la primera reunión con su organizador en Punta Cana",
+          "url": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Comparen un resort todo incluido con un lugar privado",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        }
+      ]
     }
   ],
   "faqHeading": "Preguntas frecuentes",
