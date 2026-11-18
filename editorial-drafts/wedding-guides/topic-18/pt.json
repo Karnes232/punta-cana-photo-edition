@@ -202,6 +202,28 @@
         "Antes de assinar, peçam calendário de pagamentos, regras de cancelamento e alteração, validade do preço e tratamento de impostos ou cobranças obrigatórias. Guardem a lista final junto ao contrato para avaliar mudanças futuras com base em um escopo claro.",
         "Façam a revisão com todas as pessoas autorizadas a decidir, usando o mesmo documento. Se um item continuar sem resposta, anotem o responsável pela confirmação e o prazo antes de considerar a comparação encerrada. Verifiquem também se a última proposta substitui integralmente a anterior ou modifica apenas algumas linhas. Guardem as mensagens de aprovação junto ao contrato, para que um acordo importante não dependa da memória de uma conversa. Esse cuidado torna o pacote mais simples de acompanhar até a entrega final."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guias de planejamento relacionados",
+      "paragraphs": [
+        "Continuem com estes guias para transformar as perguntas deste artigo em orientações práticas para o planejamento da celebração."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Comparem resort all inclusive e espaço privado",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Revisem a logística do local para um casamento sul-asiático",
+          "url": "https://sertuinevents.com/pt/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Perguntas frequentes",
