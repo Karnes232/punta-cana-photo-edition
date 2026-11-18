@@ -21,6 +21,14 @@
       "paragraphs": [
         "Determine whether you are arranging a Dominican civil marriage or a symbolic celebration after marrying elsewhere. The paperwork differs fundamentally. A venue may offer both events under similar wedding-package names, so ask which service the proposal actually includes and who arranges the civil official.",
         "For a civil marriage, identify the competent Oficialía del Estado Civil and obtain its current instructions for your case. Give both partners' nationalities, residence, place of birth and relevant marital history. Do not rely on the document list of friends whose nationality or circumstances differ."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedmeeting",
+          "label": "Prepare your first planning meeting",
+          "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        }
       ]
     },
     {
@@ -104,11 +112,91 @@
     },
     {
       "_type": "blogSection",
+      "_key": "expanded0",
+      "heading": "Send a useful first enquiry to the receiving office",
+      "paragraphs": [
+        "A productive first message identifies both partners and asks for the requirements that apply to their particular circumstances. Include nationality, current country of residence, country of birth and whether either person has been married before. Explain whether the proposed ceremony is in an office or at an event venue, and ask the office to confirm whether it handles that arrangement.",
+        "Request a named contact, a current document list and the method for obtaining confirmation after review. Ask which questions must be answered before a ceremony appointment can be treated as final. A reply saying that weddings are available is not the same as acceptance of your file. Save the response with its date so later instructions can be compared accurately."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded1",
+      "heading": "Separate nationality, document origin and language",
+      "paragraphs": [
+        "These three facts are related but not interchangeable. Someone's nationality does not tell you which authority issued a birth record, where a divorce was registered or which language appears on a document. A couple may therefore need different authentication routes within one marriage file.",
+        "Build the checklist document by document. For each record, ask who issues the accepted version, who authenticates it and who translates it if required. If an adviser provides a checklist written for one nationality, explain any record issued elsewhere. Do not order a complete second set of paperwork merely because an online example describes a different country; first ask the receiving office which item actually needs changing."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded2",
+      "heading": "Avoid paying for the wrong version twice",
+      "paragraphs": [
+        "Before ordering a record, confirm whether the office expects a specific format or information that may be absent from a shortened copy. Ask whether a digital document is accepted and how it must be presented. A document that is valid for one domestic administrative purpose may not be the version requested for this marriage.",
+        "Once the accepted version is identified, follow the confirmed sequence of issuance, authentication and translation. Keep a copy before each handoff and check that names and dates remain consistent. If a correction is required, find out which later steps must be repeated rather than assuming an old translation can simply be attached to the corrected record."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded3",
+      "heading": "Prepare the witnesses as part of the legal appointment",
+      "paragraphs": [
+        "Ask the receiving office to confirm the witness requirements and the identification each person should bring. Then choose people who can attend the actual appointment and understand the responsibility, not merely friends who will be present at the reception. Confirm their legal names from the documents they intend to use.",
+        "Tell witnesses the precise meeting place and when to arrive. If they are travelling separately, consider how a delayed flight could affect attendance and ask the office what procedure applies if a witness must change. Do not invent a replacement process on the day or assume that any available hotel employee can take the role without the office's acceptance."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded4",
+      "heading": "Distinguish translation for documents from communication at the ceremony",
+      "paragraphs": [
+        "An accepted written translation prepares a foreign document for the file. Understanding the spoken ceremony is a different practical matter. Ask the civil office how the couple and witnesses will understand the proceedings and whether an interpreter or other arrangement is needed in their circumstances.",
+        "If interpretation is arranged, confirm who provides it, which languages are covered and whether it is part of the civil service or a separate supplier agreement. Give that person the confirmed appointment information. Do not assume the wedding MC, a bilingual guest or the person translating the reception speeches is automatically suitable for the official appointment."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded5",
+      "heading": "Use a controlled review process for scans and originals",
+      "paragraphs": [
+        "Agree on a secure submission method with the receiving professional or authority. Label each file clearly enough to identify the partner and document without adding unnecessary personal information to the filename. Keep the reviewed version separate from earlier drafts, especially if a record has been corrected.",
+        "Ask the reviewer to identify missing items specifically. A message that the paperwork looks good can be ambiguous: it may mean the scans are legible, not that the legal file is complete. Request confirmation of what remains to be presented in original form and which decisions remain outstanding. Preserve the final list so the couple does not rely on conflicting messages from several intermediaries."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded6",
+      "heading": "Check the record before treating delivery as the end of the process",
+      "paragraphs": [
+        "When the official certificate is available, inspect the names, identifying details, date and place against the accepted documents. If something appears incorrect, ask the issuing authority about its correction procedure promptly. Do not alter a scan yourself or commission an informal translation that silently changes the official text.",
+        "Record which physical or electronic version you received and where it will be used. If a foreign authority requests a different form or additional authentication, return to its instructions rather than assuming the wedding package covers that later step. A reliable handover identifies the completed service and any remaining action, instead of merely sending a photograph of a document into a chat."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded7",
+      "heading": "Keep a realistic event plan while an answer is pending",
+      "paragraphs": [
+        "If a required record is delayed, tell the planner enough to assess the event schedule without distributing the private file. Ask the civil office what can proceed and which part cannot be confirmed. Then review supplier contracts before announcing changes to guests.",
+        "A couple might retain the reception date while arranging a separate symbolic celebration, but that requires a deliberate decision and accurate communication. It must not be presented as an already approved legal marriage. Equally, do not abandon the civil plan solely because one intermediary is uncertain: obtain the answer from the authority responsible for accepting the documents."
+      ]
+    },
+    {
+      "_type": "blogSection",
       "_key": "s10",
       "heading": "Keep the event plan workable while documents are reviewed",
       "paragraphs": [
         "Track the legal process separately from catering, transport and décor decisions. Let the planner know only the status and dates needed to coordinate the ceremony. If the official review reveals a delay, review contractual options promptly rather than assuming the ceremony can simply proceed as a legal marriage.",
         "Sertuin Events can coordinate event logistics alongside the documentary process. Bring the confirmed checklist, responsible registrar and relevant deadlines to the planning meeting so the operational schedule reflects what the authorities have actually accepted."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedguests",
+          "label": "Wedding guest travel and access",
+          "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        }
       ]
     }
   ],
