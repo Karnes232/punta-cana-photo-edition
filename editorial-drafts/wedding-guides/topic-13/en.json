@@ -92,8 +92,96 @@
       ]
     },
     {
+      "heading": "Read the different privacy options precisely",
+      "paragraphs": [
+        "Jellyfish describes partial and whole-venue reservations; its partial option can leave upstairs restaurant service open. Kukua states that events requiring closure are limited to one per day. Confirm the areas and hours reserved in your own offer.",
+        "These descriptions answer different questions. One describes which areas may be booked, while the other describes an event policy. Neither substitutes for a plan showing your ceremony, reception and supplier access. Ask both teams to mark the areas included in the proposal and explain what guests may encounter outside those boundaries.",
+        "Think about the experience you want during each part of the day. You might be comfortable with activity elsewhere while wanting an uninterrupted ceremony and speeches. Tell the venue that distinction instead of requesting privacy without defining it. Include the couple’s preparation space, photographs and guest arrival in the discussion, because exclusive dinner arrangements may not explain those earlier moments."
+      ],
+      "sources": [
+        {
+          "label": "Jellyfish wedding FAQ: booking and venue use",
+          "url": "https://www.jellyfishrestaurant.com/weddings-faq",
+          "_type": "blogSource",
+          "_key": "src0"
+        },
+        {
+          "label": "Kukua FAQ: event arrangements",
+          "url": "https://kukuabeachclub.co/faqs/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "_type": "blogSection",
-      "_key": "s8",
+      "_key": "s8"
+    },
+    {
+      "heading": "Trace the whole day during the walkthrough",
+      "paragraphs": [
+        "Begin a site visit at the vehicle arrival point and follow the route as a guest would. Find the first person welcoming the group, the ceremony seats, refreshments, dinner and restrooms. Ask to see the same route in the alternative layout. This exposes practical differences that a gallery of decorated tables cannot show.",
+        "Then repeat the exercise from the couple’s perspective. Where will you dress, leave personal belongings, meet the photographer and wait before the entrance? If you prepare elsewhere, include the transfer and arrival handoff. A beautiful room is less useful if your chosen schedule does not allow you to reach it comfortably.",
+        "Finally ask how suppliers move. Where do deliveries arrive, where is equipment stored and which route remains clear during service? These are questions for both venues, not claims that either has a problem. Record the answers alongside photographs from your own walkthrough so the final layout can be checked against what you actually saw."
+      ],
+      "_type": "blogSection",
+      "_key": "s9"
+    },
+    {
+      "heading": "Compare coordination without buying the same task twice",
+      "paragraphs": [
+        "Ask the venue team which planning and coordination tasks it handles, from the first proposal to the last collection after the reception. Then list the work happening outside the venue: hotel communications, travel arrangements, additional celebrations and separately contracted suppliers. The boundary is more useful than deciding from the job title alone.",
+        "If you are considering an independent planner, request a division of responsibilities. For example, the venue could control its own food service while the independent coordinator manages guest transport and the overall timetable. This is an illustrative arrangement, not a statement of either venue’s contract. The actual teams must agree on their roles.",
+        "Choose one operational contact for changes on the day and explain who approves additional spending. The couple should not receive competing questions from several teams during the ceremony preparations. A clear division can avoid duplicated work while preserving the local knowledge of the venue’s own staff."
+      ],
+      "_type": "blogSection",
+      "_key": "s10"
+    },
+    {
+      "heading": "Test both proposals against two realistic guest scenarios",
+      "paragraphs": [
+        "Use your expected attendance and one plausible alternative. For example, compare a hypothetical group of forty adults with a later increase to fifty-five, keeping the same ceremony and reception format. These numbers are planning inputs, not statements about either venue’s capacity or prices.",
+        "Ask each team what actually changes: meals, seating, tables, service staff, transport and the alternative layout. Some items may stay fixed while others increase in steps. A proposal that fits the first scenario may require a different arrangement for the second. The important result is the documented change, not a generic cost-per-person estimate.",
+        "Also test a smaller final group if that is a realistic uncertainty. Ask which commitments remain and when the number must be finalized. Comparing these responses helps you understand flexibility before committing. Keep the scenario sheets with the same date and service assumptions so you are not accidentally comparing different weddings."
+      ],
+      "_type": "blogSection",
+      "_key": "s11"
+    },
+    {
+      "heading": "Use a decision sheet that separates essentials from preferences",
+      "paragraphs": [
+        "Identify requirements that would rule a venue out if unmet: an acceptable alternative space, a necessary access arrangement, a menu requirement or a firm budget ceiling. Confirm these before assigning scores to décor or atmosphere. A high average score should not conceal one unresolved requirement that makes the plan unsuitable.",
+        "Next choose a few preferences that genuinely distinguish your options, such as the feeling of the reception space, the amount of guest movement or the preparation arrangements. Decide their importance together before reading the final totals. This reduces the temptation to change the scoring method simply because one proposal photographs better.",
+        "Mark missing answers as unconfirmed. Do not award a venue a good or bad score based on a guess. Once both teams respond, review the sheet against the actual proposal rather than against advertising language. If one venue meets your essentials and the other cannot confirm them, that is a useful difference even without a universal winner."
+      ],
+      "_type": "blogSection",
+      "_key": "s12"
+    },
+    {
+      "heading": "Keep a record from shortlist to final reservation",
+      "paragraphs": [
+        "Save the current itemized proposal, layout, scope of reserved areas, transport plan and payment conditions together. Note who answered each outstanding question and when. If a quote changes, replace the comparison figures and keep the previous version for reference rather than combining favorable details from several incompatible offers.",
+        "Before paying, confirm the exact date and what is required to reserve it. Ask how changes, postponement and cancellation are addressed in your booking documents. A conversation about availability is not the same as a confirmed reservation. The wedding team should tell you which confirmation you will receive after completing its process.",
+        "Use the first-meeting checklist to prepare the information a planner needs to compare venues effectively. Bring your guest list assumptions, accommodation options and priorities. The goal is a venue choice that works for your particular group, with a clear division of services and a complete price you understand."
+      ],
+      "sources": [
+        {
+          "label": "Prepare for your first wedding planner meeting",
+          "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+          "_type": "blogSource",
+          "_key": "src0"
+        },
+        {
+          "label": "Plan guest travel and venue transfers",
+          "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
+      "_type": "blogSection",
+      "_key": "s13"
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s14",
       "heading": "Choose according to your priorities",
       "paragraphs": [
         "Create a short comparison with the criteria that would change your decision: acceptable indoor alternative, workable layout, access for relatives, menu requirements, complete price and contractual flexibility. Mark unanswered questions as pending, not as equal scores. Request answers before committing.",
@@ -134,5 +222,6 @@
     "_type": "cta",
     "label": "wedding venue sourcing in Punta Cana",
     "url": "/puntacana-wedding-planner/"
-  }
+  },
+  "reviewNote": "Primary venue sources reviewed November 18, 2026. Availability, layouts and charges require a current written proposal."
 }
