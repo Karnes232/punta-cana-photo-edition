@@ -47,12 +47,12 @@
     }
   },
   "wordCounts": {
-    "en": 1449,
-    "es": 1412,
-    "pt": 1337,
-    "fr": 1418
+    "en": 1440,
+    "es": 1405,
+    "pt": 1329,
+    "fr": 1413
   },
-  "lengthDecision": "Approximately 1300–1500 words per locale: deliberately shorter than the general 2000–3000 target because the verified case evidence is limited; no invented chronology or repetitive padding.",
+  "lengthDecision": "Shorter documented case (approximately1300–1450 words excluding CTA), retained intentionally because confirmed historical evidence is limited. No invented dates, ritual itinerary, identity, quotations or rescue details.",
   "sources": [
     {
       "source": "company-evidence.json",
@@ -75,9 +75,31 @@
     "Exact date/year and detailed ritual itinerary omitted because unverified.",
     "Client identities and image permissions absent; anonymous case.",
     "heroAlt and guide image pending legitimate asset selection and visual inspection.",
-    "Proposed guide reference and shared slug require later CMS reconciliation.",
-    "Related internal article links pending verified localized destinations."
+    "Proposed guide reference and shared slug require later CMS reconciliation."
   ],
   "cta": "/puntacana-wedding-planner/",
-  "publication": false
+  "publication": false,
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "date": "2026-11-18",
+    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
+    "paths": [
+      "punta-cana-wedding-rain-plan",
+      "south-asian-wedding-punta-cana-venue-logistics-checklist"
+    ]
+  }
 }
