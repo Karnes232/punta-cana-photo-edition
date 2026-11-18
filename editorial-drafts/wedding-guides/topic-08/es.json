@@ -1,0 +1,123 @@
+{
+  "_id": "drafts.blogPost-wedding-topic-08-es",
+  "_type": "blogPost",
+  "language": "es",
+  "guide": {
+    "_type": "reference",
+    "_ref": "blogGuide-wedding-topic-08"
+  },
+  "title": "¿Boda legal o simbólica en Punta Cana?",
+  "seoTitle": "¿Boda legal o simbólica en Punta Cana?",
+  "description": "Compara boda civil y simbólica en Punta Cana: efectos legales, documentación, libertad de ceremonia, costos y responsabilidades que debes confirmar.",
+  "directAnswer": "La boda civil busca crear un matrimonio legal mediante la autoridad competente y las formalidades exigidas. La ceremonia simbólica celebra el compromiso, pero no crea por sí misma ese estado civil. Decide según dónde desean tramitar el matrimonio, sus plazos documentales y la experiencia de los invitados. Los requisitos religiosos deben confirmarse por separado.",
+  "authorName": "Sertuin Events",
+  "authorType": "Organization",
+  "reviewedAt": "2026-11-18",
+  "sections": [
+    {
+      "_type": "blogSection",
+      "_key": "s1",
+      "heading": "Decide dónde se realizará el matrimonio legal",
+      "paragraphs": [
+        "Empieza por el resultado jurídico. Si desean casarse legalmente en República Dominicana, identifica la oficialía responsable y confirma capacidad y documentos para su situación. Si prefieren completar el trámite en su país, el evento en Punta Cana puede ser simbólico.",
+        "La JCE publica los requisitos de matrimonio civil. Esa información inicia la consulta, pero la oficina receptora debe confirmar el expediente. El nombre de un paquete hotelero no sustituye esa revisión."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "src0",
+          "label": "JCE: requisitos de matrimonio civil",
+          "url": "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189"
+        }
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s2",
+      "heading": "Compara responsabilidades, no fotografías",
+      "paragraphs": [
+        "Ambas celebraciones pueden incluir votos, anillos, familiares y recepción. Visualmente pueden parecerse aunque sus efectos sean distintos. Pregunta al oficiante qué función cumple y qué documento produce, si corresponde.",
+        "En la vía civil, asigna documentos, cita oficial, testigos y recogida del acta. En la simbólica, asigna guion, idioma, duración y conducción. Un montaje parecido no debe ocultar que falta un paso legal."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s3",
+      "heading": "Valora la flexibilidad que necesitan",
+      "paragraphs": [
+        "Una ceremonia simbólica permite desarrollar un guion personal con quien la conduce, dentro de las reglas del lugar y del servicio contratado. Acuerden lecturas, traducciones y participación antes de cerrar su duración.",
+        "El matrimonio civil debe seguir las formalidades de la autoridad. Pregunta dónde pueden incorporarse elementos personales y si conviene una parte simbólica separada. No pidas omitir contenido legal porque la cena se está retrasando."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s4",
+      "heading": "Compara costos completos",
+      "paragraphs": [
+        "Separa expedición, autenticación, traducción aceptada, tasas y entrega del acta de la producción de ceremonia. Añade lugar, celebrante, sonido, flores, sillas y coordinación. Si se casan en su país, incorpora también ese trámite al presupuesto.",
+        "La opción simbólica puede reducir gestiones en el extranjero, pero no necesariamente abarata toda la boda. Comida, transporte y producción pueden ser iguales. Compara servicios y condiciones de pago, no solo etiquetas."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s5",
+      "heading": "Mantén independiente la decisión religiosa",
+      "paragraphs": [
+        "Una boda religiosa no es una ceremonia simbólica más elaborada. Su capacidad, lugar y forma dependen de la autoridad religiosa competente. Consulta también qué inscripción o documentación civil corresponde.",
+        "Ni un oficiante con apariencia religiosa ni ciertos símbolos acreditan reconocimiento religioso o validez civil. Si la fe es central, resuelve primero ese proceso antes de reservar un formato incompatible."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s6",
+      "heading": "Aclara invitación y horario",
+      "paragraphs": [
+        "Si se casan legalmente antes del viaje, pueden presentar el evento como celebración de su boda. Decidan qué compartir con la familia, manteniendo exactos los datos oficiales. Un certificado simbólico no debe describirse como acta gubernamental.",
+        "Organiza el horario según el formato confirmado y reserva tiempo para interpretación, llegadas y fotografías. Ante retrasos documentales, revisa alternativas contractuales; la asistencia de todos no convierte una ceremonia simbólica en matrimonio legal."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s7",
+      "heading": "Deja la decisión por escrito",
+      "paragraphs": [
+        "Anota dónde ocurre el matrimonio legal, quién confirma requisitos, quién conduce cada acto y qué certificado se obtendrá. Añade plazos, costos y dudas pendientes. Ambos deben comprender la diferencia antes de pagar anticipos.",
+        "Sertuin Events puede coordinar el evento de destino alrededor de esa decisión, alineando lugar, celebrante y horario mientras la autoridad competente atiende el trámite civil."
+      ]
+    }
+  ],
+  "faqHeading": "Preguntas frecuentes",
+  "faqs": [
+    {
+      "_type": "faqItem",
+      "_key": "faq0",
+      "question": "¿La ceremonia simbólica tiene efecto civil?",
+      "answer": "No crea por sí misma el matrimonio civil. El proceso legal debe completarse con la autoridad competente."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq1",
+      "question": "¿Puede conducirla un amigo?",
+      "answer": "Confírmalo con el lugar y en el programa. Eso no convierte al amigo en oficial civil."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq2",
+      "question": "¿Pueden ser diferentes la fecha legal y la fiesta?",
+      "answer": "Sí. Mantén la fecha civil correcta en los documentos oficiales y comunica el programa de celebración como prefieran."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq3",
+      "question": "¿Qué opción cuesta menos?",
+      "answer": "Compara el trámite y el evento completos. La simbólica puede simplificar gestiones sin cambiar el costo de la recepción."
+    }
+  ],
+  "ctaTitle": "Elige el formato adecuado para su boda",
+  "ctaText": "Comparte dónde realizarán el matrimonio civil y qué celebración desean en Punta Cana.",
+  "ctaButton": {
+    "_type": "cta",
+    "label": "coordinación de bodas en Punta Cana",
+    "url": "/puntacana-wedding-planner/"
+  }
+}
