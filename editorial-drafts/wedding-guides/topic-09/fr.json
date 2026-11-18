@@ -1,0 +1,155 @@
+{
+  "_id": "drafts.blogPost-wedding-topic-09-fr",
+  "_type": "blogPost",
+  "language": "fr",
+  "guide": {
+    "_type": "reference",
+    "_ref": "blogGuide-wedding-topic-09"
+  },
+  "title": "Mariage catholique à Punta Cana : démarches et délais",
+  "seoTitle": "Mariage catholique à Punta Cana : démarches et délais",
+  "description": "Préparez un mariage catholique à Punta Cana : coordination des paroisses, préparation, dossier, lieu autorisé, célébrant et calendrier réaliste.",
+  "directAnswer": "Contactez votre paroisse et la paroisse d'accueil avant de réserver une cérémonie à Punta Cana. Elles doivent confirmer préparation, documents, permissions, lieu et ministre autorisé. Une réservation hôtelière ne vaut pas accord ecclésiastique. Vérifiez séparément les formalités civiles et construisez le voyage autour du processus confirmé par l'Église.",
+  "authorName": "Sertuin Events",
+  "authorType": "Organization",
+  "reviewedAt": "2026-11-18",
+  "sections": [
+    {
+      "_type": "blogSection",
+      "_key": "s1",
+      "heading": "Contacter les deux paroisses",
+      "paragraphs": [
+        "Expliquez à votre paroisse votre souhait de vous marier à Punta Cana et demandez qui prépare et transmet le dossier. À destination, identifiez la paroisse d'accueil et l'interlocuteur habilité à confirmer date, lieu et exigences. Le coordinateur de l'hôtel ne remplace pas cette autorité.",
+        "Présentez dès le départ les dates possibles et votre situation. Une option sur un lieu ne confirme ni l'acceptation du dossier ni l'autorisation du célébrant. Suivez ces décisions séparément."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s2",
+      "heading": "Faire confirmer le lieu de célébration",
+      "paragraphs": [
+        "Le droit canonique encadre le lieu et la forme du mariage. Le canon1118 traite de l'église paroissiale et des permissions pour d'autres lieux. Une vue sur mer, une chapelle d'hôtel ou un descriptif commercial ne démontre pas l'autorisation nécessaire.",
+        "Consultez la paroisse sur le lieu précis avant de commander le décor. Si une permission est requise, laissez l'Église orienter la procédure. Une exception obtenue par un autre couple ne confirme pas votre propre situation."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "src0",
+          "label": "Vatican : Code de droit canonique, mariage",
+          "url": "https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann998-1165_en.html"
+        }
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s3",
+      "heading": "Utiliser les informations locales comme piste",
+      "paragraphs": [
+        "La page officielle de Puntacana Resort mentionne l'église Nuestra Señora de Puntacana et des cérémonies catholiques en espagnol, avec traduction possible. Elle identifie une option annoncée, sans garantir disponibilité ni conditions identiques dans toutes les paroisses.",
+        "Confirmez contact paroissial, accès, langue et conditions pour votre date. Demandez si les réservations du lieu et de la cérémonie sont distinctes. Évitez un contrat de réception laissant le lieu religieux indéterminé."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "src0",
+          "label": "Puntacana Resort : informations officielles sur les mariages",
+          "url": "https://www.puntacana.com/en/events/weddings"
+        }
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s4",
+      "heading": "Constituer le dossier avec l'Église",
+      "paragraphs": [
+        "Demandez la liste des actes sacramentels, preuves de préparation, permissions et documents civils nécessaires. Vérifiez ancienneté admise, annotations, signatures, sceaux, traductions et circuit paroissial ou diocésain. Ne remplacez pas un document par une copie sans accord.",
+        "Notez pour chaque pièce émetteur, version, responsable et échéance. Si le dossier passe par plusieurs bureaux, identifiez qui en accuse réception et qui le valide. Une livraison à une adresse ne prouve pas l'acceptation du dossier complet."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s5",
+      "heading": "Aborder les situations particulières en privé",
+      "paragraphs": [
+        "Signalez au prêtre tout mariage antérieur, différence de confession ou autre élément pertinent. Un divorce civil ne résout pas automatiquement toutes les questions canoniques. Obtenez la décision ecclésiastique avant d'annoncer un mariage catholique confirmé.",
+        "Ces échanges relèvent de l'autorité religieuse. Transmettez aux prestataires seulement le résultat opérationnel, le format autorisé et les échéances. Un groupe général de préparation n'est pas le lieu des questions pastorales sensibles."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s6",
+      "heading": "Construire le calendrier réel",
+      "paragraphs": [
+        "Demandez aux deux paroisses leurs étapes concrètes. Préparation, actes, examens et permissions dépendent de votre cas. Travaillez à rebours depuis l'échéance de réception, en prévoyant du temps pour corriger une pièce.",
+        "Adaptez les engagements contractuels au stade d'approbation. Vérifiez les acomptes remboursables ou transférables si la date religieuse n'est pas confirmée. L'organisateur suit les échéances, sans garantir la durée d'une décision ecclésiastique."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s7",
+      "heading": "Définir liturgie, langue et participants",
+      "paragraphs": [
+        "Discutez avec le prêtre de la forme de célébration, des lectures, musiques et rôles. Distinguez personnalisation et exigences liturgiques. Si certains invités ne comprennent pas la langue, demandez comment un livret traduit ou une interprétation peut aider sans interrompre le rite.",
+        "Si vous souhaitez faire venir votre prêtre, demandez à la paroisse d'accueil les permissions et justificatifs avant de réserver son vol. Pouvoir voyager n'autorise pas automatiquement à assister à votre mariage dans ce lieu."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s8",
+      "heading": "Coordonner le trajet vers la réception",
+      "paragraphs": [
+        "Prévoyez accès des véhicules, arrivée, aide au placement et départ. Vérifiez le parcours des aînés et des personnes à mobilité réduite. Gardez du temps pour les photos autorisées sans laisser les invités attendre sans information ni transport.",
+        "Confirmez les règles de fleurs, son et photographie avec l'église puis diffusez les mêmes consignes. Ajustez la réception au véritable horaire religieux. Le service ne devrait pas être précipité pour rattraper un cocktail prévu sans marge."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s9",
+      "heading": "Vérifier les effets civils et les actes finaux",
+      "paragraphs": [
+        "Demandez aux autorités religieuses et civiles comment le mariage sera documenté et enregistré dans votre situation. Un document souvenir ne remplit pas nécessairement les démarches civiles ou celles du pays de résidence.",
+        "Avant le retour, attribuez suivi, obtention de l'acte officiel et correction d'erreurs. Gardez une liste distincte pour authentification, traduction ou transcription à l'étranger. La fin de la réception ne signifie pas forcément la fin du dossier."
+      ]
+    }
+  ],
+  "faqHeading": "Questions fréquentes",
+  "faqs": [
+    {
+      "_type": "faqItem",
+      "_key": "faq0",
+      "question": "L'hôtel peut-il autoriser une cérémonie catholique sur la plage ?",
+      "answer": "Le lieu doit être confirmé par l'autorité ecclésiastique compétente. La disponibilité commerciale ne vaut pas permission religieuse."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq1",
+      "question": "Combien de mois faut-il prévoir ?",
+      "answer": "Demandez aux deux paroisses les étapes de votre dossier. Ne supposez pas de délai universel."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq2",
+      "question": "Notre prêtre peut-il venir ?",
+      "answer": "Consultez la paroisse d'accueil sur les permissions et justificatifs avant de réserver son voyage."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq3",
+      "question": "Le divorce civil règle-t-il la situation religieuse ?",
+      "answer": "Pas automatiquement. Présentez tout mariage antérieur à l'autorité ecclésiastique compétente."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq4",
+      "question": "La cérémonie peut-elle être en français ?",
+      "answer": "Confirmez la langue avec la paroisse et le célébrant. Une option annoncée n'est pas nécessairement disponible partout."
+    }
+  ],
+  "ctaTitle": "Coordonner le séjour autour de l'accord paroissial",
+  "ctaText": "Partagez paroisse confirmée, cérémonie et besoins des invités pour organiser la logistique à Punta Cana.",
+  "ctaButton": {
+    "_type": "cta",
+    "label": "coordination de mariage catholique à Punta Cana",
+    "url": "/puntacana-wedding-planner/"
+  }
+}
