@@ -91,6 +91,14 @@
       "paragraphs": [
         "Demandez le plan couvert pour votre effectif, avec tables, danse et équipements. Fixez l'échéance de décision et les coûts de déplacement. Une promesse de tente ne confirme ni disponibilité, ni montage, ni conditions d'utilisation sûres.",
         "Interrogez aussi le lieu sur vent, foudre et restrictions touchant transport ou production. Identifiez les responsables des décisions de sécurité. Le repli doit permettre une célébration viable, pas simplement un abri provisoire."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "rainlink",
+          "label": "Plan de repli météo pour un mariage à Punta Cana",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/"
+        }
       ]
     },
     {
@@ -189,6 +197,14 @@
       "paragraphs": [
         "Comparez présence des proches, coût complet du voyage, disponibilité, climat et qualité du repli. Signalez les hypothèses. Des chambres moins chères sans solution couverte acceptable constituent un compromis à rendre visible.",
         "Sertuin Events peut coordonner les demandes de dates et lieux avec un cahier des charges commun. Communiquez mois préférés, contraintes familiales et type de célébration pour évaluer l'ensemble du projet."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "meetinglink",
+          "label": "Préparer le premier rendez-vous d'organisation",
+          "url": "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        }
       ]
     }
   ],
