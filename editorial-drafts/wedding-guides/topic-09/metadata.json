@@ -1,0 +1,70 @@
+{
+  "topic": 9,
+  "status": "draft-editorial-review",
+  "reviewedAt": "2026-11-18",
+  "guideId": "blogGuide-wedding-topic-09",
+  "provisionalSharedSlug": "catholic-wedding-punta-cana-requirements",
+  "keywords": {
+    "en": {
+      "title": "Catholic Weddings in Punta Cana: Steps and Timing",
+      "primary": "Catholic wedding requirements Punta Cana",
+      "secondary": [
+        "Catholic destination wedding Dominican Republic",
+        "Catholic marriage preparation",
+        "Punta Cana wedding churches"
+      ],
+      "anchor": "destination wedding coordination in Punta Cana"
+    },
+    "es": {
+      "title": "Bodas católicas en Punta Cana: requisitos y planificación",
+      "primary": "requisitos para boda católica en Punta Cana",
+      "secondary": [
+        "iglesias para bodas en Punta Cana",
+        "matrimonio católico en República Dominicana",
+        "preparación matrimonial católica"
+      ],
+      "anchor": "coordinación de bodas católicas en Punta Cana"
+    },
+    "pt": {
+      "title": "Casamento católico em Punta Cana: requisitos e planejamento",
+      "primary": "requisitos para casamento católico em Punta Cana",
+      "secondary": [
+        "igrejas para casamento em Punta Cana",
+        "casamento religioso na República Dominicana",
+        "preparação matrimonial católica"
+      ],
+      "anchor": "organização de casamento católico em Punta Cana"
+    },
+    "fr": {
+      "title": "Mariage catholique à Punta Cana : démarches et délais",
+      "primary": "conditions pour un mariage catholique à Punta Cana",
+      "secondary": [
+        "églises pour mariage à Punta Cana",
+        "mariage religieux en République dominicaine",
+        "préparation au mariage catholique"
+      ],
+      "anchor": "coordination de mariage catholique à Punta Cana"
+    }
+  },
+  "research": {
+    "queries": [
+      "Catholic wedding Punta Cana requirements parish",
+      "requisitos boda católica Punta Cana parroquia",
+      "casamento católico Punta Cana requisitos",
+      "mariage catholique Punta Cana démarches"
+    ],
+    "sources": [
+      "https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann998-1165_en.html",
+      "https://www.vatican.va/archive/cod-iuris-canonici/esp/documents/cic_libro4_cann1108-1123_sp.html",
+      "https://www.vatican.va/archive/cod-iuris-canonici/portuguese/codex-iuris-canonici_po.pdf",
+      "https://www.puntacana.com/en/events/weddings"
+    ],
+    "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
+  },
+  "pending": [
+    "Expand topic-specific depth toward requested2000–3000 words; current core drafts below target.",
+    "Select and inspect actual hero asset before writing heroAlt.",
+    "Verify2–4 existing same-language related guide URLs before inserting links.",
+    "Confirm shared slug and CMS draft persistence; no publication authorized."
+  ]
+}
