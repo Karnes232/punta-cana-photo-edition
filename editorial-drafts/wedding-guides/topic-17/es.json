@@ -194,6 +194,28 @@
         "Registren depósitos, saldos, fechas y condiciones de cambios o cancelación. Lo pendiente de cotizar debe seguir visible, no figurar como cero. Un presupuesto útil se puede comprobar contra propuestas escritas y actualizar después de cada decisión.",
         "Hagan una última revisión con todas las personas que aportan fondos: total aprobado, dinero ya pagado, saldo disponible y próximas fechas. Si una cifra no tiene respaldo, identifíquenla como estimación hasta recibir confirmación."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guías de planificación relacionadas",
+      "paragraphs": [
+        "Continúen con estas guías para convertir las preguntas de este artículo en un documento práctico de planificación para su celebración."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Preparen la primera reunión con su organizador en Punta Cana",
+          "url": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Revisen la logística del lugar para una boda del sur de Asia",
+          "url": "https://sertuinevents.com/es/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Preguntas frecuentes",
