@@ -201,6 +201,28 @@
         "Marquen cada necesidad como incluida, cotizada aparte, no disponible o pendiente de confirmar. Un espacio vacío no equivale a costo cero. Comparen los totales cuando ambas propuestas respondan al mismo programa: un precio inicial menor puede incluir menos horas o actividades privadas.",
         "Antes de firmar, soliciten calendario de pagos, condiciones de cancelación y cambios, vigencia y tratamiento de impuestos o cargos obligatorios. Guarden el listado final con el acuerdo. Así podrán medir los cambios posteriores contra un alcance inicial claro."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guías de planificación relacionadas",
+      "paragraphs": [
+        "Continúen con estas guías para convertir las preguntas de este artículo en un documento práctico de planificación para su celebración."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Comparen un resort todo incluido con un lugar privado",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Revisen la logística del lugar para una boda del sur de Asia",
+          "url": "https://sertuinevents.com/es/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Preguntas frecuentes",
