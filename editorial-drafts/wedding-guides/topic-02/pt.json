@@ -31,8 +31,8 @@
       ],
       "sources": [
         {
-          "label": "Sertuin Events: serviços e valores publicados, em inglês",
-          "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+          "label": "Sertuin Events: serviços e valores publicados",
+          "url": "https://sertuinevents.com/pt/puntacana-wedding-planner/",
           "_type": "blogSource",
           "_key": "source1"
         }
@@ -130,6 +130,29 @@
   "ctaButton": {
     "_type": "cta",
     "label": "Assessoria de casamento em Punta Cana",
-    "url": "/pt/puntacana-wedding-planner/"
-  }
+    "url": "/puntacana-wedding-planner/"
+  },
+  "reviewedAt": "2026-11-18",
+  "reviewNote": "Pesquisa editorial revisada em 18 de novembro de 2026. Confirme as condições atuais na proposta escrita.",
+  "faqHeading": "Perguntas frequentes",
+  "faqs": [
+    {
+      "_key": "faq1",
+      "_type": "faqItem",
+      "question": "Os honorários também pagam a festa?",
+      "answer": "Não necessariamente. Os honorários remuneram o trabalho de organização combinado. Espaço, alimentação, produção da decoração, fotografia, transporte e hospedagem podem ser pagos à parte. Peça uma proposta discriminada."
+    },
+    {
+      "_key": "faq2",
+      "_type": "faqItem",
+      "question": "Valor fixo é sempre melhor do que percentual?",
+      "answer": "Nenhum modelo é automaticamente melhor. Compare as mesmas responsabilidades e os mesmos eventos. No percentual, esclareça a base de cálculo; no valor fixo, verifique quais mudanças exigiriam um novo orçamento."
+    },
+    {
+      "_key": "faq3",
+      "_type": "faqItem",
+      "question": "A assessoria do dia inclui o ensaio?",
+      "answer": "Somente se estiver previsto no contrato. O serviço de coordenação do dia publicado pela Sertuin Events exclui o ensaio. Confirme a cobertura de cada atividade."
+    }
+  ]
 }
