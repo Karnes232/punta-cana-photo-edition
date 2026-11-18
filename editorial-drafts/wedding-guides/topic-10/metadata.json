@@ -1,0 +1,84 @@
+{
+  "topic": 10,
+  "status": "repository-drafts-editorial-review-required",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "punta-cana-wedding-twelve-month-checklist",
+  "versions": {
+    "en": {
+      "title": "Punta Cana Wedding Checklist: A 12-Month Plan",
+      "primary": "Punta Cana destination wedding checklist",
+      "secondary": [
+        "how to plan a wedding in Punta Cana",
+        "wedding booking deadlines",
+        "wedding planning milestones"
+      ],
+      "anchor": "full wedding planning in Punta Cana"
+    },
+    "es": {
+      "title": "Checklist para organizar una boda en Punta Cana: plan de 12 meses",
+      "primary": "checklist para boda en Punta Cana",
+      "secondary": [
+        "cómo organizar una boda en Punta Cana",
+        "cronograma de planificación de bodas",
+        "lista de tareas para boda de destino"
+      ],
+      "anchor": "planificación completa de bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Checklist de casamento em Punta Cana: planejamento de 12 meses",
+      "primary": "checklist de casamento em Punta Cana",
+      "secondary": [
+        "como organizar casamento em Punta Cana",
+        "cronograma de casamento",
+        "planejamento de destination wedding"
+      ],
+      "anchor": "planejamento completo de casamento em Punta Cana"
+    },
+    "fr": {
+      "title": "Checklist mariage à Punta Cana : planning sur 12 mois",
+      "primary": "checklist mariage à Punta Cana",
+      "secondary": [
+        "organiser un mariage à Punta Cana",
+        "rétroplanning de mariage",
+        "préparation d'un mariage à destination"
+      ],
+      "anchor": "organisation complète de mariage à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2180,
+    "es": 2081,
+    "pt": 2044,
+    "fr": 2094
+  },
+  "sources": [
+    {
+      "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+      "authority": "Existing company guest logistics guide",
+      "consultedAt": "2026-11-18"
+    },
+    {
+      "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+      "authority": "Service scope and existing guide navigation"
+    }
+  ],
+  "researchQueries": [
+    "Punta Cana destination wedding 12 month planning checklist official",
+    "checklist boda Punta Cana doce meses planificación",
+    "checklist casamento Punta Cana 12 meses planejamento",
+    "rétroplanning mariage Punta Cana douze mois"
+  ],
+  "editorialMethod": "Original dependency-based calendar, explicitly illustrative. No universal booking, entry or legal deadlines asserted. Actual contract and authority deadlines take precedence.",
+  "searchIntent": {
+    "en": "Month-by-month practical planning sequence",
+    "es": "Checklist por meses y responsables",
+    "pt": "Cronograma de destination wedding com dependências",
+    "fr": "Rétroplanning adaptable et décisions prioritaires"
+  },
+  "pendingIssues": [
+    "Hero image and rights unconfirmed; heroAlt omitted.",
+    "Guide reference and provisional shared slug need later CMS resolution.",
+    "Same-language existing guide links confirmed via localized service pages; final destination and render QA required.",
+    "Repository drafts only, not imported to Sanity or published."
+  ]
+}
