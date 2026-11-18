@@ -61,9 +61,15 @@
     "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
   },
   "pending": [
-    "Expand topic-specific depth toward requested2000–3000 words; current core drafts below target.",
     "Select and inspect actual hero asset before writing heroAlt.",
-    "Verify2–4 existing same-language related guide URLs before inserting links.",
+    "Render-check related guide links: routes verified in localized service navigation; several non-English direct fetches return cache misses.",
     "Confirm shared slug and CMS draft persistence; no publication authorized."
-  ]
+  ],
+  "bodyWordCounts": {
+    "en": 2179,
+    "es": 2020,
+    "pt": 1989,
+    "fr": 2019
+  },
+  "editorialDepth": "Expanded all four languages with equivalent date comparison, travel constraints, weather-data interpretation, multi-day contingency and contract-change planning."
 }
