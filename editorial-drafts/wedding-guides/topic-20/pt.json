@@ -216,6 +216,28 @@
         "Se visitarem os destinos antes de decidir, preparem a mesma pauta para ambos: espaços, refeições, acessos e responsáveis. Usem a visita para esclarecer pontos abertos, não apenas para conhecer o cenário. Anotem quais respostas exigem confirmação posterior por escrito.",
         "Uma boa impressão pessoal é relevante, mas deve ser conectada ao programa e ao contrato. Confiram se o espaço visto corresponde ao que será reservado e se sua disponibilidade inclui a alternativa para chuva. Depois da visita, atualizem o quadro e peçam uma versão final das propostas antes de assumir pagamentos."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guias de planejamento relacionados",
+      "paragraphs": [
+        "Continuem com estes guias para transformar as perguntas deste artigo em orientações práticas para o planejamento da celebração."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Comparem resort all inclusive e espaço privado",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Planejem a viagem dos convidados para Punta Cana",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        }
+      ]
     }
   ],
   "faqHeading": "Perguntas frequentes",
