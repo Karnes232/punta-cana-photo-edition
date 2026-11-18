@@ -115,7 +115,15 @@
         "Clarifiez le budget de l’alternative météo avant l’événement. Quel espace est disponible, pour quelle capacité, et le déplacement occasionne-t-il des frais ? Qui peut autoriser une dépense supplémentaire ? La disponibilité et les conditions de la solution couverte doivent être convenues avec le lieu. Une prévision favorable ne remplace pas cette décision pratique."
       ],
       "_type": "blogSection",
-      "_key": "s9"
+      "_key": "s9",
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedRain",
+          "label": "Guide du plan pluie",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/"
+        }
+      ]
     },
     {
       "heading": "Réduire les dépenses en agissant sur les bons choix",
@@ -135,7 +143,15 @@
         "L’organisation de mariages à Punta Cana proposée par Sertuin permet de relier lieu, fournisseurs et logistique des invités dans un même plan. La consultation sert à identifier les besoins de votre célébration et les devis encore nécessaires. Apportez vos propositions actuelles et les questions non résolues pour avancer sur des décisions concrètes."
       ],
       "_type": "blogSection",
-      "_key": "s11"
+      "_key": "s11",
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedMeeting",
+          "label": "Préparer le premier rendez-vous",
+          "url": "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Questions sur le budget",
