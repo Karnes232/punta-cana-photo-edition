@@ -115,7 +115,15 @@
         "Pregunta al lugar qué alternativa ofrece si cambia el tiempo, cuántas personas admite y si el traslado genera gastos. Define quién puede autorizar cargos adicionales. La guía existente de Sertuin sobre lluvia explica por qué esa alternativa debe acordarse con el lugar. Una previsión meteorológica favorable no reemplaza la decisión logística ni su presupuesto."
       ],
       "_type": "blogSection",
-      "_key": "s9"
+      "_key": "s9",
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedRain",
+          "label": "Guía del plan de lluvia",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/"
+        }
+      ]
     },
     {
       "heading": "Dónde recortar sin perder el sentido de la celebración",
@@ -135,7 +143,15 @@
         "La planificación de bodas en Punta Cana de Sertuin permite conversar sobre cómo conectar lugar, proveedores e invitados en un plan de trabajo. El objetivo de la consulta es identificar qué necesita tu celebración y qué falta cotizar. Lleva tus propuestas actuales y las preguntas que siguen abiertas; eso permite avanzar con decisiones concretas."
       ],
       "_type": "blogSection",
-      "_key": "s11"
+      "_key": "s11",
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedMeeting",
+          "label": "Checklist de la primera reunión",
+          "url": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Preguntas sobre el presupuesto",
