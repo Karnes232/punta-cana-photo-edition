@@ -202,6 +202,28 @@
         "Avant d'accepter le dernier devis, reprenez les catégories de la comparaison : effectifs par événement, durée, repas, production, professionnels, voyages financés et frais exigibles. Une modification négociée peut toucher plusieurs lignes.",
         "Notez les conditions ouvertes et la personne autorisée à valider leur solution. Si le budget dépend d'une remise non confirmée, gardez cette dépendance visible. Cette dernière vérification ne recommence pas toute la recherche : elle relie la décision au contrat que vous allez prendre, en préservant les choix faits ensemble."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guides de préparation complémentaires",
+      "paragraphs": [
+        "Poursuivez avec ces guides pour transformer les questions de cet article en un cahier de préparation concret pour votre célébration."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Préparez votre premier rendez-vous avec l'organisateur à Punta Cana",
+          "url": "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Comparez resort tout compris et lieu privé",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        }
+      ]
     }
   ],
   "faqHeading": "Questions fréquentes",
