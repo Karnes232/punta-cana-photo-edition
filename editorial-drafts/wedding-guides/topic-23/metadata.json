@@ -1,0 +1,88 @@
+{
+  "topic": 23,
+  "status": "repository-drafts-editorial-review-required",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "indian-wedding-punta-cana-who-pays",
+  "versions": {
+    "en": {
+      "title": "Indian Weddings in Punta Cana: Who Pays for What?",
+      "primary": "who pays for an Indian wedding in Punta Cana",
+      "secondary": [
+        "Indian destination wedding guest expenses",
+        "family wedding contributions",
+        "destination wedding payment etiquette"
+      ],
+      "anchor": "Indian wedding planning in Punta Cana"
+    },
+    "es": {
+      "title": "Bodas indias en Punta Cana: ¿quién paga cada gasto?",
+      "primary": "quién paga una boda india en Punta Cana",
+      "secondary": [
+        "gastos de boda india de destino",
+        "reparto de gastos entre familias",
+        "alojamiento de invitados en bodas indias"
+      ],
+      "anchor": "planificación de bodas indias en Punta Cana"
+    },
+    "pt": {
+      "title": "Casamentos indianos em Punta Cana: quem paga cada despesa?",
+      "primary": "quem paga um casamento indiano em Punta Cana",
+      "secondary": [
+        "despesas de casamento indiano",
+        "divisão de custos entre famílias",
+        "hospedagem de convidados de casamento"
+      ],
+      "anchor": "assessoria de casamento indiano em Punta Cana"
+    },
+    "fr": {
+      "title": "Mariage indien à Punta Cana : qui paie quoi ?",
+      "primary": "qui paie un mariage indien à Punta Cana",
+      "secondary": [
+        "répartition des dépenses d'un mariage indien",
+        "participation financière des familles",
+        "hébergement des invités"
+      ],
+      "anchor": "organisation de mariages indiens à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 1976,
+    "es": 1892,
+    "pt": 1952,
+    "fr": 1986
+  },
+  "researchQueries": [
+    "Indian destination wedding who pays guest travel family contributions",
+    "boda india quién paga invitados boda destino",
+    "casamento indiano quem paga viagem convidados",
+    "mariage indien destination qui paie invités"
+  ],
+  "searchIntent": {
+    "en": "Voluntary family contributions and explicit guest travel responsibilities",
+    "es": "Reparto familiar y diferencia entre ofrecer hospitalidad y pagar cada viaje",
+    "pt": "Divisão de despesas, hospedagem oferecida e autonomia dos convidados",
+    "fr": "Participation familiale, hébergement et information avant réservation"
+  },
+  "sources": [
+    {
+      "url": "https://sertuinevents.com/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+      "note": "Primary company guidance separates couple decisions, cultural authority and operational coordination."
+    },
+    {
+      "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+      "note": "Company guest logistics context."
+    },
+    {
+      "url": "https://sertuinevents.com/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+      "note": "Company logistics context; no universal ceremony list inferred."
+    }
+  ],
+  "researchAssessment": "Search results conflict on customary family and guest allocations. No general custom is promoted as a fact or obligation. Article presents original optional decision frameworks and explicitly fictional arithmetic.",
+  "pendingIssues": [
+    "Image and image-specific heroAlt pending.",
+    "Guide reference and shared slug are proposed for later CMS resolution.",
+    "Localized existing guide links require final rendered verification; EN sources fetched.",
+    "Repository drafts only, no Sanity save or publication."
+  ],
+  "editorialNote": "Approximately 1900–2000 words per language, retaining useful scope without repeating cultural claims. Counts exclude CTA and source labels."
+}
