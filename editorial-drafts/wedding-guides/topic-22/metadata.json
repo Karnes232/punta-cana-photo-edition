@@ -1,0 +1,71 @@
+{
+  "topic": 22,
+  "status": "draft-editorial-review",
+  "reviewedAt": "2026-11-18",
+  "guideId": "blogGuide-wedding-topic-22",
+  "provisionalSharedSlug": "sikh-wedding-punta-cana-anand-karaj",
+  "keywords": {
+    "en": {
+      "title": "Sikh Weddings in Punta Cana: Planning the Anand Karaj",
+      "primary": "Sikh wedding Punta Cana",
+      "secondary": [
+        "Anand Karaj destination wedding Dominican Republic",
+        "Granthi coordination",
+        "Guru Granth Sahib arrangements"
+      ],
+      "anchor": "South Asian wedding coordination in Punta Cana"
+    },
+    "es": {
+      "title": "Bodas sij en Punta Cana: cómo planificar la ceremonia Anand Karaj",
+      "primary": "boda sij en Punta Cana",
+      "secondary": [
+        "ceremonia Anand Karaj en República Dominicana",
+        "matrimonio sij de destino",
+        "requisitos religiosos de boda sij"
+      ],
+      "anchor": "coordinación de bodas del sur de Asia en Punta Cana"
+    },
+    "pt": {
+      "title": "Casamento sikh em Punta Cana: como planejar o Anand Karaj",
+      "primary": "casamento sikh em Punta Cana",
+      "secondary": [
+        "cerimônia Anand Karaj na República Dominicana",
+        "casamento religioso sikh",
+        "requisitos para casamento sikh"
+      ],
+      "anchor": "organização de casamentos sul-asiáticos em Punta Cana"
+    },
+    "fr": {
+      "title": "Mariage sikh à Punta Cana : organiser la cérémonie Anand Karaj",
+      "primary": "mariage sikh à Punta Cana",
+      "secondary": [
+        "cérémonie Anand Karaj en République dominicaine",
+        "mariage religieux sikh",
+        "conditions pour une cérémonie Anand Karaj"
+      ],
+      "anchor": "coordination de mariages d'Asie du Sud à Punta Cana"
+    }
+  },
+  "research": {
+    "queries": [
+      "Sikh wedding Punta Cana Anand Karaj gurdwara",
+      "boda sij Punta Cana Anand Karaj",
+      "casamento sikh Punta Cana Anand Karaj",
+      "mariage sikh Punta Cana Anand Karaj"
+    ],
+    "intent": "Religious feasibility and respectful destination-celebration planning, not resort ceremony sales.",
+    "sources": [
+      "https://gspuk.org/wp-content/uploads/2024/01/Dress-Code-at-Anand-Karaj.pdf",
+      "https://www.gurunanakdarbar.org/anandkaraj",
+      "https://old.sgpc.net/CDN/Sikh_Rehat_Maryada_English.pdf"
+    ],
+    "sourceNotes": "Council guidance and gurdwara booking page opened. SGPC indexed primary PDF returned502 on direct fetch; not used for detailed claims."
+  },
+  "pending": [
+    "Religious authority review; no Punta Cana Anand Karaj location authorized or promised.",
+    "Expand useful topic-specific coverage toward requested2000–3000 words; current localized drafts approximately1000–1100 words.",
+    "Select and inspect real photo before writing heroAlt.",
+    "Verify2–4 same-language related guide destinations before inserting links.",
+    "Confirm shared slug and create CMS draft without publication when authorized workflow is available."
+  ]
+}
