@@ -1,0 +1,68 @@
+{
+  "topic": 8,
+  "status": "draft-editorial-review",
+  "reviewedAt": "2026-11-18",
+  "guideId": "blogGuide-wedding-topic-08",
+  "provisionalSharedSlug": "legal-vs-symbolic-wedding-punta-cana",
+  "keywords": {
+    "en": {
+      "title": "Legal or Symbolic Wedding in Punta Cana?",
+      "primary": "legal vs symbolic wedding Punta Cana",
+      "secondary": [
+        "civil vs symbolic ceremony Dominican Republic",
+        "legal marriage certificate",
+        "symbolic destination wedding"
+      ],
+      "anchor": "wedding coordination in Punta Cana"
+    },
+    "es": {
+      "title": "¿Boda legal o simbólica en Punta Cana?",
+      "primary": "boda legal o simbólica en Punta Cana",
+      "secondary": [
+        "matrimonio civil en República Dominicana",
+        "ceremonia simbólica en Punta Cana",
+        "diferencias entre boda civil y simbólica"
+      ],
+      "anchor": "coordinación de bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Casamento civil ou simbólico em Punta Cana?",
+      "primary": "casamento civil ou simbólico em Punta Cana",
+      "secondary": [
+        "casamento legal na República Dominicana",
+        "cerimônia simbólica em Punta Cana",
+        "diferenças entre casamento civil e simbólico"
+      ],
+      "anchor": "organização de cerimônias de casamento em Punta Cana"
+    },
+    "fr": {
+      "title": "Mariage civil ou symbolique à Punta Cana ?",
+      "primary": "mariage civil ou symbolique à Punta Cana",
+      "secondary": [
+        "cérémonie symbolique en République dominicaine",
+        "mariage civil à Punta Cana",
+        "différences entre mariage civil et symbolique"
+      ],
+      "anchor": "coordination de mariage à Punta Cana"
+    }
+  },
+  "research": {
+    "queries": [
+      "legal symbolic wedding Dominican Republic official",
+      "boda legal simbólica Punta Cana diferencias",
+      "casamento civil simbólico Punta Cana diferenças",
+      "mariage civil symbolique Punta Cana différences"
+    ],
+    "sources": [
+      "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
+      "https://www.godominicanrepublic.com/weddings/marriage-requirements"
+    ],
+    "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
+  },
+  "pending": [
+    "Expand topic-specific depth toward requested2000–3000 words; current core drafts below target.",
+    "Select and inspect actual hero asset before writing heroAlt.",
+    "Verify2–4 existing same-language related guide URLs before inserting links.",
+    "Confirm shared slug and CMS draft persistence; no publication authorized."
+  ]
+}
