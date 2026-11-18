@@ -101,6 +101,28 @@
           "url": "https://hotel.hardrock.com/punta-cana/weddings.aspx"
         }
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guides de préparation complémentaires",
+      "paragraphs": [
+        "Poursuivez avec ces guides pour transformer les questions de cet article en un cahier de préparation concret pour votre célébration."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Préparez le repli météo du mariage à Punta Cana",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Examinez la logistique du lieu pour un mariage sud-asiatique",
+          "url": "https://sertuinevents.com/fr/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Questions fréquentes",
