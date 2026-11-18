@@ -1,0 +1,189 @@
+{
+  "_id": "drafts.blogPost-wedding-topic-25-en",
+  "_type": "blogPost",
+  "language": "en",
+  "guide": {
+    "_type": "reference",
+    "_ref": "blogGuide-wedding-topic-25"
+  },
+  "title": "Punta Cana Wedding Timeline: Ceremony to Reception",
+  "seoTitle": "Punta Cana Wedding Day Timeline: A Practical Schedule",
+  "description": "Build a Punta Cana wedding timeline around ceremony length, photographs, guest transfers, dinner and supplier access, with a flexible worked example.",
+  "directAnswer": "Build your Punta Cana wedding day timeline around the ceremony, the available daylight and the venue’s service windows. Work backward to preparation and forward to portraits, dinner and departure. Give each transition an owner and a realistic buffer. The right ceremony time depends on your date, location and program; there is no single sunset schedule for every wedding.",
+  "sections": [
+    {
+      "heading": "Begin with the commitments that cannot easily move",
+      "paragraphs": [
+        "Collect the confirmed ceremony slot, venue access times, meal service window, entertainment finish time and transport arrangements before choosing attractive times for the invitation. These commitments form the boundaries of the day. A schedule that ignores them may look relaxed while requiring suppliers to work outside their contracted hours.",
+        "Ask the officiant for the actual ceremony sequence and anticipated duration. Do not assign the same short block to every religious, civil or symbolic celebration. Readings, translations, processions and family participation can all change the running time. If a ceremony has requirements set by a religious authority, establish those first and build the celebration around them.",
+        "Agree on the couple’s priorities next. You may value an unhurried ceremony, time with guests during cocktails, portraits in a particular light or a long dance party. Put those priorities into the draft explicitly. When something later needs to move, the team can protect what matters instead of shortening whichever moment happens to come next."
+      ],
+      "_type": "blogSection",
+      "_key": "s1"
+    },
+    {
+      "heading": "Use daylight as a planning input, not a promise",
+      "paragraphs": [
+        "Check sunrise and sunset for the actual date and location. A date-specific solar calendar is more useful than a generic recommendation to marry at a fixed afternoon hour. The timeanddate Punta Cana page provides a calendar that can be changed by month and year. The astronomical sunset time does not guarantee clear skies or flattering light at a particular spot.",
+        "Walk through the proposed photography locations with the photographer, in person or through a venue-specific discussion. Buildings, shade, orientation and the route between locations affect what is practical. Do not assume that a beach location gives an unobstructed view of the sun setting over the water. Ask what the light will mean for your actual composition.",
+        "Reserve a portrait window and a fallback option rather than organizing the whole reception around an exact minute. If photographs are important, the photographer should help identify the useful time block. The planner then connects that request with guest hospitality, ceremony duration and dinner service so one priority does not silently disrupt another."
+      ],
+      "sources": [
+        {
+          "label": "Punta Cana sunrise and sunset calendar",
+          "url": "https://www.timeanddate.com/sun/dominican-republic/punta-cana",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
+      "_type": "blogSection",
+      "_key": "s2"
+    },
+    {
+      "heading": "Build the morning backward from being ready",
+      "paragraphs": [
+        "Start with the time both partners must be dressed and available, then work backward through hair, makeup, dressing and any planned photographs. Ask the beauty team to estimate the work for the actual number of people and services. A large group does not become faster simply because everyone has been told the same start time.",
+        "Allocate space for personal preparation: eating, collecting belongings, checking attire and having a quiet moment. Keep the room location and access instructions clear for suppliers. If the photographer covers both partners in different locations, the schedule must account for travel or a second team member rather than expecting simultaneous coverage from one person.",
+        "Choose one person to hold the small items that otherwise generate last-minute searches: rings, vows, accessories and anything needed for the ceremony. The couple should know who has them, but should not have to manage the checklist while dressing. Confirm when personal items leave the preparation room and who takes them back afterward."
+      ],
+      "_type": "blogSection",
+      "_key": "s3"
+    },
+    {
+      "heading": "Supplier arrival is earlier than service readiness",
+      "paragraphs": [
+        "A supplier’s arrival time is not the moment their service can begin. Delivery, security checks, unloading, setup and testing come first. Ask each team for the time it needs to be ready, then place the arrival and access arrangements accordingly. The venue should know which vehicles and people are expected and where they may work.",
+        "Keep guest access and production access separate in the plan. A ceremony area should not be receiving equipment while guests are trying to take their seats. Assign a readiness check before guest arrival: seating in place, route clear, sound tested and the responsible venue representative available. This is a coordination checkpoint, not a substitute for the supplier’s technical responsibilities.",
+        "Write the handoffs between teams. If the florist finishes the ceremony installation before the photographer photographs it, both need the same deadline. If one room changes from preparation to reception use, identify who clears it and who accepts it as ready. These dependencies explain delays more clearly than a long list of unrelated arrival times."
+      ],
+      "_type": "blogSection",
+      "_key": "s4"
+    },
+    {
+      "heading": "Give transport and guest seating their own blocks",
+      "paragraphs": [
+        "Plan from the point where guests actually gather, not from a vague departure time. Identify the meeting place, check-in contact, boarding time, vehicle departure and expected arrival. For multiple hotels, decide whether one route or separate vehicles makes sense. Confirm the actual journey with the transport provider; a map estimate alone does not include boarding and resort access.",
+        "Allow for guests who need an easier walking route or assistance reaching the ceremony. Ask about those needs early and discreetly. The invitation can show a simple arrival instruction while the team’s version includes the arrangements that make it possible. Do not send everyone to the ceremony much earlier than necessary without considering comfort and hospitality.",
+        "Separate the guest arrival time from the ceremony start. A brief seating period gives ushers time to guide the group and prevents a late vehicle from arriving in the middle of the processional. Tell guests which time they are expected at the meeting point and which time the ceremony begins; these are different instructions."
+      ],
+      "sources": [
+        {
+          "label": "Punta Cana destination wedding guest travel guide",
+          "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
+      "_type": "blogSection",
+      "_key": "s5"
+    },
+    {
+      "heading": "Coordinate the ceremony and the first transition",
+      "paragraphs": [
+        "Create a short ceremony cue sheet with the officiant and whoever manages sound. Include the processional order, musical cues, microphone needs and the person who gives the start signal. Names should be easy for the team to identify. If a participant does not arrive, agree in advance who decides whether to wait or adjust the order.",
+        "The ceremony ending needs a plan too. Explain where the couple goes, where guests go and who remains for photographs. Without that handoff, everyone can gather around the same small space while the photo team tries to assemble relatives. A clear announcement and a designated family helper are often more useful than adding more minutes.",
+        "Do not compress the ceremony itself to recover a delay without discussing it with the officiant. Instead, identify flexible elements elsewhere in the schedule. The team should understand which moments have personal or religious significance and which are simply optional program items. That distinction makes a respectful adjustment possible."
+      ],
+      "_type": "blogSection",
+      "_key": "s6"
+    },
+    {
+      "heading": "Balance portraits with time among your guests",
+      "paragraphs": [
+        "Prepare a concise family photograph list organized by people who need to be present together. Ask a relative who recognizes everyone to help gather the groups. Avoid an unlimited list of combinations unless you have deliberately allocated time for it. The list should reflect your priorities, not an assumption that every possible arrangement will fit.",
+        "Decide whether you want any couple or family portraits before the ceremony. A first look is an option, not an obligation or a universal solution. Discuss privacy, clothing readiness and the significance of seeing each other for the first time. Moving portraits earlier only helps when the preparation schedule can support it.",
+        "While photographs take place, guests need a defined next experience. Confirm where refreshments are served, how they find the space and when they will move to dinner. If the couple wants to join part of the cocktail hour, protect that time in the portrait plan. Otherwise it can disappear even when every supplier follows their own schedule."
+      ],
+      "_type": "blogSection",
+      "_key": "s7"
+    },
+    {
+      "heading": "An illustrative afternoon-to-evening schedule",
+      "paragraphs": [
+        "This example is a planning exercise, not a recommended ceremony time for every date. It assumes preparation and transfers have been checked separately, a short symbolic ceremony, nearby reception spaces and no lengthy room change. Replace these assumptions with your own confirmed program before using any of the times.",
+        "In the example, guests arrive at 3:30 p.m.; the ceremony runs from 4:00 to 4:30; family photographs and a hosted cocktail period begin at 4:30; and the couple has a portrait block from 5:00 to 5:30. Guests begin moving to dinner at 5:45, with the reception welcome at 6:00. The photographer must confirm whether that portrait block suits the real date and location.",
+        "Dinner begins at 6:15, agreed short speeches fit into the service plan, and dancing begins at 7:30. A final hosted departure is scheduled for 10:00 only if venue, entertainment and transport contracts support it. These times demonstrate sequencing. They are not evidence of a resort’s permitted event hours, a sunset calculation or the duration your ceremony will require."
+      ],
+      "_type": "blogSection",
+      "_key": "s8"
+    },
+    {
+      "heading": "Plan dinner and speeches with the service team",
+      "paragraphs": [
+        "Ask the catering team how service progresses for your group and menu. Build entrances, speeches and entertainment around that explanation. A speech placed just as meals leave the kitchen can create a conflict even if the program seems elegant on paper. Give the service lead the final version and identify who can approve a change.",
+        "Agree on speakers, approximate length and speaking order before the day. Provide a microphone plan and tell the master of ceremonies how names should be pronounced. Keep surprise contributions optional rather than allowing them to expand without limit. A few thoughtful words can matter more than a program that leaves little time for conversation or dancing.",
+        "If the couple wants to leave briefly for photographs, arrange the absence so guests know what happens next and service is not waiting for an unexplained return. The photographer and catering lead need a shared understanding of the window. That coordination is more reliable than asking the couple to negotiate the timing during dinner."
+      ],
+      "_type": "blogSection",
+      "_key": "s9"
+    },
+    {
+      "heading": "Create a usable delay and weather plan",
+      "paragraphs": [
+        "Place buffers at transitions where the team can actually use them: between preparation and departure, arrival and ceremony, or portraits and the reception entrance. A large empty block at the end does not help a vehicle that departs too soon in the afternoon. The amount needed depends on the route, group and setup rather than one standard rule.",
+        "Agree which optional items can move or shorten if the day runs late. Preserve essential service, guest communication and ceremony requirements. One coordinator should communicate the revised sequence to the affected suppliers, so a photographer does not follow one version while the DJ follows another. Record any extension that changes the bill before assuming it is authorized.",
+        "For weather changes, confirm the alternative space and the people who make the relocation decision. Sertuin’s rain-plan guide explains that the decision time depends on conditions and setup rather than a universal fixed hour. Keep the revised guest route and supplier sequence ready; changing the venue means changing more than the address on the invitation."
+      ],
+      "sources": [
+        {
+          "label": "How a Punta Cana wedding rain plan works",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
+      "_type": "blogSection",
+      "_key": "s10"
+    },
+    {
+      "heading": "Finish with departures, belongings and one final version",
+      "paragraphs": [
+        "The guest celebration can end before suppliers finish their work. Schedule transport, collection of personal belongings and the venue handover separately from dismantling. Name the person responsible for gifts, attire and items the couple brought. Confirm where these go rather than assuming a family member will collect everything after a long evening.",
+        "Keep two useful versions of the schedule: a short guest itinerary and a detailed operational plan. The latter needs times, locations, contacts and responsibilities, but guests do not need delivery instructions or supplier phone numbers. Mark the date and version clearly, then distribute the agreed revision through one consistent channel.",
+        "Sertuin’s wedding day coordination in Punta Cana connects the timeline with the venue and suppliers. Its published day-coordination scope includes review from contracting and excludes rehearsal, so discuss any additional event separately. Bring your bookings, ceremony requirements and priorities to the planning conversation; a workable schedule grows from those real commitments."
+      ],
+      "sources": [
+        {
+          "label": "Wedding day coordination in Punta Cana",
+          "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
+      "_type": "blogSection",
+      "_key": "s11"
+    }
+  ],
+  "faqHeading": "Wedding timeline questions",
+  "faqs": [
+    {
+      "question": "What time should a beach wedding start?",
+      "answer": "Choose the time after checking the date’s daylight, the ceremony duration, venue availability and the photography plan. A fixed afternoon hour is not suitable for every date or program.",
+      "_type": "faqItem",
+      "_key": "faq1"
+    },
+    {
+      "question": "Should guests receive the full supplier timeline?",
+      "answer": "Give guests a short itinerary with meeting points, arrival instructions and transport. Keep setup, technical cues and supplier contacts in the operational version.",
+      "_type": "faqItem",
+      "_key": "faq2"
+    },
+    {
+      "question": "What should change if the wedding starts late?",
+      "answer": "The coordinator should consult the affected teams and adjust agreed flexible items. Do not assume the ceremony, meal service or supplier finish times can simply be compressed or extended.",
+      "_type": "faqItem",
+      "_key": "faq3"
+    }
+  ],
+  "authorName": "Sertuin Events",
+  "authorType": "Organization",
+  "reviewedAt": "2026-11-18",
+  "reviewNote": "Editorial research reviewed November 18, 2026. Example times are illustrative and require date-specific and supplier confirmation.",
+  "ctaTitle": "Turn your bookings into a workable wedding day",
+  "ctaText": "Share your ceremony plans, locations and supplier commitments to discuss the coordination your celebration needs.",
+  "ctaButton": {
+    "_type": "cta",
+    "label": "Discuss wedding day coordination",
+    "url": "/puntacana-wedding-planner/"
+  }
+}
