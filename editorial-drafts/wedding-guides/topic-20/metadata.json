@@ -1,0 +1,78 @@
+{
+  "topic": 20,
+  "status": "repository-draft-not-imported-or-published",
+  "proposedGuideId": "blogGuide-wedding-topic-20",
+  "proposedSharedSlug": "punta-cana-mexico-indian-wedding-comparison",
+  "researchedAt": "2026-11-18",
+  "keywords": {
+    "en": {
+      "title": "Punta Cana or Mexico for an Indian Wedding?",
+      "primary": "Mexico vs Punta Cana Indian wedding",
+      "secondary": [
+        "Indian destination wedding Mexico or Dominican Republic",
+        "wedding guest flight connections",
+        "Indian wedding resort facilities"
+      ],
+      "anchor": "Indian destination wedding planning in Punta Cana"
+    },
+    "es": {
+      "title": "¿Punta Cana o México para una boda india?",
+      "primary": "boda india en Punta Cana o México",
+      "secondary": [
+        "bodas indias en República Dominicana",
+        "bodas de destino en México",
+        "comparación de destinos para bodas indias"
+      ],
+      "anchor": "planificación de bodas indias en Punta Cana"
+    },
+    "pt": {
+      "title": "Punta Cana ou México para um casamento indiano?",
+      "primary": "casamento indiano em Punta Cana ou México",
+      "secondary": [
+        "casamento indiano na República Dominicana",
+        "destination wedding no México",
+        "comparação de destinos para casamento"
+      ],
+      "anchor": "organização de casamento indiano em Punta Cana"
+    },
+    "fr": {
+      "title": "Punta Cana ou Mexique pour un mariage indien ?",
+      "primary": "mariage indien à Punta Cana ou au Mexique",
+      "secondary": [
+        "mariage indien en République dominicaine",
+        "mariage à destination au Mexique",
+        "comparaison des destinations de mariage"
+      ],
+      "anchor": "organisation de mariages indiens à Punta Cana"
+    }
+  },
+  "wordCounts": {
+    "en": 1999,
+    "es": 1991,
+    "pt": 2000,
+    "fr": 2065
+  },
+  "researchNotes": [
+    "Independent EN/ES/PT/FR intent queries performed.",
+    "Specific Riviera Maya and Punta Cana properties supported by official primary sources; no countrywide ranking.",
+    "Flights, documents, availability and provider terms require individual current verification.",
+    "Illustration explicitly hypothetical; no actual route or cost claims.",
+    "No suggestion that Sertuin operates weddings in Mexico."
+  ],
+  "sources": [
+    "https://hotel.hardrock.com/punta-cana/weddings.aspx",
+    "https://hotel.hardrock.com/riviera-maya/weddings.aspx",
+    "https://sertuinevents.com/puntacana-wedding-planner/",
+    "https://sertuinevents.com/es/puntacana-wedding-planner/",
+    "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+    "https://sertuinevents.com/fr/puntacana-wedding-planner/"
+  ],
+  "unresolved": [
+    "heroAlt and image pending authorized selection and visual review.",
+    "Shared guide ID/slug provisional until CMS reconciliation.",
+    "Related localized article URLs pending verification.",
+    "Current dates/flight schedules/venue quotes intentionally not asserted."
+  ],
+  "cta": "/puntacana-wedding-planner/",
+  "publication": false
+}
