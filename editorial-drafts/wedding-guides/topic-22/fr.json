@@ -218,6 +218,28 @@
         "Le document de préparation doit identifier l'autorité consultée, le lieu approuvé, le responsable des documents civils et les événements prévus à Punta Cana. Ajoutez les conditions contractuelles applicables si une activité essentielle ne peut se tenir. Les représentants des familles doivent disposer de la même version.",
         "Sertuin Events peut coordonner la célébration à destination à partir de ces décisions. Présentez les dispositions religieuses et civiles confirmées, le nombre estimé d'invités et les journées souhaitées afin de définir un programme opérationnel et des responsabilités précises."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guides de préparation complémentaires",
+      "paragraphs": [
+        "Poursuivez avec ces guides pour transformer les questions de cet article en un cahier de préparation concret pour votre célébration."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Préparez un mariage multiculturel autour des traditions familiales",
+          "url": "https://sertuinevents.com/fr/blog/plan-multicultural-wedding-punta-cana-family-traditions/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Organisez le voyage des invités à Punta Cana",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        }
+      ]
     }
   ],
   "faqHeading": "Questions fréquentes",
