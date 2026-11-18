@@ -194,6 +194,28 @@
         "Registrem sinais, saldos, vencimentos e condições de alteração ou cancelamento. Mantenham os itens sem preço como pendentes, não como zero. Um orçamento útil pode ser conferido com propostas escritas e atualizado após cada decisão aprovada.",
         "Façam uma conferência final com quem contribui: total aprovado, valores pagos, saldo disponível e próximas datas. Identifiquem estimativas sem proposta como pendentes de confirmação. Guardem a versão aprovada e anotem a data da atualização. Quando receberem uma nova cotação, confiram se ela substitui ou complementa a anterior antes de alterar o total. Essa distinção evita acrescentar duas versões do mesmo serviço ou retirar uma parcela que continua válida. O documento deve mostrar também quem vai solicitar a informação que falta."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guias de planejamento relacionados",
+      "paragraphs": [
+        "Continuem com estes guias para transformar as perguntas deste artigo em orientações práticas para o planejamento da celebração."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Preparem a primeira reunião com a assessoria em Punta Cana",
+          "url": "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Revisem a logística do local para um casamento sul-asiático",
+          "url": "https://sertuinevents.com/pt/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/"
+        }
+      ]
     }
   ],
   "faqHeading": "Perguntas frequentes",
