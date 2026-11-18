@@ -218,6 +218,28 @@
         "O plano deve indicar a autoridade religiosa consultada, o local aprovado, o responsável pelos documentos civis e os eventos previstos em Punta Cana. Incluam o que os contratos determinam caso uma atividade essencial não possa acontecer. Todos os representantes da família devem trabalhar com a mesma versão.",
         "A Sertuin Events pode coordenar a comemoração no destino a partir dessas definições. Compartilhem os arranjos religiosos e civis confirmados, o número estimado de convidados e os dias desejados para que a proposta operacional tenha responsabilidades claras."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Guias de planejamento relacionados",
+      "paragraphs": [
+        "Continuem com estes guias para transformar as perguntas deste artigo em orientações práticas para o planejamento da celebração."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Planejem um casamento multicultural com as tradições familiares",
+          "url": "https://sertuinevents.com/pt/blog/plan-multicultural-wedding-punta-cana-family-traditions/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Planejem a viagem dos convidados para Punta Cana",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        }
+      ]
     }
   ],
   "faqHeading": "Perguntas frequentes",
