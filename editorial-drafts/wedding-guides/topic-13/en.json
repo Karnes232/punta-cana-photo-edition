@@ -1,0 +1,138 @@
+{
+  "_id": "drafts.blogPost-wedding-topic-13-en",
+  "_type": "blogPost",
+  "language": "en",
+  "guide": {
+    "_type": "reference",
+    "_ref": "blogGuide-wedding-topic-13"
+  },
+  "title": "Jellyfish vs. Kukua: Punta Cana Wedding Comparison",
+  "seoTitle": "Jellyfish vs. Kukua: Punta Cana Wedding Comparison",
+  "description": "Compare Jellyfish and Kukua for a Punta Cana wedding using the same guest count, event layout, transfer plan, weather backup and complete written quote.",
+  "directAnswer": "Neither Jellyfish nor Kukua is automatically the better wedding venue. Both advertise weddings in Bávaro; the useful comparison is your exact program at each location. Request matching proposals with the same guest count, meal, bar hours, layout, transport and weather alternative. Choose from documented suitability and the full cost, not photographs or an unsupported price ranking.",
+  "authorName": "Sertuin Events",
+  "authorType": "Organization",
+  "reviewedAt": "2026-11-18",
+  "sections": [
+    {
+      "_type": "blogSection",
+      "_key": "s1",
+      "heading": "What can be verified before requesting a quote",
+      "paragraphs": [
+        "Jellyfish's official wedding page places its celebrations on Bávaro Beach. Kukua's official FAQ describes a beach venue on private property between the RIU and Bahía resorts. These are useful starting points for locating both options, not evidence that either venue is nearer to every hotel.",
+        "Avoid copying approximate journey times from blogs. Punta Cana covers different hotel areas, and the relevant trip begins at your actual pickup location. Request the route from your selected accommodation to each venue, including the resort's vehicle access procedure."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "src0",
+          "label": "Jellyfish: official weddings information",
+          "url": "https://www.jellyfishrestaurant.com/weddings"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "src1",
+          "label": "Kukua: official venue questions",
+          "url": "https://kukuabeachclub.co/faqs/"
+        }
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s2",
+      "heading": "Compare one wedding brief, not two different packages",
+      "paragraphs": [
+        "Send each team a single brief with date options, expected adults and children, ceremony type, dinner format and reception hours. Include the dance floor, entertainment, accessibility needs and any separate getting-ready arrangements. Request an itemized response showing what is included, optional or unavailable.",
+        "When a proposal changes the menu, bar duration or guest count, update the comparison instead of treating the headline totals as equivalent. A lower price may describe less event time or a different service. Likewise, an upgrade only adds value when it solves a priority you actually have."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s3",
+      "heading": "Ask for the layout that fits your celebration",
+      "paragraphs": [
+        "A general capacity number does not establish that your dinner, dance floor, stage and service routes fit together. Ask each venue for a plan using your actual guest count and preferred furniture. Check where guests wait between ceremony and reception, where suppliers work and how people reach restrooms.",
+        "Request the same plan for the weather alternative. If tables must move after the ceremony, clarify who moves them, how long it takes and where guests go meanwhile. A venue should be evaluated as a sequence of spaces and transitions, not a single attractive photograph."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s4",
+      "heading": "Understand exactly what privacy means",
+      "paragraphs": [
+        "Ask which areas your booking reserves, for what hours and whether other restaurant activity can occur during the event. Confirm the boundaries of any private area and what the team can control around beach access. Do not infer an exclusive beach from a photograph with no other people.",
+        "Also ask when suppliers may begin setup and when breakdown must end. Exclusivity during the reception may not include the preceding preparation period. Put these details into the agreement, along with any additional charge for extending use."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s5",
+      "heading": "Make transport part of the venue comparison",
+      "paragraphs": [
+        "List every hotel used by the wedding group. Estimate separate departure waves for the couple, wedding party and other guests. Request vehicle type, pickup contact, waiting allowance and return arrangements. Guests who leave early should have a clear option that does not require the couple to organize a taxi mid-reception.",
+        "For children, older relatives and guests with mobility needs, verify the actual vehicle and boarding arrangements. Do not assume a short distance means an accessible walk. Include the transport total in both venue budgets so the apparently cheaper venue does not hide a more complex transfer plan."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s6",
+      "heading": "Compare menus, service and the full invoice",
+      "paragraphs": [
+        "Ask how tastings work and whether the tasted menu matches the contracted wedding menu. Record dietary requirements precisely, including allergies requiring direct discussion with the catering team. Distinguish a menu preference from a medically necessary food restriction.",
+        "Compare venue charge, food, drinks, staffing, furniture, décor, lighting, sound, transport and coordination separately. Confirm taxes, service charges, overtime, minimum spending and payment currency. Ask how guest-count changes affect the bill and when the final number becomes binding."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s7",
+      "heading": "Review suppliers and weather decisions",
+      "paragraphs": [
+        "Ask both teams whether your chosen photographer, DJ, florist or production company can work there, and what access, insurance or supervision requirements apply. Do not assume that an independent venue has no supplier restrictions. Clarify who holds the final schedule and resolves a late delivery.",
+        "For rain or strong wind, request the decision deadline, responsible person, available covered space and any additional costs. Ask what happens when the alternative layout cannot accommodate the complete program. A documented fallback is more useful than reassurance that most weddings enjoy good weather."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "s8",
+      "heading": "Choose according to your priorities",
+      "paragraphs": [
+        "Create a short comparison with the criteria that would change your decision: acceptable indoor alternative, workable layout, access for relatives, menu requirements, complete price and contractual flexibility. Mark unanswered questions as pending, not as equal scores. Request answers before committing.",
+        "A site visit or live video walkthrough should follow the route guests will use and show the alternative space. Review the final proposal against that walkthrough. Sertuin Events can help coordinate venue research and compare the responsibilities in the written offers, while each venue confirms its own availability and terms."
+      ]
+    }
+  ],
+  "faqHeading": "Frequently asked questions",
+  "faqs": [
+    {
+      "_type": "faqItem",
+      "_key": "faq0",
+      "question": "Which is cheaper, Jellyfish or Kukua?",
+      "answer": "There is no reliable universal answer. Compare current written proposals for the same date, guests, inclusions and hours, including transport and additional charges."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq1",
+      "question": "Are wedding packages proof of exclusive use?",
+      "answer": "No. The contract should identify reserved areas and hours, including setup and breakdown."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq2",
+      "question": "Can guests walk from their resort?",
+      "answer": "Confirm the actual route and accessibility with the venue and hotel. Do not infer a safe or permitted route from proximity on a map."
+    },
+    {
+      "_type": "faqItem",
+      "_key": "faq3",
+      "question": "What should decide a tie?",
+      "answer": "Use the priorities that matter for your group, especially the weather alternative, layout, transport and complete contractual cost."
+    }
+  ],
+  "ctaTitle": "Compare both venues with the same brief",
+  "ctaText": "Share your dates, guest count and hotel shortlist to organize a practical venue comparison.",
+  "ctaButton": {
+    "_type": "cta",
+    "label": "wedding venue sourcing in Punta Cana",
+    "url": "/puntacana-wedding-planner/"
+  }
+}
