@@ -1,0 +1,83 @@
+{
+  "topic": 21,
+  "status": "repository-draft-not-imported-or-published",
+  "proposedGuideId": "blogGuide-wedding-topic-21",
+  "proposedSharedSlug": "four-day-indian-wedding-hard-rock-punta-cana",
+  "researchedAt": "2026-11-18",
+  "keywords": {
+    "en": {
+      "title": "Inside a Four-Day Indian Wedding at Hard Rock Punta Cana",
+      "primary": "four-day Indian wedding Hard Rock Punta Cana",
+      "secondary": [
+        "Hard Rock Punta Cana Indian wedding experience",
+        "multi-event wedding coordination",
+        "multi-day wedding logistics"
+      ],
+      "anchor": "multi-day Indian wedding planning in Punta Cana"
+    },
+    "es": {
+      "title": "Así se organiza una boda india de cuatro días en Hard Rock Punta Cana",
+      "primary": "boda india de cuatro días en Hard Rock Punta Cana",
+      "secondary": [
+        "experiencia de boda india en Hard Rock",
+        "organización de bodas indias de varios días",
+        "coordinación de eventos de boda"
+      ],
+      "anchor": "planificación de bodas indias de varios días en Punta Cana"
+    },
+    "pt": {
+      "title": "Como é um casamento indiano de quatro dias no Hard Rock Punta Cana",
+      "primary": "casamento indiano de quatro dias no Hard Rock Punta Cana",
+      "secondary": [
+        "casamento indiano no Hard Rock Punta Cana",
+        "organização de casamento de vários dias",
+        "logística de casamento indiano"
+      ],
+      "anchor": "planejamento de casamento indiano de vários dias em Punta Cana"
+    },
+    "fr": {
+      "title": "Dans les coulisses d'un mariage indien de quatre jours au Hard Rock Punta Cana",
+      "primary": "mariage indien de quatre jours au Hard Rock Punta Cana",
+      "secondary": [
+        "expérience de mariage indien au Hard Rock",
+        "organisation de mariage sur plusieurs jours",
+        "coordination des cérémonies indiennes"
+      ],
+      "anchor": "organisation d'un mariage indien sur plusieurs jours à Punta Cana"
+    }
+  },
+  "wordCounts": {
+    "en": 1449,
+    "es": 1412,
+    "pt": 1337,
+    "fr": 1418
+  },
+  "lengthDecision": "Approximately 1300–1500 words per locale: deliberately shorter than the general 2000–3000 target because the verified case evidence is limited; no invented chronology or repetitive padding.",
+  "sources": [
+    {
+      "source": "company-evidence.json",
+      "type": "user-confirmed first-party recollection",
+      "scope": "Four-day case, approximately 280 guests, responsibilities, storage, coconuts/mango leaves, rain preparation"
+    },
+    {
+      "url": "https://hotel.hardrock.com/punta-cana/weddings.aspx",
+      "accessed": "2026-11-18",
+      "scope": "Current venue context only, not evidence of this historical case"
+    }
+  ],
+  "searchIntent": {
+    "en": "four-day Indian wedding Hard Rock Punta Cana experience",
+    "es": "boda india cuatro días Hard Rock Punta Cana coordinación",
+    "pt": "casamento indiano quatro dias Hard Rock Punta Cana logística",
+    "fr": "mariage indien quatre jours Hard Rock Punta Cana organisation"
+  },
+  "unresolved": [
+    "Exact date/year and detailed ritual itinerary omitted because unverified.",
+    "Client identities and image permissions absent; anonymous case.",
+    "heroAlt and guide image pending legitimate asset selection and visual inspection.",
+    "Proposed guide reference and shared slug require later CMS reconciliation.",
+    "Related internal article links pending verified localized destinations."
+  ],
+  "cta": "/puntacana-wedding-planner/",
+  "publication": false
+}
