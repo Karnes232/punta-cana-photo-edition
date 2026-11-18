@@ -1,0 +1,78 @@
+{
+  "topic": 24,
+  "status": "repository-draft-not-imported-or-published",
+  "proposedGuideId": "blogGuide-wedding-topic-24",
+  "proposedSharedSlug": "indian-wedding-punta-cana-hometown-cost-comparison",
+  "researchedAt": "2026-11-18",
+  "keywords": {
+    "en": {
+      "title": "An Indian Wedding in Punta Cana or at Home: Costs",
+      "primary": "Indian wedding Punta Cana vs hometown wedding cost",
+      "secondary": [
+        "is an Indian destination wedding cheaper",
+        "wedding cost comparison by guest count",
+        "multi-day wedding travel expenses"
+      ],
+      "anchor": "independent Indian wedding planning in Punta Cana"
+    },
+    "es": {
+      "title": "¿Cuesta menos una boda india en Punta Cana o en tu ciudad?",
+      "primary": "costo de boda india en Punta Cana vs ciudad de origen",
+      "secondary": [
+        "boda india de destino vs boda local",
+        "presupuesto de boda india",
+        "gastos de viaje para boda de destino"
+      ],
+      "anchor": "planificación independiente de bodas indias en Punta Cana"
+    },
+    "pt": {
+      "title": "Casamento indiano em Punta Cana ou na sua cidade: qual custa menos?",
+      "primary": "custo de casamento indiano em Punta Cana vs cidade de origem",
+      "secondary": [
+        "casamento indiano no exterior ou no Brasil",
+        "custo de destination wedding",
+        "comparação de orçamento de casamento"
+      ],
+      "anchor": "planejamento de casamento indiano em Punta Cana"
+    },
+    "fr": {
+      "title": "Mariage indien à Punta Cana ou chez soi : comparaison des coûts",
+      "primary": "coût d'un mariage indien à Punta Cana ou dans sa ville",
+      "secondary": [
+        "mariage indien à destination ou local",
+        "comparaison de budgets de mariage",
+        "frais de voyage des invités"
+      ],
+      "anchor": "accompagnement pour un mariage indien à Punta Cana"
+    }
+  },
+  "wordCounts": {
+    "en": 2080,
+    "es": 2056,
+    "pt": 2100,
+    "fr": 2196
+  },
+  "wordCountMethod": "directAnswer, section headings/paragraphs, FAQ questions/answers and CTA text; excludes title, description and source labels",
+  "researchNotes": [
+    "Independent localized searches EN/ES/PT/FR performed; no unsupported national wedding averages or universal destination savings adopted.",
+    "Official localized Sertuin service pages consulted only for the published planning/third-party-services distinction.",
+    "Most article content is original comparison methodology, not claims about market prices.",
+    "Hypothetical arithmetic clearly labeled: 5000+80*100=13000; 5000+150*100=20000; difference7000 caused solely by attendance.",
+    "Equivalent-program and preferred-program comparisons kept distinct; guest-paid travel remains visible separately.",
+    "All four languages complete at approximately2000–2200 words."
+  ],
+  "sources": [
+    "https://sertuinevents.com/puntacana-wedding-planner/",
+    "https://sertuinevents.com/es/puntacana-wedding-planner/",
+    "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+    "https://sertuinevents.com/fr/puntacana-wedding-planner/"
+  ],
+  "unresolved": [
+    "heroAlt and image pending authorized selection and visual inspection.",
+    "Guide ID/shared slug provisional until CMS reconciliation.",
+    "Related localized article links pending independent destination validation.",
+    "Current venue/supplier quotes needed before making financial commitments; no actual market total asserted."
+  ],
+  "cta": "/puntacana-wedding-planner/",
+  "publication": false
+}
