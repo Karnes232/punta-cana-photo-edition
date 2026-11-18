@@ -1,13 +1,13 @@
 {
   "updated": "2026-11-18",
   "totalRequiredVersions": 100,
-  "repositoryArticleDrafts": 48,
+  "repositoryArticleDrafts": 90,
   "completedAndVerifiedInSanity": 0,
   "versions": [
     {
       "topic": 1,
       "language": "en",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-01/en.json",
       "finalTitle": "How Much Does a Wedding in Punta Cana Cost?",
       "primaryKeyword": "how much does a wedding in Punta Cana cost",
@@ -42,9 +42,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-01-en",
       "wordCount": 2081
@@ -52,7 +51,7 @@
     {
       "topic": 1,
       "language": "es",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-01/es.json",
       "finalTitle": "¿Cuánto cuesta una boda en Punta Cana?",
       "primaryKeyword": "cuánto cuesta una boda en Punta Cana",
@@ -87,9 +86,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-01-es",
       "wordCount": 2039
@@ -97,7 +95,7 @@
     {
       "topic": 1,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-01/pt.json",
       "finalTitle": "Quanto custa um casamento em Punta Cana?",
       "primaryKeyword": "quanto custa um casamento em Punta Cana",
@@ -132,9 +130,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-01-pt",
       "wordCount": 1996
@@ -142,7 +139,7 @@
     {
       "topic": 1,
       "language": "fr",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-01/fr.json",
       "finalTitle": "Combien coûte un mariage à Punta Cana ?",
       "primaryKeyword": "combien coûte un mariage à Punta Cana",
@@ -177,9 +174,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-01-fr",
       "wordCount": 2046
@@ -187,7 +183,7 @@
     {
       "topic": 2,
       "language": "en",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-02/en.json",
       "finalTitle": "How Much Does a Wedding Planner Cost in Punta Cana?",
       "primaryKeyword": "wedding planner cost Punta Cana",
@@ -226,9 +222,8 @@
         "Same-language topic 04 (full planning vs coordination), after publication"
       ],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-en",
       "wordCount": 2176
@@ -236,7 +231,7 @@
     {
       "topic": 2,
       "language": "es",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-02/es.json",
       "finalTitle": "¿Cuánto cuesta contratar un wedding planner en Punta Cana?",
       "primaryKeyword": "cuánto cuesta un wedding planner en Punta Cana",
@@ -275,9 +270,8 @@
         "Same-language topic 04 (full planning vs coordination), after publication"
       ],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-es",
       "wordCount": 2130
@@ -285,7 +279,7 @@
     {
       "topic": 2,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-02/pt.json",
       "finalTitle": "Quanto custa contratar um wedding planner em Punta Cana?",
       "primaryKeyword": "quanto custa um wedding planner em Punta Cana",
@@ -310,9 +304,9 @@
         "Verify direct access to existing localized first-meeting and venue guides; links listed on service page but research fetch returned a cache miss."
       ],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-pt",
       "wordCount": 2194
@@ -320,7 +314,7 @@
     {
       "topic": 2,
       "language": "fr",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-02/fr.json",
       "finalTitle": "Combien coûte un wedding planner à Punta Cana ?",
       "primaryKeyword": "tarif wedding planner Punta Cana",
@@ -345,9 +339,9 @@
         "Verify direct access to existing localized first-meeting and venue guides; links listed on service page but research fetch returned a cache miss."
       ],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-fr",
       "wordCount": 2296
@@ -355,7 +349,7 @@
     {
       "topic": 3,
       "language": "en",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-03/en.json",
       "finalTitle": "Punta Cana Wedding Packages: Inclusions and Extras",
       "primaryKeyword": "what do Punta Cana wedding packages include",
@@ -397,9 +391,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-03-en",
       "wordCount": 2218
@@ -407,7 +400,7 @@
     {
       "topic": 3,
       "language": "es",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-03/es.json",
       "finalTitle": "Paquetes de bodas en Punta Cana: qué incluyen y qué se paga aparte",
       "primaryKeyword": "qué incluyen los paquetes de bodas en Punta Cana",
@@ -449,9 +442,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-03-es",
       "wordCount": 2133
@@ -459,7 +451,7 @@
     {
       "topic": 3,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-03/pt.json",
       "finalTitle": "Pacotes de casamento em Punta Cana: o que está incluído?",
       "primaryKeyword": "o que incluem os pacotes de casamento em Punta Cana",
@@ -501,9 +493,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-03-pt",
       "wordCount": 2031
@@ -511,7 +502,7 @@
     {
       "topic": 3,
       "language": "fr",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-03/fr.json",
       "finalTitle": "Forfaits mariage à Punta Cana : prestations incluses et suppléments",
       "primaryKeyword": "que comprennent les forfaits mariage à Punta Cana",
@@ -553,9 +544,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-03-fr",
       "wordCount": 2086
@@ -563,7 +553,7 @@
     {
       "topic": 4,
       "language": "en",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-04/en.json",
       "finalTitle": "Full Planning or Day-of Coordination in Punta Cana?",
       "primaryKeyword": "full planning vs day-of coordination Punta Cana",
@@ -604,9 +594,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-04-en",
       "wordCount": 2175
@@ -614,7 +603,7 @@
     {
       "topic": 4,
       "language": "es",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-04/es.json",
       "finalTitle": "¿Planificación completa o coordinación del día de la boda en Punta Cana?",
       "primaryKeyword": "planificación completa vs coordinación del día en Punta Cana",
@@ -655,9 +644,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-04-es",
       "wordCount": 2019
@@ -665,7 +653,7 @@
     {
       "topic": 4,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-04/pt.json",
       "finalTitle": "Assessoria completa ou coordenação do dia do casamento em Punta Cana?",
       "primaryKeyword": "assessoria completa ou assessoria do dia em Punta Cana",
@@ -706,9 +694,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-04-pt",
       "wordCount": 2027
@@ -716,7 +703,7 @@
     {
       "topic": 4,
       "language": "fr",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-04/fr.json",
       "finalTitle": "Organisation complète ou coordination du jour J à Punta Cana ?",
       "primaryKeyword": "organisation complète ou coordination jour J à Punta Cana",
@@ -757,9 +744,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-04-fr",
       "wordCount": 2089
@@ -767,159 +753,330 @@
     {
       "topic": 5,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-05/en.json",
+      "finalTitle": "How to Choose a Wedding Planner in Punta Cana",
+      "primaryKeyword": "how to choose a wedding planner in Punta Cana",
+      "secondaryKeywords": [
+        "questions to ask a Punta Cana wedding planner",
+        "destination wedding planner experience",
+        "wedding planning contract transparency"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/puntacana-wedding-planner/",
+        "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "Punta Cana wedding planner",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Prepare the first planner meeting",
+          "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Venue selection considerations",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal2",
+          "label": "Plan for an outdoor ceremony change",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-05-en",
+      "wordCount": 2027
     },
     {
       "topic": 5,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-05/es.json",
+      "finalTitle": "Cómo elegir un wedding planner en Punta Cana",
+      "primaryKeyword": "cómo elegir un wedding planner en Punta Cana",
+      "secondaryKeywords": [
+        "mejor organizador de bodas en Punta Cana",
+        "preguntas para un wedding planner",
+        "contratar planificador de bodas en República Dominicana"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/es/puntacana-wedding-planner/",
+        "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "wedding planner en Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Prepara tu primera reunión",
+          "url": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Criterios para elegir lugar",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal2",
+          "label": "Planifica la alternativa por lluvia",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-05-es",
+      "wordCount": 2030
     },
     {
       "topic": 5,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-05/pt.json",
+      "finalTitle": "Como escolher um wedding planner em Punta Cana",
+      "primaryKeyword": "como escolher um wedding planner em Punta Cana",
+      "secondaryKeywords": [
+        "assessoria de casamento em Punta Cana",
+        "perguntas para organizador de casamento",
+        "contratar wedding planner na República Dominicana"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+        "https://sertuinevents.com/pt/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "wedding planner em Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Preparem a primeira reunião",
+          "url": "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Critérios para escolher o local",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal2",
+          "label": "Planejem a alternativa para chuva",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-05-pt",
+      "wordCount": 2017
     },
     {
       "topic": 5,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-05/fr.json",
+      "finalTitle": "Comment choisir un wedding planner à Punta Cana",
+      "primaryKeyword": "comment choisir un wedding planner à Punta Cana",
+      "secondaryKeywords": [
+        "organisateur de mariage en République dominicaine",
+        "questions à poser à un wedding planner",
+        "choisir son organisateur de mariage"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/fr/puntacana-wedding-planner/",
+        "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "wedding planner à Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Préparer le premier rendez-vous",
+          "url": "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Critères de choix du lieu",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal2",
+          "label": "Préparer le repli en cas de pluie",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-05-fr",
+      "wordCount": 2052
     },
     {
       "topic": 6,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-06/en.json",
+      "finalTitle": "What Is the Best Month to Marry in Punta Cana?",
+      "primaryKeyword": "best month to get married in Punta Cana",
+      "secondaryKeywords": [
+        "best time of year for a Punta Cana wedding",
+        "Punta Cana monthly rainfall",
+        "seasonal wedding resort rates"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://www.godominicanrepublic.com/travel/travel-tips",
+        "https://www.nhc.noaa.gov/aboutgloss.shtml"
+      ],
+      "serviceAnchor": "destination wedding planning in Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-06-en",
+      "wordCount": 2189
     },
     {
       "topic": 6,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-06/es.json",
+      "finalTitle": "¿Cuál es el mejor mes para casarse en Punta Cana?",
+      "primaryKeyword": "mejor mes para casarse en Punta Cana",
+      "secondaryKeywords": [
+        "mejor época para bodas en Punta Cana",
+        "temporada de lluvias en República Dominicana",
+        "clima para bodas en la playa"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://www.godominicanrepublic.com/travel/travel-tips",
+        "https://www.nhc.noaa.gov/aboutgloss.shtml"
+      ],
+      "serviceAnchor": "planificación de bodas de destino en Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-06-es",
+      "wordCount": 734
     },
     {
       "topic": 6,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-06/pt.json",
+      "finalTitle": "Qual é o melhor mês para casar em Punta Cana?",
+      "primaryKeyword": "melhor mês para casar em Punta Cana",
+      "secondaryKeywords": [
+        "melhor época para casamento em Punta Cana",
+        "temporada de chuvas na República Dominicana",
+        "clima para casamento na praia"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://www.godominicanrepublic.com/travel/travel-tips",
+        "https://www.nhc.noaa.gov/aboutgloss.shtml"
+      ],
+      "serviceAnchor": "planejamento de casamento em Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-06-pt",
+      "wordCount": 694
     },
     {
       "topic": 6,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-06/fr.json",
+      "finalTitle": "Quel est le meilleur mois pour se marier à Punta Cana ?",
+      "primaryKeyword": "meilleur mois pour se marier à Punta Cana",
+      "secondaryKeywords": [
+        "meilleure période pour un mariage à Punta Cana",
+        "saison des pluies en République dominicaine",
+        "météo pour un mariage sur la plage"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://www.godominicanrepublic.com/travel/travel-tips",
+        "https://www.nhc.noaa.gov/aboutgloss.shtml"
+      ],
+      "serviceAnchor": "organisation d'un mariage à destination à Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-06-fr",
+      "wordCount": 724
     },
     {
       "topic": 7,
       "language": "en",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-07/en.json",
       "finalTitle": "Getting Married in the Dominican Republic: Documents",
       "primaryKeyword": "documents to get married in Dominican Republic",
@@ -938,10 +1095,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-07-en",
       "wordCount": 1150
@@ -949,7 +1106,7 @@
     {
       "topic": 7,
       "language": "es",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-07/es.json",
       "finalTitle": "Documentos necesarios para casarse en República Dominicana",
       "primaryKeyword": "documentos para casarse en República Dominicana",
@@ -968,10 +1125,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-07-es",
       "wordCount": 1023
@@ -979,7 +1136,7 @@
     {
       "topic": 7,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-07/pt.json",
       "finalTitle": "Documentos necessários para casar na República Dominicana",
       "primaryKeyword": "documentos para casar na República Dominicana",
@@ -998,10 +1155,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-07-pt",
       "wordCount": 981
@@ -1009,7 +1166,7 @@
     {
       "topic": 7,
       "language": "fr",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-07/fr.json",
       "finalTitle": "Documents nécessaires pour se marier en République dominicaine",
       "primaryKeyword": "documents pour se marier en République dominicaine",
@@ -1028,10 +1185,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-07-fr",
       "wordCount": 978
@@ -1039,7 +1196,7 @@
     {
       "topic": 8,
       "language": "en",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-08/en.json",
       "finalTitle": "Legal or Symbolic Wedding in Punta Cana?",
       "primaryKeyword": "legal vs symbolic wedding Punta Cana",
@@ -1058,10 +1215,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-08-en",
       "wordCount": 735
@@ -1069,7 +1226,7 @@
     {
       "topic": 8,
       "language": "es",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-08/es.json",
       "finalTitle": "¿Boda legal o simbólica en Punta Cana?",
       "primaryKeyword": "boda legal o simbólica en Punta Cana",
@@ -1088,10 +1245,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-08-es",
       "wordCount": 639
@@ -1099,7 +1256,7 @@
     {
       "topic": 8,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-08/pt.json",
       "finalTitle": "Casamento civil ou simbólico em Punta Cana?",
       "primaryKeyword": "casamento civil ou simbólico em Punta Cana",
@@ -1118,10 +1275,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-08-pt",
       "wordCount": 634
@@ -1129,7 +1286,7 @@
     {
       "topic": 8,
       "language": "fr",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-08/fr.json",
       "finalTitle": "Mariage civil ou symbolique à Punta Cana ?",
       "primaryKeyword": "mariage civil ou symbolique à Punta Cana",
@@ -1148,10 +1305,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-08-fr",
       "wordCount": 644
@@ -1159,178 +1316,398 @@
     {
       "topic": 9,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-09/en.json",
+      "finalTitle": "Catholic Weddings in Punta Cana: Steps and Timing",
+      "primaryKeyword": "Catholic wedding requirements Punta Cana",
+      "secondaryKeywords": [
+        "Catholic destination wedding Dominican Republic",
+        "Catholic marriage preparation",
+        "Punta Cana wedding churches"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann998-1165_en.html",
+        "https://www.puntacana.com/en/events/weddings"
+      ],
+      "serviceAnchor": "destination wedding coordination in Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-09-en",
+      "wordCount": 996
     },
     {
       "topic": 9,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-09/es.json",
+      "finalTitle": "Bodas católicas en Punta Cana: requisitos y planificación",
+      "primaryKeyword": "requisitos para boda católica en Punta Cana",
+      "secondaryKeywords": [
+        "iglesias para bodas en Punta Cana",
+        "matrimonio católico en República Dominicana",
+        "preparación matrimonial católica"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://www.vatican.va/archive/cod-iuris-canonici/esp/documents/cic_libro4_cann1108-1123_sp.html",
+        "https://www.puntacana.com/en/events/weddings"
+      ],
+      "serviceAnchor": "coordinación de bodas católicas en Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-09-es",
+      "wordCount": 871
     },
     {
       "topic": 9,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-09/pt.json",
+      "finalTitle": "Casamento católico em Punta Cana: requisitos e planejamento",
+      "primaryKeyword": "requisitos para casamento católico em Punta Cana",
+      "secondaryKeywords": [
+        "igrejas para casamento em Punta Cana",
+        "casamento religioso na República Dominicana",
+        "preparação matrimonial católica"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://www.vatican.va/archive/cod-iuris-canonici/portuguese/codex-iuris-canonici_po.pdf",
+        "https://www.puntacana.com/en/events/weddings"
+      ],
+      "serviceAnchor": "organização de casamento católico em Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-09-pt",
+      "wordCount": 836
     },
     {
       "topic": 9,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-09/fr.json",
+      "finalTitle": "Mariage catholique à Punta Cana : démarches et délais",
+      "primaryKeyword": "conditions pour un mariage catholique à Punta Cana",
+      "secondaryKeywords": [
+        "églises pour mariage à Punta Cana",
+        "mariage religieux en République dominicaine",
+        "préparation au mariage catholique"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann998-1165_en.html",
+        "https://www.puntacana.com/en/events/weddings"
+      ],
+      "serviceAnchor": "coordination de mariage catholique à Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-09-fr",
+      "wordCount": 848
     },
     {
       "topic": 10,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-10/en.json",
+      "finalTitle": "Punta Cana Wedding Checklist: A 12-Month Plan",
+      "primaryKeyword": "Punta Cana destination wedding checklist",
+      "secondaryKeywords": [
+        "how to plan a wedding in Punta Cana",
+        "wedding booking deadlines",
+        "wedding planning milestones"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+        "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "full wedding planning in Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Start with a clear first meeting",
+          "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Compare venue options",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal2",
+          "label": "Organize guest information",
+          "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal3",
+          "label": "Prepare the weather alternative",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-10-en",
+      "wordCount": 2156
     },
     {
       "topic": 10,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-10/es.json",
+      "finalTitle": "Checklist para organizar una boda en Punta Cana: plan de 12 meses",
+      "primaryKeyword": "checklist para boda en Punta Cana",
+      "secondaryKeywords": [
+        "cómo organizar una boda en Punta Cana",
+        "cronograma de planificación de bodas",
+        "lista de tareas para boda de destino"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/",
+        "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "planificación completa de bodas en Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Prepara la primera reunión",
+          "url": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Compara opciones de lugar",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal2",
+          "label": "Organiza información de invitados",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal3",
+          "label": "Prepara la alternativa por lluvia",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-10-es",
+      "wordCount": 2067
     },
     {
       "topic": 10,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-10/pt.json",
+      "finalTitle": "Checklist de casamento em Punta Cana: planejamento de 12 meses",
+      "primaryKeyword": "checklist de casamento em Punta Cana",
+      "secondaryKeywords": [
+        "como organizar casamento em Punta Cana",
+        "cronograma de casamento",
+        "planejamento de destination wedding"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/",
+        "https://sertuinevents.com/pt/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "planejamento completo de casamento em Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Preparem a primeira reunião",
+          "url": "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Comparem opções de local",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal2",
+          "label": "Organizem informações aos convidados",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal3",
+          "label": "Preparem a alternativa para chuva",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-10-pt",
+      "wordCount": 2029
     },
     {
       "topic": 10,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-10/fr.json",
+      "finalTitle": "Checklist mariage à Punta Cana : planning sur 12 mois",
+      "primaryKeyword": "checklist mariage à Punta Cana",
+      "secondaryKeywords": [
+        "organiser un mariage à Punta Cana",
+        "rétroplanning de mariage",
+        "préparation d'un mariage à destination"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/",
+        "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "organisation complète de mariage à Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Préparer le premier rendez-vous",
+          "url": "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Comparer les lieux",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal2",
+          "label": "Organiser les informations aux invités",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal3",
+          "label": "Préparer le repli",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-10-fr",
+      "wordCount": 2075
     },
     {
       "topic": 11,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-11/en.json",
+      "finalTitle": "Small Weddings in Punta Cana: Costs and Planning",
+      "primaryKeyword": "small wedding Punta Cana cost",
+      "secondaryKeywords": [
+        "Punta Cana elopement cost",
+        "intimate wedding guest list",
+        "small destination wedding venues"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/punta-cana-elopement-packages/",
+        "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "wedding planning services in Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Compare wedding settings",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Plan the weather alternative",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-11-en",
+      "wordCount": 2056
     },
     {
       "topic": 11,
       "language": "es",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1343,13 +1720,13 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 11,
       "language": "pt-BR",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1362,32 +1739,56 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 11,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-11/fr.json",
+      "finalTitle": "Mariages intimistes à Punta Cana : coûts et organisation",
+      "primaryKeyword": "prix d'un mariage intimiste à Punta Cana",
+      "secondaryKeywords": [
+        "petit mariage à Punta Cana",
+        "elopement à Punta Cana",
+        "cérémonie intime sur la plage"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/fr/punta-cana-elopement-packages/",
+        "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/"
+      ],
+      "serviceAnchor": "organisation de mariages intimistes à Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "_type": "blogSource",
+          "_key": "internal0",
+          "label": "Comparer les lieux de mariage",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "internal1",
+          "label": "Préparer le repli",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-11-fr",
+      "wordCount": 2020
     },
     {
       "topic": 12,
       "language": "en",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1400,13 +1801,13 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 12,
       "language": "es",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1419,13 +1820,13 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 12,
       "language": "pt-BR",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1438,13 +1839,13 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 12,
       "language": "fr",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1457,13 +1858,13 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 13,
       "language": "en",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-13/en.json",
       "finalTitle": "Jellyfish vs. Kukua: Punta Cana Wedding Comparison",
       "primaryKeyword": "Jellyfish vs Kukua wedding",
@@ -1477,24 +1878,38 @@
       "actualSlug": null,
       "sources": [
         "https://www.jellyfishrestaurant.com/weddings",
-        "https://kukuabeachclub.co/faqs/"
+        "https://kukuabeachclub.co/faqs/",
+        "https://www.jellyfishrestaurant.com/weddings-faq",
+        "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+        "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/"
       ],
       "serviceAnchor": "wedding venue sourcing in Punta Cana",
-      "internalLinksInRepositoryDraft": [],
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Prepare for your first wedding planner meeting",
+          "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+          "_type": "blogSource",
+          "_key": "src0"
+        },
+        {
+          "label": "Plan guest travel and venue transfers",
+          "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-13-en",
-      "wordCount": 922
+      "wordCount": 1878
     },
     {
       "topic": 13,
       "language": "es",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-13/es.json",
       "finalTitle": "Jellyfish vs. Kukua: comparación de venues para bodas en Punta Cana",
       "primaryKeyword": "Jellyfish vs Kukua bodas Punta Cana",
@@ -1514,10 +1929,11 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides.",
+        "English expanded; localize additional comparison sections."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-13-es",
       "wordCount": 859
@@ -1525,7 +1941,7 @@
     {
       "topic": 13,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-13/pt.json",
       "finalTitle": "Jellyfish vs. Kukua: comparação de espaços para casamento em Punta Cana",
       "primaryKeyword": "Jellyfish vs Kukua casamento Punta Cana",
@@ -1545,10 +1961,11 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides.",
+        "English expanded; localize additional comparison sections."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-13-pt",
       "wordCount": 805
@@ -1556,7 +1973,7 @@
     {
       "topic": 13,
       "language": "fr",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-13/fr.json",
       "finalTitle": "Jellyfish ou Kukua : quel lieu de mariage choisir à Punta Cana ?",
       "primaryKeyword": "Jellyfish vs Kukua mariage Punta Cana",
@@ -1576,10 +1993,11 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides.",
+        "English expanded; localize additional comparison sections."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-13-fr",
       "wordCount": 852
@@ -1587,159 +2005,307 @@
     {
       "topic": 14,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-14/en.json",
+      "finalTitle": "Punta Cana Wedding Contracts: Deposits and Cancellations",
+      "primaryKeyword": "destination wedding contract Punta Cana",
+      "secondaryKeywords": [
+        "Punta Cana wedding cancellation policy",
+        "wedding deposit refunds",
+        "wedding supplier responsibilities"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
+        "https://hotel.hardrock.com/punta-cana/es/requisitos-matrimoniales.aspx",
+        "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/",
+        "https://sertuinevents.com/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "independent wedding planning in Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Compare resort and private-venue planning requirements",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "How a Punta Cana wedding rain plan works",
+          "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-14-en",
+      "wordCount": 1897
     },
     {
       "topic": 14,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-14/es.json",
+      "finalTitle": "Contratos de bodas en Punta Cana: depósitos y cancelaciones",
+      "primaryKeyword": "contrato de boda en Punta Cana",
+      "secondaryKeywords": [
+        "política de cancelación de bodas",
+        "depósitos para bodas en República Dominicana",
+        "condiciones de contratos de wedding planner"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
+        "https://hotel.hardrock.com/punta-cana/es/requisitos-matrimoniales.aspx",
+        "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/",
+        "https://sertuinevents.com/es/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "asesoría de planificación de bodas en Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Comparar requisitos de un resort y una locación privada",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Cómo funciona el plan de lluvia de una boda",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-14-es",
+      "wordCount": 1813
     },
     {
       "topic": 14,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-14/pt.json",
+      "finalTitle": "Contratos de casamento em Punta Cana: depósitos e cancelamentos",
+      "primaryKeyword": "contrato de casamento em Punta Cana",
+      "secondaryKeywords": [
+        "política de cancelamento de casamento",
+        "depósito para casamento na República Dominicana",
+        "condições de contratos de fornecedores"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
+        "https://hotel.hardrock.com/punta-cana/es/requisitos-matrimoniales.aspx",
+        "https://sertuinevents.com/pt/blog/punta-cana-wedding-rain-plan/",
+        "https://sertuinevents.com/pt/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "assessoria de casamento em Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Comparar exigências de resort e espaço privativo",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Como funciona o plano de chuva de um casamento",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-rain-plan/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-14-pt",
+      "wordCount": 1841
     },
     {
       "topic": 14,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-14/fr.json",
+      "finalTitle": "Prestataires de mariage à Punta Cana : contrats, acomptes et annulations",
+      "primaryKeyword": "contrat de prestataire de mariage à Punta Cana",
+      "secondaryKeywords": [
+        "politique d'annulation de mariage",
+        "acomptes pour mariage en République dominicaine",
+        "clauses des contrats de prestataires"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+        "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
+        "https://hotel.hardrock.com/punta-cana/es/requisitos-matrimoniales.aspx",
+        "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/",
+        "https://sertuinevents.com/fr/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "accompagnement pour organiser un mariage à Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Comparer les exigences d’un resort et d’un lieu privé",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Comprendre le plan pluie d’un mariage",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-14-fr",
+      "wordCount": 1888
     },
     {
       "topic": 15,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-15/en.json",
+      "finalTitle": "Boat Weddings in Punta Cana: Costs and Planning",
+      "primaryKeyword": "boat wedding Punta Cana cost",
+      "secondaryKeywords": [
+        "Punta Cana catamaran wedding",
+        "wedding boat capacity",
+        "boat wedding weather contingency"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://sertuinevents.com/punta-cana-elopement-packages/"
+      ],
+      "serviceAnchor": "wedding venue and vendor coordination in Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-15-en",
+      "wordCount": 936
     },
     {
       "topic": 15,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-15/es.json",
+      "finalTitle": "Bodas en barco en Punta Cana: costos y organización",
+      "primaryKeyword": "boda en barco en Punta Cana",
+      "secondaryKeywords": [
+        "boda en catamarán en Punta Cana",
+        "precio de boda en barco",
+        "ceremonia de boda en el mar"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://sertuinevents.com/es/punta-cana-elopement-packages/"
+      ],
+      "serviceAnchor": "coordinación de bodas en Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-15-es",
+      "wordCount": 810
     },
     {
       "topic": 15,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-15/pt.json",
+      "finalTitle": "Casamento em barco em Punta Cana: custos e planejamento",
+      "primaryKeyword": "casamento em barco em Punta Cana",
+      "secondaryKeywords": [
+        "casamento em catamarã em Punta Cana",
+        "cerimônia de casamento no mar",
+        "preço de casamento em barco"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://sertuinevents.com/pt/punta-cana-elopement-packages/"
+      ],
+      "serviceAnchor": "organização de casamentos em Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-15-pt",
+      "wordCount": 773
     },
     {
       "topic": 15,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-15/fr.json",
+      "finalTitle": "Mariage sur un bateau à Punta Cana : tarifs et organisation",
+      "primaryKeyword": "mariage sur un bateau à Punta Cana",
+      "secondaryKeywords": [
+        "mariage sur un catamaran à Punta Cana",
+        "prix d'un mariage en bateau",
+        "cérémonie de mariage en mer"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://sertuinevents.com/fr/punta-cana-elopement-packages/"
+      ],
+      "serviceAnchor": "coordination de mariages à Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-15-fr",
+      "wordCount": 796
     },
     {
       "topic": 16,
       "language": "en",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1752,13 +2318,13 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 16,
       "language": "es",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1771,13 +2337,13 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 16,
       "language": "pt-BR",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1790,13 +2356,13 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 16,
       "language": "fr",
-      "status": "not started",
+      "status": "not saved",
       "repositoryDraft": null,
       "finalTitle": null,
       "primaryKeyword": null,
@@ -1809,13 +2375,13 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
+        "No article file on branch at final readback; writing remains pending."
       ]
     },
     {
       "topic": 17,
       "language": "en",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-17/en.json",
       "finalTitle": "Indian Wedding Costs in Punta Cana: Full Breakdown",
       "primaryKeyword": "Indian wedding cost Punta Cana",
@@ -1834,9 +2400,9 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-17-en",
       "wordCount": 2018
@@ -1844,7 +2410,7 @@
     {
       "topic": 17,
       "language": "es",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-17/es.json",
       "finalTitle": "Cuánto cuesta una boda india en Punta Cana: presupuesto completo",
       "primaryKeyword": "costo de boda india en Punta Cana",
@@ -1863,9 +2429,9 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-17-es",
       "wordCount": 2020
@@ -1873,7 +2439,7 @@
     {
       "topic": 17,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-17/pt.json",
       "finalTitle": "Quanto custa um casamento indiano em Punta Cana?",
       "primaryKeyword": "custo de casamento indiano em Punta Cana",
@@ -1892,9 +2458,9 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-17-pt",
       "wordCount": 1993
@@ -1902,7 +2468,7 @@
     {
       "topic": 17,
       "language": "fr",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-17/fr.json",
       "finalTitle": "Combien coûte un mariage indien à Punta Cana ?",
       "primaryKeyword": "prix d'un mariage indien à Punta Cana",
@@ -1921,9 +2487,9 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-17-fr",
       "wordCount": 2005
@@ -1931,7 +2497,7 @@
     {
       "topic": 18,
       "language": "en",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-18/en.json",
       "finalTitle": "Indian Wedding Packages in Punta Cana: What’s Included?",
       "primaryKeyword": "what is included in Indian wedding packages Punta Cana",
@@ -1951,18 +2517,17 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-18-en",
-      "wordCount": 1072
+      "wordCount": 2146
     },
     {
       "topic": 18,
       "language": "es",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-18/es.json",
       "finalTitle": "Paquetes de bodas indias en Punta Cana: ¿qué incluyen?",
       "primaryKeyword": "paquetes de bodas indias en Punta Cana",
@@ -1982,18 +2547,17 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-18-es",
-      "wordCount": 992
+      "wordCount": 2007
     },
     {
       "topic": 18,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-18/pt.json",
       "finalTitle": "Pacotes de casamento indiano em Punta Cana: o que incluem?",
       "primaryKeyword": "pacotes de casamento indiano em Punta Cana",
@@ -2013,18 +2577,17 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-18-pt",
-      "wordCount": 960
+      "wordCount": 1998
     },
     {
       "topic": 18,
       "language": "fr",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-18/fr.json",
       "finalTitle": "Forfaits de mariage indien à Punta Cana : que comprennent-ils ?",
       "primaryKeyword": "forfait mariage indien à Punta Cana",
@@ -2044,170 +2607,269 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-18-fr",
-      "wordCount": 1020
+      "wordCount": 2002
     },
     {
       "topic": 19,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-19/en.json",
+      "finalTitle": "Hard Rock vs. Hyatt Ziva: Indian Weddings in Punta Cana",
+      "primaryKeyword": "Hard Rock vs Hyatt Ziva Indian wedding",
+      "secondaryKeywords": [
+        "Indian wedding at Hard Rock Punta Cana",
+        "Hyatt Ziva Cap Cana Indian weddings",
+        "Indian wedding resort comparison"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
+        "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings",
+        "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx"
+      ],
+      "serviceAnchor": "Indian wedding venue sourcing in Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-19-en",
+      "wordCount": 975
     },
     {
       "topic": 19,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-19/es.json",
+      "finalTitle": "Hard Rock vs. Hyatt Ziva: bodas indias en Punta Cana",
+      "primaryKeyword": "Hard Rock vs Hyatt Ziva bodas indias",
+      "secondaryKeywords": [
+        "boda india Hard Rock Punta Cana",
+        "boda india Hyatt Ziva Cap Cana",
+        "hoteles para bodas indias en Punta Cana"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
+        "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings",
+        "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx"
+      ],
+      "serviceAnchor": "selección de hoteles para bodas indias en Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-19-es",
+      "wordCount": 792
     },
     {
       "topic": 19,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-19/pt.json",
+      "finalTitle": "Hard Rock vs. Hyatt Ziva: casamentos indianos em Punta Cana",
+      "primaryKeyword": "Hard Rock vs Hyatt Ziva casamento indiano",
+      "secondaryKeywords": [
+        "casamento indiano no Hard Rock Punta Cana",
+        "casamento no Hyatt Ziva Cap Cana",
+        "resorts para casamento indiano"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
+        "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings",
+        "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx"
+      ],
+      "serviceAnchor": "escolha de resorts para casamento indiano em Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-19-pt",
+      "wordCount": 759
     },
     {
       "topic": 19,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "draft requires expansion",
+      "repositoryDraft": "topic-19/fr.json",
+      "finalTitle": "Hard Rock ou Hyatt Ziva : mariage indien à Punta Cana",
+      "primaryKeyword": "Hard Rock vs Hyatt Ziva mariage indien",
+      "secondaryKeywords": [
+        "mariage indien au Hard Rock Punta Cana",
+        "mariage indien au Hyatt Ziva Cap Cana",
+        "resorts pour mariage indien à Punta Cana"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
+        "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings",
+        "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx"
+      ],
+      "serviceAnchor": "sélection de lieux pour un mariage indien à Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-19-fr",
+      "wordCount": 782
     },
     {
       "topic": 20,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-20/en.json",
+      "finalTitle": "Punta Cana or Mexico for an Indian Wedding?",
+      "primaryKeyword": "Mexico vs Punta Cana Indian wedding",
+      "secondaryKeywords": [
+        "Indian destination wedding Mexico or Dominican Republic",
+        "wedding guest flight connections",
+        "Indian wedding resort facilities"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://hotel.hardrock.com/punta-cana/weddings.aspx",
+        "https://hotel.hardrock.com/riviera-maya/weddings.aspx",
+        "https://sertuinevents.com/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "Indian destination wedding planning in Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-20-en",
+      "wordCount": 1984
     },
     {
       "topic": 20,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-20/es.json",
+      "finalTitle": "¿Punta Cana o México para una boda india?",
+      "primaryKeyword": "boda india en Punta Cana o México",
+      "secondaryKeywords": [
+        "bodas indias en República Dominicana",
+        "bodas de destino en México",
+        "comparación de destinos para bodas indias"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://hotel.hardrock.com/punta-cana/weddings.aspx",
+        "https://hotel.hardrock.com/riviera-maya/weddings.aspx",
+        "https://sertuinevents.com/es/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "planificación de bodas indias en Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-20-es",
+      "wordCount": 1977
     },
     {
       "topic": 20,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-20/pt.json",
+      "finalTitle": "Punta Cana ou México para um casamento indiano?",
+      "primaryKeyword": "casamento indiano em Punta Cana ou México",
+      "secondaryKeywords": [
+        "casamento indiano na República Dominicana",
+        "destination wedding no México",
+        "comparação de destinos para casamento"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://hotel.hardrock.com/punta-cana/weddings.aspx",
+        "https://hotel.hardrock.com/riviera-maya/weddings.aspx",
+        "https://sertuinevents.com/pt/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "organização de casamento indiano em Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-20-pt",
+      "wordCount": 1985
     },
     {
       "topic": 20,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-20/fr.json",
+      "finalTitle": "Punta Cana ou Mexique pour un mariage indien ?",
+      "primaryKeyword": "mariage indien à Punta Cana ou au Mexique",
+      "secondaryKeywords": [
+        "mariage indien en République dominicaine",
+        "mariage à destination au Mexique",
+        "comparaison des destinations de mariage"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://hotel.hardrock.com/punta-cana/weddings.aspx",
+        "https://hotel.hardrock.com/riviera-maya/weddings.aspx",
+        "https://sertuinevents.com/fr/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "organisation de mariages indiens à Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-20-fr",
+      "wordCount": 2050
     },
     {
       "topic": 21,
       "language": "en",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-21/en.json",
       "finalTitle": "Inside a Four-Day Indian Wedding at Hard Rock Punta Cana",
       "primaryKeyword": "four-day Indian wedding Hard Rock Punta Cana",
@@ -2226,10 +2888,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Shorter case study justified by limited confirmed evidence; no invented details."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Shorter case study intentionally limited to confirmed company evidence.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-21-en",
       "wordCount": 1428
@@ -2237,7 +2899,7 @@
     {
       "topic": 21,
       "language": "es",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-21/es.json",
       "finalTitle": "Así se organiza una boda india de cuatro días en Hard Rock Punta Cana",
       "primaryKeyword": "boda india de cuatro días en Hard Rock Punta Cana",
@@ -2256,10 +2918,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Shorter case study justified by limited confirmed evidence; no invented details."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Shorter case study intentionally limited to confirmed company evidence.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-21-es",
       "wordCount": 1395
@@ -2267,7 +2929,7 @@
     {
       "topic": 21,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-21/pt.json",
       "finalTitle": "Como é um casamento indiano de quatro dias no Hard Rock Punta Cana",
       "primaryKeyword": "casamento indiano de quatro dias no Hard Rock Punta Cana",
@@ -2286,10 +2948,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Shorter case study justified by limited confirmed evidence; no invented details."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Shorter case study intentionally limited to confirmed company evidence.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-21-pt",
       "wordCount": 1320
@@ -2297,7 +2959,7 @@
     {
       "topic": 21,
       "language": "fr",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-21/fr.json",
       "finalTitle": "Dans les coulisses d'un mariage indien de quatre jours au Hard Rock Punta Cana",
       "primaryKeyword": "mariage indien de quatre jours au Hard Rock Punta Cana",
@@ -2316,10 +2978,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Shorter case study justified by limited confirmed evidence; no invented details."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Shorter case study intentionally limited to confirmed company evidence.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-21-fr",
       "wordCount": 1403
@@ -2327,7 +2989,7 @@
     {
       "topic": 22,
       "language": "en",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-22/en.json",
       "finalTitle": "Sikh Weddings in Punta Cana: Planning the Anand Karaj",
       "primaryKeyword": "Sikh wedding Punta Cana",
@@ -2346,10 +3008,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-22-en",
       "wordCount": 1097
@@ -2357,7 +3019,7 @@
     {
       "topic": 22,
       "language": "es",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-22/es.json",
       "finalTitle": "Bodas sij en Punta Cana: cómo planificar la ceremonia Anand Karaj",
       "primaryKeyword": "boda sij en Punta Cana",
@@ -2376,10 +3038,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-22-es",
       "wordCount": 1074
@@ -2387,7 +3049,7 @@
     {
       "topic": 22,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-22/pt.json",
       "finalTitle": "Casamento sikh em Punta Cana: como planejar o Anand Karaj",
       "primaryKeyword": "casamento sikh em Punta Cana",
@@ -2406,10 +3068,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-22-pt",
       "wordCount": 1018
@@ -2417,7 +3079,7 @@
     {
       "topic": 22,
       "language": "fr",
-      "status": "repository draft",
+      "status": "draft requires expansion",
       "repositoryDraft": "topic-22/fr.json",
       "finalTitle": "Mariage sikh à Punta Cana : organiser la cérémonie Anand Karaj",
       "primaryKeyword": "mariage sikh à Punta Cana",
@@ -2436,10 +3098,10 @@
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review.",
-        "Editorial expansion still in progress."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Substantive expansion required; current first pass below requested depth.",
+        "Add verified same-language related guides."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-22-fr",
       "wordCount": 1048
@@ -2447,159 +3109,323 @@
     {
       "topic": 23,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-23/en.json",
+      "finalTitle": "Indian Weddings in Punta Cana: Who Pays for What?",
+      "primaryKeyword": "who pays for an Indian wedding in Punta Cana",
+      "secondaryKeywords": [
+        "Indian destination wedding guest expenses",
+        "family wedding contributions",
+        "destination wedding payment etiquette"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+        "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+        "https://sertuinevents.com/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+        "https://sertuinevents.com/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "Indian wedding planning in Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Planning a multicultural wedding while respecting family traditions",
+          "url": "https://sertuinevents.com/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Guest arrival, accommodation and resort-access planning",
+          "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "South Asian wedding venue and logistics checklist",
+          "url": "https://sertuinevents.com/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-23-en",
+      "wordCount": 1976
     },
     {
       "topic": 23,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-23/es.json",
+      "finalTitle": "Bodas indias en Punta Cana: ¿quién paga cada gasto?",
+      "primaryKeyword": "quién paga una boda india en Punta Cana",
+      "secondaryKeywords": [
+        "gastos de boda india de destino",
+        "reparto de gastos entre familias",
+        "alojamiento de invitados en bodas indias"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/es/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+        "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/",
+        "https://sertuinevents.com/es/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+        "https://sertuinevents.com/es/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "planificación de bodas indias en Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Planificar una boda multicultural respetando las tradiciones familiares",
+          "url": "https://sertuinevents.com/es/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Viajes, alojamiento y acceso de los invitados",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Checklist de espacios y logística para bodas del sur de Asia",
+          "url": "https://sertuinevents.com/es/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-23-es",
+      "wordCount": 1892
     },
     {
       "topic": 23,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-23/pt.json",
+      "finalTitle": "Casamentos indianos em Punta Cana: quem paga cada despesa?",
+      "primaryKeyword": "quem paga um casamento indiano em Punta Cana",
+      "secondaryKeywords": [
+        "despesas de casamento indiano",
+        "divisão de custos entre famílias",
+        "hospedagem de convidados de casamento"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/pt/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+        "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/",
+        "https://sertuinevents.com/pt/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+        "https://sertuinevents.com/pt/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "assessoria de casamento indiano em Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Planejar um casamento multicultural respeitando as tradições familiares",
+          "url": "https://sertuinevents.com/pt/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Viagem, hospedagem e acesso dos convidados",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Checklist de espaços e logística para casamentos sul-asiáticos",
+          "url": "https://sertuinevents.com/pt/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-23-pt",
+      "wordCount": 1952
     },
     {
       "topic": 23,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-23/fr.json",
+      "finalTitle": "Mariage indien à Punta Cana : qui paie quoi ?",
+      "primaryKeyword": "qui paie un mariage indien à Punta Cana",
+      "secondaryKeywords": [
+        "répartition des dépenses d'un mariage indien",
+        "participation financière des familles",
+        "hébergement des invités"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
-      "internalLinksInRepositoryDraft": [],
+      "sources": [
+        "https://sertuinevents.com/fr/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+        "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/",
+        "https://sertuinevents.com/fr/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+        "https://sertuinevents.com/fr/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "organisation de mariages indiens à Punta Cana",
+      "internalLinksInRepositoryDraft": [
+        {
+          "label": "Organiser un mariage multiculturel en respectant les traditions familiales",
+          "url": "https://sertuinevents.com/fr/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Voyage, hébergement et accès des invités",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/",
+          "_type": "blogSource",
+          "_key": "src1"
+        },
+        {
+          "label": "Checklist des lieux et de la logistique d’un mariage sud-asiatique",
+          "url": "https://sertuinevents.com/fr/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+          "_type": "blogSource",
+          "_key": "src1"
+        }
+      ],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-23-fr",
+      "wordCount": 1986
     },
     {
       "topic": 24,
       "language": "en",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-24/en.json",
+      "finalTitle": "An Indian Wedding in Punta Cana or at Home: Costs",
+      "primaryKeyword": "Indian wedding Punta Cana vs hometown wedding cost",
+      "secondaryKeywords": [
+        "is an Indian destination wedding cheaper",
+        "wedding cost comparison by guest count",
+        "multi-day wedding travel expenses"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://sertuinevents.com/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "independent Indian wedding planning in Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-24-en",
+      "wordCount": 2065
     },
     {
       "topic": 24,
       "language": "es",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-24/es.json",
+      "finalTitle": "¿Cuesta menos una boda india en Punta Cana o en tu ciudad?",
+      "primaryKeyword": "costo de boda india en Punta Cana vs ciudad de origen",
+      "secondaryKeywords": [
+        "boda india de destino vs boda local",
+        "presupuesto de boda india",
+        "gastos de viaje para boda de destino"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://sertuinevents.com/es/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "planificación independiente de bodas indias en Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-24-es",
+      "wordCount": 2045
     },
     {
       "topic": 24,
       "language": "pt-BR",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-24/pt.json",
+      "finalTitle": "Casamento indiano em Punta Cana ou na sua cidade: qual custa menos?",
+      "primaryKeyword": "custo de casamento indiano em Punta Cana vs cidade de origem",
+      "secondaryKeywords": [
+        "casamento indiano no exterior ou no Brasil",
+        "custo de destination wedding",
+        "comparação de orçamento de casamento"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://sertuinevents.com/pt/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "planejamento de casamento indiano em Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-24-pt",
+      "wordCount": 2090
     },
     {
       "topic": 24,
       "language": "fr",
-      "status": "not started",
-      "repositoryDraft": null,
-      "finalTitle": null,
-      "primaryKeyword": null,
-      "secondaryKeywords": [],
+      "status": "repository draft requires final review",
+      "repositoryDraft": "topic-24/fr.json",
+      "finalTitle": "Mariage indien à Punta Cana ou chez soi : comparaison des coûts",
+      "primaryKeyword": "coût d'un mariage indien à Punta Cana ou dans sa ville",
+      "secondaryKeywords": [
+        "mariage indien à destination ou local",
+        "comparaison de budgets de mariage",
+        "frais de voyage des invités"
+      ],
       "sanityDocumentReference": null,
       "sanityContentSavedAndVerified": false,
       "actualSlug": null,
-      "sources": [],
-      "serviceAnchor": null,
+      "sources": [
+        "https://sertuinevents.com/fr/puntacana-wedding-planner/"
+      ],
+      "serviceAnchor": "accompagnement pour un mariage indien à Punta Cana",
       "internalLinksInRepositoryDraft": [],
       "pendingLinks": [],
       "issues": [
-        "Not researched or drafted in this work session."
-      ]
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending.",
+        "Add verified same-language related guides."
+      ],
+      "proposedDocumentReference": "drafts.blogPost-wedding-topic-24-fr",
+      "wordCount": 2187
     },
     {
       "topic": 25,
       "language": "en",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-25/en.json",
       "finalTitle": "Punta Cana Wedding Timeline: Ceremony to Reception",
       "primaryKeyword": "Punta Cana wedding day timeline",
@@ -2634,9 +3460,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-25-en",
       "wordCount": 2057
@@ -2644,7 +3469,7 @@
     {
       "topic": 25,
       "language": "es",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-25/es.json",
       "finalTitle": "Cronograma de boda en Punta Cana: de la ceremonia a la recepción",
       "primaryKeyword": "cronograma del día de la boda en Punta Cana",
@@ -2679,9 +3504,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-25-es",
       "wordCount": 2029
@@ -2689,7 +3513,7 @@
     {
       "topic": 25,
       "language": "pt-BR",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-25/pt.json",
       "finalTitle": "Cronograma de casamento em Punta Cana: da cerimônia à recepção",
       "primaryKeyword": "cronograma do dia do casamento em Punta Cana",
@@ -2724,9 +3548,8 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-25-pt",
       "wordCount": 2018
@@ -2734,7 +3557,7 @@
     {
       "topic": 25,
       "language": "fr",
-      "status": "repository draft",
+      "status": "repository draft requires final review",
       "repositoryDraft": "topic-25/fr.json",
       "finalTitle": "Planning du jour du mariage à Punta Cana : de la cérémonie à la réception",
       "primaryKeyword": "planning du jour du mariage à Punta Cana",
@@ -2769,13 +3592,67 @@
       ],
       "pendingLinks": [],
       "issues": [
-        "Repository draft only; not imported into Sanity.",
-        "Image selection, image-specific heroAlt and rendered preview pending.",
-        "See per-topic metadata for research and remaining review."
+        "Repository draft only; no verified Sanity import or publication.",
+        "Image selection, localized image-specific alt text and rendered preview pending."
       ],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-25-fr",
       "wordCount": 2014
     }
   ],
-  "wordCountMethod": "Title, direct answer, section headings/body/steps/bullets/notes and FAQ; excludes CTA, source labels and metadata."
+  "wordCountMethod": "Title, direct answer, section headings/body/steps/bullets/notes and FAQ; excludes CTA, source labels and metadata.",
+  "missingVersions": [
+    {
+      "topic": 11,
+      "language": "es"
+    },
+    {
+      "topic": 11,
+      "language": "pt-BR"
+    },
+    {
+      "topic": 12,
+      "language": "en"
+    },
+    {
+      "topic": 12,
+      "language": "es"
+    },
+    {
+      "topic": 12,
+      "language": "pt-BR"
+    },
+    {
+      "topic": 12,
+      "language": "fr"
+    },
+    {
+      "topic": 16,
+      "language": "en"
+    },
+    {
+      "topic": 16,
+      "language": "es"
+    },
+    {
+      "topic": 16,
+      "language": "pt-BR"
+    },
+    {
+      "topic": 16,
+      "language": "fr"
+    }
+  ],
+  "interruption": "All three auxiliary agents failed with: Your workspace is out of credits. Add credits to continue. Work remains incomplete.",
+  "readbackValidation": {
+    "parsedArticleFiles": 90,
+    "shapeErrors": 0,
+    "scope": "Draft IDs, blogPost type, blogSection keys/type, and existing service CTA path.",
+    "notVerified": [
+      "CMS import",
+      "Image selection",
+      "Rendered layout",
+      "All localized link destinations",
+      "Final substantive editorial review"
+    ]
+  }
 }
