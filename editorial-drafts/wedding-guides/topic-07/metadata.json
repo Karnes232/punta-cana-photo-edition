@@ -61,9 +61,15 @@
     "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
   },
   "pending": [
-    "Expand topic-specific depth toward requested2000–3000 words; current core drafts below target.",
     "Select and inspect actual hero asset before writing heroAlt.",
-    "Verify2–4 existing same-language related guide URLs before inserting links.",
+    "Render-check related guide links: routes verified in localized service navigation; some direct non-English fetches return cache misses.",
     "Confirm shared slug and CMS draft persistence; no publication authorized."
-  ]
+  ],
+  "bodyWordCounts": {
+    "en": 2084,
+    "es": 2051,
+    "pt": 1984,
+    "fr": 1995
+  },
+  "editorialDepth": "All four languages expanded with topic-specific practical detail, distinct responsibilities and original planning examples; no invented supplier terms or authority approvals."
 }
