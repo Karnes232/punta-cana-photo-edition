@@ -21,6 +21,14 @@
       "paragraphs": [
         "Define si se trata de un matrimonio civil dominicano o de una celebración simbólica después de casarse en otro país. El trámite es diferente, aunque ambos aparezcan dentro de paquetes de boda similares. Pregunta qué servicio incluye la propuesta y quién coordina al oficial civil.",
         "Localiza la Oficialía del Estado Civil competente y solicita instrucciones actuales para su situación. Informa nacionalidad, residencia, lugar de nacimiento y antecedentes matrimoniales de ambos. No uses como única referencia el expediente de amistades con circunstancias distintas."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedmeeting",
+          "label": "Prepara la primera reunión de planificación",
+          "url": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        }
       ]
     },
     {
@@ -104,11 +112,110 @@
     },
     {
       "_type": "blogSection",
+      "_key": "expanded0",
+      "heading": "Envía una primera consulta que permita responder a tu caso",
+      "paragraphs": [
+        "Un mensaje útil identifica a ambos contrayentes y sus circunstancias. Incluye nacionalidad, residencia actual, país de nacimiento y matrimonios anteriores, cuando corresponda. Explica si desean casarse en la oficialía o en un lugar de eventos y solicita confirmar si esa oficina tramita la modalidad propuesta.",
+        "Pide interlocutor, lista actual y forma de obtener confirmación después de la revisión. Pregunta qué decisiones deben resolverse antes de considerar definitiva la cita. Que una oficina celebre bodas no significa que haya aceptado su expediente. Conserva la respuesta fechada para comparar cualquier instrucción posterior."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded1",
+      "heading": "Distingue nacionalidad, origen del documento e idioma",
+      "paragraphs": [
+        "La nacionalidad no indica necesariamente dónde se emitió el nacimiento, dónde quedó registrado un divorcio ni en qué idioma está redactado el documento. Una misma pareja puede necesitar rutas diferentes de autenticación dentro de su expediente.",
+        "Trabaja documento por documento: quién emite la versión aceptada, quién la autentica y quién la traduce cuando procede. Si recibes una lista pensada para una nacionalidad, informa qué actas se expidieron en otro país. Antes de pedir otro juego completo de papeles, consulta exactamente qué pieza debe cambiar y por qué."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded2",
+      "heading": "Evita pagar dos veces por una versión equivocada",
+      "paragraphs": [
+        "Antes de solicitar un acta, confirma si la oficialía exige formato o información que no aparece en una versión abreviada. Pregunta si acepta documentos digitales y cómo deben presentarse. Una versión válida para otro trámite no necesariamente cumple la solicitud de este matrimonio.",
+        "Identificada la versión, sigue el orden confirmado de emisión, autenticación y traducción. Conserva copia en cada entrega y comprueba que nombres y fechas permanecen iguales. Si se corrige el original, pregunta qué pasos posteriores deben repetirse; no presupongas que la traducción anterior sigue siendo utilizable."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded3",
+      "heading": "Prepara a los testigos para la cita real",
+      "paragraphs": [
+        "Pide a la oficialía requisitos y documentos de identificación aplicables. Elige personas que puedan asistir a la cita concreta y comprendan su función, no solo amigos presentes durante la fiesta. Confirma sus nombres a partir de los documentos que utilizarán.",
+        "Comunica punto de encuentro y hora de llegada. Si viajan por separado, considera la posibilidad de retraso y consulta qué procedimiento se aplica para cambiar un testigo. No improvises un sustituto el día de boda ni supongas que cualquier empleado del hotel puede asumir esa función sin aceptación de la oficina."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded4",
+      "heading": "Separa traducción documental e interpretación de ceremonia",
+      "paragraphs": [
+        "La traducción admitida de un acta permite incorporarla al expediente. Entender lo que se dice durante el acto es otra necesidad. Pregunta cómo comprenderán las actuaciones los novios y testigos y si hace falta interpretación u otra medida para su situación.",
+        "Si se acuerda intérprete, confirma quién lo aporta, idiomas y si está incluido en el servicio civil o se contrata aparte. Facilítale los datos confirmados de la cita. El maestro de ceremonias de la recepción, un invitado bilingüe o quien traduzca discursos no es automáticamente la persona adecuada para intervenir en el acto oficial."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded5",
+      "heading": "Controla la revisión de copias y originales",
+      "paragraphs": [
+        "Acuerda con la autoridad o profesional un canal de entrega apropiado. Identifica archivos por persona y tipo de documento sin añadir datos personales innecesarios al nombre. Separa la versión revisada de las anteriores, especialmente después de una corrección.",
+        "Pide observaciones específicas. Una respuesta como todo se ve bien puede significar que las imágenes son legibles, no que el expediente esté completo. Solicita qué queda por entregar en original y qué decisiones siguen pendientes. Conserva esa lista final para evitar instrucciones contradictorias de varios intermediarios."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded6",
+      "heading": "Comprueba el acta antes de cerrar el seguimiento",
+      "paragraphs": [
+        "Cuando recibas el documento oficial, revisa nombres, identificación, fecha y lugar contra los datos aceptados. Si aparece un error, consulta cuanto antes el procedimiento de corrección. No alteres el archivo digital ni encargues una traducción informal que cambie silenciosamente el texto oficial.",
+        "Anota qué versión física o electrónica recibiste y dónde la utilizarás. Si otra autoridad solicita un formato o autenticación adicional, sigue sus instrucciones sin asumir que el paquete de boda incluye ese trámite posterior. La entrega debe distinguir servicio completado y gestiones todavía necesarias."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded7",
+      "heading": "Conserva un programa viable mientras esperas respuestas",
+      "paragraphs": [
+        "Si un acta se retrasa, informa al organizador lo necesario para valorar el horario sin distribuir el expediente privado. Pregunta a la oficialía qué puede avanzar y qué no está confirmado. Revisa contratos antes de anunciar cambios a invitados.",
+        "Una pareja puede mantener la recepción y acordar una celebración simbólica separada, pero debe decidirlo conscientemente y comunicarlo con exactitud. No se presenta como matrimonio legal aprobado. Tampoco abandones el proceso civil solo por la duda de un intermediario: solicita respuesta de la autoridad que acepta los documentos."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded8",
+      "heading": "Cómo manejar documentos procedentes de varios países",
+      "paragraphs": [
+        "Imagina que una persona nació en un país, reside en otro y se divorció en un tercero. Es un ejemplo de complejidad documental, no una lista de requisitos universales. La primera tarea es identificar qué organismo emite cada prueba y qué versión aceptará la oficialía dominicana.",
+        "Un único consulado puede orientar determinadas gestiones sin ser necesariamente el emisor de todos los documentos. Antes de enviar originales, pregunta a quién corresponde cada paso y quién los devolverá. Evita que el expediente quede fragmentado entre proveedores sin un registro de ubicación.",
+        "En una pareja con trayectorias distintas, no uses la carpeta de uno como plantilla definitiva para el otro. Revisa ambas listas separadamente y después comprueba los elementos compartidos, como cita y testigos. Esa organización reduce confusiones sin convertir diferencias administrativas en un problema del programa de invitados."
+      ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "expanded9",
+      "heading": "Una revisión breve antes de viajar",
+      "paragraphs": [
+        "Comprueba que cada original previsto coincide con la copia revisada, que la identificación sigue vigente y que todas las páginas necesarias están presentes. Revisa también la cita, el contacto de la oficina y la persona responsable de acompañarles. Hacer esta comprobación antes del vuelo permite detectar un archivo omitido o una instrucción que todavía no recibió respuesta.",
+        "No confíes únicamente en que alguien del equipo recuerda el estado del trámite. Lleva una lista fechada de documentos aceptados, originales pendientes y acciones posteriores. Si cambian de coordinador, ese registro facilita la entrega sin volver a compartir todo el expediente ni repetir gestiones ya completadas. El objetivo es que cada responsabilidad tenga una persona y una fecha verificables."
+      ]
+    },
+    {
+      "_type": "blogSection",
       "_key": "s10",
       "heading": "Mantén coordinados los trámites y el evento",
       "paragraphs": [
         "Controla el expediente por separado de comida, decoración y transporte. Comunica al organizador el estado y los plazos necesarios para coordinar la ceremonia. Si surge una demora oficial, revisa enseguida las opciones contractuales en lugar de asumir que el acto podrá tener efectos civiles.",
         "Sertuin Events puede organizar la logística mientras avanzan las gestiones documentales. Lleva a la reunión la lista confirmada, la oficialía responsable y sus fechas para construir un programa basado en requisitos aceptados."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "relatedguests",
+          "label": "Viaje y acceso de invitados",
+          "url": "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        }
       ]
     }
   ],
