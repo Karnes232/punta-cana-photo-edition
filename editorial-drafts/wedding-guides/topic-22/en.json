@@ -218,6 +218,28 @@
         "Your decision file should name the religious authority consulted, the approved location, the person responsible for civil documentation and the events that will take place in Punta Cana. Include the contractual consequences if an essential element cannot proceed. Make sure family representatives receive the same version.",
         "Sertuin Events can help coordinate the destination celebration around those decisions. Start the planning conversation with the confirmed religious and legal arrangements, expected guest count and desired celebration days. That lets the team develop an operational brief with clear responsibilities rather than promise a ceremony whose feasibility is unresolved."
       ]
+    },
+    {
+      "_type": "blogSection",
+      "_key": "relatedPlanningGuides",
+      "heading": "Related planning guides",
+      "paragraphs": [
+        "Continue with these guides to turn the questions in this article into a practical planning brief for your celebration."
+      ],
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "related0",
+          "label": "Plan a multicultural wedding around family traditions",
+          "url": "https://sertuinevents.com/blog/plan-multicultural-wedding-punta-cana-family-traditions/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "related1",
+          "label": "Plan guest travel for a Punta Cana wedding",
+          "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/"
+        }
+      ]
     }
   ],
   "faqHeading": "Frequently asked questions",
