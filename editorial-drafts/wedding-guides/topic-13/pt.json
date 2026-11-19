@@ -7,7 +7,7 @@
     "_ref": "blogGuide-wedding-topic-13"
   },
   "title": "Jellyfish vs. Kukua: comparação de espaços para casamento em Punta Cana",
-  "seoTitle": "Jellyfish vs. Kukua: comparação de espaços para casamento em Punta Cana",
+  "seoTitle": "Jellyfish ou Kukua: onde casar em Punta Cana",
   "description": "Compare Jellyfish e Kukua para seu casamento em Punta Cana: planta, transporte, exclusividade, plano de chuva e orçamento completo do mesmo evento.",
   "directAnswer": "A escolha entre Jellyfish e Kukua depende do programa do casamento. Os dois divulgam eventos em Bávaro. Solicite propostas equivalentes para os mesmos convidados, menu, horas de bar, montagem, transporte e alternativa climática. Decida pela adequação comprovada e pelo custo total, sem usar fotografias ou rankings de preço como resposta definitiva.",
   "authorName": "Sertuin Events",
@@ -184,6 +184,17 @@
     },
     {
       "_type": "blogSection",
+      "_key": "equivalentCostExample",
+      "heading": "Confira uma conta hipotética entre propostas equivalentes",
+      "paragraphs": [
+        "Imagine duas propostas anônimas e inteiramente fictícias. A oferta A soma USD 12.000 e inclui os transportes necessários; a B soma USD 11.000, mas exige outros USD 1.500 para percursos equivalentes. Depois desse ajuste, os totais comparáveis seriam USD 12.000 e USD 12.500. São exemplos de aritmética, não preços ou cotações do Jellyfish ou do Kukua.",
+        "Antes da decisão, confira se ambos representam também cardápio, duração do bar, convidados e base de encargos iguais. Se impostos ou serviço permanecem sem confirmação, a comparação ainda está incompleta. Não aplique uma porcentagem presumida apenas para apresentar um resultado aparentemente fechado.",
+        "A prática útil é criar uma linha para cada diferença e solicitar a cotação que falta. O preço inicial menor é apenas o começo. Mantenha melhorias opcionais fora da comparação básica até decidir se são relevantes e confronte novamente as versões escolhidas. Assim um adicional atraente não esconde a ausência de um serviço essencial.",
+        "Registre também se o transporte considera uma única saída ou retornos em horários distintos. Mesmo com valores iguais, esses formatos atendem necessidades diferentes. A equivalência depende do serviço que o grupo realmente utilizará, não apenas do nome da linha no orçamento."
+      ]
+    },
+    {
+      "_type": "blogSection",
       "_key": "s14",
       "heading": "Escolha pelas prioridades do grupo",
       "paragraphs": [
@@ -226,5 +237,6 @@
     "label": "escolha de espaços para casamento em Punta Cana",
     "url": "/puntacana-wedding-planner/"
   },
-  "reviewNote": "Fontes oficiais revisadas em 18 de novembro de 2026. Disponibilidade, planta e cobranças dependem da proposta atual."
+  "reviewNote": "Fontes oficiais revisadas em 18 de novembro de 2026. Disponibilidade, planta e cobranças dependem da proposta atual.",
+  "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort."
 }

@@ -1,6 +1,6 @@
 {
   "topic": 14,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "punta-cana-wedding-contracts-deposits-cancellations",
   "versions": {
@@ -83,9 +83,20 @@
   ],
   "editorialNote": "Approximately1800–1900 words per version: practical scope without padding or unsupported legal analysis. Fictional percentage example clearly labeled. No contract enforceability, automatic refund entitlement or cross-border law conclusion.",
   "pendingIssues": [
-    "Hero image and image-specific alt text pending.",
-    "Proposed guide reference/shared slug require CMS resolution.",
-    "Related existing localized links require final rendering check; French rain guide also surfaced in search.",
-    "Drafts in repository only; not saved or published in Sanity."
-  ]
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

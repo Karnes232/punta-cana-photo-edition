@@ -7,7 +7,7 @@
     "_ref": "blogGuide-wedding-topic-13"
   },
   "title": "Jellyfish vs. Kukua: comparación de venues para bodas en Punta Cana",
-  "seoTitle": "Jellyfish vs. Kukua: comparación de venues para bodas en Punta Cana",
+  "seoTitle": "Jellyfish o Kukua: dónde celebrar tu boda en Punta Cana",
   "description": "Compara Jellyfish y Kukua para tu boda en Punta Cana: distribución, traslados, exclusividad, alternativa por lluvia y presupuesto completo para el mismo programa.",
   "directAnswer": "Jellyfish o Kukua será mejor según el programa concreto de tu boda. Ambos ofrecen bodas en Bávaro. Solicita propuestas equivalentes con los mismos invitados, menú, horas de bar, montaje, transporte y alternativa climática. Decide por la adecuación documentada y el costo completo, no por fotografías ni por una clasificación de precios sin verificar.",
   "authorName": "Sertuin Events",
@@ -184,6 +184,16 @@
     },
     {
       "_type": "blogSection",
+      "_key": "equivalentCostExample",
+      "heading": "Comprueba un cálculo hipotético entre propuestas equivalentes",
+      "paragraphs": [
+        "Imagina dos propuestas anónimas y totalmente ficticias. La oferta A suma USD 12.000 e incluye los traslados necesarios; la B suma USD 11.000 y requiere otros USD 1.500 para traslados equivalentes. Tras ajustar esa diferencia, los totales comparables serían USD 12.000 y USD 12.500. No son precios ni cotizaciones de Jellyfish o Kukua, sino un ejemplo de cálculo.",
+        "Antes de decidir, comprueba que ambos importes reflejan también menú, horas de bar, invitados y base de cargos iguales. Si faltan impuestos o servicio por confirmar, la comparación sigue incompleta. No introduzcas un porcentaje supuesto solo para conseguir un resultado aparentemente cerrado.",
+        "La práctica útil es abrir una línea para cada diferencia y solicitar la cotización pendiente. Un precio inicial menor es solo el punto de partida. Mantén las mejoras opcionales fuera de la comparación básica hasta decidir si te interesan y vuelve a comparar las versiones elegidas. Así evitas que un extra atractivo esconda la ausencia de un servicio imprescindible."
+      ]
+    },
+    {
+      "_type": "blogSection",
       "_key": "s14",
       "heading": "Decide según las necesidades de tu grupo",
       "paragraphs": [
@@ -226,5 +236,6 @@
     "label": "selección de venues para bodas en Punta Cana",
     "url": "/puntacana-wedding-planner/"
   },
-  "reviewNote": "Fuentes oficiales revisadas el 18 de noviembre de 2026. Disponibilidad, distribución y cargos requieren propuesta actual."
+  "reviewNote": "Fuentes oficiales revisadas el 18 de noviembre de 2026. Disponibilidad, distribución y cargos requieren propuesta actual.",
+  "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort."
 }

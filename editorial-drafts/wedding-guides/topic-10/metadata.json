@@ -1,6 +1,6 @@
 {
   "topic": 10,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "punta-cana-wedding-twelve-month-checklist",
   "versions": {
@@ -46,10 +46,10 @@
     }
   },
   "bodyWordCounts": {
-    "en": 2180,
-    "es": 2081,
-    "pt": 2044,
-    "fr": 2094
+    "en": 2156,
+    "es": 2067,
+    "pt": 2029,
+    "fr": 2075
   },
   "sources": [
     {
@@ -76,9 +76,20 @@
     "fr": "Rétroplanning adaptable et décisions prioritaires"
   },
   "pendingIssues": [
-    "Hero image and rights unconfirmed; heroAlt omitted.",
-    "Guide reference and provisional shared slug need later CMS resolution.",
-    "Same-language existing guide links confirmed via localized service pages; final destination and render QA required.",
-    "Repository drafts only, not imported to Sanity or published."
-  ]
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

@@ -1,6 +1,6 @@
 {
   "topic": 4,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "punta-cana-full-planning-vs-day-of-coordination",
   "versions": {
@@ -46,10 +46,10 @@
     }
   },
   "bodyWordCounts": {
-    "en": 2202,
-    "es": 2040,
-    "pt": 2050,
-    "fr": 2111
+    "en": 2175,
+    "es": 2019,
+    "pt": 2027,
+    "fr": 2091
   },
   "sources": [
     {
@@ -86,9 +86,20 @@
     "fr": "Comparer organisation complète et coordination du jour J"
   },
   "pendingIssues": [
-    "Hero image and rights unconfirmed; heroAlt omitted pending selection.",
-    "Shared guide reference and provisional slug require later CMS resolution.",
-    "Existing same-language internal guides linked through verified localized service-page navigation; render and destination QA still required.",
-    "Repository drafts only; not imported to Sanity or published."
-  ]
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

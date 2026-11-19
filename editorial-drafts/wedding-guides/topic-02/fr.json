@@ -122,7 +122,21 @@
         "Avant de choisir, assurez-vous de pouvoir résumer le devis à votre partenaire : ce que vous achetez, qui le réalisera, les dates couvertes, les prestations restant à réserver et les échéances de paiement. Si une réponse manque, demandez-la. Une comparaison pertinente commence par une compréhension commune de la mission, et non par le montant le plus bas d’un résultat de recherche."
       ],
       "_type": "blogSection",
-      "_key": "s9"
+      "_key": "s9",
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "finalRelated0",
+          "label": "Checklist du premier rendez-vous",
+          "url": "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "finalRelated1",
+          "label": "Resort ou lieu privé",
+          "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        }
+      ]
     }
   ],
   "ctaTitle": "Définissez l’accompagnement adapté à votre mariage",
@@ -154,5 +168,6 @@
       "question": "La coordination du jour J comprend-elle la répétition ?",
       "answer": "Uniquement si l’accord le prévoit. Le service de coordination du jour J publié par Sertuin Events exclut la répétition. Confirmez la prise en charge de chaque activité."
     }
-  ]
+  ],
+  "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
 }

@@ -1,6 +1,6 @@
 {
   "topic": 15,
-  "status": "draft-editorial-review",
+  "status": "editorial-complete-repository-draft",
   "reviewedAt": "2026-11-18",
   "guideId": "blogGuide-wedding-topic-15",
   "provisionalSharedSlug": "boat-wedding-punta-cana-cost-planning",
@@ -62,16 +62,27 @@
     ],
     "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
   },
-  "pending": [
-    "Select and inspect actual hero asset before writing heroAlt.",
-    "Render-check related guide links: routes verified in localized service navigation; some direct non-English fetches return cache misses.",
-    "Confirm shared slug and CMS draft persistence; no publication authorized."
-  ],
   "bodyWordCounts": {
-    "en": 2211,
-    "es": 1951,
-    "pt": 2011,
-    "fr": 2071
+    "en": 2219,
+    "es": 1960,
+    "pt": 2020,
+    "fr": 2082
   },
-  "editorialDepth": "All four languages expanded with topic-specific practical detail, distinct responsibilities and original planning examples; no invented supplier terms or authority approvals."
+  "editorialDepth": "All four languages expanded with topic-specific practical detail, distinct responsibilities and original planning examples; no invented supplier terms or authority approvals.",
+  "pendingIssues": [
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "planner",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

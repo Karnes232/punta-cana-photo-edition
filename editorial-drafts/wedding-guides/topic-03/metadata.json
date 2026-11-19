@@ -1,6 +1,6 @@
 {
   "topic": 3,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "punta-cana-wedding-package-inclusions",
   "versions": {
@@ -46,10 +46,10 @@
     }
   },
   "bodyWordCounts": {
-    "en": 2245,
-    "es": 2152,
-    "pt": 2054,
-    "fr": 2104
+    "en": 2218,
+    "es": 2133,
+    "pt": 2031,
+    "fr": 2086
   },
   "sources": [
     {
@@ -80,9 +80,20 @@
     "forfait mariage Punta Cana prestations incluses hôtel"
   ],
   "pendingIssues": [
-    "No hero image selected: heroAlt deliberately omitted pending image selection and rights confirmation.",
-    "Proposed shared guide reference must be resolved on later CMS import; slug is provisional metadata only.",
-    "Same-language existing internal guides verified through localized service-page navigation; direct ES venue fetch returned cache miss. Recheck destinations and rendering before publication.",
-    "Repository drafts only: not imported or saved in Sanity; not published."
-  ]
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "table",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

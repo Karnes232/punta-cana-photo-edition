@@ -1,6 +1,6 @@
 {
   "topic": 12,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "punta-cana-wedding-room-blocks",
   "versions": {
@@ -46,10 +46,10 @@
     }
   },
   "bodyWordCounts": {
-    "en": 2047,
-    "es": 2003,
-    "pt": 2011,
-    "fr": 2014
+    "en": 2023,
+    "es": 1985,
+    "pt": 1996,
+    "fr": 2001
   },
   "sources": [
     {
@@ -73,9 +73,20 @@
   ],
   "editorialMethod": "Contract reading framework, not legal conclusions. Hyatt global document explicitly illustrative, never asserted to govern Punta Cana. Room-night calculations hypothetical. Majestic promotion property/date terms require confirmation.",
   "pendingIssues": [
-    "Hero image rights and heroAlt unresolved.",
-    "Shared guide reference and provisional slug require CMS resolution.",
-    "Existing localized internal links verified via service navigation; final render/destination QA pending.",
-    "Repository drafts only; not saved in Sanity or published."
-  ]
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

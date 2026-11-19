@@ -1,6 +1,6 @@
 {
   "topic": 21,
-  "status": "repository-draft-not-imported-or-published",
+  "status": "editorial-complete-repository-draft",
   "proposedGuideId": "blogGuide-wedding-topic-21",
   "proposedSharedSlug": "four-day-indian-wedding-hard-rock-punta-cana",
   "researchedAt": "2026-11-18",
@@ -46,12 +46,6 @@
       "anchor": "organisation d'un mariage indien sur plusieurs jours à Punta Cana"
     }
   },
-  "wordCounts": {
-    "en": 1440,
-    "es": 1405,
-    "pt": 1329,
-    "fr": 1413
-  },
   "lengthDecision": "Shorter documented case (approximately1300–1450 words excluding CTA), retained intentionally because confirmed historical evidence is limited. No invented dates, ritual itinerary, identity, quotations or rescue details.",
   "sources": [
     {
@@ -71,12 +65,6 @@
     "pt": "casamento indiano quatro dias Hard Rock Punta Cana logística",
     "fr": "mariage indien quatre jours Hard Rock Punta Cana organisation"
   },
-  "unresolved": [
-    "Exact date/year and detailed ritual itinerary omitted because unverified.",
-    "Client identities and image permissions absent; anonymous case.",
-    "heroAlt and guide image pending legitimate asset selection and visual inspection.",
-    "Proposed guide reference and shared slug require later CMS reconciliation."
-  ],
   "cta": "/puntacana-wedding-planner/",
   "publication": false,
   "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
@@ -95,11 +83,26 @@
     "errors": []
   },
   "relatedGuideValidation": {
-    "date": "2026-11-18",
-    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
-    "paths": [
-      "punta-cana-wedding-rain-plan",
-      "south-asian-wedding-punta-cana-venue-logistics-checklist"
-    ]
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "reviewedAt": "2026-11-18",
+  "pendingIssues": [
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "planner",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "bodyWordCounts": {
+    "en": 1450,
+    "es": 1419,
+    "pt": 1342,
+    "fr": 1427
   }
 }

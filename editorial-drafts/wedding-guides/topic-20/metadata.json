@@ -1,6 +1,6 @@
 {
   "topic": 20,
-  "status": "repository-draft-not-imported-or-published",
+  "status": "editorial-complete-repository-draft",
   "proposedGuideId": "blogGuide-wedding-topic-20",
   "proposedSharedSlug": "punta-cana-mexico-indian-wedding-comparison",
   "researchedAt": "2026-11-18",
@@ -46,12 +46,6 @@
       "anchor": "organisation de mariages indiens à Punta Cana"
     }
   },
-  "wordCounts": {
-    "en": 1998,
-    "es": 1993,
-    "pt": 1999,
-    "fr": 2065
-  },
   "researchNotes": [
     "Independent EN/ES/PT/FR intent queries performed.",
     "Specific Riviera Maya and Punta Cana properties supported by official primary sources; no countrywide ranking.",
@@ -66,11 +60,6 @@
     "https://sertuinevents.com/es/puntacana-wedding-planner/",
     "https://sertuinevents.com/pt/puntacana-wedding-planner/",
     "https://sertuinevents.com/fr/puntacana-wedding-planner/"
-  ],
-  "unresolved": [
-    "heroAlt and image pending authorized selection and visual review.",
-    "Shared guide ID/slug provisional until CMS reconciliation.",
-    "Current dates/flight schedules/venue quotes intentionally not asserted."
   ],
   "cta": "/puntacana-wedding-planner/",
   "publication": false,
@@ -90,11 +79,26 @@
     "errors": []
   },
   "relatedGuideValidation": {
-    "date": "2026-11-18",
-    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
-    "paths": [
-      "punta-cana-wedding-all-inclusive-resort-vs-private-venue",
-      "punta-cana-destination-wedding-guest-travel-guide"
-    ]
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "reviewedAt": "2026-11-18",
+  "pendingIssues": [
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "planner",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "bodyWordCounts": {
+    "en": 2006,
+    "es": 2001,
+    "pt": 2007,
+    "fr": 2074
   }
 }

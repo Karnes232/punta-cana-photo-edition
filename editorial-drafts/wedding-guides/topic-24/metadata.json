@@ -1,6 +1,6 @@
 {
   "topic": 24,
-  "status": "repository-draft-not-imported-or-published",
+  "status": "editorial-complete-repository-draft",
   "proposedGuideId": "blogGuide-wedding-topic-24",
   "proposedSharedSlug": "indian-wedding-punta-cana-hometown-cost-comparison",
   "researchedAt": "2026-11-18",
@@ -46,12 +46,6 @@
       "anchor": "accompagnement pour un mariage indien à Punta Cana"
     }
   },
-  "wordCounts": {
-    "en": 2077,
-    "es": 2057,
-    "pt": 2100,
-    "fr": 2199
-  },
   "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
   "researchNotes": [
     "Independent localized searches EN/ES/PT/FR performed; no unsupported national wedding averages or universal destination savings adopted.",
@@ -66,11 +60,6 @@
     "https://sertuinevents.com/es/puntacana-wedding-planner/",
     "https://sertuinevents.com/pt/puntacana-wedding-planner/",
     "https://sertuinevents.com/fr/puntacana-wedding-planner/"
-  ],
-  "unresolved": [
-    "heroAlt and image pending authorized selection and visual inspection.",
-    "Guide ID/shared slug provisional until CMS reconciliation.",
-    "Current venue/supplier quotes needed before making financial commitments; no actual market total asserted."
   ],
   "cta": "/puntacana-wedding-planner/",
   "publication": false,
@@ -89,11 +78,26 @@
     "errors": []
   },
   "relatedGuideValidation": {
-    "date": "2026-11-18",
-    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
-    "paths": [
-      "first-meeting-punta-cana-wedding-planner-checklist",
-      "punta-cana-wedding-all-inclusive-resort-vs-private-venue"
-    ]
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "reviewedAt": "2026-11-18",
+  "pendingIssues": [
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "table",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "bodyWordCounts": {
+    "en": 2087,
+    "es": 2069,
+    "pt": 2112,
+    "fr": 2211
   }
 }

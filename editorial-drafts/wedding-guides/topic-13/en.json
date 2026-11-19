@@ -181,6 +181,16 @@
     },
     {
       "_type": "blogSection",
+      "_key": "equivalentCostExample",
+      "heading": "Check a fictional like-for-like calculation",
+      "paragraphs": [
+        "Imagine two unnamed, entirely fictional proposals. Offer A totals USD 12,000 and includes the transfers you need; offer B totals USD 11,000 but requires another USD 1,500 for equivalent transfers. After that adjustment, the comparable totals are USD 12,000 and USD 12,500. These are arithmetic examples, not Jellyfish or Kukua prices or quotations.",
+        "Before deciding, check whether both totals also represent the same menu, bar period, guest count and charge basis. If taxes or service charges remain unresolved in either offer, the comparison is still incomplete. Do not insert a guessed percentage simply to produce a clean result.",
+        "The exercise illustrates a useful habit: add a line for every difference and request the missing quotation. A lower headline is only a starting point. Keep optional upgrades outside the basic comparison until you decide whether they matter, then compare the final chosen versions again. This prevents an attractive extra in one offer from disguising a missing essential in the other."
+      ]
+    },
+    {
+      "_type": "blogSection",
       "_key": "s14",
       "heading": "Choose according to your priorities",
       "paragraphs": [
@@ -223,5 +233,6 @@
     "label": "wedding venue sourcing in Punta Cana",
     "url": "/puntacana-wedding-planner/"
   },
-  "reviewNote": "Primary venue sources reviewed November 18, 2026. Availability, layouts and charges require a current written proposal."
+  "reviewNote": "Primary venue sources reviewed November 18, 2026. Availability, layouts and charges require a current written proposal.",
+  "heroAlt": "Wedding planner holding a folder on a resort terrace."
 }

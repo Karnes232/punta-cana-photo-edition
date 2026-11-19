@@ -122,7 +122,21 @@
         "Antes de escolher, verifique se consegue explicar a proposta ao seu par de forma simples: o que estão contratando, quem executará o trabalho, quais dias estão cobertos, o que falta comprar e quando devem pagar. Se uma dessas respostas estiver faltando, peça esclarecimentos. A comparação começa por entender o serviço, e não por escolher o menor número que apareceu na busca."
       ],
       "_type": "blogSection",
-      "_key": "s9"
+      "_key": "s9",
+      "sources": [
+        {
+          "_type": "blogSource",
+          "_key": "finalRelated0",
+          "label": "Checklist para a primeira reunião",
+          "url": "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/"
+        },
+        {
+          "_type": "blogSource",
+          "_key": "finalRelated1",
+          "label": "Resort ou espaço privativo",
+          "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/"
+        }
+      ]
     }
   ],
   "ctaTitle": "Encontre o apoio adequado para o seu casamento",
@@ -154,5 +168,6 @@
       "question": "A assessoria do dia inclui o ensaio?",
       "answer": "Somente se estiver previsto no contrato. O serviço de coordenação do dia publicado pela Sertuin Events exclui o ensaio. Confirme a cobertura de cada atividade."
     }
-  ]
+  ],
+  "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
 }

@@ -1,6 +1,6 @@
 {
   "topic": 11,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "small-intimate-wedding-punta-cana-cost",
   "versions": {
@@ -46,10 +46,10 @@
     }
   },
   "bodyWordCounts": {
-    "en": 2083,
-    "es": 2065,
-    "pt": 2019,
-    "fr": 2041
+    "en": 2056,
+    "es": 2041,
+    "pt": 1996,
+    "fr": 2028
   },
   "sources": [
     {
@@ -66,9 +66,20 @@
   ],
   "editorialMethod": "Separate fixed/variable costs and ceremony/reception scope; company examples not market averages. US$999 base + US$789 selected decor = US$1788 illustrative published estimate, availability and final terms to confirm.",
   "pendingIssues": [
-    "Hero image and rights unconfirmed; heroAlt omitted.",
-    "Shared guide reference and provisional slug need CMS resolution.",
-    "Same-language existing guides linked from verified localized navigation; final render/destination QA required.",
-    "Repository drafts only; not saved in Sanity or published."
-  ]
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "table",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

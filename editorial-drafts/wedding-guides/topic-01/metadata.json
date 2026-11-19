@@ -1,6 +1,6 @@
 {
   "topic": 1,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "punta-cana-wedding-complete-budget",
   "versions": {
@@ -74,10 +74,21 @@
     }
   ],
   "pendingIssues": [
-    "Hero image and image-specific alternative text not selected.",
-    "Proposed guide reference and shared slug require resolution at CMS import.",
-    "Existing same-language related links follow localized service navigation; EN targets fetched, localized direct fetches returned cache misses and need final rendering check.",
-    "Repository drafts only; no Sanity import or publication."
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
   ],
-  "editorialNote": "Numerical budget is explicitly fictional educational arithmetic, not supplier rates. Word counts include title, direct answer, section headings and paragraphs, and FAQ."
+  "editorialNote": "Numerical budget is explicitly fictional educational arithmetic, not supplier rates. Word counts include title, direct answer, section headings and paragraphs, and FAQ.",
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

@@ -1,6 +1,6 @@
 {
   "topic": 5,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "how-to-choose-punta-cana-wedding-planner",
   "versions": {
@@ -46,10 +46,10 @@
     }
   },
   "bodyWordCounts": {
-    "en": 2053,
-    "es": 2052,
-    "pt": 2038,
-    "fr": 2073
+    "en": 2027,
+    "es": 2030,
+    "pt": 2017,
+    "fr": 2054
   },
   "sources": [
     {
@@ -79,9 +79,20 @@
     "fr": "Choisir un organisateur sur des responsabilités et éléments vérifiables"
   },
   "pendingIssues": [
-    "Hero image and rights unconfirmed; heroAlt omitted pending selection.",
-    "Proposed guide reference and shared slug require later CMS resolution.",
-    "Existing localized guide links confirmed from service-page navigation; final destination and render QA required.",
-    "Repository drafts only, not imported or saved in Sanity; not published."
-  ]
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

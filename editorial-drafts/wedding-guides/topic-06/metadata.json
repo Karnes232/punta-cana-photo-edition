@@ -1,6 +1,6 @@
 {
   "topic": 6,
-  "status": "draft-editorial-review",
+  "status": "editorial-complete-repository-draft",
   "reviewedAt": "2026-11-18",
   "guideId": "blogGuide-wedding-topic-06",
   "provisionalSharedSlug": "best-month-wedding-punta-cana",
@@ -60,16 +60,27 @@
     ],
     "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
   },
-  "pending": [
-    "Select and inspect actual hero asset before writing heroAlt.",
-    "Render-check related guide links: routes verified in localized service navigation; several non-English direct fetches return cache misses.",
-    "Confirm shared slug and CMS draft persistence; no publication authorized."
-  ],
   "bodyWordCounts": {
-    "en": 2179,
-    "es": 2020,
-    "pt": 1989,
-    "fr": 2019
+    "en": 2189,
+    "es": 2030,
+    "pt": 1999,
+    "fr": 2031
   },
-  "editorialDepth": "Expanded all four languages with equivalent date comparison, travel constraints, weather-data interpretation, multi-day contingency and contract-change planning."
+  "editorialDepth": "Expanded all four languages with equivalent date comparison, travel constraints, weather-data interpretation, multi-day contingency and contract-change planning.",
+  "pendingIssues": [
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "setup",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

@@ -1,6 +1,6 @@
 {
   "topic": 23,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "indian-wedding-punta-cana-who-pays",
   "versions": {
@@ -79,10 +79,21 @@
   ],
   "researchAssessment": "Search results conflict on customary family and guest allocations. No general custom is promoted as a fact or obligation. Article presents original optional decision frameworks and explicitly fictional arithmetic.",
   "pendingIssues": [
-    "Image and image-specific heroAlt pending.",
-    "Guide reference and shared slug are proposed for later CMS resolution.",
-    "Localized existing guide links require final rendered verification; EN sources fetched.",
-    "Repository drafts only, no Sanity save or publication."
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
   ],
-  "editorialNote": "Approximately 1900–2000 words per language, retaining useful scope without repeating cultural claims. Counts exclude CTA and source labels."
+  "editorialNote": "Approximately 1900–2000 words per language, retaining useful scope without repeating cultural claims. Counts exclude CTA and source labels.",
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

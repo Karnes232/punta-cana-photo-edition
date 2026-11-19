@@ -184,6 +184,16 @@
     },
     {
       "_type": "blogSection",
+      "_key": "equivalentCostExample",
+      "heading": "Vérifier un calcul hypothétique à prestations égales",
+      "paragraphs": [
+        "Imaginons deux propositions anonymes et entièrement fictives. L’offre A totalise USD 12 000 avec les transferts nécessaires ; l’offre B indique USD 11 000, mais demande USD 1 500 supplémentaires pour des trajets équivalents. Après cet ajustement, les totaux comparables sont USD 12 000 et USD 12 500. Ce sont des exemples de calcul, pas des tarifs ou devis de Jellyfish ou Kukua.",
+        "Avant de choisir, vérifiez que les montants représentent aussi menu, durée du bar, effectif et base de charges identiques. Si taxes ou service restent à confirmer, la comparaison demeure incomplète. N’ajoutez pas un pourcentage supposé uniquement pour obtenir un résultat apparemment définitif.",
+        "La méthode consiste à créer une ligne pour chaque différence et demander le devis manquant. Un prix initial inférieur n’est qu’un point de départ. Gardez les améliorations facultatives hors du comparatif de base jusqu’à décider de leur intérêt, puis confrontez les versions retenues. Vous éviterez qu’un supplément séduisant masque l’absence d’une prestation essentielle."
+      ]
+    },
+    {
+      "_type": "blogSection",
       "_key": "s14",
       "heading": "Choisir selon les besoins de vos proches",
       "paragraphs": [
@@ -226,5 +236,6 @@
     "label": "recherche de lieux de mariage à Punta Cana",
     "url": "/puntacana-wedding-planner/"
   },
-  "reviewNote": "Sources officielles revues le 18 novembre 2026. Disponibilité, implantation et frais nécessitent une proposition actuelle."
+  "reviewNote": "Sources officielles revues le 18 novembre 2026. Disponibilité, implantation et frais nécessitent une proposition actuelle.",
+  "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort."
 }

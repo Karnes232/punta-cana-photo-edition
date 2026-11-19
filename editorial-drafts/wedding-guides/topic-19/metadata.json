@@ -1,6 +1,6 @@
 {
   "topic": 19,
-  "status": "draft-editorial-review",
+  "status": "editorial-complete-repository-draft",
   "reviewedAt": "2026-11-18",
   "guideId": "blogGuide-wedding-topic-19",
   "provisionalSharedSlug": "hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana",
@@ -63,16 +63,6 @@
     "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms.",
     "expansionReview": "Official Hard Rock Indian weddings, EN requirements, ES requirements/FAQ and Hyatt Ziva Cap Cana wedding page checked. Published outside-vendor conditions differ; no universal fee or automatic access stated. Expanded original practical comparison covers layouts, transitions, guests, menus, production, responsibility, scenarios and site review."
   },
-  "pending": [
-    "Select and inspect actual hero asset before writing heroAlt.",
-    "Confirm shared slug and CMS draft persistence; no publication authorized."
-  ],
-  "wordCounts": {
-    "en": 2289,
-    "es": 2075,
-    "pt": 2004,
-    "fr": 2029
-  },
   "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
   "contentAudit": {
     "date": "2026-11-18",
@@ -89,11 +79,25 @@
     "errors": []
   },
   "relatedGuideValidation": {
-    "date": "2026-11-18",
-    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
-    "paths": [
-      "punta-cana-wedding-all-inclusive-resort-vs-private-venue",
-      "south-asian-wedding-punta-cana-venue-logistics-checklist"
-    ]
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "pendingIssues": [
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "planner",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "bodyWordCounts": {
+    "en": 2299,
+    "es": 2085,
+    "pt": 2014,
+    "fr": 2040
   }
 }

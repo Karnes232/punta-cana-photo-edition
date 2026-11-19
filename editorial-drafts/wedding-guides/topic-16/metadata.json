@@ -1,6 +1,6 @@
 {
   "topic": 16,
-  "status": "repository-drafts-editorial-review-required",
+  "status": "editorial-complete-repository-draft",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "punta-cana-free-wedding-package-conditions",
   "versions": {
@@ -46,10 +46,10 @@
     }
   },
   "bodyWordCounts": {
-    "en": 2051,
-    "es": 2015,
-    "pt": 2015,
-    "fr": 2004
+    "en": 2025,
+    "es": 2000,
+    "pt": 1999,
+    "fr": 1988
   },
   "sources": [
     {
@@ -73,9 +73,20 @@
   ],
   "editorialMethod": "Verified specific Majestic threshold and non-private dinner; not generalized. Hard Rock access conditions discussed without copying older numeric rates. No claim that all extras are hidden. Compare accommodation obligations, chosen upgrades and payer-specific costs.",
   "pendingIssues": [
-    "Hero image and rights need final selection; heroAlt omitted.",
-    "Shared guide reference and provisional slug need CMS resolution.",
-    "Existing localized guide links now independently verified in browser by root; final CMS rendering still pending.",
-    "Repository drafts only; not imported or saved in Sanity, not published."
-  ]
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "table",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  }
 }

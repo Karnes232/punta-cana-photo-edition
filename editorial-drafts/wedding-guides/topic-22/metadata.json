@@ -1,6 +1,6 @@
 {
   "topic": 22,
-  "status": "draft-editorial-review",
+  "status": "editorial-complete-repository-draft",
   "reviewedAt": "2026-11-18",
   "guideId": "blogGuide-wedding-topic-22",
   "provisionalSharedSlug": "sikh-wedding-punta-cana-anand-karaj",
@@ -62,17 +62,6 @@
     "sourceNotes": "Council guidance and gurdwara booking page opened. SGPC indexed primary PDF returned502 on direct fetch; not used for detailed claims.",
     "expansionReview": "Supreme Sikh Council UK guidance and Guru Nanak Darbar Gravesend primary preparation page re-opened. SGPC PDF still returns502; no detailed SGPC claim added. Expansion preserves religious authority, no promised resort Anand Karaj, and separates approved ceremony, civil process and destination celebration."
   },
-  "pending": [
-    "Religious authority review; no Punta Cana Anand Karaj location authorized or promised.",
-    "Select and inspect real photo before writing heroAlt.",
-    "Confirm shared slug and create CMS draft without publication when authorized workflow is available."
-  ],
-  "wordCounts": {
-    "en": 2387,
-    "es": 2234,
-    "pt": 2167,
-    "fr": 2202
-  },
   "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
   "contentAudit": {
     "date": "2026-11-18",
@@ -89,11 +78,25 @@
     "errors": []
   },
   "relatedGuideValidation": {
-    "date": "2026-11-18",
-    "method": "Central root agent verified six existing guide destinations in all four languages through Chrome with matching page headings; this topic links two same-language destinations using existing blogSection.sources.",
-    "paths": [
-      "plan-multicultural-wedding-punta-cana-family-traditions",
-      "punta-cana-destination-wedding-guest-travel-guide"
-    ]
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "pendingIssues": [
+    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
+    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
+    "Import, verify saved persistence and preview each locale before publication.",
+    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
+  ],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "planner",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false
+  },
+  "bodyWordCounts": {
+    "en": 2396,
+    "es": 2245,
+    "pt": 2177,
+    "fr": 2213
   }
 }
