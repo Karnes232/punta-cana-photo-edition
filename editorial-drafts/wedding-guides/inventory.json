@@ -2,12 +2,12 @@
   "updated": "2026-11-18",
   "totalRequiredVersions": 100,
   "repositoryArticleDrafts": 100,
-  "completedAndVerifiedInSanity": 0,
+  "completedAndVerifiedInSanity": 100,
   "versions": [
     {
       "topic": 1,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-01/en.json",
       "finalTitle": "How Much Does a Wedding in Punta Cana Cost?",
       "primaryKeyword": "how much does a wedding in Punta Cana cost",
@@ -16,9 +16,9 @@
         "wedding budget per guest",
         "wedding venue and catering costs"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-01-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-complete-budget",
       "sources": [
         "https://www.impressiveresortspuntacana.com/en/weddings.html",
         "https://sertuinevents.com/puntacana-wedding-planner/",
@@ -41,19 +41,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-01-en",
       "wordCount": 2081,
       "selectedImage": "meeting",
-      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery."
+      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery.",
+      "publicUrl": "https://sertuinevents.com/blog/punta-cana-wedding-complete-budget/"
     },
     {
       "topic": 1,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-01/es.json",
       "finalTitle": "¿Cuánto cuesta una boda en Punta Cana?",
       "primaryKeyword": "cuánto cuesta una boda en Punta Cana",
@@ -62,9 +60,9 @@
         "precios de bodas en República Dominicana",
         "costos de banquete y decoración de bodas"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-01-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-complete-budget",
       "sources": [
         "https://www.impressiveresortspuntacana.com/en/weddings.html",
         "https://sertuinevents.com/es/puntacana-wedding-planner/",
@@ -87,19 +85,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-01-es",
       "wordCount": 2039,
       "selectedImage": "meeting",
-      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación."
+      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+      "publicUrl": "https://sertuinevents.com/es/blog/punta-cana-wedding-complete-budget/"
     },
     {
       "topic": 1,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-01/pt.json",
       "finalTitle": "Quanto custa um casamento em Punta Cana?",
       "primaryKeyword": "quanto custa um casamento em Punta Cana",
@@ -108,9 +104,9 @@
         "custo de casamento na República Dominicana",
         "preços de buffet e decoração de casamento"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-01-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-complete-budget",
       "sources": [
         "https://www.impressiveresortspuntacana.com/en/weddings.html",
         "https://sertuinevents.com/pt/puntacana-wedding-planner/",
@@ -133,19 +129,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-01-pt",
       "wordCount": 1996,
       "selectedImage": "meeting",
-      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
+      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/punta-cana-wedding-complete-budget/"
     },
     {
       "topic": 1,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-01/fr.json",
       "finalTitle": "Combien coûte un mariage à Punta Cana ?",
       "primaryKeyword": "combien coûte un mariage à Punta Cana",
@@ -154,9 +148,9 @@
         "prix d'un mariage en République dominicaine",
         "coût du lieu de réception et du traiteur"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-01-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-complete-budget",
       "sources": [
         "https://www.impressiveresortspuntacana.com/en/weddings.html",
         "https://sertuinevents.com/fr/puntacana-wedding-planner/",
@@ -179,19 +173,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-01-fr",
       "wordCount": 2046,
       "selectedImage": "meeting",
-      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/punta-cana-wedding-complete-budget/"
     },
     {
       "topic": 2,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-02/en.json",
       "finalTitle": "How Much Does a Wedding Planner Cost in Punta Cana?",
       "primaryKeyword": "wedding planner cost Punta Cana",
@@ -200,8 +192,8 @@
         "flat fee vs percentage wedding planner",
         "wedding planning fee inclusions"
       ],
-      "sanityDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-en",
-      "sanityContentSavedAndVerified": false,
+      "sanityDocumentReference": "blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-en",
+      "sanityContentSavedAndVerified": true,
       "actualSlug": "wedding-planner-cost-punta-cana",
       "sources": [
         "https://sertuinevents.com/puntacana-wedding-planner/",
@@ -225,19 +217,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-en",
       "wordCount": 2176,
       "selectedImage": "meeting",
-      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery."
+      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery.",
+      "publicUrl": "https://sertuinevents.com/blog/wedding-planner-cost-punta-cana/"
     },
     {
       "topic": 2,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-02/es.json",
       "finalTitle": "¿Cuánto cuesta contratar un wedding planner en Punta Cana?",
       "primaryKeyword": "cuánto cuesta un wedding planner en Punta Cana",
@@ -246,8 +236,8 @@
         "honorarios de wedding planner",
         "servicios de planificación de bodas"
       ],
-      "sanityDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-es",
-      "sanityContentSavedAndVerified": false,
+      "sanityDocumentReference": "blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-es",
+      "sanityContentSavedAndVerified": true,
       "actualSlug": "wedding-planner-cost-punta-cana",
       "sources": [
         "https://sertuinevents.com/es/puntacana-wedding-planner/",
@@ -271,19 +261,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-es",
       "wordCount": 2130,
       "selectedImage": "meeting",
-      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación."
+      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+      "publicUrl": "https://sertuinevents.com/es/blog/wedding-planner-cost-punta-cana/"
     },
     {
       "topic": 2,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-02/pt.json",
       "finalTitle": "Quanto custa contratar um wedding planner em Punta Cana?",
       "primaryKeyword": "quanto custa um wedding planner em Punta Cana",
@@ -292,8 +280,8 @@
         "honorários de assessoria de casamento",
         "serviços de organização de casamentos"
       ],
-      "sanityDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-pt",
-      "sanityContentSavedAndVerified": false,
+      "sanityDocumentReference": "blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-pt",
+      "sanityContentSavedAndVerified": true,
       "actualSlug": "wedding-planner-cost-punta-cana",
       "sources": [
         "https://sertuinevents.com/pt/puntacana-wedding-planner/",
@@ -317,19 +305,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-pt",
       "wordCount": 2194,
       "selectedImage": "meeting",
-      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
+      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/wedding-planner-cost-punta-cana/"
     },
     {
       "topic": 2,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-02/fr.json",
       "finalTitle": "Combien coûte un wedding planner à Punta Cana ?",
       "primaryKeyword": "tarif wedding planner Punta Cana",
@@ -338,8 +324,8 @@
         "honoraires d'organisation de mariage",
         "prestations d'un wedding planner"
       ],
-      "sanityDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-fr",
-      "sanityContentSavedAndVerified": false,
+      "sanityDocumentReference": "blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-fr",
+      "sanityContentSavedAndVerified": true,
       "actualSlug": "wedding-planner-cost-punta-cana",
       "sources": [
         "https://sertuinevents.com/fr/puntacana-wedding-planner/",
@@ -363,19 +349,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-baa18c57-5f7f-456c-9d8b-2630c8ea38a0-fr",
       "wordCount": 2296,
       "selectedImage": "meeting",
-      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/wedding-planner-cost-punta-cana/"
     },
     {
       "topic": 3,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-03/en.json",
       "finalTitle": "Punta Cana Wedding Packages: Inclusions and Extras",
       "primaryKeyword": "what do Punta Cana wedding packages include",
@@ -384,9 +368,9 @@
         "wedding reception upgrades",
         "outside vendor fees"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-03-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-packages-inclusions-extras",
       "sources": [
         "https://www.impressiveresortspuntacana.com/en/weddings.html",
         "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
@@ -416,19 +400,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-03-en",
       "wordCount": 2218,
       "selectedImage": "table",
-      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings."
+      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings.",
+      "publicUrl": "https://sertuinevents.com/blog/punta-cana-wedding-packages-inclusions-extras/"
     },
     {
       "topic": 3,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-03/es.json",
       "finalTitle": "Paquetes de bodas en Punta Cana: qué incluyen y qué se paga aparte",
       "primaryKeyword": "qué incluyen los paquetes de bodas en Punta Cana",
@@ -437,9 +419,9 @@
         "extras de paquetes de boda",
         "proveedores externos para bodas"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-03-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-packages-inclusions-extras",
       "sources": [
         "https://www.impressiveresortspuntacana.com/en/weddings.html",
         "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
@@ -469,19 +451,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-03-es",
       "wordCount": 2133,
       "selectedImage": "table",
-      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla."
+      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla.",
+      "publicUrl": "https://sertuinevents.com/es/blog/punta-cana-wedding-packages-inclusions-extras/"
     },
     {
       "topic": 3,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-03/pt.json",
       "finalTitle": "Pacotes de casamento em Punta Cana: o que está incluído?",
       "primaryKeyword": "o que incluem os pacotes de casamento em Punta Cana",
@@ -490,9 +470,9 @@
         "serviços extras de casamento",
         "fornecedores externos para casamentos"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-03-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-packages-inclusions-extras",
       "sources": [
         "https://www.impressiveresortspuntacana.com/en/weddings.html",
         "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
@@ -522,19 +502,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-03-pt",
       "wordCount": 2031,
       "selectedImage": "table",
-      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça."
+      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/punta-cana-wedding-packages-inclusions-extras/"
     },
     {
       "topic": 3,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-03/fr.json",
       "finalTitle": "Forfaits mariage à Punta Cana : prestations incluses et suppléments",
       "primaryKeyword": "que comprennent les forfaits mariage à Punta Cana",
@@ -543,9 +521,9 @@
         "suppléments pour réception de mariage",
         "prestataires extérieurs"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-03-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-packages-inclusions-extras",
       "sources": [
         "https://www.impressiveresortspuntacana.com/en/weddings.html",
         "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
@@ -575,19 +553,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-03-fr",
       "wordCount": 2086,
       "selectedImage": "table",
-      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle."
+      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/punta-cana-wedding-packages-inclusions-extras/"
     },
     {
       "topic": 4,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-04/en.json",
       "finalTitle": "Full Planning or Day-of Coordination in Punta Cana?",
       "primaryKeyword": "full planning vs day-of coordination Punta Cana",
@@ -596,9 +572,9 @@
         "full wedding planning services",
         "wedding day vendor management"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-04-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-full-planning-vs-day-of-coordination",
       "sources": [
         "https://sertuinevents.com/puntacana-wedding-planner/",
         "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -627,19 +603,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-04-en",
       "wordCount": 2175,
       "selectedImage": "meeting",
-      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery."
+      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery.",
+      "publicUrl": "https://sertuinevents.com/blog/punta-cana-full-planning-vs-day-of-coordination/"
     },
     {
       "topic": 4,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-04/es.json",
       "finalTitle": "¿Planificación completa o coordinación del día de la boda en Punta Cana?",
       "primaryKeyword": "planificación completa vs coordinación del día en Punta Cana",
@@ -648,9 +622,9 @@
         "coordinación del día de la boda",
         "servicios de organización de bodas"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-04-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-full-planning-vs-day-of-coordination",
       "sources": [
         "https://sertuinevents.com/es/puntacana-wedding-planner/",
         "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -679,19 +653,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-04-es",
       "wordCount": 2019,
       "selectedImage": "meeting",
-      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación."
+      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+      "publicUrl": "https://sertuinevents.com/es/blog/punta-cana-full-planning-vs-day-of-coordination/"
     },
     {
       "topic": 4,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-04/pt.json",
       "finalTitle": "Assessoria completa ou coordenação do dia do casamento em Punta Cana?",
       "primaryKeyword": "assessoria completa ou assessoria do dia em Punta Cana",
@@ -700,9 +672,9 @@
         "coordenação do dia do casamento",
         "planejamento completo de casamento"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-04-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-full-planning-vs-day-of-coordination",
       "sources": [
         "https://sertuinevents.com/pt/puntacana-wedding-planner/",
         "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -731,19 +703,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-04-pt",
       "wordCount": 2027,
       "selectedImage": "meeting",
-      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
+      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/punta-cana-full-planning-vs-day-of-coordination/"
     },
     {
       "topic": 4,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-04/fr.json",
       "finalTitle": "Organisation complète ou coordination du jour J à Punta Cana ?",
       "primaryKeyword": "organisation complète ou coordination jour J à Punta Cana",
@@ -752,9 +722,9 @@
         "coordination du jour du mariage",
         "prestations d'organisation de mariage"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-04-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-full-planning-vs-day-of-coordination",
       "sources": [
         "https://sertuinevents.com/fr/puntacana-wedding-planner/",
         "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -783,19 +753,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-04-fr",
       "wordCount": 2091,
       "selectedImage": "meeting",
-      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/punta-cana-full-planning-vs-day-of-coordination/"
     },
     {
       "topic": 5,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-05/en.json",
       "finalTitle": "How to Choose a Wedding Planner in Punta Cana",
       "primaryKeyword": "how to choose a wedding planner in Punta Cana",
@@ -804,9 +772,9 @@
         "destination wedding planner experience",
         "wedding planning contract transparency"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-05-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "how-to-choose-punta-cana-wedding-planner",
       "sources": [
         "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -835,19 +803,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-05-en",
       "wordCount": 2027,
       "selectedImage": "meeting",
-      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery."
+      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery.",
+      "publicUrl": "https://sertuinevents.com/blog/how-to-choose-punta-cana-wedding-planner/"
     },
     {
       "topic": 5,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-05/es.json",
       "finalTitle": "Cómo elegir un wedding planner en Punta Cana",
       "primaryKeyword": "cómo elegir un wedding planner en Punta Cana",
@@ -856,9 +822,9 @@
         "preguntas para un wedding planner",
         "contratar planificador de bodas en República Dominicana"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-05-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "how-to-choose-punta-cana-wedding-planner",
       "sources": [
         "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -887,19 +853,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-05-es",
       "wordCount": 2030,
       "selectedImage": "meeting",
-      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación."
+      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+      "publicUrl": "https://sertuinevents.com/es/blog/how-to-choose-punta-cana-wedding-planner/"
     },
     {
       "topic": 5,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-05/pt.json",
       "finalTitle": "Como escolher um wedding planner em Punta Cana",
       "primaryKeyword": "como escolher um wedding planner em Punta Cana",
@@ -908,9 +872,9 @@
         "perguntas para organizador de casamento",
         "contratar wedding planner na República Dominicana"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-05-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "how-to-choose-punta-cana-wedding-planner",
       "sources": [
         "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -939,19 +903,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-05-pt",
       "wordCount": 2017,
       "selectedImage": "meeting",
-      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
+      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/how-to-choose-punta-cana-wedding-planner/"
     },
     {
       "topic": 5,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-05/fr.json",
       "finalTitle": "Comment choisir un wedding planner à Punta Cana",
       "primaryKeyword": "comment choisir un wedding planner à Punta Cana",
@@ -960,9 +922,9 @@
         "questions à poser à un wedding planner",
         "choisir son organisateur de mariage"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-05-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "how-to-choose-punta-cana-wedding-planner",
       "sources": [
         "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -991,19 +953,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-05-fr",
       "wordCount": 2054,
       "selectedImage": "meeting",
-      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/how-to-choose-punta-cana-wedding-planner/"
     },
     {
       "topic": 6,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-06/en.json",
       "finalTitle": "What Is the Best Month to Marry in Punta Cana?",
       "primaryKeyword": "best month to get married in Punta Cana",
@@ -1012,9 +972,9 @@
         "Punta Cana monthly rainfall",
         "seasonal wedding resort rates"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-06-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "best-month-wedding-punta-cana",
       "sources": [
         "https://www.godominicanrepublic.com/travel/travel-tips",
         "https://www.nhc.noaa.gov/aboutgloss.shtml",
@@ -1037,19 +997,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-06-en",
       "wordCount": 2189,
       "selectedImage": "setup",
-      "heroAlt": "Wedding planner beside white reception tables in an outdoor event space."
+      "heroAlt": "Wedding planner beside white reception tables in an outdoor event space.",
+      "publicUrl": "https://sertuinevents.com/blog/best-month-wedding-punta-cana/"
     },
     {
       "topic": 6,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-06/es.json",
       "finalTitle": "¿Cuál es el mejor mes para casarse en Punta Cana?",
       "primaryKeyword": "mejor mes para casarse en Punta Cana",
@@ -1058,9 +1016,9 @@
         "temporada de lluvias en República Dominicana",
         "clima para bodas en la playa"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-06-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "best-month-wedding-punta-cana",
       "sources": [
         "https://www.godominicanrepublic.com/travel/travel-tips",
         "https://www.nhc.noaa.gov/aboutgloss.shtml",
@@ -1083,19 +1041,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-06-es",
       "wordCount": 2030,
       "selectedImage": "setup",
-      "heroAlt": "Planificadora junto a mesas blancas de recepción en un espacio al aire libre."
+      "heroAlt": "Planificadora junto a mesas blancas de recepción en un espacio al aire libre.",
+      "publicUrl": "https://sertuinevents.com/es/blog/best-month-wedding-punta-cana/"
     },
     {
       "topic": 6,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-06/pt.json",
       "finalTitle": "Qual é o melhor mês para casar em Punta Cana?",
       "primaryKeyword": "melhor mês para casar em Punta Cana",
@@ -1104,9 +1060,9 @@
         "temporada de chuvas na República Dominicana",
         "clima para casamento na praia"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-06-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "best-month-wedding-punta-cana",
       "sources": [
         "https://www.godominicanrepublic.com/travel/travel-tips",
         "https://www.nhc.noaa.gov/aboutgloss.shtml",
@@ -1129,19 +1085,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-06-pt",
       "wordCount": 1999,
       "selectedImage": "setup",
-      "heroAlt": "Assessora ao lado de mesas brancas de recepção em um espaço ao ar livre."
+      "heroAlt": "Assessora ao lado de mesas brancas de recepção em um espaço ao ar livre.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/best-month-wedding-punta-cana/"
     },
     {
       "topic": 6,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-06/fr.json",
       "finalTitle": "Quel est le meilleur mois pour se marier à Punta Cana ?",
       "primaryKeyword": "meilleur mois pour se marier à Punta Cana",
@@ -1150,9 +1104,9 @@
         "saison des pluies en République dominicaine",
         "météo pour un mariage sur la plage"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-06-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "best-month-wedding-punta-cana",
       "sources": [
         "https://www.godominicanrepublic.com/travel/travel-tips",
         "https://www.nhc.noaa.gov/aboutgloss.shtml",
@@ -1175,19 +1129,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-06-fr",
       "wordCount": 2031,
       "selectedImage": "setup",
-      "heroAlt": "Organisatrice près de tables de réception blanches dans un espace extérieur."
+      "heroAlt": "Organisatrice près de tables de réception blanches dans un espace extérieur.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/best-month-wedding-punta-cana/"
     },
     {
       "topic": 7,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-07/en.json",
       "finalTitle": "Getting Married in the Dominican Republic: Documents",
       "primaryKeyword": "documents to get married in Dominican Republic",
@@ -1196,9 +1148,9 @@
         "apostille wedding documents",
         "certified marriage document translation"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-07-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "documents-get-married-dominican-republic",
       "sources": [
         "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
@@ -1220,19 +1172,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-07-en",
       "wordCount": 2091,
       "selectedImage": "meeting",
-      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery."
+      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery.",
+      "publicUrl": "https://sertuinevents.com/blog/documents-get-married-dominican-republic/"
     },
     {
       "topic": 7,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-07/es.json",
       "finalTitle": "Documentos necesarios para casarse en República Dominicana",
       "primaryKeyword": "documentos para casarse en República Dominicana",
@@ -1241,9 +1191,9 @@
         "documentos para matrimonio civil",
         "apostilla de documentos para matrimonio"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-07-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "documents-get-married-dominican-republic",
       "sources": [
         "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
@@ -1265,19 +1215,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-07-es",
       "wordCount": 2058,
       "selectedImage": "meeting",
-      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación."
+      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+      "publicUrl": "https://sertuinevents.com/es/blog/documents-get-married-dominican-republic/"
     },
     {
       "topic": 7,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-07/pt.json",
       "finalTitle": "Documentos necessários para casar na República Dominicana",
       "primaryKeyword": "documentos para casar na República Dominicana",
@@ -1286,9 +1234,9 @@
         "documentos para estrangeiros se casarem",
         "apostila de documentos para casamento"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-07-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "documents-get-married-dominican-republic",
       "sources": [
         "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
@@ -1310,19 +1258,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-07-pt",
       "wordCount": 1991,
       "selectedImage": "meeting",
-      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
+      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/documents-get-married-dominican-republic/"
     },
     {
       "topic": 7,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-07/fr.json",
       "finalTitle": "Documents nécessaires pour se marier en République dominicaine",
       "primaryKeyword": "documents pour se marier en République dominicaine",
@@ -1331,9 +1277,9 @@
         "mariage civil pour étrangers",
         "apostille et traduction de documents"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-07-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "documents-get-married-dominican-republic",
       "sources": [
         "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
@@ -1355,19 +1301,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-07-fr",
       "wordCount": 2003,
       "selectedImage": "meeting",
-      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/documents-get-married-dominican-republic/"
     },
     {
       "topic": 8,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-08/en.json",
       "finalTitle": "Legal or Symbolic Wedding in Punta Cana?",
       "primaryKeyword": "legal vs symbolic wedding Punta Cana",
@@ -1376,9 +1320,9 @@
         "legal marriage certificate",
         "symbolic destination wedding"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-08-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "legal-vs-symbolic-wedding-punta-cana",
       "sources": [
         "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
         "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -1400,19 +1344,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-08-en",
       "wordCount": 2140,
       "selectedImage": "setup",
-      "heroAlt": "Wedding planner beside white reception tables in an outdoor event space."
+      "heroAlt": "Wedding planner beside white reception tables in an outdoor event space.",
+      "publicUrl": "https://sertuinevents.com/blog/legal-vs-symbolic-wedding-punta-cana/"
     },
     {
       "topic": 8,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-08/es.json",
       "finalTitle": "¿Boda legal o simbólica en Punta Cana?",
       "primaryKeyword": "boda legal o simbólica en Punta Cana",
@@ -1421,9 +1363,9 @@
         "ceremonia simbólica en Punta Cana",
         "diferencias entre boda civil y simbólica"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-08-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "legal-vs-symbolic-wedding-punta-cana",
       "sources": [
         "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
         "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -1445,19 +1387,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-08-es",
       "wordCount": 1965,
       "selectedImage": "setup",
-      "heroAlt": "Planificadora junto a mesas blancas de recepción en un espacio al aire libre."
+      "heroAlt": "Planificadora junto a mesas blancas de recepción en un espacio al aire libre.",
+      "publicUrl": "https://sertuinevents.com/es/blog/legal-vs-symbolic-wedding-punta-cana/"
     },
     {
       "topic": 8,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-08/pt.json",
       "finalTitle": "Casamento civil ou simbólico em Punta Cana?",
       "primaryKeyword": "casamento civil ou simbólico em Punta Cana",
@@ -1466,9 +1406,9 @@
         "cerimônia simbólica em Punta Cana",
         "diferenças entre casamento civil e simbólico"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-08-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "legal-vs-symbolic-wedding-punta-cana",
       "sources": [
         "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
         "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -1490,19 +1430,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-08-pt",
       "wordCount": 1958,
       "selectedImage": "setup",
-      "heroAlt": "Assessora ao lado de mesas brancas de recepção em um espaço ao ar livre."
+      "heroAlt": "Assessora ao lado de mesas brancas de recepção em um espaço ao ar livre.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/legal-vs-symbolic-wedding-punta-cana/"
     },
     {
       "topic": 8,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-08/fr.json",
       "finalTitle": "Mariage civil ou symbolique à Punta Cana ?",
       "primaryKeyword": "mariage civil ou symbolique à Punta Cana",
@@ -1511,9 +1449,9 @@
         "mariage civil à Punta Cana",
         "différences entre mariage civil et symbolique"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-08-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "legal-vs-symbolic-wedding-punta-cana",
       "sources": [
         "https://ayuda.jce.gob.do/kb/a27/cuales-son-los-requisitos-para-un-matrimonio-civil.aspx?KBSearchID=1207189",
         "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -1535,19 +1473,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-08-fr",
       "wordCount": 2007,
       "selectedImage": "setup",
-      "heroAlt": "Organisatrice près de tables de réception blanches dans un espace extérieur."
+      "heroAlt": "Organisatrice près de tables de réception blanches dans un espace extérieur.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/legal-vs-symbolic-wedding-punta-cana/"
     },
     {
       "topic": 9,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-09/en.json",
       "finalTitle": "Catholic Weddings in Punta Cana: Steps and Timing",
       "primaryKeyword": "Catholic wedding requirements Punta Cana",
@@ -1556,9 +1492,9 @@
         "Catholic marriage preparation",
         "Punta Cana wedding churches"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-09-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "catholic-wedding-punta-cana-requirements",
       "sources": [
         "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann998-1165_en.html",
@@ -1581,19 +1517,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-09-en",
       "wordCount": 2301,
       "selectedImage": "planner",
-      "heroAlt": "Wedding planner holding a folder on a resort terrace."
+      "heroAlt": "Wedding planner holding a folder on a resort terrace.",
+      "publicUrl": "https://sertuinevents.com/blog/catholic-wedding-punta-cana-requirements/"
     },
     {
       "topic": 9,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-09/es.json",
       "finalTitle": "Bodas católicas en Punta Cana: requisitos y planificación",
       "primaryKeyword": "requisitos para boda católica en Punta Cana",
@@ -1602,9 +1536,9 @@
         "matrimonio católico en República Dominicana",
         "preparación matrimonial católica"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-09-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "catholic-wedding-punta-cana-requirements",
       "sources": [
         "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://www.vatican.va/archive/cod-iuris-canonici/esp/documents/cic_libro4_cann1108-1123_sp.html",
@@ -1627,19 +1561,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-09-es",
       "wordCount": 2067,
       "selectedImage": "planner",
-      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort."
+      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort.",
+      "publicUrl": "https://sertuinevents.com/es/blog/catholic-wedding-punta-cana-requirements/"
     },
     {
       "topic": 9,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-09/pt.json",
       "finalTitle": "Casamento católico em Punta Cana: requisitos e planejamento",
       "primaryKeyword": "requisitos para casamento católico em Punta Cana",
@@ -1648,9 +1580,9 @@
         "casamento religioso na República Dominicana",
         "preparação matrimonial católica"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-09-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "catholic-wedding-punta-cana-requirements",
       "sources": [
         "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://www.vatican.va/archive/cod-iuris-canonici/portuguese/codex-iuris-canonici_po.pdf",
@@ -1673,19 +1605,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-09-pt",
       "wordCount": 2014,
       "selectedImage": "planner",
-      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort."
+      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/catholic-wedding-punta-cana-requirements/"
     },
     {
       "topic": 9,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-09/fr.json",
       "finalTitle": "Mariage catholique à Punta Cana : démarches et délais",
       "primaryKeyword": "conditions pour un mariage catholique à Punta Cana",
@@ -1694,9 +1624,9 @@
         "mariage religieux en République dominicaine",
         "préparation au mariage catholique"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-09-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "catholic-wedding-punta-cana-requirements",
       "sources": [
         "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib4-cann998-1165_en.html",
@@ -1719,19 +1649,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-09-fr",
       "wordCount": 2072,
       "selectedImage": "planner",
-      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort."
+      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/catholic-wedding-punta-cana-requirements/"
     },
     {
       "topic": 10,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-10/en.json",
       "finalTitle": "Punta Cana Wedding Checklist: A 12-Month Plan",
       "primaryKeyword": "Punta Cana destination wedding checklist",
@@ -1740,9 +1668,9 @@
         "wedding booking deadlines",
         "wedding planning milestones"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-10-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-twelve-month-checklist",
       "sources": [
         "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -1777,19 +1705,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-10-en",
       "wordCount": 2156,
       "selectedImage": "meeting",
-      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery."
+      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery.",
+      "publicUrl": "https://sertuinevents.com/blog/punta-cana-wedding-twelve-month-checklist/"
     },
     {
       "topic": 10,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-10/es.json",
       "finalTitle": "Checklist para organizar una boda en Punta Cana: plan de 12 meses",
       "primaryKeyword": "checklist para boda en Punta Cana",
@@ -1798,9 +1724,9 @@
         "cronograma de planificación de bodas",
         "lista de tareas para boda de destino"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-10-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-twelve-month-checklist",
       "sources": [
         "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -1835,19 +1761,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-10-es",
       "wordCount": 2067,
       "selectedImage": "meeting",
-      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación."
+      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+      "publicUrl": "https://sertuinevents.com/es/blog/punta-cana-wedding-twelve-month-checklist/"
     },
     {
       "topic": 10,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-10/pt.json",
       "finalTitle": "Checklist de casamento em Punta Cana: planejamento de 12 meses",
       "primaryKeyword": "checklist de casamento em Punta Cana",
@@ -1856,9 +1780,9 @@
         "cronograma de casamento",
         "planejamento de destination wedding"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-10-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-twelve-month-checklist",
       "sources": [
         "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -1893,19 +1817,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-10-pt",
       "wordCount": 2029,
       "selectedImage": "meeting",
-      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
+      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/punta-cana-wedding-twelve-month-checklist/"
     },
     {
       "topic": 10,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-10/fr.json",
       "finalTitle": "Checklist mariage à Punta Cana : planning sur 12 mois",
       "primaryKeyword": "checklist mariage à Punta Cana",
@@ -1914,9 +1836,9 @@
         "rétroplanning de mariage",
         "préparation d'un mariage à destination"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-10-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-twelve-month-checklist",
       "sources": [
         "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -1951,19 +1873,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-10-fr",
       "wordCount": 2075,
       "selectedImage": "meeting",
-      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/punta-cana-wedding-twelve-month-checklist/"
     },
     {
       "topic": 11,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-11/en.json",
       "finalTitle": "Small Weddings in Punta Cana: Costs and Planning",
       "primaryKeyword": "small wedding Punta Cana cost",
@@ -1972,9 +1892,9 @@
         "intimate wedding guest list",
         "small destination wedding venues"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-11-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "small-intimate-wedding-punta-cana-cost",
       "sources": [
         "https://sertuinevents.com/punta-cana-elopement-packages/",
         "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -1996,19 +1916,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-11-en",
       "wordCount": 2056,
       "selectedImage": "table",
-      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings."
+      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings.",
+      "publicUrl": "https://sertuinevents.com/blog/small-intimate-wedding-punta-cana-cost/"
     },
     {
       "topic": 11,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-11/es.json",
       "finalTitle": "Bodas íntimas en Punta Cana: precios y planificación",
       "primaryKeyword": "costo de boda íntima en Punta Cana",
@@ -2017,9 +1935,9 @@
         "precio de elopement en Punta Cana",
         "ceremonia íntima en la playa"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-11-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "small-intimate-wedding-punta-cana-cost",
       "sources": [
         "https://sertuinevents.com/es/punta-cana-elopement-packages/",
         "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -2041,19 +1959,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 2041,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-11-es",
       "selectedImage": "table",
-      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla."
+      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla.",
+      "publicUrl": "https://sertuinevents.com/es/blog/small-intimate-wedding-punta-cana-cost/"
     },
     {
       "topic": 11,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-11/pt.json",
       "finalTitle": "Casamentos intimistas em Punta Cana: custos e planejamento",
       "primaryKeyword": "custo de casamento intimista em Punta Cana",
@@ -2062,9 +1978,9 @@
         "elopement wedding em Punta Cana",
         "casamento pequeno na praia"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-11-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "small-intimate-wedding-punta-cana-cost",
       "sources": [
         "https://sertuinevents.com/pt/punta-cana-elopement-packages/",
         "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -2086,19 +2002,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 1996,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-11-pt",
       "selectedImage": "table",
-      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça."
+      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/small-intimate-wedding-punta-cana-cost/"
     },
     {
       "topic": 11,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-11/fr.json",
       "finalTitle": "Mariages intimistes à Punta Cana : coûts et organisation",
       "primaryKeyword": "prix d'un mariage intimiste à Punta Cana",
@@ -2107,9 +2021,9 @@
         "elopement à Punta Cana",
         "cérémonie intime sur la plage"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-11-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "small-intimate-wedding-punta-cana-cost",
       "sources": [
         "https://sertuinevents.com/fr/punta-cana-elopement-packages/",
         "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
@@ -2131,19 +2045,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-11-fr",
       "wordCount": 2028,
       "selectedImage": "table",
-      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle."
+      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/small-intimate-wedding-punta-cana-cost/"
     },
     {
       "topic": 12,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-12/en.json",
       "finalTitle": "Wedding Room Blocks in Punta Cana: Terms and Costs",
       "primaryKeyword": "Punta Cana wedding room blocks",
@@ -2152,9 +2064,9 @@
         "minimum room nights",
         "room block cancellation clauses"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-12-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-room-blocks",
       "sources": [
         "https://about.hyatt.com/content/dam/HGP/Group-Sales-Agreement-Terms-and-Conditions.pdf",
         "https://www.majestic-resorts.com/weddings-and-honeymoons",
@@ -2177,19 +2089,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 2023,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-12-en",
       "selectedImage": "meeting",
-      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery."
+      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery.",
+      "publicUrl": "https://sertuinevents.com/blog/punta-cana-wedding-room-blocks/"
     },
     {
       "topic": 12,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-12/es.json",
       "finalTitle": "Bloques de habitaciones para bodas en Punta Cana: condiciones y costos",
       "primaryKeyword": "bloqueo de habitaciones para bodas en Punta Cana",
@@ -2198,9 +2108,9 @@
         "contratos de habitaciones de hotel",
         "alojamiento para invitados de boda"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-12-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-room-blocks",
       "sources": [
         "https://about.hyatt.com/content/dam/HGP/Group-Sales-Agreement-Terms-and-Conditions.pdf",
         "https://www.majestic-resorts.com/weddings-and-honeymoons",
@@ -2223,19 +2133,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 1985,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-12-es",
       "selectedImage": "meeting",
-      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación."
+      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+      "publicUrl": "https://sertuinevents.com/es/blog/punta-cana-wedding-room-blocks/"
     },
     {
       "topic": 12,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-12/pt.json",
       "finalTitle": "Bloqueio de quartos para casamentos em Punta Cana: custos e condições",
       "primaryKeyword": "bloqueio de quartos para casamento em Punta Cana",
@@ -2244,9 +2152,9 @@
         "hospedagem de grupos para casamento",
         "condições de reserva em hotéis de Punta Cana"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-12-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-room-blocks",
       "sources": [
         "https://about.hyatt.com/content/dam/HGP/Group-Sales-Agreement-Terms-and-Conditions.pdf",
         "https://www.majestic-resorts.com/weddings-and-honeymoons",
@@ -2269,19 +2177,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 1996,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-12-pt",
       "selectedImage": "meeting",
-      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
+      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/punta-cana-wedding-room-blocks/"
     },
     {
       "topic": 12,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-12/fr.json",
       "finalTitle": "Blocs de chambres pour mariage à Punta Cana : tarifs et conditions",
       "primaryKeyword": "réservation de chambres de groupe pour mariage à Punta Cana",
@@ -2290,9 +2196,9 @@
         "réservation de groupe dans un hôtel",
         "conditions de bloc de chambres"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-12-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-room-blocks",
       "sources": [
         "https://about.hyatt.com/content/dam/HGP/Group-Sales-Agreement-Terms-and-Conditions.pdf",
         "https://www.majestic-resorts.com/weddings-and-honeymoons",
@@ -2315,19 +2221,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 2001,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-12-fr",
       "selectedImage": "meeting",
-      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/punta-cana-wedding-room-blocks/"
     },
     {
       "topic": 13,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-13/en.json",
       "finalTitle": "Jellyfish vs. Kukua: Punta Cana Wedding Comparison",
       "primaryKeyword": "Jellyfish vs Kukua wedding",
@@ -2336,9 +2240,9 @@
         "private wedding venue comparison",
         "wedding venue transportation"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-13-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "jellyfish-vs-kukua-wedding-punta-cana",
       "sources": [
         "https://www.jellyfishrestaurant.com/weddings",
         "https://kukuabeachclub.co/faqs/",
@@ -2362,19 +2266,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-13-en",
       "wordCount": 2042,
       "selectedImage": "planner",
-      "heroAlt": "Wedding planner holding a folder on a resort terrace."
+      "heroAlt": "Wedding planner holding a folder on a resort terrace.",
+      "publicUrl": "https://sertuinevents.com/blog/jellyfish-vs-kukua-wedding-punta-cana/"
     },
     {
       "topic": 13,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-13/es.json",
       "finalTitle": "Jellyfish vs. Kukua: comparación de venues para bodas en Punta Cana",
       "primaryKeyword": "Jellyfish vs Kukua bodas Punta Cana",
@@ -2383,9 +2285,9 @@
         "Kukua bodas Punta Cana",
         "comparación de lugares para bodas"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-13-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "jellyfish-vs-kukua-wedding-punta-cana",
       "sources": [
         "https://www.jellyfishrestaurant.com/weddings",
         "https://kukuabeachclub.co/faqs/",
@@ -2409,19 +2311,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-13-es",
       "wordCount": 1989,
       "selectedImage": "planner",
-      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort."
+      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort.",
+      "publicUrl": "https://sertuinevents.com/es/blog/jellyfish-vs-kukua-wedding-punta-cana/"
     },
     {
       "topic": 13,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-13/pt.json",
       "finalTitle": "Jellyfish vs. Kukua: comparação de espaços para casamento em Punta Cana",
       "primaryKeyword": "Jellyfish vs Kukua casamento Punta Cana",
@@ -2430,9 +2330,9 @@
         "casamento no Kukua Punta Cana",
         "espaços para casamento em Punta Cana"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-13-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "jellyfish-vs-kukua-wedding-punta-cana",
       "sources": [
         "https://www.jellyfishrestaurant.com/weddings",
         "https://kukuabeachclub.co/faqs/",
@@ -2456,19 +2356,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-13-pt",
       "wordCount": 1949,
       "selectedImage": "planner",
-      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort."
+      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/jellyfish-vs-kukua-wedding-punta-cana/"
     },
     {
       "topic": 13,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-13/fr.json",
       "finalTitle": "Jellyfish ou Kukua : quel lieu de mariage choisir à Punta Cana ?",
       "primaryKeyword": "Jellyfish vs Kukua mariage Punta Cana",
@@ -2477,9 +2375,9 @@
         "mariage au Kukua Punta Cana",
         "comparaison des lieux de mariage"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-13-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "jellyfish-vs-kukua-wedding-punta-cana",
       "sources": [
         "https://www.jellyfishrestaurant.com/weddings",
         "https://kukuabeachclub.co/faqs/",
@@ -2503,19 +2401,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-13-fr",
       "wordCount": 1984,
       "selectedImage": "planner",
-      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort."
+      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/jellyfish-vs-kukua-wedding-punta-cana/"
     },
     {
       "topic": 14,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-14/en.json",
       "finalTitle": "Punta Cana Wedding Contracts: Deposits and Cancellations",
       "primaryKeyword": "destination wedding contract Punta Cana",
@@ -2524,9 +2420,9 @@
         "wedding deposit refunds",
         "wedding supplier responsibilities"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-14-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-contracts-deposits-cancellations",
       "sources": [
         "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
         "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
@@ -2550,19 +2446,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-14-en",
       "wordCount": 1897,
       "selectedImage": "meeting",
-      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery."
+      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery.",
+      "publicUrl": "https://sertuinevents.com/blog/punta-cana-wedding-contracts-deposits-cancellations/"
     },
     {
       "topic": 14,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-14/es.json",
       "finalTitle": "Contratos de bodas en Punta Cana: depósitos y cancelaciones",
       "primaryKeyword": "contrato de boda en Punta Cana",
@@ -2571,9 +2465,9 @@
         "depósitos para bodas en República Dominicana",
         "condiciones de contratos de wedding planner"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-14-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-contracts-deposits-cancellations",
       "sources": [
         "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
         "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
@@ -2597,19 +2491,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-14-es",
       "wordCount": 1813,
       "selectedImage": "meeting",
-      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación."
+      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+      "publicUrl": "https://sertuinevents.com/es/blog/punta-cana-wedding-contracts-deposits-cancellations/"
     },
     {
       "topic": 14,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-14/pt.json",
       "finalTitle": "Contratos de casamento em Punta Cana: depósitos e cancelamentos",
       "primaryKeyword": "contrato de casamento em Punta Cana",
@@ -2618,9 +2510,9 @@
         "depósito para casamento na República Dominicana",
         "condições de contratos de fornecedores"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-14-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-contracts-deposits-cancellations",
       "sources": [
         "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
         "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
@@ -2644,19 +2536,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-14-pt",
       "wordCount": 1841,
       "selectedImage": "meeting",
-      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
+      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/punta-cana-wedding-contracts-deposits-cancellations/"
     },
     {
       "topic": 14,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-14/fr.json",
       "finalTitle": "Prestataires de mariage à Punta Cana : contrats, acomptes et annulations",
       "primaryKeyword": "contrat de prestataire de mariage à Punta Cana",
@@ -2665,9 +2555,9 @@
         "acomptes pour mariage en République dominicaine",
         "clauses des contrats de prestataires"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-14-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-contracts-deposits-cancellations",
       "sources": [
         "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
         "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
@@ -2691,19 +2581,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-14-fr",
       "wordCount": 1888,
       "selectedImage": "meeting",
-      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/punta-cana-wedding-contracts-deposits-cancellations/"
     },
     {
       "topic": 15,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-15/en.json",
       "finalTitle": "Boat Weddings in Punta Cana: Costs and Planning",
       "primaryKeyword": "boat wedding Punta Cana cost",
@@ -2712,9 +2600,9 @@
         "wedding boat capacity",
         "boat wedding weather contingency"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-15-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "boat-wedding-punta-cana-cost-planning",
       "sources": [
         "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/punta-cana-elopement-packages/",
@@ -2736,19 +2624,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-15-en",
       "wordCount": 2219,
       "selectedImage": "planner",
-      "heroAlt": "Wedding planner holding a folder on a resort terrace."
+      "heroAlt": "Wedding planner holding a folder on a resort terrace.",
+      "publicUrl": "https://sertuinevents.com/blog/boat-wedding-punta-cana-cost-planning/"
     },
     {
       "topic": 15,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-15/es.json",
       "finalTitle": "Bodas en barco en Punta Cana: costos y organización",
       "primaryKeyword": "boda en barco en Punta Cana",
@@ -2757,9 +2643,9 @@
         "precio de boda en barco",
         "ceremonia de boda en el mar"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-15-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "boat-wedding-punta-cana-cost-planning",
       "sources": [
         "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/es/punta-cana-elopement-packages/",
@@ -2781,19 +2667,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-15-es",
       "wordCount": 1960,
       "selectedImage": "planner",
-      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort."
+      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort.",
+      "publicUrl": "https://sertuinevents.com/es/blog/boat-wedding-punta-cana-cost-planning/"
     },
     {
       "topic": 15,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-15/pt.json",
       "finalTitle": "Casamento em barco em Punta Cana: custos e planejamento",
       "primaryKeyword": "casamento em barco em Punta Cana",
@@ -2802,9 +2686,9 @@
         "cerimônia de casamento no mar",
         "preço de casamento em barco"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-15-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "boat-wedding-punta-cana-cost-planning",
       "sources": [
         "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/pt/punta-cana-elopement-packages/",
@@ -2826,19 +2710,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-15-pt",
       "wordCount": 2020,
       "selectedImage": "planner",
-      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort."
+      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/boat-wedding-punta-cana-cost-planning/"
     },
     {
       "topic": 15,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-15/fr.json",
       "finalTitle": "Mariage sur un bateau à Punta Cana : tarifs et organisation",
       "primaryKeyword": "mariage sur un bateau à Punta Cana",
@@ -2847,9 +2729,9 @@
         "prix d'un mariage en bateau",
         "cérémonie de mariage en mer"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-15-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "boat-wedding-punta-cana-cost-planning",
       "sources": [
         "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
         "https://sertuinevents.com/fr/punta-cana-elopement-packages/",
@@ -2871,19 +2753,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-15-fr",
       "wordCount": 2082,
       "selectedImage": "planner",
-      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort."
+      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/boat-wedding-punta-cana-cost-planning/"
     },
     {
       "topic": 16,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-16/en.json",
       "finalTitle": "Free Wedding Packages in Punta Cana: The Conditions",
       "primaryKeyword": "are free wedding packages in Punta Cana really free",
@@ -2892,9 +2772,9 @@
         "minimum room nights",
         "wedding package upgrades"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-16-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-free-wedding-package-conditions",
       "sources": [
         "https://www.majestic-resorts.com/weddings-and-honeymoons",
         "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -2917,19 +2797,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 2025,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-16-en",
       "selectedImage": "table",
-      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings."
+      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings.",
+      "publicUrl": "https://sertuinevents.com/blog/punta-cana-free-wedding-package-conditions/"
     },
     {
       "topic": 16,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-16/es.json",
       "finalTitle": "Paquetes de boda gratis en Punta Cana: condiciones y costos ocultos",
       "primaryKeyword": "paquetes de bodas gratis en Punta Cana",
@@ -2938,9 +2816,9 @@
         "condiciones de paquetes de boda gratuitos",
         "extras de bodas todo incluido"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-16-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-free-wedding-package-conditions",
       "sources": [
         "https://www.majestic-resorts.com/weddings-and-honeymoons",
         "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -2963,19 +2841,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 2000,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-16-es",
       "selectedImage": "table",
-      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla."
+      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla.",
+      "publicUrl": "https://sertuinevents.com/es/blog/punta-cana-free-wedding-package-conditions/"
     },
     {
       "topic": 16,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-16/pt.json",
       "finalTitle": "Pacotes de casamento grátis em Punta Cana: condições e custos extras",
       "primaryKeyword": "pacotes de casamento grátis em Punta Cana",
@@ -2984,9 +2860,9 @@
         "condições de pacotes de casamento",
         "custos extras de casamento all inclusive"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-16-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-free-wedding-package-conditions",
       "sources": [
         "https://www.majestic-resorts.com/weddings-and-honeymoons",
         "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -3009,19 +2885,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 1999,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-16-pt",
       "selectedImage": "table",
-      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça."
+      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/punta-cana-free-wedding-package-conditions/"
     },
     {
       "topic": 16,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-16/fr.json",
       "finalTitle": "Forfaits mariage gratuits à Punta Cana : conditions et frais supplémentaires",
       "primaryKeyword": "forfait mariage gratuit à Punta Cana",
@@ -3030,9 +2904,9 @@
         "conditions des forfaits mariage",
         "suppléments de mariage tout compris"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-16-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-free-wedding-package-conditions",
       "sources": [
         "https://www.majestic-resorts.com/weddings-and-honeymoons",
         "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -3055,19 +2929,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "wordCount": 1988,
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-16-fr",
       "selectedImage": "table",
-      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle."
+      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/punta-cana-free-wedding-package-conditions/"
     },
     {
       "topic": 17,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-17/en.json",
       "finalTitle": "Indian Wedding Costs in Punta Cana: Full Breakdown",
       "primaryKeyword": "Indian wedding cost Punta Cana",
@@ -3076,9 +2948,9 @@
         "multi-day wedding budget",
         "Indian wedding catering costs"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-17-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-cost-punta-cana",
       "sources": [
         "https://sertuinevents.com/puntacana-wedding-planner/",
         "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -3100,19 +2972,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-17-en",
       "wordCount": 2040,
       "selectedImage": "table",
-      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings."
+      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings.",
+      "publicUrl": "https://sertuinevents.com/blog/indian-wedding-cost-punta-cana/"
     },
     {
       "topic": 17,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-17/es.json",
       "finalTitle": "Cuánto cuesta una boda india en Punta Cana: presupuesto completo",
       "primaryKeyword": "costo de boda india en Punta Cana",
@@ -3121,9 +2991,9 @@
         "presupuesto de boda india de varios días",
         "catering para bodas indias"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-17-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-cost-punta-cana",
       "sources": [
         "https://sertuinevents.com/es/puntacana-wedding-planner/",
         "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -3145,19 +3015,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-17-es",
       "wordCount": 2044,
       "selectedImage": "table",
-      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla."
+      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla.",
+      "publicUrl": "https://sertuinevents.com/es/blog/indian-wedding-cost-punta-cana/"
     },
     {
       "topic": 17,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-17/pt.json",
       "finalTitle": "Quanto custa um casamento indiano em Punta Cana?",
       "primaryKeyword": "custo de casamento indiano em Punta Cana",
@@ -3166,9 +3034,9 @@
         "orçamento de casamento indiano",
         "custos de casamento de vários dias"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-17-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-cost-punta-cana",
       "sources": [
         "https://sertuinevents.com/pt/puntacana-wedding-planner/",
         "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -3190,19 +3058,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-17-pt",
       "wordCount": 2015,
       "selectedImage": "table",
-      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça."
+      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/indian-wedding-cost-punta-cana/"
     },
     {
       "topic": 17,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-17/fr.json",
       "finalTitle": "Combien coûte un mariage indien à Punta Cana ?",
       "primaryKeyword": "prix d'un mariage indien à Punta Cana",
@@ -3211,9 +3077,9 @@
         "mariage indien sur plusieurs jours",
         "coût du traiteur pour un mariage indien"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-17-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-cost-punta-cana",
       "sources": [
         "https://sertuinevents.com/fr/puntacana-wedding-planner/",
         "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -3235,19 +3101,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-17-fr",
       "wordCount": 2029,
       "selectedImage": "table",
-      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle."
+      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/indian-wedding-cost-punta-cana/"
     },
     {
       "topic": 18,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-18/en.json",
       "finalTitle": "Indian Wedding Packages in Punta Cana: What’s Included?",
       "primaryKeyword": "what is included in Indian wedding packages Punta Cana",
@@ -3256,9 +3120,9 @@
         "Haldi and Sangeet inclusions",
         "specialized wedding vendor charges"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-18-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-packages-punta-cana-inclusions",
       "sources": [
         "https://sertuinevents.com/puntacana-wedding-planner/",
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
@@ -3281,19 +3145,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-18-en",
       "wordCount": 2168,
       "selectedImage": "table",
-      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings."
+      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings.",
+      "publicUrl": "https://sertuinevents.com/blog/indian-wedding-packages-punta-cana-inclusions/"
     },
     {
       "topic": 18,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-18/es.json",
       "finalTitle": "Paquetes de bodas indias en Punta Cana: ¿qué incluyen?",
       "primaryKeyword": "paquetes de bodas indias en Punta Cana",
@@ -3302,9 +3164,9 @@
         "ceremonia Haldi en Punta Cana",
         "organización de Sangeet"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-18-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-packages-punta-cana-inclusions",
       "sources": [
         "https://sertuinevents.com/es/puntacana-wedding-planner/",
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
@@ -3327,19 +3189,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-18-es",
       "wordCount": 2031,
       "selectedImage": "table",
-      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla."
+      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla.",
+      "publicUrl": "https://sertuinevents.com/es/blog/indian-wedding-packages-punta-cana-inclusions/"
     },
     {
       "topic": 18,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-18/pt.json",
       "finalTitle": "Pacotes de casamento indiano em Punta Cana: o que incluem?",
       "primaryKeyword": "pacotes de casamento indiano em Punta Cana",
@@ -3348,9 +3208,9 @@
         "cerimônia Haldi em Punta Cana",
         "festa Sangeet na República Dominicana"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-18-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-packages-punta-cana-inclusions",
       "sources": [
         "https://sertuinevents.com/pt/puntacana-wedding-planner/",
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
@@ -3373,19 +3233,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-18-pt",
       "wordCount": 2020,
       "selectedImage": "table",
-      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça."
+      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/indian-wedding-packages-punta-cana-inclusions/"
     },
     {
       "topic": 18,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-18/fr.json",
       "finalTitle": "Forfaits de mariage indien à Punta Cana : que comprennent-ils ?",
       "primaryKeyword": "forfait mariage indien à Punta Cana",
@@ -3394,9 +3252,9 @@
         "cérémonie Haldi à Punta Cana",
         "organisation d'un Sangeet"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-18-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-packages-punta-cana-inclusions",
       "sources": [
         "https://sertuinevents.com/fr/puntacana-wedding-planner/",
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
@@ -3419,19 +3277,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-18-fr",
       "wordCount": 2026,
       "selectedImage": "table",
-      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle."
+      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/indian-wedding-packages-punta-cana-inclusions/"
     },
     {
       "topic": 19,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-19/en.json",
       "finalTitle": "Hard Rock vs. Hyatt Ziva: Indian Weddings in Punta Cana",
       "primaryKeyword": "Hard Rock vs Hyatt Ziva Indian wedding",
@@ -3440,9 +3296,9 @@
         "Hyatt Ziva Cap Cana Indian weddings",
         "Indian wedding resort comparison"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-19-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
         "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings",
@@ -3468,19 +3324,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-19-en",
       "wordCount": 2299,
       "selectedImage": "planner",
-      "heroAlt": "Wedding planner holding a folder on a resort terrace."
+      "heroAlt": "Wedding planner holding a folder on a resort terrace.",
+      "publicUrl": "https://sertuinevents.com/blog/hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana/"
     },
     {
       "topic": 19,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-19/es.json",
       "finalTitle": "Hard Rock vs. Hyatt Ziva: bodas indias en Punta Cana",
       "primaryKeyword": "Hard Rock vs Hyatt Ziva bodas indias",
@@ -3489,9 +3343,9 @@
         "boda india Hyatt Ziva Cap Cana",
         "hoteles para bodas indias en Punta Cana"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-19-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
         "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings",
@@ -3517,19 +3371,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-19-es",
       "wordCount": 2085,
       "selectedImage": "planner",
-      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort."
+      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort.",
+      "publicUrl": "https://sertuinevents.com/es/blog/hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana/"
     },
     {
       "topic": 19,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-19/pt.json",
       "finalTitle": "Hard Rock vs. Hyatt Ziva: casamentos indianos em Punta Cana",
       "primaryKeyword": "Hard Rock vs Hyatt Ziva casamento indiano",
@@ -3538,9 +3390,9 @@
         "casamento no Hyatt Ziva Cap Cana",
         "resorts para casamento indiano"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-19-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
         "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings",
@@ -3566,19 +3418,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-19-pt",
       "wordCount": 2014,
       "selectedImage": "planner",
-      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort."
+      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana/"
     },
     {
       "topic": 19,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-19/fr.json",
       "finalTitle": "Hard Rock ou Hyatt Ziva : mariage indien à Punta Cana",
       "primaryKeyword": "Hard Rock vs Hyatt Ziva mariage indien",
@@ -3587,9 +3437,9 @@
         "mariage indien au Hyatt Ziva Cap Cana",
         "resorts pour mariage indien à Punta Cana"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-19-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/indian-weddings.aspx",
         "https://www.hyatt.com/ziva/en-US/pujif-hyatt-ziva-cap-cana/weddings",
@@ -3615,19 +3465,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-19-fr",
       "wordCount": 2040,
       "selectedImage": "planner",
-      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort."
+      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/hard-rock-vs-hyatt-ziva-indian-wedding-punta-cana/"
     },
     {
       "topic": 20,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-20/en.json",
       "finalTitle": "Punta Cana or Mexico for an Indian Wedding?",
       "primaryKeyword": "Mexico vs Punta Cana Indian wedding",
@@ -3636,9 +3484,9 @@
         "wedding guest flight connections",
         "Indian wedding resort facilities"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-20-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-mexico-indian-wedding-comparison",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
         "https://hotel.hardrock.com/riviera-maya/weddings.aspx",
@@ -3662,19 +3510,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-20-en",
       "wordCount": 2006,
       "selectedImage": "planner",
-      "heroAlt": "Wedding planner holding a folder on a resort terrace."
+      "heroAlt": "Wedding planner holding a folder on a resort terrace.",
+      "publicUrl": "https://sertuinevents.com/blog/punta-cana-mexico-indian-wedding-comparison/"
     },
     {
       "topic": 20,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-20/es.json",
       "finalTitle": "¿Punta Cana o México para una boda india?",
       "primaryKeyword": "boda india en Punta Cana o México",
@@ -3683,9 +3529,9 @@
         "bodas de destino en México",
         "comparación de destinos para bodas indias"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-20-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-mexico-indian-wedding-comparison",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
         "https://hotel.hardrock.com/riviera-maya/weddings.aspx",
@@ -3709,19 +3555,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-20-es",
       "wordCount": 2001,
       "selectedImage": "planner",
-      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort."
+      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort.",
+      "publicUrl": "https://sertuinevents.com/es/blog/punta-cana-mexico-indian-wedding-comparison/"
     },
     {
       "topic": 20,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-20/pt.json",
       "finalTitle": "Punta Cana ou México para um casamento indiano?",
       "primaryKeyword": "casamento indiano em Punta Cana ou México",
@@ -3730,9 +3574,9 @@
         "destination wedding no México",
         "comparação de destinos para casamento"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-20-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-mexico-indian-wedding-comparison",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
         "https://hotel.hardrock.com/riviera-maya/weddings.aspx",
@@ -3756,19 +3600,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-20-pt",
       "wordCount": 2007,
       "selectedImage": "planner",
-      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort."
+      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/punta-cana-mexico-indian-wedding-comparison/"
     },
     {
       "topic": 20,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-20/fr.json",
       "finalTitle": "Punta Cana ou Mexique pour un mariage indien ?",
       "primaryKeyword": "mariage indien à Punta Cana ou au Mexique",
@@ -3777,9 +3619,9 @@
         "mariage à destination au Mexique",
         "comparaison des destinations de mariage"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-20-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-mexico-indian-wedding-comparison",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
         "https://hotel.hardrock.com/riviera-maya/weddings.aspx",
@@ -3803,19 +3645,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-20-fr",
       "wordCount": 2074,
       "selectedImage": "planner",
-      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort."
+      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/punta-cana-mexico-indian-wedding-comparison/"
     },
     {
       "topic": 21,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-21/en.json",
       "finalTitle": "Inside a Four-Day Indian Wedding at Hard Rock Punta Cana",
       "primaryKeyword": "four-day Indian wedding Hard Rock Punta Cana",
@@ -3824,9 +3664,9 @@
         "multi-event wedding coordination",
         "multi-day wedding logistics"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-21-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "four-day-indian-wedding-hard-rock-punta-cana",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
         "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/",
@@ -3848,19 +3688,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-21-en",
       "wordCount": 1450,
       "selectedImage": "planner",
-      "heroAlt": "Wedding planner holding a folder on a resort terrace."
+      "heroAlt": "Wedding planner holding a folder on a resort terrace.",
+      "publicUrl": "https://sertuinevents.com/blog/four-day-indian-wedding-hard-rock-punta-cana/"
     },
     {
       "topic": 21,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-21/es.json",
       "finalTitle": "Así se organiza una boda india de cuatro días en Hard Rock Punta Cana",
       "primaryKeyword": "boda india de cuatro días en Hard Rock Punta Cana",
@@ -3869,9 +3707,9 @@
         "organización de bodas indias de varios días",
         "coordinación de eventos de boda"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-21-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "four-day-indian-wedding-hard-rock-punta-cana",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
         "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/",
@@ -3893,19 +3731,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-21-es",
       "wordCount": 1419,
       "selectedImage": "planner",
-      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort."
+      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort.",
+      "publicUrl": "https://sertuinevents.com/es/blog/four-day-indian-wedding-hard-rock-punta-cana/"
     },
     {
       "topic": 21,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-21/pt.json",
       "finalTitle": "Como é um casamento indiano de quatro dias no Hard Rock Punta Cana",
       "primaryKeyword": "casamento indiano de quatro dias no Hard Rock Punta Cana",
@@ -3914,9 +3750,9 @@
         "organização de casamento de vários dias",
         "logística de casamento indiano"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-21-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "four-day-indian-wedding-hard-rock-punta-cana",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
         "https://sertuinevents.com/pt/blog/punta-cana-wedding-rain-plan/",
@@ -3938,19 +3774,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-21-pt",
       "wordCount": 1342,
       "selectedImage": "planner",
-      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort."
+      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/four-day-indian-wedding-hard-rock-punta-cana/"
     },
     {
       "topic": 21,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-21/fr.json",
       "finalTitle": "Dans les coulisses d'un mariage indien de quatre jours au Hard Rock Punta Cana",
       "primaryKeyword": "mariage indien de quatre jours au Hard Rock Punta Cana",
@@ -3959,9 +3793,9 @@
         "organisation de mariage sur plusieurs jours",
         "coordination des cérémonies indiennes"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-21-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "four-day-indian-wedding-hard-rock-punta-cana",
       "sources": [
         "https://hotel.hardrock.com/punta-cana/weddings.aspx",
         "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/",
@@ -3983,19 +3817,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-21-fr",
       "wordCount": 1427,
       "selectedImage": "planner",
-      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort."
+      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/four-day-indian-wedding-hard-rock-punta-cana/"
     },
     {
       "topic": 22,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-22/en.json",
       "finalTitle": "Sikh Weddings in Punta Cana: Planning the Anand Karaj",
       "primaryKeyword": "Sikh wedding Punta Cana",
@@ -4004,9 +3836,9 @@
         "Granthi coordination",
         "Guru Granth Sahib arrangements"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-22-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "sikh-wedding-punta-cana-anand-karaj",
       "sources": [
         "https://gspuk.org/wp-content/uploads/2024/01/Dress-Code-at-Anand-Karaj.pdf",
         "https://www.gurunanakdarbar.org/anandkaraj",
@@ -4029,19 +3861,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-22-en",
       "wordCount": 2396,
       "selectedImage": "planner",
-      "heroAlt": "Wedding planner holding a folder on a resort terrace."
+      "heroAlt": "Wedding planner holding a folder on a resort terrace.",
+      "publicUrl": "https://sertuinevents.com/blog/sikh-wedding-punta-cana-anand-karaj/"
     },
     {
       "topic": 22,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-22/es.json",
       "finalTitle": "Bodas sij en Punta Cana: cómo planificar la ceremonia Anand Karaj",
       "primaryKeyword": "boda sij en Punta Cana",
@@ -4050,9 +3880,9 @@
         "matrimonio sij de destino",
         "requisitos religiosos de boda sij"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-22-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "sikh-wedding-punta-cana-anand-karaj",
       "sources": [
         "https://gspuk.org/wp-content/uploads/2024/01/Dress-Code-at-Anand-Karaj.pdf",
         "https://www.gurunanakdarbar.org/anandkaraj",
@@ -4075,19 +3905,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-22-es",
       "wordCount": 2245,
       "selectedImage": "planner",
-      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort."
+      "heroAlt": "Planificadora de bodas con una carpeta en la terraza de un resort.",
+      "publicUrl": "https://sertuinevents.com/es/blog/sikh-wedding-punta-cana-anand-karaj/"
     },
     {
       "topic": 22,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-22/pt.json",
       "finalTitle": "Casamento sikh em Punta Cana: como planejar o Anand Karaj",
       "primaryKeyword": "casamento sikh em Punta Cana",
@@ -4096,9 +3924,9 @@
         "casamento religioso sikh",
         "requisitos para casamento sikh"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-22-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "sikh-wedding-punta-cana-anand-karaj",
       "sources": [
         "https://gspuk.org/wp-content/uploads/2024/01/Dress-Code-at-Anand-Karaj.pdf",
         "https://www.gurunanakdarbar.org/anandkaraj",
@@ -4121,19 +3949,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-22-pt",
       "wordCount": 2177,
       "selectedImage": "planner",
-      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort."
+      "heroAlt": "Assessora de casamento com uma pasta no terraço de um resort.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/sikh-wedding-punta-cana-anand-karaj/"
     },
     {
       "topic": 22,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-22/fr.json",
       "finalTitle": "Mariage sikh à Punta Cana : organiser la cérémonie Anand Karaj",
       "primaryKeyword": "mariage sikh à Punta Cana",
@@ -4142,9 +3968,9 @@
         "mariage religieux sikh",
         "conditions pour une cérémonie Anand Karaj"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-22-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "sikh-wedding-punta-cana-anand-karaj",
       "sources": [
         "https://gspuk.org/wp-content/uploads/2024/01/Dress-Code-at-Anand-Karaj.pdf",
         "https://www.gurunanakdarbar.org/anandkaraj",
@@ -4167,19 +3993,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-22-fr",
       "wordCount": 2213,
       "selectedImage": "planner",
-      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort."
+      "heroAlt": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/sikh-wedding-punta-cana-anand-karaj/"
     },
     {
       "topic": 23,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-23/en.json",
       "finalTitle": "Indian Weddings in Punta Cana: Who Pays for What?",
       "primaryKeyword": "who pays for an Indian wedding in Punta Cana",
@@ -4188,9 +4012,9 @@
         "family wedding contributions",
         "destination wedding payment etiquette"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-23-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-punta-cana-who-pays",
       "sources": [
         "https://sertuinevents.com/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
         "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -4219,19 +4043,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-23-en",
       "wordCount": 1976,
       "selectedImage": "meeting",
-      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery."
+      "heroAlt": "Wedding planner and client beside a reception table decorated with greenery.",
+      "publicUrl": "https://sertuinevents.com/blog/indian-wedding-punta-cana-who-pays/"
     },
     {
       "topic": 23,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-23/es.json",
       "finalTitle": "Bodas indias en Punta Cana: ¿quién paga cada gasto?",
       "primaryKeyword": "quién paga una boda india en Punta Cana",
@@ -4240,9 +4062,9 @@
         "reparto de gastos entre familias",
         "alojamiento de invitados en bodas indias"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-23-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-punta-cana-who-pays",
       "sources": [
         "https://sertuinevents.com/es/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
         "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -4271,19 +4093,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-23-es",
       "wordCount": 1892,
       "selectedImage": "meeting",
-      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación."
+      "heroAlt": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+      "publicUrl": "https://sertuinevents.com/es/blog/indian-wedding-punta-cana-who-pays/"
     },
     {
       "topic": 23,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-23/pt.json",
       "finalTitle": "Casamentos indianos em Punta Cana: quem paga cada despesa?",
       "primaryKeyword": "quem paga um casamento indiano em Punta Cana",
@@ -4292,9 +4112,9 @@
         "divisão de custos entre famílias",
         "hospedagem de convidados de casamento"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-23-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-punta-cana-who-pays",
       "sources": [
         "https://sertuinevents.com/pt/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
         "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -4323,19 +4143,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-23-pt",
       "wordCount": 1952,
       "selectedImage": "meeting",
-      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens."
+      "heroAlt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/indian-wedding-punta-cana-who-pays/"
     },
     {
       "topic": 23,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-23/fr.json",
       "finalTitle": "Mariage indien à Punta Cana : qui paie quoi ?",
       "primaryKeyword": "qui paie un mariage indien à Punta Cana",
@@ -4344,9 +4162,9 @@
         "participation financière des familles",
         "hébergement des invités"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-23-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-punta-cana-who-pays",
       "sources": [
         "https://sertuinevents.com/fr/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
         "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -4375,19 +4193,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-23-fr",
       "wordCount": 1986,
       "selectedImage": "meeting",
-      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      "heroAlt": "Organisatrice et cliente près d’une table de réception décorée de feuillages.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/indian-wedding-punta-cana-who-pays/"
     },
     {
       "topic": 24,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-24/en.json",
       "finalTitle": "An Indian Wedding in Punta Cana or at Home: Costs",
       "primaryKeyword": "Indian wedding Punta Cana vs hometown wedding cost",
@@ -4396,9 +4212,9 @@
         "wedding cost comparison by guest count",
         "multi-day wedding travel expenses"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-24-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-punta-cana-hometown-cost-comparison",
       "sources": [
         "https://sertuinevents.com/puntacana-wedding-planner/",
         "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -4420,19 +4236,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-24-en",
       "wordCount": 2087,
       "selectedImage": "table",
-      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings."
+      "heroAlt": "Wedding planner arranging a reception table with flowers, glasses and place settings.",
+      "publicUrl": "https://sertuinevents.com/blog/indian-wedding-punta-cana-hometown-cost-comparison/"
     },
     {
       "topic": 24,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-24/es.json",
       "finalTitle": "¿Cuesta menos una boda india en Punta Cana o en tu ciudad?",
       "primaryKeyword": "costo de boda india en Punta Cana vs ciudad de origen",
@@ -4441,9 +4255,9 @@
         "presupuesto de boda india",
         "gastos de viaje para boda de destino"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-24-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-punta-cana-hometown-cost-comparison",
       "sources": [
         "https://sertuinevents.com/es/puntacana-wedding-planner/",
         "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -4465,19 +4279,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-24-es",
       "wordCount": 2069,
       "selectedImage": "table",
-      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla."
+      "heroAlt": "Planificadora preparando una mesa de recepción con flores, copas y vajilla.",
+      "publicUrl": "https://sertuinevents.com/es/blog/indian-wedding-punta-cana-hometown-cost-comparison/"
     },
     {
       "topic": 24,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-24/pt.json",
       "finalTitle": "Casamento indiano em Punta Cana ou na sua cidade: qual custa menos?",
       "primaryKeyword": "custo de casamento indiano em Punta Cana vs cidade de origem",
@@ -4486,9 +4298,9 @@
         "custo de destination wedding",
         "comparação de orçamento de casamento"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-24-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-punta-cana-hometown-cost-comparison",
       "sources": [
         "https://sertuinevents.com/pt/puntacana-wedding-planner/",
         "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -4510,19 +4322,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-24-pt",
       "wordCount": 2112,
       "selectedImage": "table",
-      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça."
+      "heroAlt": "Assessora preparando uma mesa de recepção com flores, taças e louça.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/indian-wedding-punta-cana-hometown-cost-comparison/"
     },
     {
       "topic": 24,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-24/fr.json",
       "finalTitle": "Mariage indien à Punta Cana ou chez soi : comparaison des coûts",
       "primaryKeyword": "coût d'un mariage indien à Punta Cana ou dans sa ville",
@@ -4531,9 +4341,9 @@
         "comparaison de budgets de mariage",
         "frais de voyage des invités"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-24-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "indian-wedding-punta-cana-hometown-cost-comparison",
       "sources": [
         "https://sertuinevents.com/fr/puntacana-wedding-planner/",
         "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
@@ -4555,19 +4365,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-24-fr",
       "wordCount": 2211,
       "selectedImage": "table",
-      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle."
+      "heroAlt": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/indian-wedding-punta-cana-hometown-cost-comparison/"
     },
     {
       "topic": 25,
       "language": "en",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-25/en.json",
       "finalTitle": "Punta Cana Wedding Timeline: Ceremony to Reception",
       "primaryKeyword": "Punta Cana wedding day timeline",
@@ -4576,9 +4384,9 @@
         "beach ceremony start time",
         "sunset wedding photography timing"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-25-en",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-day-timeline",
       "sources": [
         "https://www.timeanddate.com/sun/dominican-republic/punta-cana",
         "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -4601,19 +4409,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-25-en",
       "wordCount": 2057,
       "selectedImage": "setup",
-      "heroAlt": "Wedding planner beside white reception tables in an outdoor event space."
+      "heroAlt": "Wedding planner beside white reception tables in an outdoor event space.",
+      "publicUrl": "https://sertuinevents.com/blog/punta-cana-wedding-day-timeline/"
     },
     {
       "topic": 25,
       "language": "es",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-25/es.json",
       "finalTitle": "Cronograma de boda en Punta Cana: de la ceremonia a la recepción",
       "primaryKeyword": "cronograma del día de la boda en Punta Cana",
@@ -4622,9 +4428,9 @@
         "organización de ceremonia y recepción",
         "planificación de fotos al atardecer"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-25-es",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-day-timeline",
       "sources": [
         "https://www.timeanddate.com/sun/dominican-republic/punta-cana",
         "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -4647,19 +4453,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-25-es",
       "wordCount": 2029,
       "selectedImage": "setup",
-      "heroAlt": "Planificadora junto a mesas blancas de recepción en un espacio al aire libre."
+      "heroAlt": "Planificadora junto a mesas blancas de recepción en un espacio al aire libre.",
+      "publicUrl": "https://sertuinevents.com/es/blog/punta-cana-wedding-day-timeline/"
     },
     {
       "topic": 25,
       "language": "pt-BR",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-25/pt.json",
       "finalTitle": "Cronograma de casamento em Punta Cana: da cerimônia à recepção",
       "primaryKeyword": "cronograma do dia do casamento em Punta Cana",
@@ -4668,9 +4472,9 @@
         "horário da cerimônia na praia",
         "fotos de casamento ao pôr do sol"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-25-pt",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-day-timeline",
       "sources": [
         "https://www.timeanddate.com/sun/dominican-republic/punta-cana",
         "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -4693,19 +4497,17 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-25-pt",
       "wordCount": 2018,
       "selectedImage": "setup",
-      "heroAlt": "Assessora ao lado de mesas brancas de recepção em um espaço ao ar livre."
+      "heroAlt": "Assessora ao lado de mesas brancas de recepção em um espaço ao ar livre.",
+      "publicUrl": "https://sertuinevents.com/pt/blog/punta-cana-wedding-day-timeline/"
     },
     {
       "topic": 25,
       "language": "fr",
-      "status": "editorial complete in repository; CMS import not performed",
+      "status": "published and verified live",
       "repositoryDraft": "topic-25/fr.json",
       "finalTitle": "Planning du jour du mariage à Punta Cana : de la cérémonie à la réception",
       "primaryKeyword": "planning du jour du mariage à Punta Cana",
@@ -4714,9 +4516,9 @@
         "horaire de cérémonie sur la plage",
         "photos de mariage au coucher du soleil"
       ],
-      "sanityDocumentReference": null,
-      "sanityContentSavedAndVerified": false,
-      "actualSlug": null,
+      "sanityDocumentReference": "blogPost-wedding-topic-25-fr",
+      "sanityContentSavedAndVerified": true,
+      "actualSlug": "punta-cana-wedding-day-timeline",
       "sources": [
         "https://www.timeanddate.com/sun/dominican-republic/punta-cana",
         "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/",
@@ -4739,28 +4541,32 @@
         }
       ],
       "pendingLinks": [],
-      "issues": [
-        "Shared guide references, taxonomy, image assignment and slug require CMS reconciliation.",
-        "CMS import, saved persistence, rendered preview and publication not performed."
-      ],
+      "issues": [],
       "proposedDocumentReference": "drafts.blogPost-wedding-topic-25-fr",
       "wordCount": 2014,
       "selectedImage": "setup",
-      "heroAlt": "Organisatrice près de tables de réception blanches dans un espace extérieur."
+      "heroAlt": "Organisatrice près de tables de réception blanches dans un espace extérieur.",
+      "publicUrl": "https://sertuinevents.com/fr/blog/punta-cana-wedding-day-timeline/"
     }
   ],
   "wordCountMethod": "Title, direct answer, section headings/intros/paragraphs/bullets/steps/notes and FAQs; excludes CTA, source labels and metadata.",
   "missingVersions": [],
   "readbackValidation": {
-    "parsedArticleFiles": 100,
-    "scope": "JSON structure, unique draft IDs, four locales per topic, references, section keys, required editorial fields, same-language related-guide links, localized heroAlt and established service CTA.",
-    "notVerified": [
-      "Sanity import and saved persistence",
-      "Shared guide/category/slug reconciliation",
-      "Rendered preview of new articles",
-      "Website publication"
-    ]
+    "publishedDocumentExactMatches": 125,
+    "publicPagesPassed": 100,
+    "totalPublicPages": 100,
+    "scope": "Published content, references, HTTP response, H1, locale and canonical URL."
   },
-  "editorialStatus": "complete-in-repository",
-  "totalEditorialWordCount": 202902
+  "editorialStatus": "published-and-live",
+  "totalEditorialWordCount": 202902,
+  "publication": {
+    "project": "mj6f2710",
+    "dataset": "production",
+    "transactionId": "64qTheeLYgdN9iV0dB5nto",
+    "date": "2026-11-18",
+    "articles": 100,
+    "guides": 25,
+    "exactContentReadback": "125/125",
+    "staleDrafts": 0
+  }
 }

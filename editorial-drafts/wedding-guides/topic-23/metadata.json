@@ -1,6 +1,6 @@
 {
   "topic": 23,
-  "status": "editorial-complete-repository-draft",
+  "status": "published-and-verified-live",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "indian-wedding-punta-cana-who-pays",
   "versions": {
@@ -78,22 +78,30 @@
     }
   ],
   "researchAssessment": "Search results conflict on customary family and guest allocations. No general custom is promoted as a fact or obligation. Article presents original optional decision frameworks and explicitly fictional arithmetic.",
-  "pendingIssues": [
-    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
-    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
-    "Import, verify saved persistence and preview each locale before publication.",
-    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
-  ],
+  "pendingIssues": [],
   "editorialNote": "Approximately 1900–2000 words per language, retaining useful scope without repeating cultural claims. Counts exclude CTA and source labels.",
   "reviewedAt": "2026-11-18",
   "imageSelection": {
     "manifest": "../image-selection.json",
     "selectedImage": "meeting",
     "localizedHeroAlt": "Completed in all four article files",
-    "historicalCasePhoto": false
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
   },
   "relatedGuideValidation": {
     "manifest": "../link-validation.json",
     "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-23",
+    "urls": [
+      "https://sertuinevents.com/blog/indian-wedding-punta-cana-who-pays/",
+      "https://sertuinevents.com/es/blog/indian-wedding-punta-cana-who-pays/",
+      "https://sertuinevents.com/pt/blog/indian-wedding-punta-cana-who-pays/",
+      "https://sertuinevents.com/fr/blog/indian-wedding-punta-cana-who-pays/"
+    ]
   }
 }

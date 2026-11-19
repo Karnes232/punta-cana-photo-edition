@@ -1,6 +1,6 @@
 {
   "topic": 10,
-  "status": "editorial-complete-repository-draft",
+  "status": "published-and-verified-live",
   "consultedAt": "2026-11-18",
   "provisionalSharedSlug": "punta-cana-wedding-twelve-month-checklist",
   "versions": {
@@ -75,21 +75,29 @@
     "pt": "Cronograma de destination wedding com dependências",
     "fr": "Rétroplanning adaptable et décisions prioritaires"
   },
-  "pendingIssues": [
-    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
-    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
-    "Import, verify saved persistence and preview each locale before publication.",
-    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
-  ],
+  "pendingIssues": [],
   "reviewedAt": "2026-11-18",
   "imageSelection": {
     "manifest": "../image-selection.json",
     "selectedImage": "meeting",
     "localizedHeroAlt": "Completed in all four article files",
-    "historicalCasePhoto": false
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
   },
   "relatedGuideValidation": {
     "manifest": "../link-validation.json",
     "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-10",
+    "urls": [
+      "https://sertuinevents.com/blog/punta-cana-wedding-twelve-month-checklist/",
+      "https://sertuinevents.com/es/blog/punta-cana-wedding-twelve-month-checklist/",
+      "https://sertuinevents.com/pt/blog/punta-cana-wedding-twelve-month-checklist/",
+      "https://sertuinevents.com/fr/blog/punta-cana-wedding-twelve-month-checklist/"
+    ]
   }
 }

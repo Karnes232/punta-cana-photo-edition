@@ -1,6 +1,6 @@
 {
   "topic": 2,
-  "status": "editorial-complete-repository-draft",
+  "status": "published-and-verified-live",
   "reviewedAt": "2026-11-18",
   "guideId": "baa18c57-5f7f-456c-9d8b-2630c8ea38a0",
   "sharedSlug": "wedding-planner-cost-punta-cana",
@@ -59,17 +59,13 @@
     "https://sertuinevents.com/fr/puntacana-wedding-planner/"
   ],
   "editorialNote": "Preserves existing guide reference and shared slug. Quoted rates are dated examples from their named source, not a market-wide tariff.",
-  "pendingIssues": [
-    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
-    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
-    "Import, verify saved persistence and preview each locale before publication.",
-    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
-  ],
+  "pendingIssues": [],
   "imageSelection": {
     "manifest": "../image-selection.json",
     "selectedImage": "meeting",
     "localizedHeroAlt": "Completed in all four article files",
-    "historicalCasePhoto": false
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
   },
   "relatedGuideValidation": {
     "manifest": "../link-validation.json",
@@ -80,5 +76,17 @@
     "es": 2130,
     "pt": 2194,
     "fr": 2296
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "baa18c57-5f7f-456c-9d8b-2630c8ea38a0",
+    "urls": [
+      "https://sertuinevents.com/blog/wedding-planner-cost-punta-cana/",
+      "https://sertuinevents.com/es/blog/wedding-planner-cost-punta-cana/",
+      "https://sertuinevents.com/pt/blog/wedding-planner-cost-punta-cana/",
+      "https://sertuinevents.com/fr/blog/wedding-planner-cost-punta-cana/"
+    ]
   }
 }

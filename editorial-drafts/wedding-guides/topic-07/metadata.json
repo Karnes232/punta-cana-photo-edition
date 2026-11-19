@@ -1,6 +1,6 @@
 {
   "topic": 7,
-  "status": "editorial-complete-repository-draft",
+  "status": "published-and-verified-live",
   "reviewedAt": "2026-11-18",
   "guideId": "blogGuide-wedding-topic-07",
   "provisionalSharedSlug": "documents-get-married-dominican-republic",
@@ -67,20 +67,28 @@
     "fr": 2003
   },
   "editorialDepth": "All four languages expanded with topic-specific practical detail, distinct responsibilities and original planning examples; no invented supplier terms or authority approvals.",
-  "pendingIssues": [
-    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
-    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
-    "Import, verify saved persistence and preview each locale before publication.",
-    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
-  ],
+  "pendingIssues": [],
   "imageSelection": {
     "manifest": "../image-selection.json",
     "selectedImage": "meeting",
     "localizedHeroAlt": "Completed in all four article files",
-    "historicalCasePhoto": false
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
   },
   "relatedGuideValidation": {
     "manifest": "../link-validation.json",
     "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-07",
+    "urls": [
+      "https://sertuinevents.com/blog/documents-get-married-dominican-republic/",
+      "https://sertuinevents.com/es/blog/documents-get-married-dominican-republic/",
+      "https://sertuinevents.com/pt/blog/documents-get-married-dominican-republic/",
+      "https://sertuinevents.com/fr/blog/documents-get-married-dominican-republic/"
+    ]
   }
 }

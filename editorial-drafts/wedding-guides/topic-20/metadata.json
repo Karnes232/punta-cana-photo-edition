@@ -1,6 +1,6 @@
 {
   "topic": 20,
-  "status": "editorial-complete-repository-draft",
+  "status": "published-and-verified-live",
   "proposedGuideId": "blogGuide-wedding-topic-20",
   "proposedSharedSlug": "punta-cana-mexico-indian-wedding-comparison",
   "researchedAt": "2026-11-18",
@@ -62,7 +62,18 @@
     "https://sertuinevents.com/fr/puntacana-wedding-planner/"
   ],
   "cta": "/puntacana-wedding-planner/",
-  "publication": false,
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-20",
+    "urls": [
+      "https://sertuinevents.com/blog/punta-cana-mexico-indian-wedding-comparison/",
+      "https://sertuinevents.com/es/blog/punta-cana-mexico-indian-wedding-comparison/",
+      "https://sertuinevents.com/pt/blog/punta-cana-mexico-indian-wedding-comparison/",
+      "https://sertuinevents.com/fr/blog/punta-cana-mexico-indian-wedding-comparison/"
+    ]
+  },
   "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
   "contentAudit": {
     "date": "2026-11-18",
@@ -83,17 +94,13 @@
     "status": "Existing destinations verified in all four languages; at least two included per article."
   },
   "reviewedAt": "2026-11-18",
-  "pendingIssues": [
-    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
-    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
-    "Import, verify saved persistence and preview each locale before publication.",
-    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
-  ],
+  "pendingIssues": [],
   "imageSelection": {
     "manifest": "../image-selection.json",
     "selectedImage": "planner",
     "localizedHeroAlt": "Completed in all four article files",
-    "historicalCasePhoto": false
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
   },
   "bodyWordCounts": {
     "en": 2006,

@@ -1,6 +1,6 @@
 {
   "topic": 21,
-  "status": "editorial-complete-repository-draft",
+  "status": "published-and-verified-live",
   "proposedGuideId": "blogGuide-wedding-topic-21",
   "proposedSharedSlug": "four-day-indian-wedding-hard-rock-punta-cana",
   "researchedAt": "2026-11-18",
@@ -66,7 +66,18 @@
     "fr": "mariage indien quatre jours Hard Rock Punta Cana organisation"
   },
   "cta": "/puntacana-wedding-planner/",
-  "publication": false,
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-21",
+    "urls": [
+      "https://sertuinevents.com/blog/four-day-indian-wedding-hard-rock-punta-cana/",
+      "https://sertuinevents.com/es/blog/four-day-indian-wedding-hard-rock-punta-cana/",
+      "https://sertuinevents.com/pt/blog/four-day-indian-wedding-hard-rock-punta-cana/",
+      "https://sertuinevents.com/fr/blog/four-day-indian-wedding-hard-rock-punta-cana/"
+    ]
+  },
   "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
   "contentAudit": {
     "date": "2026-11-18",
@@ -87,17 +98,13 @@
     "status": "Existing destinations verified in all four languages; at least two included per article."
   },
   "reviewedAt": "2026-11-18",
-  "pendingIssues": [
-    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
-    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
-    "Import, verify saved persistence and preview each locale before publication.",
-    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
-  ],
+  "pendingIssues": [],
   "imageSelection": {
     "manifest": "../image-selection.json",
     "selectedImage": "planner",
     "localizedHeroAlt": "Completed in all four article files",
-    "historicalCasePhoto": false
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
   },
   "bodyWordCounts": {
     "en": 1450,

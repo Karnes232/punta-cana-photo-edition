@@ -1,6 +1,6 @@
 {
   "topic": 24,
-  "status": "editorial-complete-repository-draft",
+  "status": "published-and-verified-live",
   "proposedGuideId": "blogGuide-wedding-topic-24",
   "proposedSharedSlug": "indian-wedding-punta-cana-hometown-cost-comparison",
   "researchedAt": "2026-11-18",
@@ -62,7 +62,18 @@
     "https://sertuinevents.com/fr/puntacana-wedding-planner/"
   ],
   "cta": "/puntacana-wedding-planner/",
-  "publication": false,
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-24",
+    "urls": [
+      "https://sertuinevents.com/blog/indian-wedding-punta-cana-hometown-cost-comparison/",
+      "https://sertuinevents.com/es/blog/indian-wedding-punta-cana-hometown-cost-comparison/",
+      "https://sertuinevents.com/pt/blog/indian-wedding-punta-cana-hometown-cost-comparison/",
+      "https://sertuinevents.com/fr/blog/indian-wedding-punta-cana-hometown-cost-comparison/"
+    ]
+  },
   "contentAudit": {
     "date": "2026-11-18",
     "readbackVerified": true,
@@ -82,17 +93,13 @@
     "status": "Existing destinations verified in all four languages; at least two included per article."
   },
   "reviewedAt": "2026-11-18",
-  "pendingIssues": [
-    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
-    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
-    "Import, verify saved persistence and preview each locale before publication.",
-    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
-  ],
+  "pendingIssues": [],
   "imageSelection": {
     "manifest": "../image-selection.json",
     "selectedImage": "table",
     "localizedHeroAlt": "Completed in all four article files",
-    "historicalCasePhoto": false
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
   },
   "bodyWordCounts": {
     "en": 2087,

@@ -1,6 +1,6 @@
 {
   "topic": 13,
-  "status": "editorial-complete-repository-draft",
+  "status": "published-and-verified-live",
   "reviewedAt": "2026-11-18",
   "guideId": "blogGuide-wedding-topic-13",
   "provisionalSharedSlug": "jellyfish-vs-kukua-wedding-punta-cana",
@@ -67,20 +67,28 @@
     "fr": 1984
   },
   "editorialNote": "Original walkthrough, coordination, attendance scenarios and decision criteria; approximately1750–1900 substantive words, no invented prices or ranking. Related-page destinations verified in Chrome in all four languages.",
-  "pendingIssues": [
-    "Resolve shared guide references, taxonomy and slug within existing CMS conventions.",
-    "Assign the selected existing image to the shared guide; article heroAlt is prepared.",
-    "Import, verify saved persistence and preview each locale before publication.",
-    "Reconfirm time-sensitive venue quotations, policies and individual legal or religious requirements before booking."
-  ],
+  "pendingIssues": [],
   "imageSelection": {
     "manifest": "../image-selection.json",
     "selectedImage": "planner",
     "localizedHeroAlt": "Completed in all four article files",
-    "historicalCasePhoto": false
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
   },
   "relatedGuideValidation": {
     "manifest": "../link-validation.json",
     "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-13",
+    "urls": [
+      "https://sertuinevents.com/blog/jellyfish-vs-kukua-wedding-punta-cana/",
+      "https://sertuinevents.com/es/blog/jellyfish-vs-kukua-wedding-punta-cana/",
+      "https://sertuinevents.com/pt/blog/jellyfish-vs-kukua-wedding-punta-cana/",
+      "https://sertuinevents.com/fr/blog/jellyfish-vs-kukua-wedding-punta-cana/"
+    ]
   }
 }
