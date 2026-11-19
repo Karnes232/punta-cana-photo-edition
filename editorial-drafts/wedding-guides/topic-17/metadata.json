@@ -1,0 +1,114 @@
+{
+  "topic": 17,
+  "status": "published-and-verified-live",
+  "proposedGuideId": "blogGuide-wedding-topic-17",
+  "proposedSharedSlug": "indian-wedding-cost-punta-cana",
+  "researchedAt": "2026-11-18",
+  "keywords": {
+    "en": {
+      "title": "Indian Wedding Costs in Punta Cana: Full Breakdown",
+      "primary": "Indian wedding cost Punta Cana",
+      "secondary": [
+        "South Asian destination wedding cost Dominican Republic",
+        "multi-day wedding budget",
+        "Indian wedding catering costs"
+      ],
+      "anchor": "Indian wedding planning in Punta Cana"
+    },
+    "es": {
+      "title": "Cuánto cuesta una boda india en Punta Cana: presupuesto completo",
+      "primary": "costo de boda india en Punta Cana",
+      "secondary": [
+        "bodas hindúes en Punta Cana",
+        "presupuesto de boda india de varios días",
+        "catering para bodas indias"
+      ],
+      "anchor": "planificación de bodas indias en Punta Cana"
+    },
+    "pt": {
+      "title": "Quanto custa um casamento indiano em Punta Cana?",
+      "primary": "custo de casamento indiano em Punta Cana",
+      "secondary": [
+        "casamento hindu em Punta Cana",
+        "orçamento de casamento indiano",
+        "custos de casamento de vários dias"
+      ],
+      "anchor": "organização de casamentos indianos em Punta Cana"
+    },
+    "fr": {
+      "title": "Combien coûte un mariage indien à Punta Cana ?",
+      "primary": "prix d'un mariage indien à Punta Cana",
+      "secondary": [
+        "budget de mariage indien",
+        "mariage indien sur plusieurs jours",
+        "coût du traiteur pour un mariage indien"
+      ],
+      "anchor": "organisation de mariages indiens à Punta Cana"
+    }
+  },
+  "searchIntent": {
+    "en": "Indian wedding cost Punta Cana budget catering",
+    "es": "costo boda india Punta Cana presupuesto varios días",
+    "pt": "custo casamento indiano Punta Cana orçamento",
+    "fr": "prix mariage indien Punta Cana budget"
+  },
+  "researchNotes": [
+    "Independent localized queries performed; no unsupported market-average or volume claims adopted.",
+    "Official Sertuin localized service pages verify USD4999 up to four event days, fifth and third-party services separate.",
+    "Worked catering arithmetic explicitly invented: 100x60 +40x40 +120x100 =19600 USD; not a market quote.",
+    "All locales expanded with scenarios, approvals, deadlines, currency and payment distinctions."
+  ],
+  "sources": [
+    "https://sertuinevents.com/puntacana-wedding-planner/",
+    "https://sertuinevents.com/es/puntacana-wedding-planner/",
+    "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+    "https://sertuinevents.com/fr/puntacana-wedding-planner/"
+  ],
+  "cta": "/puntacana-wedding-planner/",
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-17",
+    "urls": [
+      "https://sertuinevents.com/blog/indian-wedding-cost-punta-cana/",
+      "https://sertuinevents.com/es/blog/indian-wedding-cost-punta-cana/",
+      "https://sertuinevents.com/pt/blog/indian-wedding-cost-punta-cana/",
+      "https://sertuinevents.com/fr/blog/indian-wedding-cost-punta-cana/"
+    ]
+  },
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "reviewedAt": "2026-11-18",
+  "pendingIssues": [],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "table",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "bodyWordCounts": {
+    "en": 2040,
+    "es": 2044,
+    "pt": 2015,
+    "fr": 2029
+  }
+}

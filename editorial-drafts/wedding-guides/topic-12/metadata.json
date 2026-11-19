@@ -1,0 +1,100 @@
+{
+  "topic": 12,
+  "status": "published-and-verified-live",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "punta-cana-wedding-room-blocks",
+  "versions": {
+    "en": {
+      "title": "Wedding Room Blocks in Punta Cana: Terms and Costs",
+      "primary": "Punta Cana wedding room blocks",
+      "secondary": [
+        "how to book wedding room blocks in Punta Cana",
+        "minimum room nights",
+        "room block cancellation clauses"
+      ],
+      "anchor": "wedding guest logistics planning in Punta Cana"
+    },
+    "es": {
+      "title": "Bloques de habitaciones para bodas en Punta Cana: condiciones y costos",
+      "primary": "bloqueo de habitaciones para bodas en Punta Cana",
+      "secondary": [
+        "reservas grupales para bodas en Punta Cana",
+        "contratos de habitaciones de hotel",
+        "alojamiento para invitados de boda"
+      ],
+      "anchor": "coordinación de alojamiento para bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Bloqueio de quartos para casamentos em Punta Cana: custos e condições",
+      "primary": "bloqueio de quartos para casamento em Punta Cana",
+      "secondary": [
+        "reserva de quartos para convidados",
+        "hospedagem de grupos para casamento",
+        "condições de reserva em hotéis de Punta Cana"
+      ],
+      "anchor": "coordenação de hospedagem para casamento em Punta Cana"
+    },
+    "fr": {
+      "title": "Blocs de chambres pour mariage à Punta Cana : tarifs et conditions",
+      "primary": "réservation de chambres de groupe pour mariage à Punta Cana",
+      "secondary": [
+        "hébergement des invités à Punta Cana",
+        "réservation de groupe dans un hôtel",
+        "conditions de bloc de chambres"
+      ],
+      "anchor": "coordination de l'hébergement des invités à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2023,
+    "es": 1985,
+    "pt": 1996,
+    "fr": 2001
+  },
+  "sources": [
+    {
+      "name": "hyatt",
+      "url": "https://about.hyatt.com/content/dam/HGP/Group-Sales-Agreement-Terms-and-Conditions.pdf",
+      "consultedAt": "2026-11-18",
+      "authority": "Primary provider document"
+    },
+    {
+      "name": "majestic",
+      "url": "https://www.majestic-resorts.com/weddings-and-honeymoons",
+      "consultedAt": "2026-11-18",
+      "authority": "Primary provider document"
+    }
+  ],
+  "researchQueries": [
+    "site.hyattinclusivecollection.com wedding group room block attrition contract",
+    "site.majestic-resorts.com wedding free 15 rooms 7 nights Punta Cana",
+    "bloque habitaciones boda Punta Cana mínimo noches contrato hotel",
+    "bloc chambres mariage Punta Cana minimum nuits contrat"
+  ],
+  "editorialMethod": "Contract reading framework, not legal conclusions. Hyatt global document explicitly illustrative, never asserted to govern Punta Cana. Room-night calculations hypothetical. Majestic promotion property/date terms require confirmation.",
+  "pendingIssues": [],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-12",
+    "urls": [
+      "https://sertuinevents.com/blog/punta-cana-wedding-room-blocks/",
+      "https://sertuinevents.com/es/blog/punta-cana-wedding-room-blocks/",
+      "https://sertuinevents.com/pt/blog/punta-cana-wedding-room-blocks/",
+      "https://sertuinevents.com/fr/blog/punta-cana-wedding-room-blocks/"
+    ]
+  }
+}

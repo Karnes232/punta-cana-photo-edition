@@ -1,0 +1,106 @@
+{
+  "topic": 5,
+  "status": "published-and-verified-live",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "how-to-choose-punta-cana-wedding-planner",
+  "versions": {
+    "en": {
+      "title": "How to Choose a Wedding Planner in Punta Cana",
+      "primary": "how to choose a wedding planner in Punta Cana",
+      "secondary": [
+        "questions to ask a Punta Cana wedding planner",
+        "destination wedding planner experience",
+        "wedding planning contract transparency"
+      ],
+      "anchor": "Punta Cana wedding planner"
+    },
+    "es": {
+      "title": "Cómo elegir un wedding planner en Punta Cana",
+      "primary": "cómo elegir un wedding planner en Punta Cana",
+      "secondary": [
+        "mejor organizador de bodas en Punta Cana",
+        "preguntas para un wedding planner",
+        "contratar planificador de bodas en República Dominicana"
+      ],
+      "anchor": "wedding planner en Punta Cana"
+    },
+    "pt": {
+      "title": "Como escolher um wedding planner em Punta Cana",
+      "primary": "como escolher um wedding planner em Punta Cana",
+      "secondary": [
+        "assessoria de casamento em Punta Cana",
+        "perguntas para organizador de casamento",
+        "contratar wedding planner na República Dominicana"
+      ],
+      "anchor": "wedding planner em Punta Cana"
+    },
+    "fr": {
+      "title": "Comment choisir un wedding planner à Punta Cana",
+      "primary": "comment choisir un wedding planner à Punta Cana",
+      "secondary": [
+        "organisateur de mariage en République dominicaine",
+        "questions à poser à un wedding planner",
+        "choisir son organisateur de mariage"
+      ],
+      "anchor": "wedding planner à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2027,
+    "es": 2030,
+    "pt": 2017,
+    "fr": 2054
+  },
+  "sources": [
+    {
+      "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+      "authority": "Company published service and fees",
+      "consultedAt": "2026-11-18"
+    },
+    {
+      "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+      "authority": "Existing company planning guide"
+    },
+    {
+      "url": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+      "authority": "Existing localized guide verified in search results"
+    }
+  ],
+  "researchQueries": [
+    "how choose wedding planner Punta Cana contract questions official",
+    "cómo elegir wedding planner Punta Cana preguntas contrato",
+    "como escolher assessoria casamento Punta Cana contrato",
+    "choisir wedding planner Punta Cana contrat questions"
+  ],
+  "searchIntent": {
+    "en": "Objective hiring criteria and questions",
+    "es": "Comparar experiencia, comunicación y contrato sin promesas de superioridad",
+    "pt": "Escolher assessoria com escopo, equipe e contrato claros",
+    "fr": "Choisir un organisateur sur des responsabilités et éléments vérifiables"
+  },
+  "pendingIssues": [],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-05",
+    "urls": [
+      "https://sertuinevents.com/blog/how-to-choose-punta-cana-wedding-planner/",
+      "https://sertuinevents.com/es/blog/how-to-choose-punta-cana-wedding-planner/",
+      "https://sertuinevents.com/pt/blog/how-to-choose-punta-cana-wedding-planner/",
+      "https://sertuinevents.com/fr/blog/how-to-choose-punta-cana-wedding-planner/"
+    ]
+  }
+}

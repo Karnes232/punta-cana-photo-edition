@@ -1,0 +1,93 @@
+{
+  "topic": 11,
+  "status": "published-and-verified-live",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "small-intimate-wedding-punta-cana-cost",
+  "versions": {
+    "en": {
+      "title": "Small Weddings in Punta Cana: Costs and Planning",
+      "primary": "small wedding Punta Cana cost",
+      "secondary": [
+        "Punta Cana elopement cost",
+        "intimate wedding guest list",
+        "small destination wedding venues"
+      ],
+      "anchor": "wedding planning services in Punta Cana"
+    },
+    "es": {
+      "title": "Bodas íntimas en Punta Cana: precios y planificación",
+      "primary": "costo de boda íntima en Punta Cana",
+      "secondary": [
+        "bodas pequeñas en Punta Cana",
+        "precio de elopement en Punta Cana",
+        "ceremonia íntima en la playa"
+      ],
+      "anchor": "planificación de bodas íntimas en Punta Cana"
+    },
+    "pt": {
+      "title": "Casamentos intimistas em Punta Cana: custos e planejamento",
+      "primary": "custo de casamento intimista em Punta Cana",
+      "secondary": [
+        "mini wedding em Punta Cana",
+        "elopement wedding em Punta Cana",
+        "casamento pequeno na praia"
+      ],
+      "anchor": "organização de casamentos intimistas em Punta Cana"
+    },
+    "fr": {
+      "title": "Mariages intimistes à Punta Cana : coûts et organisation",
+      "primary": "prix d'un mariage intimiste à Punta Cana",
+      "secondary": [
+        "petit mariage à Punta Cana",
+        "elopement à Punta Cana",
+        "cérémonie intime sur la plage"
+      ],
+      "anchor": "organisation de mariages intimistes à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2056,
+    "es": 2041,
+    "pt": 1996,
+    "fr": 2028
+  },
+  "sources": [
+    {
+      "url": "https://sertuinevents.com/punta-cana-elopement-packages/",
+      "authority": "Company's primary published experience and décor pricing",
+      "consultedAt": "2026-11-18"
+    }
+  ],
+  "researchQueries": [
+    "small wedding Punta Cana cost elopement official hotel",
+    "boda íntima Punta Cana costo ceremonia dos oficial",
+    "casamento intimista Punta Cana custo elopement",
+    "mariage intimiste Punta Cana prix elopement"
+  ],
+  "editorialMethod": "Separate fixed/variable costs and ceremony/reception scope; company examples not market averages. US$999 base + US$789 selected decor = US$1788 illustrative published estimate, availability and final terms to confirm.",
+  "pendingIssues": [],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "table",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-11",
+    "urls": [
+      "https://sertuinevents.com/blog/small-intimate-wedding-punta-cana-cost/",
+      "https://sertuinevents.com/es/blog/small-intimate-wedding-punta-cana-cost/",
+      "https://sertuinevents.com/pt/blog/small-intimate-wedding-punta-cana-cost/",
+      "https://sertuinevents.com/fr/blog/small-intimate-wedding-punta-cana-cost/"
+    ]
+  }
+}

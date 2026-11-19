@@ -1,0 +1,94 @@
+{
+  "topic": 6,
+  "status": "published-and-verified-live",
+  "reviewedAt": "2026-11-18",
+  "guideId": "blogGuide-wedding-topic-06",
+  "provisionalSharedSlug": "best-month-wedding-punta-cana",
+  "keywords": {
+    "en": {
+      "title": "What Is the Best Month to Marry in Punta Cana?",
+      "primary": "best month to get married in Punta Cana",
+      "secondary": [
+        "best time of year for a Punta Cana wedding",
+        "Punta Cana monthly rainfall",
+        "seasonal wedding resort rates"
+      ],
+      "anchor": "destination wedding planning in Punta Cana"
+    },
+    "es": {
+      "title": "¿Cuál es el mejor mes para casarse en Punta Cana?",
+      "primary": "mejor mes para casarse en Punta Cana",
+      "secondary": [
+        "mejor época para bodas en Punta Cana",
+        "temporada de lluvias en República Dominicana",
+        "clima para bodas en la playa"
+      ],
+      "anchor": "planificación de bodas de destino en Punta Cana"
+    },
+    "pt": {
+      "title": "Qual é o melhor mês para casar em Punta Cana?",
+      "primary": "melhor mês para casar em Punta Cana",
+      "secondary": [
+        "melhor época para casamento em Punta Cana",
+        "temporada de chuvas na República Dominicana",
+        "clima para casamento na praia"
+      ],
+      "anchor": "planejamento de casamento em Punta Cana"
+    },
+    "fr": {
+      "title": "Quel est le meilleur mois pour se marier à Punta Cana ?",
+      "primary": "meilleur mois pour se marier à Punta Cana",
+      "secondary": [
+        "meilleure période pour un mariage à Punta Cana",
+        "saison des pluies en République dominicaine",
+        "météo pour un mariage sur la plage"
+      ],
+      "anchor": "organisation d'un mariage à destination à Punta Cana"
+    }
+  },
+  "research": {
+    "queries": [
+      "best month wedding Punta Cana climate",
+      "mejor mes boda Punta Cana clima",
+      "melhor mês casamento Punta Cana clima",
+      "meilleur mois mariage Punta Cana météo"
+    ],
+    "sources": [
+      "https://www.godominicanrepublic.com/travel/travel-tips",
+      "https://www.nhc.noaa.gov/aboutgloss.shtml",
+      "https://worldweather.wmo.int/en/city.html?cityId=596"
+    ],
+    "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
+  },
+  "bodyWordCounts": {
+    "en": 2189,
+    "es": 2030,
+    "pt": 1999,
+    "fr": 2031
+  },
+  "editorialDepth": "Expanded all four languages with equivalent date comparison, travel constraints, weather-data interpretation, multi-day contingency and contract-change planning.",
+  "pendingIssues": [],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "setup",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-06",
+    "urls": [
+      "https://sertuinevents.com/blog/best-month-wedding-punta-cana/",
+      "https://sertuinevents.com/es/blog/best-month-wedding-punta-cana/",
+      "https://sertuinevents.com/pt/blog/best-month-wedding-punta-cana/",
+      "https://sertuinevents.com/fr/blog/best-month-wedding-punta-cana/"
+    ]
+  }
+}

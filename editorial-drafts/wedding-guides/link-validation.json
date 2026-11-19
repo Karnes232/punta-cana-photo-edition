@@ -1,0 +1,127 @@
+{
+  "reviewedAt": "2026-11-18",
+  "method": "Chrome navigation from each localized service page, followed by rendered heading inspection on all six linked guides in each language.",
+  "results": [
+    {
+      "language": "en",
+      "url": "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "en",
+      "url": "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "en",
+      "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "en",
+      "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "en",
+      "url": "https://sertuinevents.com/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "en",
+      "url": "https://sertuinevents.com/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "es",
+      "url": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "es",
+      "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "es",
+      "url": "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "es",
+      "url": "https://sertuinevents.com/es/blog/punta-cana-destination-wedding-guest-travel-guide/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "es",
+      "url": "https://sertuinevents.com/es/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "es",
+      "url": "https://sertuinevents.com/es/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "pt",
+      "url": "https://sertuinevents.com/pt/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "pt",
+      "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "pt",
+      "url": "https://sertuinevents.com/pt/blog/punta-cana-wedding-rain-plan/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "pt",
+      "url": "https://sertuinevents.com/pt/blog/punta-cana-destination-wedding-guest-travel-guide/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "pt",
+      "url": "https://sertuinevents.com/pt/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "pt",
+      "url": "https://sertuinevents.com/pt/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "fr",
+      "url": "https://sertuinevents.com/fr/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "fr",
+      "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "fr",
+      "url": "https://sertuinevents.com/fr/blog/punta-cana-wedding-rain-plan/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "fr",
+      "url": "https://sertuinevents.com/fr/blog/punta-cana-destination-wedding-guest-travel-guide/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "fr",
+      "url": "https://sertuinevents.com/fr/blog/plan-multicultural-wedding-punta-cana-family-traditions/",
+      "result": "Rendered localized article heading verified"
+    },
+    {
+      "language": "fr",
+      "url": "https://sertuinevents.com/fr/blog/south-asian-wedding-punta-cana-venue-logistics-checklist/",
+      "result": "Rendered localized article heading verified"
+    }
+  ],
+  "note": "Prior research cache misses were not404s. This validates existing related destinations, not preview rendering of the new unpublished drafts."
+}

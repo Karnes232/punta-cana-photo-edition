@@ -1,0 +1,110 @@
+{
+  "topic": 25,
+  "status": "published-and-verified-live",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "punta-cana-wedding-day-timeline",
+  "versions": {
+    "en": {
+      "title": "Punta Cana Wedding Timeline: Ceremony to Reception",
+      "primary": "Punta Cana wedding day timeline",
+      "secondary": [
+        "Punta Cana wedding reception schedule",
+        "beach ceremony start time",
+        "sunset wedding photography timing"
+      ],
+      "anchor": "wedding day coordination in Punta Cana"
+    },
+    "es": {
+      "title": "Cronograma de boda en Punta Cana: de la ceremonia a la recepción",
+      "primary": "cronograma del día de la boda en Punta Cana",
+      "secondary": [
+        "horario de boda en Punta Cana",
+        "organización de ceremonia y recepción",
+        "planificación de fotos al atardecer"
+      ],
+      "anchor": "coordinación del día de la boda en Punta Cana"
+    },
+    "pt": {
+      "title": "Cronograma de casamento em Punta Cana: da cerimônia à recepção",
+      "primary": "cronograma do dia do casamento em Punta Cana",
+      "secondary": [
+        "roteiro de casamento em Punta Cana",
+        "horário da cerimônia na praia",
+        "fotos de casamento ao pôr do sol"
+      ],
+      "anchor": "coordenação do dia do casamento em Punta Cana"
+    },
+    "fr": {
+      "title": "Planning du jour du mariage à Punta Cana : de la cérémonie à la réception",
+      "primary": "planning du jour du mariage à Punta Cana",
+      "secondary": [
+        "déroulement d'un mariage à Punta Cana",
+        "horaire de cérémonie sur la plage",
+        "photos de mariage au coucher du soleil"
+      ],
+      "anchor": "coordination du jour du mariage à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2057,
+    "es": 2029,
+    "pt": 2018,
+    "fr": 2014
+  },
+  "researchQueries": [
+    "Punta Cana wedding day timeline sunset ceremony",
+    "cronograma boda Punta Cana ceremonia recepción",
+    "cronograma casamento Punta Cana cerimônia recepção",
+    "planning jour mariage Punta Cana cérémonie réception"
+  ],
+  "searchIntent": {
+    "en": "Sequence preparation, ceremony, portraits and reception without assuming universal sunset",
+    "es": "Orden práctico del día con traslados y responsables",
+    "pt": "Roteiro operacional, fotos e transições entre cerimônia e festa",
+    "fr": "Déroulement du jour J, service, discours et marges"
+  },
+  "sources": [
+    {
+      "url": "https://www.timeanddate.com/sun/dominican-republic/punta-cana",
+      "note": "Date-specific solar calendar; no exact sunset calculated or promised."
+    },
+    {
+      "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/",
+      "note": "Owned operational guidance: no universal weather-decision hour."
+    },
+    {
+      "url": "https://sertuinevents.com/blog/punta-cana-destination-wedding-guest-travel-guide/",
+      "note": "Guest logistics context; no hotel-specific access promises."
+    },
+    {
+      "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+      "note": "Day-coordination scope verified in all four languages."
+    }
+  ],
+  "pendingIssues": [],
+  "editorialNote": "Illustrative program is expressly conditional, not a real client timeline or resort schedule. Word count includes title, direct answer, sections and FAQs.",
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "setup",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-25",
+    "urls": [
+      "https://sertuinevents.com/blog/punta-cana-wedding-day-timeline/",
+      "https://sertuinevents.com/es/blog/punta-cana-wedding-day-timeline/",
+      "https://sertuinevents.com/pt/blog/punta-cana-wedding-day-timeline/",
+      "https://sertuinevents.com/fr/blog/punta-cana-wedding-day-timeline/"
+    ]
+  }
+}

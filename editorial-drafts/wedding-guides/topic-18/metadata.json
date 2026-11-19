@@ -1,0 +1,109 @@
+{
+  "topic": 18,
+  "status": "published-and-verified-live",
+  "proposedGuideId": "blogGuide-wedding-topic-18",
+  "proposedSharedSlug": "indian-wedding-packages-punta-cana-inclusions",
+  "researchedAt": "2026-11-18",
+  "keywords": {
+    "en": {
+      "title": "Indian Wedding Packages in Punta Cana: What’s Included?",
+      "primary": "what is included in Indian wedding packages Punta Cana",
+      "secondary": [
+        "all-inclusive Indian wedding packages Punta Cana",
+        "Haldi and Sangeet inclusions",
+        "specialized wedding vendor charges"
+      ],
+      "anchor": "South Asian wedding planning in Punta Cana"
+    },
+    "es": {
+      "title": "Paquetes de bodas indias en Punta Cana: ¿qué incluyen?",
+      "primary": "paquetes de bodas indias en Punta Cana",
+      "secondary": [
+        "paquetes todo incluido para bodas indias",
+        "ceremonia Haldi en Punta Cana",
+        "organización de Sangeet"
+      ],
+      "anchor": "organización de bodas del sur de Asia en Punta Cana"
+    },
+    "pt": {
+      "title": "Pacotes de casamento indiano em Punta Cana: o que incluem?",
+      "primary": "pacotes de casamento indiano em Punta Cana",
+      "secondary": [
+        "casamento indiano all inclusive",
+        "cerimônia Haldi em Punta Cana",
+        "festa Sangeet na República Dominicana"
+      ],
+      "anchor": "planejamento de casamentos indianos em Punta Cana"
+    },
+    "fr": {
+      "title": "Forfaits de mariage indien à Punta Cana : que comprennent-ils ?",
+      "primary": "forfait mariage indien à Punta Cana",
+      "secondary": [
+        "mariage indien tout compris",
+        "cérémonie Haldi à Punta Cana",
+        "organisation d'un Sangeet"
+      ],
+      "anchor": "organisation de mariages d'Asie du Sud à Punta Cana"
+    }
+  },
+  "researchNotes": [
+    "Localized independent searches in EN/ES/PT/FR for package inclusions; no search-volume claims.",
+    "Official localized Sertuin service pages and Hard Rock Punta Cana official wedding page checked.",
+    "Hypothetical package A/B illustration is explicitly invented, not a resort quote.",
+    "All locales expanded to approximately 2000+ words with comparison procedure, scope/room thresholds, culture, guest categories and handover."
+  ],
+  "sources": [
+    "https://hotel.hardrock.com/punta-cana/weddings.aspx",
+    "https://sertuinevents.com/puntacana-wedding-planner/",
+    "https://sertuinevents.com/es/puntacana-wedding-planner/",
+    "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+    "https://sertuinevents.com/fr/puntacana-wedding-planner/"
+  ],
+  "cta": "/puntacana-wedding-planner/",
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-18",
+    "urls": [
+      "https://sertuinevents.com/blog/indian-wedding-packages-punta-cana-inclusions/",
+      "https://sertuinevents.com/es/blog/indian-wedding-packages-punta-cana-inclusions/",
+      "https://sertuinevents.com/pt/blog/indian-wedding-packages-punta-cana-inclusions/",
+      "https://sertuinevents.com/fr/blog/indian-wedding-packages-punta-cana-inclusions/"
+    ]
+  },
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "reviewedAt": "2026-11-18",
+  "pendingIssues": [],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "table",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "bodyWordCounts": {
+    "en": 2168,
+    "es": 2031,
+    "pt": 2020,
+    "fr": 2026
+  }
+}

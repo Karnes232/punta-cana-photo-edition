@@ -1,0 +1,113 @@
+{
+  "topic": 4,
+  "status": "published-and-verified-live",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "punta-cana-full-planning-vs-day-of-coordination",
+  "versions": {
+    "en": {
+      "title": "Full Planning or Day-of Coordination in Punta Cana?",
+      "primary": "full planning vs day-of coordination Punta Cana",
+      "secondary": [
+        "wedding planner vs coordinator Punta Cana",
+        "full wedding planning services",
+        "wedding day vendor management"
+      ],
+      "anchor": "wedding day coordination in Punta Cana"
+    },
+    "es": {
+      "title": "¿Planificación completa o coordinación del día de la boda en Punta Cana?",
+      "primary": "planificación completa vs coordinación del día en Punta Cana",
+      "secondary": [
+        "wedding planner o coordinador de bodas",
+        "coordinación del día de la boda",
+        "servicios de organización de bodas"
+      ],
+      "anchor": "coordinación de bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Assessoria completa ou coordenação do dia do casamento em Punta Cana?",
+      "primary": "assessoria completa ou assessoria do dia em Punta Cana",
+      "secondary": [
+        "assessoria de casamento em Punta Cana",
+        "coordenação do dia do casamento",
+        "planejamento completo de casamento"
+      ],
+      "anchor": "coordenação de casamentos em Punta Cana"
+    },
+    "fr": {
+      "title": "Organisation complète ou coordination du jour J à Punta Cana ?",
+      "primary": "organisation complète ou coordination jour J à Punta Cana",
+      "secondary": [
+        "wedding planner ou coordinateur de mariage",
+        "coordination du jour du mariage",
+        "prestations d'organisation de mariage"
+      ],
+      "anchor": "coordination du jour du mariage à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2175,
+    "es": 2019,
+    "pt": 2027,
+    "fr": 2091
+  },
+  "sources": [
+    {
+      "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+      "authority": "Company's published service scope",
+      "consultedAt": "2026-11-18"
+    },
+    {
+      "url": "https://sertuinevents.com/es/puntacana-wedding-planner/",
+      "authority": "Company's published service scope",
+      "consultedAt": "2026-11-18"
+    },
+    {
+      "url": "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+      "authority": "Company's published service scope",
+      "consultedAt": "2026-11-18"
+    },
+    {
+      "url": "https://sertuinevents.com/fr/puntacana-wedding-planner/",
+      "authority": "Company's published service scope",
+      "consultedAt": "2026-11-18"
+    }
+  ],
+  "researchQueries": [
+    "full planning day of coordination Punta Cana wedding Sertuin",
+    "planificación completa coordinación día boda Punta Cana",
+    "assessoria completa assessoria do dia Punta Cana",
+    "organisation complète coordination jour J Punta Cana"
+  ],
+  "searchIntent": {
+    "en": "Compare remaining decisions with operational coordination",
+    "es": "Diferenciar planificación completa y coordinación del día",
+    "pt": "Distinguir assessoria completa, assessoria do dia e responsabilidades",
+    "fr": "Comparer organisation complète et coordination du jour J"
+  },
+  "pendingIssues": [],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-04",
+    "urls": [
+      "https://sertuinevents.com/blog/punta-cana-full-planning-vs-day-of-coordination/",
+      "https://sertuinevents.com/es/blog/punta-cana-full-planning-vs-day-of-coordination/",
+      "https://sertuinevents.com/pt/blog/punta-cana-full-planning-vs-day-of-coordination/",
+      "https://sertuinevents.com/fr/blog/punta-cana-full-planning-vs-day-of-coordination/"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-18",
+  "project": "mj6f2710",
+  "dataset": "production",
+  "publishedArticles": 100,
+  "publishedGuides": 25,
+  "exactContentReadback": "125/125",
+  "staleDrafts": 0,
+  "websitePagesPassed": 100,
+  "websitePagesChecked": 100,
+  "deployUrl": "https://app.netlify.com/projects/sertuin-events/deploys/6afe5a078cb0df20e258209f",
+  "productionCodeCommit": "a7defc50d4724714ff97d7763f47df2902f0efaa",
+  "codeChanges": 0,
+  "publicationTransaction": "64qTheeLYgdN9iV0dB5nto",
+  "slugCorrection": {
+    "topic": 3,
+    "oldProposed": "punta-cana-wedding-package-inclusions",
+    "published": "punta-cana-wedding-packages-inclusions-extras",
+    "reason": "Avoid a retired URL without changing existing redirects."
+  }
+}

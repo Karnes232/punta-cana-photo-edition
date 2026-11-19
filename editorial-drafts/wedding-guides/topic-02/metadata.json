@@ -1,0 +1,92 @@
+{
+  "topic": 2,
+  "status": "published-and-verified-live",
+  "reviewedAt": "2026-11-18",
+  "guideId": "baa18c57-5f7f-456c-9d8b-2630c8ea38a0",
+  "sharedSlug": "wedding-planner-cost-punta-cana",
+  "versions": {
+    "en": {
+      "title": "How Much Does a Wedding Planner Cost in Punta Cana?",
+      "primary": "wedding planner cost Punta Cana",
+      "secondary": [
+        "how much does a wedding planner charge in Punta Cana",
+        "flat fee vs percentage wedding planner",
+        "wedding planning fee inclusions"
+      ],
+      "anchor": "independent wedding planner in Punta Cana"
+    },
+    "es": {
+      "title": "¿Cuánto cuesta contratar un wedding planner en Punta Cana?",
+      "primary": "cuánto cuesta un wedding planner en Punta Cana",
+      "secondary": [
+        "precio de organizador de bodas en Punta Cana",
+        "honorarios de wedding planner",
+        "servicios de planificación de bodas"
+      ],
+      "anchor": "organizador de bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Quanto custa contratar um wedding planner em Punta Cana?",
+      "primary": "quanto custa um wedding planner em Punta Cana",
+      "secondary": [
+        "preço de assessoria de casamento em Punta Cana",
+        "honorários de assessoria de casamento",
+        "serviços de organização de casamentos"
+      ],
+      "anchor": "assessoria de casamento em Punta Cana"
+    },
+    "fr": {
+      "title": "Combien coûte un wedding planner à Punta Cana ?",
+      "primary": "tarif wedding planner Punta Cana",
+      "secondary": [
+        "prix d'un organisateur de mariage à Punta Cana",
+        "honoraires d'organisation de mariage",
+        "prestations d'un wedding planner"
+      ],
+      "anchor": "wedding planner indépendant à Punta Cana"
+    }
+  },
+  "searchIntent": "Understand wedding planner fees and scope, distinct from the full wedding budget in topic01.",
+  "sources": [
+    "https://sertuinevents.com/puntacana-wedding-planner/",
+    "https://dominicanweddingplanner.com/rates/",
+    "https://sertuinevents.com/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+    "https://sertuinevents.com/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+    "https://sertuinevents.com/es/puntacana-wedding-planner/",
+    "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+    "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+    "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+    "https://sertuinevents.com/fr/puntacana-wedding-planner/"
+  ],
+  "editorialNote": "Preserves existing guide reference and shared slug. Quoted rates are dated examples from their named source, not a market-wide tariff.",
+  "pendingIssues": [],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "bodyWordCounts": {
+    "en": 2176,
+    "es": 2130,
+    "pt": 2194,
+    "fr": 2296
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "baa18c57-5f7f-456c-9d8b-2630c8ea38a0",
+    "urls": [
+      "https://sertuinevents.com/blog/wedding-planner-cost-punta-cana/",
+      "https://sertuinevents.com/es/blog/wedding-planner-cost-punta-cana/",
+      "https://sertuinevents.com/pt/blog/wedding-planner-cost-punta-cana/",
+      "https://sertuinevents.com/fr/blog/wedding-planner-cost-punta-cana/"
+    ]
+  }
+}
