@@ -34,6 +34,7 @@ exports.onCreatePage = ({ page, actions }) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   await require("./scripts/create-review-pages")({ actions, reporter });
+  await require("./scripts/create-about-pages")({ actions, reporter });
   const queryResults = await graphql(`
     query MyQuery {
       sanityGeneralLayout(_id: { eq: "generalLayout" }) {

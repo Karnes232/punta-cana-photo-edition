@@ -1,4 +1,5 @@
 import { adminPage } from "./documents/adminPage"
+import { aboutTypes } from "./documents/about"
 import { sharedWebsiteTypes } from "./objects/sharedWebsiteContent"
 import { blogCategory } from "./documents/blogCategory"
 import { blogGuide } from "./documents/blogGuide"
@@ -48,6 +49,7 @@ import { workMode } from "./objects/workMode"
 import { reviewsPage, reviewCategory, clientReview, reviewObjects, reviewVerification } from "./documents/reviews"
 
 export const schemaTypes = [
+  ...aboutTypes,
   ...sharedWebsiteTypes,
   reviewsPage, reviewCategory, clientReview, reviewVerification, ...reviewObjects,
   // Documents

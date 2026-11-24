@@ -16,10 +16,12 @@ import { WarningOutlineIcon } from "@sanity/icons/WarningOutline"
 import type { StructureResolver } from "sanity/structure"
 
 import { languages } from "./schemaTypes/shared/languages"
+import { dataset } from "./env"
 
 // Types opened by a fixed ID rather than listed: one document (generalLayout), or
 // one per language for the pages. sanity.config.ts drops their delete/duplicate actions.
 export const singletonTypes = new Set([
+  "aboutPage",
   "reviewsPage",
   "generalLayout",
   "adminPage",
@@ -66,6 +68,12 @@ export const proposalPackagePageId = (packageId: string, language: string) =>
   `proposalPackagePage-${packageId.replace(/^drafts\./, "").replace(/^proposalPackage-/, "")}-${language}`
 
 export const structure: StructureResolver = (S) => {
+  if (dataset === "about-staging") return S.list().title("About Us — Isolated Review").items([
+    S.listItem().title("Page Content").id("aboutPages").child(S.list().title("Page Content").items(languages.map(({id,title})=>S.listItem().id(id).title(title).child(S.document().schemaType("aboutPage").documentId(`aboutPage-${id}`))))),
+    S.documentTypeListItem("companyFounder").title("Founders' Biographies"),
+    S.listItem().title("Sertuin SRL & Shared Values").id("corporate").child(S.document().schemaType("generalLayout").documentId("generalLayout")),
+    S.documentTypeListItem("brandProfile").title("Our Seven Brands — Buttons & Links")
+  ])
   const singleton = (type: string, title: string, icon: typeof CogIcon) =>
     S.listItem()
       .title(title)

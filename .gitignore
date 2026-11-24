@@ -75,6 +75,7 @@ node_modules
 .netlify
 .tmp-config/
 .tmp/
+static/__about-review__/
 
 # Contentful safety backups written before each deletion round (2026-08-24).
 # Kept locally so a deleted model or entry can be reconstructed; not repo content.

@@ -186,6 +186,7 @@ module.exports = {
           })).filter(
             (page) =>
               !page.pageContext?.reviewsNoIndex &&
+              !page.pageContext?.aboutNoIndex &&
               !page.path.includes("admin") &&
               !page.path.includes("/contact/thankyou/") &&
               !isPackageDetailPath(page.path) &&
@@ -302,6 +303,7 @@ module.exports = {
         },
         pages: [
           { matchPath: "/:lang?/reviews", getLanguageFromPath: true },
+          { matchPath: "/:lang?/about", getLanguageFromPath: true },
           {
             matchPath: "/:lang?/blog",
             getLanguageFromPath: true,

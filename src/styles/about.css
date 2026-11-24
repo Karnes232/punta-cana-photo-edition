@@ -1,0 +1,299 @@
+.about-page {
+  color: #111827;
+  overflow-wrap: anywhere;
+}
+.about-container {
+  max-width: 1240px;
+  margin: auto;
+  padding: 3.5rem 2rem;
+}
+.about-page h1 {
+  font-size: clamp(2.6rem, 5vw, 4.3rem);
+  line-height: 1.08;
+  margin: 0.7rem 0 1.1rem;
+}
+.about-page h2 {
+  font-size: clamp(2rem, 3vw, 2.625rem);
+  line-height: 1.15;
+  margin: 0 0 1.25rem;
+}
+.about-page h3 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin: 0 0 0.7rem;
+}
+.about-page p {
+  font-family: "Montserrat Variable", Montserrat, sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0 0 1.2rem;
+  white-space: pre-line;
+}
+.about-page .about-eyebrow,
+.about-specialty,
+.about-profile-title {
+  font-family: "Montserrat Variable", Montserrat, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.about-page .about-eyebrow {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.about-intro {
+  padding-top: 2.5rem;
+  padding-bottom: 1.75rem;
+  max-width: 1240px;
+}
+.about-page .about-subtitle {
+  font-family: "Crimson Pro Variable", serif;
+  font-size: 1.55rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+.about-founders {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 3.25rem;
+  align-items: start;
+  padding-top: 1rem;
+}
+.about-founders figure {
+  margin: 0;
+}
+.about-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+.about-page figcaption {
+  font:
+    0.875rem/1.6 "Montserrat Variable",
+    sans-serif;
+  margin-top: 0.8rem;
+}
+.about-profiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  border-top: 1px solid #d6c6ae;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+.about-profiles p {
+  font-size: 0.9rem;
+}
+.about-profiles h3 {
+  font-size: 1.45rem;
+}
+.about-company {
+  padding-top: 0;
+  padding-bottom: 3rem;
+  max-width: 1000px;
+}
+.about-brand-wrap {
+  background: #f3f4f6;
+}
+.about-main-brand {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3.25rem;
+}
+.about-current {
+  display: inline-block;
+  font:
+    600 0.75rem/1.5 "Montserrat Variable",
+    sans-serif;
+  letter-spacing: 0.07em;
+  padding: 0.35rem 0.65rem;
+  color: #5c3e0c;
+  background: #f1e5d2;
+  margin-bottom: 1rem;
+}
+.about-service-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+.about-service-links a {
+  font:
+    600 0.875rem/1.6 "Montserrat Variable",
+    sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.about-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+.about-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.about-steps svg {
+  color: #8b5e14;
+  margin-bottom: 1rem;
+}
+.about-values {
+  padding-top: 0;
+}
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem 2.5rem;
+  margin-top: 2rem;
+}
+.about-values-grid article {
+  border-top: 1px solid #d6c6ae;
+  padding-top: 1.25rem;
+}
+.about-directory {
+  padding-top: 1rem;
+}
+.about-brands {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.about-card {
+  border: 1px solid #d6c6ae;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  min-width: 0;
+}
+.about-card-current {
+  border-color: #8b5e14;
+  background: #faf7f1;
+}
+.about-card p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+.about-card .about-specialty {
+  color: #694b23;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.about-card-action {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  width: 100%;
+}
+.about-brand-logo {
+  max-width: 8rem;
+  margin-bottom: 1rem;
+}
+.about-button {
+  display: inline-block;
+  border: 1px solid var(--primary-color);
+  padding: 1rem 1.5rem;
+  background: var(--primary-color);
+  color: black;
+  font-family: "Montserrat Variable", Montserrat, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+}
+.about-button:hover:not(:disabled) {
+  background: #8b5e14;
+  color: white;
+}
+.about-button:disabled {
+  background: #e5e7eb;
+  color: #4b5563;
+  border-color: #9ca3af;
+  cursor: not-allowed;
+}
+.about-page :focus-visible {
+  outline: 3px solid #8b5e14;
+  outline-offset: 5px;
+}
+.about-closing .about-container {
+  max-width: 1000px;
+  text-align: center;
+}
+.about-dark {
+  background: #03071a;
+  color: white;
+}
+.about-soft {
+  background: #f3f4f6;
+}
+.about-closing picture {
+  max-width: 400px;
+  margin: 1.5rem auto;
+}
+@media (max-width: 1000px) {
+  .about-brands {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .about-founders {
+    gap: 2rem;
+  }
+  .about-profiles {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 760px) {
+  .about-container {
+    padding: 2.5rem 1.375rem;
+  }
+  .about-intro {
+    padding-bottom: 1rem;
+  }
+  .about-founders,
+  .about-main-brand,
+  .about-two,
+  .about-steps,
+  .about-brands,
+  .about-values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .about-founders {
+    padding-top: 1rem;
+  }
+  .about-founders figure {
+    max-width: 420px;
+    width: 100%;
+    margin: auto;
+  }
+  .about-company,
+  .about-values {
+    padding-top: 0;
+  }
+  .about-card {
+    padding: 1.5rem;
+  }
+  .about-card-action .about-button {
+    width: 100%;
+    text-align: center;
+  }
+  .about-profiles {
+    grid-template-columns: 1fr 1fr;
+  }
+  .about-page .about-eyebrow {
+    font-size: 0.8rem;
+  }
+  .about-two {
+    margin-bottom: 2rem;
+  }
+}
+@media (max-width: 420px) {
+  .about-profiles {
+    grid-template-columns: 1fr;
+  }
+}

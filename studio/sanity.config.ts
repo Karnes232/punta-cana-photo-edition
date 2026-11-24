@@ -11,6 +11,7 @@ import { hiddenTypes, singletonTypes, structure } from "./structure"
 
 // Types with one document per language, linked through the Translations menu.
 export const translatedTypes = [
+  "aboutPage",
   "reviewsPage",
   "homePage",
   "contactPage",
@@ -39,7 +40,7 @@ const templateType = (templateId: string) =>
 
 export default defineConfig({
   name: "sertuin",
-  title: "Sertuin Events",
+  title: dataset === "about-staging" ? "Sertuin Events — ABOUT REVIEW ONLY" : "Sertuin Events",
   projectId,
   dataset,
   plugins: [

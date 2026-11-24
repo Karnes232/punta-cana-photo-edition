@@ -15,8 +15,10 @@ export const generalLayout = defineType({
     { name: "social", title: "Social" },
     { name: "legal", title: "Legal & admin" },
     { name: "shared", title: "Shared Website Content" },
+    { name: "corporate", title: "Corporate Information" },
   ],
   fields: [
+    defineField({name:"corporateProfile",title:"Sertuin SRL",type:"aboutCorporateProfile",group:"corporate"}),
     defineField({name:"sharedContent",title:"Shared Website Content",type:"sharedWebsiteContent",group:"shared"}),
     defineField({
       name: "companyName",

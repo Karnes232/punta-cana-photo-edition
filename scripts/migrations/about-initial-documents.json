@@ -1,0 +1,990 @@
+[
+  {
+    "_id": "brandProfile-sertuin-events",
+    "_type": "brandProfile",
+    "brandId": "sertuin-events",
+    "name": "Sertuin Events",
+    "specialty": {
+      "en": "Full-Service Event Planning & Management",
+      "es": "Planificación y gestión integral de eventos",
+      "pt": "Planejamento e gestão completa de eventos",
+      "fr": "Organisation et gestion complète d’événements"
+    },
+    "description": {
+      "en": "Full-service planning, coordination, and execution of destination weddings, marriage proposals, gender reveals, private celebrations, corporate events, and personalized experiences in Punta Cana.",
+      "es": "Planificación, coordinación y ejecución integral de bodas de destino, propuestas de matrimonio, revelaciones de género, celebraciones privadas, eventos corporativos y experiencias personalizadas en Punta Cana.",
+      "pt": "Planejamento, coordenação e execução completa de casamentos no destino, pedidos de casamento, chás revelação, celebrações privadas, eventos corporativos e experiências personalizadas em Punta Cana.",
+      "fr": "Organisation, coordination et réalisation complète de mariages à destination, demandes en mariage, révélations du sexe du bébé, célébrations privées, événements d’entreprise et expériences personnalisées à Punta Cana."
+    },
+    "homepageButtonLabel": {
+      "en": "Visit Website",
+      "es": "Visitar sitio web",
+      "pt": "Visitar site",
+      "fr": "Visiter le site"
+    },
+    "homepageUrl": "https://sertuinevents.com/",
+    "homepageLinkEnabled": true,
+    "order": 0,
+    "active": true
+  },
+  {
+    "_id": "brandProfile-punta-cana-photo-edition",
+    "_type": "brandProfile",
+    "brandId": "punta-cana-photo-edition",
+    "name": "Punta Cana Photo Edition",
+    "specialty": {
+      "en": "Professional Photography",
+      "es": "Fotografía profesional",
+      "pt": "Fotografia profissional",
+      "fr": "Photographie professionnelle"
+    },
+    "description": {
+      "en": "A specialized photography business providing professional coverage of weddings, marriage proposals, celebrations, and corporate events. Its services are available both for events organized within Sertuin SRL and independently for clients and external event organizers.",
+      "es": "Negocio especializado en fotografía profesional para bodas, propuestas de matrimonio, celebraciones y eventos corporativos. Trabaja tanto en eventos organizados dentro de Sertuin SRL como de forma independiente para clientes y organizadores externos.",
+      "pt": "Empresa especializada em fotografia profissional de casamentos, pedidos de casamento, celebrações e eventos corporativos. Atende eventos organizados pelas marcas da Sertuin SRL e também clientes e organizadores independentes.",
+      "fr": "Une activité spécialisée dans la photographie professionnelle de mariages, demandes en mariage, célébrations et événements d’entreprise. Elle intervient pour les marques de Sertuin SRL ainsi que pour des clients et organisateurs indépendants."
+    },
+    "homepageButtonLabel": {
+      "en": "Visit Website",
+      "es": "Visitar sitio web",
+      "pt": "Visitar site",
+      "fr": "Visiter le site"
+    },
+    "homepageUrl": "https://puntacanaphotoedition.com/",
+    "homepageLinkEnabled": true,
+    "order": 1,
+    "active": true
+  },
+  {
+    "_id": "brandProfile-punta-cana-proposal-packages",
+    "_type": "brandProfile",
+    "brandId": "punta-cana-proposal-packages",
+    "name": "Punta Cana Proposal Packages",
+    "specialty": {
+      "en": "Romantic Proposals & Private Gourmet Dining",
+      "es": "Propuestas románticas y cenas gourmet privadas",
+      "pt": "Pedidos românticos e jantares gourmet privativos",
+      "fr": "Demandes romantiques et dîners gastronomiques privés"
+    },
+    "description": {
+      "en": "Specialized romantic marriage proposals paired with private three-course gourmet dinners in a designated beachfront setting in Cabeza de Toro, Punta Cana. The brand also creates decorated private dining experiences for anniversaries, birthdays, and special occasions.",
+      "es": "Propuestas de matrimonio románticas con cenas gourmet privadas de tres tiempos en un espacio designado frente al mar en Cabeza de Toro, Punta Cana. También crea cenas privadas decoradas para aniversarios, cumpleaños y ocasiones especiales.",
+      "pt": "Pedidos de casamento românticos com jantares gourmet privativos de três pratos em um espaço à beira-mar em Cabeza de Toro, Punta Cana. Também cria jantares decorados para aniversários e outras ocasiões especiais.",
+      "fr": "Des demandes en mariage romantiques accompagnées de dîners gastronomiques privés en trois services dans un cadre désigné en bord de mer à Cabeza de Toro. La marque organise aussi des dîners décorés pour anniversaires et occasions spéciales."
+    },
+    "homepageButtonLabel": {
+      "en": "Visit Website",
+      "es": "Visitar sitio web",
+      "pt": "Visitar site",
+      "fr": "Visiter le site"
+    },
+    "homepageUrl": "https://puntacanaproposalpackages.com/",
+    "homepageLinkEnabled": true,
+    "order": 2,
+    "active": true
+  },
+  {
+    "_id": "brandProfile-punta-cana-wedding-packages",
+    "_type": "brandProfile",
+    "brandId": "punta-cana-wedding-packages",
+    "name": "Punta Cana Wedding Packages",
+    "specialty": {
+      "en": "Configurable All-Inclusive Weddings",
+      "es": "Bodas todo incluido configurables",
+      "pt": "Casamentos completos e personalizáveis",
+      "fr": "Mariages tout compris personnalisables"
+    },
+    "description": {
+      "en": "Complete wedding experiences at a designated beachfront venue in Cabeza de Toro. Couples can use an interactive online calculator to select their wedding services and understand estimated costs before organizing their celebration.",
+      "es": "Experiencias completas de boda en un espacio designado frente al mar en Cabeza de Toro. Su calculadora interactiva permite elegir servicios y conocer costos estimados antes de organizar la celebración.",
+      "pt": "Experiências completas de casamento em um local à beira-mar em Cabeza de Toro. Uma calculadora interativa permite selecionar serviços e conhecer os custos estimados antes de organizar a celebração.",
+      "fr": "Des mariages complets dans un lieu désigné en bord de mer à Cabeza de Toro. Un calculateur interactif permet aux couples de choisir leurs prestations et d’estimer les coûts avant d’organiser leur célébration."
+    },
+    "homepageButtonLabel": {
+      "en": "Visit Website",
+      "es": "Visitar sitio web",
+      "pt": "Visitar site",
+      "fr": "Visiter le site"
+    },
+    "homepageUrl": "https://puntacanaweddingpackages.com/",
+    "homepageLinkEnabled": true,
+    "order": 3,
+    "active": true
+  },
+  {
+    "_id": "brandProfile-punta-cana-tour-store",
+    "_type": "brandProfile",
+    "brandId": "punta-cana-tour-store",
+    "name": "Punta Cana Tour Store",
+    "specialty": {
+      "en": "Excursions, Group Activities & Transportation",
+      "es": "Excursiones, actividades de grupo y transporte",
+      "pt": "Passeios, atividades em grupo e transporte",
+      "fr": "Excursions, activités de groupe et transport"
+    },
+    "description": {
+      "en": "Private excursions, transportation, customized activities, and destination experiences for visitors and groups traveling to Punta Cana, including groups attending weddings, corporate events, conferences, and private celebrations.",
+      "es": "Excursiones privadas, transporte, actividades personalizadas y experiencias en destino para visitantes y grupos en Punta Cana, incluidos quienes viajan para asistir a bodas, eventos corporativos, conferencias y celebraciones privadas.",
+      "pt": "Passeios privativos, transporte, atividades personalizadas e experiências para visitantes e grupos em Punta Cana, incluindo participantes de casamentos, eventos corporativos, conferências e celebrações privadas.",
+      "fr": "Excursions privées, transport, activités personnalisées et expériences à destination pour les visiteurs et groupes à Punta Cana, notamment ceux qui participent à des mariages, événements d’entreprise, conférences et célébrations privées."
+    },
+    "homepageButtonLabel": {
+      "en": "Visit Website",
+      "es": "Visitar sitio web",
+      "pt": "Visitar site",
+      "fr": "Visiter le site"
+    },
+    "homepageUrl": "https://puntacanatourstore.com/",
+    "homepageLinkEnabled": true,
+    "order": 4,
+    "active": true
+  },
+  {
+    "_id": "brandProfile-grecia-mejia-weddings",
+    "_type": "brandProfile",
+    "brandId": "grecia-mejia-weddings",
+    "name": "Grecia Mejía Weddings",
+    "specialty": {
+      "en": "Exclusive Luxury Wedding Atelier",
+      "es": "Atelier exclusivo de bodas de lujo",
+      "pt": "Ateliê exclusivo de casamentos de luxo",
+      "fr": "Atelier exclusif de mariages de luxe"
+    },
+    "description": {
+      "en": "An exclusive wedding atelier personally led by Grecia Mejía, specializing in highly customized luxury destination weddings, personalized planning, premium venues, and meticulous execution.",
+      "es": "Atelier exclusivo dirigido personalmente por Grecia Mejía, especializado en bodas de destino de lujo con un alto nivel de personalización, planificación individual, espacios premium y una ejecución cuidada en cada detalle.",
+      "pt": "Ateliê exclusivo liderado pessoalmente por Grecia Mejía, especializado em casamentos de luxo no destino, com alto nível de personalização, planejamento individual, locais premium e execução cuidadosa de cada detalhe.",
+      "fr": "Un atelier exclusif dirigé personnellement par Grecia Mejía, spécialisé dans les mariages de luxe à destination, avec une personnalisation poussée, une organisation sur mesure, des lieux haut de gamme et une réalisation minutieuse."
+    },
+    "homepageButtonLabel": {
+      "en": "Visit Website",
+      "es": "Visitar sitio web",
+      "pt": "Visitar site",
+      "fr": "Visiter le site"
+    },
+    "homepageUrl": "",
+    "homepageLinkEnabled": true,
+    "order": 5,
+    "active": true
+  },
+  {
+    "_id": "brandProfile-sertuinone",
+    "_type": "brandProfile",
+    "brandId": "sertuinone",
+    "name": "SertuinOne",
+    "specialty": {
+      "en": "Corporate Event Production & Destination Management",
+      "es": "Producción de eventos corporativos y gestión en destino",
+      "pt": "Produção de eventos corporativos e gestão no destino",
+      "fr": "Production d’événements d’entreprise et gestion à destination"
+    },
+    "description": {
+      "en": "Comprehensive corporate event production and destination management for large companies. SertuinOne handles venue sourcing, transportation, activities, schedules, suppliers, logistics, and local execution based on each company's program requirements.",
+      "es": "Producción integral de eventos corporativos y gestión en destino para grandes empresas. Coordina espacios, transporte, actividades, horarios, proveedores, logística y ejecución local según los requisitos del programa de cada compañía.",
+      "pt": "Produção completa de eventos corporativos e gestão no destino para grandes empresas. Coordena locais, transporte, atividades, horários, fornecedores, logística e execução local conforme os requisitos do programa de cada empresa.",
+      "fr": "Production complète d’événements d’entreprise et gestion à destination pour les grandes entreprises. SertuinOne coordonne lieux, transport, activités, horaires, prestataires, logistique et réalisation locale selon les exigences du programme de chaque entreprise."
+    },
+    "homepageButtonLabel": {
+      "en": "Visit Website",
+      "es": "Visitar sitio web",
+      "pt": "Visitar site",
+      "fr": "Visiter le site"
+    },
+    "homepageUrl": "",
+    "homepageLinkEnabled": true,
+    "order": 6,
+    "active": true
+  },
+  {
+    "_id": "companyFounder-alex-castro",
+    "_type": "companyFounder",
+    "name": "Alex Castro",
+    "title": {
+      "en": "Dominican Entrepreneur · Owner of Sertuin SRL",
+      "es": "Emprendedor dominicano · Propietario de Sertuin SRL",
+      "pt": "Empreendedor dominicano · Proprietário da Sertuin SRL",
+      "fr": "Entrepreneur dominicain · Propriétaire de Sertuin SRL"
+    },
+    "biography": {
+      "en": "Alex co-owns Sertuin SRL with Grecia Mejía. Their work is grounded in professional responsibility, thoughtful preparation and genuine attention to clients.",
+      "es": "Alex es copropietario de Sertuin SRL junto a Grecia Mejía. Su trabajo se apoya en la responsabilidad profesional, la preparación y la atención genuina a los clientes.",
+      "pt": "Alex é coproprietário da Sertuin SRL com Grecia Mejía. Seu trabalho se baseia na responsabilidade profissional, na preparação e no cuidado com os clientes.",
+      "fr": "Alex est copropriétaire de Sertuin SRL avec Grecia Mejía. Son travail repose sur la responsabilité professionnelle, la préparation et une attention sincère aux clients."
+    },
+    "order": 0,
+    "visible": true
+  },
+  {
+    "_id": "companyFounder-grecia-mejia",
+    "_type": "companyFounder",
+    "name": "Grecia Mejía",
+    "title": {
+      "en": "Dominican Entrepreneur · Owner of Sertuin SRL",
+      "es": "Emprendedora dominicana · Propietaria de Sertuin SRL",
+      "pt": "Empreendedora dominicana · Proprietária da Sertuin SRL",
+      "fr": "Entrepreneure dominicaine · Propriétaire de Sertuin SRL"
+    },
+    "biography": {
+      "en": "Grecia co-owns Sertuin SRL with Alex Castro and personally leads Grecia Mejía Weddings, its specialized luxury wedding atelier.",
+      "es": "Grecia es copropietaria de Sertuin SRL junto a Alex Castro y dirige personalmente Grecia Mejía Weddings, su atelier especializado en bodas de lujo.",
+      "pt": "Grecia é coproprietária da Sertuin SRL com Alex Castro e lidera pessoalmente Grecia Mejía Weddings, seu ateliê especializado em casamentos de luxo.",
+      "fr": "Grecia est copropriétaire de Sertuin SRL avec Alex Castro et dirige personnellement Grecia Mejía Weddings, son atelier spécialisé dans les mariages de luxe."
+    },
+    "order": 1,
+    "visible": true
+  },
+  {
+    "_id": "generalLayout",
+    "_type": "generalLayout",
+    "corporateProfile": {
+      "_type": "aboutCorporateProfile",
+      "legalName": "Sertuin SRL",
+      "description": {
+        "en": "Sertuin SRL is a Dominican company owned by Alex Castro and Grecia Mejía. It brings together seven specialized brands, each with its own identity, services and audience. Shared ownership connects them, together with a commitment to quality, exceptional service and genuine human care.",
+        "es": "Sertuin SRL es una empresa dominicana propiedad de Alex Castro y Grecia Mejía. Reúne siete marcas especializadas, cada una con identidad, servicios y público propios. Las unen sus propietarios y el compromiso con la calidad, el servicio excepcional y la calidez humana.",
+        "pt": "Sertuin SRL é uma empresa dominicana de Alex Castro e Grecia Mejía. Reúne sete marcas especializadas, cada uma com identidade, serviços e público próprios. Elas compartilham os mesmos proprietários e o compromisso com a qualidade, o serviço excepcional e o cuidado humano.",
+        "fr": "Sertuin SRL est une entreprise dominicaine appartenant à Alex Castro et Grecia Mejía. Elle réunit sept marques spécialisées, chacune avec son identité, ses services et son public. Elles partagent les mêmes propriétaires et un engagement envers la qualité, le service et l’attention humaine."
+      },
+      "history": {
+        "en": "The owners have approximately ten years of experience in destination events.",
+        "es": "Los propietarios tienen aproximadamente diez años de experiencia en eventos de destino.",
+        "pt": "Os proprietários têm aproximadamente dez anos de experiência em eventos no destino.",
+        "fr": "Les propriétaires possèdent environ dix ans d’expérience dans les événements à destination."
+      },
+      "location": "Punta Cana",
+      "country": "Dominican Republic",
+      "founders": [
+        {
+          "_type": "reference",
+          "_ref": "companyFounder-alex-castro",
+          "_key": "founder-0"
+        },
+        {
+          "_type": "reference",
+          "_ref": "companyFounder-grecia-mejia",
+          "_key": "founder-1"
+        }
+      ],
+      "values": [
+        {
+          "_key": "value-0",
+          "_type": "aboutPrinciple",
+          "heading": {
+            "en": "Quality",
+            "es": "Calidad",
+            "pt": "Qualidade",
+            "fr": "Qualité"
+          },
+          "description": {
+            "en": "Careful preparation, high professional standards, and attention to detail.",
+            "es": "Preparación cuidadosa, altos estándares profesionales y atención al detalle.",
+            "pt": "Preparação cuidadosa, padrões profissionais elevados e atenção aos detalhes.",
+            "fr": "Une préparation soignée, des exigences professionnelles élevées et le souci du détail."
+          },
+          "order": 0,
+          "visible": true
+        },
+        {
+          "_key": "value-1",
+          "_type": "aboutPrinciple",
+          "heading": {
+            "en": "Exceptional Service",
+            "es": "Servicio excepcional",
+            "pt": "Serviço excepcional",
+            "fr": "Service exceptionnel"
+          },
+          "description": {
+            "en": "Clear communication, responsiveness, personalized attention, and a genuine commitment to clients.",
+            "es": "Comunicación clara, capacidad de respuesta, atención personalizada y compromiso genuino con los clientes.",
+            "pt": "Comunicação clara, agilidade, atenção personalizada e compromisso genuíno com os clientes.",
+            "fr": "Une communication claire, de la réactivité, une attention personnalisée et un engagement sincère envers les clients."
+          },
+          "order": 1,
+          "visible": true
+        },
+        {
+          "_key": "value-2",
+          "_type": "aboutPrinciple",
+          "heading": {
+            "en": "Human Care",
+            "es": "Calidez humana",
+            "pt": "Cuidado humano",
+            "fr": "Attention humaine"
+          },
+          "description": {
+            "en": "Respect, warmth, understanding, and consideration for the people behind every experience.",
+            "es": "Respeto, calidez, comprensión y consideración por las personas detrás de cada experiencia.",
+            "pt": "Respeito, acolhimento, compreensão e consideração pelas pessoas por trás de cada experiência.",
+            "fr": "Respect, chaleur, compréhension et considération pour les personnes au cœur de chaque expérience."
+          },
+          "order": 2,
+          "visible": true
+        },
+        {
+          "_key": "value-3",
+          "_type": "aboutPrinciple",
+          "heading": {
+            "en": "Professional Responsibility",
+            "es": "Responsabilidad profesional",
+            "pt": "Responsabilidade profissional",
+            "fr": "Responsabilité professionnelle"
+          },
+          "description": {
+            "en": "A serious commitment to planning, organization, and the responsibilities entrusted to each team.",
+            "es": "Un compromiso serio con la planificación, la organización y las responsabilidades confiadas a cada equipo.",
+            "pt": "Um compromisso sério com o planejamento, a organização e as responsabilidades confiadas a cada equipe.",
+            "fr": "Un engagement sérieux envers la préparation, l’organisation et les responsabilités confiées à chaque équipe."
+          },
+          "order": 3,
+          "visible": true
+        },
+        {
+          "_key": "value-4",
+          "_type": "aboutPrinciple",
+          "heading": {
+            "en": "Excellence",
+            "es": "Excelencia",
+            "pt": "Excelência",
+            "fr": "Excellence"
+          },
+          "description": {
+            "en": "A continuous commitment to improving processes, services, and execution.",
+            "es": "Compromiso continuo con la mejora de procesos, servicios y ejecución.",
+            "pt": "Compromisso contínuo com a melhoria de processos, serviços e execução.",
+            "fr": "Un engagement constant pour améliorer les méthodes, les services et la réalisation."
+          },
+          "order": 4,
+          "visible": true
+        }
+      ]
+    }
+  },
+  {
+    "_id": "aboutPage-en",
+    "_type": "aboutPage",
+    "language": "en",
+    "eyebrow": "ABOUT SERTUIN EVENTS",
+    "heading": "The People Behind Sertuin Events",
+    "subtitle": "A Dominican Story. A Shared Vision. A Commitment to Excellence.",
+    "introduction": "Behind Sertuin Events are Alex Castro and Grecia Mejía, a Dominican husband-and-wife team with approximately a decade of experience in the destination events industry.",
+    "foundersHeading": "Meet Alex Castro & Grecia Mejía",
+    "foundersSubtitle": "Dominican Entrepreneurs | Owners of Sertuin SRL",
+    "biography": "Together, they have developed specialized businesses that help couples, families, individuals and organizations create meaningful experiences in the Dominican Republic.\n\nThey believe exceptional service requires preparation, responsibility, respect and genuine attention to people. These principles guide their businesses while allowing each brand to retain its own identity and specialization.",
+    "companyHeading": "Sertuin SRL: The Company Behind Our Brands",
+    "currentBrandLabel": "YOU ARE ON SERTUIN EVENTS",
+    "brandHeading": "Sertuin Events — Complete Event Planning & Management",
+    "brandDescription": "Sertuin Events is a full-service event planning, organization, and management brand based in Punta Cana, Dominican Republic.\n\nWe specialize in creating and coordinating complete experiences for destination weddings, marriage proposals, gender reveals, birthdays, private celebrations, corporate events, and customized occasions.\n\nOur work goes beyond decorations or individual services. Depending on the event, we bring together planning, transportation, venue coordination, creative design, floral arrangements, photography, videography, catering, entertainment, suppliers, logistics, and on-site execution.\n\nFrom the first conversation, we work to understand our clients' expectations and coordinate the elements required to transform their ideas into meaningful experiences.\n\nOur purpose is to offer a comprehensive, personalized, and professionally organized service, allowing clients to enjoy their celebrations while our team manages the agreed operational details.\n\nWe believe that exceptional events require careful preparation, clear communication, reliable coordination, genuine human attention, and a commitment to excellence.",
+    "purposeHeading": "Our Purpose",
+    "purpose": "To provide complete, professionally organized, and personalized event experiences for clients celebrating meaningful occasions in the Dominican Republic.",
+    "commitmentHeading": "Our Commitment",
+    "commitment": "To combine thoughtful planning, professional responsibility, exceptional service, attention to detail, and genuine human care.",
+    "processHeading": "How We Work",
+    "valuesHeading": "Different Brands. Shared Values.",
+    "valuesIntro": "Each brand has a different specialization. These are the principles Alex Castro and Grecia Mejía consider essential to every client relationship.",
+    "directoryHeading": "Our Family of Brands",
+    "directorySubtitle": "One Company. Seven Specialized Brands. Distinct Purposes.",
+    "directoryIntro": "Sertuin SRL brings together seven specialized brands. Each maintains its own identity, professional focus and customer audience, connected by shared ownership and a commitment to quality.",
+    "company": {
+      "_type": "reference",
+      "_ref": "generalLayout"
+    },
+    "steps": [
+      {
+        "_key": "step-0",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Listen",
+          "es": "Escuchamos",
+          "pt": "Escutamos",
+          "fr": "Nous écoutons"
+        },
+        "description": {
+          "en": "We take time to understand the client's expectations, priorities, and vision.",
+          "es": "Nos tomamos el tiempo para comprender las expectativas, prioridades e ideas del cliente.",
+          "pt": "Dedicamos tempo para entender as expectativas, prioridades e ideias do cliente.",
+          "fr": "Nous prenons le temps de comprendre les attentes, les priorités et la vision du client."
+        },
+        "icon": "ear",
+        "order": 0,
+        "visible": true
+      },
+      {
+        "_key": "step-1",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Organize",
+          "es": "Organizamos",
+          "pt": "Organizamos",
+          "fr": "Nous organisons"
+        },
+        "description": {
+          "en": "We coordinate the services, suppliers, creative details, and logistics required for the event.",
+          "es": "Coordinamos los servicios, proveedores, detalles creativos y la logística del evento.",
+          "pt": "Coordenamos os serviços, fornecedores, detalhes criativos e a logística do evento.",
+          "fr": "Nous coordonnons les prestations, les fournisseurs, les détails créatifs et la logistique de l’événement."
+        },
+        "icon": "check",
+        "order": 1,
+        "visible": true
+      },
+      {
+        "_key": "step-2",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Take Responsibility",
+          "es": "Nos responsabilizamos",
+          "pt": "Assumimos a responsabilidade",
+          "fr": "Nous assumons nos responsabilités"
+        },
+        "description": {
+          "en": "We remain involved throughout the agreed execution process so clients can focus on enjoying their experience.",
+          "es": "Nos involucramos durante toda la ejecución acordada para que el cliente disfrute su experiencia.",
+          "pt": "Acompanhamos toda a execução acordada para que o cliente possa aproveitar sua experiência.",
+          "fr": "Nous restons impliqués tout au long de la réalisation convenue pour que les clients profitent de leur expérience."
+        },
+        "icon": "heart",
+        "order": 2,
+        "visible": true
+      }
+    ],
+    "valuesEnabled": true,
+    "directoryEnabled": true,
+    "brands": [
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-sertuin-events",
+        "_key": "brand-0"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-photo-edition",
+        "_key": "brand-1"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-proposal-packages",
+        "_key": "brand-2"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-wedding-packages",
+        "_key": "brand-3"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-tour-store",
+        "_key": "brand-4"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-grecia-mejia-weddings",
+        "_key": "brand-5"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-sertuinone",
+        "_key": "brand-6"
+      }
+    ],
+    "serviceLinks": [
+      {
+        "_key": "wedding",
+        "label": "Wedding planning",
+        "path": "/puntacana-wedding-planner/"
+      },
+      {
+        "_key": "corporate",
+        "label": "Corporate events",
+        "path": "/event-planner/"
+      },
+      {
+        "_key": "reviews",
+        "label": "Client reviews",
+        "path": "/reviews/"
+      }
+    ],
+    "closing": {
+      "visible": true,
+      "heading": "Let’s Plan Your Next Experience",
+      "description": "Tell us what you have in mind. Our team will listen and help you coordinate the next steps.",
+      "label": "Contact Our Team",
+      "url": "/contact/",
+      "variant": "dark"
+    },
+    "seo": {
+      "title": "About Sertuin Events | Founders, Our Story & Sertuin SRL",
+      "description": "Meet Alex Castro and Grecia Mejía, the Dominican entrepreneurs behind Sertuin Events and Sertuin SRL. Discover our story, values, services, and family of specialized brands."
+    }
+  },
+  {
+    "_id": "aboutPage-es",
+    "_type": "aboutPage",
+    "language": "es",
+    "eyebrow": "SOBRE SERTUIN EVENTS",
+    "heading": "Las personas detrás de Sertuin Events",
+    "subtitle": "Una historia dominicana. Una visión compartida. Un compromiso con la excelencia.",
+    "introduction": "Detrás de Sertuin Events están Alex Castro y Grecia Mejía, un matrimonio de emprendedores dominicanos con aproximadamente una década de experiencia en eventos de destino.",
+    "foundersHeading": "Conoce a Alex Castro y Grecia Mejía",
+    "foundersSubtitle": "Emprendedores dominicanos | Propietarios de Sertuin SRL",
+    "biography": "Juntos han desarrollado negocios especializados que ayudan a parejas, familias, personas y organizaciones a crear experiencias significativas en República Dominicana.\n\nPara ellos, un servicio excepcional requiere preparación, responsabilidad, respeto y atención genuina a las personas. Estos principios guían sus negocios y permiten que cada marca conserve su identidad y especialización.",
+    "companyHeading": "Sertuin SRL: la empresa detrás de nuestras marcas",
+    "currentBrandLabel": "ESTÁS EN SERTUIN EVENTS",
+    "brandHeading": "Sertuin Events — Planificación y gestión integral de eventos",
+    "brandDescription": "Sertuin Events es una marca de planificación, organización y gestión integral de eventos con base en Punta Cana, República Dominicana.\n\nCreamos y coordinamos experiencias completas para bodas de destino, propuestas de matrimonio, revelaciones de género, cumpleaños, celebraciones privadas, eventos corporativos y ocasiones personalizadas.\n\nNuestro trabajo va más allá de la decoración. Según el evento, coordinamos planificación, transporte, espacios, diseño creativo, flores, fotografía, video, gastronomía, entretenimiento, proveedores, logística y ejecución.\n\nDesde la primera conversación buscamos comprender las expectativas del cliente y organizar los elementos necesarios para transformar sus ideas en experiencias significativas.\n\nNuestro propósito es ofrecer un servicio integral, personalizado y profesionalmente organizado que permita disfrutar la celebración mientras nuestro equipo gestiona los detalles operativos acordados.\n\nCreemos que los eventos excepcionales requieren preparación cuidadosa, comunicación clara, coordinación fiable, atención humana genuina y compromiso con la excelencia.",
+    "purposeHeading": "Nuestro propósito",
+    "purpose": "Ofrecer experiencias integrales, personalizadas y profesionalmente organizadas para quienes celebran ocasiones significativas en República Dominicana.",
+    "commitmentHeading": "Nuestro compromiso",
+    "commitment": "Combinar planificación cuidadosa, responsabilidad profesional, servicio excepcional, atención al detalle y calidez humana.",
+    "processHeading": "Cómo trabajamos",
+    "valuesHeading": "Marcas diferentes. Valores compartidos.",
+    "valuesIntro": "Cada marca tiene una especialización distinta. Estos son los principios que Alex Castro y Grecia Mejía consideran esenciales en cada relación con sus clientes.",
+    "directoryHeading": "Nuestra familia de marcas",
+    "directorySubtitle": "Una empresa. Siete marcas especializadas. Propósitos distintos.",
+    "directoryIntro": "Sertuin SRL reúne siete marcas especializadas. Cada una conserva su identidad, enfoque profesional y público, conectadas por sus propietarios y un compromiso con la calidad.",
+    "company": {
+      "_type": "reference",
+      "_ref": "generalLayout"
+    },
+    "steps": [
+      {
+        "_key": "step-0",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Listen",
+          "es": "Escuchamos",
+          "pt": "Escutamos",
+          "fr": "Nous écoutons"
+        },
+        "description": {
+          "en": "We take time to understand the client's expectations, priorities, and vision.",
+          "es": "Nos tomamos el tiempo para comprender las expectativas, prioridades e ideas del cliente.",
+          "pt": "Dedicamos tempo para entender as expectativas, prioridades e ideias do cliente.",
+          "fr": "Nous prenons le temps de comprendre les attentes, les priorités et la vision du client."
+        },
+        "icon": "ear",
+        "order": 0,
+        "visible": true
+      },
+      {
+        "_key": "step-1",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Organize",
+          "es": "Organizamos",
+          "pt": "Organizamos",
+          "fr": "Nous organisons"
+        },
+        "description": {
+          "en": "We coordinate the services, suppliers, creative details, and logistics required for the event.",
+          "es": "Coordinamos los servicios, proveedores, detalles creativos y la logística del evento.",
+          "pt": "Coordenamos os serviços, fornecedores, detalhes criativos e a logística do evento.",
+          "fr": "Nous coordonnons les prestations, les fournisseurs, les détails créatifs et la logistique de l’événement."
+        },
+        "icon": "check",
+        "order": 1,
+        "visible": true
+      },
+      {
+        "_key": "step-2",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Take Responsibility",
+          "es": "Nos responsabilizamos",
+          "pt": "Assumimos a responsabilidade",
+          "fr": "Nous assumons nos responsabilités"
+        },
+        "description": {
+          "en": "We remain involved throughout the agreed execution process so clients can focus on enjoying their experience.",
+          "es": "Nos involucramos durante toda la ejecución acordada para que el cliente disfrute su experiencia.",
+          "pt": "Acompanhamos toda a execução acordada para que o cliente possa aproveitar sua experiência.",
+          "fr": "Nous restons impliqués tout au long de la réalisation convenue pour que les clients profitent de leur expérience."
+        },
+        "icon": "heart",
+        "order": 2,
+        "visible": true
+      }
+    ],
+    "valuesEnabled": true,
+    "directoryEnabled": true,
+    "brands": [
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-sertuin-events",
+        "_key": "brand-0"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-photo-edition",
+        "_key": "brand-1"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-proposal-packages",
+        "_key": "brand-2"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-wedding-packages",
+        "_key": "brand-3"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-tour-store",
+        "_key": "brand-4"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-grecia-mejia-weddings",
+        "_key": "brand-5"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-sertuinone",
+        "_key": "brand-6"
+      }
+    ],
+    "serviceLinks": [
+      {
+        "_key": "wedding",
+        "label": "Planificación de bodas",
+        "path": "/puntacana-wedding-planner/"
+      },
+      {
+        "_key": "corporate",
+        "label": "Eventos corporativos",
+        "path": "/event-planner/"
+      },
+      {
+        "_key": "reviews",
+        "label": "Reseñas de clientes",
+        "path": "/reviews/"
+      }
+    ],
+    "closing": {
+      "visible": true,
+      "heading": "Planifiquemos tu próxima experiencia",
+      "description": "Cuéntanos lo que tienes en mente. Nuestro equipo te escuchará y te ayudará a coordinar los próximos pasos.",
+      "label": "Contacta a nuestro equipo",
+      "url": "/contact/",
+      "variant": "dark"
+    },
+    "seo": {
+      "title": "Sobre Sertuin Events | Fundadores, historia y Sertuin SRL",
+      "description": "Conoce a Alex Castro y Grecia Mejía, los emprendedores dominicanos detrás de Sertuin Events y Sertuin SRL. Descubre nuestra historia, valores y siete marcas."
+    }
+  },
+  {
+    "_id": "aboutPage-pt",
+    "_type": "aboutPage",
+    "language": "pt",
+    "eyebrow": "SOBRE A SERTUIN EVENTS",
+    "heading": "As pessoas por trás da Sertuin Events",
+    "subtitle": "Uma história dominicana. Uma visão compartilhada. Um compromisso com a excelência.",
+    "introduction": "Por trás da Sertuin Events estão Alex Castro e Grecia Mejía, um casal de empreendedores dominicanos com aproximadamente uma década de experiência em eventos no destino.",
+    "foundersHeading": "Conheça Alex Castro e Grecia Mejía",
+    "foundersSubtitle": "Empreendedores dominicanos | Proprietários da Sertuin SRL",
+    "biography": "Juntos, desenvolveram negócios especializados que ajudam casais, famílias, pessoas e organizações a criar experiências significativas na República Dominicana.\n\nPara eles, um serviço excepcional exige preparação, responsabilidade, respeito e atenção genuína às pessoas. Esses princípios orientam seus negócios, preservando a identidade e a especialização de cada marca.",
+    "companyHeading": "Sertuin SRL: a empresa por trás das nossas marcas",
+    "currentBrandLabel": "VOCÊ ESTÁ NA SERTUIN EVENTS",
+    "brandHeading": "Sertuin Events — Planejamento e gestão completa de eventos",
+    "brandDescription": "Sertuin Events é uma marca de planejamento, organização e gestão completa de eventos sediada em Punta Cana, República Dominicana.\n\nCriamos e coordenamos experiências completas para casamentos no destino, pedidos de casamento, chás revelação, aniversários, celebrações privadas, eventos corporativos e ocasiões personalizadas.\n\nNosso trabalho vai além da decoração. Conforme o evento, reunimos planejamento, transporte, espaços, criação, flores, fotografia, vídeo, gastronomia, entretenimento, fornecedores, logística e execução local.\n\nDesde a primeira conversa, buscamos entender as expectativas dos clientes e coordenar os elementos necessários para transformar suas ideias em experiências significativas.\n\nNosso propósito é oferecer um serviço completo, personalizado e organizado profissionalmente, permitindo que os clientes aproveitem suas celebrações enquanto nossa equipe cuida dos detalhes operacionais acordados.\n\nAcreditamos que eventos excepcionais exigem preparação cuidadosa, comunicação clara, coordenação confiável, atenção humana genuína e compromisso com a excelência.",
+    "purposeHeading": "Nosso propósito",
+    "purpose": "Oferecer experiências completas, personalizadas e organizadas profissionalmente para quem celebra ocasiões significativas na República Dominicana.",
+    "commitmentHeading": "Nosso compromisso",
+    "commitment": "Combinar planejamento cuidadoso, responsabilidade profissional, serviço excepcional, atenção aos detalhes e cuidado humano.",
+    "processHeading": "Como trabalhamos",
+    "valuesHeading": "Marcas diferentes. Valores compartilhados.",
+    "valuesIntro": "Cada marca tem uma especialização diferente. Estes são os princípios que Alex Castro e Grecia Mejía consideram essenciais em cada relação com seus clientes.",
+    "directoryHeading": "Nossa família de marcas",
+    "directorySubtitle": "Uma empresa. Sete marcas especializadas. Propósitos distintos.",
+    "directoryIntro": "Sertuin SRL reúne sete marcas especializadas. Cada uma mantém sua identidade, foco profissional e público, conectadas pelos mesmos proprietários e pelo compromisso com a qualidade.",
+    "company": {
+      "_type": "reference",
+      "_ref": "generalLayout"
+    },
+    "steps": [
+      {
+        "_key": "step-0",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Listen",
+          "es": "Escuchamos",
+          "pt": "Escutamos",
+          "fr": "Nous écoutons"
+        },
+        "description": {
+          "en": "We take time to understand the client's expectations, priorities, and vision.",
+          "es": "Nos tomamos el tiempo para comprender las expectativas, prioridades e ideas del cliente.",
+          "pt": "Dedicamos tempo para entender as expectativas, prioridades e ideias do cliente.",
+          "fr": "Nous prenons le temps de comprendre les attentes, les priorités et la vision du client."
+        },
+        "icon": "ear",
+        "order": 0,
+        "visible": true
+      },
+      {
+        "_key": "step-1",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Organize",
+          "es": "Organizamos",
+          "pt": "Organizamos",
+          "fr": "Nous organisons"
+        },
+        "description": {
+          "en": "We coordinate the services, suppliers, creative details, and logistics required for the event.",
+          "es": "Coordinamos los servicios, proveedores, detalles creativos y la logística del evento.",
+          "pt": "Coordenamos os serviços, fornecedores, detalhes criativos e a logística do evento.",
+          "fr": "Nous coordonnons les prestations, les fournisseurs, les détails créatifs et la logistique de l’événement."
+        },
+        "icon": "check",
+        "order": 1,
+        "visible": true
+      },
+      {
+        "_key": "step-2",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Take Responsibility",
+          "es": "Nos responsabilizamos",
+          "pt": "Assumimos a responsabilidade",
+          "fr": "Nous assumons nos responsabilités"
+        },
+        "description": {
+          "en": "We remain involved throughout the agreed execution process so clients can focus on enjoying their experience.",
+          "es": "Nos involucramos durante toda la ejecución acordada para que el cliente disfrute su experiencia.",
+          "pt": "Acompanhamos toda a execução acordada para que o cliente possa aproveitar sua experiência.",
+          "fr": "Nous restons impliqués tout au long de la réalisation convenue pour que les clients profitent de leur expérience."
+        },
+        "icon": "heart",
+        "order": 2,
+        "visible": true
+      }
+    ],
+    "valuesEnabled": true,
+    "directoryEnabled": true,
+    "brands": [
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-sertuin-events",
+        "_key": "brand-0"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-photo-edition",
+        "_key": "brand-1"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-proposal-packages",
+        "_key": "brand-2"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-wedding-packages",
+        "_key": "brand-3"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-tour-store",
+        "_key": "brand-4"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-grecia-mejia-weddings",
+        "_key": "brand-5"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-sertuinone",
+        "_key": "brand-6"
+      }
+    ],
+    "serviceLinks": [
+      {
+        "_key": "wedding",
+        "label": "Planejamento de casamentos",
+        "path": "/puntacana-wedding-planner/"
+      },
+      {
+        "_key": "corporate",
+        "label": "Eventos corporativos",
+        "path": "/event-planner/"
+      },
+      {
+        "_key": "reviews",
+        "label": "Avaliações de clientes",
+        "path": "/reviews/"
+      }
+    ],
+    "closing": {
+      "visible": true,
+      "heading": "Vamos planejar sua próxima experiência",
+      "description": "Conte o que você tem em mente. Nossa equipe vai ouvir suas ideias e ajudar a coordenar os próximos passos.",
+      "label": "Fale com nossa equipe",
+      "url": "/contact/",
+      "variant": "dark"
+    },
+    "seo": {
+      "title": "Sobre a Sertuin Events | Fundadores, história e Sertuin SRL",
+      "description": "Conheça Alex Castro e Grecia Mejía, os empreendedores dominicanos por trás da Sertuin Events e da Sertuin SRL. Descubra nossa história, valores e sete marcas."
+    }
+  },
+  {
+    "_id": "aboutPage-fr",
+    "_type": "aboutPage",
+    "language": "fr",
+    "eyebrow": "À PROPOS DE SERTUIN EVENTS",
+    "heading": "Les personnes derrière Sertuin Events",
+    "subtitle": "Une histoire dominicaine. Une vision commune. Un engagement envers l’excellence.",
+    "introduction": "Derrière Sertuin Events se trouvent Alex Castro et Grecia Mejía, un couple d’entrepreneurs dominicains possédant environ dix ans d’expérience dans les événements à destination.",
+    "foundersHeading": "Rencontrez Alex Castro et Grecia Mejía",
+    "foundersSubtitle": "Entrepreneurs dominicains | Propriétaires de Sertuin SRL",
+    "biography": "Ensemble, ils ont développé des activités spécialisées qui aident couples, familles, particuliers et organisations à vivre des expériences marquantes en République dominicaine.\n\nPour eux, un service exceptionnel exige préparation, responsabilité, respect et attention sincère aux personnes. Ces principes guident leurs activités tout en préservant l’identité et la spécialisation de chaque marque.",
+    "companyHeading": "Sertuin SRL : l’entreprise derrière nos marques",
+    "currentBrandLabel": "VOUS ÊTES CHEZ SERTUIN EVENTS",
+    "brandHeading": "Sertuin Events — Organisation et gestion complète d’événements",
+    "brandDescription": "Sertuin Events est une marque d’organisation et de gestion complète d’événements basée à Punta Cana, en République dominicaine.\n\nNous créons et coordonnons des expériences complètes pour les mariages à destination, demandes en mariage, révélations du sexe du bébé, anniversaires, célébrations privées, événements d’entreprise et occasions personnalisées.\n\nNotre travail va au-delà de la décoration. Selon l’événement, nous réunissons préparation, transport, coordination du lieu, création, fleurs, photographie, vidéo, restauration, animations, prestataires, logistique et réalisation sur place.\n\nDès le premier échange, nous cherchons à comprendre les attentes de nos clients et à coordonner les éléments nécessaires pour transformer leurs idées en expériences marquantes.\n\nNotre objectif est de proposer un service complet, personnalisé et professionnellement organisé, permettant aux clients de profiter de leur célébration pendant que notre équipe gère les détails opérationnels convenus.\n\nNous croyons qu’un événement exceptionnel exige préparation, communication claire, coordination fiable, attention humaine et engagement envers l’excellence.",
+    "purposeHeading": "Notre objectif",
+    "purpose": "Proposer des expériences complètes, personnalisées et professionnellement organisées aux clients qui célèbrent des occasions marquantes en République dominicaine.",
+    "commitmentHeading": "Notre engagement",
+    "commitment": "Associer préparation soignée, responsabilité professionnelle, service exceptionnel, souci du détail et attention humaine.",
+    "processHeading": "Notre façon de travailler",
+    "valuesHeading": "Des marques différentes. Des valeurs communes.",
+    "valuesIntro": "Chaque marque possède sa spécialisation. Voici les principes qu’Alex Castro et Grecia Mejía considèrent essentiels dans chaque relation avec leurs clients.",
+    "directoryHeading": "Notre famille de marques",
+    "directorySubtitle": "Une entreprise. Sept marques spécialisées. Des objectifs distincts.",
+    "directoryIntro": "Sertuin SRL réunit sept marques spécialisées. Chacune conserve son identité, son orientation professionnelle et son public, unies par leurs propriétaires et leur engagement envers la qualité.",
+    "company": {
+      "_type": "reference",
+      "_ref": "generalLayout"
+    },
+    "steps": [
+      {
+        "_key": "step-0",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Listen",
+          "es": "Escuchamos",
+          "pt": "Escutamos",
+          "fr": "Nous écoutons"
+        },
+        "description": {
+          "en": "We take time to understand the client's expectations, priorities, and vision.",
+          "es": "Nos tomamos el tiempo para comprender las expectativas, prioridades e ideas del cliente.",
+          "pt": "Dedicamos tempo para entender as expectativas, prioridades e ideias do cliente.",
+          "fr": "Nous prenons le temps de comprendre les attentes, les priorités et la vision du client."
+        },
+        "icon": "ear",
+        "order": 0,
+        "visible": true
+      },
+      {
+        "_key": "step-1",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Organize",
+          "es": "Organizamos",
+          "pt": "Organizamos",
+          "fr": "Nous organisons"
+        },
+        "description": {
+          "en": "We coordinate the services, suppliers, creative details, and logistics required for the event.",
+          "es": "Coordinamos los servicios, proveedores, detalles creativos y la logística del evento.",
+          "pt": "Coordenamos os serviços, fornecedores, detalhes criativos e a logística do evento.",
+          "fr": "Nous coordonnons les prestations, les fournisseurs, les détails créatifs et la logistique de l’événement."
+        },
+        "icon": "check",
+        "order": 1,
+        "visible": true
+      },
+      {
+        "_key": "step-2",
+        "_type": "aboutPrinciple",
+        "heading": {
+          "en": "We Take Responsibility",
+          "es": "Nos responsabilizamos",
+          "pt": "Assumimos a responsabilidade",
+          "fr": "Nous assumons nos responsabilités"
+        },
+        "description": {
+          "en": "We remain involved throughout the agreed execution process so clients can focus on enjoying their experience.",
+          "es": "Nos involucramos durante toda la ejecución acordada para que el cliente disfrute su experiencia.",
+          "pt": "Acompanhamos toda a execução acordada para que o cliente possa aproveitar sua experiência.",
+          "fr": "Nous restons impliqués tout au long de la réalisation convenue pour que les clients profitent de leur expérience."
+        },
+        "icon": "heart",
+        "order": 2,
+        "visible": true
+      }
+    ],
+    "valuesEnabled": true,
+    "directoryEnabled": true,
+    "brands": [
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-sertuin-events",
+        "_key": "brand-0"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-photo-edition",
+        "_key": "brand-1"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-proposal-packages",
+        "_key": "brand-2"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-wedding-packages",
+        "_key": "brand-3"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-punta-cana-tour-store",
+        "_key": "brand-4"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-grecia-mejia-weddings",
+        "_key": "brand-5"
+      },
+      {
+        "_type": "reference",
+        "_ref": "brandProfile-sertuinone",
+        "_key": "brand-6"
+      }
+    ],
+    "serviceLinks": [
+      {
+        "_key": "wedding",
+        "label": "Organisation de mariages",
+        "path": "/puntacana-wedding-planner/"
+      },
+      {
+        "_key": "corporate",
+        "label": "Événements d’entreprise",
+        "path": "/event-planner/"
+      },
+      {
+        "_key": "reviews",
+        "label": "Avis de clients",
+        "path": "/reviews/"
+      }
+    ],
+    "closing": {
+      "visible": true,
+      "heading": "Organisons votre prochaine expérience",
+      "description": "Parlez-nous de votre projet. Notre équipe vous écoutera et vous aidera à organiser les prochaines étapes.",
+      "label": "Contactez notre équipe",
+      "url": "/contact/",
+      "variant": "dark"
+    },
+    "seo": {
+      "title": "À propos de Sertuin Events | Fondateurs et Sertuin SRL",
+      "description": "Découvrez Alex Castro et Grecia Mejía, les entrepreneurs dominicains derrière Sertuin Events et Sertuin SRL, leur histoire, leurs valeurs et leurs sept marques."
+    }
+  }
+]
