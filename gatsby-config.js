@@ -299,6 +299,7 @@ module.exports = {
           nsSeparator: false,
         },
         pages: [
+          { matchPath: "/:lang?/reviews", getLanguageFromPath: true },
           {
             matchPath: "/:lang?/blog",
             getLanguageFromPath: true,

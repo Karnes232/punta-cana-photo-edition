@@ -11,6 +11,7 @@ import { hiddenTypes, singletonTypes, structure } from "./structure"
 
 // Types with one document per language, linked through the Translations menu.
 export const translatedTypes = [
+  "reviewsPage",
   "homePage",
   "contactPage",
   "thankYouPage",

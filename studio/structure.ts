@@ -20,6 +20,7 @@ import { languages } from "./schemaTypes/shared/languages"
 // Types opened by a fixed ID rather than listed: one document (generalLayout), or
 // one per language for the pages. sanity.config.ts drops their delete/duplicate actions.
 export const singletonTypes = new Set([
+  "reviewsPage",
   "generalLayout",
   "adminPage",
   "homePage",
@@ -158,6 +159,16 @@ export const structure: StructureResolver = (S) => {
     .title("Content")
     .items([
       singleton("generalLayout", "General Layout", CogIcon),
+      S.listItem().title("Reviews Page").id("reviews").icon(CommentIcon).child(
+        S.list().title("Reviews Page").items([
+          translatedPage("reviewsPage", "Page Content", DocumentIcon),
+          S.documentTypeListItem("clientReview").title("All Reviews"),
+          S.listItem().title("Draft Reviews").id("draftReviews").child(S.documentList().title("Draft Reviews").schemaType("clientReview").filter('_type == "clientReview" && _id in path("drafts.**")')),
+          S.listItem().title("Published Reviews").id("publishedReviews").child(S.documentList().title("Published Reviews").schemaType("clientReview").filter('_type == "clientReview" && !(_id in path("drafts.**"))')),
+          S.documentTypeListItem("reviewCategory").title("Review Categories").child(S.documentTypeList("reviewCategory").title("Review Categories").defaultOrdering([{field:"order",direction:"asc"}])),
+          singleton("generalLayout", "Shared Website Content", CogIcon),
+        ])
+      ),
       translatedPage("homePage", "Home Page", HomeIcon),
       translatedPage("eventPlannerPage", "Event Planner Page", CaseIcon),
       translatedPage("genderRevealPage", "Gender Reveal Page", SparklesIcon),
@@ -195,6 +206,6 @@ export const structure: StructureResolver = (S) => {
       S.documentTypeListItem("rentalItem").title("Rental Items"),
       S.documentTypeListItem("redirect").title("Redirects"),
       S.divider(),
-      ...S.documentTypeListItems().filter((item) => !hiddenTypes.has(item.getId() ?? "") && !listedTypes.has(item.getId() ?? "")),
+      ...S.documentTypeListItems().filter((item) => !hiddenTypes.has(item.getId() ?? "") && !listedTypes.has(item.getId() ?? "") && !["clientReview", "reviewCategory"].includes(item.getId() ?? "")),
     ])
 }

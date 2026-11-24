@@ -44,7 +44,10 @@ import { weddingFilm } from "./objects/weddingFilm"
 import { weddingPackageText } from "./objects/weddingPackageText"
 import { workMode } from "./objects/workMode"
 
+import { reviewsPage, reviewCategory, clientReview, reviewObjects } from "./documents/reviews"
+
 export const schemaTypes = [
+  reviewsPage, reviewCategory, clientReview, ...reviewObjects,
   // Documents
   generalLayout,
   homePage,

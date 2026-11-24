@@ -1,0 +1,172 @@
+.reviews-page {
+  color: #111827;
+  overflow-wrap: anywhere;
+}
+.reviews-backdrop {
+  position: relative;
+  isolation: isolate;
+}
+.reviews-backdrop > :not(.reviews-background) {
+  position: relative;
+  z-index: 1;
+}
+.reviews-page .reviews-background {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  z-index: -1;
+}
+.reviews-page .reviews-background img {
+  height: 100%;
+}
+.reviews-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.9);
+}
+.reviews-soft .reviews-background::after {
+  background: rgba(255, 255, 255, 0.82);
+}
+.reviews-dark .reviews-background::after {
+  background: rgba(3, 7, 26, 0.8);
+}
+.reviews-background figcaption {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 1.375rem;
+  z-index: 1;
+}
+.reviews-section {
+  max-width: 1240px;
+  margin: auto;
+  padding: 4rem 2rem;
+}
+.reviews-page h1 {
+  font-size: clamp(2.75rem, 6vw, 5.125rem);
+  line-height: 1.06;
+  margin: 1.5rem 0;
+}
+.reviews-page h2 {
+  font-size: clamp(2rem, 3vw, 2.625rem);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.reviews-page h3 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin: 1rem 0;
+}
+.reviews-page p,
+.reviews-page blockquote,
+.reviews-page li,
+.reviews-page summary {
+  font-family: "Montserrat Variable", Montserrat, sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  white-space: pre-line;
+  margin-bottom: 1rem;
+}
+.reviews-page ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+.reviews-page ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+.reviews-page a:not(.reviews-button) {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.reviews-page figure {
+  margin: 1.5rem 0;
+}
+.reviews-page img {
+  width: 100%;
+  height: 24rem;
+  object-fit: cover;
+}
+.reviews-page figcaption {
+  font-family: Montserrat, sans-serif;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.reviews-card {
+  border: 1px solid #d6c6ae;
+  padding: 1.5rem;
+  min-width: 0;
+}
+.reviews-card img {
+  height: 18rem;
+}
+.reviews-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.reviews-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.reviews-button {
+  display: inline-block;
+  border: 1px solid var(--primary-color);
+  padding: 1rem 1.5rem;
+  background: var(--primary-color);
+  color: black;
+  font-family: "Montserrat Variable", Montserrat, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+}
+.reviews-secondary {
+  background: transparent;
+  color: inherit;
+}
+.reviews-button:hover,
+.reviews-button[aria-pressed="true"] {
+  background: #8b5e14;
+  color: white;
+}
+.reviews-page :focus-visible {
+  outline: 3px solid #b98a4a;
+  outline-offset: 5px;
+}
+.reviews-dark {
+  background: #03071a;
+  color: white;
+}
+.reviews-dark .reviews-button {
+  border-color: white;
+}
+.reviews-soft {
+  background: #f3f4f6;
+}
+.reviews-page details {
+  border-bottom: 1px solid #d6c6ae;
+  padding: 1rem 0;
+}
+@media (max-width: 760px) {
+  .reviews-section {
+    padding: 2.5rem 1.375rem;
+  }
+  .reviews-split {
+    grid-template-columns: 1fr;
+  }
+  .reviews-page img {
+    height: 18rem;
+  }
+}
