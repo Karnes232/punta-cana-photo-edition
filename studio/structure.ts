@@ -163,6 +163,7 @@ export const structure: StructureResolver = (S) => {
         S.list().title("Reviews Page").items([
           translatedPage("reviewsPage", "Page Content", DocumentIcon),
           S.documentTypeListItem("clientReview").title("All Reviews"),
+          S.documentTypeListItem("reviewVerification").title("Private Verification Notes"),
           S.listItem().title("Draft Reviews").id("draftReviews").child(S.documentList().title("Draft Reviews").schemaType("clientReview").filter('_type == "clientReview" && _id in path("drafts.**")')),
           S.listItem().title("Published Reviews").id("publishedReviews").child(S.documentList().title("Published Reviews").schemaType("clientReview").filter('_type == "clientReview" && !(_id in path("drafts.**"))')),
           S.documentTypeListItem("reviewCategory").title("Review Categories").child(S.documentTypeList("reviewCategory").title("Review Categories").defaultOrdering([{field:"order",direction:"asc"}])),
@@ -206,6 +207,6 @@ export const structure: StructureResolver = (S) => {
       S.documentTypeListItem("rentalItem").title("Rental Items"),
       S.documentTypeListItem("redirect").title("Redirects"),
       S.divider(),
-      ...S.documentTypeListItems().filter((item) => !hiddenTypes.has(item.getId() ?? "") && !listedTypes.has(item.getId() ?? "") && !["clientReview", "reviewCategory"].includes(item.getId() ?? "")),
+      ...S.documentTypeListItems().filter((item) => !hiddenTypes.has(item.getId() ?? "") && !listedTypes.has(item.getId() ?? "") && !["clientReview", "reviewCategory", "reviewVerification"].includes(item.getId() ?? "")),
     ])
 }

@@ -1,0 +1,535 @@
+[
+  {
+    "_id": "reviewsPage-en",
+    "_type": "reviewsPage",
+    "language": "en",
+    "hero": {
+      "_type": "reviewHero",
+      "enabled": true,
+      "heading": "Client Reviews",
+      "description": "Discover experiences shared by Sertuin Events clients.",
+      "mediaEnabled": true,
+      "image": {
+        "_type": "reviewImage",
+        "alt": "Destination event planned by Sertuin Events in Punta Cana",
+        "asset": {
+          "_ref": "image-e27025a498579b18af246a0853d8362903aae913-1086x724-jpg",
+          "_type": "reference"
+        }
+      },
+      "variant": "dark"
+    },
+    "reviewsHeading": "Client Experiences",
+    "reviewsIntro": "Discover experiences shared by Sertuin Events clients.",
+    "allReviews": "All Reviews",
+    "loadMore": "Load More Reviews",
+    "googleLabel": "View Original Review on Google",
+    "externalLabel": "Opens in a new tab",
+    "emptyMessage": "We are preparing our collection of verified client reviews.",
+    "filterLabel": "Filter reviews by event type",
+    "translationLabel": "Translation of the original review",
+    "pageSize": 12,
+    "valuesEnabled": true,
+    "valuesHeading": "Our Values",
+    "values": [
+      {
+        "_key": "value0",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "We Listen",
+        "description": "We take time to understand your ideas and priorities.",
+        "icon": "ear"
+      },
+      {
+        "_key": "value1",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "We Organize",
+        "description": "We coordinate the details of your celebration.",
+        "icon": "check"
+      },
+      {
+        "_key": "value2",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "We Take Responsibility",
+        "description": "We follow through on the arrangements we agree with you.",
+        "icon": "heart"
+      }
+    ],
+    "companyPhilosophy": {
+      "_type": "reviewPhilosophy",
+      "enabled": true,
+      "eyebrow": "Our Philosophy",
+      "heading": "Your experience matters",
+      "body": [
+        {
+          "_key": "intro",
+          "_type": "block",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_key": "text",
+              "_type": "span",
+              "marks": [],
+              "text": "Every celebration starts with a conversation. We listen to your priorities, coordinate the details and communicate with you throughout the planning process."
+            }
+          ]
+        }
+      ],
+      "variant": "stacked"
+    },
+    "featuredEnabled": true,
+    "featuredHeading": "Featured Experiences",
+    "sectionOrder": [
+      "companyPhilosophy",
+      "values",
+      "featured",
+      "faq"
+    ],
+    "faqEnabled": false,
+    "faqHeading": "Questions and Answers",
+    "closing": {
+      "_type": "reviewClosing",
+      "enabled": true,
+      "heading": "Your Story Could Be Next.",
+      "description": "Tell us about your celebration and let us help you plan the details.",
+      "variant": "plain",
+      "primary": {
+        "_type": "reviewButton",
+        "enabled": true,
+        "label": "Plan Your Event",
+        "url": "/contact/",
+        "variant": "primary"
+      }
+    },
+    "seo": {
+      "_type": "reviewSeo",
+      "title": "Client Reviews | Sertuin Events",
+      "description": "Discover experiences shared by Sertuin Events clients.",
+      "ogTitle": "Client Reviews | Sertuin Events",
+      "ogDescription": "Discover experiences shared by Sertuin Events clients.",
+      "image": {
+        "_type": "reviewImage",
+        "alt": "Destination event planned by Sertuin Events in Punta Cana",
+        "asset": {
+          "_ref": "image-e27025a498579b18af246a0853d8362903aae913-1086x724-jpg",
+          "_type": "reference"
+        }
+      },
+      "noIndex": false
+    }
+  },
+  {
+    "_id": "reviewsPage-es",
+    "_type": "reviewsPage",
+    "language": "es",
+    "hero": {
+      "_type": "reviewHero",
+      "enabled": true,
+      "heading": "Reseñas de clientes",
+      "description": "Conoce las experiencias compartidas por clientes de Sertuin Events.",
+      "mediaEnabled": true,
+      "image": {
+        "_type": "reviewImage",
+        "alt": "Evento de destino organizado por Sertuin Events en Punta Cana",
+        "asset": {
+          "_ref": "image-e27025a498579b18af246a0853d8362903aae913-1086x724-jpg",
+          "_type": "reference"
+        }
+      },
+      "variant": "dark"
+    },
+    "reviewsHeading": "Experiencias de nuestros clientes",
+    "reviewsIntro": "Conoce las experiencias compartidas por clientes de Sertuin Events.",
+    "allReviews": "Todas las reseñas",
+    "loadMore": "Ver más reseñas",
+    "googleLabel": "Ver la reseña original en Google",
+    "externalLabel": "Se abre en una pestaña nueva",
+    "emptyMessage": "Estamos preparando nuestra colección de reseñas verificadas.",
+    "filterLabel": "Filtrar reseñas por tipo de evento",
+    "translationLabel": "Traducción de la reseña original",
+    "pageSize": 12,
+    "valuesEnabled": true,
+    "valuesHeading": "Nuestros valores",
+    "values": [
+      {
+        "_key": "value0",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "Escuchamos",
+        "description": "Dedicamos tiempo a comprender tus ideas y prioridades.",
+        "icon": "ear"
+      },
+      {
+        "_key": "value1",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "Organizamos",
+        "description": "Coordinamos los detalles de tu celebración.",
+        "icon": "check"
+      },
+      {
+        "_key": "value2",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "Asumimos nuestra responsabilidad",
+        "description": "Cumplimos con los preparativos que acordamos contigo.",
+        "icon": "heart"
+      }
+    ],
+    "companyPhilosophy": {
+      "_type": "reviewPhilosophy",
+      "enabled": true,
+      "eyebrow": "Nuestra filosofía",
+      "heading": "Tu experiencia importa",
+      "body": [
+        {
+          "_key": "intro",
+          "_type": "block",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_key": "text",
+              "_type": "span",
+              "marks": [],
+              "text": "Cada celebración comienza con una conversación. Escuchamos tus prioridades, coordinamos los detalles y mantenemos la comunicación durante la planificación."
+            }
+          ]
+        }
+      ],
+      "variant": "stacked"
+    },
+    "featuredEnabled": true,
+    "featuredHeading": "Experiencias destacadas",
+    "sectionOrder": [
+      "companyPhilosophy",
+      "values",
+      "featured",
+      "faq"
+    ],
+    "faqEnabled": false,
+    "faqHeading": "Preguntas y respuestas",
+    "closing": {
+      "_type": "reviewClosing",
+      "enabled": true,
+      "heading": "Tu historia podría ser la próxima.",
+      "description": "Cuéntanos sobre tu celebración y te ayudaremos a planificar los detalles.",
+      "variant": "plain",
+      "primary": {
+        "_type": "reviewButton",
+        "enabled": true,
+        "label": "Planifica tu evento",
+        "url": "/contact/",
+        "variant": "primary"
+      }
+    },
+    "seo": {
+      "_type": "reviewSeo",
+      "title": "Reseñas de clientes | Sertuin Events",
+      "description": "Conoce las experiencias compartidas por clientes de Sertuin Events.",
+      "ogTitle": "Reseñas de clientes | Sertuin Events",
+      "ogDescription": "Conoce las experiencias compartidas por clientes de Sertuin Events.",
+      "image": {
+        "_type": "reviewImage",
+        "alt": "Evento de destino organizado por Sertuin Events en Punta Cana",
+        "asset": {
+          "_ref": "image-e27025a498579b18af246a0853d8362903aae913-1086x724-jpg",
+          "_type": "reference"
+        }
+      },
+      "noIndex": false
+    }
+  },
+  {
+    "_id": "reviewsPage-pt",
+    "_type": "reviewsPage",
+    "language": "pt",
+    "hero": {
+      "_type": "reviewHero",
+      "enabled": true,
+      "heading": "Avaliações de clientes",
+      "description": "Conheça as experiências compartilhadas por clientes da Sertuin Events.",
+      "mediaEnabled": true,
+      "image": {
+        "_type": "reviewImage",
+        "alt": "Evento de destino organizado pela Sertuin Events em Punta Cana",
+        "asset": {
+          "_ref": "image-e27025a498579b18af246a0853d8362903aae913-1086x724-jpg",
+          "_type": "reference"
+        }
+      },
+      "variant": "dark"
+    },
+    "reviewsHeading": "Experiências dos nossos clientes",
+    "reviewsIntro": "Conheça as experiências compartilhadas por clientes da Sertuin Events.",
+    "allReviews": "Todas as avaliações",
+    "loadMore": "Ver mais avaliações",
+    "googleLabel": "Ver avaliação original no Google",
+    "externalLabel": "Abre em uma nova aba",
+    "emptyMessage": "Estamos preparando nossa coleção de avaliações verificadas.",
+    "filterLabel": "Filtrar avaliações por tipo de evento",
+    "translationLabel": "Tradução da avaliação original",
+    "pageSize": 12,
+    "valuesEnabled": true,
+    "valuesHeading": "Nossos valores",
+    "values": [
+      {
+        "_key": "value0",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "Escutamos",
+        "description": "Dedicamos tempo para entender suas ideias e prioridades.",
+        "icon": "ear"
+      },
+      {
+        "_key": "value1",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "Organizamos",
+        "description": "Coordenamos os detalhes da sua celebração.",
+        "icon": "check"
+      },
+      {
+        "_key": "value2",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "Assumimos a responsabilidade",
+        "description": "Cumprimos os preparativos que combinamos com você.",
+        "icon": "heart"
+      }
+    ],
+    "companyPhilosophy": {
+      "_type": "reviewPhilosophy",
+      "enabled": true,
+      "eyebrow": "Nossa filosofia",
+      "heading": "Sua experiência importa",
+      "body": [
+        {
+          "_key": "intro",
+          "_type": "block",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_key": "text",
+              "_type": "span",
+              "marks": [],
+              "text": "Cada celebração começa com uma conversa. Ouvimos suas prioridades, coordenamos os detalhes e mantemos a comunicação durante o planejamento."
+            }
+          ]
+        }
+      ],
+      "variant": "stacked"
+    },
+    "featuredEnabled": true,
+    "featuredHeading": "Experiências em destaque",
+    "sectionOrder": [
+      "companyPhilosophy",
+      "values",
+      "featured",
+      "faq"
+    ],
+    "faqEnabled": false,
+    "faqHeading": "Perguntas e respostas",
+    "closing": {
+      "_type": "reviewClosing",
+      "enabled": true,
+      "heading": "Sua história pode ser a próxima.",
+      "description": "Conte-nos sobre sua celebração e ajudaremos a planejar os detalhes.",
+      "variant": "plain",
+      "primary": {
+        "_type": "reviewButton",
+        "enabled": true,
+        "label": "Planeje seu evento",
+        "url": "/contact/",
+        "variant": "primary"
+      }
+    },
+    "seo": {
+      "_type": "reviewSeo",
+      "title": "Avaliações de clientes | Sertuin Events",
+      "description": "Conheça as experiências compartilhadas por clientes da Sertuin Events.",
+      "ogTitle": "Avaliações de clientes | Sertuin Events",
+      "ogDescription": "Conheça as experiências compartilhadas por clientes da Sertuin Events.",
+      "image": {
+        "_type": "reviewImage",
+        "alt": "Evento de destino organizado pela Sertuin Events em Punta Cana",
+        "asset": {
+          "_ref": "image-e27025a498579b18af246a0853d8362903aae913-1086x724-jpg",
+          "_type": "reference"
+        }
+      },
+      "noIndex": false
+    }
+  },
+  {
+    "_id": "reviewsPage-fr",
+    "_type": "reviewsPage",
+    "language": "fr",
+    "hero": {
+      "_type": "reviewHero",
+      "enabled": true,
+      "heading": "Avis clients",
+      "description": "Découvrez les expériences partagées par les clients de Sertuin Events.",
+      "mediaEnabled": true,
+      "image": {
+        "_type": "reviewImage",
+        "alt": "Événement organisé par Sertuin Events à Punta Cana",
+        "asset": {
+          "_ref": "image-e27025a498579b18af246a0853d8362903aae913-1086x724-jpg",
+          "_type": "reference"
+        }
+      },
+      "variant": "dark"
+    },
+    "reviewsHeading": "Expériences de nos clients",
+    "reviewsIntro": "Découvrez les expériences partagées par les clients de Sertuin Events.",
+    "allReviews": "Tous les avis",
+    "loadMore": "Voir plus d’avis",
+    "googleLabel": "Voir l’avis original sur Google",
+    "externalLabel": "S’ouvre dans un nouvel onglet",
+    "emptyMessage": "Nous préparons notre collection d’avis clients vérifiés.",
+    "filterLabel": "Filtrer les avis par type d’événement",
+    "translationLabel": "Traduction de l’avis original",
+    "pageSize": 12,
+    "valuesEnabled": true,
+    "valuesHeading": "Nos valeurs",
+    "values": [
+      {
+        "_key": "value0",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "Nous écoutons",
+        "description": "Nous prenons le temps de comprendre vos idées et vos priorités.",
+        "icon": "ear"
+      },
+      {
+        "_key": "value1",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "Nous organisons",
+        "description": "Nous coordonnons les détails de votre célébration.",
+        "icon": "check"
+      },
+      {
+        "_key": "value2",
+        "_type": "reviewValue",
+        "enabled": true,
+        "heading": "Nous prenons nos responsabilités",
+        "description": "Nous respectons les dispositions convenues avec vous.",
+        "icon": "heart"
+      }
+    ],
+    "companyPhilosophy": {
+      "_type": "reviewPhilosophy",
+      "enabled": true,
+      "eyebrow": "Notre philosophie",
+      "heading": "Votre expérience compte",
+      "body": [
+        {
+          "_key": "intro",
+          "_type": "block",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_key": "text",
+              "_type": "span",
+              "marks": [],
+              "text": "Chaque célébration commence par une conversation. Nous écoutons vos priorités, coordonnons les détails et restons en contact tout au long de la préparation."
+            }
+          ]
+        }
+      ],
+      "variant": "stacked"
+    },
+    "featuredEnabled": true,
+    "featuredHeading": "Expériences à la une",
+    "sectionOrder": [
+      "companyPhilosophy",
+      "values",
+      "featured",
+      "faq"
+    ],
+    "faqEnabled": false,
+    "faqHeading": "Questions et réponses",
+    "closing": {
+      "_type": "reviewClosing",
+      "enabled": true,
+      "heading": "Votre histoire pourrait être la prochaine.",
+      "description": "Parlez-nous de votre célébration et nous vous aiderons à en organiser les détails.",
+      "variant": "plain",
+      "primary": {
+        "_type": "reviewButton",
+        "enabled": true,
+        "label": "Organisez votre événement",
+        "url": "/contact/",
+        "variant": "primary"
+      }
+    },
+    "seo": {
+      "_type": "reviewSeo",
+      "title": "Avis clients | Sertuin Events",
+      "description": "Découvrez les expériences partagées par les clients de Sertuin Events.",
+      "ogTitle": "Avis clients | Sertuin Events",
+      "ogDescription": "Découvrez les expériences partagées par les clients de Sertuin Events.",
+      "image": {
+        "_type": "reviewImage",
+        "alt": "Événement organisé par Sertuin Events à Punta Cana",
+        "asset": {
+          "_ref": "image-e27025a498579b18af246a0853d8362903aae913-1086x724-jpg",
+          "_type": "reference"
+        }
+      },
+      "noIndex": false
+    }
+  },
+  {
+    "_id": "translation.metadata-reviewsPage",
+    "_type": "translation.metadata",
+    "schemaTypes": [
+      "reviewsPage"
+    ],
+    "translations": [
+      {
+        "_key": "en",
+        "_type": "internationalizedArrayReferenceValue",
+        "value": {
+          "_type": "reference",
+          "_ref": "reviewsPage-en",
+          "_weak": true
+        }
+      },
+      {
+        "_key": "es",
+        "_type": "internationalizedArrayReferenceValue",
+        "value": {
+          "_type": "reference",
+          "_ref": "reviewsPage-es",
+          "_weak": true
+        }
+      },
+      {
+        "_key": "pt",
+        "_type": "internationalizedArrayReferenceValue",
+        "value": {
+          "_type": "reference",
+          "_ref": "reviewsPage-pt",
+          "_weak": true
+        }
+      },
+      {
+        "_key": "fr",
+        "_type": "internationalizedArrayReferenceValue",
+        "value": {
+          "_type": "reference",
+          "_ref": "reviewsPage-fr",
+          "_weak": true
+        }
+      }
+    ]
+  }
+]

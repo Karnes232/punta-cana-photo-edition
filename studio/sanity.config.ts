@@ -88,7 +88,9 @@ export default defineConfig({
     newDocumentOptions: (templates) =>
       templates.filter(({ templateId }) => !templateType(templateId)),
     actions: (actions, { schemaType }) =>
-      singletonTypes.has(schemaType)
+      schemaType === "reviewVerification"
+        ? actions.filter(({action}) => action === "delete" || action === "discardChanges")
+        : singletonTypes.has(schemaType)
         ? actions.filter(({ action }) => action && singletonActions.has(action))
         : actions,
   },

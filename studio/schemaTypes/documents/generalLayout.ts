@@ -14,8 +14,10 @@ export const generalLayout = defineType({
     { name: "contact", title: "Contact" },
     { name: "social", title: "Social" },
     { name: "legal", title: "Legal & admin" },
+    { name: "shared", title: "Shared Website Content" },
   ],
   fields: [
+    defineField({name:"sharedContent",title:"Shared Website Content",type:"sharedWebsiteContent",group:"shared"}),
     defineField({
       name: "companyName",
       title: "Company name",

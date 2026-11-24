@@ -1,10 +1,11 @@
+import useSharedContent from "../useSharedContent";
 import React from "react";
 import { IoClose } from "react-icons/io5";
 import { Sidebar } from "react-pro-sidebar";
 import SideBarInside from "./SideBarInside";
 import { useI18next } from "gatsby-plugin-react-i18next";
 const SideBarMenu = ({ toggled, setToggled }) => {
-  const { t } = useI18next();
+  const { t } = useSharedContent();
   return (
     <>
       <Sidebar

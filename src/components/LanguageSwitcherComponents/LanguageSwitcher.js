@@ -1,3 +1,4 @@
+import useSharedContent from "../Layout/useSharedContent";
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useI18next } from "gatsby-plugin-react-i18next";
 
@@ -5,12 +6,8 @@ const LanguageSwitcher = ({ currentLanguage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const languageOptions = [
-    { code: "en-US", display: "English", flag: "🇺🇸", path: "/" },
-    { code: "es", display: "Español", flag: "🇪🇸", path: "/es" },
-    { code: "pt", display: "Português", flag: "🇧🇷", path: "/pt" },
-    { code: "fr", display: "Français", flag: "🇫🇷", path: "/fr" },
-  ];
+  const { content } = useSharedContent();
+  const languageOptions = content.languages;
   const { originalPath } = useI18next();
   // Find the current language for display in the button
   const currentLangOption =
@@ -35,6 +32,8 @@ const LanguageSwitcher = ({ currentLanguage }) => {
     <div className="relative flex items-center" ref={dropdownRef}>
       {/* Dropdown Button */}
       <button
+        type="button"
+        aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2 bg-white  px-3 py-2 rounded-md shadow-sm border border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
       >

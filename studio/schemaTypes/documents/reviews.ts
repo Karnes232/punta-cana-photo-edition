@@ -560,12 +560,6 @@ export const clientReview = defineType({
       type: "boolean",
       initialValue: false,
     }),
-    str(
-      "verificationNotes",
-      "Internal verification notes (never sent to the page)",
-      false,
-      true,
-    ),
   ],
   preview: {
     select: {
@@ -582,3 +576,11 @@ export const clientReview = defineType({
     },
   ],
 });
+
+// Kept in authenticated drafts, separately from the published testimonial.
+// Studio deliberately offers no publish action for this document type.
+export const reviewVerification = defineType({name:"reviewVerification",title:"Private Verification Notes",type:"document",fields:[
+  defineField({name:"review",title:"Client review",type:"reference",to:[{type:"clientReview"}]}),
+  str("title","Internal reference",true),
+  str("notes","Internal verification notes",false,true),
+],preview:{select:{title:"title"}}});

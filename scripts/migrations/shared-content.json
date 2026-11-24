@@ -1,0 +1,601 @@
+{
+  "_type": "sharedWebsiteContent",
+  "navigation": [
+    {
+      "_key": "home",
+      "_type": "sharedNavItem",
+      "label": {
+        "en": "Home",
+        "es": "Inicio",
+        "pt": "Início",
+        "fr": "Accueil"
+      },
+      "url": "/"
+    },
+    {
+      "_key": "romantic",
+      "label": {
+        "en": "Romantic Events",
+        "es": "Eventos Románticos",
+        "pt": "Eventos românticos",
+        "fr": "Événements romantiques"
+      },
+      "children": [
+        {
+          "_key": "marriageproposals",
+          "_type": "sharedNavLink",
+          "label": {
+            "en": "Marriage Proposals",
+            "es": "Propuestas de matrimonio",
+            "pt": "Pedidos de casamento",
+            "fr": "Demandes en mariage"
+          },
+          "url": "/proposal/"
+        },
+        {
+          "_key": "elopementvowrenewal",
+          "_type": "sharedNavLink",
+          "label": {
+            "en": "Elopement packages",
+            "es": "Bodas íntimas y renovación de votos",
+            "pt": "Pacotes de elopement",
+            "fr": "Elopements et renouvellements de vœux"
+          },
+          "url": "/punta-cana-elopement-packages/"
+        },
+        {
+          "_key": "weddingplanning",
+          "_type": "sharedNavLink",
+          "label": {
+            "en": "Wedding planning",
+            "es": "Planificación de bodas",
+            "pt": "Planejamento de casamentos",
+            "fr": "Organisation de mariages"
+          },
+          "url": "/puntacana-wedding-planner/"
+        },
+        {
+          "_key": "genderreveal",
+          "_type": "sharedNavLink",
+          "label": {
+            "en": "Gender reveal",
+            "es": "Revelación de género",
+            "pt": "Chá revelação",
+            "fr": "Révélation du sexe du bébé"
+          },
+          "url": "/gender-reveal-punta-cana/"
+        }
+      ],
+      "_type": "sharedNavItem"
+    },
+    {
+      "_key": "corporateevents",
+      "_type": "sharedNavItem",
+      "label": {
+        "en": "Corporate events",
+        "es": "Eventos corporativos",
+        "pt": "Eventos corporativos",
+        "fr": "Événements d’entreprise"
+      },
+      "url": "/event-planner/"
+    },
+    {
+      "_key": "reviews",
+      "_type": "sharedNavItem",
+      "label": {
+        "en": "Reviews",
+        "es": "Reseñas",
+        "pt": "Avaliações",
+        "fr": "Avis"
+      },
+      "url": "/reviews/"
+    },
+    {
+      "_key": "contact",
+      "_type": "sharedNavItem",
+      "label": {
+        "en": "Contact",
+        "es": "Contacto",
+        "pt": "Contato",
+        "fr": "Contact"
+      },
+      "url": "/contact/"
+    },
+    {
+      "_key": "blog",
+      "_type": "sharedNavItem",
+      "label": {
+        "en": "Blog",
+        "es": "Blog",
+        "pt": "Blog",
+        "fr": "Blog"
+      },
+      "url": "/blog/",
+      "footerOnly": true
+    }
+  ],
+  "legalLinks": [
+    {
+      "_key": "privacypolicy",
+      "_type": "sharedNavLink",
+      "label": {
+        "en": "Privacy Policy",
+        "es": "Política de privacidad",
+        "pt": "Política de privacidade",
+        "fr": "Politique de confidentialité"
+      },
+      "url": "/privacy-policy/"
+    },
+    {
+      "_key": "termsconditions",
+      "_type": "sharedNavLink",
+      "label": {
+        "en": "Terms & Conditions",
+        "es": "Términos y condiciones",
+        "pt": "Termos e condições",
+        "fr": "Conditions générales"
+      },
+      "url": "/terms-and-conditions/"
+    },
+    {
+      "_key": "cookiepolicy",
+      "_type": "sharedNavLink",
+      "label": {
+        "en": "Cookie Policy",
+        "es": "Política de cookies",
+        "pt": "Política de cookies",
+        "fr": "Politique de cookies"
+      },
+      "url": "/cookie-policy/"
+    }
+  ],
+  "homePath": "/",
+  "cookiePath": "/cookie-policy/",
+  "labels": [
+    {
+      "_key": "label0",
+      "_type": "sharedInterfaceLabel",
+      "key": "Accept all",
+      "text": {
+        "en": "Accept all",
+        "es": "Aceptar todo",
+        "pt": "Aceitar tudo",
+        "fr": "Tout accepter"
+      }
+    },
+    {
+      "_key": "label1",
+      "_type": "sharedInterfaceLabel",
+      "key": "Advertising",
+      "text": {
+        "en": "Advertising",
+        "es": "Publicidad",
+        "pt": "Publicidade",
+        "fr": "Publicité"
+      }
+    },
+    {
+      "_key": "label2",
+      "_type": "sharedInterfaceLabel",
+      "key": "All content Copyright",
+      "text": {
+        "en": "All content Copyright",
+        "es": "Todos los derechos reservados",
+        "pt": "Todos os direitos reservados",
+        "fr": "Tous droits réservés"
+      }
+    },
+    {
+      "_key": "label3",
+      "_type": "sharedInterfaceLabel",
+      "key": "Analytics",
+      "text": {
+        "en": "Analytics",
+        "es": "Analítica",
+        "pt": "Análise",
+        "fr": "Mesure d’audience"
+      }
+    },
+    {
+      "_key": "label4",
+      "_type": "sharedInterfaceLabel",
+      "key": "Built by",
+      "text": {
+        "en": "Built by",
+        "es": "Desarrollado por",
+        "pt": "Desenvolvido por",
+        "fr": "Développé par"
+      }
+    },
+    {
+      "_key": "label5",
+      "_type": "sharedInterfaceLabel",
+      "key": "Call us",
+      "text": {
+        "en": "Call us",
+        "es": "Llámanos",
+        "pt": "Ligar para nós",
+        "fr": "Nous appeler"
+      }
+    },
+    {
+      "_key": "label6",
+      "_type": "sharedInterfaceLabel",
+      "key": "Close menu",
+      "text": {
+        "en": "Close menu",
+        "es": "Cerrar menú",
+        "pt": "Fechar menu",
+        "fr": "Fermer le menu"
+      }
+    },
+    {
+      "_key": "label7",
+      "_type": "sharedInterfaceLabel",
+      "key": "Cookie Policy",
+      "text": {
+        "en": "Cookie Policy",
+        "es": "Política de cookies",
+        "pt": "Política de cookies",
+        "fr": "Politique de cookies"
+      }
+    },
+    {
+      "_key": "label8",
+      "_type": "sharedInterfaceLabel",
+      "key": "Cookie settings",
+      "text": {
+        "en": "Cookie settings",
+        "es": "Configuración de cookies",
+        "pt": "Configurações de cookies",
+        "fr": "Paramètres des cookies"
+      }
+    },
+    {
+      "_key": "label9",
+      "_type": "sharedInterfaceLabel",
+      "key": "Elopement & Vow renewal",
+      "text": {
+        "en": "Elopement packages",
+        "es": "Bodas íntimas y renovación de votos",
+        "pt": "Pacotes de elopement",
+        "fr": "Elopements et renouvellements de vœux"
+      }
+    },
+    {
+      "_key": "label10",
+      "_type": "sharedInterfaceLabel",
+      "key": "Facebook",
+      "text": {
+        "en": "Facebook",
+        "es": "Facebook",
+        "pt": "Facebook",
+        "fr": "Facebook"
+      }
+    },
+    {
+      "_key": "label11",
+      "_type": "sharedInterfaceLabel",
+      "key": "Gender reveal",
+      "text": {
+        "en": "Gender reveal",
+        "es": "Revelación de género",
+        "pt": "Chá revelação",
+        "fr": "Révélation du sexe du bébé"
+      }
+    },
+    {
+      "_key": "label12",
+      "_type": "sharedInterfaceLabel",
+      "key": "Google Ads: measures which ads lead to requests and lets us show our ads to past visitors.",
+      "text": {
+        "en": "Google Ads: measures which ads lead to requests and lets us show our ads to past visitors.",
+        "es": "Google Ads: mide qué anuncios generan solicitudes y nos permite mostrar anuncios a visitantes anteriores.",
+        "pt": "Google Ads: mede quais anúncios geram pedidos e permite mostrar nossos anúncios a visitantes anteriores.",
+        "fr": "Google Ads : mesure quelles annonces mènent à une demande et permet de montrer nos annonces aux anciens visiteurs."
+      }
+    },
+    {
+      "_key": "label13",
+      "_type": "sharedInterfaceLabel",
+      "key": "Google Analytics: which pages are visited and how, so we can improve the site.",
+      "text": {
+        "en": "Google Analytics: which pages are visited and how, so we can improve the site.",
+        "es": "Google Analytics: qué páginas se visitan y cómo, para mejorar el sitio.",
+        "pt": "Google Analytics: quais páginas são visitadas e como, para melhorar o site.",
+        "fr": "Google Analytics : pages visitées et parcours, pour améliorer le site."
+      }
+    },
+    {
+      "_key": "label14",
+      "_type": "sharedInterfaceLabel",
+      "key": "Home",
+      "text": {
+        "en": "Home",
+        "es": "Inicio",
+        "pt": "Início",
+        "fr": "Accueil"
+      }
+    },
+    {
+      "_key": "label15",
+      "_type": "sharedInterfaceLabel",
+      "key": "Instagram",
+      "text": {
+        "en": "Instagram",
+        "es": "Instagram",
+        "pt": "Instagram",
+        "fr": "Instagram"
+      }
+    },
+    {
+      "_key": "label16",
+      "_type": "sharedInterfaceLabel",
+      "key": "Legal",
+      "text": {
+        "en": "Legal",
+        "es": "Legal",
+        "pt": "Legal",
+        "fr": "Informations légales"
+      }
+    },
+    {
+      "_key": "label17",
+      "_type": "sharedInterfaceLabel",
+      "key": "Marriage Proposals",
+      "text": {
+        "en": "Marriage Proposals",
+        "es": "Propuestas de matrimonio",
+        "pt": "Pedidos de casamento",
+        "fr": "Demandes en mariage"
+      }
+    },
+    {
+      "_key": "label18",
+      "_type": "sharedInterfaceLabel",
+      "key": "Menu",
+      "text": {
+        "en": "Menu",
+        "es": "Menú",
+        "pt": "Menu",
+        "fr": "Menu"
+      }
+    },
+    {
+      "_key": "label19",
+      "_type": "sharedInterfaceLabel",
+      "key": "Messenger",
+      "text": {
+        "en": "Messenger",
+        "es": "Messenger",
+        "pt": "Messenger",
+        "fr": "Messenger"
+      }
+    },
+    {
+      "_key": "label20",
+      "_type": "sharedInterfaceLabel",
+      "key": "Necessary",
+      "text": {
+        "en": "Necessary",
+        "es": "Necesarias",
+        "pt": "Necessários",
+        "fr": "Nécessaires"
+      }
+    },
+    {
+      "_key": "label21",
+      "_type": "sharedInterfaceLabel",
+      "key": "Open contact menu",
+      "text": {
+        "en": "Open contact menu",
+        "es": "Abrir menú de contacto",
+        "pt": "Abrir menu de contato",
+        "fr": "Ouvrir le menu de contact"
+      }
+    },
+    {
+      "_key": "label22",
+      "_type": "sharedInterfaceLabel",
+      "key": "Privacy Policy",
+      "text": {
+        "en": "Privacy Policy",
+        "es": "Política de privacidad",
+        "pt": "Política de privacidade",
+        "fr": "Politique de confidentialité"
+      }
+    },
+    {
+      "_key": "label23",
+      "_type": "sharedInterfaceLabel",
+      "key": "RNC",
+      "text": {
+        "en": "RNC",
+        "es": "RNC",
+        "pt": "RNC",
+        "fr": "RNC"
+      }
+    },
+    {
+      "_key": "label24",
+      "_type": "sharedInterfaceLabel",
+      "key": "Reject all",
+      "text": {
+        "en": "Reject all",
+        "es": "Rechazar todo",
+        "pt": "Recusar tudo",
+        "fr": "Tout refuser"
+      }
+    },
+    {
+      "_key": "label25",
+      "_type": "sharedInterfaceLabel",
+      "key": "Remembers your cookie choice. Always on.",
+      "text": {
+        "en": "Remembers your cookie choice. Always on.",
+        "es": "Recuerda su elección de cookies. Siempre activas.",
+        "pt": "Lembra a sua escolha de cookies. Sempre ativos.",
+        "fr": "Mémorise votre choix. Toujours actifs."
+      }
+    },
+    {
+      "_key": "label26",
+      "_type": "sharedInterfaceLabel",
+      "key": "Romantic Events",
+      "text": {
+        "en": "Romantic Events",
+        "es": "Eventos Románticos",
+        "pt": "Eventos românticos",
+        "fr": "Événements romantiques"
+      }
+    },
+    {
+      "_key": "label27",
+      "_type": "sharedInterfaceLabel",
+      "key": "Save my choices",
+      "text": {
+        "en": "Save my choices",
+        "es": "Guardar mi elección",
+        "pt": "Salvar minha escolha",
+        "fr": "Enregistrer mes choix"
+      }
+    },
+    {
+      "_key": "label28",
+      "_type": "sharedInterfaceLabel",
+      "key": "Settings",
+      "text": {
+        "en": "Settings",
+        "es": "Configurar",
+        "pt": "Configurar",
+        "fr": "Paramétrer"
+      }
+    },
+    {
+      "_key": "label29",
+      "_type": "sharedInterfaceLabel",
+      "key": "Terms & Conditions",
+      "text": {
+        "en": "Terms & Conditions",
+        "es": "Términos y condiciones",
+        "pt": "Termos e condições",
+        "fr": "Conditions générales"
+      }
+    },
+    {
+      "_key": "label30",
+      "_type": "sharedInterfaceLabel",
+      "key": "We use cookies",
+      "text": {
+        "en": "We use cookies",
+        "es": "Usamos cookies",
+        "pt": "Usamos cookies",
+        "fr": "Nous utilisons des cookies"
+      }
+    },
+    {
+      "_key": "label31",
+      "_type": "sharedInterfaceLabel",
+      "key": "Web Development in the Dominican Republic",
+      "text": {
+        "en": "Web Development in the Dominican Republic",
+        "es": "Desarrollo Web en República Dominicana",
+        "pt": "Desenvolvimento web na República Dominicana",
+        "fr": "Développement web en République dominicaine"
+      }
+    },
+    {
+      "_key": "label32",
+      "_type": "sharedInterfaceLabel",
+      "key": "Wedding planning",
+      "text": {
+        "en": "Wedding planning",
+        "es": "Planificación de bodas",
+        "pt": "Planejamento de casamentos",
+        "fr": "Organisation de mariages"
+      }
+    },
+    {
+      "_key": "label33",
+      "_type": "sharedInterfaceLabel",
+      "key": "WhatsApp",
+      "text": {
+        "en": "WhatsApp",
+        "es": "WhatsApp",
+        "pt": "WhatsApp",
+        "fr": "WhatsApp"
+      }
+    },
+    {
+      "_key": "label34",
+      "_type": "sharedInterfaceLabel",
+      "key": "With your permission, we use cookies to see how visitors use the site (Google Analytics) and to measure our ads (Google Ads). Nothing is set until you choose. You can change your choice anytime under “Cookie settings” at the bottom of the page.",
+      "text": {
+        "en": "With your permission, we use cookies to see how visitors use the site (Google Analytics) and to measure our ads (Google Ads). Nothing is set until you choose. You can change your choice anytime under “Cookie settings” at the bottom of the page.",
+        "es": "Con su permiso, usamos cookies para ver cómo se usa el sitio (Google Analytics) y medir nuestros anuncios (Google Ads). No se activa nada hasta que usted elija. Puede cambiar su elección en cualquier momento en “Configuración de cookies”, al final de la página.",
+        "pt": "Com a sua permissão, usamos cookies para entender como o site é usado (Google Analytics) e medir nossos anúncios (Google Ads). Nada é ativado até você escolher. Você pode mudar sua escolha a qualquer momento em “Configurações de cookies”, no fim da página.",
+        "fr": "Avec votre accord, nous utilisons des cookies pour comprendre l’utilisation du site (Google Analytics) et mesurer nos annonces (Google Ads). Rien n’est activé avant votre choix. Vous pouvez le modifier à tout moment via « Paramètres des cookies » en bas de page."
+      }
+    },
+    {
+      "_key": "label35",
+      "_type": "sharedInterfaceLabel",
+      "key": "X",
+      "text": {
+        "en": "X",
+        "es": "X",
+        "pt": "X",
+        "fr": "X"
+      }
+    }
+  ],
+  "languages": [
+    {
+      "code": "en-US",
+      "display": "English",
+      "flag": "🇺🇸",
+      "_key": "en-US",
+      "_type": "sharedLanguage"
+    },
+    {
+      "code": "es",
+      "display": "Español",
+      "flag": "🇪🇸",
+      "_key": "es",
+      "_type": "sharedLanguage"
+    },
+    {
+      "code": "pt",
+      "display": "Português",
+      "flag": "🇧🇷",
+      "_key": "pt",
+      "_type": "sharedLanguage"
+    },
+    {
+      "code": "fr",
+      "display": "Français",
+      "flag": "🇫🇷",
+      "_key": "fr",
+      "_type": "sharedLanguage"
+    }
+  ],
+  "creditName": {
+    "en": "DR Web Studio",
+    "es": "DR Web Studio",
+    "pt": "DR Web Studio",
+    "fr": "DR Web Studio"
+  },
+  "creditUrl": {
+    "en": "https://www.dr-webstudio.com/en",
+    "es": "https://www.dr-webstudio.com/es",
+    "pt": "https://www.dr-webstudio.com/en",
+    "fr": "https://www.dr-webstudio.com/en"
+  },
+  "creditLogoAlt": {
+    "en": "DR Web Studio logo",
+    "es": "DR Web Studio logo",
+    "pt": "DR Web Studio logo",
+    "fr": "DR Web Studio logo"
+  },
+  "creditLogoUrl": "https://cdn.sanity.io/images/6r8ro1r9/production/81a1e4e2b8efbeb881d9ef9dd1624377bcd2f6d0-512x487.png?fm=webp&q=80&w=64"
+}

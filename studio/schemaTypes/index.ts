@@ -1,4 +1,5 @@
 import { adminPage } from "./documents/adminPage"
+import { sharedWebsiteTypes } from "./objects/sharedWebsiteContent"
 import { blogCategory } from "./documents/blogCategory"
 import { blogGuide } from "./documents/blogGuide"
 import { blogPage } from "./documents/blogPage"
@@ -44,10 +45,11 @@ import { weddingFilm } from "./objects/weddingFilm"
 import { weddingPackageText } from "./objects/weddingPackageText"
 import { workMode } from "./objects/workMode"
 
-import { reviewsPage, reviewCategory, clientReview, reviewObjects } from "./documents/reviews"
+import { reviewsPage, reviewCategory, clientReview, reviewObjects, reviewVerification } from "./documents/reviews"
 
 export const schemaTypes = [
-  reviewsPage, reviewCategory, clientReview, ...reviewObjects,
+  ...sharedWebsiteTypes,
+  reviewsPage, reviewCategory, clientReview, reviewVerification, ...reviewObjects,
   // Documents
   generalLayout,
   homePage,

@@ -1,3 +1,4 @@
+import useSharedContent from "../useSharedContent";
 import React from "react";
 import Copyright from "./Copyright";
 import SocialMedia from "./SocialMedia";
@@ -9,6 +10,7 @@ import LanguageSwitcher from "../../LanguageSwitcherComponents/LanguageSwitcher"
 import { useI18next } from "gatsby-plugin-react-i18next";
 const Footer = ({ generalInfo }) => {
   const { language } = useI18next();
+  const { t } = useSharedContent();
   const instatag = generalInfo?.instagram?.split("/")[3];
   return (
     <div className="flex flex-col h-screen md:h-auto lg:h-[50vh] xl:max-w-6xl xl:w-full xl:mx-auto justify-between py-10 mx-8 md:mx-10">
@@ -17,7 +19,7 @@ const Footer = ({ generalInfo }) => {
           <a
             href={generalInfo.instagram}
             target="_blank"
-            aria-label="Instagram"
+            aria-label={t("Instagram")}
             rel="noreferrer"
             className="flex flex-row items-center justify-center space-x-2 text-gray-600"
           >
@@ -41,7 +43,6 @@ const Footer = ({ generalInfo }) => {
         <SocialMedia generalInfo={generalInfo} />
       </div>
       <Copyright companyName={generalInfo?.companyName} language={language} />
-      <Signature />
     </div>
   );
 };

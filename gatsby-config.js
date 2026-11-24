@@ -158,6 +158,7 @@ module.exports = {
           allSitePage {
             nodes {
               path
+              pageContext
             }
           }
           allSanityBlogPost {
@@ -184,6 +185,7 @@ module.exports = {
             lastmod: blogDates.get(page.path) || seoLastModified.get(page.path),
           })).filter(
             (page) =>
+              !page.pageContext?.reviewsNoIndex &&
               !page.path.includes("admin") &&
               !page.path.includes("/contact/thankyou/") &&
               !isPackageDetailPath(page.path) &&

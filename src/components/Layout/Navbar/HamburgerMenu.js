@@ -1,10 +1,10 @@
+import useSharedContent from "../useSharedContent";
 import React, { useState } from "react";
 import loadable from "@loadable/component";
 import { HiBars3 } from "react-icons/hi2";
-import { useTranslation } from "gatsby-plugin-react-i18next";
 const SideBarMenu = loadable(() => import("./SideBarMenu"));
 const HamburgerMenu = ({ overlay = false }) => {
-  const { t } = useTranslation();
+  const { t, content, text, path } = useSharedContent();
   const [toggled, setToggled] = useState(false);
   return (
     <>

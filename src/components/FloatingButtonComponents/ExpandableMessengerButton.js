@@ -1,10 +1,10 @@
+import useSharedContent from "../Layout/useSharedContent";
 import React, { useState } from "react";
 import { FaFacebookMessenger } from "react-icons/fa6";
 import { FaWhatsapp, FaComments } from "react-icons/fa";
-import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const ExpandableMessengerButton = ({ messengerLink, telephone }) => {
-  const { t } = useTranslation();
+  const { t, content, text, path } = useSharedContent();
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpanded = () => {
@@ -27,7 +27,7 @@ const ExpandableMessengerButton = ({ messengerLink, telephone }) => {
         >
           <a
             href={`https://api.whatsapp.com/send?phone=${telephone}`}
-            aria-label="WhatsApp"
+            aria-label={t("WhatsApp")}
             rel="noreferrer"
             target="_blank"
             className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-shadow duration-200 hover:shadow-xl"
@@ -48,7 +48,7 @@ const ExpandableMessengerButton = ({ messengerLink, telephone }) => {
         >
           <a
             href={messengerLink}
-            aria-label="Messenger"
+            aria-label={t("Messenger")}
             rel="noreferrer"
             target="_blank"
             className="flex h-12 w-12 items-center justify-center rounded-full bg-[#007FFF] text-white shadow-lg transition-shadow duration-200 hover:shadow-xl"

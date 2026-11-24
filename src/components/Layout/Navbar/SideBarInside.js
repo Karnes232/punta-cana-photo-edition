@@ -2,67 +2,39 @@ import { Link } from "gatsby";
 import React from "react";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import RomanticEvents from "./RomanticEvents";
-import { Trans, useI18next } from "gatsby-plugin-react-i18next";
-import { localizedPath } from "../../../utils/siteLocales";
+import useSharedContent from "../useSharedContent";
 const SideBarInside = ({ footer, setToggled }) => {
-  const { language, t } = useI18next();
-  const localize = (path) => localizedPath(path, language);
+  const { content, text, path } = useSharedContent();
   return (
-    <>
-      <Menu className="ml-0 h-full flex flex-col justify-center items-center overflow-hidden">
-        <MenuItem
-          component={
-            <Link
-              to={localizedPath("/", language)}
-              className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={footer ? undefined : () => setToggled(false)}
+    <Menu className="ml-0 h-full flex flex-col justify-center items-center overflow-hidden">
+      {content.navigation
+        .filter((item) => footer || !item.footerOnly)
+        .map((item) =>
+          item.children?.length ? (
+            <RomanticEvents
+              key={item._key}
+              item={item}
+              footer={footer}
+              setToggled={setToggled}
             />
-          }
-        >
-          <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            {t("Home")}
-          </p>
-        </MenuItem>
-        <RomanticEvents footer={footer} setToggled={setToggled} />
-
-        <MenuItem
-          component={
-            <Link
-              to={localize("/event-planner/")}
-              className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={footer ? undefined : () => setToggled(false)}
-            />
-          }
-        >
-          <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            <Trans>Corporate events</Trans>
-          </p>
-        </MenuItem>
-        <MenuItem
-          component={
-            <Link
-              to={localize("/contact/")}
-              className={footer ? "hamburgerSmall" : "hamburger"}
-              onClick={footer ? undefined : () => setToggled(false)}
-            />
-          }
-        >
-          <p className={footer ? "hamburgerSmall" : "hamburger"}>
-            <Trans>Contact</Trans>
-          </p>
-        </MenuItem>
-        {footer && (
-          <MenuItem
-            component={
-              <Link to={localize("/blog/")} className="hamburgerSmall" />
-            }
-          >
-            <p className="hamburgerSmall">Blog</p>
-          </MenuItem>
+          ) : (
+            <MenuItem
+              key={item._key}
+              component={
+                <Link
+                  to={path(item.url)}
+                  className={footer ? "hamburgerSmall" : "hamburger"}
+                  onClick={footer ? undefined : () => setToggled(false)}
+                />
+              }
+            >
+              <p className={footer ? "hamburgerSmall" : "hamburger"}>
+                {text(item.label)}
+              </p>
+            </MenuItem>
+          ),
         )}
-      </Menu>
-    </>
+    </Menu>
   );
 };
-
 export default SideBarInside;

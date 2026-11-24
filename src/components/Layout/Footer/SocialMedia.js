@@ -1,3 +1,4 @@
+import useSharedContent from "../useSharedContent";
 import React from "react";
 import {
   FaInstagram,
@@ -7,10 +8,9 @@ import {
   FaPhone,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { useTranslation } from "gatsby-plugin-react-i18next";
 
 const SocialMedia = ({ generalInfo }) => {
-  const { t } = useTranslation();
+  const { t, content, text, path } = useSharedContent();
   if (!generalInfo) return null;
   return (
     <div className="flex flex-row space-x-5 md:space-x-7 py-4 text-slate-600">
@@ -18,14 +18,19 @@ const SocialMedia = ({ generalInfo }) => {
         <a
           href={generalInfo.facebook}
           target="_blank"
-          aria-label="Facebook"
+          aria-label={t("Facebook")}
           rel="noreferrer"
         >
           <FaFacebookF className="text-xl md:text-3xl" />
         </a>
       )}
       {generalInfo.x && (
-        <a href={generalInfo.x} target="_blank" aria-label="X" rel="noreferrer">
+        <a
+          href={generalInfo.x}
+          target="_blank"
+          aria-label={t("X")}
+          rel="noreferrer"
+        >
           <FaXTwitter className="text-xl md:text-3xl" />
         </a>
       )}
@@ -33,7 +38,7 @@ const SocialMedia = ({ generalInfo }) => {
         <a
           href={generalInfo.instagram}
           target="_blank"
-          aria-label="Instagram"
+          aria-label={t("Instagram")}
           rel="noreferrer"
         >
           <FaInstagram className="text-xl md:text-3xl" />
@@ -53,7 +58,7 @@ const SocialMedia = ({ generalInfo }) => {
         <a
           href={`https://wa.me/${generalInfo.telephone}`}
           target="_blank"
-          aria-label="WhatsApp"
+          aria-label={t("WhatsApp")}
           rel="noreferrer"
         >
           <FaWhatsapp className="text-xl md:text-3xl" />
@@ -63,7 +68,7 @@ const SocialMedia = ({ generalInfo }) => {
         <a
           href={`${generalInfo.messengerLink}`}
           target="_blank"
-          aria-label="Messenger"
+          aria-label={t("Messenger")}
           rel="noreferrer"
         >
           <FaFacebookMessenger className="text-xl md:text-3xl" />

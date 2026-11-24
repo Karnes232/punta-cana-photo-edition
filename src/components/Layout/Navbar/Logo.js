@@ -1,3 +1,4 @@
+import useSharedContent from "../useSharedContent";
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
@@ -10,7 +11,8 @@ import { localizedPath } from "../../../utils/siteLocales";
 // candidate for an 80px slot.
 const LOGO_SIZES = "(min-width: 768px) 128px, 80px";
 const Logo = ({ overlay = false }) => {
-  const { language, t } = useI18next();
+  const { language } = useI18next();
+  const { t, content, path } = useSharedContent();
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       sanityGeneralLayout(_id: { eq: "generalLayout" }) {
@@ -35,7 +37,7 @@ const Logo = ({ overlay = false }) => {
         }`}
       >
         <Link
-          to={localizedPath("/", language)}
+          to={path(content.homePath)}
           className="no-underline"
           aria-label={t("Home")}
         >

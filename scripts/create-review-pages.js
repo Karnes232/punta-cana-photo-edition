@@ -72,6 +72,7 @@ module.exports = async ({ actions, reporter }) => {
       path: alternates.find((a) => a.language === copy.language).path,
       component: path.resolve("src/template/reviews.js"),
       context: {
+        reviewsNoIndex: Boolean(copy.seo.noIndex || !publicReviews.length),
         copy,
         categories,
         reviews: publicReviews,

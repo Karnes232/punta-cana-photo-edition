@@ -1,6 +1,6 @@
 # Administración de Reviews
 
-Esta guía corresponde a los campos implementados en esta rama. No confirma que la rama esté desplegada. Studio se compila junto al sitio en `/studio/`.
+Esta guía corresponde a los campos implementados en el Studio de Sertuin Events, que se compila junto al sitio en `/studio/`.
 
 ## Contenido de la página
 
@@ -33,7 +33,7 @@ El enlace debe ser el permalink individual expandido de google.com/maps con `rev
 
 **Display order** ordena las reseñas; **Featured** las incluye en destacadas. **Optional translations**, **Public event label** y **Optional Google button label override** usan los campos localizados existentes. La traducción se muestra separada del original con Translation notice. El estado verificado es una confirmación editorial, no una comprobación automática contra Google.
 
-Los documentos incompletos se guardan como borradores. Los errores de validación impiden publicarlos. Las notas no se incluyen en los datos públicos de Gatsby; la privacidad del dataset de Sanity requiere la configuración de acceso correspondiente y no debe almacenarse información sensible en un dataset público.
+Los documentos incompletos se guardan como borradores. Los errores de validación impiden publicarlos. Para notas internas abra **Reviews Page → Private Verification Notes**, seleccione **Client review** y edite **Internal reference / Internal verification notes**. Estos documentos se guardan como borradores autenticados y no tienen acción Publish; no se mezclan con la reseña pública. No publique esos documentos por herramientas externas.
 
 ## Categorías y CTA
 
@@ -45,13 +45,22 @@ Una categoría sin reseñas publicadas aptas no genera filtro, descripción, ima
 
 Sanity guarda borradores automáticamente; use **Publish** para publicarlos. La página se genera exclusivamente a partir de documentos publicados. No hay datos editoriales de respaldo en el componente y no se generan testimonios ficticios.
 
-La arquitectura existente es Gatsby estático desplegado por Netlify. Publicar en Sanity debe activar el hook de compilación de Netlify. El repositorio no contiene la configuración del webhook alojado ni un sistema de preview autenticado; hay que verificar el hook en las cuentas conectadas. Configure el filtro para cambios/publicación/eliminación de `reviewsPage`, `clientReview`, `reviewCategory` y las referencias a servicios. No exponga la URL secreta del build hook en el navegador. Una publicación no equivale a una actualización instantánea: espere a que finalice el despliegue.
+La arquitectura existente es Gatsby estático desplegado por Netlify. El webhook **Published website content → Netlify**, activo en el dataset production, conecta con el build hook **Sanity published content** del proyecto Netlify **sertuin-events**, rama main. Se activa al crear, modificar o eliminar contenido publicado, incluidos Reviews, categorías, reseñas, servicios y General Layout. Excluye borradores, notas internas y metadatos de traducción/medios. No exponga la URL privada del build hook. Después de Publish, espere a que Netlify termine la compilación y marque el despliegue como Published.
 
 No se ha añadido un endpoint público que exponga borradores. No existe una acción de vista previa nueva en esta implementación. La prueba de preview requiere infraestructura adicional autenticada; el flujo completo no puede darse por aceptado hasta verificarlo con una sesión de Studio y una reseña real autorizada.
 
 ## Contenido compartido
 
-**Reviews Page → Shared Website Content** abre el documento existente **General Layout**. Se reutilizan Layout, Navbar y Footer sin reemplazarlos. General Layout administra marca, logo, contactos y redes. La navegación, algunas etiquetas del pie, selector de idioma y consentimiento aún usan archivos de traducción/componentes compartidos. Migrarlos requiere ampliar General Layout y sus consumidores en todo el sitio; esta rama no afirma haber completado esa migración global.
+**Reviews Page → Shared Website Content** abre el documento existente **General Layout**. En su grupo **Shared Website Content → Shared Website Content** se editan:
+
+- **Shared navigation and footer menu**: nombres, destinos y orden del menú; **Submenu links** administra las entradas desplegables y **Footer only** limita una entrada al pie.
+- **Footer legal links**: textos y destinos legales.
+- **Logo and copyright destination** y **Cookie banner policy destination**: destinos compartidos.
+- **Common CTA, consent and accessibility text**: 36 etiquetas con sus cuatro idiomas, incluidos los botones y mensajes de cookies, contacto, menú y créditos. La clave identifica el uso y no se modifica.
+- **Supported language display names**: nombres visibles y banderas de los cuatro idiomas existentes; no modifica la infraestructura de rutas.
+- **Footer credit name / Footer credit destination / Footer credit logo alternative text / Footer credit image URL**: crédito e imagen del pie.
+
+Los grupos existentes **Branding**, **Contact**, **Social** y **Legal & admin** siguen gestionando logo, empresa, teléfono, Messenger, redes y datos legales. Los componentes compartidos consumen ahora estos datos de Sanity conservando los estilos y el comportamiento de consentimiento. Las traducciones originales se migraron como contenido; no funcionan como fallback en esos componentes.
 
 ## Comprobaciones pendientes de aceptación
 

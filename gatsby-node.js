@@ -1,6 +1,7 @@
 const path = require("path");
 const fetch = require("node-fetch");
 const fs = require("fs");
+exports.sourceNodes = require("./scripts/source-shared-content");
 const {
   groups: retiredBlogRedirectGroups,
   categoryRedirects: retiredBlogCategoryRedirects,
