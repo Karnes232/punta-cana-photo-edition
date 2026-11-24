@@ -394,6 +394,11 @@ export const reviewsPage = defineType({
       validation: (r) => r.max(20),
     }),
   ],
+  validation: r=>r.custom((d:any)=>{
+    for(const [enabled,heading] of [["valuesEnabled","valuesHeading"],["featuredEnabled","featuredHeading"],["faqEnabled","faqHeading"]])
+      if(d?.[enabled]&&!d?.[heading]?.trim())return "Add a heading for every enabled editorial section.";
+    return true;
+  }),
   preview: languagePreview("Reviews Page"),
 });
 export const reviewCategory = defineType({
@@ -401,7 +406,7 @@ export const reviewCategory = defineType({
   title: "Review Category",
   type: "document",
   fields: [
-    localized("name", "Category name"),
+    {...localized("name", "Category name"),validation:(r:any)=>r.required()},
     defineField({
       name: "slug",
       title: "Slug",
@@ -409,7 +414,7 @@ export const reviewCategory = defineType({
       options: { source: "name.en" },
       validation: (r) => r.required(),
     }),
-    localized("description", "Description"),
+    {...localized("description", "Description"),validation:(r:any)=>r.required()},
     localized("intro", "Introductory text"),
     order,
     enabled(),
@@ -457,9 +462,9 @@ export const reviewCategory = defineType({
   ],
   validation: (r) =>
     r.custom((d: any) =>
-      !d?.ctaEnabled || d.servicePage || d.servicePath
+      !d?.ctaEnabled || ((d.servicePage || d.servicePath) && d.ctaHeading?.en && d.ctaDescription?.en && d.ctaLabel?.en)
         ? true
-        : "A service CTA needs an associated service page or destination.",
+        : "An enabled service CTA needs a destination, heading, description and button label.",
     ),
   preview: { select: { title: "name.en", media: "image" } },
   orderings: [
