@@ -3,7 +3,7 @@
 ## Pruebas ejecutadas
 
 - `node scripts/test-about.cjs`: aprobada. Renderizado real del componente en cuatro idiomas, una H1, siete tarjetas, dos botones desactivados, un único indicador de marca activa en el directorio, cambios de contenido, activar un botón añadiendo solo la URL y volver a desactivarlo al retirarla, rechazo de enlaces inseguros, visibilidad de secciones, crop, JSON-LD y ausencia de texto editorial literal en JSX.
-- Aislamiento: sin la variable local no se crean páginas About; con ella y un entorno CI la generación falla deliberadamente.
+- Aislamiento: el flujo normal consulta únicamente contenido publicado; el modo local con borradores se rechaza en CI.
 - `node scripts/test-reviews.js` y `node scripts/test-shared-content.js`: aprobadas; no regresión detectada en las pruebas de Reviews y contenido compartido.
 - TypeScript de Studio: aprobado.
 - `sanity schemas validate --level error --format json`: `[]`, cero errores de esquema.
@@ -27,10 +27,18 @@ El componente compartido existente `ResponsiveImage` emite en la prueba SSR una 
 
 Se compararon los encabezados, tipografías, colores, botones, ancho de contenido y pie. El layout utiliza los componentes reales del sitio; la imagen no se convierte en fondo de hero ni se recorta para llenar una pantalla.
 
-## Pendientes por la decisión de mantenerlo local
+## Historial de la revisión local
 
-No existe asset en Sanity, dataset de ensayo, documento remoto, demostración de edición en Studio ni prueba de Publish/revalidación. El esquema y el adaptador están preparados, pero no se presenta esa integración como comprobada. Tampoco se creó Draft PR ni se subió la rama.
+La primera revisión se mantuvo local por decisión del propietario. Posteriormente autorizó publicar en producción; se cargó la foto original y se publicaron los documentos validados. La guía de administración refleja el flujo vigente.
 
 No se realizó una auditoría exhaustiva con lector de pantalla o herramienta externa de accesibilidad. Se verificaron semántica, estados disabled, enlaces HTTPS, lectura responsive y ausencia de desbordamiento. Las transiciones de contenido están probadas con documentos locales; no equivalen a los 30 pasos de aceptación del CMS.
 
 Los destinos de Grecia Mejía Weddings y SertuinOne quedan pendientes. Los logos son opcionales y no fueron suministrados. La observación sobre la ubicación de propuestas se registra en la guía del propietario. Ninguna otra web fue modificada.
+
+## Validaciones de publicación
+
+- Validación oficial de los 14 documentos de contenido con Sanity: cero errores.
+- Studio compilado con el menú About Us y reutilización de General Layout.
+- La compilación pública consulta GROQ con perspective=published, sin credenciales, y mantiene canonical/hreflang en las cuatro rutas.
+- El sitemap incluye About público; únicamente el modo local aplica noindex.
+- La aceptación exhaustiva de 30 operaciones editoriales no se sustituye por estas pruebas; las comprobaciones realizadas se reportan con su alcance real.

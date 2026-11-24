@@ -55,7 +55,7 @@ export const hiddenTypes = new Set([
 ])
 
 // Listed in their own sections below rather than in the generic type list.
-const listedTypes = new Set(["blogGuide", "blogCategory", "blogTopic", "weddingPackage", "elopementOption", "proposalPackage", "proposalAddOn", "rentalItem", "redirect"])
+const listedTypes = new Set(["companyFounder", "brandProfile", "blogGuide", "blogCategory", "blogTopic", "weddingPackage", "elopementOption", "proposalPackage", "proposalAddOn", "rentalItem", "redirect"])
 
 // A guide's language texts have fixed IDs: blogPost-<guide>-<language>, where
 // <guide> drops the "blogGuide-" prefix of the guides created by the migration.
@@ -167,6 +167,14 @@ export const structure: StructureResolver = (S) => {
     .title("Content")
     .items([
       singleton("generalLayout", "General Layout", CogIcon),
+      S.listItem().title("About Us").id("about").icon(DocumentIcon).child(
+        S.list().title("About Us").items([
+          S.listItem().title("Page Content").id("aboutPages").child(S.list().title("Page Content").items(languages.map(({id,title})=>S.listItem().id(id).title(title).child(S.document().schemaType("aboutPage").documentId(`aboutPage-${id}`))))),
+          S.documentTypeListItem("companyFounder").title("Founders' Biographies"),
+          singleton("generalLayout", "Sertuin SRL & Shared Values", CogIcon),
+          S.documentTypeListItem("brandProfile").title("Our Seven Brands — Buttons & Links"),
+        ])
+      ),
       S.listItem().title("Reviews Page").id("reviews").icon(CommentIcon).child(
         S.list().title("Reviews Page").items([
           translatedPage("reviewsPage", "Page Content", DocumentIcon),

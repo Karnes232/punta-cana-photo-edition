@@ -1,11 +1,7 @@
 // Optional future adapter. Read-only; use ONLY after approval of isolated staging.
 // Never queries production, never writes documents, and never puts a token in output.
 const fs = require("fs");
-const projection = `*[_type == "aboutPage"]{_id,language,eyebrow,heading,subtitle,introduction,foundersHeading,foundersSubtitle,biography,photoCaption,companyHeading,currentBrandLabel,brandHeading,brandDescription,serviceLinks,purposeHeading,purpose,commitmentHeading,commitment,processHeading,steps,valuesHeading,valuesIntro,valuesEnabled,directoryHeading,directorySubtitle,directoryIntro,directoryEnabled,
-foundersPhoto{...,asset->{url,"width":metadata.dimensions.width,"height":metadata.dimensions.height}},
-company->{corporateProfile{...,founders[]->{_id,name,title,biography,order,visible,photo{...,asset->{url,"width":metadata.dimensions.width,"height":metadata.dimensions.height}}}}},
-brands[]->{_id,brandId,name,specialty,description,homepageUrl,homepageButtonLabel,homepageLinkEnabled,order,active,logo{...,asset->{url,"width":metadata.dimensions.width,"height":metadata.dimensions.height}},image{...,asset->{url,"width":metadata.dimensions.width,"height":metadata.dimensions.height}}},
-closing{...,image{...,asset->{url,"width":metadata.dimensions.width,"height":metadata.dimensions.height}}},seo{...,image{...,asset->{url,"width":metadata.dimensions.width,"height":metadata.dimensions.height}}}}`;
+const { projection } = require("./about-query");
 async function run() {
   const dataset = process.env.ABOUT_SANITY_DATASET;
   if (dataset !== "about-staging")

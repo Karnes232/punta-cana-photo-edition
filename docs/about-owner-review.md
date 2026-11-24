@@ -1,32 +1,10 @@
-# About Us — revisión local
+# About Us — administración y publicación
 
-## Estado y alcance
+El propietario autorizó la publicación después de revisar la versión local. La página usa exclusivamente contenido publicado de Sanity, con rutas /about/, /es/about/, /pt/about/ y /fr/about/. La navegación y el pie utilizan el mismo registro compartido de General Layout.
 
-Rama local: `feature/sertuin-about-us-multibrand-sanity`, creada desde `origin/main` (`7aeca5d`). El propietario eligió **mantener todo local por ahora**. No se suben la rama, los textos ni la fotografía; no se abre un PR remoto y no se cambia producción.
+## Fotografía original
 
-La nueva ruta es `/about/`, con `/es/about/`, `/pt/about/` y `/fr/about/`. Solo se generan al activar explícitamente `ABOUT_LOCAL_REVIEW=1` y proporcionar una copia local de contenido. La compilación rechaza ese modo en CI/Netlify. Todas las páginas de revisión tienen `noindex, nofollow` y quedan fuera del sitemap. No se añade About al menú compartido publicado.
-
-**Sanity no está conectado para esta página todavía.** Se implementaron y compilaron los esquemas, la estructura administrativa y un adaptador de lectura para un futuro dataset aislado. Los 14 documentos iniciales están en un archivo local, no en Content Lake. La edición, publicación y vista previa desde Studio quedan pendientes del entorno autorizado. No se han completado los 30 pasos de aceptación de Studio.
-
-El único dataset existente era `production`. Crear `about-staging` privado falló porque el plan no permite esa modalidad. La alternativa pública fue detenida por revisión automática; el propietario eligió no continuar con ella. No se creó ningún dataset.
-
-## Vista previa local
-
-Desde la raíz del repositorio:
-
-```powershell
-node scripts/prepare-about-local.cjs 'C:\Users\User\Downloads\WhatsApp Image 2026-11-23 at 8.31.19 PM.jpeg'
-$env:ABOUT_LOCAL_REVIEW='1'
-$env:ABOUT_CONTENT_FILE='.tmp/about-local-content.json'
-npm run build
-node scripts/about-preview-server.cjs
-```
-
-En este equipo, donde `npm` no está en PATH, puede usarse `node '..\package\bin\npm-cli.js' run build`.
-
-Abrir `http://127.0.0.1:9001/about/` o `http://127.0.0.1:9001/es/about/`. El servidor solo escucha en loopback. No hay formularios de edición ni claves de Sanity en esa vista. Detenerlo con Ctrl+C.
-
-La fotografía original se conserva byte por byte en `.tmp/about-original.jpeg`; su SHA-256 y dimensiones se registran en `.tmp/about-photo-evidence.json`. La copia y las capturas están excluidas de Git. El servidor optimiza tamaños y WebP en memoria sin modificar el original. Ambos fundadores aparecen completos, sin generación ni retoque de identidad. No existe referencia de asset de Sanity porque no se autorizó la subida.
+Se subió el archivo original, sin sustituciones ni edición generativa. Asset: image-d3d0ac9b78d5aeb38ec26f2a9b6aee09b053c3c6-3120x4160-jpg. Dimensiones: 3120 × 4160. La imagen principal y la imagen social inicial son editables por idioma. La web usa ResponsiveImage y entrega tamaños optimizados desde Sanity.
 
 ## Modelo editorial implementado
 
@@ -41,7 +19,7 @@ La página reutiliza `Layout`, `Navbar`, `Footer`, `ResponsiveImage`, las rutas 
 
 ## Campos de Studio preparados
 
-Estas rutas corresponden a la estructura implementada para **about-staging**. No aparecen aún en el Studio de producción. No iniciar el Studio de revisión contra production.
+En https://sertuinevents.com/studio/ abra **About Us**. Las siguientes rutas pertenecen al Studio publicado. Page Content contiene English, Español, Português y Français.
 
 | Acción | Ruta y campo |
 |---|---|
@@ -83,15 +61,20 @@ Verificados el 23 de noviembre de 2026 mediante sus webs publicadas:
 
 Observación editorial: Proposal Packages indica en su web que las cenas tienen lugar en Cabeza de Toro y la ubicación de propuestas se confirma según paquete. El texto aportado para About habla de propuestas en el espacio designado de Cabeza de Toro. Se conserva el texto del propietario para su revisión; no se cambió la web de esa marca. Photo Edition enlaza planificación de bodas a Sertuin Events; su tarjeta se mantiene enfocada en fotografía, como solicita el propietario. No se recibieron logotipos de las otras marcas: son opcionales, no se inventaron.
 
-## Pasos pendientes antes de publicar
 
-1. Aprobar diseño y textos de esta vista local.
-2. Autorizar un entorno Sanity aislado compatible con el plan y la exposición de assets.
-3. Copiar únicamente el registro público existente `generalLayout` al entorno aislado y fusionar `corporateProfile`, conservando sus demás campos. No reemplazar el registro publicado con el fragmento del archivo inicial.
-4. Subir la fotografía exacta, registrar su asset real y asignarlo a Original founders photograph de los cuatro documentos. Crear los documentos iniciales como borradores; no usar un identificador de asset simulado.
-5. Iniciar el Studio local con `SANITY_STUDIO_DATASET=about-staging` y probar las 30 operaciones del documento original. El menú de revisión está preparado para ese dataset.
-6. Con autorización, `scripts/export-about-staging.cjs` puede leer borradores autenticados a la copia local. Requiere `ABOUT_SANITY_DATASET=about-staging` y `SANITY_READ_TOKEN` solo en el entorno del proceso. `--published` lee únicamente contenido publicado de ensayo. Reconstruir la vista local tras cada exportación. El script rechaza production y no escribe en Sanity.
-7. Autorizar push y Draft PR. Mantener el PR sin merge. Netlify publica main; no se ha enviado esta rama ni se ha disparado despliegue alguno.
-8. Solo tras aprobación explícita: planificar importación de contenido aprobado, consulta de contenido publicado, metadatos de indexación y enlace de navegación. El bloqueo local es deliberado y requiere una revisión de publicación antes de habilitar production.
+## Publicar cambios
 
-No se promete posicionamiento en buscadores ni citas de IA. El marcado distingue `AboutPage`, `Organization` para Sertuin SRL, dos `Person` y siete `Brand`. Los textos y relaciones proceden de la información aportada por el propietario. No se inventan fechas, credenciales, cifras ni entidades legales. Las políticas de rastreadores existentes, incluido GPTBot, no cambian.
+1. Edite el documento o imagen correspondiente y pulse **Publish**. Los borradores permanecen privados.
+2. El webhook existente **Published website content → Netlify** activa la reconstrucción de main. Incluye páginas, fundadores, marcas, empresa y navegación.
+3. Espere al estado **Published** del despliegue y recargue la URL del idioma. No es necesario modificar código.
+4. Al añadir una Homepage URL válida a una marca, su botón pasa a ser un enlace si Enable homepage link está activo. Al borrarla vuelve al estado disabled.
+
+La página pública no muestra borradores ni contiene tokens. El modo de revisión local conserva noindex y no puede ejecutarse en CI. No se ha añadido una vista previa autenticada de borradores dentro de Studio: el adaptador local de staging permanece disponible para un futuro entorno autorizado.
+
+## Contenido inicial y seguridad de migración
+
+Se publicaron cuatro aboutPage, dos companyFounder y siete brandProfile; se extendió generalLayout con corporateProfile sin reemplazar sus demás campos. Las traducciones de las páginas están vinculadas mediante translation.metadata. Se validaron oficialmente los 14 documentos sin errores antes de publicar. La copia de seguridad y el plan de migración están en .tmp, fuera de Git.
+
+No importe scripts/migrations/about-initial-documents.json sobre producción: es el contenido inicial, y generalLayout allí solo contiene el fragmento corporativo. Los cambios editoriales posteriores deben hacerse en Studio para conservar el estado vigente.
+
+No se promete posicionamiento ni citas de IA. El marcado distingue AboutPage, Organization para Sertuin SRL, dos Person y siete Brand; no inventa fechas, credenciales, cifras ni entidades legales. Las políticas de rastreadores, incluido GPTBot, no se modificaron.

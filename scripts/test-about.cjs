@@ -140,7 +140,13 @@ assert(image.url.includes("rect=100,200,800,1600"));
   const previous = process.env.ABOUT_LOCAL_REVIEW;
   delete process.env.ABOUT_LOCAL_REVIEW;
   let calls = 0;
-  await create({ actions: { createPage: () => calls++ } });
+  await create({
+    actions: { createPage: () => calls++ },
+    fetchContent: async (url) => {
+      assert(url.includes("perspective=published"));
+      return { ok: true, json: async () => ({ result: [] }) };
+    },
+  });
   assert.equal(calls, 0);
   process.env.ABOUT_LOCAL_REVIEW = "1";
   process.env.CI = "true";

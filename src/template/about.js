@@ -296,7 +296,7 @@ export function Head({ data, pageContext: ctx }) {
           href={root + a.path}
         />
       ))}
-      <meta name="robots" content="noindex, nofollow" />
+      {ctx.aboutNoIndex && <meta name="robots" content="noindex, nofollow" />}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
       <meta property="og:title" content={seo.ogTitle || seo.title} />
