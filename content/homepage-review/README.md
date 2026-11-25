@@ -98,6 +98,8 @@ Open http://127.0.0.1:4173 and select language, before/after and viewport width.
 
 Branch: `feature/sertuin-homepage-multilingual-content`, based on `origin/main` at `70fc619`. The original About Us worktree remains untouched. No merge is performed. The repository has no GitHub Actions workflows. Webhook enumeration requires an unavailable admin scope, so no claim is made that every remote integration was inspected.
 
-The commit and Draft PR title include `[skip netlify]` to suppress Netlify branch builds and Deploy Previews without changing project configuration. This follows [Netlify's documented skip controls](https://docs.netlify.com/deploy/manage-deploys/manage-deploys-overview/#skip-a-deploy). The local review is the only prepared preview; the editorial files are not consumed by production.
+Local content commit: `f73e25e`. **Remote push and Draft PR are blocked:** automatic approval review rejected public-repository egress of the newly authored text and requested explicit authorization for public disclosure. No push or PR creation was performed. Owner approval to upload these review files to the public `Karnes232/punta-cana-photo-edition` repository is the remaining prerequisite for GitHub delivery.
+
+The local commit includes `[skip netlify]`; the planned Draft PR title will also include it to suppress Netlify branch builds and Deploy Previews without changing project configuration. This follows [Netlify's documented skip controls](https://docs.netlify.com/deploy/manage-deploys/manage-deploys-overview/#skip-a-deploy). The local review is the only prepared preview; the editorial files are not consumed by production.
 
 **READY FOR OWNER REVIEW — NOT DEPLOYED TO PRODUCTION**
