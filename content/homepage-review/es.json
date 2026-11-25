@@ -1,0 +1,45 @@
+{
+  "heroHeading": "Planificación, Producción y Coordinación de Eventos en Punta Cana",
+  "heroIntro": "Planificamos eventos corporativos, bodas de destino, propuestas de matrimonio, ceremonias íntimas y celebraciones privadas en Punta Cana. Ayudamos a definir el concepto, coordinamos espacios y proveedores y asumimos las responsabilidades acordadas durante el evento. Explicamos los servicios, la cotización y los siguientes pasos antes de confirmar.",
+  "primaryCtaLabel": "Cuéntanos Sobre Tu Evento",
+  "secondaryCtaLabel": "Conoce Nuestros Servicios",
+  "eventsEyebrow": "Nuestros servicios de planificación",
+  "eventsTitle": "Apoyo para Organizar Tu Evento",
+  "eventsIntro": "Adaptamos nuestra participación a tu proyecto: planificación integral, coordinación de servicios específicos o apoyo local para un plan existente. Podemos trabajar con el espacio y los proveedores que ya elegiste o ayudarte a evaluar opciones. En cada página de servicio explicamos las alternativas disponibles y cómo comenzar.",
+  "eventCardLinkLabel": "Conoce Este Servicio",
+  "cards": [
+    {"link":"/event-planner/","title":"Eventos Corporativos","description":"Apoyamos a empresas, asociaciones, equipos internos y agencias internacionales en conferencias, reuniones ejecutivas, cenas, lanzamientos, activaciones de marca, incentivos y programas de varios días. Podemos desarrollar el evento desde el planteamiento inicial o coordinar la producción local de un plan existente. Según la propuesta aprobada, coordinamos la comunicación con espacios y hoteles, proveedores audiovisuales, catering, transporte, personal, horarios de proveedores, montaje y operaciones durante el evento."},
+    {"link":"/puntacana-wedding-planner/","title":"Planificación de Bodas de Destino","description":"Ayudamos a parejas a planificar su boda en Punta Cana y otras localidades acordadas de República Dominicana. Investigamos espacios, comparamos proveedores, orientamos el presupuesto, coordinamos el diseño y organizamos los cronogramas. También apoyamos la logística de invitados, la planificación del transporte y las responsabilidades acordadas para el día de la boda. Adaptamos el servicio tanto si ya tienen un espacio como si necesitan elegirlo. Coordinamos celebraciones multiculturales y de varios días mediante el servicio de planificación correspondiente."},
+    {"link":"/proposal/","title":"Propuestas de Matrimonio","description":"Organizamos las experiencias publicadas con el montaje romántico elegido, transporte privado de ida y vuelta para la pareja, fotografía, flores, una bebida para celebrar y música. Confirmamos experiencia, fecha, alojamiento, recogida y horario; preparamos el montaje y coordinamos su llegada. Revisamos las solicitudes de personalización y aclaramos las inclusiones seleccionadas. La cena, los músicos en vivo y la videografía profesional dependen del paquete o de un adicional acordado; otros espacios requieren permiso y cotización."},
+    {"link":"/punta-cana-elopement-packages/","title":"Bodas Íntimas y Ceremonias","description":"Organizamos ceremonias en playa privada y catamarán para parejas que buscan una celebración íntima. Ayudamos a elegir el entorno, la decoración y el horario, y coordinamos la ceremonia y al oficiante. La experiencia base incluye una ceremonia simbólica; la decoración elegida se cotiza por separado. Revisamos invitados, transporte y servicios adicionales antes de confirmar. Podemos gestionar el servicio opcional de ceremonia legal únicamente después de que la documentación requerida haya sido revisada y aceptada."},
+    {"link":"/gender-reveal-punta-cana/","title":"Revelaciones de Género","description":"Diseñamos una celebración personalizada según el lugar, los invitados, los colores, la decoración y el efecto de revelación deseado. Conversamos sobre fotografía, video, transporte y presupuesto, evaluamos los proveedores necesarios y preparamos una cotización a medida. Revisamos si el efecto cumple las condiciones del espacio y requiere permisos o profesionales autorizados. Confirmamos qué es viable en el lugar elegido antes de acordar el montaje y la coordinación del evento."}
+  ],
+  "whatEyebrow": "Planificación, producción y proveedores",
+  "whatTitle": "Cómo Coordinamos Tu Evento",
+  "whatParagraphs": [
+    "Organizamos los servicios aprobados en un mismo cronograma. Coordinamos decoración, flores, mobiliario y montaje técnico con los horarios de acceso; vinculamos el catering y las bebidas con el programa; y organizamos fotografía, video, música y entretenimiento según los momentos que deben cubrir. Aclaramos responsabilidades, transporte y personal para que la preparación y la operación del evento sigan el mismo plan.",
+    "Para cumpleaños, aniversarios, cenas privadas, reuniones familiares y otras celebraciones, desarrollamos una propuesta según los invitados, el lugar, las preferencias y el presupuesto. Podemos coordinar el espacio, la decoración, los alimentos y bebidas, el entretenimiento y otros servicios seleccionados. Explicamos las inclusiones y responsabilidades propuestas antes de confirmar.",
+    "Para eventos personalizados y producciones especiales, revisamos objetivos, concepto, fecha, asistencia, presupuesto y requisitos técnicos. Podemos ayudarte a desarrollar el plan o coordinar una propuesta de producción existente, con los proveedores, transporte, personal y horarios acordados en la cotización. Evaluamos la viabilidad antes de comprometernos con el trabajo.",
+    "Si ya tienes proveedores, conversamos sobre las tareas que deseas delegarnos y cómo trabajaremos con tu equipo. Identificamos las decisiones y la información que necesitamos de ti. La decoración, la fotografía, el catering y los demás servicios dependen de la experiencia seleccionada o de la cotización aprobada."
+  ],
+  "whatItems": ["Concepto, prioridades y presupuesto", "Comunicación con espacios y proveedores", "Cronogramas de producción y servicios", "Logística de invitados y proveedores", "Montaje y coordinación del evento", "Gestiones de cierre acordadas"],
+  "processEyebrow": "Nuestro proceso de planificación",
+  "processTitle": "Desde Tu Idea Hasta el Cierre",
+  "processIntro": "Confirmamos el nivel de apoyo necesario y explicamos las decisiones de cada etapa. Adaptamos el proceso a la experiencia elegida y a las responsabilidades contratadas.",
+  "steps": [
+    {"title":"Consulta y Evaluación","body":"Conversamos sobre el evento, la fecha, el lugar, los invitados, el presupuesto aproximado y los servicios necesarios. Revisamos condiciones del espacio, opciones disponibles, proveedores y logística. Podemos partir de un lugar ya elegido o ayudarte a investigar opciones dentro del servicio acordado."},
+    {"title":"Propuesta y Planificación","body":"Presentamos servicios recomendados, cotización, responsabilidades y condiciones relevantes. Tras la aprobación, coordinamos proveedores, cronogramas y preparativos. Explicamos los cambios propuestos en servicios o costos para que puedas decidir antes de confirmarlos."},
+    {"title":"Ejecución y Cierre","body":"Supervisamos las llegadas, el montaje, la actividad de proveedores y el programa acordados. Después coordinamos el desmontaje, las gestiones de cierre y las entregas pendientes que correspondan. Nuestras responsabilidades durante todo el evento se ajustan al servicio contratado."}
+  ],
+  "commitmentEyebrow": "Coordinación local",
+  "commitmentTitle": "Acceso al Espacio y Logística",
+  "commitmentBody": "Revisamos políticas de resorts, restricciones a proveedores externos, tarifas del espacio y acceso a propiedades privadas o playas antes de confirmar un proyecto. Coordinamos los permisos pertinentes, el transporte de proveedores, el acceso operativo y los horarios de montaje y desmontaje dentro de nuestras responsabilidades. Para eventos al aire libre, conversamos con el espacio y los proveedores sobre el clima y las alternativas disponibles. Confirmamos el acceso y las actividades permitidas para cada lugar; el hotel, la villa o la playa elegidos requieren las aprobaciones correspondientes.",
+  "commitmentCtaLabel": "Conversemos Sobre Tu Lugar y Servicios",
+  "contactEyebrow": "Comienza contándonos tu idea",
+  "contactTitle": "Cuéntanos Sobre Tu Evento",
+  "contactBody": "Envíanos el tipo de evento, la fecha preferida, el lugar, la cantidad estimada de invitados, el presupuesto aproximado y los servicios que necesitas. Cuéntanos qué tienes organizado. Revisaremos tu solicitud y explicaremos las opciones, la información pendiente y los siguientes pasos. Para cumpleaños o producciones a medida, describe tu idea mediante el formulario o WhatsApp.",
+  "whatsappLabel": "Escríbenos por WhatsApp",
+  "callLabel": "Llama a Nuestro Equipo",
+  "emailLabel": "Escríbenos por Correo",
+  "whatsappMessage": "Hola, me gustaría conversar sobre la planificación de un evento."
+}
