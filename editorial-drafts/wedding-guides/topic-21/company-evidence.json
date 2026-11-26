@@ -1,0 +1,31 @@
+{
+  "topic": 21,
+  "source": "Direct account from the user in the editorial conversation on 2026-11-18",
+  "scope": "Evidence notes only, not an article or publishable event itinerary",
+  "confirmed": {
+    "venue": "Hard Rock Punta Cana",
+    "event": "Four-day Indian wedding described in the approved topic and user's account",
+    "guests": "Approximately 280",
+    "responsibilities": [
+      "Maintaining the itinerary and coordinating the daily events",
+      "Coordinating supplier arrival times and locations",
+      "Managing requests from the couple and guests through the hotel",
+      "Supporting photographers and other vendors",
+      "Ensuring the previously installed setup was ready and clean following heavy rain",
+      "Receiving ritual materials shipped months before the wedding and storing them in the company's warehouse",
+      "Sourcing requested ritual materials locally, including coconuts and mango leaves"
+    ]
+  },
+  "uncertain": {
+    "date": "User recalls early August, possibly August 4–8, but explicitly cannot confirm exact dates. Year not supplied. Omit the exact date.",
+    "ritualNames": "Voice transcription is ambiguous. Do not normalize it into specific named rituals without confirmation.",
+    "dayByDaySchedule": "Not supplied. Do not invent a four-day program.",
+    "photosAndNames": "No specific client names or image permissions supplied."
+  },
+  "editorialBoundaries": [
+    "Attribute the account to Sertuin's team; no fabricated client quotes.",
+    "Describe historical assistance in this specific event; do not turn it into a blanket hotel policy or universal guarantee.",
+    "Do not infer import rules, customs clearance, religious approval or future availability of materials.",
+    "Do not claim storage or local sourcing is automatically included in every current planning package."
+  ]
+}

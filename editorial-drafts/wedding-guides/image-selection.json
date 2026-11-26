@@ -1,0 +1,178 @@
+{
+  "reviewedAt": "2026-11-18",
+  "status": "existing-published-assets-visually-inspected-selected-for-drafts",
+  "assets": [
+    {
+      "id": "planner",
+      "url": "https://cdn.sanity.io/images/mj6f2710/production/b39c90f6102d559c7c1d2bcc3aa4cdac31317704-1200x1600.webp",
+      "source": "https://sertuinevents.com/es/blog/first-meeting-punta-cana-wedding-planner-checklist/",
+      "alt": {
+        "en": "Wedding planner holding a folder on a resort terrace.",
+        "es": "Planificadora de bodas con una carpeta en la terraza de un resort.",
+        "pt": "Assessora de casamento com uma pasta no terraço de um resort.",
+        "fr": "Organisatrice de mariage tenant un dossier sur la terrasse d’un resort."
+      }
+    },
+    {
+      "id": "setup",
+      "url": "https://cdn.sanity.io/images/mj6f2710/production/7a20dcc04067e62f7e8024c67258c4dbb2102c68-1200x1600.webp",
+      "source": "https://sertuinevents.com/es/blog/punta-cana-wedding-all-inclusive-resort-vs-private-venue/",
+      "alt": {
+        "en": "Wedding planner beside white reception tables in an outdoor event space.",
+        "es": "Planificadora junto a mesas blancas de recepción en un espacio al aire libre.",
+        "pt": "Assessora ao lado de mesas brancas de recepção em um espaço ao ar livre.",
+        "fr": "Organisatrice près de tables de réception blanches dans un espace extérieur."
+      }
+    },
+    {
+      "id": "table",
+      "url": "https://cdn.sanity.io/images/mj6f2710/production/527a095429cd35301023dd3ed549a0b8ace109b5-1086x1448.webp",
+      "source": "https://sertuinevents.com/es/blog/punta-cana-wedding-rain-plan/",
+      "alt": {
+        "en": "Wedding planner arranging a reception table with flowers, glasses and place settings.",
+        "es": "Planificadora preparando una mesa de recepción con flores, copas y vajilla.",
+        "pt": "Assessora preparando uma mesa de recepção com flores, taças e louça.",
+        "fr": "Organisatrice préparant une table de réception avec fleurs, verres et vaisselle."
+      }
+    },
+    {
+      "id": "meeting",
+      "url": "https://cdn.sanity.io/images/mj6f2710/production/b07fadea70bc2f07d648c6b8145b4d194e9ce396-5000x3333.jpg?rect=0,1,5000,3332&w=1100&h=733&auto=format",
+      "source": "https://sertuinevents.com/puntacana-wedding-planner/",
+      "alt": {
+        "en": "Wedding planner and client beside a reception table decorated with greenery.",
+        "es": "Planificadora y clienta junto a una mesa de recepción decorada con vegetación.",
+        "pt": "Assessora e cliente ao lado de uma mesa de recepção decorada com folhagens.",
+        "fr": "Organisatrice et cliente près d’une table de réception décorée de feuillages."
+      }
+    }
+  ],
+  "topics": [
+    {
+      "topic": 1,
+      "selectedImage": "meeting",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 2,
+      "selectedImage": "meeting",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 3,
+      "selectedImage": "table",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 4,
+      "selectedImage": "meeting",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 5,
+      "selectedImage": "meeting",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 6,
+      "selectedImage": "setup",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 7,
+      "selectedImage": "meeting",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 8,
+      "selectedImage": "setup",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 9,
+      "selectedImage": "planner",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 10,
+      "selectedImage": "meeting",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 11,
+      "selectedImage": "table",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 12,
+      "selectedImage": "meeting",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 13,
+      "selectedImage": "planner",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 14,
+      "selectedImage": "meeting",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 15,
+      "selectedImage": "planner",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 16,
+      "selectedImage": "table",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 17,
+      "selectedImage": "table",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 18,
+      "selectedImage": "table",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 19,
+      "selectedImage": "planner",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 20,
+      "selectedImage": "planner",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 21,
+      "selectedImage": "planner",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 22,
+      "selectedImage": "planner",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 23,
+      "selectedImage": "meeting",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 24,
+      "selectedImage": "table",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    },
+    {
+      "topic": 25,
+      "selectedImage": "setup",
+      "usageNote": "Illustrative Sertuin planning photograph; not documentary evidence of the named venue, religious ceremony or client case."
+    }
+  ],
+  "scope": "Existing images from the user's own published website. No new client photos, download, modification or publication. Assign selected image to each Blog Guide in CMS together with the localized heroAlt in its articles. Shared images intentionally preserve existing media conventions."
+}

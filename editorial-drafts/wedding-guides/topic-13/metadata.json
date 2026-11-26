@@ -1,0 +1,94 @@
+{
+  "topic": 13,
+  "status": "published-and-verified-live",
+  "reviewedAt": "2026-11-18",
+  "guideId": "blogGuide-wedding-topic-13",
+  "provisionalSharedSlug": "jellyfish-vs-kukua-wedding-punta-cana",
+  "keywords": {
+    "en": {
+      "title": "Jellyfish vs. Kukua: Punta Cana Wedding Comparison",
+      "primary": "Jellyfish vs Kukua wedding",
+      "secondary": [
+        "Kukua vs Jellyfish Punta Cana",
+        "private wedding venue comparison",
+        "wedding venue transportation"
+      ],
+      "anchor": "wedding venue sourcing in Punta Cana"
+    },
+    "es": {
+      "title": "Jellyfish vs. Kukua: comparación de venues para bodas en Punta Cana",
+      "primary": "Jellyfish vs Kukua bodas Punta Cana",
+      "secondary": [
+        "Jellyfish Punta Cana bodas",
+        "Kukua bodas Punta Cana",
+        "comparación de lugares para bodas"
+      ],
+      "anchor": "selección de venues para bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Jellyfish vs. Kukua: comparação de espaços para casamento em Punta Cana",
+      "primary": "Jellyfish vs Kukua casamento Punta Cana",
+      "secondary": [
+        "casamento no Jellyfish Punta Cana",
+        "casamento no Kukua Punta Cana",
+        "espaços para casamento em Punta Cana"
+      ],
+      "anchor": "escolha de espaços para casamento em Punta Cana"
+    },
+    "fr": {
+      "title": "Jellyfish ou Kukua : quel lieu de mariage choisir à Punta Cana ?",
+      "primary": "Jellyfish vs Kukua mariage Punta Cana",
+      "secondary": [
+        "mariage au Jellyfish Punta Cana",
+        "mariage au Kukua Punta Cana",
+        "comparaison des lieux de mariage"
+      ],
+      "anchor": "recherche de lieux de mariage à Punta Cana"
+    }
+  },
+  "research": {
+    "queries": [
+      "Jellyfish vs Kukua wedding comparison",
+      "Jellyfish Kukua bodas Punta Cana comparación",
+      "Jellyfish Kukua casamento Punta Cana",
+      "Jellyfish Kukua mariage Punta Cana"
+    ],
+    "sources": [
+      "https://www.jellyfishrestaurant.com/weddings",
+      "https://www.jellyfishrestaurant.com/weddings-faq",
+      "https://kukuabeachclub.co/faqs/"
+    ],
+    "sourcePolicy": "Primary official sources for factual claims; practical planning questions are original editorial guidance, not confirmed supplier terms."
+  },
+  "bodyWordCounts": {
+    "en": 2042,
+    "es": 1989,
+    "pt": 1949,
+    "fr": 1984
+  },
+  "editorialNote": "Original walkthrough, coordination, attendance scenarios and decision criteria; approximately1750–1900 substantive words, no invented prices or ranking. Related-page destinations verified in Chrome in all four languages.",
+  "pendingIssues": [],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "planner",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-13",
+    "urls": [
+      "https://sertuinevents.com/blog/jellyfish-vs-kukua-wedding-punta-cana/",
+      "https://sertuinevents.com/es/blog/jellyfish-vs-kukua-wedding-punta-cana/",
+      "https://sertuinevents.com/pt/blog/jellyfish-vs-kukua-wedding-punta-cana/",
+      "https://sertuinevents.com/fr/blog/jellyfish-vs-kukua-wedding-punta-cana/"
+    ]
+  }
+}

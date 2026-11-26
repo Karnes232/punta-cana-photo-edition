@@ -1,0 +1,110 @@
+{
+  "topic": 14,
+  "status": "published-and-verified-live",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "punta-cana-wedding-contracts-deposits-cancellations",
+  "versions": {
+    "en": {
+      "title": "Punta Cana Wedding Contracts: Deposits and Cancellations",
+      "primary": "destination wedding contract Punta Cana",
+      "secondary": [
+        "Punta Cana wedding cancellation policy",
+        "wedding deposit refunds",
+        "wedding supplier responsibilities"
+      ],
+      "anchor": "independent wedding planning in Punta Cana"
+    },
+    "es": {
+      "title": "Contratos de bodas en Punta Cana: depósitos y cancelaciones",
+      "primary": "contrato de boda en Punta Cana",
+      "secondary": [
+        "política de cancelación de bodas",
+        "depósitos para bodas en República Dominicana",
+        "condiciones de contratos de wedding planner"
+      ],
+      "anchor": "asesoría de planificación de bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Contratos de casamento em Punta Cana: depósitos e cancelamentos",
+      "primary": "contrato de casamento em Punta Cana",
+      "secondary": [
+        "política de cancelamento de casamento",
+        "depósito para casamento na República Dominicana",
+        "condições de contratos de fornecedores"
+      ],
+      "anchor": "assessoria de casamento em Punta Cana"
+    },
+    "fr": {
+      "title": "Prestataires de mariage à Punta Cana : contrats, acomptes et annulations",
+      "primary": "contrat de prestataire de mariage à Punta Cana",
+      "secondary": [
+        "politique d'annulation de mariage",
+        "acomptes pour mariage en République dominicaine",
+        "clauses des contrats de prestataires"
+      ],
+      "anchor": "accompagnement pour organiser un mariage à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 1897,
+    "es": 1813,
+    "pt": 1841,
+    "fr": 1888
+  },
+  "researchQueries": [
+    "Punta Cana wedding contract deposit cancellation official hotel wedding",
+    "contrato boda Punta Cana depósito cancelación hotel",
+    "contrato casamento Punta Cana sinal cancelamento",
+    "contrat mariage Punta Cana acompte annulation"
+  ],
+  "searchIntent": {
+    "en": "Questions to resolve before deposits and changes",
+    "es": "Alcance, pagos y consecuencias a confirmar por escrito",
+    "pt": "Sinal, idioma do contrato e responsabilidades na contratação internacional",
+    "fr": "Supplier booking terms; explicitly excludes matrimonial-property meaning of contrat de mariage"
+  },
+  "sources": [
+    {
+      "url": "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
+      "note": "Conflicts with Spanish page in deposit and cancellation conditions; no figures promoted as current booking policy."
+    },
+    {
+      "url": "https://hotel.hardrock.com/punta-cana/es/requisitos-matrimoniales.aspx",
+      "note": "Contradictory localized terms independently read."
+    },
+    {
+      "url": "https://www.serenadepuntacana.com/cdn/files/PaquetesBodasSerenade.pdf",
+      "note": "Research background only, dated2024–26; no package rate or legal requirement copied."
+    },
+    {
+      "url": "https://sertuinevents.com/blog/punta-cana-wedding-rain-plan/",
+      "note": "Company practical coordination and third-party refund boundaries."
+    }
+  ],
+  "editorialNote": "Approximately1800–1900 words per version: practical scope without padding or unsupported legal analysis. Fictional percentage example clearly labeled. No contract enforceability, automatic refund entitlement or cross-border law conclusion.",
+  "pendingIssues": [],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-14",
+    "urls": [
+      "https://sertuinevents.com/blog/punta-cana-wedding-contracts-deposits-cancellations/",
+      "https://sertuinevents.com/es/blog/punta-cana-wedding-contracts-deposits-cancellations/",
+      "https://sertuinevents.com/pt/blog/punta-cana-wedding-contracts-deposits-cancellations/",
+      "https://sertuinevents.com/fr/blog/punta-cana-wedding-contracts-deposits-cancellations/"
+    ]
+  }
+}

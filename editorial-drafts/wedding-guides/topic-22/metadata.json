@@ -1,0 +1,110 @@
+{
+  "topic": 22,
+  "status": "published-and-verified-live",
+  "reviewedAt": "2026-11-18",
+  "guideId": "blogGuide-wedding-topic-22",
+  "provisionalSharedSlug": "sikh-wedding-punta-cana-anand-karaj",
+  "keywords": {
+    "en": {
+      "title": "Sikh Weddings in Punta Cana: Planning the Anand Karaj",
+      "primary": "Sikh wedding Punta Cana",
+      "secondary": [
+        "Anand Karaj destination wedding Dominican Republic",
+        "Granthi coordination",
+        "Guru Granth Sahib arrangements"
+      ],
+      "anchor": "South Asian wedding coordination in Punta Cana"
+    },
+    "es": {
+      "title": "Bodas sij en Punta Cana: cómo planificar la ceremonia Anand Karaj",
+      "primary": "boda sij en Punta Cana",
+      "secondary": [
+        "ceremonia Anand Karaj en República Dominicana",
+        "matrimonio sij de destino",
+        "requisitos religiosos de boda sij"
+      ],
+      "anchor": "coordinación de bodas del sur de Asia en Punta Cana"
+    },
+    "pt": {
+      "title": "Casamento sikh em Punta Cana: como planejar o Anand Karaj",
+      "primary": "casamento sikh em Punta Cana",
+      "secondary": [
+        "cerimônia Anand Karaj na República Dominicana",
+        "casamento religioso sikh",
+        "requisitos para casamento sikh"
+      ],
+      "anchor": "organização de casamentos sul-asiáticos em Punta Cana"
+    },
+    "fr": {
+      "title": "Mariage sikh à Punta Cana : organiser la cérémonie Anand Karaj",
+      "primary": "mariage sikh à Punta Cana",
+      "secondary": [
+        "cérémonie Anand Karaj en République dominicaine",
+        "mariage religieux sikh",
+        "conditions pour une cérémonie Anand Karaj"
+      ],
+      "anchor": "coordination de mariages d'Asie du Sud à Punta Cana"
+    }
+  },
+  "research": {
+    "queries": [
+      "Sikh wedding Punta Cana Anand Karaj gurdwara",
+      "boda sij Punta Cana Anand Karaj",
+      "casamento sikh Punta Cana Anand Karaj",
+      "mariage sikh Punta Cana Anand Karaj"
+    ],
+    "intent": "Religious feasibility and respectful destination-celebration planning, not resort ceremony sales.",
+    "sources": [
+      "https://gspuk.org/wp-content/uploads/2024/01/Dress-Code-at-Anand-Karaj.pdf",
+      "https://www.gurunanakdarbar.org/anandkaraj",
+      "https://old.sgpc.net/CDN/Sikh_Rehat_Maryada_English.pdf"
+    ],
+    "sourceNotes": "Council guidance and gurdwara booking page opened. SGPC indexed primary PDF returned502 on direct fetch; not used for detailed claims.",
+    "expansionReview": "Supreme Sikh Council UK guidance and Guru Nanak Darbar Gravesend primary preparation page re-opened. SGPC PDF still returns502; no detailed SGPC claim added. Expansion preserves religious authority, no promised resort Anand Karaj, and separates approved ceremony, civil process and destination celebration."
+  },
+  "wordCountMethod": "Whitespace count of directAnswer, section headings and paragraphs, FAQ questions and answers; excludes title, description, CTA and source labels.",
+  "contentAudit": {
+    "date": "2026-11-18",
+    "readbackVerified": true,
+    "locales": [
+      "en",
+      "es",
+      "pt",
+      "fr"
+    ],
+    "schemaIdentityGuideCtaSources": "passed",
+    "duplicateSectionKeys": false,
+    "relatedGuidesPerLocale": 2,
+    "errors": []
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "pendingIssues": [],
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "planner",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "bodyWordCounts": {
+    "en": 2396,
+    "es": 2245,
+    "pt": 2177,
+    "fr": 2213
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-22",
+    "urls": [
+      "https://sertuinevents.com/blog/sikh-wedding-punta-cana-anand-karaj/",
+      "https://sertuinevents.com/es/blog/sikh-wedding-punta-cana-anand-karaj/",
+      "https://sertuinevents.com/pt/blog/sikh-wedding-punta-cana-anand-karaj/",
+      "https://sertuinevents.com/fr/blog/sikh-wedding-punta-cana-anand-karaj/"
+    ]
+  }
+}

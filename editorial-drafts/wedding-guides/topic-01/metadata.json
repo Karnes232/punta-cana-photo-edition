@@ -1,0 +1,102 @@
+{
+  "topic": 1,
+  "status": "published-and-verified-live",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "punta-cana-wedding-complete-budget",
+  "versions": {
+    "en": {
+      "title": "How Much Does a Wedding in Punta Cana Cost?",
+      "primary": "how much does a wedding in Punta Cana cost",
+      "secondary": [
+        "Punta Cana destination wedding cost",
+        "wedding budget per guest",
+        "wedding venue and catering costs"
+      ],
+      "anchor": "wedding planning services in Punta Cana"
+    },
+    "es": {
+      "title": "¿Cuánto cuesta una boda en Punta Cana?",
+      "primary": "cuánto cuesta una boda en Punta Cana",
+      "secondary": [
+        "presupuesto de boda en Punta Cana",
+        "precios de bodas en República Dominicana",
+        "costos de banquete y decoración de bodas"
+      ],
+      "anchor": "planificación de bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Quanto custa um casamento em Punta Cana?",
+      "primary": "quanto custa um casamento em Punta Cana",
+      "secondary": [
+        "orçamento de casamento em Punta Cana",
+        "custo de casamento na República Dominicana",
+        "preços de buffet e decoração de casamento"
+      ],
+      "anchor": "organização de casamentos em Punta Cana"
+    },
+    "fr": {
+      "title": "Combien coûte un mariage à Punta Cana ?",
+      "primary": "combien coûte un mariage à Punta Cana",
+      "secondary": [
+        "budget de mariage à Punta Cana",
+        "prix d'un mariage en République dominicaine",
+        "coût du lieu de réception et du traiteur"
+      ],
+      "anchor": "organisation de mariages à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2081,
+    "es": 2039,
+    "pt": 1996,
+    "fr": 2046
+  },
+  "researchQueries": [
+    "Punta Cana wedding cost official wedding packages inclusions resort taxes",
+    "cuanto cuesta boda Punta Cana presupuesto",
+    "quanto custa casamento Punta Cana orçamento",
+    "prix mariage Punta Cana budget"
+  ],
+  "searchIntent": {
+    "en": "Complete event and travel budget rather than a ceremony starting price",
+    "es": "Presupuesto completo y diferencia entre paquete y gastos del evento",
+    "pt": "Orçamento, all inclusive e conversão de despesas para o casal brasileiro",
+    "fr": "Budget complet, privatisation, suppléments et conversion de devise"
+  },
+  "sources": [
+    {
+      "url": "https://www.impressiveresortspuntacana.com/en/weddings.html",
+      "note": "Only concise Paradise 2026–2027 example; no market average inferred."
+    },
+    {
+      "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+      "note": "Owned company fee and scope checked alongside localized pages."
+    }
+  ],
+  "pendingIssues": [],
+  "editorialNote": "Numerical budget is explicitly fictional educational arithmetic, not supplier rates. Word counts include title, direct answer, section headings and paragraphs, and FAQ.",
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "meeting",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-01",
+    "urls": [
+      "https://sertuinevents.com/blog/punta-cana-wedding-complete-budget/",
+      "https://sertuinevents.com/es/blog/punta-cana-wedding-complete-budget/",
+      "https://sertuinevents.com/pt/blog/punta-cana-wedding-complete-budget/",
+      "https://sertuinevents.com/fr/blog/punta-cana-wedding-complete-budget/"
+    ]
+  }
+}

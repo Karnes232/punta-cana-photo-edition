@@ -1,0 +1,108 @@
+{
+  "topic": 3,
+  "status": "published-and-verified-live",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "punta-cana-wedding-packages-inclusions-extras",
+  "versions": {
+    "en": {
+      "title": "Punta Cana Wedding Packages: Inclusions and Extras",
+      "primary": "what do Punta Cana wedding packages include",
+      "secondary": [
+        "Punta Cana wedding package inclusions",
+        "wedding reception upgrades",
+        "outside vendor fees"
+      ],
+      "anchor": "wedding planning and vendor coordination in Punta Cana"
+    },
+    "es": {
+      "title": "Paquetes de bodas en Punta Cana: qué incluyen y qué se paga aparte",
+      "primary": "qué incluyen los paquetes de bodas en Punta Cana",
+      "secondary": [
+        "paquetes de boda todo incluido en Punta Cana",
+        "extras de paquetes de boda",
+        "proveedores externos para bodas"
+      ],
+      "anchor": "planificación y coordinación de bodas en Punta Cana"
+    },
+    "pt": {
+      "title": "Pacotes de casamento em Punta Cana: o que está incluído?",
+      "primary": "o que incluem os pacotes de casamento em Punta Cana",
+      "secondary": [
+        "casamento all inclusive em Punta Cana",
+        "serviços extras de casamento",
+        "fornecedores externos para casamentos"
+      ],
+      "anchor": "planejamento e organização de casamentos em Punta Cana"
+    },
+    "fr": {
+      "title": "Forfaits mariage à Punta Cana : prestations incluses et suppléments",
+      "primary": "que comprennent les forfaits mariage à Punta Cana",
+      "secondary": [
+        "forfait mariage tout compris à Punta Cana",
+        "suppléments pour réception de mariage",
+        "prestataires extérieurs"
+      ],
+      "anchor": "organisation et coordination de mariages à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2218,
+    "es": 2133,
+    "pt": 2031,
+    "fr": 2086
+  },
+  "sources": [
+    {
+      "url": "https://www.impressiveresortspuntacana.com/en/weddings.html",
+      "authority": "Official hotel",
+      "dateScope": "Page distinguishes 2025 from 2026–2027; dates not generalized."
+    },
+    {
+      "url": "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
+      "authority": "Official hotel",
+      "dateScope": "Undated policies and explicitly 2024 rates coexist; no numeric policy charges reproduced as current."
+    },
+    {
+      "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+      "authority": "Company service page and localized navigation"
+    }
+  ],
+  "searchIntent": {
+    "en": "Compare deliverables, guest limits and outside-vendor extras before booking",
+    "es": "Distinguir todo incluido, recepción privada y extras del paquete",
+    "pt": "Distinguir hospedagem all inclusive e serviços privativos do casamento",
+    "fr": "Comparer forfait tout compris, privatisation et suppléments"
+  },
+  "researchQueries": [
+    "Punta Cana wedding packages inclusions outside vendor official",
+    "qué incluyen paquetes bodas Punta Cana hotel oficial",
+    "pacotes casamento Punta Cana o que inclui hotel",
+    "forfait mariage Punta Cana prestations incluses hôtel"
+  ],
+  "pendingIssues": [],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "table",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-03",
+    "urls": [
+      "https://sertuinevents.com/blog/punta-cana-wedding-packages-inclusions-extras/",
+      "https://sertuinevents.com/es/blog/punta-cana-wedding-packages-inclusions-extras/",
+      "https://sertuinevents.com/pt/blog/punta-cana-wedding-packages-inclusions-extras/",
+      "https://sertuinevents.com/fr/blog/punta-cana-wedding-packages-inclusions-extras/"
+    ]
+  },
+  "slugResolution": "Original proposal conflicted with retired URL; content slug corrected before successful production deployment."
+}

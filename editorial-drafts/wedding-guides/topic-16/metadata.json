@@ -1,0 +1,100 @@
+{
+  "topic": 16,
+  "status": "published-and-verified-live",
+  "consultedAt": "2026-11-18",
+  "provisionalSharedSlug": "punta-cana-free-wedding-package-conditions",
+  "versions": {
+    "en": {
+      "title": "Free Wedding Packages in Punta Cana: The Conditions",
+      "primary": "are free wedding packages in Punta Cana really free",
+      "secondary": [
+        "Punta Cana free wedding package requirements",
+        "minimum room nights",
+        "wedding package upgrades"
+      ],
+      "anchor": "independent wedding planner in Punta Cana"
+    },
+    "es": {
+      "title": "Paquetes de boda gratis en Punta Cana: condiciones y costos ocultos",
+      "primary": "paquetes de bodas gratis en Punta Cana",
+      "secondary": [
+        "bodas gratis en hoteles de Punta Cana",
+        "condiciones de paquetes de boda gratuitos",
+        "extras de bodas todo incluido"
+      ],
+      "anchor": "wedding planner independiente en Punta Cana"
+    },
+    "pt": {
+      "title": "Pacotes de casamento grátis em Punta Cana: condições e custos extras",
+      "primary": "pacotes de casamento grátis em Punta Cana",
+      "secondary": [
+        "casamento gratuito em resort",
+        "condições de pacotes de casamento",
+        "custos extras de casamento all inclusive"
+      ],
+      "anchor": "assessoria independente de casamento em Punta Cana"
+    },
+    "fr": {
+      "title": "Forfaits mariage gratuits à Punta Cana : conditions et frais supplémentaires",
+      "primary": "forfait mariage gratuit à Punta Cana",
+      "secondary": [
+        "mariage gratuit dans un resort à Punta Cana",
+        "conditions des forfaits mariage",
+        "suppléments de mariage tout compris"
+      ],
+      "anchor": "wedding planner indépendant à Punta Cana"
+    }
+  },
+  "bodyWordCounts": {
+    "en": 2025,
+    "es": 2000,
+    "pt": 1999,
+    "fr": 1988
+  },
+  "sources": [
+    {
+      "name": "majestic",
+      "url": "https://www.majestic-resorts.com/weddings-and-honeymoons",
+      "authority": "Official hotel primary source",
+      "consultedAt": "2026-11-18"
+    },
+    {
+      "name": "hardrock",
+      "url": "https://hotel.hardrock.com/punta-cana/marriage-requirements.aspx",
+      "authority": "Official hotel primary source",
+      "consultedAt": "2026-11-18"
+    }
+  ],
+  "researchQueries": [
+    "site.majestic-resorts.com wedding free 15 rooms 7 nights Punta Cana",
+    "paquetes boda gratis Punta Cana condiciones hotel",
+    "pacote casamento grátis Punta Cana condições hotel oficial",
+    "forfait mariage gratuit Punta Cana conditions nuits hôtel officiel"
+  ],
+  "editorialMethod": "Verified specific Majestic threshold and non-private dinner; not generalized. Hard Rock access conditions discussed without copying older numeric rates. No claim that all extras are hidden. Compare accommodation obligations, chosen upgrades and payer-specific costs.",
+  "pendingIssues": [],
+  "reviewedAt": "2026-11-18",
+  "imageSelection": {
+    "manifest": "../image-selection.json",
+    "selectedImage": "table",
+    "localizedHeroAlt": "Completed in all four article files",
+    "historicalCasePhoto": false,
+    "status": "Assigned to published shared guide; localized alt text published"
+  },
+  "relatedGuideValidation": {
+    "manifest": "../link-validation.json",
+    "status": "Existing destinations verified in all four languages; at least two included per article."
+  },
+  "publication": {
+    "status": "published",
+    "project": "mj6f2710",
+    "dataset": "production",
+    "guideReference": "blogGuide-wedding-topic-16",
+    "urls": [
+      "https://sertuinevents.com/blog/punta-cana-free-wedding-package-conditions/",
+      "https://sertuinevents.com/es/blog/punta-cana-free-wedding-package-conditions/",
+      "https://sertuinevents.com/pt/blog/punta-cana-free-wedding-package-conditions/",
+      "https://sertuinevents.com/fr/blog/punta-cana-free-wedding-package-conditions/"
+    ]
+  }
+}
