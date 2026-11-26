@@ -313,9 +313,6 @@ function Reviews({ data, pageContext: ctx }) {
             >
               {"←"}
             </button>
-            <span aria-live="polite" aria-atomic="true">
-              {filtered.length ? `${active + 1} / ${filtered.length}` : "0 / 0"}
-            </span>
             <button
               type="button"
               className="reviews-arrow"
