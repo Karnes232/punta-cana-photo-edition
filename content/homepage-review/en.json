@@ -1,0 +1,45 @@
+{
+  "heroHeading": "Event Planner in Punta Cana — Planning, Production and Coordination",
+  "heroIntro": "We plan corporate events, destination weddings, marriage proposals, intimate ceremonies and private celebrations in Punta Cana. We help define the concept, coordinate venues and suppliers, and manage the agreed on-site responsibilities. We explain the services, quotation and next steps before you confirm.",
+  "primaryCtaLabel": "Tell Us About Your Event",
+  "secondaryCtaLabel": "Explore Our Services",
+  "eventsEyebrow": "Our event planning services",
+  "eventsTitle": "Planning Support for Your Event",
+  "eventsIntro": "We adapt our involvement to your project: comprehensive planning, coordination of selected services or local support for an existing plan. We can work with your chosen venue and suppliers or help research suitable options. Each service page explains the available approach and how to begin.",
+  "eventCardLinkLabel": "Explore This Service",
+  "cards": [
+    {"link":"/event-planner/","title":"Corporate Events","description":"We support companies, associations, internal event teams and international agencies with conferences, executive meetings, dinners, launches, brand activations, incentives and multi-day programs. We can develop the event from the initial brief or coordinate local production for your existing plan. Depending on the approved proposal, we coordinate venue and hotel communication, audiovisual providers, catering, transportation, staffing, supplier schedules, setup and on-site operations."},
+    {"link":"/puntacana-wedding-planner/","title":"Destination Wedding Planning","description":"We help couples plan weddings in Punta Cana and other agreed Dominican Republic locations. We research venues, compare suppliers, guide budgets, coordinate the design and organize planning timelines. We also help with guest logistics, transport planning and the agreed wedding-day responsibilities. Whether you already have a venue or need help choosing one, we adapt our support to your needs. We coordinate multicultural and multi-day celebrations through the appropriate planning service."},
+    {"link":"/proposal/","title":"Marriage Proposal Experiences","description":"We organize published proposal experiences with the selected romantic setup, private return transport for the couple, photography, flowers, a celebratory beverage and music. We confirm the experience, date, accommodation, pickup and proposal timing, then prepare the setup and coordinate your arrival. We review customization requests and confirm the inclusions in your selection. Dining, live musicians and professional videography depend on the package or an agreed upgrade; alternative venues require permission and a quotation."},
+    {"link":"/punta-cana-elopement-packages/","title":"Elopements and Intimate Ceremonies","description":"We organize private beach and catamaran ceremonies for couples seeking an intimate celebration. We help select the setting, décor and timing, and coordinate the ceremony and officiant. The base experience includes a symbolic ceremony; the selected décor is priced separately. We review guest numbers, transportation and additional services before confirmation. We can arrange the optional legal ceremony service only after the required documents have been reviewed and accepted."},
+    {"link":"/gender-reveal-punta-cana/","title":"Gender Reveal Planning","description":"We design a personalized celebration around your location, guest count, colors, décor and preferred reveal. We discuss photography, video, transportation and budget, evaluate the suppliers required and prepare a custom quotation. We check the proposed effect against venue conditions and any permission or authorized professional requirements. We confirm what is feasible for your chosen location before agreeing the setup and on-site coordination."}
+  ],
+  "whatEyebrow": "Planning, production and suppliers",
+  "whatTitle": "How We Bring Your Event Together",
+  "whatParagraphs": [
+    "We coordinate the services in your approved scope around one schedule. We align decoration, floral design, furniture and technical setup with access times; connect catering and beverage service with the program; and coordinate photography, video, music and entertainment with the moments they need to cover. We clarify supplier responsibilities, transport arrangements and staffing so preparations and event-day operations follow the same plan.",
+    "For birthdays, anniversaries, private dinners, family gatherings and other private celebrations, we develop a proposal around your guest count, location, preferences and budget. We can coordinate the venue, decoration, food and beverages, entertainment and other selected services. We explain the proposed inclusions and responsibilities before you confirm.",
+    "For custom events and special productions, we review your objectives, concept, date, attendance, budget and technical requirements. We can help develop a plan or coordinate an existing production brief, including the suppliers, transportation, staffing and schedule agreed in the quotation. We assess feasibility before committing to the work.",
+    "If you already have suppliers, we discuss which coordination tasks you want us to handle and how we will work with your team. We identify the decisions and information we need from you. Decoration, photography, catering and other services apply according to the selected experience or approved quotation."
+  ],
+  "whatItems": ["Concept, priorities and budget", "Venue and supplier communication", "Production and service schedules", "Guest and supplier logistics", "Setup and on-site coordination", "Agreed completion arrangements"],
+  "processEyebrow": "Our planning process",
+  "processTitle": "From Your Brief to Event Completion",
+  "processIntro": "We confirm the level of support required and explain the decisions involved at each stage. We adapt the process to the selected experience and contracted responsibilities.",
+  "steps": [
+    {"title":"Consultation and Evaluation","body":"We discuss your event, date, location, guest count, approximate budget and required services. We review venue conditions, available options, suppliers and logistical needs. We can begin with an existing venue or help research options within the agreed service."},
+    {"title":"Proposal and Planning","body":"We present the recommended services, quotation, responsibilities and relevant conditions. Once approved, we coordinate the selected suppliers, schedules and preparations. We explain proposed changes to the scope or costs so you can decide before they are confirmed."},
+    {"title":"Execution and Completion","body":"We supervise the agreed arrivals, setup, supplier activity and event schedule. We then coordinate applicable breakdown, closeout arrangements and outstanding deliverables. Our responsibilities throughout the event follow the service you have contracted."}
+  ],
+  "commitmentEyebrow": "Local coordination",
+  "commitmentTitle": "Venue Access and Event Logistics",
+  "commitmentBody": "We review resort policies, outside-vendor restrictions, venue fees and private-property or beach access before confirming a project. We coordinate relevant permissions, supplier transport, operational access, setup and breakdown times within our agreed responsibilities. For outdoor events, we discuss weather considerations and available alternatives with the venue and suppliers. We confirm access and permitted activities for the specific location; a preferred hotel, villa or beach still requires the appropriate approval.",
+  "commitmentCtaLabel": "Discuss Your Location and Services",
+  "contactEyebrow": "Start with your event brief",
+  "contactTitle": "Tell Us About Your Event",
+  "contactBody": "Send us the event type, preferred date, location, estimated guest count, approximate budget and services you need. Let us know what you have already arranged. We will review your request and explain the available options, the information still needed and the next steps. For birthdays or a custom production, describe your idea using the form or WhatsApp.",
+  "whatsappLabel": "Message Us on WhatsApp",
+  "callLabel": "Call Our Team",
+  "emailLabel": "Email Our Team",
+  "whatsappMessage": "Hello, I would like to discuss planning an event."
+}

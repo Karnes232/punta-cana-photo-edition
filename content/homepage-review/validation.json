@@ -1,0 +1,192 @@
+{
+  "preparedAt": "2026-11-25T23:58:50.194Z",
+  "mode": "Offline content review; no CMS writes",
+  "languages": {
+    "en": {
+      "document": "homePage-en",
+      "baselineRevision": "33yGZtaxnmPjsujZhqEVOD",
+      "words": 989,
+      "h1": "Event Planner in Punta Cana — Planning, Production and Coordination",
+      "seoUnchanged": true,
+      "imagesUnchanged": true,
+      "headUnchanged": true,
+      "processSteps": 3,
+      "cards": 5
+    },
+    "es": {
+      "document": "homePage-es",
+      "baselineRevision": "spHqqmydcEgMjkv8y5QEGx",
+      "words": 1043,
+      "h1": "Planificación, Producción y Coordinación de Eventos en Punta Cana",
+      "seoUnchanged": true,
+      "imagesUnchanged": true,
+      "headUnchanged": true,
+      "processSteps": 3,
+      "cards": 5
+    },
+    "pt": {
+      "document": "homePage-pt",
+      "baselineRevision": "spHqqmydcEgMjkv8y5QEGx",
+      "words": 1073,
+      "h1": "Planejamento, Produção e Coordenação de Eventos em Punta Cana",
+      "seoUnchanged": true,
+      "imagesUnchanged": true,
+      "headUnchanged": true,
+      "processSteps": 3,
+      "cards": 5
+    },
+    "fr": {
+      "document": "homePage-fr",
+      "baselineRevision": "spHqqmydcEgMjkv8y5QEGx",
+      "words": 1063,
+      "h1": "Planification, Production et Coordination d’Événements à Punta Cana",
+      "seoUnchanged": true,
+      "imagesUnchanged": true,
+      "headUnchanged": true,
+      "processSteps": 3,
+      "cards": 5
+    }
+  },
+  "links": [
+    {
+      "url": "https://sertuinevents.com/",
+      "status": 200,
+      "htmlLang": "en"
+    },
+    {
+      "url": "https://sertuinevents.com/event-planner/",
+      "status": 200,
+      "htmlLang": "en"
+    },
+    {
+      "url": "https://sertuinevents.com/puntacana-wedding-planner/",
+      "status": 200,
+      "htmlLang": "en"
+    },
+    {
+      "url": "https://sertuinevents.com/proposal/",
+      "status": 200,
+      "htmlLang": "en"
+    },
+    {
+      "url": "https://sertuinevents.com/punta-cana-elopement-packages/",
+      "status": 200,
+      "htmlLang": "en"
+    },
+    {
+      "url": "https://sertuinevents.com/gender-reveal-punta-cana/",
+      "status": 200,
+      "htmlLang": "en"
+    },
+    {
+      "url": "https://sertuinevents.com/contact/",
+      "status": 200,
+      "htmlLang": "en"
+    },
+    {
+      "url": "https://sertuinevents.com/es/",
+      "status": 200,
+      "htmlLang": "es"
+    },
+    {
+      "url": "https://sertuinevents.com/es/event-planner/",
+      "status": 200,
+      "htmlLang": "es"
+    },
+    {
+      "url": "https://sertuinevents.com/es/puntacana-wedding-planner/",
+      "status": 200,
+      "htmlLang": "es"
+    },
+    {
+      "url": "https://sertuinevents.com/es/proposal/",
+      "status": 200,
+      "htmlLang": "es"
+    },
+    {
+      "url": "https://sertuinevents.com/es/punta-cana-elopement-packages/",
+      "status": 200,
+      "htmlLang": "es"
+    },
+    {
+      "url": "https://sertuinevents.com/es/gender-reveal-punta-cana/",
+      "status": 200,
+      "htmlLang": "es"
+    },
+    {
+      "url": "https://sertuinevents.com/es/contact/",
+      "status": 200,
+      "htmlLang": "es"
+    },
+    {
+      "url": "https://sertuinevents.com/pt/",
+      "status": 200,
+      "htmlLang": "pt-BR"
+    },
+    {
+      "url": "https://sertuinevents.com/pt/event-planner/",
+      "status": 200,
+      "htmlLang": "pt-BR"
+    },
+    {
+      "url": "https://sertuinevents.com/pt/puntacana-wedding-planner/",
+      "status": 200,
+      "htmlLang": "pt-BR"
+    },
+    {
+      "url": "https://sertuinevents.com/pt/proposal/",
+      "status": 200,
+      "htmlLang": "pt-BR"
+    },
+    {
+      "url": "https://sertuinevents.com/pt/punta-cana-elopement-packages/",
+      "status": 200,
+      "htmlLang": "pt-BR"
+    },
+    {
+      "url": "https://sertuinevents.com/pt/gender-reveal-punta-cana/",
+      "status": 200,
+      "htmlLang": "pt-BR"
+    },
+    {
+      "url": "https://sertuinevents.com/pt/contact/",
+      "status": 200,
+      "htmlLang": "pt-BR"
+    },
+    {
+      "url": "https://sertuinevents.com/fr/",
+      "status": 200,
+      "htmlLang": "fr-FR"
+    },
+    {
+      "url": "https://sertuinevents.com/fr/event-planner/",
+      "status": 200,
+      "htmlLang": "fr-FR"
+    },
+    {
+      "url": "https://sertuinevents.com/fr/puntacana-wedding-planner/",
+      "status": 200,
+      "htmlLang": "fr-FR"
+    },
+    {
+      "url": "https://sertuinevents.com/fr/proposal/",
+      "status": 200,
+      "htmlLang": "fr-FR"
+    },
+    {
+      "url": "https://sertuinevents.com/fr/punta-cana-elopement-packages/",
+      "status": 200,
+      "htmlLang": "fr-FR"
+    },
+    {
+      "url": "https://sertuinevents.com/fr/gender-reveal-punta-cana/",
+      "status": 200,
+      "htmlLang": "fr-FR"
+    },
+    {
+      "url": "https://sertuinevents.com/fr/contact/",
+      "status": 200,
+      "htmlLang": "fr-FR"
+    }
+  ]
+}
