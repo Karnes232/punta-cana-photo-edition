@@ -85,7 +85,11 @@ async function main() {
    body=body.replace(paragraphNodes.join(''),()=>prepared.whatParagraphs.map(p=>pOpen+esc(p)+'</p>').join(''));
    for(let j=0;j<old.whatItems.length;j++) replaceText(old.whatItems[j],prepared.whatItems[j]);
    for(let j=0;j<3;j++) for(const k of ['title','body']) replaceText(old.processSteps[j][k],prepared.processSteps[j][k]);
-   for(const k of fields.filter(k=>!['whatParagraphs','whatItems','eventCardLinkLabel','whatsappMessage'].includes(k))) replaceText(old[k],prepared[k]);
+   for(const k of fields.filter(k=>!['whatParagraphs','whatItems','eventCardLinkLabel','whatsappMessage','contactEyebrow'].includes(k))) replaceText(old[k],prepared[k]);
+   // The contact eyebrow may duplicate availability in the earlier trust strip.
+   const contactStart=body.indexOf('<section id="start-your-event"');
+   assert(contactStart>0);
+   body=body.slice(0,contactStart)+body.slice(contactStart).replace('>'+esc(old.contactEyebrow)+'<','>'+esc(prepared.contactEyebrow)+'<');
    // Locate CTA by its exact original text, so identical hero/commitment labels stay distinct.
    for(const k of ['primaryCta','secondaryCta','commitmentCta']) {
      const label=esc(old[k].label);
@@ -101,8 +105,10 @@ async function main() {
    assert.equal(html.match(/<head>[\s\S]*?<\/head>/)?.[0],original.match(/<head>[\s\S]*?<\/head>/)?.[0]);
    // A static local visual review is intentionally non-interactive: no hydration, analytics or submissions.
    const offline = content => content.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g,'').replace(/<link\b[^>]*rel="(?:preload|modulepreload)"[^>]*>/g,'').replace('<head>','<head><base href="https://sertuinevents.com/">').replace(/<form\b[^>]*>/g,'<form onsubmit="return false">').replace(/<button\b/g,'<button disabled').replace(/<input\b/g,'<input disabled').replace(/<select\b/g,'<select disabled').replace(/<textarea\b/g,'<textarea disabled');
-   fs.writeFileSync(path.join(out,lang+'-before.html'),offline(original));
-   fs.writeFileSync(path.join(out,lang+'-after.html'),offline(html));
+   const revealImages = content => content.replace(/\bdata-srcset=/g,'srcset=').replace(/\bdata-src=/g,'src=').replace(/(<img\b[^>]*data-main-image[^>]*style=")opacity:0/g,'$1opacity:1');
+   fs.writeFileSync(path.join(out,lang+'-before.html'),revealImages(offline(original)));
+   // Mirror HomeExperience's narrowly scoped responsive wrapping fix in the static review.
+   fs.writeFileSync(path.join(out,lang+'-after.html'),revealImages(offline(html)).replace('<main ', '<main style="overflow-wrap:anywhere" ').replace('max-w-5xl font-crimson text-5xl','max-w-5xl font-crimson text-4xl').replace(/class="absolute inset-0 bg-gradient-to-t from-black via-black\/55 to-black\/5"/g,'class="absolute inset-0" style="background:linear-gradient(to top,#000,rgba(0,0,0,.75),rgba(0,0,0,.6))"'));
    const visible=body.replace(/<svg\b[^>]*>[\s\S]*?<\/svg>/g,'').replace(/<[^>]+>/g,' ').replace(/&#x27;|&#39;/g,"'").replace(/&[^;]+;/g,' ').replace(/\s+/g,' ').trim();
    // Conservative count: includes all form option labels and contact details, even collapsed ones.
    const words=visible.split(/\s+/).filter(x=>/[\p{L}\p{N}]/u.test(x)).length;

@@ -29,7 +29,7 @@ const HomeExperience = ({ home, generalInfo, language }) => {
   )}`;
 
   return (
-    <main className="overflow-hidden bg-primary-bg-color text-black">
+    <main className="overflow-hidden bg-primary-bg-color text-black" style={{ overflowWrap: "anywhere" }}>
       <HeroSection home={home} language={language} />
       <TrustBar availability={home.availability} items={home.highlights} />
       <EventsSection id={EVENTS_SECTION_ID} home={home} language={language} />

@@ -28,7 +28,7 @@ const ServiceCard = ({ card, linkLabel, language }) => {
           imgClassName="object-cover"
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/5" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/60" />
       <div className="relative flex min-h-[390px] flex-col justify-end p-7 md:p-8">
         <h3 className="font-crimson text-3xl font-medium leading-tight text-white">
           {card.title}

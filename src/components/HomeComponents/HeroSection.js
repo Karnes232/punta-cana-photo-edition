@@ -28,7 +28,7 @@ const HeroSection = ({ home, language }) => {
           <p className="font-montserrat text-xs font-semibold uppercase tracking-[0.28em] text-primary-color md:text-sm">
             {home.heroEyebrow}
           </p>
-          <h1 className="mt-6 max-w-5xl font-crimson text-5xl font-medium leading-[0.95] text-white sm:text-6xl md:text-7xl">
+          <h1 className="mt-6 max-w-5xl font-crimson text-4xl font-medium leading-[0.95] text-white sm:text-6xl md:text-7xl">
             {home.heroHeading}
           </h1>
           <p className="mt-7 max-w-3xl font-montserrat text-base leading-8 text-gray-100 md:text-xl md:leading-9">

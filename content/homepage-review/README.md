@@ -1,5 +1,7 @@
 # Sertuin Events — homepage owner review
 
+> Historical review-stage report. The owner subsequently authorized production publication and requested image/mobile checks. See [RELEASE.md](RELEASE.md) for the current implementation, completed responsive review and release status; its findings supersede the review-only restrictions and pending-test notes below.
+
 Prepared 25 November 2026. **Editorial review ready; visual and integration acceptance pending. Nothing has been written to Sanity or deployed.**
 
 ## Editorial delivery
