@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { graphql } from "gatsby";
 import { PortableText } from "@portabletext/react";
-import { Heart, Ear, Check } from "lucide-react";
+import { Heart, Ear, Check, Sparkles, HandHeart, Users } from "lucide-react";
 import Layout from "../components/Layout/Layout";
 import { localizedPath, getLanguageConfig } from "../utils/siteLocales";
 import { safeLink } from "../utils/reviewPolicy";
@@ -166,6 +166,25 @@ function Reviews({ data, pageContext: ctx }) {
     );
   };
   const philosophy = copy.companyPhilosophy;
+  const philosophyIntro = [];
+  const philosophyGroups = [];
+  for (const block of philosophy?.body || []) {
+    if (block._type === "block" && block.style === "h3") {
+      philosophyGroups.push({ heading: block, body: [] });
+    } else if (philosophyGroups.length) {
+      philosophyGroups[philosophyGroups.length - 1].body.push(block);
+    } else {
+      philosophyIntro.push(block);
+    }
+  }
+  const philosophyIcons = [Sparkles, HandHeart, Users];
+  const editorialText = (blocks) => (
+    <PortableText value={blocks} components={{ marks: {
+      link: ({ value, children }) => destination(value.href, language)
+        ? <a href={destination(value.href, language)}>{children}</a>
+        : <>{children}</>,
+    } }} />
+  );
   const sections = {
     companyPhilosophy: philosophy?.enabled && (
       <section
@@ -174,20 +193,22 @@ function Reviews({ data, pageContext: ctx }) {
         <div>
           <p>{philosophy.eyebrow}</p>
           <h2>{philosophy.heading}</h2>
-          <p>{philosophy.subtitle}</p>
-          <PortableText
-            value={philosophy.body || []}
-            components={{
-              marks: {
-                link: ({ value, children }) =>
-                  destination(value.href, language) ? (
-                    <a href={destination(value.href, language)}>{children}</a>
-                  ) : (
-                    <>{children}</>
-                  ),
-              },
-            }}
-          />
+          {philosophy.subtitle && <p>{philosophy.subtitle}</p>}
+          <div className="reviews-philosophy-intro">{editorialText(philosophyIntro)}</div>
+          <div className="reviews-care-grid">
+            {philosophyGroups.map((group, index) => {
+              const Icon = philosophyIcons[index % philosophyIcons.length];
+              return (
+                <article className="reviews-care-block" key={group.heading._key}>
+                  <div className="reviews-care-heading">
+                    <span className="reviews-care-icon"><Icon aria-hidden="true" focusable="false" /></span>
+                    {editorialText([group.heading])}
+                  </div>
+                  <div className="reviews-care-body">{editorialText(group.body)}</div>
+                </article>
+              );
+            })}
+          </div>
           {button(philosophy.cta)}
         </div>
         {picture(philosophy.image)}

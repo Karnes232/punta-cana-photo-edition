@@ -147,6 +147,24 @@ body:has(.reviews-page) {
   margin: 3rem auto;
   max-width: 1176px;
 }
+.reviews-philosophy-intro { max-width: 82ch; margin-bottom: 2rem; }
+.reviews-care-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.reviews-care-block { background: #fffdf9; border: 1px solid #e4dccb; border-radius: 12px; padding: clamp(1.25rem, 3vw, 2rem); min-width: 0; }
+.reviews-care-block:first-child { grid-column: 1 / -1; }
+.reviews-care-heading { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.reviews-care-heading h3 { margin: 0; font-size: clamp(1.4rem, 2.2vw, 1.75rem); }
+.reviews-care-icon { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; flex: 0 0 3rem; border-radius: 50%; background: #f4ead5; color: #89691e; }
+.reviews-care-icon svg { width: 1.5rem; height: 1.5rem; stroke-width: 1.6; }
+.reviews-care-body > :last-child { margin-bottom: 0; }
+@media (min-width: 901px) {
+  .reviews-care-block:first-child .reviews-care-body { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+  .reviews-care-block:first-child .reviews-care-body > p { margin-bottom: 0; }
+}
+@media (max-width: 760px) {
+  .reviews-care-grid { grid-template-columns: minmax(0, 1fr); }
+  .reviews-care-heading { align-items: flex-start; gap: .75rem; }
+  .reviews-care-icon { width: 2.5rem; height: 2.5rem; flex-basis: 2.5rem; }
+}
 .reviews-carousel {
   position: relative;
   display: flex;
