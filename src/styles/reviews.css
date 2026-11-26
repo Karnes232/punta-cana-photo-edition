@@ -262,3 +262,6 @@ body:has(.reviews-page) {
     height: 18rem;
   }
 }
+
+.reviews-card-text-only { grid-template-columns: minmax(0, 1fr); }
+.reviews-card-text-only .reviews-card-copy { width: 100%; max-width: 76ch; margin-inline: auto; }

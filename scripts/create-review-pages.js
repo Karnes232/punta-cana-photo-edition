@@ -13,7 +13,7 @@ const query = `{
     _id,name,slug,description,intro,order,enabled,image,ctaEnabled,ctaHeading,
     ctaDescription,ctaLabel,servicePath,ctaImage,variant,"serviceType":servicePage->_type
   },
-  "reviews": *[_type == "clientReview" && !(_id in path("drafts.**")) && photoAuthorized == true && verificationStatus == "verified"]{
+  "reviews": *[_type == "clientReview" && !(_id in path("drafts.**")) && verificationStatus == "verified"]{
     _id,clientName,text,photo,category,googleReviewUrl,photoAuthorized,verificationStatus,
     rating,reviewDate,eventDate,eventLocation,originalLanguage,translation,eventLabel,googleLabel,order,featured
   }

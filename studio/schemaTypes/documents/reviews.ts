@@ -484,7 +484,7 @@ export const clientReview = defineType({
     str("text", "Original review text", true, true),
     {
       ...image("photo", "Authorized client/event photograph"),
-      validation: (r: any) => r.required().assetRequired(),
+      description: "Optional. Leave empty until a client/event photograph is confirmed.",
     },
     defineField({
       name: "category",
@@ -516,8 +516,8 @@ export const clientReview = defineType({
       validation: (r) =>
         r
           .required()
-          .custom((v) =>
-            v === true ? true : "Confirm permission before publishing.",
+          .custom((v, context: any) =>
+            !context.document?.photo || v === true ? true : "Confirm permission before publishing a photograph.",
           ),
     }),
     defineField({

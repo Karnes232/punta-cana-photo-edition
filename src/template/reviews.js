@@ -129,7 +129,7 @@ function Reviews({ data, pageContext: ctx }) {
     const displayedText =
       review.translation?.[lang] || review.translation?.en || review.text;
     return (
-      <article key={review._id} className="reviews-card">
+      <article key={review._id} className={`reviews-card${review.photo?.asset ? "" : " reviews-card-text-only"}`}>
         <div className="reviews-card-copy">
           <h3>{review.clientName}</h3>
           {review.reviewDate && (
@@ -155,13 +155,13 @@ function Reviews({ data, pageContext: ctx }) {
             <span className="sr-only"> — {copy.externalLabel}</span>
           </a>
         </div>
-        <a
+        {review.photo?.asset && <a
           className="reviews-card-photo"
           {...externalProps(review)}
           aria-label={`${review.photo.alt} — ${copy.externalLabel}`}
         >
           {picture(review.photo)}
-        </a>
+        </a>}
       </article>
     );
   };

@@ -36,6 +36,8 @@ for (const bad of [
 ])
   assert(!validGoogleReviewUrl(bad), bad);
 assert(eligibleReview(review));
+assert(eligibleReview({ ...review, photo: null, photoAuthorized: false }));
+assert(!eligibleReview({ ...review, photo: {}, photoAuthorized: true }));
 for (const patch of [
   { _id: "drafts.review-1" },
   { photoAuthorized: false },
@@ -159,6 +161,11 @@ const render = (ctx) =>
     React.createElement(component.default, { data, pageContext: ctx }),
   );
 const html = render(context);
+const textOnly = render({ ...context, reviews: [{ ...fixture, photo: null, photoAuthorized: false }] });
+assert(textOnly.includes('reviews-card-text-only'));
+assert(textOnly.includes('Test fixture only'));
+assert(!textOnly.includes('reviews-card-photo'));
+assert.equal(textOnly.split(`href="${url}"`).length - 1, 1);
 assert.equal(
   html.split(`href="${url}"`).length - 1,
   2,

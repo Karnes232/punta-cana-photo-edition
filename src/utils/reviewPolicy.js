@@ -45,9 +45,10 @@ const eligibleReview = (review) =>
       !review._id?.startsWith("drafts.") &&
       review.clientName?.trim() &&
       review.text?.trim() &&
-      review.photo?.asset &&
-      review.photo?.alt?.trim() &&
-      review.photoAuthorized === true &&
+      (review.photo == null ||
+        (review.photo?.asset &&
+          review.photo?.alt?.trim() &&
+          review.photoAuthorized === true)) &&
       review.originalLanguage &&
       (review.rating == null ||
         (Number.isInteger(review.rating) &&
