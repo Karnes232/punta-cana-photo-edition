@@ -19,6 +19,10 @@ const review = {
   category: { _ref: "category-1" },
 };
 assert(validGoogleReviewUrl(url));
+const currentGoogleShareUrl =
+  "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2s5aWVVdHdlamhmZVRKbmNrNU1heTFhTVVNelNWRRAB!2m1!1s0x0:0x960641785ff65e84!3m1!1s2@1:CAIQACodChtycF9oOk9ieUtwejhfeTJnck5May1aMUMzSVE%7C%7C";
+assert(validGoogleReviewUrl(currentGoogleShareUrl));
+assert(!validGoogleReviewUrl(currentGoogleShareUrl.replace('/maps/reviews/', '/maps/place/')));
 for (const bad of [
   "https://google.com/maps/place/business",
   "https://maps.app.goo.gl/test",

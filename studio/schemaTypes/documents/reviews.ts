@@ -498,7 +498,7 @@ export const clientReview = defineType({
       title: "Individual Google review permalink",
       type: "url",
       description:
-        "Paste the expanded google.com/maps review URL with reviewid or !1sCh… identifier. Short links and general business profiles are rejected.",
+        "Paste the expanded google.com/maps individual review URL. Google review routes with Ch or Ci identifiers are supported. Short links and general business profiles are rejected.",
       validation: (r) =>
         r
           .required()

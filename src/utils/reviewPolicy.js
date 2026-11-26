@@ -10,7 +10,11 @@ const validGoogleReviewUrl = (value) => {
         (/^Ch[0-9A-Za-z_-]{10,}$/.test(
           url.searchParams.get("reviewid") || "",
         ) ||
-          /!1sCh[0-9A-Za-z_-]{10,}/.test(url.pathname))
+          /!1sCh[0-9A-Za-z_-]{10,}/.test(url.pathname) ||
+          // Current Google share links use Ci identifiers on the review route.
+          /^\/maps\/reviews\/data=.*!1sCi[0-9A-Za-z_-]{10,}(?:!|$)/.test(
+            url.pathname,
+          ))
       );
     }
     return false;
