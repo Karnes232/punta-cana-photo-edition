@@ -16,7 +16,7 @@ Abra **Content → Reviews Page → Page Content**. El menú **Translations** us
 | Introducción de reseñas | Review Section Introduction → Review section heading / Introduction |
 | Destacadas | Featured Reviews → Show featured reviews / Featured reviews heading |
 | Botón de Google | Review Display Settings → Default Google review button |
-| Filtros y paginación | Review Display Settings → All reviews filter / Load more button / Reviews per page |
+| Filtros y carrusel | Review Display Settings → All reviews filter; todas las reseñas verificadas se incluyen en el HTML inicial y se recorren con flechas, teclado o desplazamiento táctil. Los antiguos campos de paginación se conservan por compatibilidad. |
 | Avisos y accesibilidad | Review Display Settings → No reviews message / Opens in a new tab label / Category navigation accessible label / Translation notice |
 | Orden editorial | Review Display Settings → Editorial sections before reviews |
 | Cierre | Closing Call to Action → Closing Call to Action → Enabled / Heading / Supporting paragraph / Primary button / Secondary button |
@@ -31,7 +31,9 @@ Abra **Reviews Page → All Reviews** y use el botón de creación de Sanity. Re
 
 El enlace debe ser el permalink individual expandido de google.com/maps con `reviewid` o identificador `!1sCh…`. Los enlaces cortos y perfiles generales no se sustituyen automáticamente. Ese único campo enlaza foto, texto y botón.
 
-**Display order** ordena las reseñas; **Featured** las incluye en destacadas. **Optional translations**, **Public event label** y **Optional Google button label override** usan los campos localizados existentes. La traducción se muestra separada del original con Translation notice. El estado verificado es una confirmación editorial, no una comprobación automática contra Google.
+**Display order** ordena las reseñas. El carrusel muestra únicamente la traducción correspondiente al idioma de la página, con inglés como respaldo; el texto original permanece intacto en Sanity. Complete EN/ES/PT/FR antes de publicar. **Public event label** sigue siendo localizado. El botón público utiliza **Google button label** de la página, con un texto neutro; los campos históricos de atribución se conservan sin mostrarlos como etiqueta del botón. El enlace individual sigue llevando a la fuente real. El estado verificado es una confirmación editorial, no una comprobación automática contra Google.
+
+Las tarjetas muestran texto a la izquierda y fotografía completa a la derecha en escritorio; en móvil se apilan. La altura se adapta a la tarjeta actual y al tamaño de pantalla. Las reseñas no son imágenes ni se cargan solo al avanzar: todos sus textos están en el HTML estático. No hay avance automático que interrumpa la lectura. La fotografía y el botón enlazan a Google; el texto del testimonio no es un enlace.
 
 Los documentos incompletos se guardan como borradores. Los errores de validación impiden publicarlos. Para notas internas abra **Reviews Page → Private Verification Notes**, seleccione **Client review** y edite **Internal reference / Internal verification notes**. Estos documentos se guardan como borradores autenticados y no tienen acción Publish; no se mezclan con la reseña pública. No publique esos documentos por herramientas externas.
 

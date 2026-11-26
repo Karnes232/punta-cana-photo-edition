@@ -22,7 +22,11 @@ assert(validGoogleReviewUrl(url));
 const currentGoogleShareUrl =
   "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2s5aWVVdHdlamhmZVRKbmNrNU1heTFhTVVNelNWRRAB!2m1!1s0x0:0x960641785ff65e84!3m1!1s2@1:CAIQACodChtycF9oOk9ieUtwejhfeTJnck5May1aMUMzSVE%7C%7C";
 assert(validGoogleReviewUrl(currentGoogleShareUrl));
-assert(!validGoogleReviewUrl(currentGoogleShareUrl.replace('/maps/reviews/', '/maps/place/')));
+assert(
+  !validGoogleReviewUrl(
+    currentGoogleShareUrl.replace("/maps/reviews/", "/maps/place/"),
+  ),
+);
 for (const bad of [
   "https://google.com/maps/place/business",
   "https://maps.app.goo.gl/test",
@@ -132,6 +136,7 @@ const copy = {
 };
 const fixture = {
   ...review,
+  rating: 5,
   originalLanguage: "en",
   photo: { asset: { _ref: "image-abc123-800x600-jpg" }, alt: "CMS photograph" },
 };
@@ -156,8 +161,8 @@ const render = (ctx) =>
 const html = render(context);
 assert.equal(
   html.split(`href="${url}"`).length - 1,
-  3,
-  "Photo, text and button must share the exact URL",
+  2,
+  "Photo and source button must share the exact URL; testimonial text is not a link",
 );
 assert(
   html.includes("CMS hero") &&
@@ -177,6 +182,35 @@ assert(
     updated.includes("Updated CMS source"),
 );
 assert(!updated.includes("CMS paragraph"));
+const localized = render({
+  ...context,
+  sanityLanguage: "fr",
+  language: "fr",
+  reviews: Array.from({ length: 20 }, (_, i) => ({
+    ...fixture,
+    _id: `review-${i}`,
+    clientName: `Customer ${i}`,
+    text: "Original Spanish text",
+    originalLanguage: "es",
+    translation: {
+      en: `English testimonial ${i}`,
+      fr: `Témoignage français ${i}`,
+    },
+  })),
+});
+assert(
+  localized.includes("Témoignage français 19"),
+  "All reviews must exist in server HTML, including slides beyond the old page limit",
+);
+assert(
+  !localized.includes("Original Spanish text") &&
+    !localized.includes("English testimonial"),
+  "Show only the page language",
+);
+assert(
+  localized.includes('class="reviews-stars"') &&
+    localized.includes('class="reviews-carousel"'),
+);
 const metadata = renderToStaticMarkup(
   React.createElement(component.Head, { data, pageContext: context }),
 );

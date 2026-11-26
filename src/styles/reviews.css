@@ -1,6 +1,11 @@
+html:has(.reviews-page),
+body:has(.reviews-page) {
+  overflow-x: clip;
+}
 .reviews-page {
   color: #111827;
   overflow-wrap: anywhere;
+  overflow-x: clip;
 }
 .reviews-backdrop {
   position: relative;
@@ -76,8 +81,7 @@
   padding-left: 1.5rem;
 }
 .reviews-page a:not(.reviews-button) {
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
 }
 .reviews-page figure {
   margin: 1.5rem 0;
@@ -99,13 +103,90 @@
   margin: 2rem 0;
 }
 .reviews-card {
-  border: 1px solid #d6c6ae;
-  padding: 1.5rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  background: #faf7f0;
+  border: 1px solid #e4dccb;
+  padding: clamp(1.25rem, 3vw, 3rem);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  min-width: 0;
+  align-items: center;
+}
+.reviews-card-copy {
   min-width: 0;
 }
-.reviews-card img {
-  height: 18rem;
+.reviews-card-copy h3 {
+  font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+}
+.reviews-card-copy blockquote {
+  font-size: 1rem;
+  line-height: 1.85;
+  margin: 1.5rem 0 2rem;
+}
+.reviews-card-photo {
+  display: block;
+  align-self: center;
+}
+.reviews-card-photo figure {
+  margin: 0;
+}
+.reviews-page .reviews-card img {
+  height: auto;
+  max-height: 32rem;
   object-fit: contain;
+}
+.reviews-page .reviews-stars {
+  color: #b58b29;
+  font-size: 1.6rem;
+  letter-spacing: 0.18em;
+}
+.reviews-philosophy {
+  background: #f5f0e7;
+  border: 1px solid #e4dccb;
+  margin: 3rem auto;
+  max-width: 1176px;
+}
+.reviews-carousel {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #b58b29 #f5f0e7;
+}
+.reviews-carousel > .reviews-card {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+}
+.reviews-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+  font-variant-numeric: tabular-nums;
+}
+.reviews-arrow {
+  border: 1px solid #b58b29;
+  border-radius: 50%;
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.5rem;
+  background: transparent;
+  cursor: pointer;
+}
+.reviews-arrow:hover:not(:disabled) {
+  background: #eadbb6;
+}
+.reviews-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 .reviews-split {
   display: grid;
@@ -161,6 +242,15 @@
   padding: 1rem 0;
 }
 @media (max-width: 760px) {
+  .reviews-page .reviews-card img {
+    max-height: 24rem;
+  }
+  .reviews-card {
+    grid-template-columns: 1fr;
+  }
+  .reviews-philosophy {
+    margin: 2rem 1rem;
+  }
   .reviews-section {
     padding: 2.5rem 1.375rem;
   }

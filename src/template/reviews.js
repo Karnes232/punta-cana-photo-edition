@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { graphql } from "gatsby";
 import { PortableText } from "@portabletext/react";
 import { Heart, Ear, Check } from "lucide-react";
@@ -15,6 +15,28 @@ const serviceRoutes = {
   eventPlannerPage: "/event-planner/",
 };
 const icons = { heart: Heart, ear: Ear, check: Check };
+const carouselCopy = {
+  en: {
+    previous: "Previous review",
+    next: "Next review",
+    label: "Client testimonials",
+  },
+  es: {
+    previous: "Reseña anterior",
+    next: "Siguiente reseña",
+    label: "Testimonios de nuestros clientes",
+  },
+  pt: {
+    previous: "Avaliação anterior",
+    next: "Próxima avaliação",
+    label: "Depoimentos dos nossos clientes",
+  },
+  fr: {
+    previous: "Avis précédent",
+    next: "Avis suivant",
+    label: "Témoignages de nos clients",
+  },
+};
 const local = (value, lang) => value?.[lang] || value?.en || "";
 const destination = (url, language) => {
   if (!safeLink(url)) return undefined;
@@ -34,12 +56,44 @@ const imageUrl = (value, project, dataset) => {
 function Reviews({ data, pageContext: ctx }) {
   const { copy, categories, reviews, sanityLanguage: lang, language } = ctx;
   const [selected, select] = useState("");
-  const size = Math.min(48, Math.max(3, copy.pageSize || 12));
-  const [limit, setLimit] = useState(size);
+  const track = useRef(null);
+  const [active, setActive] = useState(0);
+  const [trackHeight, setTrackHeight] = useState(null);
+  const controls = carouselCopy[lang] || carouselCopy.en;
   const filtered = reviews.filter(
     (r) => !selected || r.category._ref === selected,
   );
   const current = categories.find((c) => c._id === selected);
+  useEffect(() => {
+    const slide = track.current?.querySelectorAll(".reviews-card")[active];
+    if (!slide) {
+      setTrackHeight(null);
+      return;
+    }
+    const measure = () =>
+      setTrackHeight(Math.ceil(slide.getBoundingClientRect().height) + 24);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(slide);
+    return () => observer.disconnect();
+  }, [active, selected]);
+  const move = (index) => {
+    const slides = track.current?.querySelectorAll(".reviews-card");
+    if (!slides?.length) return;
+    const next = Math.max(0, Math.min(index, slides.length - 1));
+    const slide = slides[next];
+    const left =
+      slide.getBoundingClientRect().left -
+      track.current.getBoundingClientRect().left +
+      track.current.scrollLeft;
+    track.current.scrollTo({
+      left,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+    });
+    setActive(next);
+  };
   const picture = (value, eager = false, background = false) => {
     const src = imageUrl(value, ctx.project, ctx.dataset);
     return src && value.alt ? (
@@ -71,46 +125,42 @@ function Reviews({ data, pageContext: ctx }) {
     rel: "noopener noreferrer",
   });
   const card = (review) => {
-    const label = local(review.googleLabel, lang) || copy.googleLabel;
-    const translated =
-      lang !== review.originalLanguage && review.translation?.[lang];
+    const label = copy.googleLabel;
+    const displayedText =
+      review.translation?.[lang] || review.translation?.en || review.text;
     return (
       <article key={review._id} className="reviews-card">
+        <div className="reviews-card-copy">
+          <h3>{review.clientName}</h3>
+          {review.reviewDate && (
+            <time dateTime={review.reviewDate}>
+              {new Intl.DateTimeFormat(lang, {
+                dateStyle: "long",
+                timeZone: "UTC",
+              }).format(new Date(review.reviewDate))}
+            </time>
+          )}
+          {local(review.eventLabel, lang) && (
+            <p>{local(review.eventLabel, lang)}</p>
+          )}
+          {review.eventLocation && <p>{review.eventLocation}</p>}
+          {review.rating && (
+            <p className="reviews-stars" aria-label={`${review.rating} / 5`}>
+              {"★".repeat(review.rating)}
+            </p>
+          )}
+          <blockquote lang={lang}>{displayedText}</blockquote>
+          <a className="reviews-button" {...externalProps(review)}>
+            {label}
+            <span className="sr-only"> — {copy.externalLabel}</span>
+          </a>
+        </div>
         <a
+          className="reviews-card-photo"
           {...externalProps(review)}
           aria-label={`${review.photo.alt} — ${copy.externalLabel}`}
         >
           {picture(review.photo)}
-        </a>
-        <h3>{review.clientName}</h3>
-        {review.reviewDate && (
-          <time dateTime={review.reviewDate}>
-            {new Intl.DateTimeFormat(lang, {
-              dateStyle: "long",
-              timeZone: "UTC",
-            }).format(new Date(review.reviewDate))}
-          </time>
-        )}
-        {local(review.eventLabel, lang) && (
-          <p>{local(review.eventLabel, lang)}</p>
-        )}
-        {review.eventLocation && <p>{review.eventLocation}</p>}
-        {review.rating && (
-          <p aria-label={`${review.rating} / 5`}>{"★".repeat(review.rating)}</p>
-        )}
-        <a {...externalProps(review)}>
-          <blockquote lang={review.originalLanguage}>{review.text}</blockquote>
-          <span className="sr-only">{copy.externalLabel}</span>
-        </a>
-        {translated && (
-          <div>
-            <p>{copy.translationLabel}</p>
-            <blockquote lang={lang}>{translated}</blockquote>
-          </div>
-        )}
-        <a className="reviews-button" {...externalProps(review)}>
-          {label}
-          <span className="sr-only"> — {copy.externalLabel}</span>
         </a>
       </article>
     );
@@ -119,7 +169,7 @@ function Reviews({ data, pageContext: ctx }) {
   const sections = {
     companyPhilosophy: philosophy?.enabled && (
       <section
-        className={`reviews-section ${philosophy.variant === "split" ? "reviews-split" : ""}`}
+        className={`reviews-section reviews-philosophy ${philosophy.variant === "split" ? "reviews-split" : ""}`}
       >
         <div>
           <p>{philosophy.eyebrow}</p>
@@ -222,7 +272,7 @@ function Reviews({ data, pageContext: ctx }) {
         ).map((key) => (
           <React.Fragment key={key}>{sections[key]}</React.Fragment>
         ))}
-        <section className="reviews-section">
+        <section id="client-reviews" className="reviews-section">
           <h2>{copy.reviewsHeading}</h2>
           <p>{copy.reviewsIntro}</p>
           <nav aria-label={copy.filterLabel} className="reviews-buttons">
@@ -237,7 +287,7 @@ function Reviews({ data, pageContext: ctx }) {
                 aria-pressed={selected === c._id}
                 onClick={() => {
                   select(c._id);
-                  setLimit(size);
+                  setActive(0);
                 }}
               >
                 {local(c.name, lang)}
@@ -252,19 +302,65 @@ function Reviews({ data, pageContext: ctx }) {
               {picture(current.image)}
             </div>
           )}
-          <div aria-live="polite" className="reviews-grid">
-            {filtered.slice(0, limit).map(card)}
-            {!filtered.length && <p>{copy.emptyMessage}</p>}
-          </div>
-          {limit < filtered.length && (
+          <div className="reviews-carousel-controls">
             <button
               type="button"
-              className="reviews-button"
-              onClick={() => setLimit((n) => n + size)}
+              className="reviews-arrow"
+              aria-label={controls.previous}
+              aria-controls="review-track"
+              disabled={active === 0}
+              onClick={() => move(active - 1)}
             >
-              {copy.loadMore}
+              {"←"}
             </button>
-          )}
+            <span aria-live="polite" aria-atomic="true">
+              {filtered.length ? `${active + 1} / ${filtered.length}` : "0 / 0"}
+            </span>
+            <button
+              type="button"
+              className="reviews-arrow"
+              aria-label={controls.next}
+              aria-controls="review-track"
+              disabled={active >= filtered.length - 1}
+              onClick={() => move(active + 1)}
+            >
+              {"→"}
+            </button>
+          </div>
+          <div
+            key={selected}
+            id="review-track"
+            ref={track}
+            role="region"
+            aria-label={controls.label}
+            tabIndex={0}
+            className="reviews-carousel"
+            style={trackHeight ? { height: trackHeight } : undefined}
+            onKeyDown={(event) => {
+              if (event.target !== event.currentTarget) return;
+              if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+                event.preventDefault();
+                move(active + (event.key === "ArrowRight" ? 1 : -1));
+              }
+            }}
+            onScroll={(event) => {
+              const el = event.currentTarget;
+              const slides = Array.from(el.querySelectorAll(".reviews-card"));
+              const left = el.getBoundingClientRect().left;
+              const nearest = slides.reduce(
+                (best, slide, index) =>
+                  Math.abs(slide.getBoundingClientRect().left - left) <
+                  Math.abs(slides[best].getBoundingClientRect().left - left)
+                    ? index
+                    : best,
+                0,
+              );
+              setActive(nearest);
+            }}
+          >
+            {filtered.map(card)}
+            {!filtered.length && <p>{copy.emptyMessage}</p>}
+          </div>
           {current?.ctaEnabled && servicePath && (
             <aside className="reviews-section">
               <h3>{local(current.ctaHeading, lang)}</h3>
