@@ -105,6 +105,7 @@
 }
 .reviews-card img {
   height: 18rem;
+  object-fit: contain;
 }
 .reviews-split {
   display: grid;
