@@ -152,6 +152,7 @@ body:has(.reviews-page) {
   display: flex;
   align-items: flex-start;
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
   gap: 2rem;

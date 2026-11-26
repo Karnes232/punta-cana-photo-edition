@@ -71,7 +71,7 @@ function Reviews({ data, pageContext: ctx }) {
       return;
     }
     const measure = () =>
-      setTrackHeight(Math.ceil(slide.getBoundingClientRect().height) + 24);
+      setTrackHeight(Math.ceil(slide.getBoundingClientRect().height) + 32);
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(slide);
